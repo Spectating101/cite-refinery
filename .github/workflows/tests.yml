@@ -18,16 +18,25 @@ jobs:
       - run: python -m pip install -e .
       - run: python -m unittest discover -s tests -v
       - name: Validate prototype JavaScript
-        run: node --check prototype/app.js
+        run: |
+          node --check prototype/app.js
+          node --check prototype/stage-map.js
       - name: Validate prototype, exchange, stage, pilot, sourcing, and draft JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
+          python -m json.tool prototype/stage-profiles.json > /dev/null
           python -m json.tool examples/problem_packet.json > /dev/null
           python -m json.tool examples/problem_stage_profiles.json > /dev/null
           python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
           python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
           python -m json.tool pilot/rubrics.v0.1.json > /dev/null
           python -m json.tool pilot/drafts/taoyuan-mobility.candidate.v0.1.json > /dev/null
+          python - <<'PY'
+          import json
+          a = json.load(open('prototype/stage-profiles.json'))
+          b = json.load(open('examples/problem_stage_profiles.json'))
+          assert a == b, 'prototype and canonical stage-profile examples drifted'
+          PY
       - name: Smoke Problem Commons candidate signal import
         run: |
           problem-commons --state /tmp/problem-commons.json signal-import pilot/candidate_signals.tw.v0.1.json --steward ci-curator > /tmp/signal-import.json
