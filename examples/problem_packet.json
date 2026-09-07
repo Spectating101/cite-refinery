@@ -1,0 +1,109 @@
+{
+  "id": "problem:302908b3a70d",
+  "title": "Illustrative recurring resource-access interruption",
+  "observed_condition": "A partner reports recurring access failures despite apparently available resources.",
+  "unresolved_core": "Determine whether scarcity, access, timing, verification, or coordination is the binding constraint.",
+  "steward": "example-curator",
+  "status": "open",
+  "visibility": "public",
+  "domain": "public-good",
+  "geography": "illustrative",
+  "time_scope": null,
+  "summary": "Canonical V0.1 exchange example.",
+  "problem_owner": "example partner",
+  "sponsor": "",
+  "affected_actors": ["service operator", "affected users"],
+  "beneficiaries": ["affected users"],
+  "evidence": [
+    {
+      "id": "pevidence:example",
+      "source": "example partner note",
+      "locator": "restricted:example-note",
+      "summary": "Recurring access failure reported.",
+      "confidence": "reviewed",
+      "observed_at": null,
+      "provenance": {},
+      "visibility": "restricted",
+      "rights": "example only",
+      "disputes": []
+    }
+  ],
+  "disputes_uncertainty": [],
+  "diagnosis": [],
+  "prior_attempts": [],
+  "knowledge_frontier": ["The dominant bottleneck has not yet been established."],
+  "capability_frontier": ["resource discovery", "matching", "verification"],
+  "capability_needs": [
+    {
+      "id": "pcap:example",
+      "name": "Freshness-aware matching",
+      "state": "needed",
+      "description": "Do not treat stale inventory as deployable capacity.",
+      "capability_refs": [],
+      "limitations": []
+    }
+  ],
+  "constraints": ["privacy", "resource freshness", "operator capacity"],
+  "authority_boundary": "Any consequential intervention requires explicit partner/operator approval.",
+  "implementation_pathway": ["freeze baseline", "run shadow comparison", "operator review", "bounded reversible pilot", "observe outcome"],
+  "data_access": [],
+  "data_resources": [
+    {
+      "id": "pdata:example",
+      "title": "Example baseline log",
+      "access": "restricted",
+      "uri": "restricted:example-data",
+      "license": "not for redistribution",
+      "sensitivity": "operational",
+      "visibility": "restricted",
+      "notes": ""
+    }
+  ],
+  "success_criteria": [
+    {
+      "id": "criterion:example",
+      "metric": "verified access failure",
+      "target": "lower than baseline",
+      "measurement": "partner-confirmed event log",
+      "falsification": "no reduction or guardrail worsening",
+      "baseline": "frozen pre-pilot period",
+      "guardrails": ["no autonomous action"]
+    }
+  ],
+  "subproblems": [
+    {
+      "id": "psub:example",
+      "title": "Establish baseline",
+      "description": "Quantify failure frequency and classify competing causes.",
+      "kind": "research",
+      "status": "open",
+      "prerequisites": [],
+      "capability_refs": [],
+      "skill_tags": ["research-design", "statistics"],
+      "interest_tags": ["public-good"],
+      "expected_outputs": ["frozen baseline", "cause taxonomy"],
+      "effort": "2–4 weeks",
+      "participation_modes": ["individual", "team"],
+      "required_credentials": []
+    }
+  ],
+  "attempts": [],
+  "attempt_reviews": [],
+  "authority_decisions": [],
+  "outcomes": [],
+  "revisions": [
+    {"id": "prev:research", "problem_id": "problem:302908b3a70d", "reason": "begin curation", "from_status": "candidate", "to_status": "researching", "actor": "example-curator", "created_at": "2026-09-07T00:00:00+00:00"},
+    {"id": "prev:verified", "problem_id": "problem:302908b3a70d", "reason": "evidence and scope reviewed", "from_status": "researching", "to_status": "verified", "actor": "example-reviewer", "created_at": "2026-09-07T00:00:01+00:00"},
+    {"id": "prev:open", "problem_id": "problem:302908b3a70d", "reason": "open contribution path", "from_status": "verified", "to_status": "open", "actor": "example-reviewer", "created_at": "2026-09-07T00:00:02+00:00"}
+  ],
+  "steward_reviews": [],
+  "external_refs": [
+    {"id": "pref:example", "system": "nocturnal", "ref": "matter:example", "relation": "origin", "visibility": "restricted", "label": "illustrative origin", "notes": ""}
+  ],
+  "tags": [],
+  "rights_notes": "",
+  "funding_notes": "",
+  "contribution_license": "",
+  "created_at": "2026-09-07T00:00:00+00:00",
+  "updated_at": "2026-09-07T00:00:02+00:00"
+}

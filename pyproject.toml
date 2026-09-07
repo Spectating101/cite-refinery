@@ -14,6 +14,13 @@ dependencies = []
 
 [project.scripts]
 cite-refinery = "cite_refinery.cli:main"
+problem-commons = "cite_refinery.problem_cli:main"
+problem-pilot = "cite_refinery.pilot_cli:main"
+problem-stages = "cite_refinery.stage_cli:main"
+problem-governance = "cite_refinery.governance_cli:main"
+problem-case = "cite_refinery.case_cli:main"
+problem-ops = "cite_refinery.operations_cli:main"
+problem-experiment = "cite_refinery.experiment_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

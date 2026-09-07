@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Problem Commons V0.1 — a living commons of evidence-backed real-world problems." />
+  <title>Problem Commons — V0.1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#problems" aria-label="Problem Commons home">
+      <span class="brand-mark">PC</span>
+      <span><strong>Problem Commons</strong><small>living problems · shared progress</small></span>
+    </a>
+    <nav>
+      <a href="#problems">Problems</a>
+      <a href="case-map.html">Cases</a>
+      <a href="stage-map.html">Stages</a>
+      <a href="governance-map.html">Governance</a>
+      <a href="#method">Method</a>
+      <button id="candidateButton" class="nav-button">Propose a candidate</button>
+      <button id="stewardToggle" class="nav-button">Steward view</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="problems">
+      <div class="hero-copy">
+        <p class="eyebrow">PUBLIC PROBLEM INFRASTRUCTURE · V0.1</p>
+        <h1>Start from what actually needs solving.</h1>
+        <p class="lede">A living commons where unresolved problems are curated into evidence-backed, attemptable objects. See what is happening, what is already known, what already exists, what remains open, and exactly where you can contribute.</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#catalog">Browse problems</a>
+          <a class="secondary-button" href="case-map.html">Inspect whole cases</a>
+          <a class="secondary-button" href="stage-map.html">Explore problem-solving stages</a>
+          <a class="secondary-button" href="governance-map.html">Inspect intervention governance</a>
+          <button id="heroCandidateButton" class="secondary-button">Propose a problem candidate</button>
+        </div>
+        <p class="prototype-note">Prototype packets are illustrative and demonstrate the workflow; they are not claims about current real-world conditions.</p>
+      </div>
+      <div class="metric-grid" aria-label="Prototype metrics">
+        <div><strong id="problemCount">0</strong><span>public problem packets</span></div>
+        <div><strong id="contributionCount">0</strong><span>open contribution paths</span></div>
+        <div><strong id="attemptCount">0</strong><span>recorded attempts</span></div>
+        <div><strong id="outcomeCount">0</strong><span>observed outcomes</span></div>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalog">
+      <div class="catalog-head">
+        <div><p class="eyebrow">PROBLEM CATALOG</p><h2>Browse the unresolved frontier.</h2></div>
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Search problems, places, capabilities…" />
+          <select id="domainFilter"><option value="all">All domains</option></select>
+          <select id="statusFilter"><option value="all">All public states</option><option value="open">Open</option><option value="verified">Verified</option><option value="partially_resolved">Partially resolved</option><option value="piloting">Piloting</option><option value="monitoring">Monitoring</option><option value="resolved">Resolved</option></select>
+        </div>
+      </div>
+      <div class="layout">
+        <aside><div id="problemList" class="problem-list" aria-label="Problem list"></div></aside>
+        <article id="problemDetail" class="detail empty"><p>Select a problem to inspect its living packet.</p></article>
+      </div>
+    </section>
+
+    <section class="method" id="method">
+      <p class="eyebrow">THE LOOP</p><h2>Problems are maintained, not merely posted.</h2>
+      <div class="flow">
+        <span><b>Observe reality</b><small>Nocturnal preserves conditions, sources, disputes and later outcomes.</small></span>
+        <span><b>Diagnose the problem</b><small>Public-Good separates symptoms, bottlenecks, constraints and authority.</small></span>
+        <span><b>Establish the frontier</b><small>Cite checks prior evidence; Refinery checks existing capabilities.</small></span>
+        <span><b>Open contribution paths</b><small>People contribute by capability and interest, not merely credential or curriculum.</small></span>
+        <span><b>Govern interventions</b><small>Designs cross evidence, safety, integrity, rights, reversibility, test and external-authority gates before real-world handoff.</small></span>
+        <span><b>Observe what happened</b><small>Outcomes update the problem and reusable evidence/capabilities return to the commons.</small></span>
+      </div>
+      <div class="hero-actions" style="margin-top:24px">
+        <a class="primary-link" href="case-map.html">See end-to-end case state</a>
+        <a class="secondary-button" href="stage-map.html">See Observe → Generalize map</a>
+        <a class="secondary-button" href="governance-map.html">See Design → Test → Deploy gates</a>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="attemptDialog">
+    <form id="attemptForm" method="dialog" class="dialog-card">
+      <div class="dialog-head"><div><p class="eyebrow">START AN ATTEMPT</p><h3>Attach your work to a specific frontier.</h3></div><button value="cancel" class="icon-button" aria-label="Close">×</button></div>
+      <input type="hidden" id="attemptProblemId" />
+      <label>Contribution path<select id="attemptSubproblem" required></select></label>
+      <label>Attempt title<input id="attemptTitle" required placeholder="e.g. Baseline interruption audit" /></label>
+      <label>Contributor / team<input id="attemptContributor" required placeholder="Name, lab, class, team, or handle" /></label>
+      <label>What will you try?<textarea id="attemptNotes" rows="4" placeholder="Scope, method, expected output…"></textarea></label>
+      <p class="form-note">V0.1 stores this locally in your browser. Production attempts would be private-by-default workspaces with explicit sharing.</p>
+      <div class="dialog-actions"><button value="cancel" class="secondary-button">Cancel</button><button id="saveAttempt" value="default" class="primary-button">Create attempt</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="candidateDialog">
+    <form id="candidateForm" method="dialog" class="dialog-card">
+      <div class="dialog-head"><div><p class="eyebrow">CANDIDATE INTAKE</p><h3>Submit a situation for curation—not instant publication.</h3></div><button value="cancel" class="icon-button" aria-label="Close">×</button></div>
+      <label>What is happening?<input id="candidateTitle" required placeholder="Short condition / problem title" /></label>
+      <label>Observed condition<textarea id="candidateCondition" required rows="4" placeholder="Describe what you directly know or observed. Avoid prescribing a solution."></textarea></label>
+      <label>Where?<input id="candidatePlace" placeholder="Place / organization / scope (optional)" /></label>
+      <label>Source or evidence pointer<input id="candidateSource" placeholder="Public URL, dataset, report, partner note…" /></label>
+      <p class="form-note">A candidate remains non-public until evidence, scope, prior art, authority, and success criteria survive curation.</p>
+      <div class="dialog-actions"><button value="cancel" class="secondary-button">Cancel</button><button id="saveCandidate" value="default" class="primary-button">Save candidate</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

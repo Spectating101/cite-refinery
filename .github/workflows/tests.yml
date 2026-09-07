@@ -12,5 +12,197 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - run: python -m pip install -e .
       - run: python -m unittest discover -s tests -v
+      - name: Validate prototype JavaScript
+        run: |
+          node --check prototype/app.js
+          node --check prototype/stage-map.js
+          node --check prototype/governance-map.js
+          node --check prototype/case-map.js
+      - name: Validate prototype, exchange, stage, governance, case, operations, pilot, sourcing, and draft JSON
+        run: |
+          python -m json.tool prototype/problems.json > /dev/null
+          python -m json.tool prototype/stage-profiles.json > /dev/null
+          python -m json.tool prototype/governance-envelopes.json > /dev/null
+          python -m json.tool examples/problem_packet.json > /dev/null
+          python -m json.tool examples/problem_stage_profiles.json > /dev/null
+          python -m json.tool examples/problem_governance_envelopes.json > /dev/null
+          python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-stages.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-governance.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-case.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-operations.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-review-pack.v0.1.schema.json > /dev/null
+          python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
+          python -m json.tool pilot/rubrics.v0.1.json > /dev/null
+          python -m json.tool pilot/operations-policy.v0.1.json > /dev/null
+          python -m json.tool pilot/drafts/taoyuan-mobility.candidate.v0.1.json > /dev/null
+          python - <<'PY'
+          import json
+          stage_browser = json.load(open('prototype/stage-profiles.json'))
+          stage_canonical = json.load(open('examples/problem_stage_profiles.json'))
+          gov_browser = json.load(open('prototype/governance-envelopes.json'))
+          gov_canonical = json.load(open('examples/problem_governance_envelopes.json'))
+          assert stage_browser == stage_canonical, 'prototype and canonical stage-profile examples drifted'
+          assert gov_browser == gov_canonical, 'prototype and canonical governance examples drifted'
+          PY
+      - name: Smoke Problem Commons candidate signal import
+        run: |
+          problem-commons --state /tmp/problem-commons.json signal-import pilot/candidate_signals.tw.v0.1.json --steward ci-curator > /tmp/signal-import.json
+          problem-commons --state /tmp/problem-commons.json list > /tmp/problem-list.json
+          problem-commons --state /tmp/problem-commons.json list --public > /tmp/public-list.json
+          python -m json.tool /tmp/signal-import.json > /dev/null
+          python -m json.tool /tmp/problem-list.json > /dev/null
+          python -m json.tool /tmp/public-list.json > /dev/null
+          python - <<'PY'
+          import json
+          assert len(json.load(open('/tmp/problem-list.json'))) == 3
+          assert json.load(open('/tmp/public-list.json')) == []
+          PY
+      - name: Smoke staged problem-solving extension
+        run: |
+          problem-stages --state /tmp/problem-stages.json import examples/problem_stage_profiles.json > /tmp/stage-import.json
+          problem-stages --state /tmp/problem-stages.json validate > /tmp/stage-validation.json
+          problem-stages --state /tmp/problem-stages.json coverage problem:tw-animal-0042 > /tmp/stage-coverage.json
+          problem-stages --state /tmp/problem-stages.json route problem:tw-animal-0042 p3 > /tmp/stage-route.json
+          python -m json.tool /tmp/stage-import.json > /dev/null
+          python -m json.tool /tmp/stage-validation.json > /dev/null
+          python -m json.tool /tmp/stage-coverage.json > /dev/null
+          python -m json.tool /tmp/stage-route.json > /dev/null
+          python - <<'PY'
+          import json
+          validation = json.load(open('/tmp/stage-validation.json'))
+          coverage = json.load(open('/tmp/stage-coverage.json'))
+          route = json.load(open('/tmp/stage-route.json'))
+          assert validation['valid'] is True
+          assert coverage['profiles'] == 4
+          assert route['requires_professional_authority'] is True
+          assert any(row['system'] == 'public-good' for row in route['route_plan'])
+          PY
+      - name: Smoke Public-Good governance extension
+        run: |
+          problem-governance --state /tmp/problem-governance.json import examples/problem_governance_envelopes.json > /tmp/governance-import.json
+          problem-governance --state /tmp/problem-governance.json validate --target review > /tmp/governance-review.json
+          problem-governance --state /tmp/problem-governance.json validate --target test > /tmp/governance-test.json
+          problem-governance --state /tmp/problem-governance.json validate --target deploy > /tmp/governance-deploy.json
+          python -m json.tool /tmp/governance-import.json > /dev/null
+          python -m json.tool /tmp/governance-review.json > /dev/null
+          python -m json.tool /tmp/governance-test.json > /dev/null
+          python -m json.tool /tmp/governance-deploy.json > /dev/null
+          python - <<'PY'
+          import json
+          review = json.load(open('/tmp/governance-review.json'))
+          test = json.load(open('/tmp/governance-test.json'))
+          deploy = json.load(open('/tmp/governance-deploy.json'))
+          assert review['valid'] is True
+          assert test['valid'] is True
+          assert deploy['valid'] is False
+          assert all(any('authority' in b or 'passed test' in b for b in row['blockers']) for row in deploy['envelopes'])
+          PY
+      - name: Smoke end-to-end case runner
+        run: |
+          python - <<'PY'
+          import json
+          packet = json.load(open('examples/problem_packet.json'))
+          json.dump({'schema':'problem-commons/v0.1','problems':[packet]}, open('/tmp/case-commons.json','w'))
+          json.dump({'schema':'problem-stages/v0.1','profiles':[]}, open('/tmp/case-stages.json','w'))
+          json.dump({'schema':'problem-governance/v0.1','envelopes':[]}, open('/tmp/case-governance.json','w'))
+          json.dump({'schema':'problem-commons-pilot/v0.1','production':[],'solvers':[],'adoption':[],'reuse':[]}, open('/tmp/case-pilot.json','w'))
+          PY
+          problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json snapshot problem:302908b3a70d > /tmp/case-snapshot.json
+          problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json export problem:302908b3a70d --out /tmp/problem-case.json > /tmp/case-export.json
+          problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json review-pack problem:302908b3a70d --audience solver --rubrics pilot/rubrics.v0.1.json --out /tmp/review-pack.json > /tmp/review-export.json
+          python -m json.tool /tmp/case-snapshot.json > /dev/null
+          python -m json.tool /tmp/problem-case.json > /dev/null
+          python -m json.tool /tmp/review-pack.json > /dev/null
+          python - <<'PY'
+          import json
+          snapshot = json.load(open('/tmp/case-snapshot.json'))
+          bundle = json.load(open('/tmp/problem-case.json'))
+          review = json.load(open('/tmp/review-pack.json'))
+          assert snapshot['problem_id'] == 'problem:302908b3a70d'
+          assert snapshot['stage_coverage_rate'] == 0.0
+          assert bundle['schema'] == 'problem-case/v0.1'
+          assert bundle['problem']['id'] == 'problem:302908b3a70d'
+          assert review['schema'] == 'problem-review-pack/v0.1'
+          assert review['rubric']['name'] == 'solver_comprehension'
+          assert review['problem']['evidence'][0]['locator'] is None
+          assert review['problem']['evidence'][0]['provenance'] == {}
+          assert 'minutes_to_useful_edge' in review['response']
+          PY
+      - name: Smoke reviewed case operations
+        run: |
+          python - <<'PY'
+          from cite_refinery.problem_commons import ProblemCommons, ProblemStatus, SuccessCriterion, Visibility, object_id
+          commons = ProblemCommons()
+          p = commons.create_problem(
+              title='CI operational access failure',
+              observed_condition='A reviewed service transition repeatedly fails before completion.',
+              unresolved_core='Determine the binding failure mechanism before prescribing an intervention.',
+              steward='ci-curator', domain='public-good', problem_owner='ci-owner')
+          p.transition(ProblemStatus.RESEARCHING, actor='ci-curator', reason='begin curation')
+          p.authority_boundary = 'Only the owning institution may authorize consequential action.'
+          p.affected_actors.append('service users')
+          p.constraints.append('minimum necessary data')
+          p.knowledge_frontier.append('The binding mechanism remains uncertain.')
+          p.capability_frontier.append('transition measurement')
+          p.implementation_pathway.append('shadow evaluation before any field change')
+          p.add_evidence(source='reviewed aggregate log', locator='restricted:ci-log', summary='Repeated transition failure is present.', confidence='reviewed', visibility=Visibility.RESTRICTED)
+          p.success_criteria.append(SuccessCriterion(id=object_id('criterion'), metric='completion', target='improve', measurement='frozen event log', falsification='no improvement or guardrail worsening', baseline='frozen baseline', guardrails=['no autonomous denial']))
+          sub = p.add_subproblem('Establish baseline', 'Measure the failing transition.', 'research', expected_outputs=['frozen baseline'])
+          commons.save('/tmp/ops-commons.json')
+          open('/tmp/ops-problem-id.txt','w').write(p.id)
+          open('/tmp/ops-subproblem-id.txt','w').write(sub.id)
+          PY
+          PID=$(cat /tmp/ops-problem-id.txt)
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json production-start "$PID" --actor ci-curator --curator-minutes 60 --source-count 3 > /tmp/ops-production.json
+          problem-case --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json review-pack "$PID" --audience owner --rubrics pilot/rubrics.v0.1.json --out /tmp/ops-owner.json > /dev/null
+          problem-case --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json review-pack "$PID" --audience reviewer --rubrics pilot/rubrics.v0.1.json --out /tmp/ops-reviewer.json > /dev/null
+          python - <<'PY'
+          import json
+          for path in ['/tmp/ops-owner.json','/tmp/ops-reviewer.json']:
+              data=json.load(open(path)); data['response']['item_scores']=[1]*len(data['rubric']['items']); json.dump(data,open(path,'w'))
+          PY
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json review-ingest /tmp/ops-owner.json --participant ci-owner > /tmp/ops-owner-result.json
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json review-ingest /tmp/ops-reviewer.json --participant ci-reviewer > /tmp/ops-reviewer-result.json
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json assess "$PID" > /tmp/ops-assess-before.json
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json promote "$PID" verified --actor ci-curator --reason 'independent review passed pilot gates' > /tmp/ops-promote-verified.json
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json promote "$PID" open --actor ci-curator --reason 'bounded contribution path ready' > /tmp/ops-promote-open.json
+          problem-case --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json review-pack "$PID" --audience solver --rubrics pilot/rubrics.v0.1.json --out /tmp/ops-solver.json > /dev/null
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/ops-solver.json'))
+          data['response']['item_scores']=[1]*len(data['rubric']['items'])
+          data['response']['selected_subproblem_id']=open('/tmp/ops-subproblem-id.txt').read().strip()
+          data['response']['minutes_to_useful_edge']=6.0
+          data['response']['usefulness_rating']=0.9
+          data['response']['serious_attempt']=True
+          json.dump(data,open('/tmp/ops-solver.json','w'))
+          PY
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json review-ingest /tmp/ops-solver.json --participant ci-solver > /tmp/ops-solver-result.json
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json assess "$PID" > /tmp/ops-assess-after.json
+          problem-ops --commons /tmp/ops-commons.json --stages /tmp/ops-stages.json --governance /tmp/ops-governance.json --pilot /tmp/ops-pilot.json --operations /tmp/ops-ledger.json receipts "$PID" > /tmp/ops-receipts.json
+          python -m json.tool /tmp/ops-ledger.json > /dev/null
+          python - <<'PY'
+          import json
+          before=json.load(open('/tmp/ops-assess-before.json'))
+          after=json.load(open('/tmp/ops-assess-after.json'))
+          receipts=json.load(open('/tmp/ops-receipts.json'))
+          commons=json.load(open('/tmp/ops-commons.json'))
+          assert before['eligible_for_verification'] is True
+          assert after['phase']=='active_problem'
+          assert after['mean_solver_comprehension']==1.0
+          assert after['serious_attempt_rate']==1.0
+          assert commons['problems'][0]['status']=='open'
+          assert commons['problems'][0]['authority_decisions']==[]
+          assert len(receipts) == 6
+          assert all(len(item['problem_sha256'])==64 and len(item['pilot_sha256'])==64 for item in receipts)
+          PY
+      - name: Smoke pilot CLI
+        run: |
+          problem-pilot --state /tmp/problem-pilot.json report > /tmp/problem-pilot-report.json
+          python -m json.tool /tmp/problem-pilot-report.json > /dev/null

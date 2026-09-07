@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/problem-commons/problem-governance.v0.1.schema.json",
+  "title": "Problem Commons Governance Extension V0.1",
+  "type": "object",
+  "required": ["schema", "envelopes"],
+  "properties": {
+    "schema": {"const": "problem-governance/v0.1"},
+    "envelopes": {"type": "array", "items": {"$ref": "#/$defs/envelope"}}
+  },
+  "$defs": {
+    "gate": {
+      "type": "object",
+      "required": ["kind", "status"],
+      "properties": {
+        "kind": {"enum": ["evidence", "safety", "integrity", "rights", "data-access", "reversibility", "professional", "authority"]},
+        "status": {"enum": ["pending", "satisfied", "failed", "not-applicable"]},
+        "requirement": {"type": "string"},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}},
+        "reviewer": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    "testReceipt": {
+      "type": "object",
+      "required": ["id", "evaluator", "scope", "passed", "summary"],
+      "properties": {
+        "id": {"type": "string"},
+        "evaluator": {"type": "string"},
+        "scope": {"type": "string"},
+        "passed": {"type": "boolean"},
+        "summary": {"type": "string"},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}},
+        "guardrail_breaches": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "handoffReceipt": {
+      "type": "object",
+      "required": ["id", "authority_actor", "authority_scope", "decision", "receipt_ref"],
+      "properties": {
+        "id": {"type": "string"},
+        "authority_actor": {"type": "string"},
+        "authority_scope": {"type": "string"},
+        "decision": {"enum": ["authorized", "denied", "conditional"]},
+        "receipt_ref": {"type": "string"},
+        "notes": {"type": "string"}
+      }
+    },
+    "envelope": {
+      "type": "object",
+      "required": [
+        "problem_id", "subproblem_id", "title", "target_transition", "diagnosis_hypothesis",
+        "intervention_class", "smallest_feasible_change", "expected_mechanism", "reversibility",
+        "evidence_refs", "outcome_metrics", "monitoring_plan", "state", "gates", "tests", "handoffs"
+      ],
+      "properties": {
+        "problem_id": {"type": "string", "pattern": "^problem:"},
+        "subproblem_id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "target_transition": {"type": "string", "minLength": 1},
+        "diagnosis_hypothesis": {"type": "string", "minLength": 1},
+        "intervention_class": {"type": "string", "minLength": 1},
+        "smallest_feasible_change": {"type": "string", "minLength": 1},
+        "expected_mechanism": {"type": "string", "minLength": 1},
+        "reversibility": {"enum": ["reversible", "partially-reversible", "irreversible", "unknown"]},
+        "rollback_plan": {"type": "string"},
+        "preconditions": {"type": "array", "items": {"type": "string"}},
+        "constraints": {"type": "array", "items": {"type": "string"}},
+        "rights_impacts": {"type": "array", "items": {"type": "string"}},
+        "safety_risks": {"type": "array", "items": {"type": "string"}},
+        "integrity_risks": {"type": "array", "items": {"type": "string"}},
+        "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "capability_refs": {"type": "array", "items": {"type": "string"}},
+        "outcome_metrics": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "monitoring_plan": {"type": "string", "minLength": 1},
+        "authority_actor": {"type": "string"},
+        "authority_scope": {"type": "string"},
+        "public_good_ref": {"type": "string"},
+        "state": {"enum": ["draft", "reviewed", "test-ready", "tested", "deploy-ready", "handed-off", "monitoring", "closed"]},
+        "gates": {"type": "array", "items": {"$ref": "#/$defs/gate"}},
+        "tests": {"type": "array", "items": {"$ref": "#/$defs/testReceipt"}},
+        "handoffs": {"type": "array", "items": {"$ref": "#/$defs/handoffReceipt"}}
+      }
+    }
+  }
+}

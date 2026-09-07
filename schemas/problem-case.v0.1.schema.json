@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/problem-case.v0.1.schema.json",
+  "title": "Problem Commons Case Bundle V0.1",
+  "type": "object",
+  "required": ["schema", "problem_id", "validation", "snapshot", "problem", "stages", "governance", "pilot"],
+  "properties": {
+    "schema": {"const": "problem-case/v0.1"},
+    "problem_id": {"type": "string", "pattern": "^problem:"},
+    "validation": {
+      "type": "object",
+      "required": ["valid", "errors", "warnings"],
+      "properties": {
+        "valid": {"type": "boolean"},
+        "errors": {"type": "array", "items": {"type": "string"}},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "snapshot": {
+      "type": "object",
+      "required": ["problem_id", "status", "milestones", "next_actions", "blockers", "warnings"],
+      "properties": {
+        "problem_id": {"type": "string"},
+        "title": {"type": "string"},
+        "status": {"type": "string"},
+        "public": {"type": "boolean"},
+        "publishable": {"type": "boolean"},
+        "completeness": {"type": "number", "minimum": 0, "maximum": 1},
+        "subproblems": {"type": "integer", "minimum": 0},
+        "staged_subproblems": {"type": "integer", "minimum": 0},
+        "stage_coverage_rate": {"type": ["number", "null"]},
+        "governance_envelopes": {"type": "integer", "minimum": 0},
+        "attempts": {"type": "integer", "minimum": 0},
+        "accepted_attempts": {"type": "integer", "minimum": 0},
+        "tests": {"type": "integer", "minimum": 0},
+        "authorized_handoffs": {"type": "integer", "minimum": 0},
+        "outcomes": {"type": "integer", "minimum": 0},
+        "inbound_reuse": {"type": "integer", "minimum": 0},
+        "outbound_reuse": {"type": "integer", "minimum": 0},
+        "milestones": {"type": "object", "additionalProperties": {"type": "boolean"}},
+        "next_actions": {"type": "array", "items": {"type": "string"}},
+        "blockers": {"type": "array", "items": {"type": "string"}},
+        "warnings": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "problem": {"type": "object"},
+    "stages": {"type": "array", "items": {"type": "object"}},
+    "governance": {"type": "array", "items": {"type": "object"}},
+    "pilot": {
+      "type": "object",
+      "required": ["production", "solvers", "adoption", "reuse_inbound", "reuse_outbound"],
+      "properties": {
+        "production": {"type": "array"},
+        "solvers": {"type": "array"},
+        "adoption": {"type": "array"},
+        "reuse_inbound": {"type": "array"},
+        "reuse_outbound": {"type": "array"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

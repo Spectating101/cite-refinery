@@ -1,0 +1,16 @@
+{
+  "schema": "problem-operations-policy/v0.1",
+  "note": "Experimental pilot decision policy, not a validated benchmark or canonical Problem Commons requirement.",
+  "require_owner_for_verification": true,
+  "require_reviewer_for_verification": true,
+  "owner_agreement_min": 0.8,
+  "reviewer_score_min": 0.8,
+  "solver_comprehension_min": 0.8,
+  "principles": [
+    "Owner/reviewer thresholds gate this pilot workflow only; they do not prove external validity.",
+    "No score automatically publishes or authorizes a problem.",
+    "Promotion requires an explicit curator action and the canonical Problem Packet transition rules.",
+    "External authority, test success, deployment, and outcomes must be recorded in their own authoritative planes.",
+    "Low solver conversion is evidence about the packet/decomposition or incentives, not a reason to inflate rubric scores."
+  ]
+}

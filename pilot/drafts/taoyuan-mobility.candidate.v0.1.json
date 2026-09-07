@@ -1,0 +1,142 @@
+{
+  "id": "problem:taoyuan-mobility-candidate-001",
+  "title": "Investigate recurrent Taoyuan accident corridors before prescribing pedestrian interventions",
+  "summary": "Researching candidate only. Official datasets make corridor discovery plausible, but record-level joinability, exposure, mechanism, owner, and field evidence are not yet established.",
+  "observed_condition": "Taoyuan publishes A1/A2 road-accident records with time, road/intersection and coordinates, along with separate accident-hotspot, sidewalk-management, and real-time roadway datasets that could support candidate-corridor discovery.",
+  "unresolved_core": "Determine whether the available datasets can identify stable corridors that merit field investigation and whether subsequent evidence can distinguish geometry, exposure, signal timing, visibility, behavior, or another mechanism without making a premature causal claim.",
+  "steward": "Problem Commons V0.1 pilot curator",
+  "status": "researching",
+  "visibility": "restricted",
+  "domain": "mobility",
+  "geography": "Taoyuan, Taiwan",
+  "time_scope": "Official accident records currently described for ROC 106–114 (2017–2025); other resource freshness varies by source.",
+  "problem_owner": "",
+  "sponsor": "",
+  "affected_actors": ["pedestrians", "road users", "transport/road operators"],
+  "beneficiaries": ["pedestrians", "road users"],
+  "disputes_uncertainty": [
+    "No record-level accident/sidewalk join has yet been verified in this pilot.",
+    "Accident counts without an exposure denominator can mis-rank risk.",
+    "Road-level sidewalk measurements may not represent intersection-level geometry or continuity.",
+    "Public datasets alone do not establish a causal mechanism or justify a specific road intervention.",
+    "A competent local problem owner/domain reviewer has not yet accepted this formulation."
+  ],
+  "diagnosis": [
+    "No binding mechanism is accepted yet; geometry, signal timing, exposure, visibility, behavior, and data artifacts remain competing explanations."
+  ],
+  "prior_attempts": [],
+  "knowledge_frontier": [
+    "Verify field definitions, missingness, temporal coverage, and geospatial joinability.",
+    "Define a non-causal candidate-corridor ranking before mechanism claims.",
+    "Determine whether a defensible exposure proxy is available or must be collected.",
+    "Obtain transport/domain review and representative observation for any shortlisted location."
+  ],
+  "capability_frontier": [
+    "geospatial normalization",
+    "non-causal hotspot ranking",
+    "field-observation protocol",
+    "transport-domain review"
+  ],
+  "constraints": [
+    "Do not infer causality from co-location alone.",
+    "Do not identify a location as unsafe for public release until the evidence/owner review supports that wording.",
+    "Any road, signal, enforcement, or other consequential intervention requires competent authority.",
+    "Preserve government dataset licensing and source attribution."
+  ],
+  "authority_boundary": "This candidate authorizes research and public-data analysis only. Any field intervention, road/signal change, or official safety determination requires the competent Taoyuan authority/operator.",
+  "implementation_pathway": [
+    "Validate raw datasets and joins.",
+    "Produce a non-causal shortlist with uncertainty.",
+    "Seek transport/domain review.",
+    "Collect representative observations for selected candidates.",
+    "Reframe, verify, or retire the Problem Packet before any intervention proposal."
+  ],
+  "rights_notes": "The referenced government datasets state Government Open Data License Taiwan 1.0 where indicated; linked materials retain their own terms. This draft does not copy raw datasets into the repository.",
+  "funding_notes": "No sponsor or funding implied.",
+  "contribution_license": "",
+  "tags": ["candidate", "taoyuan", "mobility", "open-data", "do-not-publish-before-curation"],
+  "evidence": [
+    {
+      "id": "evidence:taoyuan-accident-metadata",
+      "source": "Taiwan Government Open Data Platform / Taoyuan City Police Department",
+      "locator": "https://data.gov.tw/dataset/46364",
+      "summary": "Official metadata describes annual A1/A2 accident records by time, area, road/intersection, with longitude/latitude available from ROC 106 onward and current coverage through ROC 114.",
+      "confidence": "reviewed_metadata_only",
+      "observed_at": "2026-09",
+      "visibility": "public",
+      "rights": "Government Open Data License Taiwan 1.0",
+      "disputes": ["Metadata availability does not establish any candidate corridor or causal mechanism."],
+      "provenance": {"source_type": "official_dataset_metadata"}
+    },
+    {
+      "id": "evidence:taoyuan-sidewalk-metadata",
+      "source": "Taiwan Government Open Data Platform / Taoyuan City Department of Public Works",
+      "locator": "https://data.gov.tw/dataset/26069",
+      "summary": "Official metadata describes road-level sidewalk length/width and road dimensions by district/road.",
+      "confidence": "reviewed_metadata_only",
+      "observed_at": "2026-09",
+      "visibility": "public",
+      "rights": "Government Open Data License Taiwan 1.0",
+      "disputes": ["Road-level fields may not represent intersection geometry, continuity, obstruction, or pedestrian exposure."],
+      "provenance": {"source_type": "official_dataset_metadata"}
+    },
+    {
+      "id": "evidence:taoyuan-hotspot-metadata",
+      "source": "Taiwan Government Open Data Platform",
+      "locator": "https://data.gov.tw/dataset/173672",
+      "summary": "Official hotspot metadata includes year/month, district, accident/place/vehicle categories, case count, deaths, injuries, and case information.",
+      "confidence": "reviewed_metadata_only",
+      "observed_at": "2026-09",
+      "visibility": "public",
+      "rights": "Government Open Data License Taiwan 1.0",
+      "disputes": ["Hotspot aggregation is a discovery aid, not a causal diagnosis."],
+      "provenance": {"source_type": "official_dataset_metadata"}
+    },
+    {
+      "id": "evidence:taoyuan-realtime-road-metadata",
+      "source": "Taoyuan Open Data Platform / Transportation Department",
+      "locator": "https://opendata.tycg.gov.tw/datalist/7b879012-ec7f-4ea6-8af4-9e5ea1bcb39c",
+      "summary": "The city publishes minute-level roadway travel time, speed, congestion and data-collection metadata for road sections.",
+      "confidence": "reviewed_metadata_only",
+      "observed_at": "2026-09",
+      "visibility": "public",
+      "rights": "Government Open Data License Taiwan 1.0",
+      "disputes": ["Roadway speed/congestion may not be an adequate pedestrian exposure measure."],
+      "provenance": {"source_type": "official_dataset_metadata"}
+    }
+  ],
+  "data_resources": [
+    {"id":"data:accidents","title":"Taoyuan A1/A2 accident records","access":"public download/API as provided by source","uri":"https://data.gov.tw/dataset/46364","license":"Government Open Data License Taiwan 1.0","sensitivity":"public administrative/open data","visibility":"public","notes":"Row-level retrieval/join has not yet been verified in this pilot."},
+    {"id":"data:sidewalks","title":"Taoyuan sidewalk management","access":"public download/API as provided by source","uri":"https://data.gov.tw/dataset/26069","license":"Government Open Data License Taiwan 1.0","sensitivity":"public infrastructure/open data","visibility":"public","notes":"Granularity and join semantics need validation."},
+    {"id":"data:hotspots","title":"Traffic accident hotspots","access":"public download/API as provided by source","uri":"https://data.gov.tw/dataset/173672","license":"Government Open Data License Taiwan 1.0","sensitivity":"public administrative/open data","visibility":"public","notes":"Use for discovery only until definitions are validated."},
+    {"id":"data:realtime-road","title":"Taoyuan real-time roadway service","access":"public web service","uri":"https://opendata.tycg.gov.tw/datalist/7b879012-ec7f-4ea6-8af4-9e5ea1bcb39c","license":"Government Open Data License Taiwan 1.0","sensitivity":"public traffic/open data","visibility":"public","notes":"Potential exposure/context proxy; adequacy not established."}
+  ],
+  "capability_needs": [
+    {"id":"cap:geo","name":"Geospatial road/intersection normalization","state":"needed","description":"Normalize road/intersection/coordinate records across sources.","capability_refs":[],"limitations":["Name matching alone can misjoin roads/intersections."]},
+    {"id":"cap:ranking","name":"Uncertainty-aware candidate corridor ranking","state":"needed","description":"Rank investigation candidates without converting association into causal or official safety claims.","capability_refs":[],"limitations":["Requires defensible exposure/context treatment."]},
+    {"id":"cap:field","name":"Representative field-observation protocol","state":"needed","description":"Collect mechanism-relevant observations after shortlist review.","capability_refs":[],"limitations":["Requires domain review and privacy-conscious collection."]}
+  ],
+  "success_criteria": [
+    {
+      "id":"criterion:curation",
+      "metric":"Candidate formulation validity",
+      "baseline":"Metadata-only candidate with no validated join or mechanism.",
+      "target":"A transport/domain reviewer agrees that the packet identifies a defensible investigation frontier and avoids unsupported causal/intervention claims.",
+      "measurement":"Independent review of source definitions, shortlist method, uncertainty, and proposed field-observation plan.",
+      "falsification":"Datasets cannot be joined/interpreted defensibly, no stable investigation frontier emerges, or reviewer determines that the formulation overstates what the evidence can support.",
+      "guardrails":["No causal claim from co-location alone","No unauthorized road/signal intervention"]
+    }
+  ],
+  "subproblems": [
+    {"id":"sub:validate-data","title":"Validate data semantics and joinability","description":"Inspect raw fields, missingness, coordinate quality, road-name normalization, temporal coverage, and cross-dataset granularity.","kind":"data","status":"open","prerequisites":[],"capability_refs":[],"skill_tags":["data-engineering","geospatial","statistics"],"interest_tags":["mobility","open-data"],"expected_outputs":["data-quality report","joinability decision"],"effort":"1–2 weeks","participation_modes":["individual","team"],"required_credentials":[]},
+    {"id":"sub:shortlist","title":"Produce a non-causal investigation shortlist","description":"If data validation passes, identify candidate corridors with uncertainty and explicit exposure limitations.","kind":"research","status":"blocked_on_data_validation","prerequisites":["sub:validate-data"],"capability_refs":[],"skill_tags":["statistics","geospatial","risk-analysis"],"interest_tags":["mobility","road-safety"],"expected_outputs":["candidate shortlist","uncertainty notes"],"effort":"1–3 weeks","participation_modes":["individual","team"],"required_credentials":[]},
+    {"id":"sub:domain-review","title":"Transport/domain review and observation design","description":"Challenge the shortlist, mechanism hypotheses, exposure treatment, and field-observation plan before publication.","kind":"validation","status":"blocked_on_shortlist","prerequisites":["sub:shortlist"],"capability_refs":[],"skill_tags":["transport-engineering","road-safety","study-design"],"interest_tags":["mobility"],"expected_outputs":["review receipt","reframing/retirement decision","observation protocol"],"effort":"expert review","participation_modes":["reviewer","team"],"required_credentials":["qualified transport/road-safety reviewer"]}
+  ],
+  "attempts": [],
+  "outcomes": [],
+  "external_refs": [
+    {"id":"ref:origin","system":"TaiwanOpenData","ref":"https://data.gov.tw/dataset/46364","relation":"problem_candidate","visibility":"public","label":"origin open-data signal","notes":"Candidate only; does not imply source agency endorsement."}
+  ],
+  "created_at": "2026-09",
+  "updated_at": "2026-09"
+}
