@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .case_operations import CaseOperations
+from .draft_admission import admit_draft_packet
 
 
 DEFAULT_COMMONS = Path(".cite-refinery/problem-commons.json")
@@ -36,6 +37,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--operations", default=str(DEFAULT_OPERATIONS))
     parser.add_argument("--policy", default=str(DEFAULT_POLICY))
     sub = parser.add_subparsers(dest="command", required=True)
+
+    draft = sub.add_parser("draft-import", help="Admit a standalone non-public Problem Packet draft for curation")
+    draft.add_argument("path")
+    draft.add_argument("--actor", required=True)
+    draft.add_argument("--allow-duplicate", action="store_true")
 
     prod = sub.add_parser("production-start", help="Record curation cost/quality for a problem candidate")
     prod.add_argument("problem_id")
@@ -98,7 +104,22 @@ def main(argv: list[str] | None = None) -> int:
         policy = _load_json(args.policy)
         changed = False
 
-        if args.command == "production-start":
+        if args.command == "draft-import":
+            payload = _load_json(args.path)
+            packet, receipt, duplicates = admit_draft_packet(
+                ops, payload, actor=args.actor, allow_duplicate=args.allow_duplicate,
+            )
+            _print({
+                "problem_id": packet.id,
+                "status": packet.status.value,
+                "visibility": packet.visibility.value,
+                "duplicate_candidates": duplicates,
+                "receipt_id": receipt.id,
+            })
+            changed = True
+        elif args.command == "production-start":
+            if min(args.curator_minutes, args.source_count, args.correction_count, args.reframing_count) < 0:
+                raise ValueError("curation time/count values must be non-negative")
             item = ops.start_production(
                 args.problem_id,
                 actor=args.actor,
@@ -113,6 +134,8 @@ def main(argv: list[str] | None = None) -> int:
             _print(item)
             changed = True
         elif args.command == "review-ingest":
+            if args.coaching_minutes < 0:
+                raise ValueError("coaching_minutes must be non-negative")
             pack = _load_json(args.path)
             result = ops.ingest_review_pack(
                 pack,
@@ -136,7 +159,7 @@ def main(argv: list[str] | None = None) -> int:
             _print(receipt)
             changed = True
         elif args.command == "receipts":
-            _print([item.__dict__ if hasattr(item, "__dict__") else {
+            _print([{
                 "id": item.id, "problem_id": item.problem_id, "action": item.action, "actor": item.actor,
                 "summary": item.summary, "inputs": item.inputs, "outputs": item.outputs,
                 "problem_sha256": item.problem_sha256, "pilot_sha256": item.pilot_sha256, "created_at": item.created_at,
