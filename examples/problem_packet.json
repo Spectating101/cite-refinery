@@ -1,0 +1,18 @@
+{
+  "id": "problem:example-001",
+  "title": "Illustrative recurring resource-access interruption",
+  "status": "open",
+  "note": "Synthetic/illustrative example only; not a claim about a real organization.",
+  "observed_condition": "A recurring access interruption is reported despite potential supply elsewhere.",
+  "unresolved_core": "Determine whether scarcity, matching, transport, verification, or another mechanism is binding.",
+  "steward": "example-curator",
+  "authority_boundary": "Any consequential action requires the affected operator's approval.",
+  "evidence": [{"source":"illustrative-source","locator":"example:1","summary":"Synthetic example evidence","confidence":"reviewed"}],
+  "success_criteria": [{"metric":"interruption frequency","target":"lower than baseline","measurement":"frozen pre/post log","falsification":"no improvement or new harms"}],
+  "subproblems": [
+    {"kind":"research","title":"Establish baseline"},
+    {"kind":"data","title":"Map usable capacity"},
+    {"kind":"engineering","title":"Test matching/routing"},
+    {"kind":"validation","title":"Run a shadow pilot"}
+  ]
+}
