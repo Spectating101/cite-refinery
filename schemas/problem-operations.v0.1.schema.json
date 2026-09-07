@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/problem-operations.v0.1.schema.json",
+  "title": "Problem Commons Operations Ledger V0.1",
+  "type": "object",
+  "required": ["schema", "receipts"],
+  "properties": {
+    "schema": {"const": "problem-operations/v0.1"},
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "problem_id", "action", "actor", "summary", "inputs", "outputs", "problem_sha256", "pilot_sha256", "created_at"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^pop:"},
+          "problem_id": {"type": "string", "pattern": "^problem:"},
+          "action": {"type": "string", "minLength": 1},
+          "actor": {"type": "string", "minLength": 1},
+          "summary": {"type": "string", "minLength": 1},
+          "inputs": {"type": "object"},
+          "outputs": {"type": "object"},
+          "problem_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "pilot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "created_at": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Problem Commons external pilot review surface." />
+  <title>Problem Commons — External Review</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .review-shell{max-width:1100px;margin:0 auto;padding:32px 24px 72px}.review-load,.review-panel{background:var(--surface,#fff);border:1px solid var(--line,#ddd);border-radius:18px;padding:24px;margin-bottom:20px}.review-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.review-card{border:1px solid var(--line,#ddd);border-radius:14px;padding:16px}.rubric-item{border-top:1px solid var(--line,#ddd);padding:16px 0}.rubric-item:first-child{border-top:0}.score-row{display:flex;gap:12px;margin-top:10px}.score-row label{display:flex;align-items:center;gap:6px}.review-fields label{display:block;margin:14px 0}.review-fields input,.review-fields textarea,.review-fields select{width:100%;margin-top:6px}.review-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.review-note{font-size:.9rem;opacity:.78}.hidden{display:none!important}@media(max-width:800px){.review-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Problem Commons home">
+      <span class="brand-mark">PC</span>
+      <span><strong>Problem Commons</strong><small>external pilot review</small></span>
+    </a>
+    <nav><a href="index.html">Problems</a><a href="case-map.html">Cases</a><a href="stage-map.html">Stages</a><a href="governance-map.html">Governance</a></nav>
+  </header>
+
+  <main class="review-shell">
+    <section class="review-load">
+      <p class="eyebrow">EXTERNAL REVIEW · V0.1</p>
+      <h1>Review the problem, not our preferred answer.</h1>
+      <p class="lede">Load the minimum-necessary review pack supplied by the curator. This page runs locally in your browser and does not fetch restricted evidence or submit anything automatically.</p>
+      <label>Review-pack JSON<input id="packFile" type="file" accept="application/json,.json" /></label>
+      <p id="loadStatus" class="review-note">No review pack loaded.</p>
+    </section>
+
+    <section id="reviewApp" class="hidden">
+      <section class="review-panel">
+        <div class="catalog-head">
+          <div><p class="eyebrow" id="audienceLabel"></p><h2 id="problemTitle"></h2></div>
+          <div><span class="status-chip" id="problemStatus"></span></div>
+        </div>
+        <p id="privacyNote" class="prototype-note"></p>
+        <div class="review-grid">
+          <article class="review-card"><h3>Observed condition</h3><p id="observedCondition"></p></article>
+          <article class="review-card"><h3>Unresolved core</h3><p id="unresolvedCore"></p></article>
+          <article class="review-card"><h3>What remains uncertain</h3><ul id="uncertaintyList"></ul></article>
+          <article class="review-card"><h3>Authority boundary</h3><p id="authorityBoundary"></p></article>
+        </div>
+      </section>
+
+      <section class="review-panel">
+        <p class="eyebrow">INSTRUCTIONS</p>
+        <ul id="instructions"></ul>
+      </section>
+
+      <section class="review-panel">
+        <p class="eyebrow">CONTRIBUTION CONTEXT</p>
+        <div id="stageSummary" class="review-grid"></div>
+      </section>
+
+      <section class="review-panel">
+        <p class="eyebrow">RUBRIC</p>
+        <h2 id="rubricName"></h2>
+        <p id="rubricScoring" class="review-note"></p>
+        <form id="reviewForm">
+          <div id="rubricItems"></div>
+          <div class="review-fields">
+            <label>Disagreements or missing context<textarea id="disagreements" rows="4" placeholder="One item per line. Do not paste restricted operational data."></textarea></label>
+            <label>Material factual/formulation errors<textarea id="materialErrors" rows="4" placeholder="One item per line."></textarea></label>
+            <label><input id="coachingReceived" type="checkbox" /> Curator coaching was received before the unaided assessment was complete</label>
+          </div>
+
+          <div id="ownerReviewerFields" class="review-fields hidden">
+            <label><input id="reframeRequired" type="checkbox" /> The core Problem Packet needs material reframing</label>
+            <label>Publication recommendation<select id="publishRecommendation"><option value="undecided">Undecided</option><option value="revise">Revise before publication</option><option value="proceed">Reasonable to proceed to curator decision</option><option value="reject">Do not publish in current form</option></select></label>
+            <label>Review notes<textarea id="reviewNotes" rows="4"></textarea></label>
+          </div>
+
+          <div id="solverFields" class="review-fields hidden">
+            <label>Contribution path selected<select id="selectedSubproblem"><option value="">No path selected</option></select></label>
+            <label>Minutes until you could identify a useful contribution edge<input id="minutesToEdge" type="number" min="0" step="0.1" /></label>
+            <label>Packet usefulness (0–1)<input id="usefulness" type="number" min="0" max="1" step="0.05" /></label>
+            <label><input id="seriousAttempt" type="checkbox" /> I would start / did start a serious attempt on this contribution path</label>
+            <label><input id="abandoned" type="checkbox" /> I abandoned the attempt / could not proceed</label>
+            <label>Abandonment reason<input id="abandonmentReason" placeholder="e.g. insufficient_data, missing_expertise, unclear_problem" /></label>
+            <label>Observer notes<textarea id="observerNotes" rows="4"></textarea></label>
+          </div>
+
+          <div class="review-actions">
+            <button type="submit" class="primary-button">Prepare completed response</button>
+            <button id="copyResponse" type="button" class="secondary-button" disabled>Copy JSON</button>
+            <button id="saveResponse" type="button" class="secondary-button" disabled>Save response JSON</button>
+          </div>
+          <p id="formStatus" class="review-note"></p>
+        </form>
+      </section>
+
+      <section id="responsePreviewPanel" class="review-panel hidden">
+        <p class="eyebrow">COMPLETED PACK PREVIEW</p>
+        <pre id="responsePreview" style="white-space:pre-wrap;overflow:auto;max-height:420px"></pre>
+      </section>
+    </section>
+  </main>
+  <script src="review.js"></script>
+</body>
+</html>

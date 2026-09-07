@@ -1,0 +1,39 @@
+{
+  "schema": "problem-pilot-case-queue/v0.1",
+  "note": "These are candidate-only pilot lanes derived from public-source signals. They are not verified public problems and must not be presented as partner endorsements.",
+  "cases": [
+    {
+      "signal_id": "signal:tw-civic-wishpool-001",
+      "lane": "problem-formulation-control",
+      "objective": "Test whether a reviewed Problem Packet improves neutral problem understanding and contribution entry relative to a conventional/raw project-wish brief.",
+      "control_arm": "raw public wish/project brief with equivalent source facts and no Problem Commons enrichment",
+      "treatment_arm": "redacted reviewed Problem Packet with uncertainty, frontier, constraints, success/falsification, and decomposition",
+      "required_external_reviews": ["problem owner or original wish author when permission is available", "independent domain reviewer", "independent solver sessions"],
+      "primary_measures": ["owner agreement", "reviewer quality", "solver comprehension", "minutes to useful edge", "serious-attempt conversion", "coaching minutes"],
+      "stop_conditions": ["source terms do not permit the planned comparison", "the raw brief cannot be used without implying endorsement", "material owner disagreement remains unresolved"],
+      "publication_state": "candidate-only"
+    },
+    {
+      "signal_id": "signal:taoyuan-pedestrian-risk-001",
+      "lane": "open-data-investigation",
+      "objective": "Determine whether current Taoyuan open data supports a defensible non-causal corridor-investigation problem before any pedestrian intervention is prescribed.",
+      "control_arm": "dataset-first challenge framing",
+      "treatment_arm": "Problem Packet that explicitly separates corridor discovery, exposure/measurement, mechanism discrimination, design, and authority",
+      "required_external_reviews": ["transport/domain reviewer", "local problem owner or competent municipal/operator counterpart before any intervention stage", "independent data/research solver"],
+      "primary_measures": ["curator minutes", "data joinability decision", "number of reframings", "reviewer quality", "solver comprehension", "whether a credible measurement contribution emerges"],
+      "stop_conditions": ["datasets cannot be joined at defensible granularity", "no credible exposure/denominator can be established", "field observation contradicts the corridor formulation", "no competent owner can validate the operational problem"],
+      "publication_state": "researching-only until checks pass"
+    },
+    {
+      "signal_id": "signal:tw-restricted-data-001",
+      "lane": "restricted-data-governance",
+      "objective": "Test whether a useful public Problem Packet and solver review process can exist while underlying application-gated data remain restricted and separately authorized.",
+      "control_arm": "task description that assumes direct dataset access",
+      "treatment_arm": "minimum-necessary public Problem Packet plus separately granted restricted-data access when required",
+      "required_external_reviews": ["data/rightsholder or program-rule review before any real restricted dataset use", "domain reviewer", "solver with public-only pack before restricted access"],
+      "primary_measures": ["public-pack comprehension", "restricted locator leakage incidents", "time to identify whether restricted access is actually needed", "solver conversion after approved access"],
+      "stop_conditions": ["data terms or program rules prohibit the proposed pilot", "public pack leaks restricted locators or sensitive metadata", "the task can only be formulated by inventing a problem from dataset availability"],
+      "publication_state": "candidate-only"
+    }
+  ]
+}
