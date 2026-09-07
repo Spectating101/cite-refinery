@@ -29,7 +29,7 @@ def _print(value: Any) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="problem-commons", description="Living Problem Commons V0.1")
-    parser.add_argument("--state", default=str(DEFAULT_STATE), help="state JSON path")
+    parser.add_argument("--state", dest="state_path", default=str(DEFAULT_STATE), help="state JSON path")
     sub = parser.add_subparsers(dest="command", required=True)
 
     init = sub.add_parser("init", help="Create a candidate problem")
@@ -230,7 +230,7 @@ def _parse_checks(values: list[str]) -> dict[str, bool]:
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    commons = ProblemCommons.load(args.state)
+    commons = ProblemCommons.load(args.state_path)
     changed = False
     try:
         if args.command == "init":
@@ -313,7 +313,7 @@ def main(argv: list[str] | None = None) -> int:
             parser.error("unknown command")
     except (ValueError, KeyError, OSError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
-    if changed: commons.save(args.state)
+    if changed: commons.save(args.state_path)
     return 0
 
 
