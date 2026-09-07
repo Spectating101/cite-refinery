@@ -2,16 +2,21 @@ const list = document.querySelector('#problemList');
 const detail = document.querySelector('#problemDetail');
 const search = document.querySelector('#search');
 const statusFilter = document.querySelector('#statusFilter');
+const publicStates = new Set(['verified', 'open', 'partially_resolved', 'piloting', 'deployed', 'monitoring', 'resolved']);
 let problems = [];
 let selected = null;
 
 const esc = (value = '') => String(value).replace(/[&<>'\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
 const label = value => value.replaceAll('_',' ').replace(/\b\w/g, c => c.toUpperCase());
 
+function publicProblems(){
+  return problems.filter(p => publicStates.has(p.status));
+}
+
 function filteredProblems(){
   const q = search.value.trim().toLowerCase();
   const state = statusFilter.value;
-  return problems.filter(p => (state === 'all' || p.status === state) && (!q || [p.title,p.domain,p.geography,p.unresolved_core].join(' ').toLowerCase().includes(q)));
+  return publicProblems().filter(p => (state === 'all' || p.status === state) && (!q || [p.title,p.domain,p.geography,p.unresolved_core].join(' ').toLowerCase().includes(q)));
 }
 
 function renderList(){
@@ -56,9 +61,10 @@ async function boot(){
   const response = await fetch('problems.json');
   if (!response.ok) throw new Error(`Failed to load problems: ${response.status}`);
   problems = await response.json();
-  document.querySelector('#problemCount').textContent = problems.length;
+  const visible = publicProblems();
+  document.querySelector('#problemCount').textContent = visible.length;
   renderList();
-  if (problems.length) selectProblem(problems[0].id);
+  if (visible.length) selectProblem(visible[0].id);
 }
 
 search.addEventListener('input', renderList);
