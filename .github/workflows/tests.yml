@@ -22,6 +22,7 @@ jobs:
           node --check prototype/app.js
           node --check prototype/stage-map.js
           node --check prototype/governance-map.js
+          node --check prototype/case-map.js
       - name: Validate prototype, exchange, stage, governance, case, pilot, sourcing, and draft JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
