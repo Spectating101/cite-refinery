@@ -54,14 +54,36 @@ def build_review_pack(
             "items": list(rubric.get("items") or []),
             "scoring": str(rubric.get("scoring") or ""),
         },
-        "response": {
-            "item_scores": [None for _ in rubric.get("items", [])],
-            "disagreement_notes": [],
-            "material_errors": [],
-            "coaching_received": False,
-        },
+        "response": _response_template(audience, len(rubric.get("items", []))),
         "privacy_note": "This pack is generated from the public/redacted Problem Packet projection. Restricted evidence access, if needed, must be granted separately by the owning institution.",
     }
+
+
+def _response_template(audience: str, item_count: int) -> dict[str, Any]:
+    base: dict[str, Any] = {
+        "item_scores": [None for _ in range(item_count)],
+        "disagreement_notes": [],
+        "material_errors": [],
+        "coaching_received": False,
+    }
+    if audience in {"owner", "reviewer"}:
+        base.update({
+            "reframe_required": False,
+            "publish_recommendation": "undecided",
+            "review_notes": "",
+        })
+    else:
+        base.update({
+            "selected_subproblem_id": None,
+            "minutes_to_useful_edge": None,
+            "usefulness_rating": None,
+            "serious_attempt": False,
+            "abandoned": False,
+            "abandonment_reason": "",
+            "observer_notes": "",
+            "arm": "problem_packet",
+        })
+    return base
 
 
 def _safe_stage(raw: dict[str, Any]) -> dict[str, Any]:
@@ -131,16 +153,19 @@ def _instructions(audience: str) -> list[str]:
         return [
             "Judge whether the packet represents your real operational problem rather than our preferred solution.",
             "Mark any missing constraint, wrong authority boundary, misleading uncertainty, or unusable success criterion.",
+            "Use reframe_required when the core problem statement itself should change; publication is never automatic.",
             "Do not disclose restricted operational data in this response pack.",
         ]
     if audience == "reviewer":
         return [
             "Review the problem formulation independently before discussing preferred interventions.",
             "Flag unsupported scope, hidden diagnosis assumptions, already-solved framing, unsafe contribution paths, or invalid authority transitions.",
+            "Use reframe_required when material changes to the Problem Packet are needed before publication.",
             "Score only what is supported by the packet presented here.",
         ]
     return [
         "Read the packet without curator coaching first.",
         "Explain the observed condition, one important uncertainty, one contribution path you could attempt, a concrete useful output, and one material constraint or authority boundary.",
+        "Record the contribution path you selected and time-to-useful-edge before any curator explanation.",
         "Do not score yourself; the observer should score the rubric after your unaided explanation.",
     ]
