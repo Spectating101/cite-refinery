@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from .execution import ExecutionResult, ExecutorRegistry
 from .models import Capability, Implementation, dump_model, machine_id
 from .store import JsonStore
 
@@ -18,8 +19,9 @@ class RefineryKernel:
     a proven local capability into the shared registry so later projects inherit it.
     """
 
-    def __init__(self, store: JsonStore) -> None:
+    def __init__(self, store: JsonStore, executors: ExecutorRegistry | None = None) -> None:
         self.store = store
+        self.executors = executors or ExecutorRegistry()
 
     def register_capability(
         self,
@@ -71,6 +73,24 @@ class RefineryKernel:
         state["implementations"][implementation.id] = dump_model(implementation)
         self.store.save(state)
         return implementation
+
+    def get_implementation(self, implementation_id: str, *, project_id: str) -> dict[str, Any]:
+        state = self.store.load()
+        implementation = state["implementations"].get(implementation_id)
+        if implementation is None:
+            raise KeyError(f"unknown implementation: {implementation_id}")
+        owner = implementation.get("project_id")
+        if implementation.get("scope") == "project" and owner != project_id:
+            raise ValueError("project cannot invoke another project's local implementation")
+        return implementation
+
+    def execute(self, implementation_id: str, *, project_id: str, input_data: Any = None) -> ExecutionResult:
+        implementation = self.get_implementation(implementation_id, project_id=project_id)
+        return self.executors.execute(
+            implementation["provider"],
+            dict(implementation.get("invocation", {})),
+            input_data,
+        )
 
     def search(self, query: str, *, project_id: str | None = None, limit: int = 10) -> list[dict[str, Any]]:
         state = self.store.load()

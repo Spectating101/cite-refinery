@@ -85,6 +85,23 @@ class Implementation:
 
 
 @dataclass(slots=True)
+class Run:
+    id: str
+    project_id: str
+    implementation_id: str
+    capability_id: str
+    provider: str
+    input: Any = None
+    status: str = "error"
+    output: Any = None
+    stdout: str = ""
+    stderr: str = ""
+    exit_code: int | None = None
+    duration_ms: int = 0
+    created_at: str = field(default_factory=utcnow)
+
+
+@dataclass(slots=True)
 class Artifact:
     id: str
     project_id: str
@@ -108,6 +125,7 @@ class Experiment:
     metrics: dict[str, Any] = field(default_factory=dict)
     claim_ids: list[str] = field(default_factory=list)
     artifact_ids: list[str] = field(default_factory=list)
+    run_ids: list[str] = field(default_factory=list)
     created_at: str = field(default_factory=utcnow)
 
 

@@ -51,6 +51,11 @@ def build_parser() -> argparse.ArgumentParser:
     search.add_argument("query")
     search.add_argument("--limit", type=int, default=10)
 
+    invoke = sub.add_parser("invoke", help="Execute a registered implementation and record the run")
+    invoke.add_argument("project_id")
+    invoke.add_argument("implementation_id")
+    invoke.add_argument("--input-json", default="null")
+
     artifact = sub.add_parser("artifact-add", help="Record a build output")
     artifact.add_argument("project_id")
     artifact.add_argument("name")
@@ -69,11 +74,12 @@ def build_parser() -> argparse.ArgumentParser:
     exp.add_argument("--metrics-json", default="{}")
     exp.add_argument("--claim-id", action="append", default=[])
     exp.add_argument("--artifact-id", action="append", default=[])
+    exp.add_argument("--run-id", action="append", default=[])
 
     promote = sub.add_parser("promote", help="Promote a validated project capability to shared registry")
     promote.add_argument("project_id")
     promote.add_argument("capability_id")
-    promote.add_argument("--experiment-id")
+    promote.add_argument("--experiment-id", required=True)
 
     dossier = sub.add_parser("dossier", help="Export the project's evidence/build chain")
     dossier.add_argument("project_id")
@@ -99,10 +105,12 @@ def main(argv: list[str] | None = None) -> int:
             _print(app.refinery.register_implementation(capability_id=args.capability_id, provider=args.provider, invocation=json.loads(args.invocation_json), project_id=args.project_id, validated=args.validated))
         elif args.command == "cap-search":
             _print(app.refinery.search(args.query, project_id=args.project_id, limit=args.limit))
+        elif args.command == "invoke":
+            _print(app.invoke(args.project_id, args.implementation_id, json.loads(args.input_json)))
         elif args.command == "artifact-add":
             _print(app.add_artifact(args.project_id, name=args.name, kind=args.kind, uri=args.uri, description=args.description, reusable=args.reusable, capability_id=args.capability_id))
         elif args.command == "experiment-add":
-            _print(app.add_experiment(args.project_id, name=args.name, method=args.method, result=args.result, verdict=args.verdict, metrics=json.loads(args.metrics_json), claim_ids=args.claim_id, artifact_ids=args.artifact_id))
+            _print(app.add_experiment(args.project_id, name=args.name, method=args.method, result=args.result, verdict=args.verdict, metrics=json.loads(args.metrics_json), claim_ids=args.claim_id, artifact_ids=args.artifact_id, run_ids=args.run_id))
         elif args.command == "promote":
             _print(app.promote_capability(args.project_id, args.capability_id, args.experiment_id))
         elif args.command == "dossier":

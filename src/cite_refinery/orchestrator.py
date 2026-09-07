@@ -12,6 +12,7 @@ from .models import (
     Event,
     Experiment,
     Project,
+    Run,
     dump_model,
     machine_id,
     utcnow,
@@ -94,6 +95,7 @@ class CiteRefinery:
         for claim in claims:
             stored = state["claims"][claim["id"]]
             stored.setdefault("audit_ids", []).append(audit.id)
+            # "audited" means a grounding pass ran. It intentionally does not mean supported.
             if result.status == "completed":
                 stored["status"] = "audited"
         self.store.save(state)
@@ -131,6 +133,39 @@ class CiteRefinery:
         self.store.save(state)
         self._event(project_id, "evidence.added", {"evidence_id": evidence.id})
         return evidence
+
+    def invoke(self, project_id: str, implementation_id: str, input_data: Any = None) -> Run:
+        self.get_project(project_id)
+        implementation = self.refinery.get_implementation(implementation_id, project_id=project_id)
+        result = self.refinery.execute(implementation_id, project_id=project_id, input_data=input_data)
+        run = Run(
+            id=machine_id("rrun"),
+            project_id=project_id,
+            implementation_id=implementation_id,
+            capability_id=implementation["capability_id"],
+            provider=implementation["provider"],
+            input=input_data,
+            status=result.status,
+            output=result.output,
+            stdout=result.stdout,
+            stderr=result.stderr,
+            exit_code=result.exit_code,
+            duration_ms=result.duration_ms,
+        )
+        state = self.store.load()
+        state["runs"][run.id] = dump_model(run)
+        self.store.save(state)
+        self._event(
+            project_id,
+            "implementation.ran",
+            {
+                "run_id": run.id,
+                "implementation_id": implementation_id,
+                "capability_id": run.capability_id,
+                "status": run.status,
+            },
+        )
+        return run
 
     def add_artifact(
         self,
@@ -171,6 +206,7 @@ class CiteRefinery:
         metrics: dict[str, Any] | None = None,
         claim_ids: list[str] | None = None,
         artifact_ids: list[str] | None = None,
+        run_ids: list[str] | None = None,
     ) -> Experiment:
         self.get_project(project_id)
         state = self.store.load()
@@ -180,6 +216,9 @@ class CiteRefinery:
         for artifact_id in artifact_ids or []:
             if state["artifacts"].get(artifact_id, {}).get("project_id") != project_id:
                 raise ValueError(f"artifact does not belong to project: {artifact_id}")
+        for run_id in run_ids or []:
+            if state["runs"].get(run_id, {}).get("project_id") != project_id:
+                raise ValueError(f"run does not belong to project: {run_id}")
         experiment = Experiment(
             id=machine_id("rexp"),
             project_id=project_id,
@@ -190,45 +229,72 @@ class CiteRefinery:
             metrics=metrics or {},
             claim_ids=claim_ids or [],
             artifact_ids=artifact_ids or [],
+            run_ids=run_ids or [],
         )
         state["experiments"][experiment.id] = dump_model(experiment)
         self.store.save(state)
         self._event(project_id, "experiment.recorded", {"experiment_id": experiment.id, "verdict": verdict})
         return experiment
 
-    def promote_capability(self, project_id: str, capability_id: str, experiment_id: str | None = None):
+    def promote_capability(self, project_id: str, capability_id: str, experiment_id: str):
         state = self.store.load()
         cap = state["capabilities"].get(capability_id)
         if cap is None or cap.get("project_id") != project_id:
             raise ValueError("capability does not belong to project")
-        validation: dict[str, Any] = {}
-        if experiment_id:
-            experiment = state["experiments"].get(experiment_id)
-            if experiment is None or experiment["project_id"] != project_id:
-                raise ValueError("experiment does not belong to project")
-            validation = {
-                "experiment_id": experiment_id,
-                "verdict": experiment["verdict"],
-                "metrics": experiment.get("metrics", {}),
-            }
-            if experiment["verdict"] not in {"passed", "supported"}:
-                raise ValueError("promotion requires a passed/supported experiment")
+        experiment = state["experiments"].get(experiment_id)
+        if experiment is None or experiment["project_id"] != project_id:
+            raise ValueError("experiment does not belong to project")
+        if experiment["verdict"] not in {"passed", "supported"}:
+            raise ValueError("promotion requires a passed/supported experiment")
+
+        implementations = [
+            impl for impl in state["implementations"].values()
+            if impl["capability_id"] == capability_id
+        ]
+        successful_runs = [
+            state["runs"][run_id]
+            for run_id in experiment.get("run_ids", [])
+            if run_id in state["runs"]
+            and state["runs"][run_id].get("capability_id") == capability_id
+            and state["runs"][run_id].get("status") == "succeeded"
+        ]
+        if implementations and not successful_runs:
+            raise ValueError("promotion of an executable capability requires a successful run linked to the experiment")
+
+        successful_impl_ids = {run["implementation_id"] for run in successful_runs}
+        for impl in implementations:
+            if impl["id"] in successful_impl_ids:
+                impl["validated"] = True
+        self.store.save(state)
+
+        validation = {
+            "experiment_id": experiment_id,
+            "verdict": experiment["verdict"],
+            "metrics": experiment.get("metrics", {}),
+            "run_ids": [run["id"] for run in successful_runs],
+        }
         promoted = self.refinery.promote(capability_id, evidence=validation)
-        self._event(project_id, "capability.promoted", {"from": capability_id, "to": promoted.id})
+        self._event(project_id, "capability.promoted", {"from": capability_id, "to": promoted.id, "experiment_id": experiment_id})
         return promoted
 
     def dossier(self, project_id: str) -> dict[str, Any]:
         project = self.get_project(project_id)
         state = self.store.load()
         owned = lambda bucket: [item for item in state[bucket].values() if item.get("project_id") == project_id]
+        local_caps = owned("capabilities")
         return {
             "project": project,
             "claims": owned("claims"),
             "evidence": owned("evidence"),
             "audits": owned("audits"),
-            "capabilities": owned("capabilities"),
-            "implementations": [item for item in state["implementations"].values() if item.get("project_id") == project_id],
+            "capabilities": local_caps,
+            "implementations": [
+                item
+                for item in state["implementations"].values()
+                if item.get("project_id") == project_id
+            ],
             "artifacts": owned("artifacts"),
+            "runs": owned("runs"),
             "experiments": owned("experiments"),
             "events": [event for event in state["events"] if event.get("project_id") == project_id],
             "generated_at": utcnow(),
@@ -237,7 +303,14 @@ class CiteRefinery:
     def dossier_markdown(self, project_id: str) -> str:
         data = self.dossier(project_id)
         project = data["project"]
-        lines = [f"# {project['title']}", "", "## Problem", project["problem"], "", "## Claims"]
+        lines = [
+            f"# {project['title']}",
+            "",
+            "## Problem",
+            project["problem"],
+            "",
+            "## Claims",
+        ]
         if data["claims"]:
             lines.extend(f"- `{c['id']}` [{c['status']}] {c['text']}" for c in data["claims"])
         else:
@@ -250,6 +323,11 @@ class CiteRefinery:
         lines.extend(["", "## Artifacts"])
         if data["artifacts"]:
             lines.extend(f"- `{a['id']}` **{a['name']}** ({a['kind']}) — {a['description']}" for a in data["artifacts"])
+        else:
+            lines.append("- None")
+        lines.extend(["", "## Runs"])
+        if data["runs"]:
+            lines.extend(f"- `{r['id']}` `{r['implementation_id']}` — {r['status']} ({r['duration_ms']} ms)" for r in data["runs"])
         else:
             lines.append("- None")
         lines.extend(["", "## Experiments"])
