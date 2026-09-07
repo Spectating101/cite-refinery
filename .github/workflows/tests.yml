@@ -28,6 +28,7 @@ jobs:
           python -m json.tool examples/problem_packet.json > /dev/null
           python -m json.tool examples/problem_stage_profiles.json > /dev/null
           python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-stages.v0.1.schema.json > /dev/null
           python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
           python -m json.tool pilot/rubrics.v0.1.json > /dev/null
           python -m json.tool pilot/drafts/taoyuan-mobility.candidate.v0.1.json > /dev/null
