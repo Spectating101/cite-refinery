@@ -6,12 +6,14 @@ from pathlib import Path
 from typing import Any
 
 from .problem_case import ProblemCaseWorkspace
+from .review_pack import build_review_pack
 
 
 DEFAULT_COMMONS = Path(".cite-refinery/problem-commons.json")
 DEFAULT_STAGES = Path(".cite-refinery/problem-stages.json")
 DEFAULT_GOVERNANCE = Path(".cite-refinery/problem-governance.json")
 DEFAULT_PILOT = Path(".cite-refinery/problem-pilot.json")
+DEFAULT_RUBRICS = Path("pilot/rubrics.v0.1.json")
 
 
 def _print(value: Any) -> None:
@@ -41,6 +43,12 @@ def build_parser() -> argparse.ArgumentParser:
     export = sub.add_parser("export", help="Write a complete operator/reviewer case bundle")
     export.add_argument("problem_id")
     export.add_argument("--out", required=True)
+
+    review = sub.add_parser("review-pack", help="Write a minimum-necessary external pilot review pack")
+    review.add_argument("problem_id")
+    review.add_argument("--audience", choices=["owner", "reviewer", "solver"], required=True)
+    review.add_argument("--rubrics", default=str(DEFAULT_RUBRICS))
+    review.add_argument("--out", required=True)
 
     list_cmd = sub.add_parser("list", help="List all known Problem Packets with case-level milestone counts")
     list_cmd.add_argument("--public", action="store_true")
@@ -79,6 +87,13 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "export":
             path = workspace.save_bundle(args.problem_id, args.out)
             _print({"written": str(path), "problem_id": args.problem_id})
+        elif args.command == "review-pack":
+            rubrics = json.loads(Path(args.rubrics).read_text(encoding="utf-8"))
+            pack = build_review_pack(workspace, args.problem_id, audience=args.audience, rubrics=rubrics)
+            target = Path(args.out)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(json.dumps(pack, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            _print({"written": str(target), "problem_id": args.problem_id, "audience": args.audience})
         elif args.command == "list":
             rows = workspace.commons.list_public() if args.public else list(workspace.commons.problems.values())
             payload = []
