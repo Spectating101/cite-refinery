@@ -19,13 +19,14 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - name: Validate prototype JavaScript
         run: node --check prototype/app.js
-      - name: Validate prototype, exchange, pilot, and sourcing JSON
+      - name: Validate prototype, exchange, pilot, sourcing, and draft JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
           python -m json.tool examples/problem_packet.json > /dev/null
           python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
           python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
           python -m json.tool pilot/rubrics.v0.1.json > /dev/null
+          python -m json.tool pilot/drafts/taoyuan-mobility.candidate.v0.1.json > /dev/null
       - name: Smoke Problem Commons candidate signal import
         run: |
           problem-commons --state /tmp/problem-commons.json signal-import pilot/candidate_signals.tw.v0.1.json --steward ci-curator > /tmp/signal-import.json
