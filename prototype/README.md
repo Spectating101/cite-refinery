@@ -12,9 +12,12 @@ From this directory:
 python -m http.server 8080
 ```
 
-Then open `http://localhost:8080`.
+Then open:
 
-Do not open `index.html` directly with `file://`; the browser blocks `fetch("problems.json")` in many configurations.
+- `http://localhost:8080/` — the living Problem Commons browser.
+- `http://localhost:8080/stage-map.html` — the experimental **Observe → Measure → Explain → Design → Build → Test → Deploy → Monitor → Generalize** contribution map.
+
+Do not open the pages directly with `file://`; the browser blocks local `fetch(...)` in many configurations.
 
 ## What V0.1 demonstrates
 
@@ -36,11 +39,38 @@ Do not open `index.html` directly with `file://`; the browser blocks `fetch("pro
 
 The five bundled packets are **illustrative**. They exercise different lifecycle states and domains; they are not claims about current real-world conditions.
 
+## Experimental problem-solving stage map
+
+`stage-map.html` pressure-tests a new V0.1 extension rather than changing the canonical Problem Packet schema prematurely.
+
+Each selected contribution path is classified by:
+
+- problem-solving stage;
+- epistemic type;
+- uncertainty;
+- method maturity;
+- expected output;
+- evaluation method;
+- professional/institutional authority requirement;
+- default system routes;
+- reuse target.
+
+The prototype derives four work modes:
+
+- **known practice** — established method, low uncertainty;
+- **adaptive practice** — known/adaptable method fitted to context;
+- **empirical inquiry** — trustworthy new evidence is required;
+- **research frontier** — method or knowledge itself is novel/frontier.
+
+Professional authority is intentionally separate from this scale. A licensed practitioner can be required for low-uncertainty work; academic research skill does not confer professional or institutional authority.
+
+The stage view is backed by `stage-profiles.json`, mirrored from `../examples/problem_stage_profiles.json`. It is an empirical hypothesis: if it adds ceremony without improving solver comprehension, matching, handoffs, or reuse capture, it should remain internal or be removed rather than becoming mandatory schema.
+
 ## Public vs steward surfaces
 
 Anonymous/public users should normally see only `verified`, `open`, `partially_resolved`, `piloting`, `deployed`, `monitoring`, and `resolved` packets. Candidate/researching/reframed/retired/invalidated state remains curator-side by default.
 
-Toggle **Steward view** in the prototype to inspect readiness checks, owner/authority gaps, candidate intake, and governance warnings.
+Toggle **Steward view** in the main prototype to inspect readiness checks, owner/authority gaps, candidate intake, and governance warnings.
 
 ## Production boundary
 
