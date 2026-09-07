@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Problem Commons — Governance</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gov-shell{max-width:1280px;margin:0 auto;padding:48px 24px 80px}.gov-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}.gov-head h1{margin:.25rem 0 .5rem;font-size:clamp(2rem,4vw,4rem)}.gov-select{min-width:300px}.gov-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);gap:22px}.gov-panel{background:var(--panel,#fff);border:1px solid var(--line,#ddd);border-radius:20px;padding:22px}.gov-panel h2,.gov-panel h3{margin-top:0}.gate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.gate{border:1px solid var(--line,#ddd);border-radius:14px;padding:13px}.gate strong{display:flex;justify-content:space-between;gap:8px;text-transform:capitalize}.gate small{display:block;margin-top:7px;line-height:1.4}.status-satisfied{color:#147a45}.status-pending{color:#9c6611}.status-failed{color:#b42318}.readiness{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.ready-card{border:1px solid var(--line,#ddd);border-radius:14px;padding:13px}.ready-card b{display:block;font-size:1.1rem}.blocked-list{margin:.5rem 0 0;padding-left:1.15rem}.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fact{border-top:1px solid var(--line,#ddd);padding-top:12px}.fact span{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;opacity:.65;margin-bottom:5px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tags em{font-style:normal;border:1px solid var(--line,#ddd);border-radius:999px;padding:5px 9px;font-size:.8rem}.note{padding:12px 14px;border-left:3px solid currentColor;background:rgba(127,127,127,.08);border-radius:8px}.empty-state{padding:48px 0;text-align:center;opacity:.7}@media(max-width:850px){.gov-grid,.facts{grid-template-columns:1fr}.gov-head{align-items:start;flex-direction:column}.gov-select{min-width:0;width:100%}.readiness{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">PC</span><span><strong>Problem Commons</strong><small>governance bridge</small></span></a>
+  <nav><a href="index.html">Problems</a><a href="stage-map.html">Stages</a><a href="governance-map.html" aria-current="page">Governance</a></nav>
+</header>
+<main class="gov-shell">
+  <section class="gov-head">
+    <div><p class="eyebrow">PUBLIC-GOOD GOVERNANCE EXTENSION · V0.1</p><h1>From useful idea to responsible intervention.</h1><p class="lede">A Problem can invite open research and building. Crossing into real-world intervention requires a separate envelope: evidence, safety, integrity, rights, data access, reversibility, professional review where needed, testing, and external authority.</p></div>
+    <label class="gov-select">Intervention envelope<select id="envelopeSelect"></select></label>
+  </section>
+  <div id="governanceView" class="empty-state">Loading governance envelopes…</div>
+</main>
+<script src="governance-map.js"></script>
+</body>
+</html>
