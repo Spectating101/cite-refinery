@@ -1,0 +1,67 @@
+{
+  "schema": "problem-commons-rubrics/v0.1",
+  "note": "These are pilot measurement rubrics, not validated scales.",
+  "owner_agreement": {
+    "items": [
+      "The observed condition is represented accurately.",
+      "Material uncertainty/disputes are represented rather than hidden.",
+      "Important operational/legal/safety constraints are represented.",
+      "The implementation/authority boundary is accurate.",
+      "The success/failure definition is meaningful to the problem owner."
+    ],
+    "scoring": "Score each item 0 or 1; owner_agreement = sum / 5. Record disagreement notes separately."
+  },
+  "reviewer_quality": {
+    "items": [
+      "The packet separates observations from diagnosis and proposed solutions.",
+      "Evidence supports the existence/scope of the condition at the claimed level.",
+      "Prior art/knowledge frontier is sufficient to avoid an obviously already-solved framing.",
+      "Contribution paths are specific enough for an outsider to produce a useful output.",
+      "Success, falsification, constraints and authority are inspectable."
+    ],
+    "scoring": "Score each item 0 or 1; reviewer_score = sum / 5. Material factual errors should also be counted as corrections."
+  },
+  "solver_comprehension": {
+    "items": [
+      "Correctly explains the observed condition without substituting a preferred solution.",
+      "Identifies at least one important uncertainty or unresolved mechanism.",
+      "Identifies a defensible contribution path they could attempt.",
+      "Names a concrete useful output that would advance that path.",
+      "Identifies at least one material constraint, guardrail, or authority boundary."
+    ],
+    "scoring": "Score each item 0 or 1; comprehension_score = sum / 5. Do not award points for answers supplied by curator coaching."
+  },
+  "serious_attempt": {
+    "all_required": [
+      "Explicit Problem ID and subproblem ID.",
+      "Contributor/team identity within the private workspace.",
+      "Proposed method/scope.",
+      "Expected output.",
+      "At least one material artifact, analysis, experiment, or field observation before submission."
+    ]
+  },
+  "abandonment_codes": [
+    "insufficient_data",
+    "unclear_problem",
+    "missing_owner",
+    "missing_authority",
+    "missing_expertise",
+    "integration_cost",
+    "duplicate_solution",
+    "unsafe_or_disallowed",
+    "time_or_interest_loss",
+    "other"
+  ],
+  "production_blocker_codes": [
+    "evidence_missing",
+    "owner_missing",
+    "authority_missing",
+    "already_solved",
+    "unsafe_to_publish",
+    "data_unavailable",
+    "scope_unbounded",
+    "success_unmeasurable",
+    "duplicate",
+    "other"
+  ]
+}
