@@ -18,8 +18,9 @@ Then open:
 - `http://localhost:8080/case-map.html` — the **end-to-end Case view** joining Problem Packet, stages, governance, attempts and outcomes into a derived milestone/blocker view.
 - `http://localhost:8080/stage-map.html` — the experimental **Observe → Measure → Explain → Design → Build → Test → Deploy → Monitor → Generalize** contribution map.
 - `http://localhost:8080/governance-map.html` — the **Public-Good governance bridge** showing intervention hypotheses, hard gates, test readiness, deployment blockers, and external-authority handoff state.
+- `http://localhost:8080/review.html` — the **external pilot review surface** for loading a minimum-necessary owner/reviewer/solver review pack, completing the fixed rubric, and returning a completed response JSON without exposing internal state.
 
-Do not open the pages directly with `file://`; the browser blocks local `fetch(...)` in many configurations.
+Do not open the main data-backed pages directly with `file://`; the browser blocks local `fetch(...)` in many configurations. The external review page reads only a user-selected local JSON pack and does not fetch restricted evidence.
 
 ## What V0.1 demonstrates
 
@@ -37,9 +38,10 @@ Do not open the pages directly with `file://`; the browser blocks local `fetch(.
 - browser-local problem-candidate intake that does **not** publish directly;
 - attempts separated from outcomes;
 - lifecycle and recurrence framing;
-- steward-only readiness checks and curation warnings.
+- steward-only readiness checks and curation warnings;
+- safe external owner/reviewer/solver review packs and a browser surface for completing them.
 
-The five bundled packets are **illustrative**. They exercise different lifecycle states and domains; they are not claims about current real-world conditions.
+The five bundled public packets are **illustrative**. They exercise different lifecycle states and domains; they are not claims about current real-world conditions. Real-source pilot candidates remain under `pilot/` and are explicitly non-public until their curation gates pass.
 
 ## End-to-end Case view
 
@@ -71,6 +73,44 @@ It also surfaces:
 This view is **derived**. It cannot grant authority or create evidence. The static browser does not contain the pilot reuse ledger, so it must not claim reuse merely because a reusable-looking capability exists.
 
 The authoritative operator/reviewer bundle is produced by the backend `problem-case export` command; see `docs/PROBLEM_CASE_WORKSPACE.md`.
+
+## External pilot review surface
+
+`review.html` is intentionally separate from the steward/operator surfaces.
+
+The curator first creates a minimum-necessary pack:
+
+```bash
+problem-case review-pack problem:... --audience owner --out /tmp/owner.json
+problem-case review-pack problem:... --audience reviewer --out /tmp/reviewer.json
+problem-case review-pack problem:... --audience solver --out /tmp/solver.json
+```
+
+The participant loads that JSON into `review.html`. The page renders only the redacted/public projection plus safe stage/governance context and captures the fixed rubric.
+
+Owner/reviewer responses can record:
+
+- material disagreements and factual/formulation errors;
+- whether reframing is required;
+- a non-binding publication recommendation;
+- review notes.
+
+Solver responses can additionally record:
+
+- selected contribution path;
+- minutes to a useful contribution edge;
+- usefulness rating;
+- serious-attempt conversion;
+- abandonment and reason;
+- observer notes.
+
+The page never submits or promotes anything automatically. It produces a completed JSON pack that a curator explicitly ingests through:
+
+```bash
+problem-ops review-ingest /tmp/completed-review.json --participant participant-id
+```
+
+Review scores remain pilot measurements. They do not become publication, professional authority, institutional authority, successful tests, or outcomes.
 
 ## Experimental problem-solving stage map
 
@@ -119,6 +159,18 @@ Each envelope exposes:
 The browser intentionally shows examples that are review/test-ready while still deployment-blocked. A successful build or even a successful test does not become permission to act. Real deployment remains outside Problem Commons under competent external authority.
 
 The browser data in `governance-envelopes.json` is mirrored from `../examples/problem_governance_envelopes.json`; CI rejects drift between them.
+
+## Real-source candidate admission
+
+A standalone researched draft can enter the live pilot registry through the fail-closed operations path:
+
+```bash
+problem-ops draft-import pilot/drafts/taoyuan-mobility.candidate.v0.1.json --actor pilot-curator
+```
+
+Draft admission accepts only `candidate`, `researching`, or `reframed` non-public packets. It rejects embedded attempts, authority decisions, outcomes, public visibility, and advanced/public lifecycle states. Possible duplicates must be reviewed or explicitly overridden.
+
+The included Taoyuan mobility draft therefore enters as `researching/restricted`; it does **not** become a published pedestrian-safety claim. Its metadata-only evidence, missing owner/domain review, unresolved joinability/exposure, and competing mechanisms remain visible blockers.
 
 ## Public vs steward surfaces
 
