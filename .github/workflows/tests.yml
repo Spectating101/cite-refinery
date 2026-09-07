@@ -22,7 +22,7 @@ jobs:
           node --check prototype/app.js
           node --check prototype/stage-map.js
           node --check prototype/governance-map.js
-      - name: Validate prototype, exchange, stage, governance, pilot, sourcing, and draft JSON
+      - name: Validate prototype, exchange, stage, governance, case, pilot, sourcing, and draft JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
           python -m json.tool prototype/stage-profiles.json > /dev/null
@@ -33,6 +33,7 @@ jobs:
           python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
           python -m json.tool schemas/problem-stages.v0.1.schema.json > /dev/null
           python -m json.tool schemas/problem-governance.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-case.v0.1.schema.json > /dev/null
           python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
           python -m json.tool pilot/rubrics.v0.1.json > /dev/null
           python -m json.tool pilot/drafts/taoyuan-mobility.candidate.v0.1.json > /dev/null
@@ -97,6 +98,29 @@ jobs:
           assert test['valid'] is True
           assert deploy['valid'] is False
           assert all(any('authority' in b or 'passed test' in b for b in row['blockers']) for row in deploy['envelopes'])
+          PY
+      - name: Smoke end-to-end case runner
+        run: |
+          python - <<'PY'
+          import json
+          packet = json.load(open('examples/problem_packet.json'))
+          json.dump({'schema':'problem-commons/v0.1','problems':[packet]}, open('/tmp/case-commons.json','w'))
+          json.dump({'schema':'problem-stages/v0.1','profiles':[]}, open('/tmp/case-stages.json','w'))
+          json.dump({'schema':'problem-governance/v0.1','envelopes':[]}, open('/tmp/case-governance.json','w'))
+          json.dump({'schema':'problem-commons-pilot/v0.1','production':[],'solvers':[],'adoption':[],'reuse':[]}, open('/tmp/case-pilot.json','w'))
+          PY
+          problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json snapshot problem:302908b3a70d > /tmp/case-snapshot.json
+          problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json export problem:302908b3a70d --out /tmp/problem-case.json > /tmp/case-export.json
+          python -m json.tool /tmp/case-snapshot.json > /dev/null
+          python -m json.tool /tmp/problem-case.json > /dev/null
+          python - <<'PY'
+          import json
+          snapshot = json.load(open('/tmp/case-snapshot.json'))
+          bundle = json.load(open('/tmp/problem-case.json'))
+          assert snapshot['problem_id'] == 'problem:302908b3a70d'
+          assert snapshot['stage_coverage_rate'] == 0.0
+          assert bundle['schema'] == 'problem-case/v0.1'
+          assert bundle['problem']['id'] == 'problem:302908b3a70d'
           PY
       - name: Smoke pilot CLI
         run: |
