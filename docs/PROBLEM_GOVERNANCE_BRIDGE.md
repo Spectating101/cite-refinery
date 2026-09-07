@@ -118,6 +118,21 @@ Typical division:
 - Monitor: Nocturnal/outcome evidence updates the living Problem.
 - Generalize: validated methods/capabilities can be promoted through Refinery.
 
+`problem_stage_governance.py` checks that the two experimental extensions do not contradict one another. Examples:
+
+- a qualified stage cannot pass alignment without a satisfied professional gate;
+- a Test-stage contribution cannot align while test-readiness gates are unresolved;
+- a Deploy-stage contribution requires both institutional stage authority and a deploy-ready envelope;
+- a Build-stage capability can exist without deployment authority, but a non-review-ready envelope is flagged so the prototype is not mistaken for intervention validity.
+
+This preserves three separate questions:
+
+```text
+Problem Packet:       what is unresolved?
+Stage Profile:        what kind of work is this?
+Governance Envelope:  can this intervention cross into real-world action?
+```
+
 ## Public-Good repository remains authoritative for its own reasoning
 
 The existing Public-Good Control Plane already defines the maintained shared loop:
