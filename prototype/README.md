@@ -1,16 +1,57 @@
-# Problem Commons browser prototype
+# Problem Commons V0.1 browser prototype
 
-This directory is a zero-dependency V0 for the public surface of the larger Problem Commons concept. It is intentionally **problem-first**: users browse living, evidence-backed problems and inspect what remains unsolved, the knowledge frontier, the capability frontier, contribution paths, authority boundaries, active attempts, and problem history.
+This directory is the public-facing prototype for the broader **Problem Commons** concept.
 
-Run it from any static HTTP server, for example:
+It is deliberately problem-first. The public user sees living problem objects and contribution paths; Nocturnal, Public-Good, Cite, Refinery, and Citation Engine remain supporting systems behind those objects.
+
+## Run locally
+
+From this directory:
 
 ```bash
-cd prototype
-python -m http.server 8000
+python -m http.server 8080
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://localhost:8080`.
 
-The sample records in `problems.json` are illustrative prototype content, not verified claims about named real organizations or locations.
+Do not open `index.html` directly with `file://`; the browser blocks `fetch("problems.json")` in many configurations.
 
-The backing V0 lifecycle model is in `src/cite_refinery/problem_commons.py`; design boundaries and empirical test criteria are documented in `docs/PROBLEM_COMMONS_V0.md`.
+## What V0.1 demonstrates
+
+- public catalog restricted to verified/public lifecycle states;
+- full living Problem Packet detail rather than a static challenge brief;
+- observed condition vs unresolved core vs working diagnosis;
+- knowledge frontier and reusable capability frontier;
+- measurable success/falsification plus guardrails;
+- explicit authority and implementation pathway;
+- evidence/data visibility and public redaction cues;
+- contribution decomposition by research/data/domain/engineering/design/validation;
+- deterministic skill/interest matching;
+- explicit credential gates only where a contribution path genuinely requires them;
+- browser-local draft attempts;
+- browser-local problem-candidate intake that does **not** publish directly;
+- attempts separated from outcomes;
+- lifecycle and recurrence framing;
+- steward-only readiness checks and curation warnings.
+
+The five bundled packets are **illustrative**. They exercise different lifecycle states and domains; they are not claims about current real-world conditions.
+
+## Public vs steward surfaces
+
+Anonymous/public users should normally see only `verified`, `open`, `partially_resolved`, `piloting`, `deployed`, `monitoring`, and `resolved` packets. Candidate/researching/reframed/retired/invalidated state remains curator-side by default.
+
+Toggle **Steward view** in the prototype to inspect readiness checks, owner/authority gaps, candidate intake, and governance warnings.
+
+## Production boundary
+
+The browser currently uses local JSON and `localStorage` for demo attempts/candidates. Production should use the V0.1 kernel/API with:
+
+- private-by-default registered workspaces;
+- verified partner access for restricted evidence/data;
+- sandboxed/allow-listed execution;
+- explicit publication review;
+- role-separated operator/reviewer/steward permissions;
+- public redaction/minimum-necessary exports;
+- competent human/institutional authority for consequential action.
+
+The prototype intentionally does not implement arbitrary public code execution or autonomous intervention.
