@@ -15,6 +15,7 @@ python -m http.server 8080
 Then open:
 
 - `http://localhost:8080/` — the living Problem Commons browser.
+- `http://localhost:8080/case-map.html` — the **end-to-end Case view** joining Problem Packet, stages, governance, attempts and outcomes into a derived milestone/blocker view.
 - `http://localhost:8080/stage-map.html` — the experimental **Observe → Measure → Explain → Design → Build → Test → Deploy → Monitor → Generalize** contribution map.
 - `http://localhost:8080/governance-map.html` — the **Public-Good governance bridge** showing intervention hypotheses, hard gates, test readiness, deployment blockers, and external-authority handoff state.
 
@@ -39,6 +40,37 @@ Do not open the pages directly with `file://`; the browser blocks local `fetch(.
 - steward-only readiness checks and curation warnings.
 
 The five bundled packets are **illustrative**. They exercise different lifecycle states and domains; they are not claims about current real-world conditions.
+
+## End-to-end Case view
+
+`case-map.html` is the browser counterpart of the backend `ProblemCaseWorkspace` / `problem-case` CLI.
+
+It joins the current illustrative Problem Packet, stage profiles and governance envelopes and shows a derived milestone rail:
+
+1. problem formulated;
+2. problem public;
+3. work decomposed;
+4. work staged;
+5. attempt started;
+6. attempt accepted;
+7. intervention governed;
+8. test recorded;
+9. authority recorded;
+10. deployed;
+11. outcome observed;
+12. reuse observed.
+
+It also surfaces:
+
+- stage coverage across contribution paths;
+- governance envelopes and deploy blockers;
+- attempts and observed outcomes;
+- the next bounded action;
+- unresolved evidence / interpretation warnings.
+
+This view is **derived**. It cannot grant authority or create evidence. The static browser does not contain the pilot reuse ledger, so it must not claim reuse merely because a reusable-looking capability exists.
+
+The authoritative operator/reviewer bundle is produced by the backend `problem-case export` command; see `docs/PROBLEM_CASE_WORKSPACE.md`.
 
 ## Experimental problem-solving stage map
 
