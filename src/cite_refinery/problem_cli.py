@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from .problem_commons import AttemptStatus, ProblemCommons, ProblemStatus
+from .problem_commons import AttemptStatus, ProblemCommons, ProblemSignal, ProblemStatus, Visibility
 
 
 DEFAULT_STATE = Path(".cite-refinery/problem-commons.json")
@@ -28,6 +28,10 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--domain", default="general")
     init.add_argument("--geography")
     init.add_argument("--owner", default="")
+
+    signal_import = sub.add_parser("signal-import", help="Import provenance-preserving candidate signals from JSON")
+    signal_import.add_argument("path")
+    signal_import.add_argument("--steward", required=True)
 
     listing = sub.add_parser("list", help="List problems")
     listing.add_argument("--public", action="store_true")
@@ -108,6 +112,46 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _import_signals(commons: ProblemCommons, path: Path, steward: str) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schema") != "problem-signals/v0.1":
+        raise ValueError(f"unsupported signal schema: {payload.get('schema')}")
+    rows = payload.get("signals")
+    if not isinstance(rows, list):
+        raise ValueError("signal file requires a signals list")
+
+    existing = {(ref.system, ref.ref) for packet in commons.problems.values() for ref in packet.external_refs if ref.relation == "problem_candidate"}
+    created: list[dict[str, str]] = []
+    skipped: list[dict[str, str]] = []
+    for raw in rows:
+        signal = ProblemSignal(
+            id=str(raw["id"]),
+            source_system=str(raw["source_system"]),
+            source_ref=str(raw["source_ref"]),
+            title=str(raw["title"]),
+            observed_condition=str(raw["observed_condition"]),
+            domain=str(raw.get("domain", "general")),
+            geography=raw.get("geography"),
+            observed_at=raw.get("observed_at"),
+            visibility=Visibility(raw.get("visibility", Visibility.RESTRICTED.value)),
+            metadata=dict(raw.get("metadata") or {}),
+        )
+        key = (signal.source_system, signal.source_ref)
+        if key in existing:
+            skipped.append({"signal_id": signal.id, "reason": "source_ref_already_imported"})
+            continue
+        packet = commons.create_from_signal(signal, steward=steward)
+        packet.summary = "Candidate signal imported for curation; not a verified public problem."
+        packet.tags.extend(["signal-import", str(signal.metadata.get("signal_type", "candidate"))])
+        if signal.metadata.get("do_not_publish"):
+            packet.tags.append("do-not-publish-before-curation")
+        if packet.external_refs:
+            packet.external_refs[-1].notes = json.dumps({"signal_id": signal.id, **signal.metadata}, ensure_ascii=False, sort_keys=True)
+        created.append({"signal_id": signal.id, "problem_id": packet.id})
+        existing.add(key)
+    return {"created": created, "skipped": skipped}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -119,6 +163,10 @@ def main(argv: list[str] | None = None) -> int:
             packet = commons.create_problem(title=args.title, observed_condition=args.condition, unresolved_core=args.unresolved, steward=args.steward, domain=args.domain, geography=args.geography, problem_owner=args.owner)
             _print(packet.to_dict())
             changed = True
+        elif args.command == "signal-import":
+            result = _import_signals(commons, Path(args.path), args.steward)
+            _print(result)
+            changed = bool(result["created"])
         elif args.command == "list":
             rows = commons.list_public() if args.public else list(commons.problems.values())
             _print([{"id": p.id, "title": p.title, "status": p.status.value, "domain": p.domain} for p in rows])
@@ -169,7 +217,7 @@ def main(argv: list[str] | None = None) -> int:
             _print({"written": str(target), "problems": len(commons.list_public())})
         else:
             parser.error("unknown command")
-    except (ValueError, KeyError) as exc:
+    except (ValueError, KeyError, OSError, json.JSONDecodeError) as exc:
         parser.error(str(exc))
 
     if changed:
