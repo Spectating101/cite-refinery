@@ -21,10 +21,12 @@ jobs:
         run: |
           node --check prototype/app.js
           node --check prototype/stage-map.js
+          node --check prototype/governance-map.js
       - name: Validate prototype, exchange, stage, governance, pilot, sourcing, and draft JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
           python -m json.tool prototype/stage-profiles.json > /dev/null
+          python -m json.tool prototype/governance-envelopes.json > /dev/null
           python -m json.tool examples/problem_packet.json > /dev/null
           python -m json.tool examples/problem_stage_profiles.json > /dev/null
           python -m json.tool examples/problem_governance_envelopes.json > /dev/null
@@ -36,9 +38,12 @@ jobs:
           python -m json.tool pilot/drafts/taoyuan-mobility.candidate.v0.1.json > /dev/null
           python - <<'PY'
           import json
-          a = json.load(open('prototype/stage-profiles.json'))
-          b = json.load(open('examples/problem_stage_profiles.json'))
-          assert a == b, 'prototype and canonical stage-profile examples drifted'
+          stage_browser = json.load(open('prototype/stage-profiles.json'))
+          stage_canonical = json.load(open('examples/problem_stage_profiles.json'))
+          gov_browser = json.load(open('prototype/governance-envelopes.json'))
+          gov_canonical = json.load(open('examples/problem_governance_envelopes.json'))
+          assert stage_browser == stage_canonical, 'prototype and canonical stage-profile examples drifted'
+          assert gov_browser == gov_canonical, 'prototype and canonical governance examples drifted'
           PY
       - name: Smoke Problem Commons candidate signal import
         run: |
