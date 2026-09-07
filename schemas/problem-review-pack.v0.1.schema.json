@@ -44,6 +44,19 @@
       },
       "additionalProperties": false
     },
+    "experiment": {
+      "type": "object",
+      "required": ["schema", "participant_id", "sequence_index", "pair_position", "arm", "comparison_note"],
+      "properties": {
+        "schema": {"const": "problem-solver-experiment/v0.1"},
+        "participant_id": {"type": "string", "minLength": 1},
+        "sequence_index": {"type": "integer", "minimum": 0},
+        "pair_position": {"type": "integer", "enum": [0, 1]},
+        "arm": {"enum": ["ordinary_brief", "problem_packet"]},
+        "comparison_note": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
     "privacy_note": {"type": "string"}
   },
   "additionalProperties": false
