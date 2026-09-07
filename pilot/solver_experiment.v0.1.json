@@ -1,0 +1,50 @@
+{
+  "schema": "problem-solver-experiment-protocol/v0.1",
+  "question": "Does a Problem Commons packet improve independent solver understanding and contribution entry relative to a credible ordinary challenge brief built from the same underlying problem facts?",
+  "arms": {
+    "ordinary_brief": {
+      "description": "Same title, observed condition, unresolved goal, scope, constraints, authority boundary, success criteria, and workstream descriptions; omits explicit evidence/uncertainty/frontier/capability/stage/governance organization."
+    },
+    "problem_packet": {
+      "description": "Minimum-necessary redacted Problem Packet plus explicit uncertainty/evidence context and safe stage/governance enrichment."
+    }
+  },
+  "assignment": "Deterministic counterbalancing by problem_id + participant_id for pilot convenience; preregister/replace with a formal randomization plan before confirmatory claims.",
+  "shared_rubric": "solver_comprehension",
+  "primary_measures": [
+    "comprehension_score",
+    "minutes_to_useful_edge",
+    "serious_attempt_rate",
+    "coaching_minutes"
+  ],
+  "secondary_measures": [
+    "usefulness_rating",
+    "abandonment_rate",
+    "abandonment_reason"
+  ],
+  "interpretation": {
+    "desired_directions": {
+      "comprehension_score": "higher",
+      "minutes_to_useful_edge": "lower",
+      "serious_attempt_rate": "higher",
+      "coaching_minutes": "lower",
+      "usefulness_rating": "higher",
+      "abandonment_rate": "lower"
+    },
+    "minimum_sessions_for_nontrivial_pilot_read": "At least 5 sessions per arm; still exploratory, not inferentially confirmatory.",
+    "do_not_claim": [
+      "educational superiority",
+      "causal product impact from uncontrolled sessions",
+      "institutional adoption",
+      "real-world problem-solving effectiveness",
+      "generalization across domains from a single problem"
+    ]
+  },
+  "failure_signals": [
+    "Problem Packet arm does not improve comprehension or time-to-useful-edge despite materially greater curation burden.",
+    "Problem Packet needs more coaching than the ordinary brief.",
+    "Solver serious-attempt conversion is no better or worse after repeated cases.",
+    "Participants report that stage/governance/frontier structure adds ceremony without changing their work choice.",
+    "Control/treatment cannot be kept fact-equivalent without hidden curator judgment."
+  ]
+}
