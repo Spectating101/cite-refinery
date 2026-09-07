@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cite-refinery"
+version = "0.1.0"
+description = "Evidence-to-solution orchestration: Cite knows, Refinery builds."
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Spectating101"}]
+dependencies = []
+
+[project.scripts]
+cite-refinery = "cite_refinery.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

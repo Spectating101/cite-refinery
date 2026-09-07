@@ -1,0 +1,12 @@
+{
+  "title": "Industrial anomaly triage",
+  "problem": "Convert a partner's anomaly report into an evidence-grounded, testable engineering intervention.",
+  "loop": [
+    "register problem",
+    "state and ground claims with Cite-Agent",
+    "discover or create project-local capabilities",
+    "record implementation artifacts",
+    "run experiments",
+    "promote validated capabilities into the shared registry"
+  ]
+}
