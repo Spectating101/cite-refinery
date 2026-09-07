@@ -1,0 +1,95 @@
+[
+  {
+    "id": "problem:tw-animal-0042",
+    "title": "Recurring food-access interruptions at small animal shelters",
+    "domain": "Animal welfare",
+    "geography": "Northern Taiwan",
+    "status": "open",
+    "confidence": "Verified formulation",
+    "updated": "2026-09-07",
+    "observed_condition": "Partner reports and local observations indicate that some small shelters can experience intermittent access to appropriate food even when potential donor supply exists elsewhere.",
+    "unresolved_core": "Determine whether the binding constraint is actual scarcity, matching, transport, verification, or a combination—and identify the smallest safe intervention that reduces interruptions.",
+    "affected": ["Shelter operators", "Animals in care", "Food donors", "Transport volunteers"],
+    "knowledge_frontier": [
+      "The existence and frequency of interruptions still require a frozen baseline.",
+      "The relative importance of supply shortage versus access/logistics failure remains unresolved.",
+      "Any nutrition matching must remain species- and condition-specific rather than generic."
+    ],
+    "capabilities": [
+      {"name": "Geospatial routing", "state": "available"},
+      {"name": "Donor inventory ingestion", "state": "available"},
+      {"name": "Species-food compatibility", "state": "needed"},
+      {"name": "Verified capacity exchange", "state": "needed"}
+    ],
+    "success": "Reduce verified interruption frequency against a frozen baseline without increasing food-safety incidents.",
+    "authority": "Any field intervention requires explicit approval from participating shelters/operators. No autonomous allocation or dispatch.",
+    "subproblems": [
+      {"id": "p1", "kind": "Research", "title": "Establish the baseline", "detail": "Quantify interruption frequency, duration, severity, and likely causes."},
+      {"id": "p2", "kind": "Data", "title": "Map usable surplus", "detail": "Identify donors, item constraints, timing, and confidence in availability."},
+      {"id": "p3", "kind": "Domain", "title": "Encode safe compatibility", "detail": "Define species- and condition-aware food constraints with expert review."},
+      {"id": "p4", "kind": "Engineering", "title": "Test logistics matching", "detail": "Evaluate whether routing and scheduling can close verified access gaps."},
+      {"id": "p5", "kind": "Validation", "title": "Run a shadow pilot", "detail": "Compare system recommendations with operator decisions before any consequential use."}
+    ],
+    "attempts": [
+      {"team": "Pilot research team", "focus": "p1", "state": "active"},
+      {"team": "Open contributor", "focus": "p4", "state": "draft"}
+    ],
+    "history": [
+      {"date": "2026-09-01", "label": "Candidate created"},
+      {"date": "2026-09-04", "label": "Research framing revised"},
+      {"date": "2026-09-07", "label": "Opened for attempts"}
+    ]
+  },
+  {
+    "id": "problem:tw-mobility-0017",
+    "title": "Pedestrian conflict around a transit-adjacent intersection",
+    "domain": "Mobility",
+    "geography": "Taoyuan",
+    "status": "researching",
+    "confidence": "Evidence incomplete",
+    "updated": "2026-09-06",
+    "observed_condition": "Repeated near-conflict reports suggest a crossing may create avoidable pedestrian/vehicle interaction during peak flows.",
+    "unresolved_core": "Establish whether the observed condition is recurrent and identify whether geometry, signal timing, visibility, or behavior is the dominant mechanism.",
+    "affected": ["Pedestrians", "Drivers", "Transit users"],
+    "knowledge_frontier": ["No sufficiently representative observation sample yet."],
+    "capabilities": [
+      {"name": "Video event annotation", "state": "available"},
+      {"name": "Traffic-flow estimation", "state": "needed"}
+    ],
+    "success": "A problem formulation that survives independent review and yields measurable pre/post safety indicators.",
+    "authority": "Road or signal changes require competent transport authority approval.",
+    "subproblems": [
+      {"id": "m1", "kind": "Data", "title": "Collect representative observations", "detail": "Sample peak/off-peak periods without storing unnecessary personal identifiers."},
+      {"id": "m2", "kind": "Research", "title": "Test competing mechanisms", "detail": "Compare signal timing, geometry, visibility, and behavior explanations."}
+    ],
+    "attempts": [],
+    "history": [{"date": "2026-09-06", "label": "Candidate moved to research"}]
+  },
+  {
+    "id": "problem:research-0088",
+    "title": "Reproduce a disputed empirical effect with a broader sample",
+    "domain": "Research",
+    "geography": "Multi-country",
+    "status": "verified",
+    "confidence": "Ready for decomposition",
+    "updated": "2026-09-05",
+    "observed_condition": "A published empirical relationship appears sensitive to sample geography and time window, leaving uncertainty about generalizability.",
+    "unresolved_core": "Determine whether the reported effect survives a preregistered broader-sample replication with harmonized measurement and robustness checks.",
+    "affected": ["Researchers", "Policy users of the evidence"],
+    "knowledge_frontier": ["Effect direction is reported; external validity remains unresolved."],
+    "capabilities": [
+      {"name": "Literature grounding", "state": "available"},
+      {"name": "Data harmonization", "state": "available"},
+      {"name": "Replication pipeline", "state": "needed"}
+    ],
+    "success": "A reproducible analysis that predefines the sample, estimand, robustness family, and criteria for support/attenuation/reversal.",
+    "authority": "No consequential intervention; publication claims remain subject to scholarly review.",
+    "subproblems": [
+      {"id": "r1", "kind": "Research", "title": "Freeze replication protocol", "detail": "Specify estimand, sample, exclusions, and robustness checks before outcomes are inspected."},
+      {"id": "r2", "kind": "Data", "title": "Build harmonized panel", "detail": "Map source definitions and preserve transformation provenance."},
+      {"id": "r3", "kind": "Validation", "title": "Run independent reproduction", "detail": "Execute from a clean environment and compare outputs."}
+    ],
+    "attempts": [],
+    "history": [{"date": "2026-09-05", "label": "Evidence scope verified"}]
+  }
+]
