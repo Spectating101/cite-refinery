@@ -19,10 +19,11 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - name: Validate prototype JavaScript
         run: node --check prototype/app.js
-      - name: Validate prototype, exchange, pilot, sourcing, and draft JSON
+      - name: Validate prototype, exchange, stage, pilot, sourcing, and draft JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
           python -m json.tool examples/problem_packet.json > /dev/null
+          python -m json.tool examples/problem_stage_profiles.json > /dev/null
           python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
           python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
           python -m json.tool pilot/rubrics.v0.1.json > /dev/null
@@ -39,6 +40,26 @@ jobs:
           import json
           assert len(json.load(open('/tmp/problem-list.json'))) == 3
           assert json.load(open('/tmp/public-list.json')) == []
+          PY
+      - name: Smoke staged problem-solving extension
+        run: |
+          problem-stages --state /tmp/problem-stages.json import examples/problem_stage_profiles.json > /tmp/stage-import.json
+          problem-stages --state /tmp/problem-stages.json validate > /tmp/stage-validation.json
+          problem-stages --state /tmp/problem-stages.json coverage problem:tw-animal-0042 > /tmp/stage-coverage.json
+          problem-stages --state /tmp/problem-stages.json route problem:tw-animal-0042 p3 > /tmp/stage-route.json
+          python -m json.tool /tmp/stage-import.json > /dev/null
+          python -m json.tool /tmp/stage-validation.json > /dev/null
+          python -m json.tool /tmp/stage-coverage.json > /dev/null
+          python -m json.tool /tmp/stage-route.json > /dev/null
+          python - <<'PY'
+          import json
+          validation = json.load(open('/tmp/stage-validation.json'))
+          coverage = json.load(open('/tmp/stage-coverage.json'))
+          route = json.load(open('/tmp/stage-route.json'))
+          assert validation['valid'] is True
+          assert coverage['profiles'] == 4
+          assert route['requires_professional_authority'] is True
+          assert any(row['system'] == 'public-good' for row in route['route_plan'])
           PY
       - name: Smoke pilot CLI
         run: |
