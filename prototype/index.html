@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Problem Commons — V0</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">PC</span>
+      <div><strong>Problem Commons</strong><span>living problems, not static challenges</span></div>
+    </div>
+    <nav><a href="#problems">Problems</a><a href="#method">How it works</a><button class="ghost">Steward view</button></nav>
+  </header>
+
+  <main>
+    <section class="hero" id="problems">
+      <div>
+        <p class="eyebrow">PUBLIC PROBLEM INFRASTRUCTURE · V0</p>
+        <h1>Work on what actually needs solving.</h1>
+        <p class="lede">Verified real-world problems are turned into living, evidence-backed objects: what is happening, what is already known, what already exists, what remains unsolved, and exactly where someone can contribute.</p>
+      </div>
+      <div class="hero-metric"><span id="problemCount">0</span><small>curated problems in this prototype</small></div>
+    </section>
+
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Search problems, domains, places…" />
+      <select id="statusFilter"><option value="all">All states</option><option value="open">Open</option><option value="verified">Verified</option><option value="researching">Researching</option></select>
+    </section>
+
+    <section class="layout">
+      <div id="problemList" class="problem-list" aria-label="Problem list"></div>
+      <article id="problemDetail" class="detail empty"><p>Select a problem to inspect its living packet.</p></article>
+    </section>
+
+    <section class="method" id="method">
+      <p class="eyebrow">THE PIPELINE</p>
+      <div class="flow">
+        <span>Observe reality<small>Nocturnal</small></span><b>→</b>
+        <span>Diagnose<small>Public-Good</small></span><b>→</b>
+        <span>Establish knowledge<small>Cite</small></span><b>→</b>
+        <span>Expose frontier<small>Problem Packet</small></span><b>→</b>
+        <span>Reuse / build<small>Refinery</small></span><b>→</b>
+        <span>Validate &amp; observe<small>Outcome loop</small></span>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
