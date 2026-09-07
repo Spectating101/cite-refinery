@@ -12,5 +12,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - run: python -m pip install -e .
       - run: python -m unittest discover -s tests -v
+      - name: Validate prototype JavaScript
+        run: node --check prototype/app.js
+      - name: Validate prototype and exchange JSON
+        run: |
+          python -m json.tool prototype/problems.json > /dev/null
+          python -m json.tool examples/problem_packet.json > /dev/null
+          python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
+      - name: Smoke pilot CLI
+        run: |
+          problem-pilot --state /tmp/problem-pilot.json report > /tmp/problem-pilot-report.json
+          python -m json.tool /tmp/problem-pilot-report.json > /dev/null
