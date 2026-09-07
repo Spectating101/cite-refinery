@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict
 import json
 from pathlib import Path
 from typing import Any
@@ -131,7 +132,7 @@ def main(argv: list[str] | None = None) -> int:
             gate = envelope.set_gate(GateKind(args.kind), GateStatus(args.status), requirement=args.requirement, evidence_refs=args.evidence_ref, reviewer=args.reviewer, notes=args.notes)
             _print({"envelope_id": envelope.id, "gate": gate.kind.value, "status": gate.status.value}); changed = True
         elif args.command == "readiness":
-            _print(registry.get(args.envelope_id).readiness(args.target).__dict__)
+            _print(asdict(registry.get(args.envelope_id).readiness(args.target)))
         elif args.command == "mark-reviewed":
             envelope = registry.get(args.envelope_id); envelope.mark_reviewed(); _print(envelope.to_dict()); changed = True
         elif args.command == "mark-test-ready":
