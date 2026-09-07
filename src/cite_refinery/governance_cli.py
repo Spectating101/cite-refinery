@@ -44,11 +44,17 @@ def build_parser() -> argparse.ArgumentParser:
     create.add_argument("--monitoring-plan", required=True)
     create.add_argument("--public-good-ref", default="")
 
+    imp = sub.add_parser("import")
+    imp.add_argument("path")
+
     listing = sub.add_parser("list")
     listing.add_argument("--problem")
 
     show = sub.add_parser("show")
     show.add_argument("envelope_id")
+
+    validate = sub.add_parser("validate")
+    validate.add_argument("--target", choices=["review", "test", "deploy"], default="review")
 
     gate = sub.add_parser("gate-set")
     gate.add_argument("envelope_id")
@@ -122,11 +128,24 @@ def main(argv: list[str] | None = None) -> int:
                 public_good_ref=args.public_good_ref,
             )
             registry.add(envelope); _print(envelope.to_dict()); changed = True
+        elif args.command == "import":
+            incoming = GovernanceRegistry.from_dict(json.loads(Path(args.path).read_text(encoding="utf-8")))
+            for envelope in incoming.envelopes.values():
+                registry.add(envelope)
+            _print({"imported": len(incoming.envelopes), "total": len(registry.envelopes)}); changed = bool(incoming.envelopes)
         elif args.command == "list":
             rows = registry.for_problem(args.problem) if args.problem else list(registry.envelopes.values())
             _print([{"id": x.id, "problem_id": x.problem_id, "subproblem_id": x.subproblem_id, "title": x.title, "state": x.state.value} for x in rows])
         elif args.command == "show":
             _print(registry.get(args.envelope_id).to_dict())
+        elif args.command == "validate":
+            rows = []
+            valid = True
+            for envelope in registry.envelopes.values():
+                readiness = envelope.readiness(args.target)
+                rows.append({"id": envelope.id, **asdict(readiness)})
+                valid = valid and readiness.ready
+            _print({"valid": valid, "target": args.target, "envelopes": rows})
         elif args.command == "gate-set":
             envelope = registry.get(args.envelope_id)
             gate = envelope.set_gate(GateKind(args.kind), GateStatus(args.status), requirement=args.requirement, evidence_refs=args.evidence_ref, reviewer=args.reviewer, notes=args.notes)
