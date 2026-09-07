@@ -1,0 +1,79 @@
+{
+  "schema": "problem-signals/v0.1",
+  "region": "Taiwan",
+  "generated_for": "Problem Commons V0.1 pilot",
+  "publication_policy": "candidate-only; do not publish without curation",
+  "signals": [
+    {
+      "id": "signal:tw-civic-wishpool-001",
+      "source_system": "CivicTechTaiwan",
+      "source_ref": "https://civictech.tw/",
+      "title": "Can civic-tech wishes be converted into higher-quality neutral Problem Packets?",
+      "observed_condition": "Civic Tech Taiwan currently exposes a project wish pool that asks contributors to state a project, a technology-to-pain-point formulation, shortcomings of current tools, needed capabilities, and progress.",
+      "domain": "civic-tech-meta",
+      "geography": "Taiwan",
+      "observed_at": "2026-09",
+      "visibility": "public",
+      "metadata": {
+        "signal_type": "pilot_experiment",
+        "hypothesis": "A reviewed Problem Packet may reduce premature solution framing and improve solver comprehension compared with a raw wish/project brief.",
+        "next_checks": [
+          "Confirm terms/rights for any individual wish used in a study.",
+          "Select a small public sample without implying platform endorsement.",
+          "Create paired raw-brief and Problem-Packet versions.",
+          "Run counterbalanced solver-comprehension sessions."
+        ],
+        "do_not_publish": true
+      }
+    },
+    {
+      "id": "signal:taoyuan-pedestrian-risk-001",
+      "source_system": "TaiwanOpenData",
+      "source_ref": "https://data.gov.tw/dataset/46364",
+      "title": "Investigate recurrent Taoyuan accident corridors before prescribing pedestrian interventions",
+      "observed_condition": "Taoyuan publishes A1/A2 accident records with time, road/intersection and coordinates, plus separate accident-hotspot, sidewalk-management, and real-time roadway datasets that could support candidate-corridor discovery.",
+      "domain": "mobility",
+      "geography": "Taoyuan, Taiwan",
+      "observed_at": "2026-09",
+      "visibility": "public",
+      "metadata": {
+        "signal_type": "open_data_candidate",
+        "additional_sources": [
+          "https://data.gov.tw/dataset/173672",
+          "https://data.gov.tw/dataset/26069",
+          "https://opendata.tycg.gov.tw/datalist/7b879012-ec7f-4ea6-8af4-9e5ea1bcb39c"
+        ],
+        "hypothesis": "Joined public data may identify corridors worth field investigation, but cannot by itself establish that sidewalk geometry, signal timing, exposure, visibility, or behavior is causal.",
+        "next_checks": [
+          "Inspect joinability and time coverage across datasets.",
+          "Define a non-causal candidate-corridor ranking.",
+          "Ask a transport/domain reviewer to challenge the formulation.",
+          "Collect representative observations before proposing intervention."
+        ],
+        "do_not_publish": true
+      }
+    },
+    {
+      "id": "signal:tw-restricted-data-001",
+      "source_system": "TaiwanPresidentialHackathon",
+      "source_ref": "https://presidential-hackathon.taiwan.gov.tw/farming",
+      "title": "Represent an application-gated public-interest problem without leaking restricted source data",
+      "observed_condition": "The 2026 Presidential Hackathon provides agricultural vehicle imagery to participating teams by application/review for uses such as image recognition, facility inventory, rural-road/environment analysis and disaster assessment.",
+      "domain": "restricted-data-governance",
+      "geography": "Taiwan",
+      "observed_at": "2026-09",
+      "visibility": "public",
+      "metadata": {
+        "signal_type": "access_control_test",
+        "hypothesis": "A public Problem Packet can expose purpose, constraints, contribution paths and success criteria while keeping the underlying application-gated dataset locator/access outside the anonymous public surface.",
+        "next_checks": [
+          "Do not infer a specific agricultural problem from dataset availability alone.",
+          "Use a hypothetical or partner-approved task for the access-control test.",
+          "Verify that public exports redact restricted locators and rights-sensitive metadata.",
+          "Compare contributor comprehension with and without direct dataset access."
+        ],
+        "do_not_publish": true
+      }
+    }
+  ]
+}
