@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/problem-commons/problem-stages.v0.1.schema.json",
+  "title": "Problem Commons problem-solving stage extension V0.1",
+  "type": "object",
+  "required": ["schema", "profiles"],
+  "properties": {
+    "schema": {"const": "problem-stages/v0.1"},
+    "profiles": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/profile"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "required": [
+        "problem_id",
+        "subproblem_id",
+        "stage",
+        "question",
+        "epistemic_type",
+        "uncertainty",
+        "method_maturity",
+        "expected_outputs",
+        "evaluation_method"
+      ],
+      "properties": {
+        "problem_id": {"type": "string", "pattern": "^problem:"},
+        "subproblem_id": {"type": "string", "minLength": 1},
+        "stage": {"enum": ["observe", "measure", "explain", "design", "build", "test", "deploy", "monitor", "generalize"]},
+        "question": {"type": "string", "minLength": 1},
+        "epistemic_type": {"type": "string", "minLength": 1},
+        "uncertainty": {"enum": ["low", "medium", "high", "frontier"]},
+        "method_maturity": {"enum": ["established", "adaptable", "experimental", "novel"]},
+        "expected_outputs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "evaluation_method": {"type": "string", "minLength": 1},
+        "authority_level": {"enum": ["none", "review", "qualified", "institutional"]},
+        "authority_requirement": {"type": "string"},
+        "required_credentials": {"type": "array", "items": {"type": "string"}},
+        "system_routes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["nocturnal", "cite", "refinery", "public-good", "problem-commons", "external-authority"]}
+        },
+        "reuse_target": {"type": "string"},
+        "notes": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  }
+}
