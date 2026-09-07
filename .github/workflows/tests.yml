@@ -112,16 +112,23 @@ jobs:
           PY
           problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json snapshot problem:302908b3a70d > /tmp/case-snapshot.json
           problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json export problem:302908b3a70d --out /tmp/problem-case.json > /tmp/case-export.json
+          problem-case --commons /tmp/case-commons.json --stages /tmp/case-stages.json --governance /tmp/case-governance.json --pilot /tmp/case-pilot.json review-pack problem:302908b3a70d --audience solver --rubrics pilot/rubrics.v0.1.json --out /tmp/review-pack.json > /tmp/review-export.json
           python -m json.tool /tmp/case-snapshot.json > /dev/null
           python -m json.tool /tmp/problem-case.json > /dev/null
+          python -m json.tool /tmp/review-pack.json > /dev/null
           python - <<'PY'
           import json
           snapshot = json.load(open('/tmp/case-snapshot.json'))
           bundle = json.load(open('/tmp/problem-case.json'))
+          review = json.load(open('/tmp/review-pack.json'))
           assert snapshot['problem_id'] == 'problem:302908b3a70d'
           assert snapshot['stage_coverage_rate'] == 0.0
           assert bundle['schema'] == 'problem-case/v0.1'
           assert bundle['problem']['id'] == 'problem:302908b3a70d'
+          assert review['schema'] == 'problem-review-pack/v0.1'
+          assert review['rubric']['name'] == 'solver_comprehension'
+          assert review['problem']['evidence'][0]['locator'] is None
+          assert review['problem']['evidence'][0]['provenance'] == {}
           PY
       - name: Smoke pilot CLI
         run: |
