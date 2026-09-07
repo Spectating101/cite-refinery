@@ -16,6 +16,7 @@ Then open:
 
 - `http://localhost:8080/` — the living Problem Commons browser.
 - `http://localhost:8080/stage-map.html` — the experimental **Observe → Measure → Explain → Design → Build → Test → Deploy → Monitor → Generalize** contribution map.
+- `http://localhost:8080/governance-map.html` — the **Public-Good governance bridge** showing intervention hypotheses, hard gates, test readiness, deployment blockers, and external-authority handoff state.
 
 Do not open the pages directly with `file://`; the browser blocks local `fetch(...)` in many configurations.
 
@@ -65,6 +66,27 @@ The prototype derives four work modes:
 Professional authority is intentionally separate from this scale. A licensed practitioner can be required for low-uncertainty work; academic research skill does not confer professional or institutional authority.
 
 The stage view is backed by `stage-profiles.json`, mirrored from `../examples/problem_stage_profiles.json`. It is an empirical hypothesis: if it adds ceremony without improving solver comprehension, matching, handoffs, or reuse capture, it should remain internal or be removed rather than becoming mandatory schema.
+
+## Public-Good governance bridge
+
+`governance-map.html` visualizes `problem-governance/v0.1` intervention envelopes.
+
+The stage map answers **what kind of work is this?** The governance map answers **can this proposed intervention responsibly move from Design → Test → Deploy?**
+
+Each envelope exposes:
+
+- target failing transition and diagnosis hypothesis;
+- intervention class and smallest feasible change;
+- expected mechanism;
+- reversibility and rollback plan;
+- evidence, safety, integrity, rights, data-access and professional gates;
+- outcome metrics and monitoring plan;
+- test receipts;
+- explicit external-authority state.
+
+The browser intentionally shows examples that are review/test-ready while still deployment-blocked. A successful build or even a successful test does not become permission to act. Real deployment remains outside Problem Commons under competent external authority.
+
+The browser data in `governance-envelopes.json` is mirrored from `../examples/problem_governance_envelopes.json`; CI rejects drift between them.
 
 ## Public vs steward surfaces
 
