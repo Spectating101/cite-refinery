@@ -19,11 +19,26 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - name: Validate prototype JavaScript
         run: node --check prototype/app.js
-      - name: Validate prototype and exchange JSON
+      - name: Validate prototype, exchange, pilot, and sourcing JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
           python -m json.tool examples/problem_packet.json > /dev/null
           python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
+          python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
+          python -m json.tool pilot/rubrics.v0.1.json > /dev/null
+      - name: Smoke Problem Commons candidate signal import
+        run: |
+          problem-commons --state /tmp/problem-commons.json signal-import pilot/candidate_signals.tw.v0.1.json --steward ci-curator > /tmp/signal-import.json
+          problem-commons --state /tmp/problem-commons.json list > /tmp/problem-list.json
+          problem-commons --state /tmp/problem-commons.json list --public > /tmp/public-list.json
+          python -m json.tool /tmp/signal-import.json > /dev/null
+          python -m json.tool /tmp/problem-list.json > /dev/null
+          python -m json.tool /tmp/public-list.json > /dev/null
+          python - <<'PY'
+          import json
+          assert len(json.load(open('/tmp/problem-list.json'))) == 3
+          assert json.load(open('/tmp/public-list.json')) == []
+          PY
       - name: Smoke pilot CLI
         run: |
           problem-pilot --state /tmp/problem-pilot.json report > /tmp/problem-pilot-report.json
