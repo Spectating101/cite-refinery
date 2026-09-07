@@ -21,14 +21,16 @@ jobs:
         run: |
           node --check prototype/app.js
           node --check prototype/stage-map.js
-      - name: Validate prototype, exchange, stage, pilot, sourcing, and draft JSON
+      - name: Validate prototype, exchange, stage, governance, pilot, sourcing, and draft JSON
         run: |
           python -m json.tool prototype/problems.json > /dev/null
           python -m json.tool prototype/stage-profiles.json > /dev/null
           python -m json.tool examples/problem_packet.json > /dev/null
           python -m json.tool examples/problem_stage_profiles.json > /dev/null
+          python -m json.tool examples/problem_governance_envelopes.json > /dev/null
           python -m json.tool schemas/problem-packet.v0.1.schema.json > /dev/null
           python -m json.tool schemas/problem-stages.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-governance.v0.1.schema.json > /dev/null
           python -m json.tool pilot/candidate_signals.tw.v0.1.json > /dev/null
           python -m json.tool pilot/rubrics.v0.1.json > /dev/null
           python -m json.tool pilot/drafts/taoyuan-mobility.candidate.v0.1.json > /dev/null
@@ -70,6 +72,26 @@ jobs:
           assert coverage['profiles'] == 4
           assert route['requires_professional_authority'] is True
           assert any(row['system'] == 'public-good' for row in route['route_plan'])
+          PY
+      - name: Smoke Public-Good governance extension
+        run: |
+          problem-governance --state /tmp/problem-governance.json import examples/problem_governance_envelopes.json > /tmp/governance-import.json
+          problem-governance --state /tmp/problem-governance.json validate --target review > /tmp/governance-review.json
+          problem-governance --state /tmp/problem-governance.json validate --target test > /tmp/governance-test.json
+          problem-governance --state /tmp/problem-governance.json validate --target deploy > /tmp/governance-deploy.json
+          python -m json.tool /tmp/governance-import.json > /dev/null
+          python -m json.tool /tmp/governance-review.json > /dev/null
+          python -m json.tool /tmp/governance-test.json > /dev/null
+          python -m json.tool /tmp/governance-deploy.json > /dev/null
+          python - <<'PY'
+          import json
+          review = json.load(open('/tmp/governance-review.json'))
+          test = json.load(open('/tmp/governance-test.json'))
+          deploy = json.load(open('/tmp/governance-deploy.json'))
+          assert review['valid'] is True
+          assert test['valid'] is True
+          assert deploy['valid'] is False
+          assert all(any('authority' in b or 'passed test' in b for b in row['blockers']) for row in deploy['envelopes'])
           PY
       - name: Smoke pilot CLI
         run: |
