@@ -22,6 +22,7 @@ problem-case = "cite_refinery.case_cli:main"
 problem-ops = "cite_refinery.operations_cli:main"
 problem-experiment = "cite_refinery.experiment_cli:main"
 problem-funding = "cite_refinery.funding_cli:main"
+problem-intake = "cite_refinery.intake_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

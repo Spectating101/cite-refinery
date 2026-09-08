@@ -1,0 +1,58 @@
+{
+  "schema": "problem-owner-queue/v0.1",
+  "as_of": "2026-09-09",
+  "institution": "Yuan Ze University",
+  "queue": [
+    {
+      "priority": 0,
+      "name": "YZU Sustainability Development and Social Responsibility Center",
+      "role": "institutional operator / intake owner",
+      "public_contact_name": "王瑄",
+      "public_contact_role": "Director, Sustainability Development and Social Responsibility Center",
+      "public_contact_email": "csdusr@saturn.yzu.edu.tw",
+      "public_contact_phone": "(03)463-8800 ext. 2034 / 2038 / 2218",
+      "contact_source_ref": "https://esdg.yzu.edu.tw/index.php/tw/",
+      "source_ref": "https://esdg.yzu.edu.tw/index.php/tw/2025-11-28-08-49-26",
+      "conversion_ask": "Nominate 3 field/project owners and 5-10 existing unresolved needs for a no-integration Problem Commons pilot.",
+      "why_now": "The Center already operates field matching, social-participation funding, sponsorship coordination, USR/USR Hub administration and impact reporting.",
+      "status": "research-qualified-not-contacted"
+    },
+    {
+      "priority": 1,
+      "name": "永豐靈糧堂課後輔導班",
+      "role": "external field problem-owner candidate",
+      "source_ref": "https://esdg.yzu.edu.tw/index.php/tw/2025-11-28-08-49-26",
+      "conversion_ask": "Confirm whether the public learning-support need remains current and review the generated candidate Problem before any solver work.",
+      "why_now": "A public YZU field-matching listing already describes the need, available resources, schedule and possible collaboration modes.",
+      "status": "public-listing-intake-not-owner-confirmed",
+      "intake_ref": "pilot/intake/yzu-yongfeng-after-school.v0.1.json"
+    },
+    {
+      "priority": 1,
+      "name": "寰宇文化領航 USR",
+      "role": "core USR repeat-owner candidate",
+      "source_ref": "https://esdg.yzu.edu.tw/index.php/tw/component/content/article/2023-12-26-01-28-16?Itemid=101&catid=85",
+      "conversion_ask": "Supply one unresolved operational/research condition from an existing field partner or subproject and review whether Commons decomposition is useful.",
+      "why_now": "Deep-rooted program with multiple education/community workstreams and established external partners.",
+      "status": "research-qualified-not-contacted"
+    },
+    {
+      "priority": 1,
+      "name": "跨代智慧共創：設計思考引領科技與幸福 USR",
+      "role": "core USR repeat-owner candidate",
+      "source_ref": "https://esdg.yzu.edu.tw/index.php/tw/?id=482&option=com_sppagebuilder&view=page",
+      "conversion_ask": "Supply one unresolved AI/IoT/health/education implementation or evidence problem suitable for research/engineering decomposition.",
+      "why_now": "Current fourth-phase program explicitly combines AI/IoT, health, education, cross-disciplinary student work and local partner implementation.",
+      "status": "research-qualified-not-contacted"
+    },
+    {
+      "priority": 2,
+      "name": "USR Hub portfolio",
+      "role": "secondary owner pool",
+      "source_ref": "https://www.yzu.edu.tw/index.php/tw/social",
+      "conversion_ask": "Select one willing team with a current unresolved condition rather than onboarding the whole portfolio.",
+      "why_now": "Six current Hub programs span cultural, digital heritage, agriculture, health/food safety, humanitarian and circular-economy work.",
+      "status": "research-qualified-not-contacted"
+    }
+  ]
+}

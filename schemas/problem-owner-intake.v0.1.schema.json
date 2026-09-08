@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "problem-owner-intake/v0.1",
+  "title": "Problem Commons Owner Intake V0.1",
+  "type": "object",
+  "required": ["id", "source_system", "source_ref", "title", "owner_org", "owner_statement", "geography"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^intake:"},
+    "source_system": {"type": "string", "minLength": 1},
+    "source_ref": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "owner_org": {"type": "string", "minLength": 1},
+    "owner_statement": {"type": "string", "minLength": 1},
+    "geography": {"type": "string", "minLength": 1},
+    "intake_mode": {"enum": ["owner-submitted", "curator-interview", "public-listing", "institutional-batch"]},
+    "owner_confirmation": {"enum": ["not-contacted", "pending", "confirmed", "reframed", "disputed"]},
+    "source_observed_at": {"type": ["string", "null"]},
+    "owner_confirmation_ref": {"type": "string"},
+    "owner_confirmed_at": {"type": ["string", "null"]},
+    "schedule": {"type": "string"},
+    "affected_actors": {"type": "array", "items": {"type": "string"}},
+    "beneficiaries": {"type": "array", "items": {"type": "string"}},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "available_resources": {"type": "array", "items": {"type": "string"}},
+    "requested_support": {"type": "array", "items": {"type": "string"}},
+    "proposed_modes": {"type": "array", "items": {"type": "string"}},
+    "uncertainties": {"type": "array", "items": {"type": "string"}},
+    "safeguarding_notes": {"type": "array", "items": {"type": "string"}},
+    "data_access_notes": {"type": "array", "items": {"type": "string"}},
+    "suggested_work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "description", "kind"],
+        "properties": {
+          "title": {"type": "string", "minLength": 1},
+          "description": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "expected_outputs": {"type": "array", "items": {"type": "string"}},
+          "skill_tags": {"type": "array", "items": {"type": "string"}},
+          "effort": {"type": "string"},
+          "required_credentials": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

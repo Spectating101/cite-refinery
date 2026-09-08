@@ -1,0 +1,94 @@
+{
+  "id": "intake:yzu-yongfeng-after-school-001",
+  "source_system": "YZU Sustainability Center field matching",
+  "source_ref": "https://esdg.yzu.edu.tw/index.php/tw/2025-11-28-08-49-26",
+  "title": "Determine a safe, sustainable learning-support model for a Taoyuan after-school program",
+  "owner_org": "永豐靈糧堂課後輔導班",
+  "owner_statement": "The public YZU field-matching listing reports that the after-school program serves 14 primary-school children from families needing additional support, expects several students to enter junior high, and is concerned that existing staffing may not be sufficient for one-to-one or small-group academic support. It asks whether YZU students could provide recurring tutoring, short enrichment activities, or service-learning/USR project support.",
+  "geography": "Taoyuan District, Taoyuan City, Taiwan",
+  "intake_mode": "public-listing",
+  "owner_confirmation": "not-contacted",
+  "source_observed_at": "2026-09-09",
+  "owner_confirmation_ref": "",
+  "owner_confirmed_at": null,
+  "schedule": "Source reports weekdays approximately 15:30-18:00/20:00 with flexibility for volunteers.",
+  "affected_actors": [
+    "14 primary-school children currently reported by the source",
+    "children expected to transition into junior-high-level coursework"
+  ],
+  "beneficiaries": [
+    "children receiving after-school learning support",
+    "the after-school support program"
+  ],
+  "constraints": [
+    "Do not treat reported staffing concern as verified evidence that tutoring is the binding cause of academic outcomes.",
+    "Any YZU participation must fit the program's operating schedule and supervision capacity.",
+    "The source page heading says Zhongli while the listed street address is in Taoyuan District; geography should be confirmed with the owner.",
+    "Do not copy child identities, family details, educational records, or private contact information into public Commons artifacts."
+  ],
+  "available_resources": [
+    "stable venue reported by source",
+    "existing instructors reported by source",
+    "existing class-management process reported by source",
+    "child-safety management process reported by source"
+  ],
+  "requested_support": [
+    "recurring homework/reading tutoring",
+    "short English-reading enrichment",
+    "short science experiment enrichment",
+    "introductory information/programming activities",
+    "service-learning, USR, or small-team project collaboration"
+  ],
+  "proposed_modes": [
+    "recurring volunteer tutoring",
+    "bounded short-term educational project",
+    "service-learning course",
+    "USR project",
+    "small student team"
+  ],
+  "uncertainties": [
+    "The source page does not establish whether the need is still current in September 2026.",
+    "The number and age distribution of children may have changed since the listing was created.",
+    "The listing does not quantify tutor-to-student capacity, attendance, learning baseline, or what outcome the owner would prioritize.",
+    "The listing proposes several collaboration modes but does not establish which mode the owner currently prefers or can supervise.",
+    "No funding, stipend, course-credit, or volunteer commitment is established by the listing."
+  ],
+  "safeguarding_notes": [
+    "Direct work with children requires explicit owner approval, appropriate supervision, and compliance with YZU and host child-safeguarding requirements.",
+    "The Commons candidate itself authorizes no direct contact with children or access to educational/family records."
+  ],
+  "data_access_notes": [
+    "No participant-level educational data should be requested during initial curation.",
+    "Any later learning measurement must use minimum-necessary, owner-approved and appropriately protected data."
+  ],
+  "suggested_work": [
+    {
+      "title": "Confirm the current learning-support bottleneck and participation constraints",
+      "description": "Review the public listing with the potential owner and establish whether the need remains current, what support is actually scarce, what outcomes matter, what supervision exists, and what safeguarding/access constraints apply.",
+      "kind": "curation",
+      "expected_outputs": ["owner-reviewed needs map", "current capacity statement", "safeguarding and access boundary"],
+      "skill_tags": ["stakeholder-interview", "education", "program-design"],
+      "effort": "1-2 structured owner sessions plus curation",
+      "required_credentials": []
+    },
+    {
+      "title": "Design a bounded recurring tutoring lane",
+      "description": "If the owner confirms recurring tutoring is useful, design a small supervised schedule, role definition, onboarding boundary, escalation path, and lightweight outcome/attendance measurement without overclaiming causal impact.",
+      "kind": "service-design",
+      "expected_outputs": ["tutoring operating protocol", "capacity and schedule plan", "review/feedback instrument"],
+      "skill_tags": ["education", "operations", "service-design"],
+      "effort": "1-3 weeks design before any live service",
+      "required_credentials": ["host-approved child-facing participant for live execution"]
+    },
+    {
+      "title": "Design one short enrichment project that can be evaluated independently",
+      "description": "If the owner prefers project-based support, create one bounded English, science, or introductory programming module with an explicit learning goal, required materials, supervision plan, and simple pre/post or rubric-based evaluation.",
+      "kind": "education-design",
+      "expected_outputs": ["owner-approved enrichment module", "materials/resource list", "evaluation rubric"],
+      "skill_tags": ["education", "curriculum-design", "project-design"],
+      "effort": "1-3 weeks design plus owner-approved delivery window",
+      "required_credentials": ["host-approved child-facing participant for live execution"]
+    }
+  ],
+  "notes": "This intake is a curator reconstruction of a public YZU field-matching listing. It is not an owner submission to Problem Commons and must not be represented as owner endorsement until reviewed with the organization."
+}

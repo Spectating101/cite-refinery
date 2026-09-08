@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "problem-public-good-bridge/v0.1",
+  "title": "Problem Commons × Public-Good projection contracts V0.1",
+  "type": "object",
+  "properties": {
+    "schema": {"const": "problem-public-good-bridge/v0.1"},
+    "commons_resource_needs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["problem_id", "subproblem_id", "need_id", "kind", "priority", "claim_boundary"],
+        "properties": {
+          "problem_id": {"type": "string", "pattern": "^problem:"},
+          "subproblem_id": {"type": "string", "minLength": 1},
+          "need_id": {"type": "string", "minLength": 1},
+          "kind": {"type": "string"},
+          "priority": {"enum": ["watch", "urgent", "critical"]},
+          "amount": {"type": ["number", "null"], "minimum": 0},
+          "currency": {"type": ["string", "null"]},
+          "notes": {"type": "string"},
+          "source_refs": {"type": "array", "items": {"type": "string"}},
+          "claim_boundary": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "resource_match_projections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["problem_id", "subproblem_id", "resource_id", "status", "funding_commitment", "application_submitted", "authority_granted", "claim_boundary"],
+        "properties": {
+          "problem_id": {"type": "string", "pattern": "^problem:"},
+          "subproblem_id": {"type": "string", "minLength": 1},
+          "resource_id": {"type": "string"},
+          "status": {"enum": ["qualified_candidate", "requires_verification", "blocked"]},
+          "matched_dimensions": {"type": "array", "items": {"type": "string"}},
+          "unresolved_dimensions": {"type": "array", "items": {"type": "string"}},
+          "blocking_dimensions": {"type": "array", "items": {"type": "string"}},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}},
+          "reasons": {"type": "array", "items": {"type": "string"}},
+          "funding_commitment": {"const": false},
+          "application_submitted": {"const": false},
+          "authority_granted": {"const": false},
+          "claim_boundary": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "candidate_work_projections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["problem_id", "source_case_id", "public_good_stage", "problem_class", "priority", "recommended_action", "commons_stage", "commons_subproblem_created", "authority_granted", "claim_boundary"],
+        "properties": {
+          "suggested_title": {"type": "string"},
+          "problem_id": {"type": "string", "pattern": "^problem:"},
+          "source_case_id": {"type": "string", "minLength": 1},
+          "public_good_stage": {"type": "string", "minLength": 1},
+          "problem_class": {"type": "string"},
+          "priority": {"enum": ["watch", "urgent", "critical"]},
+          "recommended_action": {"type": "string"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}},
+          "human_authority_required": {"type": "boolean"},
+          "structural_candidate": {"type": "boolean"},
+          "domain_detail": {"type": "object"},
+          "commons_stage": {"type": "null"},
+          "commons_subproblem_created": {"const": false},
+          "authority_granted": {"const": false},
+          "claim_boundary": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["schema", "commons_resource_needs", "resource_match_projections", "candidate_work_projections"],
+  "additionalProperties": false
+}
