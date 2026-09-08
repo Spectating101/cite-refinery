@@ -14,7 +14,6 @@ from .problem_commons import (
     Subproblem,
     SuccessCriterion,
     Visibility,
-    object_id,
 )
 
 
@@ -118,6 +117,7 @@ class OwnerIntake:
         if not steward.strip():
             raise ValueError("steward is required")
 
+        suffix = self.id.split(":", 1)[1]
         uncertainty = list(self.uncertainties)
         if not self.owner_is_confirmed:
             uncertainty.insert(0, "Potential problem owner has not yet confirmed this Commons formulation or that the source listing remains current.")
@@ -130,7 +130,7 @@ class OwnerIntake:
             constraints.append(f"Reported operating schedule: {self.schedule}")
 
         packet = ProblemPacket(
-            id=f"problem:{self.id.split(':', 1)[1]}",
+            id=f"problem:{suffix}",
             title=self.title,
             observed_condition=f"Owner-reported/publicly listed condition: {self.owner_statement}",
             unresolved_core=(
@@ -149,7 +149,7 @@ class OwnerIntake:
             beneficiaries=list(self.beneficiaries),
             evidence=[
                 EvidenceRef(
-                    id=object_id("pevidence"),
+                    id=f"pevidence:{suffix}:source",
                     source=self.source_system,
                     locator=self.source_ref,
                     summary=f"Public/owner intake source reports the stated need on behalf of {self.owner_org}.",
@@ -184,7 +184,7 @@ class OwnerIntake:
             data_access=list(self.data_access_notes),
             success_criteria=[
                 SuccessCriterion(
-                    id=object_id("criterion"),
+                    id=f"criterion:{suffix}:owner-review",
                     metric="problem-owner formulation agreement",
                     target="Potential owner confirms the need and bounded work frontier, or explicitly reframes/rejects it.",
                     measurement="Owner review receipt against the generated candidate packet.",
@@ -195,7 +195,7 @@ class OwnerIntake:
             ],
             subproblems=[
                 Subproblem(
-                    id=object_id("psub"),
+                    id=f"psub:{suffix}:{index:02d}",
                     title=work.title,
                     description=work.description,
                     kind=work.kind,
@@ -205,11 +205,11 @@ class OwnerIntake:
                     effort=work.effort,
                     required_credentials=list(work.required_credentials),
                 )
-                for work in self.suggested_work
+                for index, work in enumerate(self.suggested_work, start=1)
             ],
             external_refs=[
                 ExternalRef(
-                    id=object_id("pref"),
+                    id=f"pref:{suffix}:source",
                     system=self.source_system,
                     ref=self.source_ref,
                     relation="owner_intake_source",
