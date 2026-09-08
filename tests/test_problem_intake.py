@@ -37,6 +37,16 @@ class ProblemOwnerIntakeTests(unittest.TestCase):
         self.assertIn("No funding", packet.funding_notes)
         self.assertTrue(any("No funding" in item for item in intake.uncertainties))
 
+    def test_regenerating_same_intake_keeps_candidate_ids_stable(self):
+        intake = OwnerIntake.load(LIVE_INTAKE)
+        first = intake.to_problem_packet(steward="pilot-curator")
+        second = intake.to_problem_packet(steward="pilot-curator")
+        self.assertEqual(first.id, second.id)
+        self.assertEqual([x.id for x in first.evidence], [x.id for x in second.evidence])
+        self.assertEqual([x.id for x in first.success_criteria], [x.id for x in second.success_criteria])
+        self.assertEqual([x.id for x in first.subproblems], [x.id for x in second.subproblems])
+        self.assertEqual([x.id for x in first.external_refs], [x.id for x in second.external_refs])
+
     def test_confirmed_owner_requires_confirmation_receipt(self):
         raw = json.loads(LIVE_INTAKE.read_text(encoding="utf-8"))
         raw["owner_confirmation"] = OwnerConfirmation.CONFIRMED.value
