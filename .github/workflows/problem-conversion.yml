@@ -1,0 +1,45 @@
+name: problem-conversion
+
+on:
+  push:
+    branches:
+      - prototype/consolidation-freeze-v0
+  pull_request:
+
+jobs:
+  owner-intake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Validate intake artifacts
+        run: |
+          python -m json.tool schemas/problem-owner-intake.v0.1.schema.json > /dev/null
+          python -m json.tool pilot/intake/yzu-yongfeng-after-school.v0.1.json > /dev/null
+          problem-intake validate pilot/intake/yzu-yongfeng-after-school.v0.1.json > /tmp/intake-validation.json
+          python -m json.tool /tmp/intake-validation.json > /dev/null
+      - name: Generate fail-closed candidate from live YZU listing
+        run: |
+          problem-intake draft pilot/intake/yzu-yongfeng-after-school.v0.1.json --steward ci-curator --out /tmp/yzu-owner-candidate.json > /tmp/intake-draft-result.json
+          python -m json.tool /tmp/yzu-owner-candidate.json > /dev/null
+          python - <<'PY'
+          import json
+          packet = json.load(open('/tmp/yzu-owner-candidate.json'))
+          result = json.load(open('/tmp/intake-draft-result.json'))
+          assert packet['status'] == 'candidate'
+          assert packet['visibility'] == 'restricted'
+          assert packet['problem_owner'] == ''
+          assert packet['evidence'][0]['confidence'] == 'reported'
+          assert all(row['status'] == 'proposed_pending_owner_review' for row in packet['subproblems'])
+          assert packet['attempts'] == []
+          assert packet['authority_decisions'] == []
+          assert packet['outcomes'] == []
+          assert result['owner_confirmed'] is False
+          assert result['publishability']['publishable'] is False
+          assert 'reviewed_evidence' in result['publishability']['missing']
+          PY
+      - name: Run intake unit tests
+        run: python -m unittest tests.test_problem_intake -v
