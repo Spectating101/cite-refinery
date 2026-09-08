@@ -17,14 +17,16 @@ jobs:
           python-version: "3.11"
       - name: Fetch, reconcile, and analyze official Taoyuan open data
         run: python pilot/real_data/taoyuan_mobility_probe_v3.py
-      - name: Print empirical report
+      - name: Test whether corridor repetitions encode party-level grain
+        run: python pilot/real_data/taoyuan_party_grain_probe.py
+      - name: Print empirical reports
         run: |
           cat real-data-output/taoyuan-real-data-v3-report.md
-          echo "--- SUMMARY JSON ---"
-          cat real-data-output/taoyuan-real-data-v3-summary.json
+          echo "--- PARTY GRAIN ---"
+          cat real-data-output/taoyuan-party-grain-summary.json
       - name: Upload reproducible probe outputs
         uses: actions/upload-artifact@v4
         with:
-          name: taoyuan-real-data-probe-v3
+          name: taoyuan-real-data-probe-v4
           path: real-data-output/
           if-no-files-found: error
