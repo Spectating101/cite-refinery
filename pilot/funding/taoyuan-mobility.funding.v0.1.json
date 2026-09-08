@@ -3,7 +3,7 @@
   "needs": [
     {
       "problem_id": "problem:taoyuan-mobility-candidate-001",
-      "subproblem_id": "sub:resolve-grain",
+      "subproblem_id": "sub:validate-data",
       "stage": "measure",
       "status": "unknown",
       "compensation_mode": "unspecified",
@@ -13,9 +13,9 @@
       "target_amount": null,
       "committed_amount": 0,
       "eligible_instruments": ["research grant", "student research stipend", "university RA funding"],
-      "in_kind_needs": ["compute", "data-engineering review"],
-      "restrictions": ["Do not infer that unpaid student labor is available."],
-      "expense_categories": ["research labor", "data engineering"],
+      "in_kind_needs": ["compute", "data-engineering review", "geospatial expertise"],
+      "restrictions": ["Do not infer that unpaid student labor is available.", "Funding cannot convert a permissive data join into verified evidence."],
+      "expense_categories": ["research labor", "data engineering", "geospatial validation"],
       "funding_source_refs": [],
       "implementation_budget_owner": "",
       "maintenance_budget_owner": "",
@@ -23,8 +23,8 @@
     },
     {
       "problem_id": "problem:taoyuan-mobility-candidate-001",
-      "subproblem_id": "sub:validate-infrastructure",
-      "stage": "measure",
+      "subproblem_id": "sub:shortlist",
+      "stage": "explain",
       "status": "unknown",
       "compensation_mode": "unspecified",
       "volunteer_compatible": false,
@@ -32,19 +32,19 @@
       "minimum_amount": null,
       "target_amount": null,
       "committed_amount": 0,
-      "eligible_instruments": ["research grant", "civic-tech grant", "university project funding"],
-      "in_kind_needs": ["geospatial expertise", "transport-domain review"],
-      "restrictions": ["Funding cannot convert permissive road-name matching into a verified join."],
-      "expense_categories": ["research labor", "geospatial validation", "domain review"],
+      "eligible_instruments": ["research grant", "civic-tech grant", "public-interest grant"],
+      "in_kind_needs": ["statistical review", "transport-domain review"],
+      "restrictions": ["A sponsor cannot predetermine which corridor or mechanism is reported as important."],
+      "expense_categories": ["research labor", "analysis", "domain review"],
       "funding_source_refs": [],
       "implementation_budget_owner": "",
       "maintenance_budget_owner": "",
-      "notes": "No funding opportunity or sponsor is asserted in this example."
+      "notes": "No funding opportunity or sponsor is asserted. Actual eligibility, amount, and availability require separate evidence."
     },
     {
       "problem_id": "problem:taoyuan-mobility-candidate-001",
-      "subproblem_id": "sub:pedestrian-exposure",
-      "stage": "measure",
+      "subproblem_id": "sub:domain-review",
+      "stage": "test",
       "status": "unknown",
       "compensation_mode": "unspecified",
       "volunteer_compatible": false,
@@ -52,14 +52,14 @@
       "minimum_amount": null,
       "target_amount": null,
       "committed_amount": 0,
-      "eligible_instruments": ["research grant", "microgrant", "CSR sponsorship", "public-interest grant"],
-      "in_kind_needs": ["field-counting equipment", "field access", "transport-domain review"],
-      "restrictions": ["Sponsor funding cannot predetermine a safety conclusion or intervention recommendation."],
-      "expense_categories": ["field labor", "equipment", "travel", "review"],
+      "eligible_instruments": ["research grant", "expert-review budget", "institutional project funding"],
+      "in_kind_needs": ["qualified transport/road-safety reviewer", "field access"],
+      "restrictions": ["Funding cannot substitute for qualified review or competent public authority."],
+      "expense_categories": ["expert review", "field observation design", "travel"],
       "funding_source_refs": [],
       "implementation_budget_owner": "",
       "maintenance_budget_owner": "",
-      "notes": "The funding model records possible instrument classes only. Actual eligibility, amount, and availability require separate evidence."
+      "notes": "This records resource needs only. It does not imply that review or field work is funded."
     }
   ]
 }
