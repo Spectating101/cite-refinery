@@ -18,6 +18,7 @@ jobs:
       - name: Validate intake artifacts
         run: |
           python -m json.tool schemas/problem-owner-intake.v0.1.schema.json > /dev/null
+          python -m json.tool schemas/problem-owner-intake-review.v0.1.schema.json > /dev/null
           python -m json.tool pilot/intake/yzu-yongfeng-after-school.v0.1.json > /dev/null
           problem-intake validate pilot/intake/yzu-yongfeng-after-school.v0.1.json > /tmp/intake-validation.json
           python -m json.tool /tmp/intake-validation.json > /dev/null
@@ -40,6 +41,24 @@ jobs:
           assert result['owner_confirmed'] is False
           assert result['publishability']['publishable'] is False
           assert 'reviewed_evidence' in result['publishability']['missing']
+          PY
+      - name: Generate minimum-necessary owner review pack
+        run: |
+          problem-intake owner-review pilot/intake/yzu-yongfeng-after-school.v0.1.json --steward ci-curator --rubrics pilot/rubrics.v0.1.json --out /tmp/yzu-owner-review.json > /tmp/owner-review-result.json
+          python -m json.tool /tmp/yzu-owner-review.json > /dev/null
+          problem-intake validate-owner-review /tmp/yzu-owner-review.json > /tmp/owner-review-validation.json
+          python - <<'PY'
+          import json
+          pack = json.load(open('/tmp/yzu-owner-review.json'))
+          validation = json.load(open('/tmp/owner-review-validation.json'))
+          assert pack['schema'] == 'problem-owner-intake-review/v0.1'
+          assert pack['problem_id'] == 'problem:yzu-yongfeng-after-school-001'
+          assert pack['response']['disposition'] == 'undecided'
+          assert pack['response']['source_still_current'] is None
+          assert pack['response']['owner_identity_and_role_correct'] is None
+          assert all(row['status'] == 'proposed_pending_owner_review' for row in pack['problem']['candidate_work'])
+          assert any('does not authorize live work' in line for line in pack['instructions'])
+          assert validation['valid'] is True
           PY
       - name: Run intake unit tests
         run: python -m unittest tests.test_problem_intake -v
