@@ -1,0 +1,110 @@
+{
+  "schema": "problem-commons-empirical-findings/v0.1",
+  "problem_id": "problem:taoyuan-mobility-candidate-001",
+  "observed_at": "2026-09-08",
+  "status": "unreviewed_empirical_probe",
+  "reproducible_run": "https://github.com/Spectating101/cite-refinery/actions/runs/34207380007",
+  "sources": [
+    {
+      "name": "Taoyuan A1/A2 accident corridor export, ROC 114",
+      "pid": "d06dd55d-aac7-4b17-9211-82cbf467cc2d",
+      "rid": "e8a4e4b6-ab84-4365-b612-fd0f38e7c011",
+      "role": "time-location-road-coordinate rows"
+    },
+    {
+      "name": "Taoyuan sidewalk management",
+      "pid": "1de35418-b949-4ace-89a2-cb92714be3eb",
+      "rid": "6a4126e6-e1ee-43e2-b771-e49f6a532c45",
+      "role": "district-road infrastructure context"
+    },
+    {
+      "name": "Taoyuan annual A1/A2 accident count by time, ROC 114",
+      "pid": "2bc7f575-acaf-436c-a6ca-be8af3cf19f2",
+      "rid": "c263501f-9b6b-4db6-a3d6-8a847a7e0aca",
+      "role": "independent aggregate reconciliation"
+    },
+    {
+      "name": "Taoyuan A1/A2 party age, vehicle and action status, ROC 114",
+      "pid": "08d560b5-7cf2-4909-8a02-da39c74d8b09",
+      "rid": "56ec9806-d6a3-4339-ae5b-cb9e7353b497",
+      "role": "party-level characteristics and party-order sensitivity"
+    }
+  ],
+  "findings": {
+    "corridor_export": {
+      "raw_rows": 94183,
+      "distinct_published_row_patterns": 42329,
+      "official_annual_count_total": 94183,
+      "all_distinct_patterns_repeat_at_least_twice": true,
+      "maximum_exact_multiplicity": 18,
+      "raw_coordinate_valid_share": 1.0,
+      "road_completeness_share": 0.9053,
+      "section_completeness_share": 0.2624,
+      "intersection_road_completeness_share": 0.4768,
+      "interpretation": "Exact repetition is structural rather than safely removable duplication. The public fields do not expose a unique accident/case identifier, so event grain remains unresolved."
+    },
+    "party_export": {
+      "rows": 88450,
+      "first_party_rows": 41501,
+      "second_party_rows": 37928,
+      "third_party_rows": 7308,
+      "maximum_party_rank_observed": 18,
+      "vehicle_major_person_rows": 7277,
+      "walking_action_rows": 1745,
+      "first_party_minus_distinct_corridor_patterns": -828,
+      "party_rows_minus_corridor_rows": -5733,
+      "interpretation": "Party-order distributions strongly support a party-related explanation for corridor-row multiplicity, especially in the higher-order tail, but the sources do not reconcile exactly. The party product excludes some classes of parties/cases and cannot be joined to corridor coordinates with the published fields."
+    },
+    "road_sidewalk_join": {
+      "eligible_corridor_rows_with_primary_road_and_district": 85263,
+      "strict_district_road_section_match_share": 0.5864,
+      "section_stripped_primary_road_match_share": 0.7024,
+      "section_stripped_primary_or_intersection_match_share": 0.7425,
+      "distinct_pattern_strict_match_share": 0.5845,
+      "distinct_pattern_section_stripped_primary_match_share": 0.7001,
+      "distinct_pattern_section_stripped_primary_or_intersection_match_share": 0.7402,
+      "interpretation": "A substantial partial road-name join is feasible, but permissive normalization gains roughly 11-16 percentage points of coverage and may introduce false matches. It is a sensitivity path, not a verified production join."
+    },
+    "sidewalk_quality": {
+      "rows": 4226,
+      "exact_duplicate_rows": 0,
+      "normalized_district_road_keys_with_multiple_rows": 62,
+      "road_length_zero_share": 0.5937,
+      "embedded_total_summary_row": true,
+      "maximum_sidewalk_width_meters_reported": 720.0,
+      "rows_with_maximum_sidewalk_width_over_20m": 2,
+      "interpretation": "The table mixes aggregate and road-level rows and contains values requiring plausibility review. Cleaning must distinguish summary rows from suspected field errors rather than applying blind clipping."
+    },
+    "coordinate_recurrence": {
+      "examples": [
+        {"longitude": 121.289143, "latitude": 24.976061, "district": "桃園區", "road": "國際路", "distinct_published_patterns": 29},
+        {"longitude": 121.309178, "latitude": 25.015396, "district": "桃園區", "road": "春日路", "intersection_road": "大興路", "distinct_published_patterns": 26},
+        {"longitude": 121.314999, "latitude": 24.991059, "district": "桃園區", "road": "復興路", "intersection_road": "民生路", "distinct_published_patterns": 23},
+        {"longitude": 121.21906, "latitude": 24.956332, "district": "中壢區", "road": "中豐路", "intersection_road": "中山路", "distinct_published_patterns": 20, "A1_patterns": 1, "A2_patterns": 19}
+      ],
+      "interpretation": "These are recurrence candidates only. They are not risk rates or claims that a location is dangerous because exposure and true event grain are unresolved."
+    }
+  },
+  "problem_packet_effects": {
+    "facts_upgraded": [
+      "Official row-level accident and sidewalk resources are retrievable and reproducibly analyzable.",
+      "Accident coordinates are present and valid under a broad Taoyuan bounding-box check.",
+      "Road-name enrichment has measurable but incomplete coverage.",
+      "The party dataset confirms pedestrian/person participation exists in the wider official data ecosystem."
+    ],
+    "new_uncertainties": [
+      "The analytical grain of the corridor export is not explicit; exact repetition is structural and cannot simply be deduplicated.",
+      "Party characteristics and corridor coordinates are published in separate products without a common public case identifier.",
+      "Sidewalk rows contain embedded aggregate records, zero-heavy road-length fields, duplicate district-road keys and suspect width values.",
+      "No pedestrian or traffic exposure denominator has been established."
+    ],
+    "claims_blocked": [
+      "The 94,183 corridor rows cannot be described as 94,183 independent crashes from these files alone.",
+      "Exact full-row deduplication cannot be described as correct event-level cleaning.",
+      "Road-name co-location with sidewalk width cannot establish pedestrian risk or causality.",
+      "No corridor should be publicly labeled dangerous or recommended for intervention from this probe."
+    ],
+    "recommended_problem_state": "researching",
+    "recommended_reframe": "Determine whether Taoyuan's published accident, party and infrastructure data can be reconciled into a defensible pedestrian-corridor investigation before any risk ranking or intervention proposal."
+  }
+}
