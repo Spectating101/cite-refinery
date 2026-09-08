@@ -12,7 +12,7 @@
     "owner_org": {"type": "string", "minLength": 1},
     "owner_statement": {"type": "string", "minLength": 1},
     "geography": {"type": "string", "minLength": 1},
-    "intake_mode": {"enum": ["owner-submitted", "curator-interview", "public-listing"]},
+    "intake_mode": {"enum": ["owner-submitted", "curator-interview", "public-listing", "institutional-batch"]},
     "owner_confirmation": {"enum": ["not-contacted", "pending", "confirmed", "reframed", "disputed"]},
     "source_observed_at": {"type": ["string", "null"]},
     "owner_confirmation_ref": {"type": "string"},
