@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/problem-commons/problem-funding.v0.1.schema.json",
+  "title": "Problem Commons Funding Extension V0.1",
+  "type": "object",
+  "required": ["schema", "needs"],
+  "properties": {
+    "schema": {"const": "problem-funding/v0.1"},
+    "needs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/fundingNeed"}
+    }
+  },
+  "$defs": {
+    "fundingNeed": {
+      "type": "object",
+      "required": [
+        "problem_id",
+        "subproblem_id",
+        "stage",
+        "status",
+        "compensation_mode",
+        "volunteer_compatible",
+        "currency",
+        "committed_amount"
+      ],
+      "properties": {
+        "id": {"type": "string"},
+        "problem_id": {"type": "string", "pattern": "^problem:"},
+        "subproblem_id": {"type": "string", "minLength": 1},
+        "stage": {"enum": ["observe", "measure", "explain", "design", "build", "test", "deploy", "monitor", "generalize"]},
+        "status": {"enum": ["unknown", "not-required", "unfunded", "seeking", "partial", "funded", "in-kind"]},
+        "compensation_mode": {"enum": ["volunteer", "stipend", "grant", "paid-project", "prize", "employment", "in-kind", "mixed", "unspecified"]},
+        "volunteer_compatible": {"type": "boolean"},
+        "currency": {"type": "string", "minLength": 3},
+        "minimum_amount": {"type": ["number", "null"], "minimum": 0},
+        "target_amount": {"type": ["number", "null"], "minimum": 0},
+        "committed_amount": {"type": "number", "minimum": 0},
+        "eligible_instruments": {"type": "array", "items": {"type": "string"}},
+        "in_kind_needs": {"type": "array", "items": {"type": "string"}},
+        "restrictions": {"type": "array", "items": {"type": "string"}},
+        "expense_categories": {"type": "array", "items": {"type": "string"}},
+        "funding_source_refs": {"type": "array", "items": {"type": "string"}},
+        "implementation_budget_owner": {"type": "string"},
+        "maintenance_budget_owner": {"type": "string"},
+        "notes": {"type": "string"},
+        "funding_gap": {"type": ["number", "null"], "minimum": 0},
+        "minimum_gap": {"type": ["number", "null"], "minimum": 0},
+        "readiness": {"enum": ["unknown", "ready", "partial", "blocked", "not-required"]}
+      }
+    }
+  }
+}
