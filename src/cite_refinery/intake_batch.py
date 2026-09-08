@@ -78,7 +78,7 @@ def _row_to_intake(row: dict[str, str], *, source: Path, row_number: int) -> Own
     if not intake_id.startswith("intake:"):
         intake_id = f"intake:{intake_id}"
 
-    intake_mode = row.get("intake_mode") or IntakeMode.PUBLIC_LISTING.value
+    intake_mode = row.get("intake_mode") or IntakeMode.INSTITUTIONAL_BATCH.value
     owner_confirmation = row.get("owner_confirmation") or OwnerConfirmation.NOT_CONTACTED.value
 
     kwargs: dict[str, Any] = {
