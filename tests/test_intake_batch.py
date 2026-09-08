@@ -7,6 +7,7 @@ from pathlib import Path
 from cite_refinery.intake_batch import load_owner_intake_csv
 from cite_refinery.intake_cli import main as intake_main
 from cite_refinery.problem_commons import ProblemStatus, Visibility
+from cite_refinery.problem_intake import IntakeMode
 
 
 FIELDS = [
@@ -32,7 +33,6 @@ class IntakeBatchTests(unittest.TestCase):
             "owner_org": "Synthetic field partner",
             "owner_statement": "A recurring reporting workflow is difficult to complete with current capacity.",
             "geography": "Taoyuan, Taiwan",
-            "intake_mode": "public-listing",
             "owner_confirmation": "not-contacted",
             "affected_actors": "staff|service users",
             "requested_support": "data analysis|workflow design",
@@ -50,6 +50,8 @@ class IntakeBatchTests(unittest.TestCase):
             self.assertTrue(first.valid)
             self.assertEqual(first.intake.id, second.intake.id)
             self.assertTrue(first.intake.id.startswith("intake:batch-"))
+            self.assertEqual(first.intake.intake_mode, IntakeMode.INSTITUTIONAL_BATCH)
+            self.assertTrue(any("institutional batch" in warning for warning in first.warnings))
             packet = first.intake.to_problem_packet(steward="pilot-curator")
             self.assertEqual(packet.status, ProblemStatus.CANDIDATE)
             self.assertEqual(packet.visibility, Visibility.RESTRICTED)
@@ -87,8 +89,17 @@ class IntakeBatchTests(unittest.TestCase):
             self.assertEqual(candidate["status"], "candidate")
             self.assertEqual(candidate["visibility"], "restricted")
             self.assertEqual(candidate["problem_owner"], "")
+            self.assertEqual(candidate["evidence"][0]["provenance"]["intake_mode"], "institutional-batch")
             self.assertEqual(review["schema"], "problem-owner-intake-review/v0.1")
             self.assertEqual(review["response"]["disposition"], "undecided")
+
+    def test_explicit_public_listing_mode_remains_available(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "needs.csv"
+            write_csv(path, [self.row(intake_mode="public-listing")])
+            record = load_owner_intake_csv(path)[0]
+            self.assertEqual(record.intake.intake_mode, IntakeMode.PUBLIC_LISTING)
+            self.assertTrue(any("public listing" in warning for warning in record.warnings))
 
     def test_missing_required_columns_fail_before_partial_conversion(self):
         with tempfile.TemporaryDirectory() as td:
