@@ -67,7 +67,8 @@ class PublicGoodBridgeTests(unittest.TestCase):
         self.assertFalse(projection.funding_commitment)
         self.assertFalse(projection.application_submitted)
         self.assertFalse(projection.authority_granted)
-        self.assertIn("not an award", projection.claim_boundary)
+        self.assertIn("an award", projection.claim_boundary)
+        self.assertIn("funding commitment", projection.claim_boundary)
 
     def test_blocked_resource_match_preserves_blocker(self):
         projection = coordination_match_to_commons(
