@@ -2,12 +2,14 @@ import json
 import unittest
 from pathlib import Path
 
+from cite_refinery.intake_review import build_intake_owner_review_pack, validate_owner_review_response
 from cite_refinery.problem_commons import ProblemStatus, Visibility
 from cite_refinery.problem_intake import OwnerConfirmation, OwnerIntake
 
 
 ROOT = Path(__file__).resolve().parents[1]
 LIVE_INTAKE = ROOT / "pilot" / "intake" / "yzu-yongfeng-after-school.v0.1.json"
+RUBRICS = ROOT / "pilot" / "rubrics.v0.1.json"
 
 
 class ProblemOwnerIntakeTests(unittest.TestCase):
@@ -46,6 +48,31 @@ class ProblemOwnerIntakeTests(unittest.TestCase):
         self.assertEqual([x.id for x in first.success_criteria], [x.id for x in second.success_criteria])
         self.assertEqual([x.id for x in first.subproblems], [x.id for x in second.subproblems])
         self.assertEqual([x.id for x in first.external_refs], [x.id for x in second.external_refs])
+
+    def test_owner_review_pack_asks_for_confirmation_without_implying_authority(self):
+        intake = OwnerIntake.load(LIVE_INTAKE)
+        packet = intake.to_problem_packet(steward="pilot-curator")
+        rubrics = json.loads(RUBRICS.read_text(encoding="utf-8"))
+        pack = build_intake_owner_review_pack(intake, packet, rubrics=rubrics)
+        self.assertEqual(pack["schema"], "problem-owner-intake-review/v0.1")
+        self.assertEqual(pack["response"]["disposition"], "undecided")
+        self.assertIsNone(pack["response"]["source_still_current"])
+        self.assertTrue(all(item["status"] == "proposed_pending_owner_review" for item in pack["problem"]["candidate_work"]))
+        self.assertTrue(any("does not authorize live work" in instruction for instruction in pack["instructions"]))
+        self.assertEqual(validate_owner_review_response(pack), [])
+
+    def test_completed_owner_review_requires_currentness_and_identity_answers(self):
+        intake = OwnerIntake.load(LIVE_INTAKE)
+        packet = intake.to_problem_packet(steward="pilot-curator")
+        rubrics = json.loads(RUBRICS.read_text(encoding="utf-8"))
+        pack = build_intake_owner_review_pack(intake, packet, rubrics=rubrics)
+        pack["response"]["disposition"] = "confirm"
+        errors = validate_owner_review_response(pack)
+        self.assertTrue(any("source_still_current" in item for item in errors))
+        self.assertTrue(any("owner_identity_and_role_correct" in item for item in errors))
+        pack["response"]["source_still_current"] = True
+        pack["response"]["owner_identity_and_role_correct"] = True
+        self.assertEqual(validate_owner_review_response(pack), [])
 
     def test_confirmed_owner_requires_confirmation_receipt(self):
         raw = json.loads(LIVE_INTAKE.read_text(encoding="utf-8"))
