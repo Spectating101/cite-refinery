@@ -15,16 +15,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Fetch and analyze official Taoyuan open data
-        run: python pilot/real_data/taoyuan_mobility_probe_v2.py
+      - name: Fetch, reconcile, and analyze official Taoyuan open data
+        run: python pilot/real_data/taoyuan_mobility_probe_v3.py
       - name: Print empirical report
         run: |
-          cat real-data-output/taoyuan-real-data-report.md
+          cat real-data-output/taoyuan-real-data-v3-report.md
           echo "--- SUMMARY JSON ---"
-          cat real-data-output/taoyuan-real-data-summary.json
+          cat real-data-output/taoyuan-real-data-v3-summary.json
       - name: Upload reproducible probe outputs
         uses: actions/upload-artifact@v4
         with:
-          name: taoyuan-real-data-probe
+          name: taoyuan-real-data-probe-v3
           path: real-data-output/
           if-no-files-found: error
