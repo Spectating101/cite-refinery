@@ -19,6 +19,35 @@ jobs:
         run: python pilot/real_data/taoyuan_mobility_probe_v3.py
       - name: Test whether corridor repetitions encode party-level grain
         run: python pilot/real_data/taoyuan_party_grain_probe.py
+      - name: Validate revised living Problem Packet
+        env:
+          PYTHONPATH: src
+        run: |
+          python - <<'PY'
+          import json
+          from cite_refinery.problem_commons import ProblemPacket
+          raw = json.load(open('pilot/drafts/taoyuan-mobility.candidate.v0.2.json', encoding='utf-8'))
+          packet = ProblemPacket.from_dict(raw)
+          readiness = packet.publishability(require_decomposition=True)
+          print(json.dumps({
+              'id': packet.id,
+              'status': packet.status.value,
+              'visibility': packet.visibility.value,
+              'title': packet.title,
+              'subproblems': [(x.id, x.status) for x in packet.subproblems],
+              'publishable': readiness.publishable,
+              'missing': readiness.missing,
+              'warnings': readiness.warnings,
+              'completeness': readiness.completeness,
+          }, ensure_ascii=False, indent=2))
+          assert packet.status.value == 'researching'
+          assert packet.visibility.value == 'restricted'
+          assert readiness.publishable is False
+          assert 'reviewed_evidence' in readiness.missing
+          assert packet.attempts == []
+          assert packet.authority_decisions == []
+          assert packet.outcomes == []
+          PY
       - name: Print empirical reports
         run: |
           cat real-data-output/taoyuan-real-data-v3-report.md
@@ -27,6 +56,6 @@ jobs:
       - name: Upload reproducible probe outputs
         uses: actions/upload-artifact@v4
         with:
-          name: taoyuan-real-data-probe-v4
+          name: taoyuan-real-data-probe-v5
           path: real-data-output/
           if-no-files-found: error
