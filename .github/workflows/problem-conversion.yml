@@ -20,6 +20,13 @@ jobs:
           python -m json.tool schemas/problem-owner-intake.v0.1.schema.json > /dev/null
           python -m json.tool schemas/problem-owner-intake-review.v0.1.schema.json > /dev/null
           python -m json.tool pilot/intake/yzu-yongfeng-after-school.v0.1.json > /dev/null
+          python - <<'PY'
+          import csv
+          with open('pilot/intake/yzu-center-batch-template.v0.1.csv', encoding='utf-8-sig', newline='') as f:
+              fields = next(csv.reader(f))
+          required = {'title','owner_org','owner_statement','geography'}
+          assert required.issubset(fields)
+          PY
           problem-intake validate pilot/intake/yzu-yongfeng-after-school.v0.1.json > /tmp/intake-validation.json
           python -m json.tool /tmp/intake-validation.json > /dev/null
       - name: Generate fail-closed candidate from live YZU listing
@@ -60,5 +67,41 @@ jobs:
           assert any('does not authorize live work' in line for line in pack['instructions'])
           assert validation['valid'] is True
           PY
+      - name: Smoke no-integration CSV batch intake
+        run: |
+          python - <<'PY'
+          import csv
+          template = 'pilot/intake/yzu-center-batch-template.v0.1.csv'
+          with open(template, encoding='utf-8-sig', newline='') as f:
+              fields = next(csv.reader(f))
+          row = {
+              'title': 'Synthetic pilot need',
+              'owner_org': 'Synthetic field partner',
+              'owner_statement': 'A recurring field workflow needs additional analytical capacity.',
+              'geography': 'Taoyuan, Taiwan',
+              'intake_mode': 'public-listing',
+              'owner_confirmation': 'not-contacted',
+              'affected_actors': 'staff|service users',
+              'requested_support': 'data analysis|workflow design',
+              'uncertainties': 'freshness not confirmed|baseline not supplied',
+          }
+          with open('/tmp/yzu-batch.csv','w',encoding='utf-8',newline='') as f:
+              writer=csv.DictWriter(f,fieldnames=fields); writer.writeheader(); writer.writerow(row)
+          PY
+          problem-intake batch-csv /tmp/yzu-batch.csv --steward ci-curator --rubrics pilot/rubrics.v0.1.json --out-dir /tmp/yzu-batch-out > /tmp/yzu-batch-result.json
+          python - <<'PY'
+          import json
+          result=json.load(open('/tmp/yzu-batch-result.json'))
+          manifest=json.load(open('/tmp/yzu-batch-out/manifest.json'))
+          assert result['valid_rows'] == 1 and result['invalid_rows'] == 0
+          assert manifest['rows'][0]['owner_confirmed'] is False
+          candidate=json.load(open(manifest['rows'][0]['candidate_path']))
+          review=json.load(open(manifest['rows'][0]['owner_review_path']))
+          assert candidate['status'] == 'candidate'
+          assert candidate['visibility'] == 'restricted'
+          assert candidate['problem_owner'] == ''
+          assert candidate['subproblems'] == []
+          assert review['schema'] == 'problem-owner-intake-review/v0.1'
+          PY
       - name: Run intake unit tests
-        run: python -m unittest tests.test_problem_intake -v
+        run: python -m unittest tests.test_problem_intake tests.test_intake_batch -v
