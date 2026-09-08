@@ -1,0 +1,65 @@
+name: problem-funding
+
+on:
+  push:
+    branches:
+      - prototype/problem-funding-v0
+  workflow_dispatch:
+
+jobs:
+  funding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Funding unit tests
+        run: python -m unittest tests.test_problem_funding -v
+      - name: Validate funding JSON
+        run: |
+          python -m json.tool schemas/problem-funding.v0.1.schema.json > /dev/null
+          python -m json.tool pilot/funding/taoyuan-mobility.funding.v0.1.json > /dev/null
+      - name: Build conservative Taoyuan project brief
+        run: |
+          python - <<'PY'
+          import json
+          from cite_refinery.problem_commons import ProblemCommons, ProblemPacket
+          packet = ProblemPacket.from_dict(json.load(open('pilot/drafts/taoyuan-mobility.candidate.v0.1.json')))
+          commons = ProblemCommons()
+          commons.problems[packet.id] = packet
+          commons.save('/tmp/funding-commons.json')
+          PY
+          problem-stages --state /tmp/funding-stages.json add problem:taoyuan-mobility-candidate-001 sub:validate-data \
+            --stage measure \
+            --question 'What do the source rows actually mean and which cross-source joins are defensible?' \
+            --epistemic-type data-quality-and-join-validation \
+            --uncertainty high \
+            --method-maturity adaptable \
+            --output 'data-quality report' \
+            --output 'joinability decision' \
+            --evaluation 'independent reproduction and manual audit of sampled joins' > /tmp/funding-stage.json
+          problem-funding --state /tmp/funding.json import pilot/funding/taoyuan-mobility.funding.v0.1.json > /tmp/funding-import.json
+          problem-funding --state /tmp/funding.json validate > /tmp/funding-validation.json
+          problem-funding --state /tmp/funding.json coverage problem:taoyuan-mobility-candidate-001 > /tmp/funding-coverage.json
+          problem-funding --state /tmp/funding.json brief problem:taoyuan-mobility-candidate-001 sub:validate-data \
+            --problem-state /tmp/funding-commons.json \
+            --stage-state /tmp/funding-stages.json > /tmp/funding-brief.json
+          python -m json.tool /tmp/funding-brief.json > /dev/null
+          python - <<'PY'
+          import json
+          validation = json.load(open('/tmp/funding-validation.json'))
+          coverage = json.load(open('/tmp/funding-coverage.json'))
+          brief = json.load(open('/tmp/funding-brief.json'))
+          assert validation['valid'] is True
+          assert coverage['plans'] == 3
+          assert coverage['unknown_target_count'] == 3
+          assert brief['stage'] == 'measure'
+          assert brief['work_mode'] == 'empirical-inquiry'
+          assert brief['funding_status'] == 'unknown'
+          assert brief['funding_readiness'] == 'unknown'
+          assert brief['volunteer_compatible'] is False
+          assert brief['target_amount'] is None
+          assert any('do not assume' in warning for warning in brief['warnings'])
+          PY
