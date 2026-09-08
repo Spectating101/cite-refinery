@@ -21,6 +21,7 @@ class IntakeMode(StrEnum):
     OWNER_SUBMITTED = "owner-submitted"
     CURATOR_INTERVIEW = "curator-interview"
     PUBLIC_LISTING = "public-listing"
+    INSTITUTIONAL_BATCH = "institutional-batch"
 
 
 class OwnerConfirmation(StrEnum):
@@ -97,8 +98,11 @@ class OwnerIntake:
                 errors.append("confirmed/reframed owner intake requires owner_confirmation_ref")
             if not self.owner_confirmed_at:
                 errors.append("confirmed/reframed owner intake requires owner_confirmed_at")
-        if self.intake_mode == IntakeMode.PUBLIC_LISTING and self.owner_confirmation == OwnerConfirmation.NOT_CONTACTED:
-            warnings.append("public listing has not been confirmed by the potential problem owner")
+        if self.owner_confirmation == OwnerConfirmation.NOT_CONTACTED:
+            if self.intake_mode == IntakeMode.PUBLIC_LISTING:
+                warnings.append("public listing has not been confirmed by the potential problem owner")
+            elif self.intake_mode == IntakeMode.INSTITUTIONAL_BATCH:
+                warnings.append("institutional batch row has not been confirmed by the potential problem owner")
         actor_text = " ".join(self.affected_actors + self.beneficiaries).lower()
         if any(term in actor_text for term in ("child", "children", "minor", "student", "pupil")) and not self.safeguarding_notes:
             warnings.append("child/minor-related intake has no safeguarding notes")
