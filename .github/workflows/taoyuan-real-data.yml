@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Fetch and analyze official Taoyuan open data
-        run: python pilot/real_data/taoyuan_mobility_probe.py
+        run: python pilot/real_data/taoyuan_mobility_probe_v2.py
       - name: Print empirical report
         run: |
           cat real-data-output/taoyuan-real-data-report.md
