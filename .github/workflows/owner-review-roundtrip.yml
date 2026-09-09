@@ -1,0 +1,35 @@
+name: owner-review-roundtrip
+
+on:
+  push:
+    branches: [prototype/owner-review-roundtrip-v0]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: owner-review-roundtrip-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Archive the exact tracked source for reproducible offline review
+        run: git archive --format=zip --output=/tmp/review-source.zip HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: owner-review-source
+          path: /tmp/review-source.zip
+          retention-days: 3
+          if-no-files-found: error
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e .
+      - run: python -m unittest discover -s tests -v
