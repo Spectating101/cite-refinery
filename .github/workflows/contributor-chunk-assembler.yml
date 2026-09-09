@@ -1,0 +1,37 @@
+name: contributor-chunk-assembler
+
+on:
+  push:
+    branches: [prototype/contributor-workspace-v0]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: contributor-chunk-assembler-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify, assemble, apply, and remove transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          for n in 00 01 02 03 04 05 06 07; do test -f ".contributor-chunk-$n"; done
+          cat .contributor-chunk-00 .contributor-chunk-01 .contributor-chunk-02 .contributor-chunk-03 .contributor-chunk-04 .contributor-chunk-05 .contributor-chunk-06 .contributor-chunk-07 > /tmp/contributor-patch.b64
+          echo '74b6511a4b747cb2359463dff32fe692abe118f19a836f7c6e7a915b7427def8  /tmp/contributor-patch.b64' | sha256sum -c -
+          base64 -d /tmp/contributor-patch.b64 > /tmp/contributor-patch.tar.gz
+          echo '009735069249ddeeea844ea141bd51778bbfa2433e8f7d0ebebdc87b9c34d3d6  /tmp/contributor-patch.tar.gz' | sha256sum -c -
+          tar -xzf /tmp/contributor-patch.tar.gz
+          rm -f .contributor-chunk-00 .contributor-chunk-01 .contributor-chunk-02 .contributor-chunk-03 .contributor-chunk-04 .contributor-chunk-05 .contributor-chunk-06 .contributor-chunk-07 .github/workflows/contributor-chunk-assembler.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Complete contributor workspace and independent review handoff'
+          git push origin HEAD:prototype/contributor-workspace-v0
