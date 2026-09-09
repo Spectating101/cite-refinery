@@ -8,6 +8,8 @@ import re
 from .intake_batch import load_owner_intake_csv
 from .intake_review import build_intake_owner_review_pack, validate_owner_review_response
 from .problem_intake import OwnerIntake
+from .owner_review_contract import build_owner_review_receipt
+from .owner_review_page import render_owner_review_page
 
 
 def _print(value) -> None:
@@ -39,6 +41,8 @@ def build_parser() -> argparse.ArgumentParser:
     review.add_argument("--steward", required=True)
     review.add_argument("--rubrics", default="pilot/rubrics.v0.1.json")
     review.add_argument("--out", required=True)
+    review.add_argument("--html-out", help="Also create an offline single-file review page")
+    review.add_argument("--assets-dir", help="Override the repository prototype asset directory")
 
     batch = sub.add_parser(
         "batch-csv",
@@ -51,6 +55,15 @@ def build_parser() -> argparse.ArgumentParser:
 
     validate_review = sub.add_parser("validate-owner-review", help="Validate a completed owner-review response pack")
     validate_review.add_argument("path")
+    validate_review.add_argument("--require-complete", action="store_true")
+    validate_review.add_argument("--original", help="Curator-retained issued pack to bind the response to")
+
+    record = sub.add_parser("record-owner-review", help="Validate a returned review against the issued pack; write a private receipt, without changing case state")
+    record.add_argument("path", help="Returned review file")
+    record.add_argument("--original", required=True, help="Curator-retained original review pack")
+    record.add_argument("--actor", required=True, help="Curator recording the return, not asserted reviewer identity")
+    record.add_argument("--receipt-ref", required=True)
+    record.add_argument("--out", required=True)
 
     return parser
 
@@ -60,9 +73,26 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "validate-owner-review":
             pack = json.loads(Path(args.path).read_text(encoding="utf-8"))
-            errors = validate_owner_review_response(pack)
+            original = json.loads(Path(args.original).read_text(encoding="utf-8")) if args.original else None
+            errors = validate_owner_review_response(pack, require_complete=args.require_complete, expected_pack=original)
             _print({"valid": not errors, "errors": errors})
             return 0 if not errors else 2
+
+        if args.command == "record-owner-review":
+            original = json.loads(Path(args.original).read_text(encoding="utf-8"))
+            returned = json.loads(Path(args.path).read_text(encoding="utf-8"))
+            receipt = build_owner_review_receipt(original, returned, actor=args.actor, receipt_ref=args.receipt_ref)
+            target = Path(args.out)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            # Refuse overwrite and make local receipts private by default.
+            import os
+            fd = os.open(target, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+            with os.fdopen(fd, "w", encoding="utf-8") as handle:
+                json.dump(receipt, handle, indent=2, ensure_ascii=False, allow_nan=False)
+                handle.write("\n")
+            _print({"written": str(target), "receipt_id": receipt["id"], "status": receipt["status"],
+                    "next_action": receipt["next_action"], "case_state_changed": False})
+            return 0
 
         if args.command == "batch-csv":
             records = load_owner_intake_csv(args.path)
@@ -148,8 +178,19 @@ def main(argv: list[str] | None = None) -> int:
             pack = build_intake_owner_review_pack(intake, packet, rubrics=rubrics)
             target = Path(args.out)
             target.parent.mkdir(parents=True, exist_ok=True)
+            page = render_owner_review_page(pack, assets_dir=args.assets_dir) if args.html_out else None
+            output_paths = [target] + ([Path(args.html_out)] if args.html_out else [])
+            if len({path.resolve() for path in output_paths}) != len(output_paths):
+                raise ValueError("JSON and HTML outputs must use different paths")
+            if Path(args.path).resolve() in {path.resolve() for path in output_paths}:
+                raise ValueError("review output cannot overwrite its source intake")
             target.write_text(json.dumps(pack, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            if page is not None:
+                html_target = Path(args.html_out)
+                html_target.parent.mkdir(parents=True, exist_ok=True)
+                html_target.write_text(page, encoding="utf-8")
             _print({
+                "html_written": args.html_out,
                 "written": str(target),
                 "schema": pack["schema"],
                 "problem_id": packet.id,
@@ -157,7 +198,7 @@ def main(argv: list[str] | None = None) -> int:
                 "candidate_work_paths": len(packet.subproblems),
             })
             return 0
-    except (ValueError, OSError, json.JSONDecodeError) as exc:
+    except (ValueError, TypeError, KeyError, AttributeError, OSError, json.JSONDecodeError) as exc:
         _print({"error": str(exc)})
         return 2
     return 2

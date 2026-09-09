@@ -8,6 +8,26 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     .review-shell{max-width:1100px;margin:0 auto;padding:32px 24px 72px}.review-load,.review-panel{background:var(--surface,#fff);border:1px solid var(--line,#ddd);border-radius:18px;padding:24px;margin-bottom:20px}.review-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.review-card{border:1px solid var(--line,#ddd);border-radius:14px;padding:16px}.rubric-item{border-top:1px solid var(--line,#ddd);padding:16px 0}.rubric-item:first-child{border-top:0}.score-row{display:flex;gap:12px;margin-top:10px}.score-row label{display:flex;align-items:center;gap:6px}.review-fields label{display:block;margin:14px 0}.review-fields input,.review-fields textarea,.review-fields select{width:100%;margin-top:6px}.review-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.review-note{font-size:.9rem;opacity:.78}.hidden{display:none!important}@media(max-width:800px){.review-grid{grid-template-columns:1fr}}
+    .review-shell{width:min(1120px,100%);padding:32px 24px 64px;line-height:1.55}
+    .review-shell h1{font-size:clamp(34px,4.4vw,54px);line-height:1.06;letter-spacing:-.045em}
+    .review-shell h2{font-size:28px;line-height:1.2;margin:6px 0 12px;overflow-wrap:anywhere}
+    .review-shell h3{font-size:21px;line-height:1.3;margin-top:24px}.review-card h3{margin-top:0}
+    .review-note,.prototype-note{font-size:14px;opacity:1;line-height:1.55;color:var(--muted)}
+    .review-fields input:not([type=checkbox]),.review-fields textarea,.review-fields select{border:1px solid #b8c7be;border-radius:9px;padding:10px 12px;background:#fff;min-height:44px}
+    .review-fields input[type=checkbox]{width:auto;min-height:auto;margin:0 8px 0 0}.check-label{display:flex!important;align-items:center}
+    .review-fields label{font-size:16px;font-weight:550}.review-fields textarea{resize:vertical}
+    .review-card,.review-panel,.review-load{min-width:0;overflow-wrap:anywhere}
+    .review-actions button{min-height:44px}.review-actions button:disabled{opacity:.45;cursor:not-allowed}
+    :focus-visible{outline:3px solid #397b67;outline-offset:3px}
+    .score-row{flex-wrap:wrap;gap:10px 24px}.score-row label{min-height:36px}
+    .work-choice{padding:18px;background:#f7f9f6;border:1px solid var(--line);border-radius:12px;margin:14px 0}
+    .work-choice h4{font-size:18px;margin:0 0 6px}.work-choice p{margin:7px 0}
+    .review-actions{border-top:1px solid var(--line);padding-top:20px}
+    .review-load>label{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}.review-load input{max-width:100%}::file-selector-button{font:inherit;padding:9px 12px;border:1px solid #b8c7be;border-radius:8px;background:#f7f9f6;margin-right:10px}
+    summary{cursor:pointer;min-height:44px;display:list-item;font-weight:600;padding:10px 0}
+    .context-details{margin-top:16px}.context-details[open]>summary{margin-bottom:12px}
+    #sourceContext a{overflow-wrap:anywhere}#formStatus{min-height:24px}
+    @media(max-width:600px){.review-shell{padding:18px 12px 40px}.review-panel,.review-load{padding:20px 16px}.catalog-head{gap:10px}.review-actions button{flex:1 1 150px}.review-grid{gap:12px}.topbar nav{display:none}}
   </style>
 </head>
 <body>
@@ -22,10 +42,10 @@
   <main class="review-shell">
     <section class="review-load">
       <p class="eyebrow">EXTERNAL REVIEW · V0.1</p>
-      <h1>Review the problem, not our preferred answer.</h1>
-      <p class="lede">Load the minimum-necessary review pack supplied by the curator. This page runs locally in your browser and does not fetch restricted evidence or submit anything automatically.</p>
-      <label>Review-pack JSON<input id="packFile" type="file" accept="application/json,.json" /></label>
-      <p id="loadStatus" class="review-note">No review pack loaded.</p>
+      <h1>Check the need.<br>Shape the work.</h1>
+      <p class="lede">Review the need below, or open the review file supplied by your curator. Your answers stay in this browser until you save a file. Nothing is sent automatically. You can save a draft and reopen it here.</p>
+      <label>Open a review or saved draft<input id="packFile" type="file" accept="application/json,.json" /></label>
+      <p id="loadStatus" class="review-note" role="status" aria-live="polite">No review pack loaded.</p>
     </section>
 
     <section id="reviewApp" class="hidden">
@@ -34,19 +54,21 @@
           <div><p class="eyebrow" id="audienceLabel"></p><h2 id="problemTitle"></h2></div>
           <div><span class="status-chip" id="problemStatus"></span></div>
         </div>
-        <p id="privacyNote" class="prototype-note"></p>
+        <p id="ownerContext" class="review-note"></p><p id="sourceContext"></p><p id="privacyNote" class="prototype-note"></p>
         <div class="review-grid">
           <article class="review-card"><h3>Observed condition</h3><p id="observedCondition"></p></article>
           <article class="review-card"><h3>Unresolved core</h3><p id="unresolvedCore"></p></article>
+        </div>
+        <details class="context-details"><summary>Uncertainty and authority boundaries</summary><div class="review-grid">
           <article class="review-card"><h3>What remains uncertain</h3><ul id="uncertaintyList"></ul></article>
           <article class="review-card"><h3>Authority boundary</h3><p id="authorityBoundary"></p></article>
-        </div>
+        </div></details>
       </section>
 
-      <section class="review-panel">
-        <p class="eyebrow">INSTRUCTIONS</p>
+      <details class="review-panel context-details">
+        <summary>How to review this need</summary>
         <ul id="instructions"></ul>
-      </section>
+      </details>
 
       <section class="review-panel">
         <p class="eyebrow">CONTRIBUTION CONTEXT</p>
@@ -58,8 +80,32 @@
         <h2 id="rubricName"></h2>
         <p id="rubricScoring" class="review-note"></p>
         <form id="reviewForm">
+          <div id="intakeIdentityFields" class="review-fields hidden">
+            <h3>1. Is this still the right need?</h3>
+            <label>Is the reported need still current?<select id="sourceCurrent"><option value="">Not answered</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+            <label>Are the named organization and its role correct?<select id="ownerCorrect"><option value="">Not answered</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+            <h3>2. Does this description fit?</h3>
+          </div>
           <div id="rubricItems"></div>
-          <div class="review-fields">
+          <div id="intakeReviewFields" class="review-fields hidden">
+            <h3>3. Which work would help?</h3>
+            <p class="review-note">These are suggestions, not open assignments. “Explore” does not authorize live work or imply that resources are available.</p>
+            <div id="workChoices"></div>
+            <h3>4. What should change?</h3>
+            <details id="correctionDetails" class="context-details"><summary>Add corrections, constraints or resource information</summary>
+            <label>Factual corrections<textarea id="intakeCorrections" rows="3" placeholder="What is inaccurate or out of date? One correction per line."></textarea></label>
+            <label>Missing constraints<textarea id="intakeConstraints" rows="3" placeholder="Access, supervision, timing, skills, or other limitations."></textarea></label>
+            <label>What result would be useful to you?<textarea id="desiredOutcome" rows="2"></textarea></label>
+            <label>Access or safeguarding corrections<textarea id="safeguardingCorrections" rows="3" placeholder="Describe requirements, not participant identities or private records."></textarea></label>
+            <label>Funding or resource information<textarea id="fundingNotes" rows="3" placeholder="What is known, unavailable, or still needs agreement? Do not include payment details."></textarea></label>
+            </details>
+            <h3>5. What should happen next?</h3>
+            <label class="check-label"><input id="intakeReframe" type="checkbox"> The core description needs material reframing</label>
+            <label>Your decision<select id="intakeDisposition"><option value="undecided">Still reviewing / undecided</option><option value="confirm">Confirm for further curation</option><option value="reframe">Reframe before proceeding</option><option value="stale">The need is out of date</option><option value="already-resolved">Already resolved</option><option value="decline">Decline further involvement</option></select></label>
+            <label>Other notes<textarea id="intakeNotes" rows="3"></textarea></label>
+            <p class="review-note">This review does not publish a problem, authorize work, commit funding, or verify your identity. The curator will check the return and follow up separately.</p>
+          </div>
+          <div id="standardReviewFields" class="review-fields">
             <label>Disagreements or missing context<textarea id="disagreements" rows="4" placeholder="One item per line. Do not paste restricted operational data."></textarea></label>
             <label>Material factual/formulation errors<textarea id="materialErrors" rows="4" placeholder="One item per line."></textarea></label>
             <label><input id="coachingReceived" type="checkbox" /> Curator coaching was received before the unaided assessment was complete</label>
@@ -82,20 +128,22 @@
           </div>
 
           <div class="review-actions">
-            <button type="submit" class="primary-button">Prepare completed response</button>
+            <button id="saveDraft" type="button" class="secondary-button">Save draft</button>
+            <button type="submit" class="primary-button">Prepare response</button>
             <button id="copyResponse" type="button" class="secondary-button" disabled>Copy JSON</button>
-            <button id="saveResponse" type="button" class="secondary-button" disabled>Save response JSON</button>
+            <button id="saveResponse" type="button" class="secondary-button" disabled>Save completed review</button>
           </div>
-          <p id="formStatus" class="review-note"></p>
+          <p id="formStatus" class="review-note" role="status" aria-live="polite"></p>
         </form>
       </section>
 
       <section id="responsePreviewPanel" class="review-panel hidden">
-        <p class="eyebrow">COMPLETED PACK PREVIEW</p>
-        <pre id="responsePreview" style="white-space:pre-wrap;overflow:auto;max-height:420px"></pre>
+        <details><summary>Inspect the response file</summary>
+        <pre id="responsePreview" style="white-space:pre-wrap;overflow:auto;max-height:420px"></pre></details>
       </section>
     </section>
   </main>
+  <script src="owner-review-contract.js"></script>
   <script src="review.js"></script>
 </body>
 </html>

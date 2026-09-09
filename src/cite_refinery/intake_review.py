@@ -4,6 +4,8 @@ from typing import Any
 
 from .problem_commons import ProblemPacket
 from .problem_intake import OwnerIntake
+from .owner_review_contract import validate_owner_review_response
+from urllib.parse import urlsplit
 
 
 def build_intake_owner_review_pack(
@@ -25,7 +27,7 @@ def build_intake_owner_review_pack(
         "intake_id": intake.id,
         "problem_id": packet.id,
         "potential_owner": intake.owner_org,
-        "source_ref": intake.source_ref,
+        "source_ref": _public_source_ref(intake, packet),
         "instructions": [
             "Review this as a representation of your current real need, not as a proposed solution you are expected to accept.",
             "Correct anything stale, inaccurate, missing, unsafe, infeasible, or outside your authority/supervision capacity.",
@@ -85,26 +87,16 @@ def build_intake_owner_review_pack(
     }
 
 
-def validate_owner_review_response(pack: dict[str, Any]) -> list[str]:
-    errors: list[str] = []
-    if pack.get("schema") != "problem-owner-intake-review/v0.1":
-        errors.append("unsupported owner-review schema")
-        return errors
-    response = pack.get("response")
-    if not isinstance(response, dict):
-        errors.append("response object is required")
-        return errors
-    disposition = response.get("disposition")
-    allowed = set(pack.get("allowed_dispositions") or [])
-    if disposition not in allowed:
-        errors.append("response disposition is invalid")
-    scores = response.get("item_scores")
-    items = ((pack.get("rubric") or {}).get("items") or [])
-    if not isinstance(scores, list) or len(scores) != len(items):
-        errors.append("item_scores must align to owner_agreement rubric items")
-    if disposition in {"confirm", "reframe", "stale", "already-resolved", "decline"}:
-        if response.get("source_still_current") is None:
-            errors.append("completed owner review requires source_still_current")
-        if response.get("owner_identity_and_role_correct") is None:
-            errors.append("completed owner review requires owner_identity_and_role_correct")
-    return errors
+
+def _public_source_ref(intake: OwnerIntake, packet: ProblemPacket) -> str:
+    """Do not forward private source locators just because this is a review pack."""
+    from .problem_commons import Visibility
+    if not any(item.locator == intake.source_ref and item.visibility == Visibility.PUBLIC for item in packet.evidence):
+        return ""
+    try:
+        url = urlsplit(intake.source_ref)
+        if url.scheme in {"http", "https"} and url.hostname and not url.username and not url.password:
+            return intake.source_ref
+    except ValueError:
+        pass
+    return ""
