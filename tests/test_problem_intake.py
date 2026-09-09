@@ -72,6 +72,9 @@ class ProblemOwnerIntakeTests(unittest.TestCase):
         self.assertTrue(any("owner_identity_and_role_correct" in item for item in errors))
         pack["response"]["source_still_current"] = True
         pack["response"]["owner_identity_and_role_correct"] = True
+        # Completed reviews cannot leave the actual rubric unanswered.
+        self.assertTrue(validate_owner_review_response(pack))
+        pack["response"]["item_scores"] = [1] * len(pack["rubric"]["items"])
         self.assertEqual(validate_owner_review_response(pack), [])
 
     def test_confirmed_owner_requires_confirmation_receipt(self):
