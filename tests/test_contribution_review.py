@@ -153,6 +153,22 @@ class ContributionReviewTests(unittest.TestCase):
         self.assertEqual(len(packet.attempts), 1)
         self.assertEqual(len(packet.attempt_reviews), 1)
 
+    def test_same_verdict_with_different_review_content_is_not_treated_as_idempotent(self):
+        workspace, submission = self.submitted()
+        first_review = self.review(submission, "accept", review_id="contribreview:first")
+        commons, packet = self.commons()
+        project_review_into_commons(commons, workspace, submission, first_review)
+        changed_review = self.review(
+            submission,
+            "accept",
+            review_id="contribreview:second",
+            summary="A materially different review narrative for the same submission.",
+        )
+        with self.assertRaisesRegex(ValueError, "different review"):
+            project_review_into_commons(commons, workspace, submission, changed_review)
+        self.assertEqual(len(packet.attempts), 1)
+        self.assertEqual(len(packet.attempt_reviews), 1)
+
     def test_tampered_submission_is_rejected_before_projection(self):
         workspace, submission = self.submitted()
         tampered = copy.deepcopy(submission)
@@ -225,6 +241,7 @@ class ContributionReviewTests(unittest.TestCase):
             self.assertTrue(receipt_path.exists())
             receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
             self.assertEqual(receipt["attempt_status"], "accepted")
+            self.assertIn("review_hash", receipt)
 
     def test_existing_receipt_blocks_projection_before_state_mutation(self):
         workspace, submission = self.submitted()
