@@ -213,8 +213,10 @@ def project_review_into_commons(
     attempt_id = f"pattempt:{suffix}"
     canonical_review_id = f"pareview:{suffix}"
     submission_hash = canonical_hash(submission)
+    review_hash = canonical_hash(review.to_dict())
     artifact_refs = [item["locator"] for item in submission["artifacts"]]
-    marker = f"contribution_submission={submission_hash}"
+    submission_marker = f"contribution_submission={submission_hash}"
+    review_marker = f"contribution_review={review_hash}"
 
     existing = next((item for item in packet.attempts if item.id == attempt_id), None)
     existing_reviews = [item for item in packet.attempt_reviews if item.attempt_id == attempt_id]
@@ -224,7 +226,7 @@ def project_review_into_commons(
             raise ValueError("existing canonical Attempt has a conflicting contributor")
         if existing.subproblem_ids != [workspace.subproblem_id]:
             raise ValueError("existing canonical Attempt has conflicting subproblem linkage")
-        if existing.artifact_refs != artifact_refs or marker not in existing.notes:
+        if existing.artifact_refs != artifact_refs or submission_marker not in existing.notes:
             raise ValueError("existing canonical Attempt does not match this contribution submission")
         if existing_reviews:
             if len(existing_reviews) != 1:
@@ -240,10 +242,11 @@ def project_review_into_commons(
                 or prior.reviewer != review.reviewer_ref
                 or prior.verdict != review.verdict.value
                 or review.submission_hash not in prior.notes
+                or review_marker not in prior.notes
                 or existing.status != expected_status
             ):
                 raise ValueError("a different review has already been projected for this contribution")
-            return _projection_receipt(packet.id, workspace, review, attempt_id, canonical_review_id, changed=False)
+            return _projection_receipt(packet.id, workspace, review, attempt_id, canonical_review_id, review_hash, changed=False)
         if existing.status != AttemptStatus.SUBMITTED:
             raise ValueError("existing canonical Attempt is not awaiting review")
     else:
@@ -252,7 +255,7 @@ def project_review_into_commons(
             contributor=workspace.contributor_ref,
             subproblem_ids=[workspace.subproblem_id],
             notes=(
-                f"Projected from Contributor Workspace {workspace.id}. {marker}. "
+                f"Projected from Contributor Workspace {workspace.id}. {submission_marker}. "
                 "Projection records submitted work; it does not establish correctness, funding, authority, outcome, or problem resolution."
             ),
         )
@@ -263,6 +266,7 @@ def project_review_into_commons(
     note_parts = [
         f"Independent contribution review {review.id}.",
         f"submission_hash={review.submission_hash}.",
+        f"{review_marker}.",
         review.summary,
     ]
     if review.revision_requirements:
@@ -278,7 +282,7 @@ def project_review_into_commons(
     )
     canonical_review.id = canonical_review_id
 
-    return _projection_receipt(packet.id, workspace, review, attempt_id, canonical_review_id, changed=True)
+    return _projection_receipt(packet.id, workspace, review, attempt_id, canonical_review_id, review_hash, changed=True)
 
 
 def _projection_receipt(
@@ -287,6 +291,7 @@ def _projection_receipt(
     review: ContributionReview,
     attempt_id: str,
     canonical_review_id: str,
+    review_hash: str,
     *,
     changed: bool,
 ) -> dict[str, Any]:
@@ -305,6 +310,7 @@ def _projection_receipt(
         "problem_id": problem_id,
         "workspace_id": workspace.id,
         "submission_hash": review.submission_hash,
+        "review_hash": review_hash,
         "attempt_id": attempt_id,
         "attempt_review_id": canonical_review_id,
         "verdict": review.verdict.value,
