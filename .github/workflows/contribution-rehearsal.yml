@@ -1,0 +1,50 @@
+name: contribution-rehearsal
+on:
+  push:
+    branches: [prototype/contribution-rehearsal-v0]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: contribution-rehearsal-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  rehearsal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Run contribution rehearsal
+        run: python scripts/run_contribution_rehearsal.py --out /tmp/contribution-rehearsal
+      - name: Verify evidence manifest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifest = json.loads(Path('/tmp/contribution-rehearsal/manifest.json').read_text())
+          assert manifest['result'] == 'pass'
+          assert manifest['problem_status'] == 'open'
+          assert manifest['attempt_count'] == 1
+          assert manifest['attempt_status'] == 'accepted'
+          assert manifest['review_verdicts'] == ['revise', 'accept']
+          assert manifest['outcome_count'] == 0
+          assert manifest['authority_decision_count'] == 0
+          assert manifest['no_op_revision_rejected'] is True
+          assert manifest['private_locator_leak_check'] == 'pass'
+          PY
+      - name: Focused rehearsal tests
+        run: python -m unittest tests.test_contribution_rehearsal -v
+      - name: Diff hygiene
+        run: git diff --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: contribution-rehearsal-${{ github.sha }}
+          path: /tmp/contribution-rehearsal/
+          retention-days: 7
