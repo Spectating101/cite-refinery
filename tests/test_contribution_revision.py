@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 from cite_refinery.contribution_handoff import ContributorWorkspace, ParticipationBasis, canonical_hash
-from cite_refinery.contribution_revision import ContributionRevisionWorkspace, validate_revision_submission
+from cite_refinery.contribution_revision import ContributionRevisionWorkspace
 from cite_refinery.contribution_revision_cli import main as revision_main
 from cite_refinery.contribution_review import (
     ContributionReview,
@@ -169,7 +169,6 @@ class ContributionRevisionTests(unittest.TestCase):
     def test_revision_review_updates_same_attempt_and_preserves_boundaries(self):
         _, parent_submission, trigger, commons, packet = self.seed_revise()
         revision, revised_submission = self.revised_submission(parent_submission, trigger)
-        revision.remove_artifact("artifact:revision-original") if False else None
         revision_review = self.review(
             revised_submission,
             "accept",
@@ -285,6 +284,20 @@ class ContributionRevisionTests(unittest.TestCase):
             project_revision_review_into_commons(
                 commons, revision, revised_submission, review,
                 parent_submission=tampered_parent, trigger_review=trigger.to_dict(),
+            )
+        self.assertEqual(packet.to_dict(), before)
+
+    def test_duplicate_canonical_review_ids_fail_closed_before_mutation(self):
+        _, parent_submission, trigger, commons, packet = self.seed_revise()
+        revision, revised_submission = self.revised_submission(parent_submission, trigger)
+        review = self.review(revised_submission, "accept")
+        packet.attempt_reviews.append(copy.deepcopy(packet.attempt_reviews[0]))
+        before = copy.deepcopy(packet.to_dict())
+
+        with self.assertRaisesRegex(ValueError, "duplicate review ids"):
+            project_revision_review_into_commons(
+                commons, revision, revised_submission, review,
+                parent_submission=parent_submission, trigger_review=trigger.to_dict(),
             )
         self.assertEqual(packet.to_dict(), before)
 
