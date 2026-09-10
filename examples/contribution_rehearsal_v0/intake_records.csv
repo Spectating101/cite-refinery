@@ -1,0 +1,9 @@
+record_id,eligible_window,picked_up,notes
+R1,true,true,eligible pickup
+R2,true,true,eligible pickup
+R3,true,true,eligible pickup
+R4,true,false,eligible but not picked up
+R5,true,true,eligible pickup
+R6,true,true,eligible pickup
+R7,false,true,outside eligibility window
+R8,false,false,outside eligibility window

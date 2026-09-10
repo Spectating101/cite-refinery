@@ -1,0 +1,37 @@
+{
+  "id": "project:problem:rehearsal-food-coverage:sub:coverage-audit",
+  "problem_id": "problem:rehearsal-food-coverage",
+  "subproblem_id": "sub:coverage-audit",
+  "title": "Audit pickup coverage without overstating the denominator",
+  "problem_title": "Synthetic community food-redistribution coverage rehearsal",
+  "description": "Use a frozen intake fixture to distinguish raw listed-record pickup coverage from eligible-program pickup coverage and preserve limitations.",
+  "stage": "measure",
+  "work_mode": "empirical-inquiry",
+  "effort": "1-2 hours",
+  "skill_tags": ["data-audit", "reproducibility"],
+  "required_credentials": [],
+  "expected_outputs": [
+    "reproducible coverage calculation",
+    "explicit denominator definition",
+    "limitations statement"
+  ],
+  "authority_requirement": "analysis and review only; no operational or deployment authority",
+  "compensation_mode": "volunteer",
+  "volunteer_compatible": true,
+  "funding_status": "not-required",
+  "funding_readiness": "not-required",
+  "currency": "TWD",
+  "minimum_amount": null,
+  "target_amount": null,
+  "committed_amount": 0.0,
+  "funding_gap": null,
+  "eligible_instruments": [],
+  "in_kind_needs": [],
+  "expense_categories": [],
+  "funding_restrictions": [],
+  "implementation_budget_owner": "",
+  "maintenance_budget_owner": "",
+  "warnings": [
+    "Synthetic rehearsal only; no external program performance is established."
+  ]
+}
