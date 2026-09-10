@@ -1,5 +1,8 @@
 import copy
+import json
+import tempfile
 import unittest
+from pathlib import Path
 
 from cite_refinery.contribution_handoff import ContributorWorkspace, ParticipationBasis
 from cite_refinery.contribution_review import (
@@ -8,6 +11,7 @@ from cite_refinery.contribution_review import (
     project_review_into_commons,
     validate_submission_snapshot,
 )
+from cite_refinery.contribution_review_cli import main as review_main
 from cite_refinery.problem_commons import ProblemCommons, ProblemPacket, ProblemStatus, Subproblem, Visibility
 
 
@@ -97,9 +101,7 @@ class ContributionReviewTests(unittest.TestCase):
         workspace, submission = self.submitted()
         review = self.review(submission, "accept")
         commons, packet = self.commons()
-
         receipt = project_review_into_commons(commons, workspace, submission, review)
-
         self.assertTrue(receipt["changed"])
         self.assertEqual(receipt["attempt_status"], "accepted")
         self.assertEqual(len(packet.attempts), 1)
@@ -184,6 +186,45 @@ class ContributionReviewTests(unittest.TestCase):
             project_review_into_commons(commons, workspace, submission, review)
         self.assertEqual(packet.attempts, [])
         self.assertEqual(packet.attempt_reviews, [])
+
+    def test_cli_create_validate_and_project_round_trip(self):
+        workspace, submission = self.submitted()
+        commons, _ = self.commons()
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            workspace_path = root / "workspace.json"
+            submission_path = root / "submission.json"
+            review_path = root / "review.json"
+            state_path = root / "commons.json"
+            receipt_path = root / "projection.json"
+            workspace.dump(workspace_path)
+            submission_path.write_text(json.dumps(submission, indent=2) + "\n", encoding="utf-8")
+            commons.dump(state_path)
+
+            self.assertEqual(review_main([
+                "create", str(submission_path), "--workspace", str(workspace_path),
+                "--reviewer-ref", "reviewer:bob", "--verdict", "accept",
+                "--summary", "Bounded analysis is acceptable for its stated scope.",
+                "--limitation", "No causal conclusion.", "--out", str(review_path),
+            ]), 0)
+            self.assertEqual(review_main([
+                "validate", str(review_path), "--submission", str(submission_path),
+                "--workspace", str(workspace_path),
+            ]), 0)
+            self.assertEqual(review_main([
+                "project", str(review_path), "--submission", str(submission_path),
+                "--workspace", str(workspace_path), "--state", str(state_path),
+                "--receipt-out", str(receipt_path),
+            ]), 0)
+
+            loaded = ProblemCommons.load(state_path)
+            packet = loaded.get("problem:review-test")
+            self.assertEqual(len(packet.attempts), 1)
+            self.assertEqual(packet.attempts[0].status.value, "accepted")
+            self.assertEqual(packet.outcomes, [])
+            self.assertTrue(receipt_path.exists())
+            receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+            self.assertEqual(receipt["attempt_status"], "accepted")
 
 
 if __name__ == "__main__":
