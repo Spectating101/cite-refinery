@@ -344,6 +344,9 @@ def project_revision_review_into_commons(
         raise ValueError("existing canonical Attempt has conflicting subproblem linkage")
 
     reviews = [item for item in packet.attempt_reviews if item.attempt_id == attempt_id]
+    review_ids = [item.id for item in reviews]
+    if len(review_ids) != len(set(review_ids)):
+        raise ValueError("canonical Attempt has duplicate review ids; automatic revision projection is unsafe")
     prior = next((item for item in reviews if item.id == prior_review_id), None)
     if prior is None:
         raise ValueError("revision lineage is missing the immediately preceding canonical review")
@@ -357,7 +360,7 @@ def project_revision_review_into_commons(
     expected_prior_ids = {f"pareview:{suffix}"}
     expected_prior_ids.update(f"pareview:{suffix}:r{index}" for index in range(1, workspace.revision_number))
     current = next((item for item in reviews if item.id == canonical_review_id), None)
-    actual_ids = {item.id for item in reviews}
+    actual_ids = set(review_ids)
 
     if current is not None:
         if actual_ids != expected_prior_ids | {canonical_review_id}:
