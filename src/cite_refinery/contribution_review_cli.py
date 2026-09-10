@@ -100,7 +100,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "project":
             commons = ProblemCommons.load(args.state)
             receipt = project_review_into_commons(commons, workspace, submission, review)
-            commons.dump(args.state)
+            commons.save(args.state)
             if args.receipt_out:
                 target = Path(args.receipt_out)
                 target.parent.mkdir(parents=True, exist_ok=True)
