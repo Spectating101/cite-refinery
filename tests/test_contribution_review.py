@@ -199,7 +199,7 @@ class ContributionReviewTests(unittest.TestCase):
             receipt_path = root / "projection.json"
             workspace.dump(workspace_path)
             submission_path.write_text(json.dumps(submission, indent=2) + "\n", encoding="utf-8")
-            commons.dump(state_path)
+            commons.save(state_path)
 
             self.assertEqual(review_main([
                 "create", str(submission_path), "--workspace", str(workspace_path),
