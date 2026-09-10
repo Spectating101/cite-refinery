@@ -48,20 +48,6 @@ def _create_review(args, submission: dict) -> ContributionReview:
     )
 
 
-def _write_review(review: ContributionReview, out: str) -> int:
-    target = Path(out)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(review.to_dict(), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    report = review.validation(reviewable_submission := _load_json_from_review_binding(review, target)) if False else None
-    del report, reviewable_submission
-    return 0
-
-
-def _load_json_from_review_binding(review: ContributionReview, target: Path) -> dict:
-    # Unreachable helper retained only to keep review-file writing free of hidden state.
-    raise RuntimeError(f"no implicit submission lookup for {review.id} at {target}")
-
-
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="problem-contribution-review",
