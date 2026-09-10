@@ -214,7 +214,7 @@ def project_review_into_commons(
     canonical_review_id = f"pareview:{suffix}"
     submission_hash = canonical_hash(submission)
     review_hash = canonical_hash(review.to_dict())
-    artifact_refs = [item["locator"] for item in submission["artifacts"]]
+    artifact_refs = [item["id"] for item in submission["artifacts"]]
     submission_marker = f"contribution_submission={submission_hash}"
     review_marker = f"contribution_review={review_hash}"
 
