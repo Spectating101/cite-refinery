@@ -12,11 +12,17 @@ from .contribution_handoff import (
     canonical_hash,
     utcnow,
 )
+from .contribution_revision import (
+    REVISION_SUBMISSION_SCHEMA,
+    ContributionRevisionWorkspace,
+    validate_revision_submission,
+)
 from .problem_commons import AttemptStatus, ProblemCommons
 
 
 REVIEW_SCHEMA = "problem-contribution-review/v0.1"
 PROJECTION_SCHEMA = "problem-contribution-projection/v0.1"
+REVISION_PROJECTION_SCHEMA = "problem-contribution-revision-projection/v0.1"
 
 
 class ContributionVerdict(StrEnum):
@@ -71,7 +77,7 @@ class ContributionReview:
         evidence_refs: list[str] | None = None,
         review_id: str | None = None,
     ) -> "ContributionReview":
-        errors = validate_submission_snapshot(submission)
+        errors = validate_reviewable_submission(submission)
         if errors:
             raise ValueError("invalid contribution submission: " + "; ".join(errors))
         return cls(
@@ -92,7 +98,7 @@ class ContributionReview:
         )
 
     def validation(self, submission: dict[str, Any]) -> ReviewValidation:
-        errors = validate_submission_snapshot(submission)
+        errors = validate_reviewable_submission(submission)
         warnings: list[str] = []
         if not self.id.startswith("contribreview:") or not self.id.split(":", 1)[1].strip():
             errors.append("review id must begin with contribreview:")
@@ -133,6 +139,17 @@ class ContributionReview:
         if schema != REVIEW_SCHEMA:
             raise ValueError(f"unsupported contribution review schema: {schema}")
         return cls(**data)
+
+
+def validate_reviewable_submission(submission: dict[str, Any]) -> list[str]:
+    if not isinstance(submission, dict):
+        return ["submission must be an object"]
+    schema = submission.get("schema")
+    if schema == SUBMISSION_SCHEMA:
+        return validate_submission_snapshot(submission)
+    if schema == REVISION_SUBMISSION_SCHEMA:
+        return validate_revision_submission(submission)
+    return ["unsupported contribution submission schema"]
 
 
 def validate_submission_snapshot(
@@ -232,11 +249,7 @@ def project_review_into_commons(
             if len(existing_reviews) != 1:
                 raise ValueError("canonical Attempt has multiple reviews; automatic replay is unsafe")
             prior = existing_reviews[0]
-            expected_status = {
-                ContributionVerdict.ACCEPT: AttemptStatus.ACCEPTED,
-                ContributionVerdict.REVISE: AttemptStatus.ACTIVE,
-                ContributionVerdict.REJECT: AttemptStatus.REJECTED,
-            }[review.verdict]
+            expected_status = _attempt_status_for_verdict(review.verdict)
             if (
                 prior.id != canonical_review_id
                 or prior.reviewer != review.reviewer_ref
@@ -285,6 +298,136 @@ def project_review_into_commons(
     return _projection_receipt(packet.id, workspace, review, attempt_id, canonical_review_id, review_hash, changed=True)
 
 
+def project_revision_review_into_commons(
+    commons: ProblemCommons,
+    workspace: ContributionRevisionWorkspace,
+    submission: dict[str, Any],
+    review: ContributionReview,
+    *,
+    parent_submission: dict[str, Any],
+    trigger_review: dict[str, Any],
+) -> dict[str, Any]:
+    submission_errors = validate_revision_submission(
+        submission,
+        workspace=workspace,
+        parent_submission=parent_submission,
+        trigger_review=trigger_review,
+    )
+    if submission_errors:
+        raise ValueError("revision submission/workspace validation failed: " + "; ".join(submission_errors))
+    review_report = review.validation(submission)
+    if not review_report.valid:
+        raise ValueError("contribution revision review is invalid: " + "; ".join(review_report.errors))
+
+    packet = commons.get(workspace.problem_id)
+    if not any(item.id == workspace.subproblem_id for item in packet.subproblems):
+        raise ValueError("canonical Problem no longer contains the reviewed subproblem")
+
+    suffix = workspace.root_workspace_id.split(":", 1)[1]
+    attempt_id = f"pattempt:{suffix}"
+    canonical_review_id = f"pareview:{suffix}:r{workspace.revision_number}"
+    prior_review_id = f"pareview:{suffix}" if workspace.revision_number == 1 else f"pareview:{suffix}:r{workspace.revision_number - 1}"
+    submission_hash = canonical_hash(submission)
+    review_hash = canonical_hash(review.to_dict())
+    artifact_refs = [item["id"] for item in submission["artifacts"]]
+    submission_marker = f"contribution_submission={submission_hash}"
+    parent_marker = f"submission_hash={workspace.parent_submission_hash}"
+    trigger_marker = f"contribution_review={workspace.trigger_review_hash}"
+    review_marker = f"contribution_review={review_hash}"
+
+    attempt = next((item for item in packet.attempts if item.id == attempt_id), None)
+    if attempt is None:
+        raise ValueError("canonical Attempt for the revision root does not exist")
+    if attempt.contributor != workspace.contributor_ref:
+        raise ValueError("existing canonical Attempt has a conflicting contributor")
+    if attempt.subproblem_ids != [workspace.subproblem_id]:
+        raise ValueError("existing canonical Attempt has conflicting subproblem linkage")
+
+    reviews = [item for item in packet.attempt_reviews if item.attempt_id == attempt_id]
+    prior = next((item for item in reviews if item.id == prior_review_id), None)
+    if prior is None:
+        raise ValueError("revision lineage is missing the immediately preceding canonical review")
+    if prior.verdict != ContributionVerdict.REVISE.value:
+        raise ValueError("immediately preceding canonical review is not REVISE")
+    if parent_marker not in prior.notes or trigger_marker not in prior.notes:
+        raise ValueError("preceding canonical review does not match the revision parent/review hashes")
+    if f"contribution_submission={workspace.parent_submission_hash}" not in attempt.notes:
+        raise ValueError("canonical Attempt does not retain the parent submission hash for this revision")
+
+    expected_prior_ids = {f"pareview:{suffix}"}
+    expected_prior_ids.update(f"pareview:{suffix}:r{index}" for index in range(1, workspace.revision_number))
+    current = next((item for item in reviews if item.id == canonical_review_id), None)
+    actual_ids = {item.id for item in reviews}
+
+    if current is not None:
+        if actual_ids != expected_prior_ids | {canonical_review_id}:
+            raise ValueError("later or conflicting canonical revision reviews make this replay unsafe")
+        expected_status = _attempt_status_for_verdict(review.verdict)
+        if (
+            current.reviewer != review.reviewer_ref
+            or current.verdict != review.verdict.value
+            or review.submission_hash not in current.notes
+            or review_marker not in current.notes
+            or attempt.status != expected_status
+            or attempt.artifact_refs != artifact_refs
+            or submission_marker not in attempt.notes
+        ):
+            raise ValueError("a different review has already been projected for this revision")
+        return _revision_projection_receipt(
+            packet.id,
+            workspace,
+            review,
+            attempt_id,
+            canonical_review_id,
+            review_hash,
+            changed=False,
+        )
+
+    if actual_ids != expected_prior_ids:
+        raise ValueError("canonical Attempt review history does not match the expected revision sequence")
+    if attempt.status != AttemptStatus.ACTIVE:
+        raise ValueError("canonical Attempt must be active after REVISE before a revision can be resubmitted")
+
+    attempt.artifact_refs = artifact_refs
+    attempt.notes = (
+        attempt.notes
+        + " "
+        + f"Revision r{workspace.revision_number} submitted from {workspace.id}. {submission_marker}. "
+        + f"trigger_review={workspace.trigger_review_hash}. "
+        + "Revision projection preserves prior review history and does not establish correctness, funding, authority, outcome, or problem resolution."
+    )
+    packet.update_attempt_status(attempt_id, AttemptStatus.SUBMITTED)
+
+    note_parts = [
+        f"Independent contribution revision review {review.id} for revision r{workspace.revision_number}.",
+        f"submission_hash={review.submission_hash}.",
+        f"{review_marker}.",
+        review.summary,
+    ]
+    if review.revision_requirements:
+        note_parts.append("Revision requirements: " + " | ".join(review.revision_requirements))
+    if review.limitations:
+        note_parts.append("Limitations: " + " | ".join(review.limitations))
+    canonical_review = packet.review_attempt(
+        attempt_id,
+        reviewer=review.reviewer_ref,
+        verdict=review.verdict.value,
+        notes=" ".join(note_parts),
+        evidence_refs=review.evidence_refs,
+    )
+    canonical_review.id = canonical_review_id
+
+    return _revision_projection_receipt(
+        packet.id,
+        workspace,
+        review,
+        attempt_id,
+        canonical_review_id,
+        review_hash,
+        changed=True,
+    )
+
+
 def _projection_receipt(
     problem_id: str,
     workspace: ContributorWorkspace,
@@ -295,16 +438,6 @@ def _projection_receipt(
     *,
     changed: bool,
 ) -> dict[str, Any]:
-    status = {
-        ContributionVerdict.ACCEPT: AttemptStatus.ACCEPTED.value,
-        ContributionVerdict.REVISE: AttemptStatus.ACTIVE.value,
-        ContributionVerdict.REJECT: AttemptStatus.REJECTED.value,
-    }[review.verdict]
-    next_action = {
-        ContributionVerdict.ACCEPT: "attempt-accepted-await-separate-problem-or-outcome-decision",
-        ContributionVerdict.REVISE: "revision-required-new-contributor-workspace-or-explicit-revision-flow",
-        ContributionVerdict.REJECT: "attempt-rejected-preserve-record-no-outcome-inferred",
-    }[review.verdict]
     return {
         "schema": PROJECTION_SCHEMA,
         "problem_id": problem_id,
@@ -314,14 +447,64 @@ def _projection_receipt(
         "attempt_id": attempt_id,
         "attempt_review_id": canonical_review_id,
         "verdict": review.verdict.value,
-        "attempt_status": status,
+        "attempt_status": _attempt_status_for_verdict(review.verdict).value,
         "changed": changed,
-        "next_action": next_action,
+        "next_action": _next_action_for_verdict(review.verdict),
         "claims_boundary": (
             "Canonical projection records an independently reviewed Attempt only. It does not transition the Problem, create an Outcome, "
             "assert funding, authorize deployment, or establish causal impact."
         ),
     }
+
+
+def _revision_projection_receipt(
+    problem_id: str,
+    workspace: ContributionRevisionWorkspace,
+    review: ContributionReview,
+    attempt_id: str,
+    canonical_review_id: str,
+    review_hash: str,
+    *,
+    changed: bool,
+) -> dict[str, Any]:
+    return {
+        "schema": REVISION_PROJECTION_SCHEMA,
+        "problem_id": problem_id,
+        "workspace_id": workspace.id,
+        "root_workspace_id": workspace.root_workspace_id,
+        "parent_workspace_id": workspace.parent_workspace_id,
+        "revision_number": workspace.revision_number,
+        "parent_submission_hash": workspace.parent_submission_hash,
+        "trigger_review_hash": workspace.trigger_review_hash,
+        "submission_hash": review.submission_hash,
+        "review_hash": review_hash,
+        "attempt_id": attempt_id,
+        "attempt_review_id": canonical_review_id,
+        "verdict": review.verdict.value,
+        "attempt_status": _attempt_status_for_verdict(review.verdict).value,
+        "changed": changed,
+        "next_action": _next_action_for_verdict(review.verdict),
+        "claims_boundary": (
+            "Revision projection appends one independently reviewed round to the same canonical Attempt. It preserves prior review history and "
+            "does not transition the Problem, create an Outcome, assert funding, authorize deployment, or establish causal impact."
+        ),
+    }
+
+
+def _attempt_status_for_verdict(verdict: ContributionVerdict) -> AttemptStatus:
+    return {
+        ContributionVerdict.ACCEPT: AttemptStatus.ACCEPTED,
+        ContributionVerdict.REVISE: AttemptStatus.ACTIVE,
+        ContributionVerdict.REJECT: AttemptStatus.REJECTED,
+    }[verdict]
+
+
+def _next_action_for_verdict(verdict: ContributionVerdict) -> str:
+    return {
+        ContributionVerdict.ACCEPT: "attempt-accepted-await-separate-problem-or-outcome-decision",
+        ContributionVerdict.REVISE: "revision-required-create-explicit-revision-workspace",
+        ContributionVerdict.REJECT: "attempt-rejected-preserve-record-no-outcome-inferred",
+    }[verdict]
 
 
 def _clean(values: list[str]) -> list[str]:
