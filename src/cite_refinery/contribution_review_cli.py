@@ -98,15 +98,17 @@ def main(argv: list[str] | None = None) -> int:
             return 0 if not errors else 2
 
         if args.command == "project":
+            receipt_target = Path(args.receipt_out) if args.receipt_out else None
+            if receipt_target is not None:
+                receipt_target.parent.mkdir(parents=True, exist_ok=True)
+                if receipt_target.exists():
+                    raise ValueError("receipt output already exists; refusing to mutate canonical state or overwrite projection evidence")
+
             commons = ProblemCommons.load(args.state)
             receipt = project_review_into_commons(commons, workspace, submission, review)
             commons.save(args.state)
-            if args.receipt_out:
-                target = Path(args.receipt_out)
-                target.parent.mkdir(parents=True, exist_ok=True)
-                if target.exists():
-                    raise ValueError("receipt output already exists; refusing to overwrite projection evidence")
-                target.write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            if receipt_target is not None:
+                receipt_target.write_text(json.dumps(receipt, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             _print(receipt)
             return 0
 
