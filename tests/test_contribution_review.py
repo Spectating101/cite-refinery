@@ -226,6 +226,35 @@ class ContributionReviewTests(unittest.TestCase):
             receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
             self.assertEqual(receipt["attempt_status"], "accepted")
 
+    def test_existing_receipt_blocks_projection_before_state_mutation(self):
+        workspace, submission = self.submitted()
+        review = self.review(submission, "accept")
+        commons, _ = self.commons()
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            workspace_path = root / "workspace.json"
+            submission_path = root / "submission.json"
+            review_path = root / "review.json"
+            state_path = root / "commons.json"
+            receipt_path = root / "projection.json"
+            workspace.dump(workspace_path)
+            submission_path.write_text(json.dumps(submission, indent=2) + "\n", encoding="utf-8")
+            review_path.write_text(json.dumps(review.to_dict(), indent=2) + "\n", encoding="utf-8")
+            commons.save(state_path)
+            receipt_path.write_text("do not overwrite\n", encoding="utf-8")
+
+            self.assertEqual(review_main([
+                "project", str(review_path), "--submission", str(submission_path),
+                "--workspace", str(workspace_path), "--state", str(state_path),
+                "--receipt-out", str(receipt_path),
+            ]), 2)
+
+            loaded = ProblemCommons.load(state_path)
+            packet = loaded.get("problem:review-test")
+            self.assertEqual(packet.attempts, [])
+            self.assertEqual(packet.attempt_reviews, [])
+            self.assertEqual(receipt_path.read_text(encoding="utf-8"), "do not overwrite\n")
+
 
 if __name__ == "__main__":
     unittest.main()
