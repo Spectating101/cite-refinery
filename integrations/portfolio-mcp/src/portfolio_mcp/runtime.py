@@ -323,3 +323,13 @@ class Runner:
                 if not task.done():
                     task.cancel()
             await asyncio.gather(*tasks, return_exceptions=True)
+            # Drain killed-process pipes before the event loop closes. Waiting for
+            # the PID alone does not close pipes whose read task hit its cap.
+            try:
+                await asyncio.wait_for(process.communicate(), timeout=2)
+            except (TimeoutError, BrokenPipeError, ConnectionResetError):
+                # Last-resort disposal when a descendant retained a pipe handle.
+                transport = getattr(process, "_transport", None)
+                if transport is not None:
+                    transport.close()
+                await asyncio.sleep(0)
