@@ -9,11 +9,15 @@ from typing import Any
 
 
 _EMPTY_STATE: dict[str, Any] = {
-    "version": 2,
+    "version": 3,
     "projects": {},
+    "problem_observations": {},
+    "research_briefs": {},
     "claims": {},
     "evidence": {},
     "audits": {},
+    "requirements": {},
+    "solution_maps": {},
     "capabilities": {},
     "implementations": {},
     "artifacts": {},
@@ -38,6 +42,7 @@ class JsonStore:
             data = json.load(fh)
         for key, default in _EMPTY_STATE.items():
             data.setdefault(key, deepcopy(default))
+        data["version"] = max(int(data.get("version", 0)), _EMPTY_STATE["version"])
         return data
 
     def save(self, data: dict[str, Any]) -> None:
