@@ -51,6 +51,18 @@ class ResearchBrief:
     observation_ids: list[str] = field(default_factory=list)
     questions: list[dict[str, Any]] = field(default_factory=list)
     audit_ids: list[str] = field(default_factory=list)
+    metadata: dict[str, Any] = field(default_factory=dict)
+    status: str = "prepared"
+    created_at: str = field(default_factory=utcnow)
+
+
+@dataclass(slots=True)
+class ResearchAgenda:
+    id: str
+    project_id: str
+    brief_ids: list[str] = field(default_factory=list)
+    grouping: dict[str, Any] = field(default_factory=dict)
+    metrics: dict[str, Any] = field(default_factory=dict)
     status: str = "prepared"
     created_at: str = field(default_factory=utcnow)
 
