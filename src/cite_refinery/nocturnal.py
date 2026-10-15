@@ -59,8 +59,21 @@ def _literature_queries(row: dict[str, Any]) -> list[dict[str, Any]]:
             "query": query,
             "reason": reason or None,
             "claim_anchor": item.get("claim_anchor"),
+            "origin": item.get("origin") or "nocturnal_explicit",
         })
     return normalized
+
+
+def _trace_relation_types(row: dict[str, Any]) -> str | None:
+    edges = row.get("trace_edges")
+    if not isinstance(edges, list):
+        return None
+    relation_types = sorted({
+        str(edge.get("relation_type") or "").strip()
+        for edge in edges
+        if isinstance(edge, dict) and str(edge.get("relation_type") or "").strip()
+    })
+    return ",".join(relation_types) or None
 
 
 def parse_nocturnal_packet(packet: dict[str, Any]) -> list[NocturnalObservationRecord]:
@@ -71,12 +84,25 @@ def parse_nocturnal_packet(packet: dict[str, Any]) -> list[NocturnalObservationR
         raise ValueError("Nocturnal packet contains no claim rows")
 
     artifact_kind = packet.get("artifact_kind")
+    packet_metadata = {
+        "packet_schema": packet.get("schema"),
+        "candidate_id": packet.get("candidate_id"),
+        "country": packet.get("country"),
+        "domain": packet.get("domain"),
+        "case_title": packet.get("title"),
+        "chain_id": packet.get("chain_id"),
+        "cohort": packet.get("cohort"),
+        "selection_freeze": packet.get("selection_freeze"),
+        "quality_state": packet.get("quality_state"),
+    }
+    packet_metadata = {key: value for key, value in packet_metadata.items() if value is not None}
+
     records: list[NocturnalObservationRecord] = []
     for row in rows:
         text = str(row.get("public_claim") or row.get("claim") or "").strip()
         if not text:
             continue
-        matter_id = row.get("matter_id")
+        matter_id = row.get("matter_id") or packet.get("matter_id") or packet.get("candidate_id")
         event_id = row.get("event_id")
         claim_id = row.get("claim_id")
         if event_id:
@@ -94,6 +120,7 @@ def parse_nocturnal_packet(packet: dict[str, Any]) -> list[NocturnalObservationR
             sources.append(str(canonical_url))
 
         provenance = {
+            **packet_metadata,
             "artifact_kind": artifact_kind,
             "canonical_url": canonical_url,
             "source_tier": row.get("source_tier"),
@@ -104,6 +131,8 @@ def parse_nocturnal_packet(packet: dict[str, Any]) -> list[NocturnalObservationR
             "article_title": row.get("article_title"),
             "risk_level": row.get("risk_level"),
             "review_required": row.get("review_required"),
+            "editorial_review_state": row.get("editorial_review_state"),
+            "relation_types": _trace_relation_types(row),
         }
         provenance = {key: value for key, value in provenance.items() if value is not None}
         records.append(NocturnalObservationRecord(
