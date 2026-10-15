@@ -176,6 +176,44 @@ class CiteRefinery(CoreCiteRefinery):
         )
         return audit
 
+    def scale_report(self, project_id: str) -> dict[str, Any]:
+        report = super().scale_report(project_id)
+        state = self.store.load()
+        discovery_audits = [
+            audit
+            for audit in state["audits"].values()
+            if audit.get("project_id") == project_id and audit.get("purpose") == "literature_discovery"
+        ]
+        discovery_completed = sum(audit.get("status") == "completed" for audit in discovery_audits)
+        discovery_partial = sum(audit.get("status") == "partial" for audit in discovery_audits)
+        paper_total = 0
+        unique_keys = 0
+        questions_attempted = 0
+        for audit in discovery_audits:
+            structured = audit.get("structured") if isinstance(audit.get("structured"), dict) else {}
+            paper_total += int(structured.get("paper_count_total") or 0)
+            unique_keys += int(structured.get("unique_paper_keys") or 0)
+            questions_attempted += int(structured.get("questions_attempted") or 0)
+        research = report.setdefault("research", {})
+        research.update({
+            "literature_discovery_audits": len(discovery_audits),
+            "literature_discovery_completed": discovery_completed,
+            "literature_discovery_partial": discovery_partial,
+            "literature_questions_attempted": questions_attempted,
+            "literature_paper_receipts_total": paper_total,
+            "literature_unique_keys_sum": unique_keys,
+        })
+        brief_count = int(research.get("briefs") or 0)
+        if brief_count and not discovery_audits:
+            report.setdefault("warnings", []).append(
+                "Research briefs exist but no deep literature acquisition receipts are recorded; Cite grounding is operating without the structured discovery layer."
+            )
+        if discovery_audits and discovery_completed < len(discovery_audits):
+            report.setdefault("warnings", []).append(
+                "Some literature discovery audits are not completed; inspect acquisition receipts before treating research coverage as sufficient."
+            )
+        return report
+
     def map_requirements(
         self,
         project_id: str,
