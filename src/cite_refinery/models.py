@@ -26,6 +26,36 @@ class Project:
 
 
 @dataclass(slots=True)
+class ProblemObservation:
+    id: str
+    project_id: str
+    source_system: str
+    external_id: str
+    matter_id: str | None
+    event_id: str | None
+    text: str
+    observed_at: str | None = None
+    status_stage: str | None = None
+    frame: str | None = None
+    sources: list[str] = field(default_factory=list)
+    literature_queries: list[dict[str, Any]] = field(default_factory=list)
+    provenance: dict[str, Any] = field(default_factory=dict)
+    created_at: str = field(default_factory=utcnow)
+
+
+@dataclass(slots=True)
+class ResearchBrief:
+    id: str
+    project_id: str
+    title: str
+    observation_ids: list[str] = field(default_factory=list)
+    questions: list[dict[str, Any]] = field(default_factory=list)
+    audit_ids: list[str] = field(default_factory=list)
+    status: str = "prepared"
+    created_at: str = field(default_factory=utcnow)
+
+
+@dataclass(slots=True)
 class Claim:
     id: str
     project_id: str
@@ -57,6 +87,32 @@ class Audit:
     status: str
     raw: str
     structured: dict[str, Any] | list[Any] | None = None
+    purpose: str = "claim_grounding"
+    target_ids: list[str] = field(default_factory=list)
+    created_at: str = field(default_factory=utcnow)
+
+
+@dataclass(slots=True)
+class Requirement:
+    id: str
+    project_id: str
+    text: str
+    kind: str = "capability"
+    tags: list[str] = field(default_factory=list)
+    source_brief_id: str | None = None
+    source_audit_id: str | None = None
+    status: str = "open"
+    created_at: str = field(default_factory=utcnow)
+
+
+@dataclass(slots=True)
+class SolutionMap:
+    id: str
+    project_id: str
+    requirement_ids: list[str]
+    engine: str
+    status: str
+    results: dict[str, Any] = field(default_factory=dict)
     created_at: str = field(default_factory=utcnow)
 
 

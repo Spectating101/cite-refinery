@@ -5,18 +5,21 @@ import json
 import sys
 from pathlib import Path
 
-from .orchestrator import CiteRefinery
+from .pipeline import CiteRefinery
 
 
 def _print(value) -> None:
     if hasattr(value, "__dataclass_fields__"):
         from dataclasses import asdict
         value = asdict(value)
+    elif isinstance(value, list) and value and hasattr(value[0], "__dataclass_fields__"):
+        from dataclasses import asdict
+        value = [asdict(item) for item in value]
     print(json.dumps(value, indent=2, ensure_ascii=False, default=str))
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="cite-refinery", description="Evidence-to-solution project lifecycle")
+    parser = argparse.ArgumentParser(prog="cite-refinery", description="Problem-to-evidence-to-solution lifecycle")
     parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -25,6 +28,21 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--problem", required=True)
     init.add_argument("--branch")
 
+    nocturnal = sub.add_parser("nocturnal-ingest", help="Import a Nocturnal evidence-history/research packet")
+    nocturnal.add_argument("project_id")
+    nocturnal.add_argument("packet")
+    nocturnal.add_argument("--packet-ref")
+
+    brief = sub.add_parser("research-brief", help="Build a Cite research brief from Nocturnal observations")
+    brief.add_argument("project_id")
+    brief.add_argument("--observation-id", action="append", default=[])
+    brief.add_argument("--question", action="append", default=[])
+    brief.add_argument("--title")
+
+    research_ground = sub.add_parser("research-ground", help="Ground a problem research brief through Cite-Agent")
+    research_ground.add_argument("project_id")
+    research_ground.add_argument("brief_id")
+
     claim = sub.add_parser("claim-add", help="Add an empirical/technical claim")
     claim.add_argument("project_id")
     claim.add_argument("text")
@@ -32,6 +50,28 @@ def build_parser() -> argparse.ArgumentParser:
     ground = sub.add_parser("ground", help="Audit project claims with Cite-Agent ground_claims")
     ground.add_argument("project_id")
     ground.add_argument("claim_ids", nargs="*")
+
+    req = sub.add_parser("requirement-add", help="Record a capability requirement derived from the research layer")
+    req.add_argument("project_id")
+    req.add_argument("text")
+    req.add_argument("--kind", default="capability")
+    req.add_argument("--tag", action="append", default=[])
+    req.add_argument("--source-brief-id")
+    req.add_argument("--source-audit-id")
+
+    solmap = sub.add_parser("solution-map", help="Search canonical Refinery for requirement coverage")
+    solmap.add_argument("project_id")
+    solmap.add_argument("requirement_ids", nargs="*")
+    solmap.add_argument("--limit", type=int, default=20)
+
+    adopt = sub.add_parser("cap-adopt", help="Adopt a mapped solution as a project-local capability")
+    adopt.add_argument("project_id")
+    adopt.add_argument("requirement_id")
+    adopt.add_argument("name")
+    adopt.add_argument("--description", required=True)
+    adopt.add_argument("--tag", action="append", default=[])
+    adopt.add_argument("--solution-map-id")
+    adopt.add_argument("--candidate-ref")
 
     cap = sub.add_parser("cap-add", help="Register a project capability")
     cap.add_argument("project_id")
@@ -81,7 +121,7 @@ def build_parser() -> argparse.ArgumentParser:
     promote.add_argument("capability_id")
     promote.add_argument("--experiment-id", required=True)
 
-    dossier = sub.add_parser("dossier", help="Export the project's evidence/build chain")
+    dossier = sub.add_parser("dossier", help="Export the project's problem/research/build chain")
     dossier.add_argument("project_id")
     dossier.add_argument("--format", choices=["json", "markdown"], default="json")
     dossier.add_argument("--out")
@@ -95,10 +135,24 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "init":
             _print(app.init_project(args.title, args.problem, args.branch))
+        elif args.command == "nocturnal-ingest":
+            packet_path = Path(args.packet)
+            packet = json.loads(packet_path.read_text(encoding="utf-8"))
+            _print(app.ingest_nocturnal_packet(args.project_id, packet, packet_ref=args.packet_ref or str(packet_path)))
+        elif args.command == "research-brief":
+            _print(app.prepare_research_brief(args.project_id, observation_ids=args.observation_id or None, title=args.title, extra_questions=args.question))
+        elif args.command == "research-ground":
+            _print(app.ground_research_brief(args.project_id, args.brief_id))
         elif args.command == "claim-add":
             _print(app.add_claim(args.project_id, args.text))
         elif args.command == "ground":
             _print(app.ground(args.project_id, args.claim_ids or None))
+        elif args.command == "requirement-add":
+            _print(app.add_requirement(args.project_id, args.text, kind=args.kind, tags=args.tag, source_brief_id=args.source_brief_id, source_audit_id=args.source_audit_id))
+        elif args.command == "solution-map":
+            _print(app.map_requirements(args.project_id, args.requirement_ids or None, limit=args.limit))
+        elif args.command == "cap-adopt":
+            _print(app.adopt_capability(args.project_id, args.requirement_id, name=args.name, description=args.description, tags=args.tag, solution_map_id=args.solution_map_id, candidate_ref=args.candidate_ref))
         elif args.command == "cap-add":
             _print(app.refinery.register_capability(name=args.name, description=args.description, tags=args.tag, project_id=args.project_id))
         elif args.command == "impl-add":
@@ -114,17 +168,14 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "promote":
             _print(app.promote_capability(args.project_id, args.capability_id, args.experiment_id))
         elif args.command == "dossier":
-            if args.format == "markdown":
-                output = app.dossier_markdown(args.project_id)
-            else:
-                output = json.dumps(app.dossier(args.project_id), indent=2, ensure_ascii=False)
+            output = app.dossier_markdown(args.project_id) if args.format == "markdown" else json.dumps(app.dossier(args.project_id), indent=2, ensure_ascii=False)
             if args.out:
                 Path(args.out).write_text(output + ("" if output.endswith("\n") else "\n"), encoding="utf-8")
                 print(args.out)
             else:
                 print(output)
         return 0
-    except (KeyError, ValueError, json.JSONDecodeError) as exc:
+    except (KeyError, ValueError, json.JSONDecodeError, OSError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
