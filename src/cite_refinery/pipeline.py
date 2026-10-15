@@ -43,7 +43,6 @@ class CiteRefinery(BaseCiteRefinery):
         super().__init__(workspace=workspace, cite=cite)
         self.solution_refinery = solution_refinery or CanonicalRefineryCLIAdapter()
 
-    # Nocturnal: real-world observations and problem mapping.
     def ingest_nocturnal_packet(
         self,
         project_id: str,
@@ -113,7 +112,6 @@ class CiteRefinery(BaseCiteRefinery):
         values["source_link_count"] = sum(len(item.get("sources") or []) for item in selected)
         return values
 
-    # Nocturnal -> Cite: translate empirical observations into literature questions.
     def prepare_research_brief(
         self,
         project_id: str,
@@ -288,6 +286,8 @@ class CiteRefinery(BaseCiteRefinery):
             },
             metrics=metrics,
         )
+        # Brief creation above performs independent atomic writes. Reload before
+        # adding the agenda so a stale pre-brief snapshot cannot erase them.
         state = self.store.load()
         state["research_agendas"][agenda.id] = dump_model(agenda)
         self.store.save(state)
@@ -412,7 +412,6 @@ class CiteRefinery(BaseCiteRefinery):
         )
         return audit
 
-    # Cite -> Refinery: explicit capability requirements, then solution mapping.
     def add_requirement(
         self,
         project_id: str,
@@ -491,7 +490,6 @@ class CiteRefinery(BaseCiteRefinery):
                     enriched = dict(candidate)
                     enriched["matched_by_probe"] = probe
                     merged[key] = enriched
-            # Preserve the simple/old path when a full requirement already finds candidates.
             if index == 0 and merged:
                 break
         statuses = [attempt["status"] for attempt in attempts]
