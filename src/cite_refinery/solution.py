@@ -184,6 +184,10 @@ class LayeredRefinerySearchAdapter:
             "commons": commons,
             "operational": operational,
             "reviewed_market": reviewed_market,
+            # Compatibility aggregate consumed by the current solution-map kernel.
+            # Each market candidate retains authority=reviewed_market_graph, so this
+            # does not collapse its authority into Commons.
+            "results": reviewed_market,
             "layers": {
                 "canonical": {
                     "engine": canonical.engine,
