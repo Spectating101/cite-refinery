@@ -9,10 +9,11 @@ from typing import Any
 
 
 _EMPTY_STATE: dict[str, Any] = {
-    "version": 3,
+    "version": 4,
     "projects": {},
     "problem_observations": {},
     "research_briefs": {},
+    "research_agendas": {},
     "claims": {},
     "evidence": {},
     "audits": {},
