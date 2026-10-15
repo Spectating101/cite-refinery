@@ -1,6 +1,6 @@
-"""Cite-Refinery: evidence-to-solution project orchestration."""
+"""Cite-Refinery: problem-to-evidence-to-solution project orchestration."""
 
-from .orchestrator import CiteRefinery
+from .pipeline import CiteRefinery
 
 __all__ = ["CiteRefinery"]
-__version__ = "0.2.0"
+__version__ = "0.3.0"
