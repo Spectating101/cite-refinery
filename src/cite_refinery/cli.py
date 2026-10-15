@@ -18,6 +18,17 @@ def _print(value) -> None:
     print(json.dumps(value, indent=2, ensure_ascii=False, default=str))
 
 
+def _packet_paths(values: list[str]) -> list[Path]:
+    paths: list[Path] = []
+    for raw in values:
+        path = Path(raw)
+        if path.is_dir():
+            paths.extend(sorted(path.rglob("*.json")))
+        else:
+            paths.append(path)
+    return paths
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="cite-refinery", description="Problem-to-evidence-to-solution lifecycle")
     parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
@@ -28,20 +39,37 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--problem", required=True)
     init.add_argument("--branch")
 
-    nocturnal = sub.add_parser("nocturnal-ingest", help="Import a Nocturnal evidence-history/research packet")
+    nocturnal = sub.add_parser("nocturnal-ingest", help="Import one Nocturnal evidence-history/research packet")
     nocturnal.add_argument("project_id")
     nocturnal.add_argument("packet")
     nocturnal.add_argument("--packet-ref")
+
+    nocturnal_many = sub.add_parser("nocturnal-ingest-many", help="Import Nocturnal JSON case files from files or directories")
+    nocturnal_many.add_argument("project_id")
+    nocturnal_many.add_argument("packets", nargs="+")
 
     brief = sub.add_parser("research-brief", help="Build a Cite research brief from Nocturnal observations")
     brief.add_argument("project_id")
     brief.add_argument("--observation-id", action="append", default=[])
     brief.add_argument("--question", action="append", default=[])
     brief.add_argument("--title")
+    brief.add_argument("--no-structural-fallback", action="store_true")
+
+    agenda = sub.add_parser("research-agenda", help="Cluster a large Nocturnal corpus into bounded Cite research briefs")
+    agenda.add_argument("project_id")
+    agenda.add_argument("--max-observations", type=int, default=30)
+    agenda.add_argument("--country", action="append", default=[])
+    agenda.add_argument("--domain", action="append", default=[])
+    agenda.add_argument("--cohort", action="append", default=[])
 
     research_ground = sub.add_parser("research-ground", help="Ground a problem research brief through Cite-Agent")
     research_ground.add_argument("project_id")
     research_ground.add_argument("brief_id")
+    research_ground.add_argument("--max-prompt-chars", type=int, default=30000)
+    research_ground.add_argument("--max-observation-chars", type=int, default=900)
+
+    scale_report = sub.add_parser("scale-report", help="Report empirical, research and solution coverage for a project")
+    scale_report.add_argument("project_id")
 
     claim = sub.add_parser("claim-add", help="Add an empirical/technical claim")
     claim.add_argument("project_id")
@@ -139,10 +167,44 @@ def main(argv: list[str] | None = None) -> int:
             packet_path = Path(args.packet)
             packet = json.loads(packet_path.read_text(encoding="utf-8"))
             _print(app.ingest_nocturnal_packet(args.project_id, packet, packet_ref=args.packet_ref or str(packet_path)))
+        elif args.command == "nocturnal-ingest-many":
+            imported = []
+            failures = []
+            for packet_path in _packet_paths(args.packets):
+                try:
+                    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+                    observations = app.ingest_nocturnal_packet(args.project_id, packet, packet_ref=str(packet_path))
+                    imported.append({"packet": str(packet_path), "observations": len(observations)})
+                except (ValueError, json.JSONDecodeError, OSError) as exc:
+                    failures.append({"packet": str(packet_path), "error": str(exc)})
+            _print({"packets_imported": len(imported), "imports": imported, "failures": failures})
+            if failures:
+                return 1
         elif args.command == "research-brief":
-            _print(app.prepare_research_brief(args.project_id, observation_ids=args.observation_id or None, title=args.title, extra_questions=args.question))
+            _print(app.prepare_research_brief(
+                args.project_id,
+                observation_ids=args.observation_id or None,
+                title=args.title,
+                extra_questions=args.question,
+                allow_structural_fallback=not args.no_structural_fallback,
+            ))
+        elif args.command == "research-agenda":
+            _print(app.prepare_research_agenda(
+                args.project_id,
+                max_observations_per_brief=args.max_observations,
+                countries=args.country or None,
+                domains=args.domain or None,
+                cohorts=args.cohort or None,
+            ))
         elif args.command == "research-ground":
-            _print(app.ground_research_brief(args.project_id, args.brief_id))
+            _print(app.ground_research_brief(
+                args.project_id,
+                args.brief_id,
+                max_prompt_chars=args.max_prompt_chars,
+                max_observation_chars=args.max_observation_chars,
+            ))
+        elif args.command == "scale-report":
+            _print(app.scale_report(args.project_id))
         elif args.command == "claim-add":
             _print(app.add_claim(args.project_id, args.text))
         elif args.command == "ground":
