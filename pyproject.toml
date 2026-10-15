@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cite-refinery"
-version = "0.3.0"
-description = "Problem-to-evidence-to-solution orchestration: Nocturnal observes, Cite grounds, Refinery builds."
+version = "0.4.0"
+description = "Scale-aware problem-to-evidence-to-solution orchestration: Nocturnal observes, Cite grounds, Refinery builds."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
