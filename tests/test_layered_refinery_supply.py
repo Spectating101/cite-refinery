@@ -93,14 +93,20 @@ class LayeredRefinerySupplyTests(unittest.TestCase):
             mapped = solution_map.results[requirement.id]
 
             self.assertEqual(mapped["canonical_candidate_count"], 2)
-            authorities = {row.get("authority") for row in mapped["canonical_candidates"]}
+            self.assertEqual(mapped["supply_candidate_count"], 2)
+            self.assertEqual(
+                mapped["supply_authority_counts"],
+                {"commons": 1, "reviewed_market_graph": 1},
+            )
+            authorities = {row.get("authority") for row in mapped["supply_candidates"]}
             self.assertEqual(authorities, {"commons", "reviewed_market_graph"})
+            self.assertIn("Authority is per candidate", mapped["supply_boundary"])
             state = app.store.load()
             self.assertEqual(state["capabilities"], {})
             self.assertEqual(state["implementations"], {})
 
             market_candidate = next(
-                row for row in mapped["canonical_candidates"]
+                row for row in mapped["supply_candidates"]
                 if row.get("authority") == "reviewed_market_graph"
             )
             self.assertEqual(market_candidate["repository"], "example/version-vault")
