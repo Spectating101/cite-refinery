@@ -9,7 +9,7 @@ from typing import Any
 
 
 _EMPTY_STATE: dict[str, Any] = {
-    "version": 4,
+    "version": 5,
     "projects": {},
     "problem_observations": {},
     "research_briefs": {},
@@ -24,6 +24,8 @@ _EMPTY_STATE: dict[str, Any] = {
     "artifacts": {},
     "runs": {},
     "experiments": {},
+    "feedback_requests": {},
+    "feedback_results": {},
     "events": [],
 }
 
