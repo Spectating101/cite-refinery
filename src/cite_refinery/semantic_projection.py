@@ -46,13 +46,20 @@ class SemanticProjection:
         return "program"
 
     @staticmethod
-    def _candidate_ref(candidate: dict[str, Any]) -> str:
+    def _candidate_refs(candidate: dict[str, Any]) -> list[str]:
+        refs: list[str] = []
         for key in ("subject_id", "entity_id", "repository", "capability", "implementation", "id"):
             value = candidate.get(key)
             if value:
-                return f"{key}:{value}"
+                refs.append(f"{key}:{value}")
+        if refs:
+            return refs
         payload = json.dumps(candidate, sort_keys=True, ensure_ascii=False, default=str).encode("utf-8")
-        return f"candidate-json:{hashlib.sha256(payload).hexdigest()[:24]}"
+        return [f"candidate-json:{hashlib.sha256(payload).hexdigest()[:24]}"]
+
+    @classmethod
+    def _candidate_ref(cls, candidate: dict[str, Any]) -> str:
+        return cls._candidate_refs(candidate)[0]
 
     def project_all(self, project_id: str) -> dict[str, Any]:
         bootstrap = self.graph.bootstrap_project_records(project_id)
@@ -214,14 +221,15 @@ class SemanticProjection:
                         continue
                     authority = str(candidate.get("authority") or "unspecified")
                     authority_counts[authority] = authority_counts.get(authority, 0) + 1
-                    ref = self._candidate_ref(candidate)
+                    refs = self._candidate_refs(candidate)
+                    ref = refs[0]
                     node = self.graph.add_node(
                         project_id,
                         self._candidate_label(candidate),
                         kind=self._candidate_kind(candidate),
                         layer="program",
                         tags=["supply_candidate", authority],
-                        source_refs=[ref, f"solution_map:{map_id}"],
+                        source_refs=[*refs, f"solution_map:{map_id}"],
                         provenance={
                             "source_system": "refinery",
                             "record_type": "solution_supply_candidate",
