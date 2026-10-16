@@ -1,4 +1,4 @@
-"""Cite-Refinery: unified semantic problem-intelligence orchestration."""
+"""Cite-Refinery: clustered semantic research mapping across practical, academic, and program layers."""
 
 from .app import CiteRefinery
 from .semantic import SemanticGraph
