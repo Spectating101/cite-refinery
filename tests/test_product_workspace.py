@@ -147,6 +147,7 @@ class ProductWebShellTests(unittest.TestCase):
         self.assertIn("Nocturnal", APP_HTML)
         self.assertIn("Refinery", APP_HTML)
         self.assertIn("Cite-Refinery", APP_HTML)
+        self.assertIn("state.coverage=data.coverage;renderContent()", APP_HTML)
 
     def test_http_shell_and_project_api_run_without_external_dependencies(self):
         with tempfile.TemporaryDirectory() as tmp:
