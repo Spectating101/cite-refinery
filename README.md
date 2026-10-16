@@ -1,143 +1,201 @@
 # Cite-Refinery
 
-**Cite knows. Refinery builds. Cite-Refinery closes the loop.**
+**Reality → research → semantic structure → solution supply → implementation → feedback.**
 
-Cite-Refinery is the orchestration layer between empirical research and solution construction. A project begins as a real problem, accumulates explicit claims and evidence, acquires or builds capabilities in a project-local Refinery overlay, executes implementations, records validation, and promotes proven capabilities into a shared registry for reuse by later projects.
+Cite-Refinery is the unified problem-intelligence product layer across three specialist engines:
 
-It is intentionally not another chat surface and not a replacement for either upstream system:
+- **Nocturnal** supplies empirical reality: cases, observations, timelines, institutions, sources and post-intervention follow-up.
+- **Cite** supplies academic knowledge: research questions, literature discovery, grounding, mechanisms, methods and evidence.
+- **Refinery** supplies implementation space: requirements, capabilities, repositories, programs, implementations and reusable solution components.
+- **Cite-Refinery** preserves the authority boundaries between those systems, joins them through a provenance-preserving semantic graph, and carries a project through build, validation and feedback.
 
-- **Cite-Agent** owns research, grounding, evidence and citation semantics.
-- **Refinery** owns capability discovery, implementations and reusable solution components.
-- **Cite-Refinery** owns the cross-project lifecycle, provenance chain, execution record and promotion loop.
+The product is intentionally **one workspace, not one monolithic codebase**. Nocturnal, Cite and Refinery remain separately testable engines. Cite-Refinery is the control plane and user-facing project model that composes them.
 
-## Architecture
+## Unified product model
 
 ```text
-problem / external challenge
-          |
-          v
-   claims + questions
-          |
-          v
-  Cite-Agent ground_claims  <---- empirical evidence
-          |
-          v
- project Refinery overlay   <---- shared capability registry
-          |
-          v
-  implementation execution
-          |
-          v
-   run record + artifacts
-          |
-          v
- experiments / validation
-          |
-          v
- promote proven capability
-          |
-          +----------------------> shared registry -> next project
+                           Cite-Refinery
+                        problem workspace
+                               |
+       +-----------------------+-----------------------+
+       |                       |                       |
+   Nocturnal                  Cite                 Refinery
+    Reality                 Research                Supply
+       |                       |                       |
+       +-----------------------+-----------------------+
+                               |
+                        Semantic Graph
+                               |
+                   requirements / implementation
+                               |
+                       runs / experiments
+                               |
+                       outcome feedback
+                               |
+                           Nocturnal
 ```
 
-Each project is an **overlay**, not a fork of the entire platform. Project-local `rcap:*` capabilities and `rimpl:*` implementations remain private while they are being developed. A later project cannot discover or execute them. After a passed/supported experiment, a capability can be promoted to shared state; executable capabilities additionally require a successful linked `rrun:*` before promotion.
+The browser workspace is organized by user task rather than repository name:
 
-## Current integration
+```text
+Overview
+Reality      -> Nocturnal empirical observations
+Research     -> Cite research briefs, discovery and grounding
+Graph        -> semantic nodes, clusters, typed relations and missing paths
+Solutions    -> Refinery requirements, candidates, capabilities and implementations
+Build        -> implementations, runs and artifacts
+Validate     -> experiments and Nocturnal feedback
+```
 
-### Cite-Agent
+Cite-Agent can still stand alone as a full research workbench. Cite-Refinery consumes the research capabilities it needs; it does not attempt to replace the Cite-Agent product experience.
 
-The production adapter calls Cite-Agent's real grounding surface:
+## Semantic problem graph
+
+The unit of analysis is a **specific semantic problem/module**, not a whole domain and not a composite score.
+
+A node can connect to practical, academic and program-side material using typed relations such as:
+
+```text
+SUPPORTS
+CONTRADICTS
+QUALIFIES
+OBSERVES
+EXPLAINS
+MEASURED_BY
+REQUIRES
+ADDRESSES
+PARTIALLY_ADDRESSES
+IMPLEMENTED_BY
+DEPLOYED_BY
+LIMITED_BY
+PRODUCES
+EVALUATED_BY
+```
+
+That makes it possible to ask structural questions such as:
+
+```text
+practical evidence + academic method + no implementation
+program supply + no demonstrated practical problem
+intervention exists + outcome-evaluation path missing
+problem -> method -> [missing implementation] -> deployment -> outcome
+```
+
+An absent edge means the relationship is **not represented in the current graph**. It is never treated as proof that the thing does not exist in the world.
+
+See [`docs/SEMANTIC_PROBLEM_GRAPH.md`](docs/SEMANTIC_PROBLEM_GRAPH.md).
+
+## Web product shell
+
+v0.11 includes a dependency-free first web surface over the real Cite-Refinery workspace.
 
 ```bash
-cite-agent tool ground "<claim or paragraph>"
+python -m pip install -e .
+cite-refinery-web --workspace .cite-refinery --host 127.0.0.1 --port 8765
 ```
 
-That command delegates to `ground_claims`. Set `CITE_AGENT_COMMAND` when Cite-Agent is invoked another way, for example:
+Then open `http://127.0.0.1:8765`.
 
-```bash
-export CITE_AGENT_COMMAND="python -m cite_agent.cli"
+The first milestone is intentionally read-only. It exists to validate the product boundary before committing to a larger frontend stack. It exposes:
+
+- project selection and project overview;
+- Nocturnal Reality observations, sources and stages;
+- Cite Research briefs, questions, discovery and grounding state;
+- Semantic Graph search and node-local practical/academic/program inspection;
+- Refinery Solutions requirements, supply authorities, capabilities and implementations;
+- Build runs and artifacts;
+- Validate experiments and outcome-feedback state.
+
+The same projection is available programmatically through `ProductWorkspace` and a small HTTP API:
+
+```text
+GET /api/health
+GET /api/projects
+GET /api/projects/{project_id}?graph=1
+GET /api/projects/{project_id}/graph
+GET /api/projects/{project_id}/nodes/{node_id}/coverage?depth=1
 ```
 
-If Cite-Agent is absent or fails, Cite-Refinery records that grounding did **not** run. It never converts an unavailable research backend into fabricated evidence or a "supported" claim.
+See [`docs/UNIFIED_PRODUCT_SHELL.md`](docs/UNIFIED_PRODUCT_SHELL.md).
 
-### Refinery execution
-
-The fusion has a provider boundary for implementations. The built-in `subprocess` provider executes an explicitly registered argv vector with `shell=False`. Runtime project input is serialized to JSON stdin by default rather than interpolated into a shell command. Runs record status, structured stdout when JSON is returned, stderr, exit code and duration.
-
-This repository keeps the `rcap / rimpl` contract independent of historical internal paths in `alpha-platform`. A current/historical Refinery or MCP execution plane can therefore be connected as another provider without changing project state or machine IDs.
-
-## Quick start
+## Core CLI
 
 ```bash
 python -m pip install -e .
 
 cite-refinery init "Pilot project" --problem "A real unresolved problem"
-# -> copy the returned rproject:* id
+# -> rproject:...
 
-cite-refinery claim-add rproject:... "Intervention X improves outcome Y."
-cite-refinery ground rproject:...
+# empirical problem map
+cite-refinery nocturnal-ingest rproject:... case.json
+cite-refinery research-agenda rproject:...
 
-cite-refinery cap-add rproject:... "Anomaly detector" \
-  --description "Detect anomalous observations before downstream analysis" \
-  --tag anomaly --tag validation
+# research
+cite-refinery research-discover rproject:... rbrief:...
+cite-refinery research-ground rproject:... rbrief:...
 
-cite-refinery cap-search rproject:... "anomaly validation"
+# requirements and supply
+cite-refinery requirement-add rproject:... "Continuously estimate the hidden population"
+cite-refinery solution-map rproject:...
+
+# project-local capability and execution
+cite-refinery cap-add rproject:... "Population estimator" \
+  --description "Estimate hidden population from reconciled repeat sightings"
 
 cite-refinery impl-add rproject:... rcap:... subprocess \
-  --invocation-json '{"argv":["python","detector.py"]}'
+  --invocation-json '{"argv":["python","estimator.py"]}'
 
-cite-refinery invoke rproject:... rimpl:... \
-  --input-json '{"dataset":"fixtures/holdout.json"}'
-# -> returns rrun:...
+cite-refinery invoke rproject:... rimpl:... --input-json '{"dataset":"observations.json"}'
 
-cite-refinery artifact-add rproject:... "detector-v1" \
-  --kind software --description "First working implementation" --reusable \
-  --capability-id rcap:...
-
+# validation
 cite-refinery experiment-add rproject:... "holdout validation" \
   --method "frozen holdout" --result "passed acceptance threshold" \
-  --verdict passed --metrics-json '{"precision": 0.91, "recall": 0.87}' \
-  --run-id rrun:...
+  --verdict passed --run-id rrun:...
 
-cite-refinery promote rproject:... rcap:... --experiment-id rexp:...
-cite-refinery dossier rproject:... --format markdown --out dossier.md
+# semantic graph
+cite-refinery graph-project rproject:...
+cite-refinery graph-coverage rproject:... sgnode:...
+cite-refinery graph-query rproject:... --present practical --present academic --absent program
+cite-refinery graph-trace rproject:... sgnode:... \
+  --steps-json '[{"relation":"MEASURED_BY","target_kind":"method"},{"relation":"IMPLEMENTED_BY","target_kind":"repository"}]'
 ```
 
-State lives in `.cite-refinery/state.json` by default. Writes are atomic and the event ledger is append-only at the application level, making the lifecycle inspectable without requiring a database for the integration layer.
+State lives in `.cite-refinery/state.json` by default. Writes are atomic.
 
-## Machine IDs
+## Authority boundaries
 
-| Prefix | Meaning |
-| --- | --- |
-| `rproject:*` | project / problem branch |
-| `rclaim:*` | explicit claim to audit |
-| `revidence:*` | attached evidence record |
-| `raudit:*` | Cite-Agent grounding audit |
-| `rcap:*` | reusable capability |
-| `rimpl:*` | implementation of a capability |
-| `rrun:*` | recorded implementation execution |
-| `rart:*` | build artifact |
-| `rexp:*` | experiment / validation |
-| `revt:*` | lifecycle event |
+The integration is deliberately conservative:
+
+1. **Empirical observation is not academic evidence.** Nocturnal material enters as practical context.
+2. **Paper discovery is not support.** Cite discovery receipts can become academic source nodes without silently becoming `SUPPORTS` edges.
+3. **A supply candidate is not a solution.** Refinery search results remain `CANDIDATE_FOR` until explicitly adopted/reviewed.
+4. **Adoption is not effectiveness.** A project-local capability can be selected without being treated as validated.
+5. **Execution is not intervention success.** A successful run and a supported real-world outcome remain distinct records.
+6. **Post-intervention observation is not causal proof.** The Nocturnal feedback protocol records later evidence without automatic attribution.
 
 ## Promotion invariant
 
-Promotion is intentionally asymmetric:
+A project-local reusable capability may be promoted only after validation:
 
-1. A project-local capability must have a **passed** or **supported** experiment.
-2. If the capability has executable implementations, the experiment must link at least one **successful run of that capability**.
-3. Implementations proven by those runs are marked validated before being cloned into shared state.
-4. The promoted global capability records the originating local capability, project, experiment, metrics and successful run IDs in provenance.
+1. a linked experiment must be **passed** or **supported**;
+2. executable capabilities require at least one linked **successful run**;
+3. implementations proven by those runs can be marked validated;
+4. promotion provenance records the originating project, capability, experiment, metrics and successful runs.
 
-This prevents a project from turning an unexecuted implementation into a globally reusable capability by metadata alone.
+## Product-facing Python API
 
-## Design constraints
+```python
+from cite_refinery import CiteRefinery, ProductWorkspace, SemanticGraph
 
-1. **Evidence is not a decoration.** Claims stay unverified unless a grounding/validation step actually runs.
-2. **Machine IDs survive UI changes.** Human labels can change without breaking references.
-3. **Branches compound instead of fragment.** Local work is isolated during development, then explicitly promoted into shared capability state.
-4. **Build and research remain separate authorities.** Refinery does not invent empirical support; Cite does not pretend a paper is an implementation.
-5. **Execution is provenance.** Runs are persisted and can be cited by experiments instead of relying on an informal assertion that code worked.
-6. **Outputs are auditable.** The dossier joins problem, claims, audits, evidence, capabilities, implementations, runs, artifacts, experiments and lifecycle events.
+app = CiteRefinery(".cite-refinery")
+workspace = ProductWorkspace(app.store)
+
+projects = workspace.list_projects()
+view = workspace.project_view("rproject:...")
+node = workspace.node_view("rproject:...", "sgnode:...")
+```
+
+The product projection schema is `cite_refinery.product_workspace.v1`.
 
 ## Tests
 
@@ -145,14 +203,18 @@ This prevents a project from turning an unexecuted implementation into a globall
 PYTHONPATH=src python -m unittest discover -s tests -v
 ```
 
-The suite covers the full evidence-to-build lifecycle, real subprocess execution, structured input/output, failure capture, branch isolation, cross-project execution denial, validation-gated promotion, reuse of a promoted implementation by a later project, local-over-global resolution, and the no-fabricated-evidence Cite fallback.
+The suite covers the evidence-to-build lifecycle, Nocturnal/Cite/Refinery authority boundaries, semantic graph ingestion and path discovery, project projection, feedback, subprocess execution, validation-gated promotion, and the unified HTTP product shell.
 
-## Next adapters
+## Current product boundary
 
-The core lifecycle is backend-neutral. Remaining work is integration depth rather than another architecture rewrite:
+The intended public architecture is:
 
-- direct Cite-Agent structured/MCP result ingestion so evidence locators can flow into `revidence:*` automatically,
-- current/historical Refinery/`alpha-platform` and MCP execution-provider adapters,
-- GitHub artifact/commit ingestion for code provenance,
-- richer evaluator policies for domain-specific promotion gates,
-- UI/project templates on top of the stable machine-ID lifecycle.
+```text
+Cite-Agent        -> standalone research workbench
+Cite-Refinery     -> integrated problem-intelligence product
+  Nocturnal       -> internal/specialist Reality engine
+  Refinery        -> internal/specialist Solutions engine
+  Semantic Graph  -> connective reasoning layer
+```
+
+Nocturnal and Refinery retain independent repositories, schemas and APIs. The user should not need separate public websites merely to move through one problem lifecycle.
