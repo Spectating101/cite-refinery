@@ -1,20 +1,44 @@
 # Unified Product Shell
 
-Cite-Refinery v0.11 introduces a thin web product layer over the existing control plane. It does **not** merge the Nocturnal, Cite, or Refinery engines into one codebase. Instead, it presents their project-local outputs inside one problem-intelligence workspace.
+Cite-Refinery v0.11 introduces a thin web product layer over the existing control plane. It does **not** merge the Nocturnal, Cite, or Refinery engines into one codebase. It projects their outputs into one provenance-preserving semantic map.
 
-## Product boundary
+## Product core
 
-The user-facing workspace is organized by task rather than internal repository name:
+The product is not a linear wizard and not an AI chat surface. Its center is a **clustered three-layer map**.
+
+Each semantic module/cluster is inspected across three independent families:
 
 ```text
-Overview
-Reality      -> Nocturnal empirical observations
-Research     -> Cite research briefs, discovery, grounding
-Graph        -> Cite-Refinery semantic problem graph
-Solutions    -> Refinery requirements, candidates, capabilities
-Build        -> implementations, runs, artifacts
-Validate     -> experiments and Nocturnal feedback
+                         semantic module
+                               |
+          +--------------------+--------------------+
+          |                    |                    |
+      Practical             Academic              Program
+       reality              knowledge              supply
+      Nocturnal               Cite                Refinery
 ```
+
+Examples of modules include `Population observability`, `Population replenishment`, `Citation reliability`, or any other exact topic/problem neighborhood represented in the graph.
+
+The map preserves neutral concepts/anchors separately from the three source families. Typed edges express what is actually represented between nodes. A layer being populated is not a score, and an empty layer is not proof of absence in the world.
+
+## What hangs off the map
+
+Lifecycle material remains useful, but it is supporting context attached to mapped nodes and modules:
+
+```text
+cluster/module
+  ├─ Practical records: observations, events, sources, institutions
+  ├─ Academic records: questions, papers, methods, findings, limitations
+  ├─ Program records: requirements, programs, repositories, capabilities, implementations
+  └─ attached execution/evaluation: runs, artifacts, experiments, feedback
+```
+
+This means the user does not have to operate Cite-Refinery as a sequence of `Reality -> Research -> Solutions -> Build -> Validate` screens. Those records can still exist and be inspected, but the primary question is always:
+
+> What is represented around this semantic module across Practical, Academic, and Program, and how are those nodes connected?
+
+## Authority boundaries
 
 The engines retain their authority boundaries:
 
@@ -22,7 +46,28 @@ The engines retain their authority boundaries:
 - a Cite paper discovery does not automatically support a claim;
 - a Refinery candidate does not automatically solve a requirement;
 - an adopted capability is not automatically effective;
-- a semantic missing edge means the relationship is not represented in the graph, not that it is absent from the world.
+- a successful run is not an intervention outcome;
+- a post-intervention observation is not automatic causal attribution;
+- a semantic missing layer or edge means the relationship is not represented in the current graph, not that it is absent from the world.
+
+## AI role
+
+Cite-Refinery remains directly operable without an AI conversation.
+
+AI can assist discovery, classification, semantic suggestions, explanation, clustering, retrieval, and gap investigation, but the durable product objects remain inspectable without a model call:
+
+- clusters;
+- nodes;
+- typed edges;
+- source references;
+- provenance receipts;
+- requirements;
+- capabilities;
+- runs;
+- experiments;
+- feedback.
+
+The web shell therefore does not require a chat box to navigate or understand a project.
 
 ## Run the prototype
 
@@ -33,56 +78,60 @@ cite-refinery-web --workspace .cite-refinery --host 127.0.0.1 --port 8765
 
 Open `http://127.0.0.1:8765`.
 
-The server uses only the Python standard library and the existing Cite-Refinery state. No frontend or web-framework dependency is required for this prototype.
+The server uses only the Python standard library and the existing Cite-Refinery state. No frontend framework is required for this prototype.
 
 ## Read-only first milestone
 
-The v0.11 shell is intentionally read-only. It is designed to answer one product question before a larger frontend investment:
+The v0.11 shell is intentionally read-only. It is designed to validate the product ontology before a larger frontend investment.
 
-> Can one Cite-Refinery project coherently contain empirical reality, academic research, semantic structure, solution supply, implementation, and feedback without forcing the user to move between separate products?
+The default surface is **Map**:
 
-The shell reads the same workspace used by the CLI and exposes:
+1. select a project;
+2. select a semantic cluster/module;
+3. inspect Practical, Academic, and Program nodes side by side;
+4. inspect neutral anchors, typed internal relations, cross-module edges, contradictions, qualifications, and unresolved/candidate links;
+5. select any node to inspect its local three-layer semantic neighborhood.
 
-- project selection;
-- project overview counts;
-- Reality observation/source/status views;
-- Research brief/audit summaries;
-- Semantic Graph node search and node-local three-layer coverage inspection;
-- Solutions requirement/supply/capability summaries;
-- Build run/artifact summaries;
-- Validate experiment/feedback summaries.
+Supporting **Records** and **Project** views expose source-side records and project boundaries without replacing the map as the conceptual center.
 
-## HTTP API
-
-The prototype also establishes a small product-facing read API that can later be consumed by a React/Next/Vercel frontend without changing the underlying engine model.
+## Product-facing API
 
 ```text
 GET /api/health
 GET /api/projects
 GET /api/projects/{project_id}?graph=1
+GET /api/projects/{project_id}/atlas
+GET /api/projects/{project_id}/clusters/{cluster_id}
 GET /api/projects/{project_id}/graph
 GET /api/projects/{project_id}/nodes/{node_id}/coverage?depth=1
 ```
 
-`ProductWorkspace` is the Python projection behind these endpoints. Its schema is `cite_refinery.product_workspace.v1`.
+`ProductWorkspace` is the Python projection behind these endpoints.
+
+Current schemas:
+
+```text
+cite_refinery.product_workspace.v2
+cite_refinery.clustered_three_layer_map.v1
+cite_refinery.cluster_view.v1
+cite_refinery.product_node_view.v1
+```
 
 ## Why not merge repositories
 
 Nocturnal, Cite, and Refinery remain separately testable engines with distinct schemas and authority. Cite-Refinery is the product/control plane that composes them.
 
-This preserves modularity while avoiding a fragmented user experience:
-
 ```text
                    Cite-Refinery product
+                           |
+                   clustered semantic map
                            |
           +----------------+----------------+
           |                |                |
       Nocturnal           Cite           Refinery
-       reality          research          supply
-          |                |                |
-          +----------------+----------------+
-                           |
-                     Semantic Graph
+      Practical         Academic          Program
 ```
 
-A future production frontend can replace the prototype shell while keeping this product projection and API contract.
+Cite-Agent can remain a standalone research/writing workbench. Cite-Refinery consumes the research capabilities and records it needs without replacing the Cite-Agent product experience.
+
+A future production frontend can replace this prototype shell while preserving the same clustered map and API contract.
