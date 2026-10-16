@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cite-refinery"
-version = "0.10.0"
-description = "Closed-loop semantic problem graph orchestration across practical evidence, academic knowledge, and program supply."
+version = "0.11.0"
+description = "Clustered three-layer semantic research mapping across practical evidence, academic knowledge, and program supply."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
@@ -14,6 +14,7 @@ dependencies = []
 
 [project.scripts]
 cite-refinery = "cite_refinery.layered_cli:main"
+cite-refinery-web = "cite_refinery.web_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
