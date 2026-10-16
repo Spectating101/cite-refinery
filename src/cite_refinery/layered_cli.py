@@ -8,7 +8,19 @@ from pathlib import Path
 
 from . import cli as core_cli
 from .app import CiteRefinery
+from .preflight import build_preflight
 from .scorecard import build_end_to_end_scorecard
+
+
+def _preflight_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery preflight")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument(
+        "--require-reviewed-market",
+        action="store_true",
+        help="Exit nonzero unless the optional broad reviewed-market supply layer is also ready.",
+    )
+    return parser
 
 
 def _research_discover_parser() -> argparse.ArgumentParser:
@@ -51,6 +63,16 @@ def _feedback_ingest_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     raw = list(argv) if argv is not None else list(sys.argv[1:])
+
+    if "preflight" in raw:
+        index = raw.index("preflight")
+        command_args = [*raw[:index], *raw[index + 1 :]]
+        args = _preflight_parser().parse_args(command_args)
+        report = build_preflight(args.workspace)
+        print(json.dumps(report, indent=2, ensure_ascii=False, default=str))
+        ready = report["full_broad_supply_ready"] if args.require_reviewed_market else report["core_ready"]
+        return 0 if ready else 1
+
     if "research-discover" in raw:
         index = raw.index("research-discover")
         discover_args = [*raw[:index], *raw[index + 1 :]]
