@@ -6,6 +6,10 @@ on:
       - main
   pull_request:
 
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   unittest:
     runs-on: ubuntu-latest
