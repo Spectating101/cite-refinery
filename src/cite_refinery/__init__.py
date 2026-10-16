@@ -1,6 +1,6 @@
-"""Cite-Refinery: scale-aware problem-to-literature-to-solution orchestration."""
+"""Cite-Refinery: closed-loop problem-to-literature-to-solution orchestration."""
 
 from .app import CiteRefinery
 
 __all__ = ["CiteRefinery"]
-__version__ = "0.7.0"
+__version__ = "0.8.0"

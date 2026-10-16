@@ -4,6 +4,7 @@ import argparse
 import json
 import sys
 from dataclasses import asdict
+from pathlib import Path
 
 from . import cli as core_cli
 from .app import CiteRefinery
@@ -28,6 +29,26 @@ def _scorecard_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _feedback_request_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery feedback-request")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("experiment_id")
+    parser.add_argument("--observation-id", action="append", default=None)
+    parser.add_argument("--signal", action="append", default=None)
+    parser.add_argument("--window-start")
+    parser.add_argument("--window-end")
+    return parser
+
+
+def _feedback_ingest_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery feedback-ingest")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("--input", required=True, help="Nocturnal feedback result JSON")
+    return parser
+
+
 def main(argv: list[str] | None = None) -> int:
     raw = list(argv) if argv is not None else list(sys.argv[1:])
     if "research-discover" in raw:
@@ -49,6 +70,42 @@ def main(argv: list[str] | None = None) -> int:
             print(f"error: {exc}", file=sys.stderr)
             return 2
 
+    if "feedback-request" in raw:
+        index = raw.index("feedback-request")
+        command_args = [*raw[:index], *raw[index + 1 :]]
+        args = _feedback_request_parser().parse_args(command_args)
+        app = CiteRefinery(args.workspace)
+        try:
+            packet = app.create_nocturnal_feedback_request(
+                args.project_id,
+                args.experiment_id,
+                observation_ids=args.observation_id,
+                requested_signals=args.signal,
+                window_start=args.window_start,
+                window_end=args.window_end,
+            )
+            print(json.dumps(packet, indent=2, ensure_ascii=False, default=str))
+            return 0
+        except (KeyError, ValueError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+
+    if "feedback-ingest" in raw:
+        index = raw.index("feedback-ingest")
+        command_args = [*raw[:index], *raw[index + 1 :]]
+        args = _feedback_ingest_parser().parse_args(command_args)
+        app = CiteRefinery(args.workspace)
+        try:
+            packet = json.loads(Path(args.input).read_text(encoding="utf-8"))
+            if not isinstance(packet, dict):
+                raise ValueError("feedback input must be a JSON object")
+            result = app.ingest_nocturnal_feedback_result(args.project_id, packet)
+            print(json.dumps(result, indent=2, ensure_ascii=False, default=str))
+            return 0
+        except (OSError, json.JSONDecodeError, KeyError, ValueError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+
     if "scorecard" in raw:
         index = raw.index("scorecard")
         score_args = [*raw[:index], *raw[index + 1 :]]
@@ -62,7 +119,6 @@ def main(argv: list[str] | None = None) -> int:
             print(f"error: {exc}", file=sys.stderr)
             return 2
 
-    # Reuse the stable core CLI parser/dispatch for all established commands.
     core_cli.CiteRefinery = CiteRefinery
     return core_cli.main(raw)
 

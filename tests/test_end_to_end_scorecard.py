@@ -154,8 +154,8 @@ class EndToEndScorecardTests(unittest.TestCase):
             self.assertEqual(stages["execution_validation"]["status"], "ready")
             self.assertEqual(stages["execution_validation"]["successful_runs"], 1)
             self.assertEqual(stages["execution_validation"]["promoted_global_capabilities"], 1)
-            self.assertEqual(stages["nocturnal_feedback_loop"]["status"], "not_implemented")
-            self.assertTrue(any("closed-loop return" in item for item in scorecard["bottlenecks"]))
+            self.assertEqual(stages["nocturnal_feedback_loop"]["status"], "not_started")
+            self.assertTrue(any("validated intervention exists" in item for item in scorecard["bottlenecks"]))
             self.assertEqual(discovery.purpose, "literature_discovery")
 
     def test_market_only_supply_is_reported_as_descriptive_bottleneck(self):

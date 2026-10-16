@@ -43,7 +43,11 @@ def build_end_to_end_scorecard(state: dict[str, Any], project_id: str) -> dict[s
     implementations = _owned(state, "implementations", project_id)
     runs = _owned(state, "runs", project_id)
     experiments = _owned(state, "experiments", project_id)
+    feedback_requests = _owned(state, "feedback_requests", project_id)
+    feedback_results = _owned(state, "feedback_results", project_id)
 
+    baseline_observations = [item for item in observations if item.get("source_system") != "nocturnal-feedback"]
+    followup_observations = [item for item in observations if item.get("source_system") == "nocturnal-feedback"]
     matter_count = len({str(item.get("matter_id") or item.get("id")) for item in observations})
     source_observations = sum(bool(item.get("sources")) for item in observations)
     explicit_query_observations = sum(bool(item.get("literature_queries")) for item in observations)
@@ -125,16 +129,19 @@ def build_end_to_end_scorecard(state: dict[str, Any], project_id: str) -> dict[s
         and (capability.get("provenance") or {}).get("promoted_from_project") == project_id
     ]
 
-    # No v0.6 object currently links a post-intervention Nocturnal observation
-    # back to an experiment/run. Keep this visible rather than implying closure.
-    feedback_links = [
+    linked_feedback = [
         observation
-        for observation in observations
-        if any(
-            key in (observation.get("provenance") or {})
-            for key in ("experiment_id", "intervention_run_id", "originating_project_id")
-        )
+        for observation in followup_observations
+        if (observation.get("provenance") or {}).get("feedback_request_id")
+        and (observation.get("provenance") or {}).get("experiment_id")
+        and (observation.get("provenance") or {}).get("causal_status") == "not_established"
     ]
+    request_ids_with_results = {str(item.get("request_id")) for item in feedback_results if item.get("request_id")}
+    pending_feedback_requests = sum(
+        str(item.get("request_id")) not in request_ids_with_results
+        for item in feedback_requests
+        if item.get("request_id")
+    )
 
     brief_count = len(briefs)
     requirement_count = len(requirements)
@@ -143,6 +150,8 @@ def build_end_to_end_scorecard(state: dict[str, Any], project_id: str) -> dict[s
             "status": "ready" if observations else "not_started",
             "matters": matter_count,
             "observations": len(observations),
+            "baseline_observations": len(baseline_observations),
+            "post_intervention_observations": len(followup_observations),
             "observations_with_sources": source_observations,
             "source_presence_coverage": _ratio(source_observations, len(observations)),
             "observations_with_explicit_literature_queries": explicit_query_observations,
@@ -213,9 +222,20 @@ def build_end_to_end_scorecard(state: dict[str, Any], project_id: str) -> dict[s
             "promoted_global_capabilities": len(global_capabilities),
         },
         "nocturnal_feedback_loop": {
-            "status": "partial" if feedback_links else "not_implemented",
-            "linked_post_intervention_observations": len(feedback_links),
-            "boundary": "Cite-Refinery v0.6 has no formal experiment/run -> new Nocturnal observation contract yet.",
+            "status": (
+                "ready" if feedback_results and linked_feedback
+                else "partial" if feedback_requests or linked_feedback
+                else "not_started"
+            ),
+            "feedback_requests": len(feedback_requests),
+            "pending_requests": pending_feedback_requests,
+            "feedback_results": len(feedback_results),
+            "linked_post_intervention_observations": len(linked_feedback),
+            "causal_status": "not_established",
+            "boundary": (
+                "The formal return contract records post-intervention empirical evidence with exact experiment/run lineage. "
+                "It does not infer causality from temporal follow-up."
+            ),
         },
     }
 
@@ -242,11 +262,15 @@ def build_end_to_end_scorecard(state: dict[str, Any], project_id: str) -> dict[s
         bottlenecks.append("Project capabilities exist but no successful implementation run is recorded.")
     if successful_runs and not passed_experiments:
         bottlenecks.append("Successful runs exist but no passed/supported validation experiment is recorded.")
-    if not feedback_links:
-        bottlenecks.append("The closed-loop return from validated intervention to new Nocturnal observation is not implemented.")
+    if passed_experiments and not feedback_requests:
+        bottlenecks.append("A validated intervention exists but no Nocturnal follow-up observation request has been created.")
+    elif feedback_requests and not feedback_results:
+        bottlenecks.append("Nocturnal follow-up has been requested but no result packet has been ingested yet.")
+    elif feedback_results and not linked_feedback:
+        bottlenecks.append("Feedback result packets exist but no valid post-intervention observations are linked into the empirical map.")
 
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "project": {
             "id": project_id,
             "title": project.get("title"),
@@ -257,6 +281,6 @@ def build_end_to_end_scorecard(state: dict[str, Any], project_id: str) -> dict[s
         "bottlenecks": bottlenecks,
         "boundary": (
             "This scorecard reports pipeline coverage and authority transitions. It intentionally has no composite numeric score: "
-            "a later-stage success cannot compensate for missing empirical, literature, or validation evidence upstream."
+            "a later-stage success cannot compensate for missing empirical, literature, validation, or real-world follow-up evidence upstream."
         ),
     }
