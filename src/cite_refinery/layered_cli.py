@@ -11,6 +11,7 @@ from .app import CiteRefinery
 from .preflight import build_preflight
 from .scorecard import build_end_to_end_scorecard
 from .semantic import SemanticGraph
+from .semantic_projection import SemanticProjection
 
 
 def _preflight_parser() -> argparse.ArgumentParser:
@@ -73,6 +74,13 @@ def _graph_ingest_parser() -> argparse.ArgumentParser:
 
 def _graph_bootstrap_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="cite-refinery graph-bootstrap")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    return parser
+
+
+def _graph_project_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-project")
     parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
     parser.add_argument("project_id")
     return parser
@@ -211,6 +219,7 @@ def main(argv: list[str] | None = None) -> int:
     graph_commands = {
         "graph-ingest",
         "graph-bootstrap",
+        "graph-project",
         "graph-neighborhood",
         "graph-coverage",
         "graph-query",
@@ -223,6 +232,7 @@ def main(argv: list[str] | None = None) -> int:
         parser_map = {
             "graph-ingest": _graph_ingest_parser,
             "graph-bootstrap": _graph_bootstrap_parser,
+            "graph-project": _graph_project_parser,
             "graph-neighborhood": _graph_neighborhood_parser,
             "graph-coverage": _graph_coverage_parser,
             "graph-query": _graph_query_parser,
@@ -246,6 +256,8 @@ def main(argv: list[str] | None = None) -> int:
                 )
             elif selected_graph_command == "graph-bootstrap":
                 result = graph.bootstrap_project_records(args.project_id)
+            elif selected_graph_command == "graph-project":
+                result = SemanticProjection(graph).project_all(args.project_id)
             elif selected_graph_command == "graph-neighborhood":
                 result = graph.neighborhood(args.project_id, args.node_id, depth=args.depth)
             elif selected_graph_command == "graph-coverage":
