@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -21,6 +22,15 @@ def _check(name: str, *, available: bool, required: bool, detail: str, recovery:
     if not available and recovery:
         row["recovery"] = recovery
     return row
+
+
+def _command_available(command: list[str]) -> bool:
+    if not command:
+        return False
+    first = command[0]
+    if os.path.sep in first:
+        return os.path.exists(first)
+    return shutil.which(first) is not None
 
 
 def build_preflight(
@@ -49,7 +59,8 @@ def build_preflight(
 
     market_db = getattr(reviewed_market, "db_path", None)
     market_db_exists = bool(market_db) and Path(str(market_db)).is_file()
-    market_command_available = bool(getattr(reviewed_market, "command", [])) and reviewed_market.available() if market_db_exists else False
+    market_command = list(getattr(reviewed_market, "command", []) or [])
+    market_command_available = _command_available(market_command)
 
     checks = [
         _check(
@@ -98,7 +109,7 @@ def build_preflight(
             "refinery_reviewed_market_search",
             available=market_command_available,
             required=False,
-            detail=" ".join(getattr(reviewed_market, "command", [])) or "refinery-market-search",
+            detail=" ".join(market_command) or "refinery-market-search",
             recovery="Install current Refinery so refinery-market-search is available.",
         ),
     ]
