@@ -8,7 +8,7 @@ from .web import serve
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="cite-refinery-web",
-        description="Serve the unified Cite-Refinery project workspace.",
+        description="Serve the clustered three-layer Cite-Refinery research map.",
     )
     parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
     parser.add_argument("--host", default="127.0.0.1", help="Bind host")
