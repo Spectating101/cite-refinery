@@ -9,6 +9,9 @@ from dataclasses import dataclass
 from typing import Any, Protocol
 
 
+_DEFAULT_REVIEWED_MARKET_DB = "~/.local/share/refinery/reviewed-market-search.db"
+
+
 @dataclass(slots=True)
 class RefinerySearchResult:
     engine: str
@@ -94,9 +97,10 @@ class CanonicalRefineryCLIAdapter:
 class ReviewedMarketCLIAdapter:
     """Optional read-only adapter for Refinery's reviewed market graph search.
 
-    The market graph remains descriptive supply evidence. It does not become
-    Commons authority or execution permission merely because Cite-Refinery can
-    discover it.
+    Resolution order for the database is explicit `db_path`, then
+    `REFINERY_MARKET_DB`, then the canonical path written by
+    `refinery-market-snapshot restore`. The market graph remains descriptive
+    supply evidence and never gains Commons/execution authority here.
     """
 
     def __init__(
@@ -107,7 +111,14 @@ class ReviewedMarketCLIAdapter:
     ) -> None:
         raw_command = command or os.environ.get("REFINERY_MARKET_COMMAND", "refinery-market-search")
         self.command = shlex.split(raw_command)
-        self.db_path = db_path or os.environ.get("REFINERY_MARKET_DB")
+        configured_db = db_path if db_path is not None else os.environ.get("REFINERY_MARKET_DB")
+        if configured_db:
+            self.db_path = os.path.abspath(os.path.expanduser(configured_db))
+            self.db_source = "explicit" if db_path is not None else "environment"
+        else:
+            canonical = os.path.abspath(os.path.expanduser(_DEFAULT_REVIEWED_MARKET_DB))
+            self.db_path = canonical if os.path.isfile(canonical) else None
+            self.db_source = "canonical_restored_path" if self.db_path else "unconfigured"
         self.timeout = timeout
 
     def available(self) -> bool:
@@ -118,7 +129,10 @@ class ReviewedMarketCLIAdapter:
             return RefinerySearchResult(
                 engine="refinery:reviewed-market-search",
                 status="not_run",
-                raw="REFINERY_MARKET_DB is not configured; reviewed market supply was not searched.",
+                raw=(
+                    "No reviewed-market database is configured or restored. Set REFINERY_MARKET_DB or run "
+                    "`refinery-market-snapshot restore --input <snapshot.json>` to create the canonical local database."
+                ),
             )
         if not _command_available(self.command):
             return RefinerySearchResult(
@@ -126,11 +140,15 @@ class ReviewedMarketCLIAdapter:
                 status="not_run",
                 raw="refinery-market-search is not installed; reviewed market supply was not searched.",
             )
-        return _run_json_command(
+        result = _run_json_command(
             [*self.command, query, "--db", self.db_path, "--limit", str(limit)],
             timeout=self.timeout,
             engine="refinery:reviewed-market-search",
         )
+        if isinstance(result.structured, dict):
+            result.structured.setdefault("database", self.db_path)
+            result.structured.setdefault("database_source", self.db_source)
+        return result
 
 
 class LayeredRefinerySearchAdapter:
@@ -184,9 +202,6 @@ class LayeredRefinerySearchAdapter:
             "commons": commons,
             "operational": operational,
             "reviewed_market": reviewed_market,
-            # Compatibility aggregate consumed by the current solution-map kernel.
-            # Each market candidate retains authority=reviewed_market_graph, so this
-            # does not collapse its authority into Commons.
             "results": reviewed_market,
             "layers": {
                 "canonical": {
