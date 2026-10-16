@@ -10,6 +10,7 @@ from . import cli as core_cli
 from .app import CiteRefinery
 from .preflight import build_preflight
 from .scorecard import build_end_to_end_scorecard
+from .semantic import SemanticGraph
 
 
 def _preflight_parser() -> argparse.ArgumentParser:
@@ -61,22 +62,94 @@ def _feedback_ingest_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _graph_ingest_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-ingest")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("--input", required=True, help="Semantic graph packet JSON")
+    parser.add_argument("--packet-ref")
+    return parser
+
+
+def _graph_bootstrap_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-bootstrap")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    return parser
+
+
+def _graph_neighborhood_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-neighborhood")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("node_id")
+    parser.add_argument("--depth", type=int, default=1)
+    return parser
+
+
+def _graph_coverage_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-coverage")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("node_id")
+    parser.add_argument("--depth", type=int, default=1)
+    return parser
+
+
+def _graph_query_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-query")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("--present", action="append", default=[])
+    parser.add_argument("--absent", action="append", default=[])
+    parser.add_argument("--kind")
+    parser.add_argument("--cluster-id")
+    parser.add_argument("--depth", type=int, default=1)
+    return parser
+
+
+def _graph_trace_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-trace")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("node_id")
+    parser.add_argument("--steps-json", required=True, help="JSON list of semantic path steps")
+    parser.add_argument("--max-paths", type=int, default=200)
+    return parser
+
+
+def _graph_clusters_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-clusters")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    return parser
+
+
+def _graph_export_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-export")
+    parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
+    parser.add_argument("project_id")
+    parser.add_argument("--out")
+    return parser
+
+
+def _special_args(raw: list[str], command: str) -> list[str]:
+    index = raw.index(command)
+    return [*raw[:index], *raw[index + 1 :]]
+
+
 def main(argv: list[str] | None = None) -> int:
     raw = list(argv) if argv is not None else list(sys.argv[1:])
 
     if "preflight" in raw:
-        index = raw.index("preflight")
-        command_args = [*raw[:index], *raw[index + 1 :]]
-        args = _preflight_parser().parse_args(command_args)
+        args = _preflight_parser().parse_args(_special_args(raw, "preflight"))
         report = build_preflight(args.workspace)
         print(json.dumps(report, indent=2, ensure_ascii=False, default=str))
         ready = report["full_broad_supply_ready"] if args.require_reviewed_market else report["core_ready"]
         return 0 if ready else 1
 
     if "research-discover" in raw:
-        index = raw.index("research-discover")
-        discover_args = [*raw[:index], *raw[index + 1 :]]
-        args = _research_discover_parser().parse_args(discover_args)
+        args = _research_discover_parser().parse_args(_special_args(raw, "research-discover"))
         app = CiteRefinery(args.workspace)
         try:
             audit = app.discover_research_brief(
@@ -93,9 +166,7 @@ def main(argv: list[str] | None = None) -> int:
             return 2
 
     if "feedback-request" in raw:
-        index = raw.index("feedback-request")
-        command_args = [*raw[:index], *raw[index + 1 :]]
-        args = _feedback_request_parser().parse_args(command_args)
+        args = _feedback_request_parser().parse_args(_special_args(raw, "feedback-request"))
         app = CiteRefinery(args.workspace)
         try:
             packet = app.create_nocturnal_feedback_request(
@@ -113,9 +184,7 @@ def main(argv: list[str] | None = None) -> int:
             return 2
 
     if "feedback-ingest" in raw:
-        index = raw.index("feedback-ingest")
-        command_args = [*raw[:index], *raw[index + 1 :]]
-        args = _feedback_ingest_parser().parse_args(command_args)
+        args = _feedback_ingest_parser().parse_args(_special_args(raw, "feedback-ingest"))
         app = CiteRefinery(args.workspace)
         try:
             packet = json.loads(Path(args.input).read_text(encoding="utf-8"))
@@ -129,15 +198,91 @@ def main(argv: list[str] | None = None) -> int:
             return 2
 
     if "scorecard" in raw:
-        index = raw.index("scorecard")
-        score_args = [*raw[:index], *raw[index + 1 :]]
-        args = _scorecard_parser().parse_args(score_args)
+        args = _scorecard_parser().parse_args(_special_args(raw, "scorecard"))
         app = CiteRefinery(args.workspace)
         try:
             scorecard = build_end_to_end_scorecard(app.store.load(), args.project_id)
             print(json.dumps(scorecard, indent=2, ensure_ascii=False, default=str))
             return 0
         except KeyError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+
+    graph_commands = {
+        "graph-ingest",
+        "graph-bootstrap",
+        "graph-neighborhood",
+        "graph-coverage",
+        "graph-query",
+        "graph-trace",
+        "graph-clusters",
+        "graph-export",
+    }
+    selected_graph_command = next((command for command in graph_commands if command in raw), None)
+    if selected_graph_command:
+        parser_map = {
+            "graph-ingest": _graph_ingest_parser,
+            "graph-bootstrap": _graph_bootstrap_parser,
+            "graph-neighborhood": _graph_neighborhood_parser,
+            "graph-coverage": _graph_coverage_parser,
+            "graph-query": _graph_query_parser,
+            "graph-trace": _graph_trace_parser,
+            "graph-clusters": _graph_clusters_parser,
+            "graph-export": _graph_export_parser,
+        }
+        args = parser_map[selected_graph_command]().parse_args(_special_args(raw, selected_graph_command))
+        app = CiteRefinery(args.workspace)
+        graph = SemanticGraph(app.store)
+        try:
+            if selected_graph_command == "graph-ingest":
+                input_path = Path(args.input)
+                packet = json.loads(input_path.read_text(encoding="utf-8"))
+                if not isinstance(packet, dict):
+                    raise ValueError("semantic graph input must be a JSON object")
+                result = graph.ingest_packet(
+                    args.project_id,
+                    packet,
+                    packet_ref=args.packet_ref or str(input_path),
+                )
+            elif selected_graph_command == "graph-bootstrap":
+                result = graph.bootstrap_project_records(args.project_id)
+            elif selected_graph_command == "graph-neighborhood":
+                result = graph.neighborhood(args.project_id, args.node_id, depth=args.depth)
+            elif selected_graph_command == "graph-coverage":
+                result = graph.coverage(args.project_id, args.node_id, depth=args.depth)
+            elif selected_graph_command == "graph-query":
+                result = graph.query_coverage(
+                    args.project_id,
+                    present=args.present,
+                    absent=args.absent,
+                    kind=args.kind,
+                    cluster_id=args.cluster_id,
+                    depth=args.depth,
+                )
+            elif selected_graph_command == "graph-trace":
+                steps = json.loads(args.steps_json)
+                if not isinstance(steps, list):
+                    raise ValueError("--steps-json must decode to a JSON list")
+                result = graph.trace_pattern(
+                    args.project_id,
+                    args.node_id,
+                    steps,
+                    max_paths=args.max_paths,
+                )
+            elif selected_graph_command == "graph-clusters":
+                result = graph.cluster_map(args.project_id)
+            else:
+                result = graph.export(args.project_id)
+                if args.out:
+                    Path(args.out).write_text(
+                        json.dumps(result, indent=2, ensure_ascii=False, default=str) + "\n",
+                        encoding="utf-8",
+                    )
+                    print(args.out)
+                    return 0
+            print(json.dumps(result, indent=2, ensure_ascii=False, default=str))
+            return 0
+        except (OSError, json.JSONDecodeError, KeyError, ValueError) as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 2
 
