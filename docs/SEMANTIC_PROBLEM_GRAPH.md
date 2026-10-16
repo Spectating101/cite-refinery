@@ -101,7 +101,7 @@ Common relations include:
 
 `SUPPORTS`, `CONTRADICTS`, `QUALIFIES`, `OBSERVES`, `EXPLAINS`, `CAUSES`, `EXACERBATES`, `MEASURES`, `MEASURED_BY`, `ESTIMATES`, `REQUIRES`, `PROVIDES_DATA_FOR`, `ADDRESSES`, `PARTIALLY_ADDRESSES`, `IMPLEMENTS`, `IMPLEMENTED_BY`, `DEPLOYED_BY`, `LIMITED_BY`, `FAILS_WHEN`, `PRODUCES`, `EVALUATED_BY`, `ADAPTABLE_TO`, `TRANSITIONS_INTO`, `DEPENDS_ON`, `ENABLES` and `MISSING_LINK`.
 
-Additional `UPPER_SNAKE_CASE` relations are accepted so domain-specific semantics such as `EFFECT_MODIFIED_BY` can be preserved instead of flattened into generic edges.
+Additional `UPPER_SNAKE_CASE` relations are accepted so domain-specific semantics such as `EFFECT_MODIFIED_BY`, `DISCOVERED_FOR`, `CANDIDATE_FOR`, and `ADOPTED_FOR` can be preserved instead of flattened into generic edges.
 
 ## Clusters
 
@@ -184,7 +184,7 @@ This supports queries such as:
 - a mechanism is academically established but not connected to any practical observation;
 - practical and academic nodes agree on a problem while program supply attaches only to a neighboring, narrower problem.
 
-## Bootstrapping the existing Cite-Refinery lifecycle
+## Bootstrapping and projecting the existing lifecycle
 
 Existing Cite-Refinery state can be exposed to the semantic graph without inventing authority transitions:
 
@@ -192,20 +192,57 @@ Existing Cite-Refinery state can be exposed to the semantic graph without invent
 cite-refinery graph-bootstrap PROJECT_ID
 ```
 
-The bootstrap currently materializes:
+The bootstrap materializes:
 
 - project problem as a neutral root;
 - empirical problem observations as practical nodes;
 - requirements as neutral requirement nodes;
 - capabilities and implementations as program nodes.
 
-Empirical observations are connected to the project root using `CONTEXT_FOR`, **not** `SUPPORTS`. The bootstrap deliberately does not infer that literature proves a mechanism, that a requirement is correct, or that a capability solves the requirement. Those semantic assertions require explicit graph edges with provenance.
+Empirical observations are connected to the project root using `CONTEXT_FOR`, **not** `SUPPORTS`.
+
+For the fuller lifecycle projection use:
+
+```bash
+cite-refinery graph-project PROJECT_ID
+```
+
+This first runs the safe bootstrap and then projects the existing research and supply records:
+
+```text
+Nocturnal / problem observations
+    -> practical observation nodes
+
+research brief questions
+    -> neutral research-question nodes
+    -> DERIVED_FROM practical observations
+
+Cite deep-research paper receipts
+    -> academic source nodes
+    -> DISCOVERED_FOR research questions [candidate]
+
+Refinery solution-map candidates
+    -> program/repository/capability nodes
+    -> CANDIDATE_FOR requirements [candidate]
+
+project-local adopted capability
+    -> ADOPTED_FOR requirement [candidate]
+```
+
+Those relation names are intentionally weaker than `SUPPORTS`, `ADDRESSES`, `IMPLEMENTS`, or `PRODUCES`.
+
+A paper discovered for a question is **not** automatically a supporting academic claim. A Refinery hit is **not** automatically a solution. A project-local adoption is **not** automatically effective. Stronger edges have to be asserted from reviewed evidence with their own provenance.
+
+The projection also performs a conservative exact-identity reconciliation. Nodes of the same kind whose normalized statements are exactly equal may be linked with `SAME_AS`. Fuzzy or embedding-based near-equivalence is deliberately not asserted automatically; it requires a reviewed resolver or a supplier packet that explicitly provides the semantic relationship.
+
+Repeated projection is idempotent and candidate fallback identities use deterministic content digests.
 
 ## Commands
 
 ```text
 cite-refinery graph-ingest
 cite-refinery graph-bootstrap
+cite-refinery graph-project
 cite-refinery graph-neighborhood
 cite-refinery graph-coverage
 cite-refinery graph-query
