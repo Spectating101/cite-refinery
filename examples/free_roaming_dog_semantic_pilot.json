@@ -1,0 +1,252 @@
+{
+  "schema": "cite_refinery.semantic_graph.v1",
+  "source_system": "manual-public-research-2026-10-16",
+  "clusters": [
+    {
+      "key": "root",
+      "title": "Free-roaming dog management"
+    },
+    {
+      "key": "observability",
+      "title": "Population observability",
+      "parent": "root"
+    },
+    {
+      "key": "replenishment",
+      "title": "Population replenishment and source control",
+      "parent": "root"
+    },
+    {
+      "key": "intervention",
+      "title": "Intervention effectiveness and feedback",
+      "parent": "root"
+    }
+  ],
+  "nodes": [
+    {
+      "key": "continuous_state_problem",
+      "statement": "The current local free-roaming dog population is not continuously enumerated by the periodic national survey system.",
+      "kind": "problem_claim",
+      "layer": "neutral",
+      "clusters": ["observability"],
+      "tags": ["population_state", "temporal_coverage"]
+    },
+    {
+      "key": "tw_periodic_estimate",
+      "statement": "Taiwan estimates the national free-roaming dog population every two years using a photographic capture survey method; the 2024 estimate was 141,584 dogs.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": ["observability"],
+      "source_refs": [
+        "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599",
+        "https://animal.moa.gov.tw/Frontend/Know/Detail/LT00000864?parentID=Tab0000143"
+      ],
+      "provenance": {
+        "jurisdiction": "Taiwan",
+        "publisher": "Ministry of Agriculture",
+        "observed_year": 2024
+      }
+    },
+    {
+      "key": "estimation_validity_claim",
+      "statement": "Free-ranging dog abundance estimates can be biased when detection probability, individual identification, registration, or population closure assumptions are inadequately handled.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": ["observability"],
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+        "doi:10.1371/journal.pone.0144830"
+      ]
+    },
+    {
+      "key": "capture_recapture_method",
+      "statement": "Photographic mark-recapture and capture-recapture methods can use repeated individual observations to estimate free-roaming dog abundance under explicit assumptions.",
+      "kind": "method",
+      "layer": "academic",
+      "clusters": ["observability"],
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12363366/"
+      ]
+    },
+    {
+      "key": "talea",
+      "statement": "Talea is a street-survey system that records roaming animal sightings, characteristics, routes, survey areas, and geolocated observations.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": ["observability"],
+      "source_refs": [
+        "https://www.icam-coalition.org/tool/talea-street-survey-app/",
+        "https://www.icam-coalition.org/talea-user-guide/"
+      ]
+    },
+    {
+      "key": "identity_reconciliation_requirement",
+      "statement": "Repeated sightings need reliable individual reconciliation before they can support individual-aware population estimation.",
+      "kind": "requirement",
+      "layer": "neutral",
+      "clusters": ["observability"],
+      "tags": ["candidate_gap"]
+    },
+    {
+      "key": "local_estimation_requirement",
+      "statement": "Geolocated sightings should be connected to a continuously updated local population-estimation workflow for operational targeting.",
+      "kind": "requirement",
+      "layer": "neutral",
+      "clusters": ["observability", "intervention"],
+      "tags": ["candidate_gap"]
+    },
+    {
+      "key": "open_population_problem",
+      "statement": "Immigration and replenishment can undermine fertility-control effects in an open free-roaming dog population.",
+      "kind": "problem_claim",
+      "layer": "neutral",
+      "clusters": ["replenishment", "intervention"]
+    },
+    {
+      "key": "shoushan_immigration",
+      "statement": "In Shoushan, modelling indicated that maintaining female sterilization above 75 percent could theoretically control the dog population, while roughly 50 to 100 incoming dogs per year could severely disrupt the TNR effect.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": ["replenishment", "intervention"],
+      "source_refs": [
+        "https://www.sciencedirect.com/science/article/pii/S235198942400194X"
+      ],
+      "provenance": {
+        "jurisdiction": "Taiwan",
+        "site": "Shoushan",
+        "publication_year": 2024
+      }
+    },
+    {
+      "key": "tw_source_control_policy",
+      "statement": "Taiwan's 2026 community free-roaming dog management program prioritizes risk hotspots, female-dog source control, pet registration, sterilization, owner responsibility, and community participation.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": ["replenishment", "intervention"],
+      "source_refs": [
+        "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002234"
+      ],
+      "provenance": {
+        "jurisdiction": "Taiwan",
+        "publisher": "Ministry of Agriculture",
+        "program_year": 2026
+      }
+    },
+    {
+      "key": "miaoli_persistence",
+      "statement": "Miaoli reported about 7,400 roaming dogs in 2025 and stated that intensified capture and inspection were still being outpaced by abandonment, free-roaming owned dogs, and reproduction.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": ["replenishment", "intervention"],
+      "source_refs": [
+        "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002313"
+      ],
+      "provenance": {
+        "jurisdiction": "Miaoli County, Taiwan",
+        "publisher": "Miaoli County Animal Protection and Health Inspection Office",
+        "published_at": "2026-06-24"
+      }
+    },
+    {
+      "key": "longitudinal_feedback_requirement",
+      "statement": "Intervention records should be connected to subsequent population, welfare, conflict, and ecological observations so management effects can be evaluated over time.",
+      "kind": "requirement",
+      "layer": "neutral",
+      "clusters": ["intervention"],
+      "tags": ["candidate_gap"]
+    }
+  ],
+  "edges": [
+    {
+      "source": "tw_periodic_estimate",
+      "relation": "SUPPORTS",
+      "target": "continuous_state_problem",
+      "status": "qualified",
+      "provenance": {
+        "boundary": "The source establishes periodic national estimation; the stronger local-continuous limitation is an inference from survey cadence and scope."
+      }
+    },
+    {
+      "source": "estimation_validity_claim",
+      "relation": "QUALIFIES",
+      "target": "continuous_state_problem"
+    },
+    {
+      "source": "continuous_state_problem",
+      "relation": "MEASURED_BY",
+      "target": "capture_recapture_method",
+      "status": "qualified",
+      "provenance": {
+        "boundary": "The method family can estimate abundance, but applicability depends on design and assumptions."
+      }
+    },
+    {
+      "source": "talea",
+      "relation": "PARTIALLY_ADDRESSES",
+      "target": "continuous_state_problem",
+      "provenance": {
+        "boundary": "Talea provides structured street observations; this packet does not assert that Talea itself produces continuous population estimates."
+      }
+    },
+    {
+      "source": "talea",
+      "relation": "PROVIDES_DATA_FOR",
+      "target": "identity_reconciliation_requirement",
+      "status": "candidate",
+      "provenance": {
+        "boundary": "Sightings are a candidate input; individual reconciliation capability is not established here."
+      }
+    },
+    {
+      "source": "identity_reconciliation_requirement",
+      "relation": "ENABLES",
+      "target": "local_estimation_requirement",
+      "status": "candidate"
+    },
+    {
+      "source": "capture_recapture_method",
+      "relation": "REQUIRES",
+      "target": "identity_reconciliation_requirement",
+      "status": "qualified"
+    },
+    {
+      "source": "shoushan_immigration",
+      "relation": "SUPPORTS",
+      "target": "open_population_problem"
+    },
+    {
+      "source": "miaoli_persistence",
+      "relation": "SUPPORTS",
+      "target": "open_population_problem",
+      "status": "qualified",
+      "provenance": {
+        "boundary": "Miaoli's statement supports replenishment pressure in practice but does not establish the Shoushan numerical immigration estimate."
+      }
+    },
+    {
+      "source": "tw_source_control_policy",
+      "relation": "ADDRESSES",
+      "target": "open_population_problem",
+      "status": "qualified",
+      "provenance": {
+        "boundary": "The program addresses source-control mechanisms; this edge does not assert outcome effectiveness."
+      }
+    },
+    {
+      "source": "open_population_problem",
+      "relation": "EXPLAINS",
+      "target": "longitudinal_feedback_requirement",
+      "status": "candidate",
+      "provenance": {
+        "boundary": "Open-population dynamics motivate follow-up measurement; this is a planning relation, not a causal claim about a particular intervention."
+      }
+    },
+    {
+      "source": "local_estimation_requirement",
+      "relation": "ENABLES",
+      "target": "longitudinal_feedback_requirement",
+      "status": "candidate"
+    }
+  ]
+}
