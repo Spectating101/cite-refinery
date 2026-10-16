@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cite-refinery"
 version = "0.11.0"
-description = "Unified problem-intelligence workspace across Nocturnal reality, Cite research, semantic graph reasoning, and Refinery solution supply."
+description = "Clustered three-layer semantic research mapping across practical evidence, academic knowledge, and program supply."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
