@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from typing import Any
 
@@ -50,7 +51,8 @@ class SemanticProjection:
             value = candidate.get(key)
             if value:
                 return f"{key}:{value}"
-        return f"candidate-json:{hash(json.dumps(candidate, sort_keys=True, default=str))}"
+        payload = json.dumps(candidate, sort_keys=True, ensure_ascii=False, default=str).encode("utf-8")
+        return f"candidate-json:{hashlib.sha256(payload).hexdigest()[:24]}"
 
     def project_all(self, project_id: str) -> dict[str, Any]:
         bootstrap = self.graph.bootstrap_project_records(project_id)
