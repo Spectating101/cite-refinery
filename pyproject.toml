@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cite-refinery"
-version = "0.8.0"
-description = "Closed-loop problem-to-literature-to-solution orchestration with formal Nocturnal post-intervention feedback."
+version = "0.9.0"
+description = "Closed-loop problem-to-literature-to-solution orchestration with provider preflight and Nocturnal outcome feedback."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
