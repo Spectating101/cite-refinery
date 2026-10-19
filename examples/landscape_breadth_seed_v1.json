@@ -1,0 +1,1296 @@
+{
+  "schema": "cite_refinery.semantic_graph.v1",
+  "source_system": "landscape_discovery_seed_20261020",
+  "clusters": [
+    {
+      "key": "landscape_root",
+      "title": "Exploratory cross-field problem landscape",
+      "tags": [
+        "breadth_first",
+        "non_exhaustive"
+      ]
+    },
+    {
+      "key": "animal",
+      "title": "Animal welfare and roaming-dog management",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "animal_observation",
+      "title": "Population observability",
+      "parent": "animal",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "animal_effects",
+      "title": "Management feedback",
+      "parent": "animal",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "privacy",
+      "title": "Digital privacy and LLM prompts",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "privacy_exposure",
+      "title": "Sensitive information exposure",
+      "parent": "privacy",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "privacy_mitigation",
+      "title": "Sanitization limitations",
+      "parent": "privacy",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "energy",
+      "title": "Renewable electricity systems",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "energy_curtailment",
+      "title": "Curtailment and grid constraints",
+      "parent": "energy",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "energy_flexibility",
+      "title": "Power-system flexibility",
+      "parent": "energy",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "food",
+      "title": "Food systems and waste",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "food_households",
+      "title": "Household food waste",
+      "parent": "food",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "food_measurement",
+      "title": "Waste measurement coverage",
+      "parent": "food",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "amr",
+      "title": "Antimicrobial resistance",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "amr_surveillance",
+      "title": "Resistance surveillance completeness",
+      "parent": "amr",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "amr_action",
+      "title": "Health response capacity",
+      "parent": "amr",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "education",
+      "title": "Education access",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "education_exclusion",
+      "title": "Children outside schooling",
+      "parent": "education",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "education_learning",
+      "title": "Learning access and digital barriers",
+      "parent": "education",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "connectivity",
+      "title": "Digital connectivity and inclusion",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "connectivity_access",
+      "title": "Broadband availability and affordability",
+      "parent": "connectivity",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "connectivity_skills",
+      "title": "Digital skills and use",
+      "parent": "connectivity",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "water",
+      "title": "Water resources and hydrological hazards",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "water_observation",
+      "title": "Hydrological monitoring gaps",
+      "parent": "water",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "water_risk",
+      "title": "Drought and flood preparedness",
+      "parent": "water",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "housing",
+      "title": "Housing adequacy and affordability",
+      "parent": "landscape_root",
+      "tags": [
+        "field_seed",
+        "unranked"
+      ]
+    },
+    {
+      "key": "housing_adequacy",
+      "title": "Adequate housing access",
+      "parent": "housing",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    },
+    {
+      "key": "housing_measurement",
+      "title": "Housing monitoring comparability",
+      "parent": "housing",
+      "tags": [
+        "problem_module",
+        "discovery_only"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "key": "animal_observation",
+      "statement": "Investigate population observability within animal welfare and roaming-dog management.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "animal_observation"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "animal_effects",
+      "statement": "Investigate management feedback within animal welfare and roaming-dog management.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "animal_effects"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "privacy_exposure",
+      "statement": "Investigate sensitive information exposure within digital privacy and llm prompts.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "privacy_exposure"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "privacy_mitigation",
+      "statement": "Investigate sanitization limitations within digital privacy and llm prompts.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "privacy_mitigation"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "energy_curtailment",
+      "statement": "Investigate curtailment and grid constraints within renewable electricity systems.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "energy_curtailment"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "energy_flexibility",
+      "statement": "Investigate power-system flexibility within renewable electricity systems.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "energy_flexibility"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "food_households",
+      "statement": "Investigate household food waste within food systems and waste.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "food_households"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "food_measurement",
+      "statement": "Investigate waste measurement coverage within food systems and waste.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "food_measurement"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "amr_surveillance",
+      "statement": "Investigate resistance surveillance completeness within antimicrobial resistance.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "amr_surveillance"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "amr_action",
+      "statement": "Investigate health response capacity within antimicrobial resistance.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "amr_action"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "education_exclusion",
+      "statement": "Investigate children outside schooling within education access.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "education_exclusion"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "education_learning",
+      "statement": "Investigate learning access and digital barriers within education access.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "education_learning"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "connectivity_access",
+      "statement": "Investigate broadband availability and affordability within digital connectivity and inclusion.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "connectivity_access"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "connectivity_skills",
+      "statement": "Investigate digital skills and use within digital connectivity and inclusion.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "connectivity_skills"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "water_observation",
+      "statement": "Investigate hydrological monitoring gaps within water resources and hydrological hazards.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "water_observation"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "water_risk",
+      "statement": "Investigate drought and flood preparedness within water resources and hydrological hazards.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "water_risk"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "housing_adequacy",
+      "statement": "Investigate adequate housing access within housing adequacy and affordability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "housing_adequacy"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "housing_measurement",
+      "statement": "Investigate housing monitoring comparability within housing adequacy and affordability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "housing_measurement"
+      ],
+      "tags": [
+        "landscape_anchor",
+        "not_a_verified_problem_claim"
+      ]
+    },
+    {
+      "key": "dog_survey",
+      "statement": "Taiwan's 2024 official free-roaming-dog population estimate was 141,584; the change from 2022 was described as not statistically significant.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "animal",
+        "animal_observation"
+      ],
+      "source_refs": [
+        "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "National periodic sampling, not live local population enumeration or causal intervention evidence.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "dog_method",
+      "statement": "A systematic review documents several methods and assumptions relevant to estimating free-ranging dog populations.",
+      "kind": "method",
+      "layer": "academic",
+      "clusters": [
+        "animal",
+        "animal_observation"
+      ],
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Methodological relevance only; no estimator executed or tested in this broad seed.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "dog_talea",
+      "statement": "Talea provides a documented street-survey recording system; its manual says a sighting record cannot include an individual animal photo.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": [
+        "animal",
+        "animal_observation"
+      ],
+      "source_refs": [
+        "https://www.icam-coalition.org/talea-user-guide/"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Provider documentation, not proof of local population estimation or field effectiveness.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "privacy_risk",
+      "statement": "A source-reported concern about sharing sensitive text with cloud language-model services exists in a pinned Refinery evidence package.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "privacy",
+        "privacy_exposure"
+      ],
+      "source_refs": [
+        "https://github.com/Spectating101/refinery/tree/2b03ad20f8ab3d55462adb38852855b940194c94/evidence/cloakpipe-core-20261016"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Reporter concern in documented engineering case, NOT an independently confirmed user data leak.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "privacy_alsa",
+      "statement": "The ALSA paper studies privacy-preserving prompt anonymization with context-sensitive substitution.",
+      "kind": "method",
+      "layer": "academic",
+      "clusters": [
+        "privacy",
+        "privacy_mitigation"
+      ],
+      "source_refs": [
+        "https://doi.org/10.1145/3711896.3736840"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Paper's method not independently replicated or compared against CloakPipe here.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "privacy_cloakpipe",
+      "statement": "A bounded CloakPipe implementation package reports 27 required passing tests and four broader leakage probes.",
+      "kind": "implementation",
+      "layer": "program",
+      "clusters": [
+        "privacy",
+        "privacy_mitigation"
+      ],
+      "source_refs": [
+        "https://github.com/Spectating101/refinery/tree/2b03ad20f8ab3d55462adb38852855b940194c94/evidence/cloakpipe-core-20261016"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Pinned reports only; broader leakage failures preclude general privacy protection claims.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "energy_iea",
+      "statement": "IEA reports growing curtailment in multiple electricity markets as variable renewable generation expands.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "energy",
+        "energy_curtailment"
+      ],
+      "source_refs": [
+        "https://www.iea.org/reports/renewables-2025/renewable-electricity"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Cross-market synthesis; technical curtailment definitions and periods vary by market.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "energy_flex",
+      "statement": "IEA describes transmission, flexibility and coordinated planning as challenges in integrating growing wind and solar shares.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "energy",
+        "energy_flexibility"
+      ],
+      "source_refs": [
+        "https://www.iea.org/reports/renewables-2025/executive-summary"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Describes a system issue; no independently tested local remedy linked in this map.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "food_unep",
+      "statement": "UNEP estimates 1.05 billion tonnes of household, food-service and retail food waste in 2022.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "food",
+        "food_households"
+      ],
+      "source_refs": [
+        "https://www.unep.org/en/news-and-stories/press-release/world-squanders-over-1-billion-meals-day-un-report"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Modelled 2022 global estimate combining sectors; not a 2026 measured time series.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "food_academic",
+      "statement": "A systematic review links household food-waste behaviour to multiple contextual and behavioural drivers.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": [
+        "food",
+        "food_households"
+      ],
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12106936/"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Review evidence spans diverse contexts and does not identify a single universally effective intervention.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "food_index",
+      "statement": "UNEP's Food Waste Index specifies levels of country-level measurement, distinguishing estimates from direct observations suited to trend tracking.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": [
+        "food",
+        "food_measurement"
+      ],
+      "source_refs": [
+        "https://sdgs.unep.org/article/2a5-food-waste-index"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Index measurement framework, not evidence of reduced food waste.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "amr_who",
+      "statement": "WHO's 2025 surveillance report summarizes bacterial resistance trends from millions of confirmed infections and acknowledges country data-quality variation.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "amr",
+        "amr_surveillance"
+      ],
+      "source_refs": [
+        "https://www.who.int/publications/i/item/9789240116337/"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Reported surveillance populations and adjusted estimates are not a census of every infection.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "amr_review",
+      "statement": "A scoping review identifies representativeness, incomplete data and reporting bias among antimicrobial-resistance surveillance challenges.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": [
+        "amr",
+        "amr_surveillance"
+      ],
+      "source_refs": [
+        "https://link.springer.com/article/10.1186/s12879-023-08585-2"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "General surveillance literature, not a validation of every WHO-country data stream.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "amr_glass",
+      "statement": "WHO GLASS supports standardized country antimicrobial-resistance surveillance and analysis.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": [
+        "amr",
+        "amr_surveillance"
+      ],
+      "source_refs": [
+        "https://www.who.int/publications/i/item/9789240116337/"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Operating surveillance program is not evidence of resistance mitigation.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "edu_unesco",
+      "statement": "UNESCO's 2026 SDG 4 monitoring reports 273 million children and youth out of school in 2024.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "education",
+        "education_exclusion"
+      ],
+      "source_refs": [
+        "https://www.unesco.org/reports/gem-report/en/2026-monitoring-sdg4"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Global estimates revised over time, with coverage limits in crisis settings.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "edu_uis",
+      "statement": "UNESCO UIS Data Browser publishes downloadable education participation and out-of-school indicators with metadata.",
+      "kind": "dataset",
+      "layer": "program",
+      "clusters": [
+        "education",
+        "education_exclusion"
+      ],
+      "source_refs": [
+        "https://databrowser.uis.unesco.org/browser/EDUCATION/UIS-EducationOPRI/out-of-school"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Monitoring data platform; cannot by itself resolve exclusion.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "edu_digital",
+      "statement": "A systematic review of educational digital divide studies describes access, hardware, use and other disparities in learning technology.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": [
+        "education",
+        "education_learning"
+      ],
+      "source_refs": [
+        "https://doi.org/10.1080/15391523.2024.2425442"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Educational digital inequity should not be conflated with all causes of out-of-school status.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "digital_itu",
+      "statement": "ITU's 2025 digital-development report estimates 2.2 billion people remain offline, with affordability and quality gaps.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "connectivity",
+        "connectivity_access"
+      ],
+      "source_refs": [
+        "https://www.itu.int/en/ITU-D/Statistics/Pages/facts/default.aspx"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Global modeled aggregates, not direct diagnoses of an individual locality.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "digital_review",
+      "statement": "A 2024 systematic integrative review of digital inequity highlights literacy, affordability and access barriers.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": [
+        "connectivity",
+        "connectivity_skills"
+      ],
+      "source_refs": [
+        "https://doi.org/10.1108/DTS-04-2024-0054"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Review emphasizes developed countries; does not transfer automatically worldwide.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "digital_datahub",
+      "statement": "ITU DataHub offers country and regional connectivity statistics, including access and affordability indicators.",
+      "kind": "dataset",
+      "layer": "program",
+      "clusters": [
+        "connectivity",
+        "connectivity_access"
+      ],
+      "source_refs": [
+        "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Measurement and reporting capability, not proof of universal access.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "water_wmo",
+      "statement": "WMO's 2024 global water report states only about one third of river basins had normal conditions in that year.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "water",
+        "water_observation"
+      ],
+      "source_refs": [
+        "https://wmo.int/resources/publication-series/state-of-global-water-resources/state-of-global-water-resources-2024"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "One-year status, not continuous local risk prediction or universal station coverage.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "water_hydrosos",
+      "statement": "WMO HydroSOS supports standardized hydrological status and outlook information and country capacity building.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": [
+        "water",
+        "water_observation"
+      ],
+      "source_refs": [
+        "https://wmo.int/activities/hydrosos"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "Described global initiative; deployment coverage and local forecast skill not checked.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    },
+    {
+      "key": "housing_unhabitat",
+      "statement": "UN-Habitat documents inadequate and unaffordable urban housing as a significant global challenge.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "housing",
+        "housing_adequacy"
+      ],
+      "source_refs": [
+        "https://unhabitat.org/11-1-adequate-housing"
+      ],
+      "tags": [
+        "landscape_seed",
+        "source_summary_not_replication"
+      ],
+      "provenance": {
+        "review_scope": "published_page_or_abstract",
+        "boundary": "General global indicator framing; no local comparable housing dataset collected yet.",
+        "source_reviewed_on": "2026-10-20"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "dog_survey",
+      "relation": "CONTEXT_FOR",
+      "target": "animal_observation",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. National periodic sampling, not live local population enumeration or causal intervention evidence."
+      }
+    },
+    {
+      "source": "dog_method",
+      "relation": "RELATED_TO",
+      "target": "animal_observation",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Methodological relevance only; no estimator executed or tested in this broad seed."
+      }
+    },
+    {
+      "source": "dog_talea",
+      "relation": "RELATED_TO",
+      "target": "animal_observation",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.icam-coalition.org/talea-user-guide/"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Provider documentation, not proof of local population estimation or field effectiveness."
+      }
+    },
+    {
+      "source": "privacy_risk",
+      "relation": "CONTEXT_FOR",
+      "target": "privacy_exposure",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://github.com/Spectating101/refinery/tree/2b03ad20f8ab3d55462adb38852855b940194c94/evidence/cloakpipe-core-20261016"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Reporter concern in documented engineering case, NOT an independently confirmed user data leak."
+      }
+    },
+    {
+      "source": "privacy_alsa",
+      "relation": "RELATED_TO",
+      "target": "privacy_mitigation",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://doi.org/10.1145/3711896.3736840"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Paper's method not independently replicated or compared against CloakPipe here."
+      }
+    },
+    {
+      "source": "privacy_cloakpipe",
+      "relation": "RELATED_TO",
+      "target": "privacy_mitigation",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://github.com/Spectating101/refinery/tree/2b03ad20f8ab3d55462adb38852855b940194c94/evidence/cloakpipe-core-20261016"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Pinned reports only; broader leakage failures preclude general privacy protection claims."
+      }
+    },
+    {
+      "source": "energy_iea",
+      "relation": "CONTEXT_FOR",
+      "target": "energy_curtailment",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.iea.org/reports/renewables-2025/renewable-electricity"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Cross-market synthesis; technical curtailment definitions and periods vary by market."
+      }
+    },
+    {
+      "source": "energy_flex",
+      "relation": "CONTEXT_FOR",
+      "target": "energy_flexibility",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.iea.org/reports/renewables-2025/executive-summary"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Describes a system issue; no independently tested local remedy linked in this map."
+      }
+    },
+    {
+      "source": "food_unep",
+      "relation": "CONTEXT_FOR",
+      "target": "food_households",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.unep.org/en/news-and-stories/press-release/world-squanders-over-1-billion-meals-day-un-report"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Modelled 2022 global estimate combining sectors; not a 2026 measured time series."
+      }
+    },
+    {
+      "source": "food_academic",
+      "relation": "RELATED_TO",
+      "target": "food_households",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12106936/"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Review evidence spans diverse contexts and does not identify a single universally effective intervention."
+      }
+    },
+    {
+      "source": "food_index",
+      "relation": "RELATED_TO",
+      "target": "food_measurement",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://sdgs.unep.org/article/2a5-food-waste-index"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Index measurement framework, not evidence of reduced food waste."
+      }
+    },
+    {
+      "source": "amr_who",
+      "relation": "CONTEXT_FOR",
+      "target": "amr_surveillance",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/publications/i/item/9789240116337/"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Reported surveillance populations and adjusted estimates are not a census of every infection."
+      }
+    },
+    {
+      "source": "amr_review",
+      "relation": "RELATED_TO",
+      "target": "amr_surveillance",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://link.springer.com/article/10.1186/s12879-023-08585-2"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. General surveillance literature, not a validation of every WHO-country data stream."
+      }
+    },
+    {
+      "source": "amr_glass",
+      "relation": "RELATED_TO",
+      "target": "amr_surveillance",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/publications/i/item/9789240116337/"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Operating surveillance program is not evidence of resistance mitigation."
+      }
+    },
+    {
+      "source": "edu_unesco",
+      "relation": "CONTEXT_FOR",
+      "target": "education_exclusion",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.unesco.org/reports/gem-report/en/2026-monitoring-sdg4"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Global estimates revised over time, with coverage limits in crisis settings."
+      }
+    },
+    {
+      "source": "edu_uis",
+      "relation": "RELATED_TO",
+      "target": "education_exclusion",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://databrowser.uis.unesco.org/browser/EDUCATION/UIS-EducationOPRI/out-of-school"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Monitoring data platform; cannot by itself resolve exclusion."
+      }
+    },
+    {
+      "source": "edu_digital",
+      "relation": "RELATED_TO",
+      "target": "education_learning",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://doi.org/10.1080/15391523.2024.2425442"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Educational digital inequity should not be conflated with all causes of out-of-school status."
+      }
+    },
+    {
+      "source": "digital_itu",
+      "relation": "CONTEXT_FOR",
+      "target": "connectivity_access",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.itu.int/en/ITU-D/Statistics/Pages/facts/default.aspx"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Global modeled aggregates, not direct diagnoses of an individual locality."
+      }
+    },
+    {
+      "source": "digital_review",
+      "relation": "RELATED_TO",
+      "target": "connectivity_skills",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://doi.org/10.1108/DTS-04-2024-0054"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Review emphasizes developed countries; does not transfer automatically worldwide."
+      }
+    },
+    {
+      "source": "digital_datahub",
+      "relation": "RELATED_TO",
+      "target": "connectivity_access",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Measurement and reporting capability, not proof of universal access."
+      }
+    },
+    {
+      "source": "water_wmo",
+      "relation": "CONTEXT_FOR",
+      "target": "water_observation",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://wmo.int/resources/publication-series/state-of-global-water-resources/state-of-global-water-resources-2024"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. One-year status, not continuous local risk prediction or universal station coverage."
+      }
+    },
+    {
+      "source": "water_hydrosos",
+      "relation": "RELATED_TO",
+      "target": "water_observation",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://wmo.int/activities/hydrosos"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. Described global initiative; deployment coverage and local forecast skill not checked."
+      }
+    },
+    {
+      "source": "housing_unhabitat",
+      "relation": "CONTEXT_FOR",
+      "target": "housing_adequacy",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://unhabitat.org/11-1-adequate-housing"
+      ],
+      "provenance": {
+        "boundary": "Exploratory topical association; do not infer causal applicability, solution efficacy or completeness. General global indicator framing; no local comparable housing dataset collected yet."
+      }
+    },
+    {
+      "source": "edu_digital",
+      "relation": "RELATED_TO",
+      "target": "connectivity_skills",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://doi.org/10.1080/15391523.2024.2425442"
+      ],
+      "provenance": {
+        "boundary": "Educational digital access overlaps broader digital inequity; this is not a causal explanation of school nonattendance."
+      }
+    }
+  ],
+  "conversion_metadata": {
+    "status": "EXPLORATORY_UNRANKED",
+    "domain_count": 9,
+    "source_evidence_records": 23,
+    "sampling": "Purposive diversity seed, not systematic universe or prevalence estimate",
+    "blocked_inference": "No missing category or absent edge implies absence in the world; no program efficacy verified."
+  }
+}
