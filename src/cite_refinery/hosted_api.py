@@ -20,7 +20,7 @@ def create_private_app(db_path: str):
     store = WorkspaceDB(db_path)
     app = FastAPI(
         title="Cite-Refinery Private Workspaces",
-        version="0.22.0",
+        version="0.23.0",
         docs_url=None, redoc_url=None, openapi_url=None,
     )
 

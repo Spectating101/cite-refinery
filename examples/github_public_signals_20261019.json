@@ -1,0 +1,232 @@
+{
+  "schema": "cite_refinery.github_public_signals.v1",
+  "observed_at": "2026-10-19T14:37:40Z",
+  "observations": [
+    {
+      "repository": "Spectating101/yzu-cluster",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 33,
+      "pushed_at": "2026-10-19T11:23:25Z",
+      "releases": [
+        {
+          "tag_name": "research-drive-rc2",
+          "name": "Research Drive RC2",
+          "draft": false,
+          "prerelease": false,
+          "published_at": "2026-07-20T17:38:25Z",
+          "url": "https://github.com/Spectating101/yzu-cluster/releases/tag/research-drive-rc2"
+        }
+      ],
+      "tags": [
+        {
+          "name": "research-drive-rc2",
+          "sha": "33fcacb4416e1a8ae53d0e16bbd14b19d8ebf3c9"
+        },
+        {
+          "name": "research-drive-rc1",
+          "sha": "0637cdd59176fcb029cdccea3f58515ff0ffccec"
+        },
+        {
+          "name": "research-drive-public-20260917.2",
+          "sha": "c577b1cb7f8bad23b8a8b4a2b09bf7d6973225ea"
+        },
+        {
+          "name": "research-drive-public-20260917.1",
+          "sha": "501244148d0399bfa72f91c6560b6b4a75985f73"
+        },
+        {
+          "name": "research-drive-public-20260917",
+          "sha": "6e791ac5123801949b7ef21339f2bb09acc98f5a"
+        },
+        {
+          "name": "research-drive-public-20260913",
+          "sha": "3175e0728c53e797e4944d6a3f230c4587ac25cb"
+        },
+        {
+          "name": "research-drive-external-rc3-pre-discover-recovery-20260909",
+          "sha": "f285646725bc1f03d304291d740b500bf41cc215"
+        },
+        {
+          "name": "freeze/ui-proposed-20260731",
+          "sha": "266e85bc9682e3ad8e3a240960f09475bd79948b"
+        },
+        {
+          "name": "freeze/ui-live-20260731",
+          "sha": "dfd56da9994af9a0351da2af81b2f9135819059f"
+        },
+        {
+          "name": "freeze/ui-live-20260731b",
+          "sha": "f91d983e030c962335de562244faba3e7dcf60c1"
+        },
+        {
+          "name": "freeze/pre-frontend-brain-removal-20260807",
+          "sha": "5fca465165edc324e92d13d93177083a2e293998"
+        },
+        {
+          "name": "discover-d0-backend-approved-2026-07-11",
+          "sha": "b48e591b09be2e0ee0f9a03aa8f127903b2fb21f"
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "6dc745cdd838bf61daead116d919a4cf0a4e97cc",
+          "committed_at": "2026-09-19T17:59:09Z"
+        },
+        {
+          "sha": "f4b84c3a168f16eb1442f0dd5a5cdf4975cb6e62",
+          "committed_at": "2026-09-18T17:40:48Z"
+        },
+        {
+          "sha": "fbd7cd543a6c2bd3dcaf31af0ebad040c842e49b",
+          "committed_at": "2026-09-18T12:54:50Z"
+        },
+        {
+          "sha": "81845fef7aa383f68d014183190b872d755d4b80",
+          "committed_at": "2026-09-18T12:53:43Z"
+        },
+        {
+          "sha": "e6e97be5138f38deab46bd0b594bdf19133042eb",
+          "committed_at": "2026-09-18T12:53:22Z"
+        },
+        {
+          "sha": "324a0b9a02a81e8a97f3e8fc5553cedea6c79678",
+          "committed_at": "2026-09-18T12:51:09Z"
+        },
+        {
+          "sha": "8a1e62de1d0b38de9dc3f9908458371f9e3ba27e",
+          "committed_at": "2026-08-25T08:57:43Z"
+        },
+        {
+          "sha": "42d5b10075ca0cb918a6cbc7f8a7fb8815fea3c2",
+          "committed_at": "2026-08-12T16:37:16Z"
+        }
+      ]
+    },
+    {
+      "repository": "Spectating101/hardware-splicer",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "stars": 0,
+      "forks": 0,
+      "open_issues": 102,
+      "pushed_at": "2026-10-19T14:26:26Z",
+      "releases": [
+        {
+          "tag_name": "gauntlet-spi-flash-adapter-v1-20260916",
+          "name": "Hardware Splicer — SPI Flash Adapter Remote-FCT Gauntlet Candidate",
+          "draft": false,
+          "prerelease": true,
+          "published_at": "2026-09-16T10:43:05Z",
+          "url": "https://github.com/Spectating101/hardware-splicer/releases/tag/gauntlet-spi-flash-adapter-v1-20260916"
+        },
+        {
+          "tag_name": "v1.1.0-alpha.16",
+          "name": "v1.1.0-alpha.16 — cold-internal + design partners",
+          "draft": false,
+          "prerelease": true,
+          "published_at": "2026-07-17T17:31:07Z",
+          "url": "https://github.com/Spectating101/hardware-splicer/releases/tag/v1.1.0-alpha.16"
+        },
+        {
+          "tag_name": "v1.0.2",
+          "name": "Splice Agent v1.0.2 — Internal maturity",
+          "draft": false,
+          "prerelease": false,
+          "published_at": "2026-07-06T17:05:36Z",
+          "url": "https://github.com/Spectating101/hardware-splicer/releases/tag/v1.0.2"
+        }
+      ],
+      "tags": [
+        {
+          "name": "v1.1.0",
+          "sha": "7ef434eaf88aa7e1a975587de800d6a66d3875aa"
+        },
+        {
+          "name": "v1.1.0-alpha.16",
+          "sha": "e0c747bc5e6f2c7e406372802d1bbbe4d71c4931"
+        },
+        {
+          "name": "v1.1.0-alpha.15",
+          "sha": "57c6491060f5d98c36eac1dc4c0374b2b351e91f"
+        },
+        {
+          "name": "v1.1.0-alpha.14",
+          "sha": "9a5decf7130c468ad8b3fee458a75578b7c5bfc0"
+        },
+        {
+          "name": "v1.1.0-alpha.13",
+          "sha": "9967ee3f5bf026d073557ee8e8cb924854d36ca4"
+        },
+        {
+          "name": "v1.1.0-alpha.12",
+          "sha": "5ccea36293936c3a4b811e86c8694308ecbb7308"
+        },
+        {
+          "name": "v1.1.0-alpha.11",
+          "sha": "3fe605823fbd77f2533f88b7af4432faa6a2fcd6"
+        },
+        {
+          "name": "v1.1.0-alpha.10",
+          "sha": "0e114d4f5a64a1bb9e0189b738711ca05a088aca"
+        },
+        {
+          "name": "v1.1.0-alpha.9",
+          "sha": "078f33a2aa3fdc56350613c612b7bd815876183c"
+        },
+        {
+          "name": "v1.1.0-alpha.8",
+          "sha": "0425648cac1d03a66255172581a72204f51e736a"
+        },
+        {
+          "name": "v1.1.0-alpha.7",
+          "sha": "66c6d90a410520da602e5527727a6e1c36cd170f"
+        },
+        {
+          "name": "v1.1.0-alpha.6",
+          "sha": "72af7124a5fa04a78b769cf479340ede8e43c1df"
+        }
+      ],
+      "recent_commits": [
+        {
+          "sha": "1545ae806f9dd1e260e5da64c2b4475e49496276",
+          "committed_at": "2026-10-13T13:27:21Z"
+        },
+        {
+          "sha": "a1bc324bc08c071fd5ceba5ad6c674e155c05dde",
+          "committed_at": "2026-10-13T12:57:15Z"
+        },
+        {
+          "sha": "be81e99d140c2f33910595d14004e6c9f3cf6923",
+          "committed_at": "2026-10-13T10:52:29Z"
+        },
+        {
+          "sha": "8fa743231d3d19da0c95dd914dc091c2eac32258",
+          "committed_at": "2026-10-13T10:52:29Z"
+        },
+        {
+          "sha": "6cbe0ceb24e5a908173ef32a2a4f75aec74c95e8",
+          "committed_at": "2026-10-13T10:52:17Z"
+        },
+        {
+          "sha": "17093c38d8ddb1e1f1873e6083c1d3190ac9e9ed",
+          "committed_at": "2026-10-13T07:22:31Z"
+        },
+        {
+          "sha": "be93d65329dc56af8f202f038eafb7441d8cfaf4",
+          "committed_at": "2026-10-13T07:13:23Z"
+        },
+        {
+          "sha": "daea4f0bef3a34278ced2cf96cc25b0a881d7b5f",
+          "committed_at": "2026-10-13T07:13:23Z"
+        }
+      ]
+    }
+  ],
+  "source": "GitHub REST API via gh CLI (repository/release/tag/commit public endpoints)",
+  "boundary": "Public provider counters and latest sampled records, not adoption, capabilities or a complete release/commit census"
+}
