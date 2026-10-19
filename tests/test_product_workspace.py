@@ -193,13 +193,14 @@ class ProductWorkspaceTests(unittest.TestCase):
 
 class ProductWebShellTests(unittest.TestCase):
     def test_html_is_map_first_and_ai_optional(self):
-        self.assertIn("clustered three-layer map", APP_HTML)
+        self.assertIn("clustered three-layer map", APP_HTML.lower())
         self.assertIn("Practical", APP_HTML)
         self.assertIn("Academic", APP_HTML)
         self.assertIn("Program", APP_HTML)
         self.assertIn("No AI call is required", APP_HTML)
         self.assertIn("data-cluster", APP_HTML)
         self.assertIn("data-node", APP_HTML)
+        self.assertIn("setSelectionRange(start,end)", APP_HTML)
         self.assertNotIn("Ask the AI to begin", APP_HTML)
 
     def test_http_shell_exposes_atlas_cluster_and_node_coverage(self):
