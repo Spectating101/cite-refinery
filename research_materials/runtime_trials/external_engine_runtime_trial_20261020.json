@@ -1,0 +1,87 @@
+{
+  "trial_date": "2026-10-20",
+  "trial_type": "real runtime smoke, n=2 WMO questions + one independently parsed PDF",
+  "wmo_source_refs": [
+    {
+      "id": "WMO-HYDROSOS",
+      "url": "https://wmo.int/activities/hydrosos",
+      "page_sha256": "0df843c20a3d9e3402ea41f9ac3ecb669659aa0cd63111f9bc8afc94f1a7c7f9",
+      "passage_sha256": "b3e949529b49259165b51ea86fd96c4d6f6f59f7f6fbbfe2652bbcc3e8292b24",
+      "method": "paragraph selector matched directly in 200-response official WMO HTML"
+    },
+    {
+      "id": "WMO-EW4ALL",
+      "url": "https://wmo.int/activities/early-warnings-all",
+      "page_sha256": "93850328ba460f3f061136432bf002bb46f0fe5d27cf0a6cea131ba7278fedff",
+      "passage_sha256": "47adf262f5e239088a41e9f8f3e9a356b4052a02b435ca3d55cc36a0d4b7362c",
+      "method": "paragraph selector matched directly in 200-response official WMO HTML"
+    }
+  ],
+  "model": "llama3.2:3b",
+  "closed_book_response_count": 2,
+  "closed_book_explicit_decisions": 0,
+  "grounded_correct_binary_decisions": 1,
+  "grounded_questions": 2,
+  "source_span": {
+    "explicit_relationship_stated": true,
+    "model_answer_conflicts_with_explicit_span": true,
+    "quote_present": true,
+    "review_status": "manual_review_required",
+    "source_url": "https://wmo.int/activities/hydrosos"
+  },
+  "model_results": [
+    {
+      "id": "explicit-link",
+      "expected": "yes",
+      "closed_book_decision": "unparseable",
+      "grounded_decision": "no",
+      "closed_book_answer": "I cannot verify if the World Meteorological Organization (WMO) has described HydroSOS as supporting the Early Warnings for All initiative for hydrological disasters.",
+      "grounded_answer": "No.\n\nThe passage from [WMO-HYDROSOS] states that HydroSOS supports the Early Warnings for All initiative, but it does not explicitly state that it supports the initiative for hydrological disasters specifically. The connection to hydrological disasters is implied through the mention of supporting local resilience and preparedness, which is a broader goal of the Early Warnings for All initiative.",
+      "source_audit": "manual_review_required"
+    },
+    {
+      "id": "outcome-overreach",
+      "expected": "no",
+      "closed_book_decision": "unparseable",
+      "grounded_decision": "no",
+      "closed_book_answer": "I couldn't find any information on \"HydroSOS\" being a real program or initiative. If you could provide more context or clarify what HydroSOS refers to, I'd be happy to try and help further.",
+      "grounded_answer": "No.\n\nNeither of the provided sources includes a local outcome evaluation of the impact of deploying HydroSOS on reducing deaths. They only describe the system's purpose and goals, as well as its connection to other initiatives like Early Warnings for All.",
+      "source_audit": "manual_review_required"
+    }
+  ],
+  "docling": {
+    "engine": "Docling 2.70.0",
+    "stage": "actual_pdf_conversion",
+    "source_sha256": "ff707e71be7e81bd6fc5f2303653f13e2c506ac7d88dfc4641985cb402bb82de",
+    "pdf_pages": 1,
+    "docling_markdown_characters": 24918,
+    "second_parser_characters": 11925,
+    "repeated_numeric_reference_tokens": 594,
+    "numeric_tokens_found_both": 594,
+    "numeric_overlap_recall_proxy": 1.0,
+    "confirmed_real_runtime": true,
+    "limits": [
+      "PyMuPDF is NOT a reference transcript and tokens do not prove meaning.",
+      "OCR and Docling advanced table-structure recognition disabled for this smoke.",
+      "Numeric token overlap is not value alignment, row correctness or extraction accuracy.",
+      "Do not promote extracted numbers to verified research claims."
+    ]
+  },
+  "lightrag": {
+    "state": "incomplete_terminated",
+    "engine": "LightRAG 1.5.7 with local Ollama llama3.2:3b and all-MiniLM-L6-v2",
+    "observed": "real ingestion initialized, one document queued, extraction worker started and a chunk embedding flush attempted; no completed graph or returned query",
+    "elapsed_lower_bound_seconds": 345,
+    "configured_async_timeout_s": 200,
+    "termination": "Explicitly terminated only the trial Python process after timeout/cancellation failed to complete; Ollama service left unchanged.",
+    "review_status": "failed_runtime_not_valid_evidence",
+    "boundary": "Do not claim LightRAG improves retrieval or semantic extraction from this attempt."
+  },
+  "interpretation": [
+    "The source-backed model still gave an incorrect negative about a literally explicit WMO relationship.",
+    "The model correctly did not assert a source-specific measured mortality outcome.",
+    "Do not promote model results to evidence-supported relations on source URLs alone.",
+    "A numeric token overlap against a second parser, if measured, is only a retention proxy.",
+    "Single-case test and source availability cannot establish superiority of any research engine."
+  ]
+}

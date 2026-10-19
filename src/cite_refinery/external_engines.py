@@ -175,7 +175,8 @@ def _json_answer(value: Any) -> dict:
 
 async def lightrag_propose(rag, *, source_text: str, module_ids: set[str],
                           source_refs: set[str], query_param=None,
-                          max_proposals: int = 25) -> dict[str, Any]:
+                          max_proposals: int = 25,
+                          source_passages: dict[str, str] | None = None) -> dict[str, Any]:
     """Use a configured LightRAG instance, never accept free-form model edges.
 
     Caller supplies a configured rag (embedding + LLM + graph DB already set);
@@ -187,6 +188,9 @@ async def lightrag_propose(rag, *, source_text: str, module_ids: set[str],
         raise ValueError("source_text must be between 5 and 600000 characters")
     if not module_ids or not source_refs:
         raise ValueError("explicit module_ids and source_refs are required")
+    if source_passages is not None:
+        if not isinstance(source_passages, dict) or not source_passages or not set(source_passages) <= source_refs:
+            raise ValueError("source_passages must be a nonempty subset of the allowed source refs")
     if query_param is None:
         try:
             from lightrag import QueryParam
@@ -198,6 +202,7 @@ async def lightrag_propose(rag, *, source_text: str, module_ids: set[str],
         "Propose ONLY evidence-backed semantic relationships for Cite-Refinery. "
         "Return JSON object: {\\\"proposals\\\":[{\\\"source\\\":module_id,\\\"target\\\":module_id,"
         "\\\"relation\\\":UPPER_SNAKE_CASE,\\\"evidence_refs\\\":[source_id],\\\"reason\\\":text}]}. "
+        "When asked for quotes, supply evidence_quotes as {source_id:verbatim_source_span}. "
         "No inferred CAUSES, ADDRESSES, IMPLEMENTS or effectiveness. "
         f"Allowed module IDs: {sorted(module_ids)}. Allowed source IDs: {sorted(source_refs)}."
     )
@@ -219,17 +224,35 @@ async def lightrag_propose(rag, *, source_text: str, module_ids: set[str],
             relation in {"CAUSES", "SUPPORTS", "PRODUCES", "IMPLEMENTS", "DEPLOYED_BY", "ADDRESSES"}):
             rejected += 1
             continue
+        quote_checks = []
+        if source_passages is not None:
+            from .external_evidence_audit import verify_source_span
+            candidate_quotes = proposal.get("evidence_quotes")
+            if not isinstance(candidate_quotes, dict) or set(refs) - set(source_passages):
+                rejected += 1
+                continue
+            try:
+                quote_checks = [verify_source_span(
+                    {"id": ref, "url": ref, "text": source_passages[ref]},
+                    candidate_quotes.get(ref, "")) for ref in set(refs)]
+            except ValueError:
+                rejected += 1
+                continue
+            if not all(item["literal_quote_found"] for item in quote_checks):
+                rejected += 1
+                continue
         result.append({
             "source": source, "target": target, "relation": relation,
             "evidence_refs": sorted(set(refs)),
             "status": "candidate", "reason": _text(proposal.get("reason"), 1200),
             "boundary": "Generated relation requiring independent source/scope review; no authority promotion.",
             "origin": "LightRAG-proposal-not-accepted",
+            "source_span_checks": quote_checks,
         })
     return {"engine": "LightRAG", "proposals": result,
             "rejected_proposals": rejected,
             "review_status": "independent_human_or_source_review_required",
-            "boundary": "Source ID allowlisting prevents invented refs; it does NOT confirm citations support the generated relations."}
+            "boundary": "Source ID allowlisting and optional literal-quote checks prevent invented refs and quotes; they do NOT confirm semantic entailment or a causal relation."}
 
 
 def _local_endpoint(base_url: str) -> str:

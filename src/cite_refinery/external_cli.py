@@ -13,6 +13,7 @@ from .external_engines import (
 )
 from .external_explorer import export_cytoscape_explorer
 from .external_packets import source_lead_packet, relation_proposal_packet
+from .external_evidence_audit import verify_source_span, detect_explicit_link_misread
 
 
 def catalog() -> dict:
@@ -69,7 +70,13 @@ def main(argv: list[str] | None = None) -> int:
     rel = commands.add_parser("relations", help="Stage audited-model relation proposals into a candidate packet")
     rel.add_argument("module_titles_json", help="File containing {module_id:title} mapping")
     rel.add_argument("proposals_json", help="File containing candidate proposals array")
-    for cmd in (oa, doc, paper, gro, clm, pv, rel):
+    span = commands.add_parser("audit-span", help="Check a claimed source quote against text, with no entailment promotion")
+    span.add_argument("source_json", help="JSON object with source id, url and text")
+    span.add_argument("quote")
+    span.add_argument("--subject")
+    span.add_argument("--object-name")
+    span.add_argument("--model-decision", choices=["yes", "no", "unparseable"])
+    for cmd in (oa, doc, paper, gro, clm, pv, rel, span):
         cmd.add_argument("--output", help="Write result as JSON rather than stdout")
     opts = parser.parse_args(argv)
     if opts.command == "engines":
@@ -96,6 +103,16 @@ def main(argv: list[str] | None = None) -> int:
         if isinstance(proposals, dict):
             proposals = proposals.get("proposals", [])
         result = relation_proposal_packet(modules, proposals)
+    elif opts.command == "audit-span":
+        source = json.loads(Path(opts.source_json).read_text(encoding="utf-8"))
+        if all((opts.subject, opts.object_name, opts.model_decision)):
+            result = detect_explicit_link_misread(
+                source, model_decision=opts.model_decision,
+                exact_span=opts.quote, subject=opts.subject, object_name=opts.object_name)
+        elif any((opts.subject, opts.object_name, opts.model_decision)):
+            parser.error("--subject, --object-name and --model-decision must be given together")
+        else:
+            result = verify_source_span(source, opts.quote)
     elif opts.command == "explore":
         packet = json.loads(Path(opts.packet).read_text(encoding="utf-8"))
         result = export_cytoscape_explorer(packet, opts.output_directory)
