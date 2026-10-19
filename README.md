@@ -318,3 +318,11 @@ Topical literature links remain candidate, not grounded. The Practical,
 Academic, and Program cluster model remains the product's center, and the
 public Vercel demonstration is unchanged. See docs/CITE_ACADEMIC_BRIDGE.md
 for its scope, trust boundaries, and explicit reviewed queue workflow.
+
+## v0.17 — quote-checked Academic evidence receipts
+
+Optional Cite-Agent grounding receipts can populate Academic claim nodes after
+the quotes are checked against previously imported DOI-indexed abstracts.
+Claim-to-paper relations are qualified; claim-to-Nocturnal context links remain
+candidate. The three-layer map remains fully browsable without AI.
+See docs/CITE_ABSTRACT_GROUNDING_BRIDGE.md for the exact workflow and limits.
