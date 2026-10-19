@@ -402,3 +402,16 @@ the public collector. Manual review, private ingestion and the protected
 local evidence-evolution UI remain independent of the static Vercel demo.
 See docs/GITHUB_PROJECT_SIGNALS_V023.md and
 examples/github_public_signals_20261019.json.
+
+## v0.24 — Restricted private GitHub project signals
+
+A distinct authenticated source feeder now captures sanitized GitHub metadata
+for explicitly selected private Nocturnal, Refinery and Policy Lab repositories.
+Editor authorization and pinned in-project Git identity are checked before
+collection. Provider metadata is stored only in mode-0600 files inside the
+mode-0700 local private workspace, then imported via review/queue/worker.
+Release/tag/commit samples, pinned dependency declarations and later net
+counter differences appear as restricted Program evidence, not adoption or
+readiness claims. The v0.23 PUBLIC collector and the protected Vercel demo
+remain unchanged. No real private source sample is committed.
+See docs/PRIVATE_GITHUB_OBSERVATIONS_V024.md.
