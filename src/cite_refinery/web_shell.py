@@ -101,7 +101,7 @@ function renderProject(){
 function renderContent(){
   if(!state.project){$('#content').innerHTML=empty('Select a project.');return}
   $('#content').innerHTML=state.view==='map'?renderMap():state.view==='records'?renderRecords():renderProject();
-  const cs=$('#clusterSearch');if(cs)cs.oninput=e=>{state.clusterQuery=e.target.value;renderContent()};
+  const cs=$('#clusterSearch');if(cs)cs.oninput=e=>{const start=e.target.selectionStart,end=e.target.selectionEnd;state.clusterQuery=e.target.value;renderContent();const next=$('#clusterSearch');if(next){next.focus();next.setSelectionRange(start,end)}};
   document.querySelectorAll('[data-cluster]').forEach(b=>b.onclick=()=>{state.clusterId=b.dataset.cluster;state.nodeId=null;state.coverage=null;renderContent()});
   document.querySelectorAll('[data-node]').forEach(b=>b.onclick=()=>inspectNode(b.dataset.node));
 }
