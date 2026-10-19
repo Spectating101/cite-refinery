@@ -6,4 +6,4 @@ from .semantic_projection import SemanticProjection
 from .workspace import ProductWorkspace
 
 __all__ = ["CiteRefinery", "SemanticGraph", "SemanticProjection", "ProductWorkspace"]
-__version__ = "0.18.0"
+__version__ = "0.19.0"
