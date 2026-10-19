@@ -1,0 +1,51 @@
+{
+  "schema": "cite_refinery.animal_welfare_acceptance_sources.v1",
+  "case": "taiwan-free-roaming-dogs-survey-management",
+  "reviewed_at": "2026-10-19",
+  "sources": [
+    {
+      "key": "taiwan-national-survey",
+      "publisher": "Taiwan Ministry of Agriculture",
+      "date": "2025-01-20",
+      "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599",
+      "scope": "2024 national estimate 141584, prior 2022 estimate 159697; survey every two years, 739 sampled localities. Government notes estimated change is not statistically significant."
+    },
+    {
+      "key": "taiwan-miaoli-local",
+      "publisher": "Miaoli County Animal Protection and Health Inspection Office",
+      "date": "2026-06-24",
+      "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002313",
+      "scope": "Miaoli reports about 7400 dogs from the 2025 population survey and persistent local abandonment, free roaming and reproduction pressures."
+    },
+    {
+      "key": "population-estimation-review",
+      "publisher": "PLOS ONE",
+      "date": "2015-12-16",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+      "doi": "10.1371/journal.pone.0144830",
+      "scope": "Systematic review of 26 studies; sampling, variable detection probability, individual identification and population closure can bias abundance estimates."
+    },
+    {
+      "key": "shoushan-model",
+      "publisher": "Global Ecology and Conservation",
+      "date": "2024-09",
+      "url": "https://www.sciencedirect.com/science/article/pii/S235198942400194X",
+      "doi": "10.1016/j.gecco.2024.e02990",
+      "scope": "Shoushan study uses camera traps and population modelling: greater than 75 percent female sterilization could theoretically control abundance without immigration, but 50-100 incoming dogs per year undermine the modelled effect. Not a nationwide treatment trial."
+    },
+    {
+      "key": "icam-talea-user-guide",
+      "publisher": "ICAM Coalition",
+      "date": "accessed 2026-10-19",
+      "url": "https://www.icam-coalition.org/talea-user-guide/",
+      "scope": "Provider guide documents Talea web/app recording and survey download. FAQ says individual animal photos are NOT recorded within a sighting. No locally replicated field or population estimator test."
+    },
+    {
+      "key": "taiwan-2026-program",
+      "publisher": "Taiwan Ministry of Agriculture",
+      "date": "2026-03-16",
+      "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002234",
+      "scope": "2026 community dog population management program describes hotspot and female-source control, owner responsibility and community management. Program intent does not establish outcome effectiveness."
+    }
+  ]
+}
