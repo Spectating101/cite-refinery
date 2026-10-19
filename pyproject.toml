@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cite-refinery"
-version = "0.15.0"
+version = "0.16.0"
 description = "Clustered three-layer semantic research mapping across practical evidence, academic knowledge, and program supply."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -20,6 +20,7 @@ cite-refinery = "cite_refinery.layered_cli:main"
 cite-refinery-web = "cite_refinery.web_cli:main"
 cite-refinery-private = "cite_refinery.hosted_cli:main"
 cite-refinery-nocturnal = "cite_refinery.nocturnal_bridge_cli:main"
+cite-refinery-cite = "cite_refinery.cite_literature_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
