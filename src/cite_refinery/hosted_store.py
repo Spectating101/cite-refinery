@@ -94,6 +94,16 @@ CREATE TABLE IF NOT EXISTS ingest_jobs (
   started_at TEXT, finished_at TEXT
 );
 CREATE INDEX IF NOT EXISTS jobs_pending_idx ON ingest_jobs(status, created_at);
+CREATE TABLE IF NOT EXISTS project_snapshots (
+  id TEXT PRIMARY KEY, tenant_id TEXT NOT NULL REFERENCES tenants(id),
+  project_id TEXT NOT NULL REFERENCES projects(id),
+  captured_by TEXT NOT NULL REFERENCES users(id),
+  revision INTEGER NOT NULL, label TEXT NOT NULL,
+  state_digest TEXT NOT NULL, state_json TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  UNIQUE(project_id, revision)
+);
+CREATE INDEX IF NOT EXISTS project_snapshot_rev ON project_snapshots(project_id,revision);
 CREATE TABLE IF NOT EXISTS audit_events (
   id TEXT PRIMARY KEY, tenant_id TEXT NOT NULL REFERENCES tenants(id),
   project_id TEXT, actor TEXT, action TEXT NOT NULL,
@@ -251,6 +261,97 @@ class WorkspaceDB:
             row = self._project(db, project_id)
             self._require(db, user_id, row["tenant_id"])
             return json.loads(row["state_json"])
+
+    @staticmethod
+    def _snapshot_metadata(row: sqlite3.Row) -> dict[str, Any]:
+        return {
+            key: row[key] for key in
+            ("id", "project_id", "revision", "label", "state_digest", "created_at")
+        }
+
+    def capture_snapshot(self, user_id: str, project_id: str, label: str,
+                         expected_revision: int) -> dict[str, Any]:
+        """Write-once checkpoint of one exact authorized private project revision."""
+        clean = " ".join(str(label or "").split())
+        if not 5 <= len(clean) <= 140:
+            raise ValueError("snapshot label must be 5..140 characters")
+        if type(expected_revision) is not int or expected_revision < 0:
+            raise ValueError("explicit nonnegative revision required")
+        with self._write() as db:
+            project = self._project(db, project_id)
+            self._require(db, user_id, project["tenant_id"], {"owner", "editor"})
+            if int(project["revision"]) != expected_revision:
+                raise StateConflict("project revision changed since snapshot review")
+            total = int(db.execute(
+                "SELECT count(*) FROM project_snapshots WHERE project_id=?", (project_id,)
+            ).fetchone()[0])
+            if total >= 32:
+                raise StateConflict("32 snapshots per project cap reached; archive under operator control")
+            from .capability_evolution import _sha
+            state = json.loads(project["state_json"])
+            raw = json.dumps(state, ensure_ascii=False, sort_keys=True)
+            if len(raw.encode("utf-8")) > 8 * 1024 * 1024:
+                raise ValueError("private project state exceeds 8 MiB snapshot cap")
+            existing = db.execute(
+                "SELECT id FROM project_snapshots WHERE project_id=? AND revision=?",
+                (project_id, expected_revision)
+            ).fetchone()
+            if existing:
+                raise StateConflict("revision already captured; snapshots are immutable")
+            identifier = _id("snapshot")
+            created = _now()
+            digest = _sha(state)
+            db.execute(
+                "INSERT INTO project_snapshots VALUES(?,?,?,?,?,?,?,?,?)",
+                (identifier, project["tenant_id"], project_id, user_id,
+                 expected_revision, clean, digest, raw, created),
+            )
+            self._audit(db, project["tenant_id"], project_id, user_id,
+                        "evolution_snapshot_captured",
+                        {"snapshot_id": identifier, "revision": expected_revision,
+                         "state_digest": digest})
+            return {
+                "id": identifier, "project_id": project_id, "revision": expected_revision,
+                "label": clean, "state_digest": digest, "created_at": created,
+            }
+
+    def list_snapshots(self, user_id: str, project_id: str) -> list[dict[str, Any]]:
+        with self._connection() as db:
+            project = self._project(db, project_id)
+            self._require(db, user_id, project["tenant_id"])
+            rows = db.execute(
+                "SELECT id,project_id,revision,label,state_digest,created_at "
+                "FROM project_snapshots WHERE project_id=? ORDER BY revision,id",
+                (project_id,),
+            ).fetchall()
+        return [dict(row) for row in rows]
+
+    def compare_snapshots(self, user_id: str, project_id: str,
+                          first_id: str, second_id: str) -> dict[str, Any]:
+        """Never compare other tenants, other projects, or arbitrary client data."""
+        from .capability_evolution import compare_states, _sha
+        with self._connection() as db:
+            project = self._project(db, project_id)
+            self._require(db, user_id, project["tenant_id"])
+            rows = db.execute(
+                "SELECT * FROM project_snapshots WHERE project_id=? AND id IN (?,?)",
+                (project_id, first_id, second_id),
+            ).fetchall()
+        if first_id == second_id or len(rows) != 2:
+            raise NotFound("two distinct snapshots from the same project required")
+        keyed = {row["id"]: row for row in rows}
+        old, new = keyed[first_id], keyed[second_id]
+        if not old["revision"] < new["revision"]:
+            raise ValueError("compare snapshots in ascending revision order")
+        first = json.loads(old["state_json"])
+        second = json.loads(new["state_json"])
+        if _sha(first) != old["state_digest"] or _sha(second) != new["state_digest"]:
+            raise StateConflict("snapshot integrity checksum mismatch")
+        return compare_states(
+            first, second, project_id,
+            old_revision=old["revision"], new_revision=new["revision"],
+            old_capture=first_id, new_capture=second_id,
+        )
 
     def project_projection(self, user_id: str, project_id: str):
         from .workspace import ProductWorkspace
