@@ -40,7 +40,7 @@ class JsonStore:
     def __init__(self, workspace: str | Path = ".cite-refinery") -> None:
         self.workspace = Path(workspace)
         self.path = self.workspace / "state.json"
-        self.workspace.mkdir(parents=True, exist_ok=True)
+        self.workspace.mkdir(parents=True, exist_ok=True, mode=0o700)
         if not self.path.exists():
             self.save(deepcopy(_EMPTY_STATE))
 
@@ -53,7 +53,7 @@ class JsonStore:
         return data
 
     def save(self, data: dict[str, Any]) -> None:
-        self.workspace.mkdir(parents=True, exist_ok=True)
+        self.workspace.mkdir(parents=True, exist_ok=True, mode=0o700)
         fd, tmp_name = tempfile.mkstemp(prefix="state-", suffix=".json", dir=self.workspace)
         try:
             with os.fdopen(fd, "w", encoding="utf-8") as fh:

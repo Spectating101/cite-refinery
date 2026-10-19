@@ -193,6 +193,12 @@ class ProductWorkspaceTests(unittest.TestCase):
 
 
 class ProductWebShellTests(unittest.TestCase):
+    def test_local_server_rejects_external_bind(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            for host in ("0.0.0.0", "::", "192.168.1.100"):
+                with self.assertRaisesRegex(ValueError, "loopback only"):
+                    make_server(tmp, host=host, port=0)
+
     def test_html_is_map_first_and_ai_optional(self):
         self.assertIn("clustered three-layer map", APP_HTML.lower())
         self.assertIn("Practical", APP_HTML)
