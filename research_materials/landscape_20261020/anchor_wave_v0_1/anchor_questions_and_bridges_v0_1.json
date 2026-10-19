@@ -1,0 +1,538 @@
+{
+  "questions": [
+    {
+      "id": "Q-CO-01-use",
+      "module_id": "CO-01",
+      "question": "Where does nominal network availability fail to become actual meaningful Internet use?",
+      "source_id": "CO-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-CO-01-afford",
+      "module_id": "CO-01",
+      "question": "How much of the local usage gap is due to service and device affordability?",
+      "source_id": "CO-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-CO-01-skills",
+      "module_id": "CO-01",
+      "question": "Which populations face skills, accessibility or security obstacles despite coverage?",
+      "source_id": "CO-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-WA-06-coverage",
+      "module_id": "WA-06",
+      "question": "Which basins lack sufficient spatially and temporally complete hydrological observations?",
+      "source_id": "WA6-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-WA-06-skill",
+      "module_id": "WA-06",
+      "question": "What local skill has HydroSOS forecasting demonstrated relative to baseline approaches?",
+      "source_id": "WA6-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-WA-06-outcome",
+      "module_id": "WA-06",
+      "question": "Do additional hydrological observations measurably improve subsequent management decisions?",
+      "source_id": "WA6-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-EN-03-connection",
+      "module_id": "EN-03",
+      "question": "Which electrified households still lack reliable usable daily service?",
+      "source_id": "EN3-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-EN-03-afford",
+      "module_id": "EN-03",
+      "question": "How do tariff and equipment costs constrain electricity use after connection?",
+      "source_id": "EN3-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-EN-03-quality",
+      "module_id": "EN-03",
+      "question": "What outage-duration and voltage/frequency evidence is missing from mini-grid evaluations?",
+      "source_id": "EN3-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-PH-01-coverage",
+      "module_id": "PH-01",
+      "question": "Which populations lack access to essential health services despite nominal coverage?",
+      "source_id": "PH-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-PH-01-hardship",
+      "module_id": "PH-01",
+      "question": "Which households face financial hardship due to out-of-pocket payments for care?",
+      "source_id": "PH-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-PH-01-equity",
+      "module_id": "PH-01",
+      "question": "Which intervention designs reliably improve both access and financial protection for excluded populations?",
+      "source_id": "PH-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-FS-01-prices",
+      "module_id": "FS-01",
+      "question": "How do local price movements alter the cost of a least-cost healthy diet?",
+      "source_id": "FS1-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-FS-01-income",
+      "module_id": "FS-01",
+      "question": "Which groups lack sufficient resources to afford that diet?",
+      "source_id": "FS1-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-FS-01-consumption",
+      "module_id": "FS-01",
+      "question": "When an affordable diet exists, what additional barriers prevent people from choosing it?",
+      "source_id": "FS1-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-HO-01-burden",
+      "module_id": "HO-01",
+      "question": "For which households do housing costs consume an unaffordable share of resources?",
+      "source_id": "HO-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-HO-01-supply",
+      "module_id": "HO-01",
+      "question": "How strongly do local supply constraints explain rents compared with financing, quality and location?",
+      "source_id": "HO-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-HO-01-adequacy",
+      "module_id": "HO-01",
+      "question": "Does available affordable housing also satisfy safety, adequacy and climate-risk requirements?",
+      "source_id": "HO-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-WA-01-quality",
+      "module_id": "WA-01",
+      "question": "Who has a water connection but lacks microbiologically and chemically safe water?",
+      "source_id": "WA1-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-WA-01-availability",
+      "module_id": "WA-01",
+      "question": "Where does improved-water infrastructure fail the on-premises availability and continuity requirements?",
+      "source_id": "WA1-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-WA-01-interventions",
+      "module_id": "WA-01",
+      "question": "Which specific interventions have demonstrated improved water quality and downstream health outcomes?",
+      "source_id": "WA1-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-EN-01-build",
+      "module_id": "EN-01",
+      "question": "Which transmission projects face physical, regulatory or interconnection congestion bottlenecks?",
+      "source_id": "EN1-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-EN-01-utilization",
+      "module_id": "EN-01",
+      "question": "Where can dynamic ratings and flow control safely improve use of existing lines?",
+      "source_id": "EN1-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-EN-01-outcomes",
+      "module_id": "EN-01",
+      "question": "What completed financed transmission projects have demonstrably reduced congestion and at what cost?",
+      "source_id": "EN1-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-FS-03-hazards",
+      "module_id": "FS-03",
+      "question": "Which production systems face which climate hazards and water constraints?",
+      "source_id": "FS3-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-FS-03-tradeoffs",
+      "module_id": "FS-03",
+      "question": "Where do adaptation methods introduce equity or ecological trade-offs?",
+      "source_id": "FS3-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-FS-03-scaling",
+      "module_id": "FS-03",
+      "question": "Which adaptation programs have verified durable and financially viable on-farm results at scale?",
+      "source_id": "FS3-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-ED-01-proficiency",
+      "module_id": "ED-01",
+      "question": "Where does enrollment or completion mask failure to attain minimum reading proficiency?",
+      "source_id": "ED-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-ED-01-implementation",
+      "module_id": "ED-01",
+      "question": "What teacher-support components explain observed changes from structured pedagogy?",
+      "source_id": "ED-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-ED-01-impact",
+      "module_id": "ED-01",
+      "question": "Where has a government-supported foundational-learning program documented verified learner improvement?",
+      "source_id": "ED-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-DP-03-incidence",
+      "module_id": "DP-03",
+      "question": "Which foundation-model privacy threats have been demonstrated in real deployments, not only hypothesized?",
+      "source_id": "DP-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-DP-03-bounded",
+      "module_id": "DP-03",
+      "question": "Which transformations were actually covered by the pinned CloakPipe core test contract?",
+      "source_id": "DP-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-DP-03-leaks",
+      "module_id": "DP-03",
+      "question": "Which four broader limitation probes leaked, and what does each demonstrate about the untested boundary?",
+      "source_id": "DP-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-AW-01-sightings",
+      "module_id": "AW-01",
+      "question": "What observation effort and detection bias are associated with the free-roaming-dog survey data?",
+      "source_id": "AW-A",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-AW-01-identification",
+      "module_id": "AW-01",
+      "question": "Can individual dogs be consistently recognized across sightings without animal photographs?",
+      "source_id": "AW-G",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    },
+    {
+      "id": "Q-AW-01-trend",
+      "module_id": "AW-01",
+      "question": "What evidence is needed to distinguish real local population change from sampling variability?",
+      "source_id": "AW-P",
+      "status": "unresolved",
+      "type": "research_question",
+      "boundary": "Question derived from source context; does not assert the factual condition or outcome in a specific locality."
+    }
+  ],
+  "bridges": [
+    {
+      "id": "BW-01",
+      "from": "CO-01",
+      "to": "EN-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "CO-P",
+        "EN3-G"
+      ],
+      "status": "candidate",
+      "boundary": "Some forms of digital access require reliable power, but power is not a complete model of Internet use.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-02",
+      "from": "CO-01",
+      "to": "ED-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "CO-P",
+        "ED-P"
+      ],
+      "status": "candidate",
+      "boundary": "General connectivity and educational use differ; no causal learning improvement is established.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-03",
+      "from": "CO-01",
+      "to": "PH-02",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "CO-A",
+        "PH-A"
+      ],
+      "status": "candidate",
+      "boundary": "Possible digital-health access intersection, but digital access does not substitute for personnel or primary care.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-04",
+      "from": "WA-06",
+      "to": "FS-03",
+      "relation": "PROVIDES_DATA_FOR",
+      "source_ids": [
+        "WA6-P",
+        "FS3-A"
+      ],
+      "status": "candidate",
+      "boundary": "Hydrological observations may inform adaptation planning, not prove improved harvests.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-05",
+      "from": "WA-06",
+      "to": "WA-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "WA6-P",
+        "WA6-A"
+      ],
+      "status": "candidate",
+      "boundary": "Groundwater observation connects to depletion questions without showing management efficacy.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-06",
+      "from": "FS-01",
+      "to": "PH-06",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "FS1-A",
+        "PH-P"
+      ],
+      "status": "candidate",
+      "boundary": "Food access can relate to nutrition/health risks; these sources do not establish causal NCD effects.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-07",
+      "from": "HO-01",
+      "to": "PH-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "HO-P",
+        "PH-P"
+      ],
+      "status": "candidate",
+      "boundary": "Household housing costs and medical expenditures can compete for income, without local effect estimates.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-08",
+      "from": "EN-01",
+      "to": "EN-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "EN1-P",
+        "EN3-P"
+      ],
+      "status": "candidate",
+      "boundary": "Grid constraints can affect electricity quality, but many local access deficits have other mechanisms.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-09",
+      "from": "WA-01",
+      "to": "PH-02",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "WA1-A",
+        "PH-A"
+      ],
+      "status": "candidate",
+      "boundary": "Water and access to health systems may share vulnerable populations; there is no direct estimated relationship here.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-10",
+      "from": "EN-03",
+      "to": "FS-06",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "EN3-G",
+        "FS1-P"
+      ],
+      "status": "candidate",
+      "boundary": "Reliable power may be an input to cold chains, but no specific post-harvest effect is quantified here.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-11",
+      "from": "HO-01",
+      "to": "HO-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "HO-P",
+        "HO-A"
+      ],
+      "status": "candidate",
+      "boundary": "Affordability and homelessness overlap but should not be conflated or given a causal coefficient.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-12",
+      "from": "EN-01",
+      "to": "HO-06",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "EN1-P",
+        "HO-P"
+      ],
+      "status": "candidate",
+      "boundary": "Building efficiency may affect energy demand and affordability, but not directly verified here.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-13",
+      "from": "DP-03",
+      "to": "DP-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "DP-A",
+        "DP-G"
+      ],
+      "status": "candidate",
+      "boundary": "Privacy-enhancing technologies may address selected threats without end-to-end guarantees.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-14",
+      "from": "AW-01",
+      "to": "AW-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "AW-A",
+        "AW-P"
+      ],
+      "status": "candidate",
+      "boundary": "Population observation may inform dog-mediated rabies control, but infection outcomes are not evaluated.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-15",
+      "from": "ED-01",
+      "to": "ED-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "ED-P",
+        "CO-P"
+      ],
+      "status": "candidate",
+      "boundary": "Meaningful connectivity for learning is a proposed prerequisite not an outcome-equivalent.",
+      "epistemic_state": "not_causally_established"
+    },
+    {
+      "id": "BW-16",
+      "from": "HO-01",
+      "to": "HO-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "HO-P",
+        "HO-G"
+      ],
+      "status": "candidate",
+      "boundary": "Affordability and resilience are overlapping housing dimensions but not the same measured outcome.",
+      "epistemic_state": "not_causally_established"
+    }
+  ]
+}
