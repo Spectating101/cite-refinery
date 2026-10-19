@@ -1,0 +1,124 @@
+{
+  "questions": [
+    {
+      "module_id": "ED-05",
+      "question": "Which students have usable home or school connectivity but lack accessible learning platforms or measurable learning gains?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "PH-02",
+      "question": "Which marginalized groups face delayed or forgone primary care because of cost, travel, staffing or service organization?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "PH-06",
+      "question": "Which WHO-recommended NCD policies are formally adopted but lack measured population-level implementation?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "WA-05",
+      "question": "In which aquifers do sustained withdrawals exceed recharge under comparable measurement windows?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "HO-05",
+      "question": "Which heat- or flood-exposed households lack housing adaptations despite reported planning or standards?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "HO-06",
+      "question": "Which housing retrofit options improve thermal comfort without increasing the financial burden of low-income renters?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "FS-06",
+      "question": "Where are post-harvest losses driven by missing affordable refrigeration rather than transportation or demand failures?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "CO-03",
+      "question": "Which sparsely populated regions have technically feasible backhaul but no sustainable and affordable last-mile operating model?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "WA-04",
+      "question": "How much of a utility's non-revenue water is physical leakage versus metering error or unpaid consumption, and what repair records exist?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "DP-05",
+      "question": "Which adversary and leakage paths does a deployed privacy-enhancing technology actually protect without unacceptable computation or utility losses?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "AW-03",
+      "question": "Which locations achieve adequate dog-rabies vaccination coverage while retaining unresolved population-turnover or surveillance gaps?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "EN-06",
+      "question": "Which local grid constraints are associated with geographically concentrated data-center load rather than broader demand growth?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "LM-01",
+      "question": "Among young people not working, who is unemployed, discouraged, underemployed or outside education and training, and how are categories measured?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "LM-02",
+      "question": "In which sectors are reported injury rates biased by informal employment, underreporting or unequal enforcement?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "TR-01",
+      "question": "Where do road death rates remain high despite formal safety laws, and is actual enforcement measured?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "TR-02",
+      "question": "Which road users face exposure and injury risk that is masked by total road-death figures, particularly pedestrians and cyclists?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "AQ-01",
+      "question": "Which populations experience high PM2.5 exposure outside the urban settlements represented in WHO monitoring data?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "AQ-02",
+      "question": "Which air-quality observation gaps prevent settlement measurements from representing exposure by neighborhood and population?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "DR-01",
+      "question": "In which communities does a nominal multi-hazard early warning system fail to deliver timely, accessible and actionable alerts?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    },
+    {
+      "module_id": "DR-02",
+      "question": "Which recorded disaster losses omit cascading supply-chain, livelihood and ecosystem effects, and how are these valued?",
+      "status": "unresolved",
+      "boundary": "Specific investigative question, not an already established factual finding."
+    }
+  ]
+}
