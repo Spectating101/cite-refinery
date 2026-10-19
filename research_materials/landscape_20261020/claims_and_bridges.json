@@ -1,0 +1,376 @@
+{
+  "claims": [
+    {
+      "id": "C-001",
+      "module_id": "CO-01",
+      "source_id": "CO-ITU",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "ITU's 2025 report separates network availability from meaningful use, identifying affordability, devices, skills, quality and safety as persistent barriers.",
+      "boundary": "Global aggregate and framework; not a local causal diagnosis.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-002",
+      "module_id": "CO-01",
+      "source_id": "CO-REVIEW",
+      "layer": "academic",
+      "kind": "academic_claim",
+      "statement": "A systematic integrative review identifies literacy, affordability, accessible content and infrastructure as distinct dimensions of digital inequity.",
+      "boundary": "Review concentrated on developed-country studies.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-003",
+      "module_id": "CO-01",
+      "source_id": "CO-DATA",
+      "layer": "program",
+      "kind": "dataset",
+      "statement": "ITU DataHub provides connectivity indicators for country and regional comparison.",
+      "boundary": "Dataset availability is not a deployed inclusion intervention.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-004",
+      "module_id": "WA-06",
+      "source_id": "WA-WMO",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "WMO's 2025 water assessment documents abnormal river flows, declining land-water storage and continuing gaps in hydrological observations.",
+      "boundary": "Hydrological model and station coverage differ across regions.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-005",
+      "module_id": "WA-06",
+      "source_id": "WA-HYDROSOS",
+      "layer": "program",
+      "kind": "program",
+      "statement": "WMO HydroSOS documents an initiative for hydrological status, outlooks and national capacity building.",
+      "boundary": "Do not infer operational reach or forecasting accuracy in any locality.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-006",
+      "module_id": "EN-03",
+      "source_id": "EN-ACCESS",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "IEA reports that approximately 730 million people lack electricity access, while many institutions with connections still face unreliable modern energy services.",
+      "boundary": "Global estimates, not local service quality measurements.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-007",
+      "module_id": "EN-03",
+      "source_id": "EN-ACCESS",
+      "layer": "program",
+      "kind": "method",
+      "statement": "IEA's ACCESS scenario models possible country-specific routes toward modern electricity and clean-cooking services.",
+      "boundary": "Scenario is modelling, not a deployed access program or measured effectiveness.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-008",
+      "module_id": "PH-01",
+      "source_id": "PH-UHC",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "WHO and the World Bank track essential health-service coverage separately from financial hardship due to out-of-pocket spending.",
+      "boundary": "Service coverage is observed through 2023 and hardship through 2022; revised indicators.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-009",
+      "module_id": "PH-01",
+      "source_id": "PH-DATA",
+      "layer": "program",
+      "kind": "dataset",
+      "statement": "WHO provides a UHC monitoring portal with service-coverage and financial-protection indicators.",
+      "boundary": "Data portal does not itself deliver health services.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-010",
+      "module_id": "FS-01",
+      "source_id": "FS-SOFI",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "The 2025 FAO-led SOFI assessment links food-price inflation with reduced purchasing power and access to healthy diets.",
+      "boundary": "Aggregate associations do not determine a given household's nutritional outcomes.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-011",
+      "module_id": "HO-01",
+      "source_id": "HO-WCR",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "UN-Habitat's 2026 housing report documents affordability pressures alongside informality, displacement, climate risk and adequacy concerns.",
+      "boundary": "Global framing; measurement and definitions differ across cities.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-012",
+      "module_id": "HO-01",
+      "source_id": "HO-OECD",
+      "layer": "program",
+      "kind": "dataset",
+      "statement": "OECD's Affordable Housing Database publishes cross-national indicators of costs, housing conditions and housing policies.",
+      "boundary": "Primarily OECD/EU/key partners; monitoring is not proof of improved affordability.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-013",
+      "module_id": "WA-01",
+      "source_id": "WA-JMP",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "The WHO/UNICEF 2025 JMP report estimates that 2.1 billion people lacked safely managed drinking water in 2024, with substantial inequality.",
+      "boundary": "Modelled estimates with uneven country and indicator coverage.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-014",
+      "module_id": "WA-01",
+      "source_id": "WA-JMPDATA",
+      "layer": "program",
+      "kind": "dataset",
+      "statement": "The WHO/UNICEF JMP data service publishes water, sanitation and hygiene monitoring indicators.",
+      "boundary": "Dataset is not an implemented water-supply service.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-015",
+      "module_id": "EN-01",
+      "source_id": "EN-GRID",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "IEA's grid stocktake describes transmission and interconnection bottlenecks as potential constraints on expanding electricity supply and renewable integration.",
+      "boundary": "Global stocktake and scenarios; no individual grid verified.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-016",
+      "module_id": "EN-01",
+      "source_id": "EN-GETS",
+      "layer": "academic",
+      "kind": "method",
+      "statement": "A 2025 technical review surveys grid-enhancing technologies including dynamic line ratings, power-flow controls and topology optimization.",
+      "boundary": "Review of methods and deployment barriers; not independent proof of system-wide gains.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-017",
+      "module_id": "FS-03",
+      "source_id": "FS-CRAFS",
+      "layer": "academic",
+      "kind": "academic_claim",
+      "statement": "A systematic review identifies crop diversification, climate-resilient varieties and precision tools as adaptation approaches with uneven evidence on system-level and equity outcomes.",
+      "boundary": "Review synthesis; no specific location's intervention evaluated here.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-018",
+      "module_id": "ED-01",
+      "source_id": "ED-GEM",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "UNESCO's 2026 SDG 4 monitoring separates school participation from learning proficiency; its global primary reading-proficiency estimate has not been updated since COVID-19.",
+      "boundary": "Learning assessment coverage and timeliness are limited.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-019",
+      "module_id": "ED-01",
+      "source_id": "ED-LP",
+      "layer": "program",
+      "kind": "dataset",
+      "statement": "World Bank Country Learning Poverty Briefs combine schooling and reading-proficiency indicators for country comparisons.",
+      "boundary": "Indicator depends on assessments and assumptions about out-of-school children.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-020",
+      "module_id": "ED-01",
+      "source_id": "ED-GEPD",
+      "layer": "program",
+      "kind": "program",
+      "statement": "World Bank's Global Education Policy Dashboard measures selected system drivers associated with foundational learning.",
+      "boundary": "Measurement of drivers is not demonstrated learning improvement.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-021",
+      "module_id": "DP-03",
+      "source_id": "DP-REVIEW",
+      "layer": "academic",
+      "kind": "academic_claim",
+      "statement": "A 2026 systematic review distinguishes foundation-model privacy threats, mitigation techniques and trade-offs.",
+      "boundary": "A review does not demonstrate an actual leak in a specific deployment.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-022",
+      "module_id": "AW-01",
+      "source_id": "AW-MOA",
+      "layer": "practical",
+      "kind": "observation",
+      "statement": "Taiwan's 2024 official free-roaming-dog population estimate was 141,584; the reported change since 2022 was not statistically significant.",
+      "boundary": "National periodic survey; not continuous local population enumeration.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-023",
+      "module_id": "AW-01",
+      "source_id": "AW-REVIEW",
+      "layer": "academic",
+      "kind": "method",
+      "statement": "A systematic review surveys free-ranging dog population estimation methods and their methodological assumptions.",
+      "boundary": "Method review; no estimator independently executed here.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    },
+    {
+      "id": "C-024",
+      "module_id": "AW-01",
+      "source_id": "AW-TALEA",
+      "layer": "program",
+      "kind": "program",
+      "statement": "ICAM's Talea documentation describes street-dog sighting capture; its user guide does not support attaching animal photos to individual sightings.",
+      "boundary": "Documentation alone does not establish capture-recapture identification or effectiveness.",
+      "review_status": "published_source_summary_not_independently_replicated"
+    }
+  ],
+  "bridges": [
+    {
+      "id": "B-01",
+      "from": "CO-01",
+      "to": "EN-03",
+      "relation": "DEPENDS_ON",
+      "source_ids": [
+        "CO-ITU",
+        "EN-ACCESS"
+      ],
+      "status": "candidate",
+      "boundary": "Meaningful digital service generally requires power, but a connection does not ensure use or reliable service."
+    },
+    {
+      "id": "B-02",
+      "from": "CO-01",
+      "to": "ED-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "CO-ITU",
+        "ED-GEM"
+      ],
+      "status": "candidate",
+      "boundary": "General connectivity and educational connectivity overlap but are not identical; no measured learning effect established."
+    },
+    {
+      "id": "B-03",
+      "from": "CO-01",
+      "to": "PH-02",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "CO-ITU",
+        "PH-UHC"
+      ],
+      "status": "candidate",
+      "boundary": "Digital service channels may influence access, not replace physical primary-care capacity; contextual lead only."
+    },
+    {
+      "id": "B-04",
+      "from": "WA-06",
+      "to": "FS-03",
+      "relation": "PROVIDES_DATA_FOR",
+      "source_ids": [
+        "WA-WMO",
+        "FS-CRAFS"
+      ],
+      "status": "candidate",
+      "boundary": "Hydrological observations can inform adaptation planning; no location-specific program effect demonstrated."
+    },
+    {
+      "id": "B-05",
+      "from": "WA-06",
+      "to": "WA-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "WA-WMO"
+      ],
+      "status": "candidate",
+      "boundary": "Groundwater is one of several WMO hydrological monitoring dimensions; observation does not control depletion."
+    },
+    {
+      "id": "B-06",
+      "from": "FS-01",
+      "to": "PH-06",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "FS-SOFI",
+        "PH-UHC"
+      ],
+      "status": "candidate",
+      "boundary": "Food affordability relates to nutrition and health risks; this is not an estimated NCD causal effect."
+    },
+    {
+      "id": "B-07",
+      "from": "HO-01",
+      "to": "PH-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "HO-WCR",
+        "PH-UHC"
+      ],
+      "status": "candidate",
+      "boundary": "Housing costs and health affordability may share household-resource constraints; no causal geography-specific evidence attached."
+    },
+    {
+      "id": "B-08",
+      "from": "EN-01",
+      "to": "EN-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "EN-GRID",
+        "EN-ACCESS"
+      ],
+      "status": "candidate",
+      "boundary": "Grid bottlenecks may affect reliability; this is not a universal explanation of electricity access gaps."
+    },
+    {
+      "id": "B-09",
+      "from": "WA-01",
+      "to": "PH-02",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "WA-JMP",
+        "PH-UHC"
+      ],
+      "status": "candidate",
+      "boundary": "Water and health service systems share public-service constraints but require different indicators."
+    },
+    {
+      "id": "B-10",
+      "from": "EN-03",
+      "to": "FS-06",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "EN-ACCESS",
+        "FS-SOFI"
+      ],
+      "status": "candidate",
+      "boundary": "Energy reliability is a candidate productive-infrastructure dependency for cooling and post-harvest logistics."
+    },
+    {
+      "id": "B-11",
+      "from": "HO-01",
+      "to": "HO-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "HO-WCR"
+      ],
+      "status": "candidate",
+      "boundary": "Housing affordability and homelessness are related but distinct phenomena; no causal estimate attached."
+    }
+  ]
+}

@@ -1,0 +1,3251 @@
+{
+  "schema": "cite_refinery.semantic_graph.v1",
+  "source_system": "deep_research_landscape_wave1_20261020",
+  "clusters": [
+    {
+      "key": "landscape_recon_root",
+      "title": "Breadth-first research reconnaissance: 54 candidate problem modules",
+      "tags": [
+        "discovery_only",
+        "non_exhaustive",
+        "source_summary"
+      ]
+    },
+    {
+      "key": "field_aw",
+      "title": "Animal welfare",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_dp",
+      "title": "Digital privacy",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_en",
+      "title": "Energy",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_fs",
+      "title": "Food systems",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_ph",
+      "title": "Public health",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_ed",
+      "title": "Education",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_co",
+      "title": "Connectivity",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_wa",
+      "title": "Water",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "field_ho",
+      "title": "Housing",
+      "parent": "landscape_recon_root",
+      "tags": [
+        "field",
+        "not_a_ranking"
+      ]
+    },
+    {
+      "key": "module_aw_01",
+      "title": "AW-01 — Free-roaming animal population observability",
+      "parent": "field_aw",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Population estimates require abundance, turnover, ownership, movement and welfare observations; visibility and identity assumptions complicate estimation."
+      }
+    },
+    {
+      "key": "module_aw_02",
+      "title": "AW-02 — Population replenishment and reproductive control",
+      "parent": "field_aw",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Sterilization outcomes depend on births, immigration, abandonment, roaming, coverage and continuity, not procedure counts alone."
+      }
+    },
+    {
+      "key": "module_aw_03",
+      "title": "AW-03 — Rabies vaccination and One Health integration",
+      "parent": "field_aw",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Vaccination, post-exposure prophylaxis, surveillance and community engagement are distinct from population control."
+      }
+    },
+    {
+      "key": "module_aw_04",
+      "title": "AW-04 — Shelter intake, capacity and welfare quality",
+      "parent": "field_aw",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Intake, length of stay, capacity, outcomes and animal welfare need joint observation."
+      }
+    },
+    {
+      "key": "module_aw_05",
+      "title": "AW-05 — Farmed-animal welfare measurement",
+      "parent": "field_aw",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Animal-, resource- and management-based indicators vary across species and production systems."
+      }
+    },
+    {
+      "key": "module_aw_06",
+      "title": "AW-06 — Responsible ownership, abandonment and relinquishment",
+      "parent": "field_aw",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Roaming, loss, abandonment and uncontrolled reproduction link owned animals to free-roaming populations."
+      }
+    },
+    {
+      "key": "module_dp_01",
+      "title": "DP-01 — Platform surveillance and data minimization",
+      "parent": "field_dp",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Collection, retention, profiling, advertising, sharing and enforcement pose distinct privacy questions."
+      }
+    },
+    {
+      "key": "module_dp_02",
+      "title": "DP-02 — Regulatory fragmentation and cross-border interoperability",
+      "parent": "field_dp",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Privacy regimes differ in scope, rights, enforcement and transfer rules."
+      }
+    },
+    {
+      "key": "module_dp_03",
+      "title": "DP-03 — Foundation-model privacy leakage",
+      "parent": "field_dp",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Memorization, extraction, inference and user-data exposure are distinct model and deployment threats."
+      }
+    },
+    {
+      "key": "module_dp_04",
+      "title": "DP-04 — Privacy-guarantee quality and re-identification",
+      "parent": "field_dp",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Anonymization and differential privacy depend on parameters, composition, implementation and auxiliary information."
+      }
+    },
+    {
+      "key": "module_dp_05",
+      "title": "DP-05 — PET adoption and utility/compute trade-offs",
+      "parent": "field_dp",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Different privacy-enhancing technologies address different threats with operational costs."
+      }
+    },
+    {
+      "key": "module_dp_06",
+      "title": "DP-06 — Manipulative consent and child/teen privacy",
+      "parent": "field_dp",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Consent interface manipulation and age assurance raise distinct privacy and exclusion questions."
+      }
+    },
+    {
+      "key": "module_en_01",
+      "title": "EN-01 — Grid congestion, interconnection and expansion",
+      "parent": "field_en",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Generation and demand may grow faster than transmission, distribution and interconnection capacity."
+      }
+    },
+    {
+      "key": "module_en_02",
+      "title": "EN-02 — Power-system flexibility, storage and reliability",
+      "parent": "field_en",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Renewable integration requires context-specific mixes of storage, transmission, demand response and flexibility."
+      }
+    },
+    {
+      "key": "module_en_03",
+      "title": "EN-03 — Electricity access, affordability and reliability",
+      "parent": "field_en",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Connections, affordability, reliability, appliances and maintenance determine usable service."
+      }
+    },
+    {
+      "key": "module_en_04",
+      "title": "EN-04 — Clean-cooking transition",
+      "parent": "field_en",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Fuel and technology adoption depend on cost, infrastructure, behavior and reliable supply."
+      }
+    },
+    {
+      "key": "module_en_05",
+      "title": "EN-05 — Critical-mineral concentration and responsible supply",
+      "parent": "field_en",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Mining, refining, recycling, project lead times and environmental/social impacts create different constraints."
+      }
+    },
+    {
+      "key": "module_en_06",
+      "title": "EN-06 — Data-center and AI electricity demand",
+      "parent": "field_en",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Global demand share and locally concentrated infrastructure loads must not be conflated."
+      }
+    },
+    {
+      "key": "module_fs_01",
+      "title": "FS-01 — Healthy-diet affordability and food-price exposure",
+      "parent": "field_fs",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Food prices, income, diet cost, insecurity and nutrition outcomes are related but distinct measures."
+      }
+    },
+    {
+      "key": "module_fs_02",
+      "title": "FS-02 — Food loss and waste measurement/reduction",
+      "parent": "field_fs",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Loss and waste differ by supply-chain stage and require comparable baselines."
+      }
+    },
+    {
+      "key": "module_fs_03",
+      "title": "FS-03 — Climate-resilient production and adaptation",
+      "parent": "field_fs",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Crops, soils, water management, diversification, tools and governance have context-dependent outcomes."
+      }
+    },
+    {
+      "key": "module_fs_04",
+      "title": "FS-04 — Food-supply-chain shock resilience",
+      "parent": "field_fs",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Climate, conflict, pandemic and trade shocks create different failure modes."
+      }
+    },
+    {
+      "key": "module_fs_05",
+      "title": "FS-05 — Agrifood emissions and mitigation",
+      "parent": "field_fs",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Land use, livestock, rice, fertilizer, processing and waste have different mitigation trade-offs."
+      }
+    },
+    {
+      "key": "module_fs_06",
+      "title": "FS-06 — Smallholder post-harvest, cold-chain and market access",
+      "parent": "field_fs",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Storage, cooling, transport, electricity, information and finance jointly affect losses and market participation."
+      }
+    },
+    {
+      "key": "module_ph_01",
+      "title": "PH-01 — Universal health coverage and financial protection",
+      "parent": "field_ph",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Essential service coverage and financial hardship from out-of-pocket payments are distinct outcomes."
+      }
+    },
+    {
+      "key": "module_ph_02",
+      "title": "PH-02 — Equitable primary-care access and capacity",
+      "parent": "field_ph",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Geographic, workforce, financial and organizational barriers affect access and continuity."
+      }
+    },
+    {
+      "key": "module_ph_03",
+      "title": "PH-03 — AMR surveillance and stewardship",
+      "parent": "field_ph",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Laboratory data, antibiotic use, prescribing, diagnostics and infection prevention are non-substitutable capabilities."
+      }
+    },
+    {
+      "key": "module_ph_04",
+      "title": "PH-04 — Mental-health treatment gap and service capacity",
+      "parent": "field_ph",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Need, access, workforce, financing, quality and community-based services require separate measurement."
+      }
+    },
+    {
+      "key": "module_ph_05",
+      "title": "PH-05 — Respiratory-pandemic surveillance and preparedness",
+      "parent": "field_ph",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Preparedness spans surveillance, coordination, community protection, clinical capacity and countermeasures."
+      }
+    },
+    {
+      "key": "module_ph_06",
+      "title": "PH-06 — NCD prevention and implementation",
+      "parent": "field_ph",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Established prevention interventions face uneven implementation across risk factors and care pathways."
+      }
+    },
+    {
+      "key": "module_ed_01",
+      "title": "ED-01 — Foundational learning and learning poverty",
+      "parent": "field_ed",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "School attendance and enrollment do not establish minimum reading or mathematics proficiency."
+      }
+    },
+    {
+      "key": "module_ed_02",
+      "title": "ED-02 — Out-of-school and completion inequity",
+      "parent": "field_ed",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Poverty, conflict, disability, gender and geography create distinct exclusion pathways."
+      }
+    },
+    {
+      "key": "module_ed_03",
+      "title": "ED-03 — Teacher recruitment, retention and deployment",
+      "parent": "field_ed",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Shortages may reflect recruitment, attrition, qualification, workload and uneven deployment."
+      }
+    },
+    {
+      "key": "module_ed_04",
+      "title": "ED-04 — Digital-learning effectiveness beyond device access",
+      "parent": "field_ed",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Pedagogy, teacher support, accessibility and context mediate educational technology outcomes."
+      }
+    },
+    {
+      "key": "module_ed_05",
+      "title": "ED-05 — Meaningful connectivity for learning",
+      "parent": "field_ed",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Devices, home access, affordability, network quality and skills differ from learning outcomes."
+      }
+    },
+    {
+      "key": "module_ed_06",
+      "title": "ED-06 — Inclusive education, disability and language access",
+      "parent": "field_ed",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Technology may reduce or reproduce exclusion depending on accessibility and linguistic needs."
+      }
+    },
+    {
+      "key": "module_co_01",
+      "title": "CO-01 — Usage gap and meaningful connectivity",
+      "parent": "field_co",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Coverage alone does not ensure use when devices, cost, skills, relevance, quality and safety remain barriers."
+      }
+    },
+    {
+      "key": "module_co_02",
+      "title": "CO-02 — Service and device affordability",
+      "parent": "field_co",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Income-relative service costs and device costs are separate constraints."
+      }
+    },
+    {
+      "key": "module_co_03",
+      "title": "CO-03 — Rural and last-mile infrastructure economics",
+      "parent": "field_co",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Terrain, backhaul and sparse demand shape rural connectivity economics."
+      }
+    },
+    {
+      "key": "module_co_04",
+      "title": "CO-04 — Digital skills, safety and relevance",
+      "parent": "field_co",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Adoption requires capability and trust in addition to physical coverage."
+      }
+    },
+    {
+      "key": "module_co_05",
+      "title": "CO-05 — Backbone and submarine-cable resilience",
+      "parent": "field_co",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Route concentration, redundancy and repair capacity affect network resilience."
+      }
+    },
+    {
+      "key": "module_co_06",
+      "title": "CO-06 — Satellite/LEO connectivity for remote areas",
+      "parent": "field_co",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Technical reach does not ensure affordable, viable and regulated access."
+      }
+    },
+    {
+      "key": "module_wa_01",
+      "title": "WA-01 — Safely managed drinking-water access and inequality",
+      "parent": "field_wa",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Quality, on-premises service, availability and distributional disparities differ from binary water access."
+      }
+    },
+    {
+      "key": "module_wa_02",
+      "title": "WA-02 — Sanitation/hygiene access under climate stress",
+      "parent": "field_wa",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Service gaps and climate hazards interact while adaptation evidence remains uneven."
+      }
+    },
+    {
+      "key": "module_wa_03",
+      "title": "WA-03 — Urban water scarcity and demand governance",
+      "parent": "field_wa",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Supply, demand, infrastructure, climate and governance create distinct shortage mechanisms."
+      }
+    },
+    {
+      "key": "module_wa_04",
+      "title": "WA-04 — Non-revenue water and utility performance",
+      "parent": "field_wa",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Leakage, metering error and unauthorized consumption interact with operations and revenue."
+      }
+    },
+    {
+      "key": "module_wa_05",
+      "title": "WA-05 — Groundwater depletion and recharge management",
+      "parent": "field_wa",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Extraction, recharge, land use and climate influence drought buffering and depletion."
+      }
+    },
+    {
+      "key": "module_wa_06",
+      "title": "WA-06 — Hydrological observation, forecasting and early warning",
+      "parent": "field_wa",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Rivers, groundwater, storage, snow and glacier data are needed but unevenly available."
+      }
+    },
+    {
+      "key": "module_ho_01",
+      "title": "HO-01 — Housing affordability and cost burden",
+      "parent": "field_ho",
+      "tags": [
+        "problem_module",
+        "wave1_anchor",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Prices/rents, income, financing, quality and location jointly shape affordability."
+      }
+    },
+    {
+      "key": "module_ho_02",
+      "title": "HO-02 — Affordable/social housing supply and preservation",
+      "parent": "field_ho",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Construction, preservation, land, planning, subsidies and allocation affect durable supply."
+      }
+    },
+    {
+      "key": "module_ho_03",
+      "title": "HO-03 — Homelessness measurement and prevention",
+      "parent": "field_ho",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Definitions, enumeration, prevention, emergency accommodation and housing programs differ."
+      }
+    },
+    {
+      "key": "module_ho_04",
+      "title": "HO-04 — Informal-settlement upgrading, tenure and services",
+      "parent": "field_ho",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Tenure, WASH, roads, livelihoods and hazard exposure make upgrading multi-sectoral."
+      }
+    },
+    {
+      "key": "module_ho_05",
+      "title": "HO-05 — Climate-resilient housing and heat/flood health",
+      "parent": "field_ho",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Building and neighborhood conditions modify climate exposure and adaptation needs."
+      }
+    },
+    {
+      "key": "module_ho_06",
+      "title": "HO-06 — Building efficiency and retrofit affordability",
+      "parent": "field_ho",
+      "tags": [
+        "problem_module",
+        "second_ring_report_candidate",
+        "not_verified_as_a_fact"
+      ],
+      "provenance": {
+        "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+        "report_summary": "Upfront costs, split incentives, codes and finance constrain retrofit adoption."
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "key": "module_aw_01",
+      "statement": "Investigate free-roaming animal population observability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_aw_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "AW-01",
+        "report_summary": "Population estimates require abundance, turnover, ownership, movement and welfare observations; visibility and identity assumptions complicate estimation.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_aw_02",
+      "statement": "Investigate population replenishment and reproductive control.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_aw_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "AW-02",
+        "report_summary": "Sterilization outcomes depend on births, immigration, abandonment, roaming, coverage and continuity, not procedure counts alone.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_aw_03",
+      "statement": "Investigate rabies vaccination and one health integration.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_aw_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "AW-03",
+        "report_summary": "Vaccination, post-exposure prophylaxis, surveillance and community engagement are distinct from population control.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_aw_04",
+      "statement": "Investigate shelter intake, capacity and welfare quality.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_aw_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "AW-04",
+        "report_summary": "Intake, length of stay, capacity, outcomes and animal welfare need joint observation.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_aw_05",
+      "statement": "Investigate farmed-animal welfare measurement.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_aw_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "AW-05",
+        "report_summary": "Animal-, resource- and management-based indicators vary across species and production systems.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_aw_06",
+      "statement": "Investigate responsible ownership, abandonment and relinquishment.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_aw_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "AW-06",
+        "report_summary": "Roaming, loss, abandonment and uncontrolled reproduction link owned animals to free-roaming populations.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_dp_01",
+      "statement": "Investigate platform surveillance and data minimization.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_dp_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "DP-01",
+        "report_summary": "Collection, retention, profiling, advertising, sharing and enforcement pose distinct privacy questions.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_dp_02",
+      "statement": "Investigate regulatory fragmentation and cross-border interoperability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_dp_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "DP-02",
+        "report_summary": "Privacy regimes differ in scope, rights, enforcement and transfer rules.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_dp_03",
+      "statement": "Investigate foundation-model privacy leakage.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_dp_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "DP-03",
+        "report_summary": "Memorization, extraction, inference and user-data exposure are distinct model and deployment threats.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_dp_04",
+      "statement": "Investigate privacy-guarantee quality and re-identification.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_dp_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "DP-04",
+        "report_summary": "Anonymization and differential privacy depend on parameters, composition, implementation and auxiliary information.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_dp_05",
+      "statement": "Investigate pet adoption and utility/compute trade-offs.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_dp_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "DP-05",
+        "report_summary": "Different privacy-enhancing technologies address different threats with operational costs.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_dp_06",
+      "statement": "Investigate manipulative consent and child/teen privacy.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_dp_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "DP-06",
+        "report_summary": "Consent interface manipulation and age assurance raise distinct privacy and exclusion questions.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_en_01",
+      "statement": "Investigate grid congestion, interconnection and expansion.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_en_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "EN-01",
+        "report_summary": "Generation and demand may grow faster than transmission, distribution and interconnection capacity.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_en_02",
+      "statement": "Investigate power-system flexibility, storage and reliability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_en_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "EN-02",
+        "report_summary": "Renewable integration requires context-specific mixes of storage, transmission, demand response and flexibility.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_en_03",
+      "statement": "Investigate electricity access, affordability and reliability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_en_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "EN-03",
+        "report_summary": "Connections, affordability, reliability, appliances and maintenance determine usable service.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_en_04",
+      "statement": "Investigate clean-cooking transition.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_en_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "EN-04",
+        "report_summary": "Fuel and technology adoption depend on cost, infrastructure, behavior and reliable supply.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_en_05",
+      "statement": "Investigate critical-mineral concentration and responsible supply.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_en_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "EN-05",
+        "report_summary": "Mining, refining, recycling, project lead times and environmental/social impacts create different constraints.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_en_06",
+      "statement": "Investigate data-center and ai electricity demand.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_en_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "EN-06",
+        "report_summary": "Global demand share and locally concentrated infrastructure loads must not be conflated.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_fs_01",
+      "statement": "Investigate healthy-diet affordability and food-price exposure.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_fs_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "FS-01",
+        "report_summary": "Food prices, income, diet cost, insecurity and nutrition outcomes are related but distinct measures.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_fs_02",
+      "statement": "Investigate food loss and waste measurement/reduction.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_fs_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "FS-02",
+        "report_summary": "Loss and waste differ by supply-chain stage and require comparable baselines.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_fs_03",
+      "statement": "Investigate climate-resilient production and adaptation.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_fs_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "FS-03",
+        "report_summary": "Crops, soils, water management, diversification, tools and governance have context-dependent outcomes.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_fs_04",
+      "statement": "Investigate food-supply-chain shock resilience.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_fs_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "FS-04",
+        "report_summary": "Climate, conflict, pandemic and trade shocks create different failure modes.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_fs_05",
+      "statement": "Investigate agrifood emissions and mitigation.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_fs_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "FS-05",
+        "report_summary": "Land use, livestock, rice, fertilizer, processing and waste have different mitigation trade-offs.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_fs_06",
+      "statement": "Investigate smallholder post-harvest, cold-chain and market access.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_fs_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "FS-06",
+        "report_summary": "Storage, cooling, transport, electricity, information and finance jointly affect losses and market participation.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ph_01",
+      "statement": "Investigate universal health coverage and financial protection.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ph_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "PH-01",
+        "report_summary": "Essential service coverage and financial hardship from out-of-pocket payments are distinct outcomes.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ph_02",
+      "statement": "Investigate equitable primary-care access and capacity.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ph_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "PH-02",
+        "report_summary": "Geographic, workforce, financial and organizational barriers affect access and continuity.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ph_03",
+      "statement": "Investigate amr surveillance and stewardship.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ph_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "PH-03",
+        "report_summary": "Laboratory data, antibiotic use, prescribing, diagnostics and infection prevention are non-substitutable capabilities.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ph_04",
+      "statement": "Investigate mental-health treatment gap and service capacity.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ph_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "PH-04",
+        "report_summary": "Need, access, workforce, financing, quality and community-based services require separate measurement.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ph_05",
+      "statement": "Investigate respiratory-pandemic surveillance and preparedness.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ph_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "PH-05",
+        "report_summary": "Preparedness spans surveillance, coordination, community protection, clinical capacity and countermeasures.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ph_06",
+      "statement": "Investigate ncd prevention and implementation.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ph_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "PH-06",
+        "report_summary": "Established prevention interventions face uneven implementation across risk factors and care pathways.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ed_01",
+      "statement": "Investigate foundational learning and learning poverty.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ed_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "ED-01",
+        "report_summary": "School attendance and enrollment do not establish minimum reading or mathematics proficiency.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ed_02",
+      "statement": "Investigate out-of-school and completion inequity.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ed_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "ED-02",
+        "report_summary": "Poverty, conflict, disability, gender and geography create distinct exclusion pathways.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ed_03",
+      "statement": "Investigate teacher recruitment, retention and deployment.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ed_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "ED-03",
+        "report_summary": "Shortages may reflect recruitment, attrition, qualification, workload and uneven deployment.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ed_04",
+      "statement": "Investigate digital-learning effectiveness beyond device access.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ed_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "ED-04",
+        "report_summary": "Pedagogy, teacher support, accessibility and context mediate educational technology outcomes.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ed_05",
+      "statement": "Investigate meaningful connectivity for learning.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ed_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "ED-05",
+        "report_summary": "Devices, home access, affordability, network quality and skills differ from learning outcomes.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ed_06",
+      "statement": "Investigate inclusive education, disability and language access.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ed_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "ED-06",
+        "report_summary": "Technology may reduce or reproduce exclusion depending on accessibility and linguistic needs.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_co_01",
+      "statement": "Investigate usage gap and meaningful connectivity.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_co_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "CO-01",
+        "report_summary": "Coverage alone does not ensure use when devices, cost, skills, relevance, quality and safety remain barriers.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_co_02",
+      "statement": "Investigate service and device affordability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_co_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "CO-02",
+        "report_summary": "Income-relative service costs and device costs are separate constraints.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_co_03",
+      "statement": "Investigate rural and last-mile infrastructure economics.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_co_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "CO-03",
+        "report_summary": "Terrain, backhaul and sparse demand shape rural connectivity economics.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_co_04",
+      "statement": "Investigate digital skills, safety and relevance.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_co_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "CO-04",
+        "report_summary": "Adoption requires capability and trust in addition to physical coverage.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_co_05",
+      "statement": "Investigate backbone and submarine-cable resilience.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_co_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "CO-05",
+        "report_summary": "Route concentration, redundancy and repair capacity affect network resilience.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_co_06",
+      "statement": "Investigate satellite/leo connectivity for remote areas.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_co_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "CO-06",
+        "report_summary": "Technical reach does not ensure affordable, viable and regulated access.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_wa_01",
+      "statement": "Investigate safely managed drinking-water access and inequality.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_wa_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "WA-01",
+        "report_summary": "Quality, on-premises service, availability and distributional disparities differ from binary water access.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_wa_02",
+      "statement": "Investigate sanitation/hygiene access under climate stress.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_wa_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "WA-02",
+        "report_summary": "Service gaps and climate hazards interact while adaptation evidence remains uneven.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_wa_03",
+      "statement": "Investigate urban water scarcity and demand governance.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_wa_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "WA-03",
+        "report_summary": "Supply, demand, infrastructure, climate and governance create distinct shortage mechanisms.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_wa_04",
+      "statement": "Investigate non-revenue water and utility performance.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_wa_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "WA-04",
+        "report_summary": "Leakage, metering error and unauthorized consumption interact with operations and revenue.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_wa_05",
+      "statement": "Investigate groundwater depletion and recharge management.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_wa_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "WA-05",
+        "report_summary": "Extraction, recharge, land use and climate influence drought buffering and depletion.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_wa_06",
+      "statement": "Investigate hydrological observation, forecasting and early warning.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_wa_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "WA-06",
+        "report_summary": "Rivers, groundwater, storage, snow and glacier data are needed but unevenly available.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ho_01",
+      "statement": "Investigate housing affordability and cost burden.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ho_01"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "wave1_anchor"
+      ],
+      "provenance": {
+        "report_module_id": "HO-01",
+        "report_summary": "Prices/rents, income, financing, quality and location jointly shape affordability.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ho_02",
+      "statement": "Investigate affordable/social housing supply and preservation.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ho_02"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "HO-02",
+        "report_summary": "Construction, preservation, land, planning, subsidies and allocation affect durable supply.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ho_03",
+      "statement": "Investigate homelessness measurement and prevention.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ho_03"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "HO-03",
+        "report_summary": "Definitions, enumeration, prevention, emergency accommodation and housing programs differ.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ho_04",
+      "statement": "Investigate informal-settlement upgrading, tenure and services.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ho_04"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "HO-04",
+        "report_summary": "Tenure, WASH, roads, livelihoods and hazard exposure make upgrading multi-sectoral.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ho_05",
+      "statement": "Investigate climate-resilient housing and heat/flood health.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ho_05"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "HO-05",
+        "report_summary": "Building and neighborhood conditions modify climate exposure and adaptation needs.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "module_ho_06",
+      "statement": "Investigate building efficiency and retrofit affordability.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_ho_06"
+      ],
+      "tags": [
+        "report_candidate",
+        "not_a_verified_problem_claim",
+        "second_ring_report_candidate"
+      ],
+      "provenance": {
+        "report_module_id": "HO-06",
+        "report_summary": "Upfront costs, split incentives, codes and finance constrain retrofit adoption.",
+        "evidence_status": "candidate_from_user_supplied_reconnaissance",
+        "source_review": "user_supplied_reconnaissance"
+      }
+    },
+    {
+      "key": "claim_c_001",
+      "statement": "ITU's 2025 report separates network availability from meaningful use, identifying affordability, devices, skills, quality and safety as persistent barriers.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_co",
+        "module_co_01"
+      ],
+      "source_refs": [
+        "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-001",
+        "source_id": "CO-ITU",
+        "source_title": "ITU Global Connectivity Report 2025",
+        "source_type": "official_report",
+        "source_date": "2025",
+        "source_scope": "Global; meaningful connectivity dimensions and usage",
+        "source_limitation": "Aggregates mask local barriers; report is not a causal experiment",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Global aggregate and framework; not a local causal diagnosis."
+      }
+    },
+    {
+      "key": "claim_c_002",
+      "statement": "A systematic integrative review identifies literacy, affordability, accessible content and infrastructure as distinct dimensions of digital inequity.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": [
+        "field_co",
+        "module_co_01"
+      ],
+      "source_refs": [
+        "https://doi.org/10.1108/DTS-04-2024-0054"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-002",
+        "source_id": "CO-REVIEW",
+        "source_title": "Dimensions and barriers for digital (in)equity and digital divide: a systematic integrative review",
+        "source_type": "academic_review",
+        "source_date": "2024-08-13",
+        "source_scope": "Review of developed-country literature",
+        "source_limitation": "Dominated by European and North American studies; not globally representative",
+        "review_level": "abstract_or_publisher_summary_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Review concentrated on developed-country studies."
+      }
+    },
+    {
+      "key": "claim_c_003",
+      "statement": "ITU DataHub provides connectivity indicators for country and regional comparison.",
+      "kind": "dataset",
+      "layer": "program",
+      "clusters": [
+        "field_co",
+        "module_co_01"
+      ],
+      "source_refs": [
+        "https://datahub.itu.int/"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-003",
+        "source_id": "CO-DATA",
+        "source_title": "ITU DataHub",
+        "source_type": "dataset_platform",
+        "source_date": "ongoing",
+        "source_scope": "Country and regional connectivity indicators",
+        "source_limitation": "Monitoring platform, not an intervention or proof of improved access",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Dataset availability is not a deployed inclusion intervention."
+      }
+    },
+    {
+      "key": "claim_c_004",
+      "statement": "WMO's 2025 water assessment documents abnormal river flows, declining land-water storage and continuing gaps in hydrological observations.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_wa",
+        "module_wa_06"
+      ],
+      "source_refs": [
+        "https://wmo.int/resources/publication-series/state-of-global-water-resources/2025"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-004",
+        "source_id": "WA-WMO",
+        "source_title": "State of Global Water Resources 2025",
+        "source_type": "official_report",
+        "source_date": "2026-09-17",
+        "source_scope": "Global hydrological synthesis for 2025",
+        "source_limitation": "Models and observations vary by region; gaps in affected areas",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Hydrological model and station coverage differ across regions."
+      }
+    },
+    {
+      "key": "claim_c_005",
+      "statement": "WMO HydroSOS documents an initiative for hydrological status, outlooks and national capacity building.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": [
+        "field_wa",
+        "module_wa_06"
+      ],
+      "source_refs": [
+        "https://wmo.int/activities/hydrosos"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-005",
+        "source_id": "WA-HYDROSOS",
+        "source_title": "HydroSOS — Hydrological Status and Outlook System",
+        "source_type": "program_documentation",
+        "source_date": "ongoing",
+        "source_scope": "Hydrological status/outlook and capacity-building initiative",
+        "source_limitation": "Documentation does not verify local operational coverage or forecast skill",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Do not infer operational reach or forecasting accuracy in any locality."
+      }
+    },
+    {
+      "key": "claim_c_006",
+      "statement": "IEA reports that approximately 730 million people lack electricity access, while many institutions with connections still face unreliable modern energy services.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_en",
+        "module_en_03"
+      ],
+      "source_refs": [
+        "https://www.iea.org/reports/global-energy-and-climate-model/accelerating-clean-cooking-and-electricity-services-scenario-access"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-006",
+        "source_id": "EN-ACCESS",
+        "source_title": "Accelerating Clean Cooking and Electricity Services Scenario (ACCESS)",
+        "source_type": "official_model_report",
+        "source_date": "2025",
+        "source_scope": "Global access estimates and scenario modelling",
+        "source_limitation": "Scenario projections are not proof of implemented electricity services",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Global estimates, not local service quality measurements."
+      }
+    },
+    {
+      "key": "claim_c_007",
+      "statement": "IEA's ACCESS scenario models possible country-specific routes toward modern electricity and clean-cooking services.",
+      "kind": "method",
+      "layer": "program",
+      "clusters": [
+        "field_en",
+        "module_en_03"
+      ],
+      "source_refs": [
+        "https://www.iea.org/reports/global-energy-and-climate-model/accelerating-clean-cooking-and-electricity-services-scenario-access"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-007",
+        "source_id": "EN-ACCESS",
+        "source_title": "Accelerating Clean Cooking and Electricity Services Scenario (ACCESS)",
+        "source_type": "official_model_report",
+        "source_date": "2025",
+        "source_scope": "Global access estimates and scenario modelling",
+        "source_limitation": "Scenario projections are not proof of implemented electricity services",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Scenario is modelling, not a deployed access program or measured effectiveness."
+      }
+    },
+    {
+      "key": "claim_c_008",
+      "statement": "WHO and the World Bank track essential health-service coverage separately from financial hardship due to out-of-pocket spending.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_ph",
+        "module_ph_01"
+      ],
+      "source_refs": [
+        "https://www.who.int/teams/health-financing-and-economics/global-monitoring-report/2025"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-008",
+        "source_id": "PH-UHC",
+        "source_title": "Tracking Universal Health Coverage: 2025 Global Monitoring Report",
+        "source_type": "official_report",
+        "source_date": "2025-12-05",
+        "source_scope": "Global health service coverage and financial hardship time series",
+        "source_limitation": "Revised indicators; different observation years; not an impact evaluation",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Service coverage is observed through 2023 and hardship through 2022; revised indicators."
+      }
+    },
+    {
+      "key": "claim_c_009",
+      "statement": "WHO provides a UHC monitoring portal with service-coverage and financial-protection indicators.",
+      "kind": "dataset",
+      "layer": "program",
+      "clusters": [
+        "field_ph",
+        "module_ph_01"
+      ],
+      "source_refs": [
+        "https://www.who.int/data/monitoring-universal-health-coverage"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-009",
+        "source_id": "PH-DATA",
+        "source_title": "Monitoring Universal Health Coverage",
+        "source_type": "dataset_platform",
+        "source_date": "ongoing",
+        "source_scope": "UHC data and indicators",
+        "source_limitation": "Monitoring capacity, not direct service delivery",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Data portal does not itself deliver health services."
+      }
+    },
+    {
+      "key": "claim_c_010",
+      "statement": "The 2025 FAO-led SOFI assessment links food-price inflation with reduced purchasing power and access to healthy diets.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_fs",
+        "module_fs_01"
+      ],
+      "source_refs": [
+        "https://www.who.int/publications/m/item/the-state-of-food-security-and-nutrition-in-the-world-2025/"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-010",
+        "source_id": "FS-SOFI",
+        "source_title": "The State of Food Security and Nutrition in the World 2025",
+        "source_type": "official_report",
+        "source_date": "2025-07-28",
+        "source_scope": "Global food security, food price inflation and healthy-diet affordability",
+        "source_limitation": "Global analyses do not establish individual household mechanisms",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Aggregate associations do not determine a given household's nutritional outcomes."
+      }
+    },
+    {
+      "key": "claim_c_011",
+      "statement": "UN-Habitat's 2026 housing report documents affordability pressures alongside informality, displacement, climate risk and adequacy concerns.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_ho",
+        "module_ho_01"
+      ],
+      "source_refs": [
+        "https://unhabitat.org/world-cities-report-2026"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-011",
+        "source_id": "HO-WCR",
+        "source_title": "World Cities Report 2026: The Global Housing Crisis",
+        "source_type": "official_report",
+        "source_date": "2026",
+        "source_scope": "Global housing adequacy, affordability, informality and displacement",
+        "source_limitation": "Heterogeneous definitions and estimates; not locality-specific",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Global framing; measurement and definitions differ across cities."
+      }
+    },
+    {
+      "key": "claim_c_012",
+      "statement": "OECD's Affordable Housing Database publishes cross-national indicators of costs, housing conditions and housing policies.",
+      "kind": "dataset",
+      "layer": "program",
+      "clusters": [
+        "field_ho",
+        "module_ho_01"
+      ],
+      "source_refs": [
+        "https://www.oecd.org/en/data/datasets/oecd-affordable-housing-database.html"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-012",
+        "source_id": "HO-OECD",
+        "source_title": "OECD Affordable Housing Database",
+        "source_type": "dataset_platform",
+        "source_date": "ongoing",
+        "source_scope": "OECD, EU and key partner housing indicators",
+        "source_limitation": "Not globally representative; indicators have comparability caveats",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Primarily OECD/EU/key partners; monitoring is not proof of improved affordability."
+      }
+    },
+    {
+      "key": "claim_c_013",
+      "statement": "The WHO/UNICEF 2025 JMP report estimates that 2.1 billion people lacked safely managed drinking water in 2024, with substantial inequality.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_wa",
+        "module_wa_01"
+      ],
+      "source_refs": [
+        "https://www.who.int/publications/i/item/9789240115149"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-013",
+        "source_id": "WA-JMP",
+        "source_title": "Progress on household drinking-water, sanitation and hygiene 2000–2024",
+        "source_type": "official_report",
+        "source_date": "2025-08-26",
+        "source_scope": "Household WASH trends and inequality estimates",
+        "source_limitation": "Modelled/interpolated series; incomplete country coverage for some indicators",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Modelled estimates with uneven country and indicator coverage."
+      }
+    },
+    {
+      "key": "claim_c_014",
+      "statement": "The WHO/UNICEF JMP data service publishes water, sanitation and hygiene monitoring indicators.",
+      "kind": "dataset",
+      "layer": "program",
+      "clusters": [
+        "field_wa",
+        "module_wa_01"
+      ],
+      "source_refs": [
+        "https://washdata.org/"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-014",
+        "source_id": "WA-JMPDATA",
+        "source_title": "JMP WASH Data",
+        "source_type": "dataset_platform",
+        "source_date": "ongoing",
+        "source_scope": "Country WASH indicators and metadata",
+        "source_limitation": "Data portal is not a water supply intervention",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Dataset is not an implemented water-supply service."
+      }
+    },
+    {
+      "key": "claim_c_015",
+      "statement": "IEA's grid stocktake describes transmission and interconnection bottlenecks as potential constraints on expanding electricity supply and renewable integration.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_en",
+        "module_en_01"
+      ],
+      "source_refs": [
+        "https://www.iea.org/reports/electricity-grids-and-secure-energy-transitions"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-015",
+        "source_id": "EN-GRID",
+        "source_title": "Electricity Grids and Secure Energy Transitions",
+        "source_type": "official_report",
+        "source_date": "2023-10-17",
+        "source_scope": "Global grid stocktake and bottleneck risks",
+        "source_limitation": "Scenario and cross-market synthesis; not a local outage diagnosis",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Global stocktake and scenarios; no individual grid verified."
+      }
+    },
+    {
+      "key": "claim_c_016",
+      "statement": "A 2025 technical review surveys grid-enhancing technologies including dynamic line ratings, power-flow controls and topology optimization.",
+      "kind": "method",
+      "layer": "academic",
+      "clusters": [
+        "field_en",
+        "module_en_01"
+      ],
+      "source_refs": [
+        "https://www.nature.com/articles/s44359-024-00001-5"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-016",
+        "source_id": "EN-GETS",
+        "source_title": "Grid-enhancing technologies for clean energy systems",
+        "source_type": "academic_review",
+        "source_date": "2025-01-15",
+        "source_scope": "Technical review of transmission grid-enhancing methods",
+        "source_limitation": "Review discusses possibilities and adoption constraints; no universal deployment efficacy",
+        "review_level": "abstract_or_publisher_summary_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Review of methods and deployment barriers; not independent proof of system-wide gains."
+      }
+    },
+    {
+      "key": "claim_c_017",
+      "statement": "A systematic review identifies crop diversification, climate-resilient varieties and precision tools as adaptation approaches with uneven evidence on system-level and equity outcomes.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": [
+        "field_fs",
+        "module_fs_03"
+      ],
+      "source_refs": [
+        "https://doi.org/10.1002/sd.71263"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-017",
+        "source_id": "FS-CRAFS",
+        "source_title": "Climate-Resilient Agri-Food Systems: A Review of Approaches and Outcomes",
+        "source_type": "academic_review",
+        "source_date": "2026-05-29",
+        "source_scope": "Systematic review of adaptation approaches",
+        "source_limitation": "Systemic links and equity effects often incompletely evaluated",
+        "review_level": "abstract_or_publisher_summary_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Review synthesis; no specific location's intervention evaluated here."
+      }
+    },
+    {
+      "key": "claim_c_018",
+      "statement": "UNESCO's 2026 SDG 4 monitoring separates school participation from learning proficiency; its global primary reading-proficiency estimate has not been updated since COVID-19.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_ed",
+        "module_ed_01"
+      ],
+      "source_refs": [
+        "https://www.unesco.org/reports/gem-report/en/2026-monitoring-sdg4"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-018",
+        "source_id": "ED-GEM",
+        "source_title": "Monitoring education in the SDGs, GEM 2026",
+        "source_type": "official_report",
+        "source_date": "2026",
+        "source_scope": "Global education monitoring and learning proficiency",
+        "source_limitation": "Learning estimates have limited recency and population coverage",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Learning assessment coverage and timeliness are limited."
+      }
+    },
+    {
+      "key": "claim_c_019",
+      "statement": "World Bank Country Learning Poverty Briefs combine schooling and reading-proficiency indicators for country comparisons.",
+      "kind": "dataset",
+      "layer": "program",
+      "clusters": [
+        "field_ed",
+        "module_ed_01"
+      ],
+      "source_refs": [
+        "https://www.worldbank.org/en/topic/education/brief/country-learning-poverty-briefs"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-019",
+        "source_id": "ED-LP",
+        "source_title": "Country Learning Poverty Briefs",
+        "source_type": "dataset_platform",
+        "source_date": "ongoing",
+        "source_scope": "Country-level learning-poverty estimates",
+        "source_limitation": "Schooling and proficiency are combined; estimates depend on assessments",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Indicator depends on assessments and assumptions about out-of-school children."
+      }
+    },
+    {
+      "key": "claim_c_020",
+      "statement": "World Bank's Global Education Policy Dashboard measures selected system drivers associated with foundational learning.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": [
+        "field_ed",
+        "module_ed_01"
+      ],
+      "source_refs": [
+        "https://www.worldbank.org/en/brief/2026/03/09/global-education-policy-dashboard"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-020",
+        "source_id": "ED-GEPD",
+        "source_title": "Global Education Policy Dashboard",
+        "source_type": "program_documentation",
+        "source_date": "2026-03-09",
+        "source_scope": "Measurement of education-system drivers of learning",
+        "source_limitation": "Tool documentation does not establish improved student outcomes",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Measurement of drivers is not demonstrated learning improvement."
+      }
+    },
+    {
+      "key": "claim_c_021",
+      "statement": "A 2026 systematic review distinguishes foundation-model privacy threats, mitigation techniques and trade-offs.",
+      "kind": "academic_claim",
+      "layer": "academic",
+      "clusters": [
+        "field_dp",
+        "module_dp_03"
+      ],
+      "source_refs": [
+        "https://link.springer.com/article/10.1007/s10462-026-11535-4"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-021",
+        "source_id": "DP-REVIEW",
+        "source_title": "Privacy-preserving in foundation models: a systematic review of techniques, threats, and trade-offs",
+        "source_type": "academic_review",
+        "source_date": "2026-03-27",
+        "source_scope": "Foundation-model privacy threats and mitigations",
+        "source_limitation": "Survey of literature, not independent demonstration of a specific deployment leak",
+        "review_level": "abstract_or_publisher_summary_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "A review does not demonstrate an actual leak in a specific deployment."
+      }
+    },
+    {
+      "key": "claim_c_022",
+      "statement": "Taiwan's 2024 official free-roaming-dog population estimate was 141,584; the reported change since 2022 was not statistically significant.",
+      "kind": "observation",
+      "layer": "practical",
+      "clusters": [
+        "field_aw",
+        "module_aw_01"
+      ],
+      "source_refs": [
+        "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-022",
+        "source_id": "AW-MOA",
+        "source_title": "Taiwan 2024 free-roaming dog population survey announcement",
+        "source_type": "official_survey_report",
+        "source_date": "2024",
+        "source_scope": "Taiwan national survey estimate for 2024",
+        "source_limitation": "Periodic national estimate; reported 2022–2024 difference not statistically significant",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "National periodic survey; not continuous local population enumeration."
+      }
+    },
+    {
+      "key": "claim_c_023",
+      "statement": "A systematic review surveys free-ranging dog population estimation methods and their methodological assumptions.",
+      "kind": "method",
+      "layer": "academic",
+      "clusters": [
+        "field_aw",
+        "module_aw_01"
+      ],
+      "source_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-023",
+        "source_id": "AW-REVIEW",
+        "source_title": "Population Estimation Methods for Free-Ranging Dogs: A Systematic Review",
+        "source_type": "academic_review",
+        "source_date": "2015",
+        "source_scope": "Free-ranging dog population estimation methods",
+        "source_limitation": "Methods have detection and identity assumptions; no local estimator validated here",
+        "review_level": "abstract_or_publisher_summary_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Method review; no estimator independently executed here."
+      }
+    },
+    {
+      "key": "claim_c_024",
+      "statement": "ICAM's Talea documentation describes street-dog sighting capture; its user guide does not support attaching animal photos to individual sightings.",
+      "kind": "program",
+      "layer": "program",
+      "clusters": [
+        "field_aw",
+        "module_aw_01"
+      ],
+      "source_refs": [
+        "https://www.icam-coalition.org/talea-user-guide/"
+      ],
+      "tags": [
+        "source_summary_not_replication",
+        "wave1_evidence",
+        "unreviewed_for_acceptance"
+      ],
+      "provenance": {
+        "claim_id": "C-024",
+        "source_id": "AW-TALEA",
+        "source_title": "Talea user guide",
+        "source_type": "program_documentation",
+        "source_date": "ongoing",
+        "source_scope": "Street-dog sighting data capture application",
+        "source_limitation": "Guide states sightings cannot attach animal photos; no individual estimator efficacy demonstrated",
+        "review_level": "official_or_provider_page_inspected",
+        "review_status": "published_source_summary_not_independently_replicated",
+        "boundary": "Documentation alone does not establish capture-recapture identification or effectiveness."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "claim_c_001",
+      "target": "module_co_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/"
+      ],
+      "provenance": {
+        "source_id": "CO-ITU",
+        "claim_id": "C-001",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Global aggregate and framework; not a local causal diagnosis."
+      }
+    },
+    {
+      "source": "claim_c_002",
+      "target": "module_co_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://doi.org/10.1108/DTS-04-2024-0054"
+      ],
+      "provenance": {
+        "source_id": "CO-REVIEW",
+        "claim_id": "C-002",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Review concentrated on developed-country studies."
+      }
+    },
+    {
+      "source": "claim_c_003",
+      "target": "module_co_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://datahub.itu.int/"
+      ],
+      "provenance": {
+        "source_id": "CO-DATA",
+        "claim_id": "C-003",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Dataset availability is not a deployed inclusion intervention."
+      }
+    },
+    {
+      "source": "claim_c_004",
+      "target": "module_wa_06",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://wmo.int/resources/publication-series/state-of-global-water-resources/2025"
+      ],
+      "provenance": {
+        "source_id": "WA-WMO",
+        "claim_id": "C-004",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Hydrological model and station coverage differ across regions."
+      }
+    },
+    {
+      "source": "claim_c_005",
+      "target": "module_wa_06",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://wmo.int/activities/hydrosos"
+      ],
+      "provenance": {
+        "source_id": "WA-HYDROSOS",
+        "claim_id": "C-005",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Do not infer operational reach or forecasting accuracy in any locality."
+      }
+    },
+    {
+      "source": "claim_c_006",
+      "target": "module_en_03",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.iea.org/reports/global-energy-and-climate-model/accelerating-clean-cooking-and-electricity-services-scenario-access"
+      ],
+      "provenance": {
+        "source_id": "EN-ACCESS",
+        "claim_id": "C-006",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Global estimates, not local service quality measurements."
+      }
+    },
+    {
+      "source": "claim_c_007",
+      "target": "module_en_03",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.iea.org/reports/global-energy-and-climate-model/accelerating-clean-cooking-and-electricity-services-scenario-access"
+      ],
+      "provenance": {
+        "source_id": "EN-ACCESS",
+        "claim_id": "C-007",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Scenario is modelling, not a deployed access program or measured effectiveness."
+      }
+    },
+    {
+      "source": "claim_c_008",
+      "target": "module_ph_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/teams/health-financing-and-economics/global-monitoring-report/2025"
+      ],
+      "provenance": {
+        "source_id": "PH-UHC",
+        "claim_id": "C-008",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Service coverage is observed through 2023 and hardship through 2022; revised indicators."
+      }
+    },
+    {
+      "source": "claim_c_009",
+      "target": "module_ph_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/data/monitoring-universal-health-coverage"
+      ],
+      "provenance": {
+        "source_id": "PH-DATA",
+        "claim_id": "C-009",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Data portal does not itself deliver health services."
+      }
+    },
+    {
+      "source": "claim_c_010",
+      "target": "module_fs_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/publications/m/item/the-state-of-food-security-and-nutrition-in-the-world-2025/"
+      ],
+      "provenance": {
+        "source_id": "FS-SOFI",
+        "claim_id": "C-010",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Aggregate associations do not determine a given household's nutritional outcomes."
+      }
+    },
+    {
+      "source": "claim_c_011",
+      "target": "module_ho_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://unhabitat.org/world-cities-report-2026"
+      ],
+      "provenance": {
+        "source_id": "HO-WCR",
+        "claim_id": "C-011",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Global framing; measurement and definitions differ across cities."
+      }
+    },
+    {
+      "source": "claim_c_012",
+      "target": "module_ho_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.oecd.org/en/data/datasets/oecd-affordable-housing-database.html"
+      ],
+      "provenance": {
+        "source_id": "HO-OECD",
+        "claim_id": "C-012",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Primarily OECD/EU/key partners; monitoring is not proof of improved affordability."
+      }
+    },
+    {
+      "source": "claim_c_013",
+      "target": "module_wa_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/publications/i/item/9789240115149"
+      ],
+      "provenance": {
+        "source_id": "WA-JMP",
+        "claim_id": "C-013",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Modelled estimates with uneven country and indicator coverage."
+      }
+    },
+    {
+      "source": "claim_c_014",
+      "target": "module_wa_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://washdata.org/"
+      ],
+      "provenance": {
+        "source_id": "WA-JMPDATA",
+        "claim_id": "C-014",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Dataset is not an implemented water-supply service."
+      }
+    },
+    {
+      "source": "claim_c_015",
+      "target": "module_en_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.iea.org/reports/electricity-grids-and-secure-energy-transitions"
+      ],
+      "provenance": {
+        "source_id": "EN-GRID",
+        "claim_id": "C-015",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Global stocktake and scenarios; no individual grid verified."
+      }
+    },
+    {
+      "source": "claim_c_016",
+      "target": "module_en_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.nature.com/articles/s44359-024-00001-5"
+      ],
+      "provenance": {
+        "source_id": "EN-GETS",
+        "claim_id": "C-016",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Review of methods and deployment barriers; not independent proof of system-wide gains."
+      }
+    },
+    {
+      "source": "claim_c_017",
+      "target": "module_fs_03",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://doi.org/10.1002/sd.71263"
+      ],
+      "provenance": {
+        "source_id": "FS-CRAFS",
+        "claim_id": "C-017",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Review synthesis; no specific location's intervention evaluated here."
+      }
+    },
+    {
+      "source": "claim_c_018",
+      "target": "module_ed_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.unesco.org/reports/gem-report/en/2026-monitoring-sdg4"
+      ],
+      "provenance": {
+        "source_id": "ED-GEM",
+        "claim_id": "C-018",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Learning assessment coverage and timeliness are limited."
+      }
+    },
+    {
+      "source": "claim_c_019",
+      "target": "module_ed_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.worldbank.org/en/topic/education/brief/country-learning-poverty-briefs"
+      ],
+      "provenance": {
+        "source_id": "ED-LP",
+        "claim_id": "C-019",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Indicator depends on assessments and assumptions about out-of-school children."
+      }
+    },
+    {
+      "source": "claim_c_020",
+      "target": "module_ed_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.worldbank.org/en/brief/2026/03/09/global-education-policy-dashboard"
+      ],
+      "provenance": {
+        "source_id": "ED-GEPD",
+        "claim_id": "C-020",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Measurement of drivers is not demonstrated learning improvement."
+      }
+    },
+    {
+      "source": "claim_c_021",
+      "target": "module_dp_03",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://link.springer.com/article/10.1007/s10462-026-11535-4"
+      ],
+      "provenance": {
+        "source_id": "DP-REVIEW",
+        "claim_id": "C-021",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. A review does not demonstrate an actual leak in a specific deployment."
+      }
+    },
+    {
+      "source": "claim_c_022",
+      "target": "module_aw_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599"
+      ],
+      "provenance": {
+        "source_id": "AW-MOA",
+        "claim_id": "C-022",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. National periodic survey; not continuous local population enumeration."
+      }
+    },
+    {
+      "source": "claim_c_023",
+      "target": "module_aw_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/"
+      ],
+      "provenance": {
+        "source_id": "AW-REVIEW",
+        "claim_id": "C-023",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Method review; no estimator independently executed here."
+      }
+    },
+    {
+      "source": "claim_c_024",
+      "target": "module_aw_01",
+      "relation": "RELATED_TO",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.icam-coalition.org/talea-user-guide/"
+      ],
+      "provenance": {
+        "source_id": "AW-TALEA",
+        "claim_id": "C-024",
+        "boundary": "Topical association only; no causal, coverage or intervention-effectiveness inference. Documentation alone does not establish capture-recapture identification or effectiveness."
+      }
+    },
+    {
+      "source": "module_co_01",
+      "target": "module_en_03",
+      "relation": "DEPENDS_ON",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/",
+        "https://www.iea.org/reports/global-energy-and-climate-model/accelerating-clean-cooking-and-electricity-services-scenario-access"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-01",
+        "source_ids": [
+          "CO-ITU",
+          "EN-ACCESS"
+        ],
+        "boundary": "Meaningful digital service generally requires power, but a connection does not ensure use or reliable service."
+      }
+    },
+    {
+      "source": "module_co_01",
+      "target": "module_ed_05",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/",
+        "https://www.unesco.org/reports/gem-report/en/2026-monitoring-sdg4"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-02",
+        "source_ids": [
+          "CO-ITU",
+          "ED-GEM"
+        ],
+        "boundary": "General connectivity and educational connectivity overlap but are not identical; no measured learning effect established."
+      }
+    },
+    {
+      "source": "module_co_01",
+      "target": "module_ph_02",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/",
+        "https://www.who.int/teams/health-financing-and-economics/global-monitoring-report/2025"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-03",
+        "source_ids": [
+          "CO-ITU",
+          "PH-UHC"
+        ],
+        "boundary": "Digital service channels may influence access, not replace physical primary-care capacity; contextual lead only."
+      }
+    },
+    {
+      "source": "module_wa_06",
+      "target": "module_fs_03",
+      "relation": "PROVIDES_DATA_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://wmo.int/resources/publication-series/state-of-global-water-resources/2025",
+        "https://doi.org/10.1002/sd.71263"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-04",
+        "source_ids": [
+          "WA-WMO",
+          "FS-CRAFS"
+        ],
+        "boundary": "Hydrological observations can inform adaptation planning; no location-specific program effect demonstrated."
+      }
+    },
+    {
+      "source": "module_wa_06",
+      "target": "module_wa_05",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://wmo.int/resources/publication-series/state-of-global-water-resources/2025"
+      ],
+      "tags": [
+        "within_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-05",
+        "source_ids": [
+          "WA-WMO"
+        ],
+        "boundary": "Groundwater is one of several WMO hydrological monitoring dimensions; observation does not control depletion."
+      }
+    },
+    {
+      "source": "module_fs_01",
+      "target": "module_ph_06",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/publications/m/item/the-state-of-food-security-and-nutrition-in-the-world-2025/",
+        "https://www.who.int/teams/health-financing-and-economics/global-monitoring-report/2025"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-06",
+        "source_ids": [
+          "FS-SOFI",
+          "PH-UHC"
+        ],
+        "boundary": "Food affordability relates to nutrition and health risks; this is not an estimated NCD causal effect."
+      }
+    },
+    {
+      "source": "module_ho_01",
+      "target": "module_ph_01",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://unhabitat.org/world-cities-report-2026",
+        "https://www.who.int/teams/health-financing-and-economics/global-monitoring-report/2025"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-07",
+        "source_ids": [
+          "HO-WCR",
+          "PH-UHC"
+        ],
+        "boundary": "Housing costs and health affordability may share household-resource constraints; no causal geography-specific evidence attached."
+      }
+    },
+    {
+      "source": "module_en_01",
+      "target": "module_en_03",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.iea.org/reports/electricity-grids-and-secure-energy-transitions",
+        "https://www.iea.org/reports/global-energy-and-climate-model/accelerating-clean-cooking-and-electricity-services-scenario-access"
+      ],
+      "tags": [
+        "within_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-08",
+        "source_ids": [
+          "EN-GRID",
+          "EN-ACCESS"
+        ],
+        "boundary": "Grid bottlenecks may affect reliability; this is not a universal explanation of electricity access gaps."
+      }
+    },
+    {
+      "source": "module_wa_01",
+      "target": "module_ph_02",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/publications/i/item/9789240115149",
+        "https://www.who.int/teams/health-financing-and-economics/global-monitoring-report/2025"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-09",
+        "source_ids": [
+          "WA-JMP",
+          "PH-UHC"
+        ],
+        "boundary": "Water and health service systems share public-service constraints but require different indicators."
+      }
+    },
+    {
+      "source": "module_en_03",
+      "target": "module_fs_06",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.iea.org/reports/global-energy-and-climate-model/accelerating-clean-cooking-and-electricity-services-scenario-access",
+        "https://www.who.int/publications/m/item/the-state-of-food-security-and-nutrition-in-the-world-2025/"
+      ],
+      "tags": [
+        "cross_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-10",
+        "source_ids": [
+          "EN-ACCESS",
+          "FS-SOFI"
+        ],
+        "boundary": "Energy reliability is a candidate productive-infrastructure dependency for cooling and post-harvest logistics."
+      }
+    },
+    {
+      "source": "module_ho_01",
+      "target": "module_ho_03",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://unhabitat.org/world-cities-report-2026"
+      ],
+      "tags": [
+        "within_field_candidate"
+      ],
+      "provenance": {
+        "bridge_id": "B-11",
+        "source_ids": [
+          "HO-WCR"
+        ],
+        "boundary": "Housing affordability and homelessness are related but distinct phenomena; no causal estimate attached."
+      }
+    }
+  ],
+  "conversion_metadata": {
+    "status": "CANDIDATE_SOURCE_SUMMARIES_NOT_ACCEPTED",
+    "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+    "module_count": 54,
+    "first_wave_anchors": [
+      "CO-01",
+      "WA-06",
+      "EN-03",
+      "PH-01",
+      "FS-01",
+      "HO-01",
+      "WA-01",
+      "EN-01",
+      "FS-03",
+      "ED-01",
+      "DP-03",
+      "AW-01"
+    ],
+    "source_ledger_entries": 23,
+    "evidence_claims": 24,
+    "candidate_bridges": 11,
+    "limitations": [
+      "54 modules are user-provided research containers, not verified world facts.",
+      "Only 12 modules have source-linked claims; 42 have neutral questions only.",
+      "Sources are publication pages/abstracts/provider documentation; no primary datasets downloaded or findings independently replicated.",
+      "Program includes measurement tools, documentation and scenarios, not verified field outcomes.",
+      "Absent layer or edge means not established in represented corpus, not absent in reality.",
+      "The downloadable 54-node CSV referenced by the report was not supplied; source URLs in this ledger were recovered individually.",
+      "Cross-field edges are candidate relationships only; no intervention effectiveness or causality established.",
+      "English-language and institutional source selection bias; not a systematic global census."
+    ]
+  }
+}

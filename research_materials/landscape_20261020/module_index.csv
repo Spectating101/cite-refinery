@@ -1,0 +1,55 @@
+module_id,field_id,title,stage,practical_claims,academic_claims,program_claims
+AW-01,AW,Free-roaming animal population observability,wave1_anchor,1,1,1
+AW-02,AW,Population replenishment and reproductive control,second_ring_report_candidate,0,0,0
+AW-03,AW,Rabies vaccination and One Health integration,second_ring_report_candidate,0,0,0
+AW-04,AW,"Shelter intake, capacity and welfare quality",second_ring_report_candidate,0,0,0
+AW-05,AW,Farmed-animal welfare measurement,second_ring_report_candidate,0,0,0
+AW-06,AW,"Responsible ownership, abandonment and relinquishment",second_ring_report_candidate,0,0,0
+DP-01,DP,Platform surveillance and data minimization,second_ring_report_candidate,0,0,0
+DP-02,DP,Regulatory fragmentation and cross-border interoperability,second_ring_report_candidate,0,0,0
+DP-03,DP,Foundation-model privacy leakage,wave1_anchor,0,1,0
+DP-04,DP,Privacy-guarantee quality and re-identification,second_ring_report_candidate,0,0,0
+DP-05,DP,PET adoption and utility/compute trade-offs,second_ring_report_candidate,0,0,0
+DP-06,DP,Manipulative consent and child/teen privacy,second_ring_report_candidate,0,0,0
+EN-01,EN,"Grid congestion, interconnection and expansion",wave1_anchor,1,1,0
+EN-02,EN,"Power-system flexibility, storage and reliability",second_ring_report_candidate,0,0,0
+EN-03,EN,"Electricity access, affordability and reliability",wave1_anchor,1,0,1
+EN-04,EN,Clean-cooking transition,second_ring_report_candidate,0,0,0
+EN-05,EN,Critical-mineral concentration and responsible supply,second_ring_report_candidate,0,0,0
+EN-06,EN,Data-center and AI electricity demand,second_ring_report_candidate,0,0,0
+FS-01,FS,Healthy-diet affordability and food-price exposure,wave1_anchor,1,0,0
+FS-02,FS,Food loss and waste measurement/reduction,second_ring_report_candidate,0,0,0
+FS-03,FS,Climate-resilient production and adaptation,wave1_anchor,0,1,0
+FS-04,FS,Food-supply-chain shock resilience,second_ring_report_candidate,0,0,0
+FS-05,FS,Agrifood emissions and mitigation,second_ring_report_candidate,0,0,0
+FS-06,FS,"Smallholder post-harvest, cold-chain and market access",second_ring_report_candidate,0,0,0
+PH-01,PH,Universal health coverage and financial protection,wave1_anchor,1,0,1
+PH-02,PH,Equitable primary-care access and capacity,second_ring_report_candidate,0,0,0
+PH-03,PH,AMR surveillance and stewardship,second_ring_report_candidate,0,0,0
+PH-04,PH,Mental-health treatment gap and service capacity,second_ring_report_candidate,0,0,0
+PH-05,PH,Respiratory-pandemic surveillance and preparedness,second_ring_report_candidate,0,0,0
+PH-06,PH,NCD prevention and implementation,second_ring_report_candidate,0,0,0
+ED-01,ED,Foundational learning and learning poverty,wave1_anchor,1,0,2
+ED-02,ED,Out-of-school and completion inequity,second_ring_report_candidate,0,0,0
+ED-03,ED,"Teacher recruitment, retention and deployment",second_ring_report_candidate,0,0,0
+ED-04,ED,Digital-learning effectiveness beyond device access,second_ring_report_candidate,0,0,0
+ED-05,ED,Meaningful connectivity for learning,second_ring_report_candidate,0,0,0
+ED-06,ED,"Inclusive education, disability and language access",second_ring_report_candidate,0,0,0
+CO-01,CO,Usage gap and meaningful connectivity,wave1_anchor,1,1,1
+CO-02,CO,Service and device affordability,second_ring_report_candidate,0,0,0
+CO-03,CO,Rural and last-mile infrastructure economics,second_ring_report_candidate,0,0,0
+CO-04,CO,"Digital skills, safety and relevance",second_ring_report_candidate,0,0,0
+CO-05,CO,Backbone and submarine-cable resilience,second_ring_report_candidate,0,0,0
+CO-06,CO,Satellite/LEO connectivity for remote areas,second_ring_report_candidate,0,0,0
+WA-01,WA,Safely managed drinking-water access and inequality,wave1_anchor,1,0,1
+WA-02,WA,Sanitation/hygiene access under climate stress,second_ring_report_candidate,0,0,0
+WA-03,WA,Urban water scarcity and demand governance,second_ring_report_candidate,0,0,0
+WA-04,WA,Non-revenue water and utility performance,second_ring_report_candidate,0,0,0
+WA-05,WA,Groundwater depletion and recharge management,second_ring_report_candidate,0,0,0
+WA-06,WA,"Hydrological observation, forecasting and early warning",wave1_anchor,1,0,1
+HO-01,HO,Housing affordability and cost burden,wave1_anchor,1,0,1
+HO-02,HO,Affordable/social housing supply and preservation,second_ring_report_candidate,0,0,0
+HO-03,HO,Homelessness measurement and prevention,second_ring_report_candidate,0,0,0
+HO-04,HO,"Informal-settlement upgrading, tenure and services",second_ring_report_candidate,0,0,0
+HO-05,HO,Climate-resilient housing and heat/flood health,second_ring_report_candidate,0,0,0
+HO-06,HO,Building efficiency and retrofit affordability,second_ring_report_candidate,0,0,0

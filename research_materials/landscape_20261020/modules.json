@@ -1,0 +1,492 @@
+{
+  "corpus_id": "landscape-reconnaissance-20261020",
+  "origin": "User-provided Cite-Refinery Breadth-First Semantic Landscape report",
+  "origin_report_date": "2026-10-20",
+  "scope": "Global orientation, heterogeneous examples, English-language selection bias; not a representative census",
+  "fields": [
+    {
+      "id": "AW",
+      "name": "Animal welfare"
+    },
+    {
+      "id": "DP",
+      "name": "Digital privacy"
+    },
+    {
+      "id": "EN",
+      "name": "Energy"
+    },
+    {
+      "id": "FS",
+      "name": "Food systems"
+    },
+    {
+      "id": "PH",
+      "name": "Public health"
+    },
+    {
+      "id": "ED",
+      "name": "Education"
+    },
+    {
+      "id": "CO",
+      "name": "Connectivity"
+    },
+    {
+      "id": "WA",
+      "name": "Water"
+    },
+    {
+      "id": "HO",
+      "name": "Housing"
+    }
+  ],
+  "modules": [
+    {
+      "id": "AW-01",
+      "field_id": "AW",
+      "title": "Free-roaming animal population observability",
+      "summary": "Population estimates require abundance, turnover, ownership, movement and welfare observations; visibility and identity assumptions complicate estimation.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "AW-02",
+      "field_id": "AW",
+      "title": "Population replenishment and reproductive control",
+      "summary": "Sterilization outcomes depend on births, immigration, abandonment, roaming, coverage and continuity, not procedure counts alone.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "AW-03",
+      "field_id": "AW",
+      "title": "Rabies vaccination and One Health integration",
+      "summary": "Vaccination, post-exposure prophylaxis, surveillance and community engagement are distinct from population control.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "AW-04",
+      "field_id": "AW",
+      "title": "Shelter intake, capacity and welfare quality",
+      "summary": "Intake, length of stay, capacity, outcomes and animal welfare need joint observation.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "AW-05",
+      "field_id": "AW",
+      "title": "Farmed-animal welfare measurement",
+      "summary": "Animal-, resource- and management-based indicators vary across species and production systems.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "AW-06",
+      "field_id": "AW",
+      "title": "Responsible ownership, abandonment and relinquishment",
+      "summary": "Roaming, loss, abandonment and uncontrolled reproduction link owned animals to free-roaming populations.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "DP-01",
+      "field_id": "DP",
+      "title": "Platform surveillance and data minimization",
+      "summary": "Collection, retention, profiling, advertising, sharing and enforcement pose distinct privacy questions.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "DP-02",
+      "field_id": "DP",
+      "title": "Regulatory fragmentation and cross-border interoperability",
+      "summary": "Privacy regimes differ in scope, rights, enforcement and transfer rules.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "DP-03",
+      "field_id": "DP",
+      "title": "Foundation-model privacy leakage",
+      "summary": "Memorization, extraction, inference and user-data exposure are distinct model and deployment threats.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "DP-04",
+      "field_id": "DP",
+      "title": "Privacy-guarantee quality and re-identification",
+      "summary": "Anonymization and differential privacy depend on parameters, composition, implementation and auxiliary information.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "DP-05",
+      "field_id": "DP",
+      "title": "PET adoption and utility/compute trade-offs",
+      "summary": "Different privacy-enhancing technologies address different threats with operational costs.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "DP-06",
+      "field_id": "DP",
+      "title": "Manipulative consent and child/teen privacy",
+      "summary": "Consent interface manipulation and age assurance raise distinct privacy and exclusion questions.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "EN-01",
+      "field_id": "EN",
+      "title": "Grid congestion, interconnection and expansion",
+      "summary": "Generation and demand may grow faster than transmission, distribution and interconnection capacity.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "EN-02",
+      "field_id": "EN",
+      "title": "Power-system flexibility, storage and reliability",
+      "summary": "Renewable integration requires context-specific mixes of storage, transmission, demand response and flexibility.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "EN-03",
+      "field_id": "EN",
+      "title": "Electricity access, affordability and reliability",
+      "summary": "Connections, affordability, reliability, appliances and maintenance determine usable service.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "EN-04",
+      "field_id": "EN",
+      "title": "Clean-cooking transition",
+      "summary": "Fuel and technology adoption depend on cost, infrastructure, behavior and reliable supply.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "EN-05",
+      "field_id": "EN",
+      "title": "Critical-mineral concentration and responsible supply",
+      "summary": "Mining, refining, recycling, project lead times and environmental/social impacts create different constraints.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "EN-06",
+      "field_id": "EN",
+      "title": "Data-center and AI electricity demand",
+      "summary": "Global demand share and locally concentrated infrastructure loads must not be conflated.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "FS-01",
+      "field_id": "FS",
+      "title": "Healthy-diet affordability and food-price exposure",
+      "summary": "Food prices, income, diet cost, insecurity and nutrition outcomes are related but distinct measures.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "FS-02",
+      "field_id": "FS",
+      "title": "Food loss and waste measurement/reduction",
+      "summary": "Loss and waste differ by supply-chain stage and require comparable baselines.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "FS-03",
+      "field_id": "FS",
+      "title": "Climate-resilient production and adaptation",
+      "summary": "Crops, soils, water management, diversification, tools and governance have context-dependent outcomes.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "FS-04",
+      "field_id": "FS",
+      "title": "Food-supply-chain shock resilience",
+      "summary": "Climate, conflict, pandemic and trade shocks create different failure modes.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "FS-05",
+      "field_id": "FS",
+      "title": "Agrifood emissions and mitigation",
+      "summary": "Land use, livestock, rice, fertilizer, processing and waste have different mitigation trade-offs.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "FS-06",
+      "field_id": "FS",
+      "title": "Smallholder post-harvest, cold-chain and market access",
+      "summary": "Storage, cooling, transport, electricity, information and finance jointly affect losses and market participation.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "PH-01",
+      "field_id": "PH",
+      "title": "Universal health coverage and financial protection",
+      "summary": "Essential service coverage and financial hardship from out-of-pocket payments are distinct outcomes.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "PH-02",
+      "field_id": "PH",
+      "title": "Equitable primary-care access and capacity",
+      "summary": "Geographic, workforce, financial and organizational barriers affect access and continuity.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "PH-03",
+      "field_id": "PH",
+      "title": "AMR surveillance and stewardship",
+      "summary": "Laboratory data, antibiotic use, prescribing, diagnostics and infection prevention are non-substitutable capabilities.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "PH-04",
+      "field_id": "PH",
+      "title": "Mental-health treatment gap and service capacity",
+      "summary": "Need, access, workforce, financing, quality and community-based services require separate measurement.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "PH-05",
+      "field_id": "PH",
+      "title": "Respiratory-pandemic surveillance and preparedness",
+      "summary": "Preparedness spans surveillance, coordination, community protection, clinical capacity and countermeasures.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "PH-06",
+      "field_id": "PH",
+      "title": "NCD prevention and implementation",
+      "summary": "Established prevention interventions face uneven implementation across risk factors and care pathways.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "ED-01",
+      "field_id": "ED",
+      "title": "Foundational learning and learning poverty",
+      "summary": "School attendance and enrollment do not establish minimum reading or mathematics proficiency.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "ED-02",
+      "field_id": "ED",
+      "title": "Out-of-school and completion inequity",
+      "summary": "Poverty, conflict, disability, gender and geography create distinct exclusion pathways.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "ED-03",
+      "field_id": "ED",
+      "title": "Teacher recruitment, retention and deployment",
+      "summary": "Shortages may reflect recruitment, attrition, qualification, workload and uneven deployment.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "ED-04",
+      "field_id": "ED",
+      "title": "Digital-learning effectiveness beyond device access",
+      "summary": "Pedagogy, teacher support, accessibility and context mediate educational technology outcomes.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "ED-05",
+      "field_id": "ED",
+      "title": "Meaningful connectivity for learning",
+      "summary": "Devices, home access, affordability, network quality and skills differ from learning outcomes.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "ED-06",
+      "field_id": "ED",
+      "title": "Inclusive education, disability and language access",
+      "summary": "Technology may reduce or reproduce exclusion depending on accessibility and linguistic needs.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "CO-01",
+      "field_id": "CO",
+      "title": "Usage gap and meaningful connectivity",
+      "summary": "Coverage alone does not ensure use when devices, cost, skills, relevance, quality and safety remain barriers.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "CO-02",
+      "field_id": "CO",
+      "title": "Service and device affordability",
+      "summary": "Income-relative service costs and device costs are separate constraints.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "CO-03",
+      "field_id": "CO",
+      "title": "Rural and last-mile infrastructure economics",
+      "summary": "Terrain, backhaul and sparse demand shape rural connectivity economics.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "CO-04",
+      "field_id": "CO",
+      "title": "Digital skills, safety and relevance",
+      "summary": "Adoption requires capability and trust in addition to physical coverage.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "CO-05",
+      "field_id": "CO",
+      "title": "Backbone and submarine-cable resilience",
+      "summary": "Route concentration, redundancy and repair capacity affect network resilience.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "CO-06",
+      "field_id": "CO",
+      "title": "Satellite/LEO connectivity for remote areas",
+      "summary": "Technical reach does not ensure affordable, viable and regulated access.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "WA-01",
+      "field_id": "WA",
+      "title": "Safely managed drinking-water access and inequality",
+      "summary": "Quality, on-premises service, availability and distributional disparities differ from binary water access.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "WA-02",
+      "field_id": "WA",
+      "title": "Sanitation/hygiene access under climate stress",
+      "summary": "Service gaps and climate hazards interact while adaptation evidence remains uneven.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "WA-03",
+      "field_id": "WA",
+      "title": "Urban water scarcity and demand governance",
+      "summary": "Supply, demand, infrastructure, climate and governance create distinct shortage mechanisms.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "WA-04",
+      "field_id": "WA",
+      "title": "Non-revenue water and utility performance",
+      "summary": "Leakage, metering error and unauthorized consumption interact with operations and revenue.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "WA-05",
+      "field_id": "WA",
+      "title": "Groundwater depletion and recharge management",
+      "summary": "Extraction, recharge, land use and climate influence drought buffering and depletion.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "WA-06",
+      "field_id": "WA",
+      "title": "Hydrological observation, forecasting and early warning",
+      "summary": "Rivers, groundwater, storage, snow and glacier data are needed but unevenly available.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "HO-01",
+      "field_id": "HO",
+      "title": "Housing affordability and cost burden",
+      "summary": "Prices/rents, income, financing, quality and location jointly shape affordability.",
+      "stage": "wave1_anchor",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "HO-02",
+      "field_id": "HO",
+      "title": "Affordable/social housing supply and preservation",
+      "summary": "Construction, preservation, land, planning, subsidies and allocation affect durable supply.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "HO-03",
+      "field_id": "HO",
+      "title": "Homelessness measurement and prevention",
+      "summary": "Definitions, enumeration, prevention, emergency accommodation and housing programs differ.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "HO-04",
+      "field_id": "HO",
+      "title": "Informal-settlement upgrading, tenure and services",
+      "summary": "Tenure, WASH, roads, livelihoods and hazard exposure make upgrading multi-sectoral.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "HO-05",
+      "field_id": "HO",
+      "title": "Climate-resilient housing and heat/flood health",
+      "summary": "Building and neighborhood conditions modify climate exposure and adaptation needs.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    },
+    {
+      "id": "HO-06",
+      "field_id": "HO",
+      "title": "Building efficiency and retrofit affordability",
+      "summary": "Upfront costs, split incentives, codes and finance constrain retrofit adoption.",
+      "stage": "second_ring_report_candidate",
+      "evidence_status": "candidate_from_user_supplied_reconnaissance"
+    }
+  ],
+  "anchor_order": [
+    "CO-01",
+    "WA-06",
+    "EN-03",
+    "PH-01",
+    "FS-01",
+    "HO-01",
+    "WA-01",
+    "EN-01",
+    "FS-03",
+    "ED-01",
+    "DP-03",
+    "AW-01"
+  ]
+}
