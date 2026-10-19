@@ -132,7 +132,7 @@ See [`docs/SEMANTIC_PROBLEM_GRAPH.md`](docs/SEMANTIC_PROBLEM_GRAPH.md).
 
 ## Web product shell
 
-v0.11 includes a dependency-free read-only web surface over the real Cite-Refinery workspace.
+v0.11 introduced a dependency-free read-only web surface over the real Cite-Refinery workspace.
 
 ```bash
 python -m pip install -e .
@@ -264,3 +264,17 @@ Cite-Refinery     -> clustered research / problem-intelligence product
 ```
 
 Nocturnal and Refinery retain independent repositories, schemas and APIs. The user should not need separate public websites merely to move around the same semantic problem map.
+
+## v0.12 — audit-ready three-layer tracing
+
+- Selecting any Practical, Academic, Program or neutral node reveals the
+  shortest currently represented typed paths to the three layers, with explicit
+  edge direction, qualification and provenance. Candidate, unresolved,
+  not-established and missing links are never promoted to verified connectivity.
+- Source references are inspectable as links, provenance receipts expandable,
+  and semantic modules export an independently reviewable JSON evidence packet.
+- Search and structural filters operate without AI. Missing map connectivity
+  is not evidence that a solution or finding does not exist in the world.
+- A protected Vercel public-data demo builds from the checked-in pilot.
+  It does not offer live ingestion or private multi-user workspaces.
+  See docs/PUBLIC_ATLAS_PREVIEW.md for security and deployment boundaries.

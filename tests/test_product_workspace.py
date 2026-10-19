@@ -170,6 +170,7 @@ class ProductWorkspaceTests(unittest.TestCase):
             problem_node = observability["neutral_nodes"][0]
             node_view = workspace.node_view(project.id, problem_node["id"])
             self.assertEqual(node_view["coverage"]["intersection"], "practical_academic_program")
+            self.assertEqual(node_view["trace"]["schema"], "cite_refinery.node_layer_trace.v1")
 
     def test_project_list_summarizes_mapping_not_internal_state(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -201,6 +202,7 @@ class ProductWebShellTests(unittest.TestCase):
         self.assertIn("data-cluster", APP_HTML)
         self.assertIn("data-node", APP_HTML)
         self.assertIn("setSelectionRange(start,end)", APP_HTML)
+        self.assertIn("clusters.filter(c=>(", APP_HTML)
         self.assertIn("find(c=>c.node_count>0)", APP_HTML)
         self.assertNotIn("Ask the AI to begin", APP_HTML)
 

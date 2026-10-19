@@ -24,6 +24,8 @@ class PublicPreviewTests(unittest.TestCase):
             self.assertEqual(project["atlas"]["layers"], ["practical", "academic", "program"])
             self.assertTrue(project["atlas"]["clusters"])
             self.assertTrue(data["coverage"])
+            self.assertTrue(all("trace" in v for v in data["coverage"].values()))
+            self.assertTrue(all(v["trace"]["schema"] == "cite_refinery.node_layer_trace.v1" for v in data["coverage"].values()))
             self.assertTrue(
                 any(node.get("provenance_receipts") for node in project["graph_export"]["nodes"].values())
             )
