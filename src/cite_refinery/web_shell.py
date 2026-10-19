@@ -79,7 +79,7 @@ function inspector(){
 }
 function renderMap(){
   const atlas=state.project.atlas||{clusters:[],summary:{}};let clusters=atlas.clusters||[];const q=state.clusterQuery.toLowerCase().trim();if(q)clusters=clusters.filter(c=>(`${c.title} ${(c.tags||[]).join(' ')} ${c.intersection}`).toLowerCase().includes(q));
-  if(!state.clusterId||!atlas.clusters.some(c=>c.id===state.clusterId))state.clusterId=atlas.clusters[0]?.id||null;
+  if(!state.clusterId||!atlas.clusters.some(c=>c.id===state.clusterId))state.clusterId=atlas.clusters.find(c=>c.node_count>0)?.id||atlas.clusters[0]?.id||null;
   const c=atlas.clusters.find(x=>x.id===state.clusterId)||null;
   const exp=state.project.graph_export||{};const nodes=exp.nodes||{};
   const left=`<div><input class="cluster-search" id="clusterSearch" placeholder="Find a semantic module…" value="${esc(state.clusterQuery)}"><div class="cluster-list">${clusters.length?clusters.map(x=>`<button class="cluster-button ${c?.id===x.id?'active':''}" data-cluster="${esc(x.id)}"><strong>${esc(x.title)}</strong><div class="meta">${esc(x.intersection)} · ${fmt(x.node_count)} nodes</div>${presence(x)}</button>`).join(''):empty('No matching modules.')}</div></div>`;
@@ -107,7 +107,7 @@ function renderContent(){
 }
 async function inspectNode(nodeId){state.nodeId=nodeId;const pid=encodeURIComponent(state.project.project.id);const nid=encodeURIComponent(nodeId);const data=await api(`/api/projects/${pid}/nodes/${nid}/coverage?depth=1`);state.coverage=data.coverage;renderContent()}
 async function loadProject(id){
-  const pid=encodeURIComponent(id);state.project=await api(`/api/projects/${pid}?graph=1`);state.view=state.project.primary_view||'map';state.clusterId=state.project.atlas?.clusters?.[0]?.id||null;state.nodeId=null;state.coverage=null;state.clusterQuery='';
+  const pid=encodeURIComponent(id);state.project=await api(`/api/projects/${pid}?graph=1`);state.view=state.project.primary_view||'map';state.clusterId=state.project.atlas?.clusters?.find(c=>c.node_count>0)?.id||state.project.atlas?.clusters?.[0]?.id||null;state.nodeId=null;state.coverage=null;state.clusterQuery='';
   $('#title').textContent=state.project.project.title||id;$('#problem').textContent=state.project.project.problem||'';renderProjects();renderNav();renderContent();
 }
 async function boot(){

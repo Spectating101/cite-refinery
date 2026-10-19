@@ -201,6 +201,7 @@ class ProductWebShellTests(unittest.TestCase):
         self.assertIn("data-cluster", APP_HTML)
         self.assertIn("data-node", APP_HTML)
         self.assertIn("setSelectionRange(start,end)", APP_HTML)
+        self.assertIn("find(c=>c.node_count>0)", APP_HTML)
         self.assertNotIn("Ask the AI to begin", APP_HTML)
 
     def test_http_shell_exposes_atlas_cluster_and_node_coverage(self):
