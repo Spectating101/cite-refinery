@@ -309,3 +309,12 @@ accountability links without inventing Academic or Program coverage. Import
 requires preview and an explicit trusted queue submission. Private Nocturnal
 case content is not committed to the public repository. The Vercel read-only
 public demo is unchanged. See docs/NOCTURNAL_FROZEN_CASE_BRIDGE.md.
+
+## v0.16 — Cite-Agent literature in the same semantic module
+
+The local private backend can now retrieve DOI-indexed Cite-Agent scholarship
+and attach Academic SOURCE records to an **existing** frozen Nocturnal matter.
+Topical literature links remain candidate, not grounded. The Practical,
+Academic, and Program cluster model remains the product's center, and the
+public Vercel demonstration is unchanged. See docs/CITE_ACADEMIC_BRIDGE.md
+for its scope, trust boundaries, and explicit reviewed queue workflow.
