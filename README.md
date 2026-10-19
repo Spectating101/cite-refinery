@@ -349,3 +349,15 @@ turn a passing finite test into general effectiveness, and joins the existing
 v0.18 repository trend map only at an exact matching source revision. The
 observed public problem is attributed with an authority warning. See
 docs/REFINERY_ATTESTED_EXECUTION_BRIDGE.md.
+
+## v0.20 — Refinery evidence-history and change-of-scope mapping
+
+The Program layer can now preserve two source-pinned Refinery evidence
+campaigns as different episodes, including the earlier broad privacy review
+(three implementations, 12 unresolved gaps, mixed detector fixture) and the
+later bounded CloakPipe core test (27 required passes, four failed broader
+probes). It explicitly compares their *evidence scope* rather than claiming
+like-for-like improvement, and links episodes only at an exact shared
+upstream commit. An authenticated local review/queue command is available.
+See `docs/REFINERY_EVIDENCE_HISTORY_V020.md`; the protected public demo
+remains separate and read-only.
