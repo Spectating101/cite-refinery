@@ -1,0 +1,682 @@
+{
+  "module_count": 54,
+  "evidence_anchor_count": 12,
+  "unresearched_second_ring_count": 42,
+  "source_count": 36,
+  "candidate_atomic_evidence_nodes": 55,
+  "unresolved_atomic_problem_questions": 36,
+  "candidate_cross_module_bridges": 16,
+  "cross_field_bridges": 9,
+  "program_source_types": {
+    "bounded_implementation_test": 1,
+    "dataset_platform": 5,
+    "funding_program": 1,
+    "government_support_program": 1,
+    "measurement_framework": 1,
+    "monitoring_initiative": 1,
+    "policy_and_program_documentation": 1,
+    "software_documentation": 1
+  },
+  "source_outcome_support_status": "No independently verified intervention outcome in this wave",
+  "bridge_investigation_queue": [
+    {
+      "module_id": "ED-05",
+      "candidate_bridge_count": 2,
+      "adjacent_evidenced_anchor_count": 2,
+      "candidate_bridge_ids": [
+        "BW-02",
+        "BW-15"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "PH-02",
+      "candidate_bridge_count": 2,
+      "adjacent_evidenced_anchor_count": 2,
+      "candidate_bridge_ids": [
+        "BW-03",
+        "BW-09"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "AW-03",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-14"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "DP-05",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-13"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "FS-06",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-10"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "HO-03",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-11"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "HO-05",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-16"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "HO-06",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-12"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "PH-06",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-06"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    },
+    {
+      "module_id": "WA-05",
+      "candidate_bridge_count": 1,
+      "adjacent_evidenced_anchor_count": 1,
+      "candidate_bridge_ids": [
+        "BW-05"
+      ],
+      "meaning": "Navigation priority only, not scientific importance or impact"
+    }
+  ],
+  "source_http_statuses": {
+    "200": 24,
+    "403": 11,
+    "404": 1
+  },
+  "source_coverage_by_module": {
+    "AW-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "software_documentation"
+    },
+    "AW-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "AW-03": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "AW-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "AW-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "AW-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "DP-01": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "DP-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "DP-03": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "bounded_implementation_test"
+    },
+    "DP-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "DP-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "DP-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "EN-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "funding_program"
+    },
+    "EN-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "EN-03": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "measurement_framework"
+    },
+    "EN-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "EN-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "EN-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "FS-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "dataset_platform"
+    },
+    "FS-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "FS-03": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "policy_and_program_documentation"
+    },
+    "FS-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "FS-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "FS-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "PH-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "dataset_platform"
+    },
+    "PH-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "PH-03": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "PH-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "PH-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "PH-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "ED-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "government_support_program"
+    },
+    "ED-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "ED-03": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "ED-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "ED-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "ED-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "CO-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "dataset_platform"
+    },
+    "CO-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "CO-03": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "CO-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "CO-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "CO-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "WA-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "dataset_platform"
+    },
+    "WA-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "WA-03": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "WA-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "WA-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "WA-06": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "monitoring_initiative"
+    },
+    "HO-01": {
+      "stage": "wave1_anchor",
+      "sources_by_layer": {
+        "practical": 1,
+        "academic": 1,
+        "program": 1
+      },
+      "review_state": "source_candidate_only",
+      "program_kind": "dataset_platform"
+    },
+    "HO-02": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "HO-03": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "HO-04": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "HO-05": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    },
+    "HO-06": {
+      "stage": "second_ring_report_candidate",
+      "sources_by_layer": {
+        "practical": 0,
+        "academic": 0,
+        "program": 0
+      },
+      "review_state": "unresearched_in_this_wave",
+      "program_kind": null
+    }
+  },
+  "interpretation": [
+    "36 source leads across three lanes is source presence, not field completeness.",
+    "All candidate edges require source-specific cross-scope review before promoting relation strength.",
+    "Program sources overwhelmingly describe monitoring, frameworks or planned activity rather than independently validated outcomes."
+  ],
+  "next_wave": [
+    "ED-05",
+    "PH-02",
+    "PH-06",
+    "WA-05",
+    "HO-05",
+    "HO-06",
+    "FS-06",
+    "CO-03",
+    "WA-04",
+    "DP-05",
+    "AW-03",
+    "EN-06"
+  ],
+  "packet_sha256": "ce87e17ae83a444242248d5efeef7b82ffda438bff6469fe0bd07eaf0eccaab1"
+}

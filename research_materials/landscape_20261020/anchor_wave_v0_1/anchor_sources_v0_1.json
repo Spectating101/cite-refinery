@@ -1,0 +1,726 @@
+{
+  "wave": "anchor-wave-v0.1",
+  "origin": "Cite-Refinery Anchor Ingestion: Evidence-Backed Conversion Plan and Initial Deliverables (user-provided Deep Research text)",
+  "sources": [
+    {
+      "id": "CO-P",
+      "module_id": "CO-01",
+      "layer": "practical",
+      "title": "ITU Global Connectivity Report 2025",
+      "publisher": "ITU",
+      "date": "2025-11-27",
+      "url": "https://www.itu.int/itu-d/reports/statistics/global-connectivity-report-2025/",
+      "source_type": "institutional_report",
+      "scope": "Global",
+      "limitation": "Framework and international synthesis; no site-level intervention result",
+      "initial_claim": "Meaningful connectivity comprises distinguishable quality, availability, affordability, device, skills and security dimensions.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "CO-A",
+      "module_id": "CO-01",
+      "layer": "academic",
+      "title": "Dimensions and barriers for digital (in)equity and digital divide: a systematic integrative review",
+      "publisher": "Raihan et al.",
+      "date": "2024-08-13",
+      "url": "https://doi.org/10.1108/DTS-04-2024-0054",
+      "source_type": "academic_review",
+      "scope": "Review; disproportionately developed-country settings",
+      "limitation": "Review cannot determine relative influence of each barrier in a given place",
+      "initial_claim": "Digital inequity is associated with distinct infrastructure, literacy, cost, accessible-content and other barriers.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "CO-G",
+      "module_id": "CO-01",
+      "layer": "program",
+      "title": "ITU DataHub",
+      "publisher": "ITU",
+      "date": "ongoing",
+      "url": "https://datahub.itu.int/",
+      "source_type": "dataset_platform",
+      "scope": "International ICT statistical indicators",
+      "limitation": "Measurement portal, not an inclusion intervention or proof of changes in use",
+      "initial_claim": "ITU DataHub provides country- and region-level ICT indicators for connectivity monitoring.",
+      "initial_kind": "dataset",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "WA6-P",
+      "module_id": "WA-06",
+      "layer": "practical",
+      "title": "State of Global Water Resources 2025",
+      "publisher": "WMO",
+      "date": "2026-09-17",
+      "url": "https://wmo.int/resources/publication-series/state-of-global-water-resources/2025",
+      "source_type": "institutional_report",
+      "scope": "Global hydrological assessment of 2025",
+      "limitation": "Reporting and station coverage vary geographically",
+      "initial_claim": "The WMO 2025 hydrological assessment documents persistent observational gaps alongside hydrological anomalies.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "WA6-A",
+      "module_id": "WA-06",
+      "layer": "academic",
+      "title": "Precipitation observing network gaps limit climate change impact assessment",
+      "publisher": "Su et al., Nature",
+      "date": "2026-03-25",
+      "url": "https://www.nature.com/articles/s41586-026-10300-5",
+      "source_type": "primary_research",
+      "scope": "Global land precipitation monitoring, observation-network assessment",
+      "limitation": "13.4% is land surface satisfying a specified monitoring requirement; it is not share of functioning stations or a policy effect",
+      "initial_claim": "A 2026 precipitation-network study estimated that only 13.4% of global land area met WMO annual precipitation monitoring requirements.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "WA6-G",
+      "module_id": "WA-06",
+      "layer": "program",
+      "title": "Global Hydrological Status and Outlook System (HydroSOS)",
+      "publisher": "WMO",
+      "date": "ongoing",
+      "url": "https://wmo.int/activities/hydrosos",
+      "source_type": "monitoring_initiative",
+      "scope": "International initiative, locally variable rollout",
+      "limitation": "Existence of initiative does not establish local forecast skill",
+      "initial_claim": "WMO HydroSOS coordinates hydrological status/outlook products and national capacity development.",
+      "initial_kind": "program",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "EN3-P",
+      "module_id": "EN-03",
+      "layer": "practical",
+      "title": "Tracking SDG7: The Energy Progress Report 2026",
+      "publisher": "IEA, IRENA, UNSD, World Bank, WHO",
+      "date": "2026-06-24",
+      "url": "https://www.iea.org/reports/tracking-sdg7-the-energy-progress-report-2026",
+      "source_type": "institutional_report",
+      "scope": "Global energy access; latest underlying observations vary by indicator",
+      "limitation": "Connection statistics do not measure all quality attributes; avoid inferring site reliability",
+      "initial_claim": "The 2026 SDG7 assessment estimates 655 million people worldwide still lacked access to electricity.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "EN3-A",
+      "module_id": "EN-03",
+      "layer": "academic",
+      "title": "The Impact of Mini-Grids on Rural Energy-Access Indicators in Developing Countries: A Systematic Review",
+      "publisher": "Effiong, Anandarajah and Dessens",
+      "date": "2026-03-12",
+      "url": "https://www.mdpi.com/1996-1073/19/6/1441",
+      "source_type": "academic_review",
+      "scope": "Rural mini-grid literature in developing-country contexts",
+      "limitation": "Literature quality and reliability reporting are heterogeneous; not all mini-grid systems",
+      "initial_claim": "A systematic review finds reliability is rarely quantified with extractable downtime metrics and standardized power quality is largely unreported in included studies.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "EN3-G",
+      "module_id": "EN-03",
+      "layer": "program",
+      "title": "Multi-Tier Framework for Energy Access: Insights and Impact from a Decade of Surveys",
+      "publisher": "World Bank ESMAP",
+      "date": "2026",
+      "url": "https://www.esmap.org/node/30071",
+      "source_type": "measurement_framework",
+      "scope": "Multi-country energy-access survey program",
+      "limitation": "Survey framework and implementation do not prove electrification or reliability improvements",
+      "initial_claim": "ESMAP's Multi-Tier Framework measures service attributes including capacity, reliability, affordability and safety beyond binary connection.",
+      "initial_kind": "method",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "PH-P",
+      "module_id": "PH-01",
+      "layer": "practical",
+      "title": "Tracking Universal Health Coverage: 2025 Global Monitoring Report",
+      "publisher": "WHO / World Bank",
+      "date": "2025-12-05",
+      "url": "https://www.who.int/teams/health-financing-and-economics/global-monitoring-report/2025",
+      "source_type": "institutional_report",
+      "scope": "Global service coverage (2023) and financial hardship (2022)",
+      "limitation": "Different indicators and observation years cannot be merged into single contemporaneous value",
+      "initial_claim": "WHO and World Bank estimate that 4.6 billion people lacked essential-service coverage in 2023.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "PH-A",
+      "module_id": "PH-01",
+      "layer": "academic",
+      "title": "Policies and interventions aiming to improve equitable access to primary care: a scoping review",
+      "publisher": "Lancet Primary Care authors",
+      "date": "2026-06",
+      "url": "https://www.sciencedirect.com/science/article/pii/S3050514326000683",
+      "source_type": "academic_review",
+      "scope": "57 studies, 22 countries, majority high-income settings",
+      "limitation": "A scoping review maps approaches, does not establish a universal effective model",
+      "initial_claim": "A 2026 scoping review maps equitable primary-care interventions at macro, meso and micro levels, with high-income-country concentration.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "PH-G",
+      "module_id": "PH-01",
+      "layer": "program",
+      "title": "Monitoring Universal Health Coverage",
+      "publisher": "WHO",
+      "date": "ongoing",
+      "url": "https://www.who.int/data/monitoring-universal-health-coverage",
+      "source_type": "dataset_platform",
+      "scope": "Global health service and financing indicators",
+      "limitation": "Statistics portal, not health-care delivery or policy outcome",
+      "initial_claim": "WHO maintains distinct monitoring indicators for health-service coverage and financial protection.",
+      "initial_kind": "dataset",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "FS1-P",
+      "module_id": "FS-01",
+      "layer": "practical",
+      "title": "The State of Food Security and Nutrition in the World 2025",
+      "publisher": "FAO, IFAD, UNICEF, WFP, WHO",
+      "date": "2025-07-28",
+      "url": "https://www.fao.org/agrifood-economics/publications/detail/en/c/1740904/",
+      "source_type": "institutional_report",
+      "scope": "Global food price, diet affordability and food security",
+      "limitation": "Aggregate analysis alone does not infer an individual's actual dietary intake",
+      "initial_claim": "SOFI 2025 documents how food price inflation erodes food purchasing power and healthy-diet affordability.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "FS1-A",
+      "module_id": "FS-01",
+      "layer": "academic",
+      "title": "Are Healthy Foods Affordable? The Past, Present, and Future of Measuring Food Access Using Least-Cost Diets",
+      "publisher": "Masters et al.",
+      "date": "2025",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-resource-121523-015144",
+      "source_type": "academic_review",
+      "scope": "Methods for measuring least-cost healthy diets",
+      "limitation": "Least-cost availability and affordability do not imply chosen consumption",
+      "initial_claim": "Least-cost healthy-diet measurement distinguishes food affordability from other reasons for inadequate diet.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "FS1-G",
+      "module_id": "FS-01",
+      "layer": "program",
+      "title": "Cost and affordability of a healthy diet — FAOSTAT",
+      "publisher": "FAO",
+      "date": "ongoing",
+      "url": "https://data.fao.org/catalog/dataset/b8f254c0-40a0-4911-90e5-0208c60917dd",
+      "source_type": "dataset_platform",
+      "scope": "Global and national annual indicators",
+      "limitation": "Modelled costs and incomes; does not itself subsidize foods",
+      "initial_claim": "FAOSTAT provides national indicators for cost and affordability of a healthy diet.",
+      "initial_kind": "dataset",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "HO-P",
+      "module_id": "HO-01",
+      "layer": "practical",
+      "title": "World Cities Report 2026: The Global Housing Crisis",
+      "publisher": "UN-Habitat",
+      "date": "2026",
+      "url": "https://unhabitat.org/world-cities-report-2026",
+      "source_type": "institutional_report",
+      "scope": "International urban housing",
+      "limitation": "Variation in urban housing definitions and datasets",
+      "initial_claim": "UN-Habitat describes housing affordability alongside adequacy, informal settlements, displacement and climate exposure.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "HO-A",
+      "module_id": "HO-01",
+      "layer": "academic",
+      "title": "Housing Supply and Housing Affordability",
+      "publisher": "Baum-Snow and Duranton, NBER",
+      "date": "2025-04",
+      "url": "https://www.nber.org/papers/w33694",
+      "source_type": "academic_synthesis",
+      "scope": "U.S. housing markets, historical and regulatory analysis",
+      "limitation": "Mainly US-specific; supply relation not universally transportable",
+      "initial_claim": "U.S.-focused housing research identifies supply constraints as one potentially important mechanism in housing affordability.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "HO-G",
+      "module_id": "HO-01",
+      "layer": "program",
+      "title": "OECD Affordable Housing Database",
+      "publisher": "OECD",
+      "date": "ongoing",
+      "url": "https://www.oecd.org/en/data/datasets/oecd-affordable-housing-database.html",
+      "source_type": "dataset_platform",
+      "scope": "OECD, EU and key partner economies",
+      "limitation": "Country comparability limited; portal not a housing intervention",
+      "initial_claim": "The OECD Affordable Housing Database monitors housing costs, conditions, affordability and policy.",
+      "initial_kind": "dataset",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "WA1-P",
+      "module_id": "WA-01",
+      "layer": "practical",
+      "title": "Progress on household drinking water, sanitation and hygiene 2000–2024",
+      "publisher": "WHO/UNICEF JMP",
+      "date": "2025",
+      "url": "https://washdata.org/reports/jmp-2025-wash-households",
+      "source_type": "institutional_report",
+      "scope": "Global household WASH indicators, 2000–2024",
+      "limitation": "Modelled/interpolated estimates and varying country coverage",
+      "initial_claim": "JMP estimates 2.1 billion people lacked safely managed drinking water in 2024.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "WA1-A",
+      "module_id": "WA-01",
+      "layer": "academic",
+      "title": "Unsafe drinking water and human health: a global umbrella review",
+      "publisher": "Li et al., Cell Reports Medicine",
+      "date": "2026-02-04",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12923958/",
+      "source_type": "academic_umbrella_review",
+      "scope": "Global synthesis of multiple diseases, exposures and interventions",
+      "limitation": "Heterogeneous associations and graded intervention certainty",
+      "initial_claim": "An umbrella review links unsafe drinking-water exposure to multiple health outcomes while finding uneven certainty for specific interventions.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "WA1-G",
+      "module_id": "WA-01",
+      "layer": "program",
+      "title": "JMP WASH Data",
+      "publisher": "WHO/UNICEF",
+      "date": "ongoing",
+      "url": "https://washdata.org/",
+      "source_type": "dataset_platform",
+      "scope": "Global/national WASH indicators",
+      "limitation": "Measurement does not supply safe water",
+      "initial_claim": "The JMP Data portal publishes standardized national drinking-water, sanitation and hygiene measures.",
+      "initial_kind": "dataset",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "EN1-P",
+      "module_id": "EN-01",
+      "layer": "practical",
+      "title": "Modernising Grids in the Age of Electricity",
+      "publisher": "IEA",
+      "date": "2026-09",
+      "url": "https://www.iea.org/reports/modernising-grids-in-the-age-of-electricity",
+      "source_type": "institutional_report",
+      "scope": "Global grid development, digitalization and congestion",
+      "limitation": "Cross-market synthesis, not a specific grid feasibility or impact audit",
+      "initial_claim": "IEA reports grid expansion is lagging rising demand and changing electricity systems.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "EN1-A",
+      "module_id": "EN-01",
+      "layer": "academic",
+      "title": "Grid-enhancing technologies for clean energy systems",
+      "publisher": "Su et al., Nature Reviews Clean Technology",
+      "date": "2025-01-15",
+      "url": "https://www.nature.com/articles/s44359-024-00001-5",
+      "source_type": "academic_review",
+      "scope": "Grid-enhancing technologies, international technical literature",
+      "limitation": "Technical potential is not universal measured deployment benefit",
+      "initial_claim": "Grid-enhancing technologies such as dynamic line ratings and power-flow control may improve utilization of existing grid assets.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "EN1-G",
+      "module_id": "EN-01",
+      "layer": "program",
+      "title": "Transmission Facilitation Program",
+      "publisher": "US Department of Energy",
+      "date": "ongoing",
+      "url": "https://www.energy.gov/oe/transmission-facilitation-program",
+      "source_type": "funding_program",
+      "scope": "United States transmission infrastructure",
+      "limitation": "Government financing program exists; specific project impacts not established here",
+      "initial_claim": "US DOE operates a transmission financing/facilitation program to support new and upgraded transmission.",
+      "initial_kind": "program",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "FS3-P",
+      "module_id": "FS-03",
+      "layer": "practical",
+      "title": "5 science-backed solutions for a climate-resilient future",
+      "publisher": "FAO",
+      "date": "2025",
+      "url": "https://www.fao.org/interactive/2025/climate-and-agrifood-systems/en/",
+      "source_type": "institutional_synthesis",
+      "scope": "Global agrifood adaptation",
+      "limitation": "Selection of approaches, not matched local agricultural outcome observations",
+      "initial_claim": "FAO describes diversified responses to climate pressures on agrifood production and livelihoods.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "FS3-A",
+      "module_id": "FS-03",
+      "layer": "academic",
+      "title": "Climate-Resilient Agri-Food Systems: A Review of Approaches and Outcomes",
+      "publisher": "Islam and Fraser",
+      "date": "2026-05-29",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/sd.71263",
+      "source_type": "academic_review",
+      "scope": "Climate adaptation across agrifood systems",
+      "limitation": "Equity, system feedback and scale effects are incompletely studied",
+      "initial_claim": "A 2026 review examines diversification, resilient varieties and precision agriculture while identifying scaling and equity gaps.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "FS3-G",
+      "module_id": "FS-03",
+      "layer": "program",
+      "title": "Climate Change Adaptation",
+      "publisher": "US Department of Agriculture",
+      "date": "ongoing",
+      "url": "https://www.usda.gov/oce/energy-and-environment/climate/adaptation",
+      "source_type": "policy_and_program_documentation",
+      "scope": "U.S. USDA mission and adaptation activities",
+      "limitation": "US policy/capability description; not a validated global on-farm impact",
+      "initial_claim": "USDA documents its agency adaptation plans and climate-related support activities.",
+      "initial_kind": "program",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "ED-P",
+      "module_id": "ED-01",
+      "layer": "practical",
+      "title": "Monitoring Education in the SDGs — GEM 2026",
+      "publisher": "UNESCO",
+      "date": "2026",
+      "url": "https://www.unesco.org/reports/gem-report/en/2026-monitoring-sdg4",
+      "source_type": "institutional_report",
+      "scope": "Global SDG4 measurement",
+      "limitation": "Proficiency data often older and incomplete compared with enrollment data",
+      "initial_claim": "UNESCO tracks minimum learning proficiency separately from enrollment and completion, with substantial data timeliness gaps.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "ED-A",
+      "module_id": "ED-01",
+      "layer": "academic",
+      "title": "Responding to the learning crisis: Structured pedagogy in sub-Saharan Africa",
+      "publisher": "Piper and Dubeck",
+      "date": "2024-09",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0738059324001214",
+      "source_type": "academic_review",
+      "scope": "Structured pedagogy in sub-Saharan African settings",
+      "limitation": "Outcome effects depend on context and implementation",
+      "initial_claim": "Structured pedagogy research describes instructional material, teacher guidance, training and ongoing support as a combined instructional package.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    },
+    {
+      "id": "ED-G",
+      "module_id": "ED-01",
+      "layer": "program",
+      "title": "World Bank Accelerator Program 2.0",
+      "publisher": "World Bank",
+      "date": "2025-09-18",
+      "url": "https://www.worldbank.org/en/brief/2025/09/18/accelerator-program",
+      "source_type": "government_support_program",
+      "scope": "Low- and middle-income governments with program participation",
+      "limitation": "Program operation is not demonstrated learning gains in each participating country",
+      "initial_claim": "The World Bank's Accelerator Program 2.0 supports governments to strengthen foundational learning.",
+      "initial_kind": "program",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "DP-P",
+      "module_id": "DP-03",
+      "layer": "practical",
+      "title": "AI Companies: Uphold Your Privacy and Confidentiality Commitments",
+      "publisher": "US Federal Trade Commission",
+      "date": "2024-01",
+      "url": "https://www.ftc.gov/policy/advocacy-research/tech-at-ftc/2024/01/ai-companies-uphold-your-privacy-confidentiality-commitments",
+      "source_type": "regulatory_guidance",
+      "scope": "U.S. AI service and consumer regulatory context",
+      "limitation": "Regulatory risk warning is NOT a verified incidence estimate or deployment leak",
+      "initial_claim": "The FTC identifies confidentiality/privacy obligations and risks for AI-service providers.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "DP-A",
+      "module_id": "DP-03",
+      "layer": "academic",
+      "title": "Privacy-preserving in foundation models: systematic review of techniques, threats and trade-offs",
+      "publisher": "Elsheikh, Rokne and Alhajj",
+      "date": "2026-03-27",
+      "url": "https://link.springer.com/article/10.1007/s10462-026-11535-4",
+      "source_type": "academic_review",
+      "scope": "Foundation-model pipeline and privacy techniques",
+      "limitation": "Threat taxonomy is not a measured leak prevalence study",
+      "initial_claim": "A 2026 review distinguishes foundation-model privacy threats including memorization, exposure, re-identification and inference.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "DP-G",
+      "module_id": "DP-03",
+      "layer": "program",
+      "title": "Pinned CloakPipe core case — October 16, 2026",
+      "publisher": "Spectating101 / Refinery case evidence",
+      "date": "2026-10-16",
+      "url": "https://github.com/Spectating101/refinery/blob/2b03ad20f8ab3d55462adb38852855b940194c94/evidence/cloakpipe-core-20261016/README.md",
+      "source_type": "bounded_implementation_test",
+      "scope": "Pinned CloakPipe core only; not complete upstream proxy or real-world AI provider",
+      "limitation": "Connector authenticated; public anonymous URL returns 404; bounded pass and all four broader limitation probes leaked",
+      "initial_claim": "A pinned CloakPipe core implementation passed its bounded required tests but remained REUSE_CANDIDATE, not production-ready.",
+      "initial_kind": "program",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 404,
+        "checked_on": "2026-10-20",
+        "note": "Confirmed content via connected GitHub fetch_file at pinned commit; anonymous URL returns 404"
+      }
+    },
+    {
+      "id": "AW-P",
+      "module_id": "AW-01",
+      "layer": "practical",
+      "title": "Taiwan 2024 roaming-dog survey",
+      "publisher": "Taiwan Ministry of Agriculture",
+      "date": "2025-01",
+      "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599",
+      "source_type": "official_survey",
+      "scope": "Taiwan national roaming-dog population estimates",
+      "limitation": "Sample survey and statistical uncertainty; no sustained trend established",
+      "initial_claim": "Taiwan estimated 141,584 free-roaming dogs in 2024; the change from 2022 was not statistically significant.",
+      "initial_kind": "observation",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "AW-A",
+      "module_id": "AW-01",
+      "layer": "academic",
+      "title": "Population Estimation Methods for Free-Ranging Dogs: A Systematic Review",
+      "publisher": "Belo et al.",
+      "date": "2015-12",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+      "source_type": "academic_review",
+      "scope": "Free-ranging dog abundance estimation methodologies",
+      "limitation": "Measurement methods assume animal detection and identification properties that vary by locality",
+      "initial_claim": "A systematic review discusses capture, detection and individual-identification limitations of free-ranging dog estimators.",
+      "initial_kind": "academic_claim",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 200,
+        "checked_on": "2026-10-20",
+        "note": "HTTP route returned 200; not equivalent to full-text or underlying data audit"
+      }
+    },
+    {
+      "id": "AW-G",
+      "module_id": "AW-01",
+      "layer": "program",
+      "title": "Talea user guide",
+      "publisher": "ICAM Coalition",
+      "date": "ongoing",
+      "url": "https://www.icam-coalition.org/talea-user-guide/",
+      "source_type": "software_documentation",
+      "scope": "Street-dog survey collection system",
+      "limitation": "Sighting collection does not validate identification, absolute abundance estimation, or effectiveness",
+      "initial_claim": "ICAM Talea supports repeatable street-dog survey data collection but its guide does not provide animal-photo attachment at sighting time.",
+      "initial_kind": "program",
+      "method": "deep_research_source_candidate; automated_address_check",
+      "access": {
+        "http_status": 403,
+        "checked_on": "2026-10-20",
+        "note": "Publisher/access restricted for automated HTTP; metadata from Deep Research result only"
+      }
+    }
+  ]
+}

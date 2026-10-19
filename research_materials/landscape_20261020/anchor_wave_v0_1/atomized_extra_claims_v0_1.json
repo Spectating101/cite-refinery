@@ -1,0 +1,156 @@
+{
+  "extras": [
+    {
+      "id": "EX-01",
+      "source_id": "CO-P",
+      "statement": "Network availability is distinct from meaningful, ongoing individual Internet use.",
+      "kind": "framework_dimension",
+      "boundary": "Cross-national conceptual distinction, not a causal national-level usage estimate.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-02",
+      "source_id": "CO-P",
+      "statement": "Quality of connectivity is a distinct dimension of meaningful connectivity.",
+      "kind": "framework_dimension",
+      "boundary": "No minimum throughput guarantee or local performance measurement is inferred.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-03",
+      "source_id": "CO-P",
+      "statement": "ICT service affordability is distinct from nominal network coverage.",
+      "kind": "framework_dimension",
+      "boundary": "Affordability depends on reference income, prices, and survey methodology.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-04",
+      "source_id": "CO-P",
+      "statement": "Access to an appropriate device is a dimension of meaningful connectivity.",
+      "kind": "framework_dimension",
+      "boundary": "Network existence does not establish suitable device ownership.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-05",
+      "source_id": "CO-P",
+      "statement": "Digital skills are a dimension of meaningful connectivity.",
+      "kind": "framework_dimension",
+      "boundary": "Framework dimension; not an estimate of digital skills of a specified population.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-06",
+      "source_id": "CO-P",
+      "statement": "Security is a distinct dimension of meaningful connectivity.",
+      "kind": "framework_dimension",
+      "boundary": "Security dimension is not a measured site-level threat or incidence rate.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-07",
+      "source_id": "PH-P",
+      "statement": "WHO and World Bank estimate that 2.1 billion people experienced financial hardship from out-of-pocket health spending in 2022.",
+      "kind": "observation",
+      "boundary": "Observation year 2022 is distinct from 2023 health-service coverage; do not sum the two populations.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-08",
+      "source_id": "WA1-P",
+      "statement": "The safely managed drinking-water indicator requires accessibility on premises, availability when needed and freedom from contamination.",
+      "kind": "measurement_definition",
+      "boundary": "Definition is not evidence any particular house has safe water.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-09",
+      "source_id": "EN3-G",
+      "statement": "A physical electricity connection by itself does not establish service reliability under the Multi-Tier Framework.",
+      "kind": "measurement_definition",
+      "boundary": "Framework distinction rather than proof that a given connection is unreliable.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-10",
+      "source_id": "EN3-G",
+      "statement": "Electricity affordability is assessed separately from capacity and reliability under the Multi-Tier Framework.",
+      "kind": "measurement_definition",
+      "boundary": "Framework attribute, not a location-specific measurement.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-11",
+      "source_id": "EN1-P",
+      "statement": "Grid modernization may involve improving use of existing network assets as well as physically expanding lines.",
+      "kind": "program_pathway",
+      "boundary": "IEA synthesis of response pathways does not decide what is optimal for a particular grid.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-12",
+      "source_id": "FS1-A",
+      "statement": "Least-cost healthy-diet metrics describe available food combinations, not necessarily the meals people choose.",
+      "kind": "measurement_definition",
+      "boundary": "Does not establish individual preference or nutritional status.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-13",
+      "source_id": "FS3-A",
+      "statement": "Climate-adaptation approaches may face equity and systemic feedback limitations when scaled.",
+      "kind": "academic_claim",
+      "boundary": "Review-level warning, not demonstrated failure of all adaptation approaches.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-14",
+      "source_id": "ED-P",
+      "statement": "School enrollment and completion indicators cannot be treated as direct measures of learning proficiency.",
+      "kind": "measurement_definition",
+      "boundary": "Separate SDG4 outcome families; no correlation or causal relation asserted.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-15",
+      "source_id": "DP-G",
+      "statement": "In the pinned CloakPipe core evaluation, four explicitly broader limitation probes leaked sensitive information.",
+      "kind": "test_observation",
+      "boundary": "Only the pinned local core harness and limitation probes; does not estimate wider production leakage.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-16",
+      "source_id": "DP-G",
+      "statement": "The pinned CloakPipe component did not execute upstream HTTP proxy, CLI, streaming, editor hooks, MCP or vault integration.",
+      "kind": "scope_boundary",
+      "boundary": "Component-level exclusions; no claim that excluded paths are secure.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-17",
+      "source_id": "AW-P",
+      "statement": "The Taiwan ministry did not find a statistically significant change in estimated roaming-dog population between its 2022 and 2024 surveys.",
+      "kind": "observation",
+      "boundary": "No significant difference is not proof of no true population change.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-18",
+      "source_id": "AW-G",
+      "statement": "Talea collects sightings but the documented workflow lacks photo attachment to an individual sighting.",
+      "kind": "capability_limit",
+      "boundary": "Guide-specific software limitation; cannot infer every individual-tracking use is impossible.",
+      "status": "candidate_source_interpretation"
+    },
+    {
+      "id": "EX-19",
+      "source_id": "WA6-A",
+      "statement": "The precipitation-network study's 13.4% result refers to global land satisfying annual-monitoring requirements, not the percentage of stations working.",
+      "kind": "measurement_definition",
+      "boundary": "Definition and denominator cannot be generalized to every hydrological observing variable.",
+      "status": "candidate_source_interpretation"
+    }
+  ]
+}
