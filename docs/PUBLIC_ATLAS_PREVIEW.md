@@ -14,3 +14,18 @@ The generated `dist/index.html` preserves the map-first interface and `dist/snap
 **Public-demo data boundary:** only the checked-in public pilot is included. Inspect the example's source and provenance receipts before changing it. Generated `dist/` is gitignored. Do not deploy an arbitrary project workspace or live JsonStore on an unauthenticated public site.
 
 For a multi-user launch, add server-side authentication, tenant isolation, authorization, audit controls, durable storage, ingestion/job boundaries, and independent security review. This preview intentionally does not claim any of those.
+
+## v0.12 trace and audit behavior
+
+Selecting a node shows shortest **represented** asserted/qualified paths to Practical,
+Academic and Program nodes, and opens source citations/provenance receipts. Candidate,
+unresolved, not-established and MISSING_LINK edges are explicitly separate and never
+counted as established connectivity. Reverse traversal is visually marked, and a graph
+path does not assert causality or effectiveness. The selected module can be exported as
+an auditable JSON packet containing member and adjacent nodes, typed internal/cross
+edges, status, source refs and provenance. The structural layer filters describe
+only the current map, not what exists in the world.
+
+For local dynamic workspaces, GET /api/projects/{id}/nodes/{node_id}/trace?depth=4
+returns the same read-only trace. The static public preview precomputes depth-4 traces
+for its approved public data and does not permit writes or private uploads.

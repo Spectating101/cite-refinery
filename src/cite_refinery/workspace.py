@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from collections import Counter
+from collections import Counter, deque
 from typing import Any
 
 from .semantic import SemanticGraph
@@ -473,10 +473,96 @@ class ProductWorkspace:
                 }
         raise KeyError(f"unknown semantic cluster for project: {cluster_id}")
 
+    def trace_node(self, project_id: str, node_id: str, *, max_depth: int = 4) -> dict[str, Any]:
+        """Shortest *represented* typed paths to the three layers.
+
+        Traversing a qualified edge carries its warning; unverified candidate,
+        unresolved, not-established and MISSING_LINK edges are never promoted to
+        connected paths. Traversal may reverse an edge for discovery, but the
+        recorded direction is preserved to avoid implying causation.
+        """
+        if not 0 <= max_depth <= 6:
+            raise ValueError("trace depth must be between 0 and 6")
+        export = self.graph.export(project_id)
+        nodes = export["nodes"]
+        edges = export["edges"]
+        if node_id not in nodes:
+            raise ValueError("semantic node does not belong to project")
+        adj: dict[str, list[tuple[str, dict[str, Any], str]]] = {key: [] for key in nodes}
+        blocked = []
+        for edge in edges.values():
+            src, dst = edge.get("source_id"), edge.get("target_id")
+            if src not in nodes or dst not in nodes:
+                continue
+            if edge.get("relation") == "MISSING_LINK" or edge.get("status") not in {"asserted", "qualified"}:
+                blocked.append(edge)
+                continue
+            adj[src].append((dst, edge, "forward"))
+            adj[dst].append((src, edge, "reverse"))
+        for neighbours in adj.values():
+            neighbours.sort(key=lambda item: (item[1].get("relation", ""), item[0], item[1].get("id", "")))
+        paths: dict[str, list[dict[str, Any]]] = {layer: [] for layer in PRIMARY_LAYERS}
+        visited = {node_id}
+        queue = deque([(node_id, [node_id], [])])
+        limit = 2000
+        truncated = False
+        while queue:
+            current, chain, steps = queue.popleft()
+            layer = nodes[current].get("layer")
+            if layer in paths and len(paths[layer]) < 3:
+                paths[layer].append({
+                    "target": nodes[current],
+                    "nodes": [nodes[value] for value in chain],
+                    "steps": steps,
+                    "has_qualification": any(step["status"] == "qualified" for step in steps),
+                })
+            if len(steps) >= max_depth:
+                continue
+            for other, edge, direction in adj[current]:
+                if other in visited:
+                    continue
+                if len(visited) >= limit:
+                    truncated = True
+                    break
+                visited.add(other)
+                queue.append((other, [*chain, other], [*steps, {
+                    "edge_id": edge["id"],
+                    "source_id": edge["source_id"],
+                    "target_id": edge["target_id"],
+                    "relation": edge["relation"],
+                    "status": edge["status"],
+                    "direction": direction,
+                    "evidence_refs": list(edge.get("evidence_refs") or []),
+                    "provenance_receipts": list(edge.get("provenance_receipts") or []),
+                }]))
+        reached = set(visited)
+        blocked_nearby = [
+            edge for edge in blocked
+            if edge.get("source_id") in reached or edge.get("target_id") in reached
+        ]
+        blocked_nearby.sort(key=lambda edge: str(edge["id"]))
+        return {
+            "schema": "cite_refinery.node_layer_trace.v1",
+            "project_id": project_id,
+            "anchor_node_id": node_id,
+            "max_depth": max_depth,
+            "paths": paths,
+            "not_connected_within_depth": [layer for layer, matches in paths.items() if not matches],
+            "blocked_or_proposed_edges": blocked_nearby[:50],
+            "truncated": truncated or len(blocked_nearby) > 50,
+            "boundary": (
+                "Paths are traversals of represented asserted/qualified graph edges, not proof "
+                "of causality, effectiveness, equivalence or real-world completeness. "
+                "Reverse traversals retain their direction. Proposed/missing edges are shown separately; "
+                "an unconnected layer means only that no qualifying path was represented within this depth."
+            ),
+        }
+
     def node_view(self, project_id: str, node_id: str, *, depth: int = 1) -> dict[str, Any]:
         coverage = self.graph.coverage(project_id, node_id, depth=depth)
         return {
             "schema": "cite_refinery.product_node_view.v1",
             "project_id": project_id,
             "coverage": coverage,
+            "trace": self.trace_node(project_id, node_id),
         }

@@ -65,6 +65,11 @@ async function api(path){
   if(parts.length===3)return project;
   if(parts.length===4 && parts[3]==='graph')return project.graph_export;
   if(parts.length===4 && parts[3]==='atlas')return project.atlas;
+  if(parts.length===6 && parts[3]==='nodes' && parts[5]==='trace'){
+    const coverage=snapshot.coverage[decodeURIComponent(parts[4])];
+    if(!coverage)throw Error('Node not in the public snapshot');
+    return coverage.trace;
+  }
   if(parts.length===6 && parts[3]==='nodes' && parts[5]==='coverage'){
     const coverage=snapshot.coverage[decodeURIComponent(parts[4])];
     if(!coverage)throw Error('Node not in the public snapshot');
