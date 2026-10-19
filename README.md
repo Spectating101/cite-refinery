@@ -338,3 +338,14 @@ is working code or commit activity is market adoption. Use the local private
 reviewed queue; see docs/REPOSITORY_TREND_SEMANTIC_MAP.md and the pinned
 examples/repository_portfolio_snapshot_v1.json example. Public Vercel
 remains a separate read-only demo.
+
+## v0.19 — Refinery actual execution records
+
+The Program layer now accepts a source-pinned, internally consistent
+Refinery bounded evaluation: capability, implementation, preregistered
+contract, recorded run, failed broader probes and reuse decision. It keeps
+source integrity separate from independently reproduced execution, does not
+turn a passing finite test into general effectiveness, and joins the existing
+v0.18 repository trend map only at an exact matching source revision. The
+observed public problem is attributed with an authority warning. See
+docs/REFINERY_ATTESTED_EXECUTION_BRIDGE.md.
