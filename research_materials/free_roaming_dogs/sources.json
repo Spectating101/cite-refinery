@@ -1,0 +1,177 @@
+{
+  "schema": "cite_refinery.field_materials.v1",
+  "subject": "Taiwan free-roaming dog management",
+  "description": "Source collection only; no semantic edges or acceptance promotions implied",
+  "sources": [
+    {
+      "id": "P01",
+      "layer": "practical",
+      "type": "government_dataset",
+      "title": "County-year dog/cat estimates",
+      "url": "https://data.gov.tw/dataset/41771",
+      "scope": "County dog-estimate series, survey years 2018-24",
+      "caution": "Zeroes outside survey years are not population zeroes; official 2022 total and sum differ",
+      "modules": [
+        "observability",
+        "geographic variation"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "P02",
+      "layer": "practical",
+      "type": "government_survey_release",
+      "title": "National 2024 survey release",
+      "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599",
+      "scope": "Biennial totals and sampling method; 739 villages in 2024",
+      "caution": "2024 difference not statistically significant; no causal effect established",
+      "modules": [
+        "observability",
+        "effectiveness"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "P03",
+      "layer": "practical",
+      "type": "government_dataset",
+      "title": "Monthly public-shelter operations",
+      "url": "https://data.gov.tw/dataset/73396",
+      "scope": "Monthly intake, release, rehoming and shelter capacity data",
+      "caution": "Administrative flows are not free-roaming abundance; possible dog/cat aggregation",
+      "modules": [
+        "shelter operations",
+        "intervention"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "P04",
+      "layer": "practical",
+      "type": "government_statement",
+      "title": "MOA wildlife dog-attack cases 2019-22",
+      "url": "https://www.moa.gov.tw/theme_data.php?RWD_mode=Y&id=9032&sub_theme=agri&theme=news",
+      "scope": "Reported dog-attack wildlife cases and conservation concerns",
+      "caution": "Reported incidents not exhaustive incidence rate or measured effectiveness",
+      "modules": [
+        "wildlife conflict",
+        "effectiveness"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "P05",
+      "layer": "practical",
+      "type": "local_government_statement",
+      "title": "Miaoli reported roaming-dog pressures",
+      "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002313",
+      "scope": "Local 2025 estimate and abandoned/owned roaming/reproductive pressures",
+      "caution": "County-level account, not nationally causal proof",
+      "modules": [
+        "replenishment",
+        "geographic variation"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "A01",
+      "layer": "academic",
+      "type": "systematic_review",
+      "title": "Belo et al. 2015 estimation review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+      "scope": "Estimation methods; detection and identity assumptions",
+      "caution": "Methods cannot be assumed to work equally across settings",
+      "modules": [
+        "observability",
+        "methods"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "A02",
+      "layer": "academic",
+      "type": "empirical_model",
+      "title": "Shoushan 2024 TNR study",
+      "url": "https://www.sciencedirect.com/science/article/pii/S235198942400194X",
+      "scope": "Local immigration/sterilization scenarios",
+      "caution": "Site-specific study/model, not nationwide causal treatment validation",
+      "modules": [
+        "replenishment",
+        "effectiveness"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "A03",
+      "layer": "academic",
+      "type": "empirical_study",
+      "title": "Yangmingshan dog demography/welfare 2016-18",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30935505/",
+      "scope": "Photographic capture-recapture and health at one park",
+      "caution": "Park-level, historical sample; cannot be treated as live national data",
+      "modules": [
+        "observability",
+        "welfare",
+        "replenishment"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "A04",
+      "layer": "academic",
+      "type": "survey_study",
+      "title": "Hsu et al. 2003 dog keeping Taiwan",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12795855/",
+      "scope": "Historical household dog keeping behavior and hypothesized pressures",
+      "caution": "2003 survey does not represent 2026 practices",
+      "modules": [
+        "replenishment",
+        "responsible ownership"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "G01",
+      "layer": "program",
+      "type": "provider_manual",
+      "title": "ICAM Talea survey system user guide",
+      "url": "https://www.icam-coalition.org/talea-user-guide/",
+      "scope": "Survey template, routes, sightings and exports",
+      "caution": "FAQ 5.4 no photograph in sightings; no local estimator tested",
+      "modules": [
+        "observability",
+        "software capability"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "G02",
+      "layer": "program",
+      "type": "policy_announcement",
+      "title": "MOA 2026 community management plan",
+      "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002234",
+      "scope": "Risk hotspots, female-dog source control, community involvement",
+      "caution": "Policy intention rather than outcome evidence",
+      "modules": [
+        "replenishment",
+        "governance"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    },
+    {
+      "id": "G03",
+      "layer": "program",
+      "type": "risk_priority_geography",
+      "title": "MOA 2026 priority management village annex",
+      "url": "https://animal.moa.gov.tw/public/upload/News/260316110439227006GR81L.pdf",
+      "scope": "49-page village-level public safety, ecological and rabies risk priority designations",
+      "caution": "Administrative risk categories, not experimental measured treatment effects",
+      "modules": [
+        "geographic variation",
+        "wildlife conflict",
+        "governance"
+      ],
+      "review_state": "source-page-or-abstract-inspected; not full study replication"
+    }
+  ]
+}

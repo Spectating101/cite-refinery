@@ -1,0 +1,53 @@
+{
+  "schema": "cite_refinery.material_snapshot_provenance.v1",
+  "retrieval_date": "2026-10-20",
+  "county": {
+    "source_page": "https://data.gov.tw/dataset/41771",
+    "api": "https://data.moa.gov.tw/Service/OpenData/TransService.aspx?IsTransData=1&UnitId=ccezNvv4oYbO",
+    "raw_sha256": "8457f5007c0725fa52a591ad29b04438e2b76bb06eef8a5b5d7cf0103e5dc959",
+    "raw_rows": 389,
+    "selected_rows": 88,
+    "county_sums": {
+      "2018": 146774,
+      "2020": 155867,
+      "2022": 158696,
+      "2024": 141584
+    },
+    "official_national_totals": {
+      "2018": 146773,
+      "2020": 155869,
+      "2022": 159697,
+      "2024": 141584
+    }
+  },
+  "shelter": {
+    "source_page": "https://data.gov.tw/dataset/73396",
+    "api": "https://data.moa.gov.tw/Service/OpenData/TransService.aspx?IsTransData=1&UnitId=oI5pZXARr48L",
+    "raw_sha256": "96c4945d8f598506be843f1cb256c879d07f4dc5a9383bf1e7de962735749732",
+    "raw_rows": 1541,
+    "selected_month": 202609,
+    "selected_rows": 23,
+    "fields": [
+      "CloseYM",
+      "cityName",
+      "MaxAmls",
+      "MaxCats",
+      "TotalIn",
+      "TotalOut",
+      "TotalA2",
+      "G1",
+      "N3",
+      "SP1",
+      "SP2",
+      "SPO1",
+      "SPO2",
+      "O1",
+      "O21",
+      "O22",
+      "O23",
+      "D1",
+      "D2",
+      "D3"
+    ]
+  }
+}
