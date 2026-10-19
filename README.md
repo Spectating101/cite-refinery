@@ -298,3 +298,14 @@ single-transaction worker commits and audit records. The three-layer map stays
 the conceptual core and remains operable without AI. The protected Vercel
 demonstration is unchanged and receives no private data. For setup, security
 boundaries and migration gates, read docs/PRIVATE_WORKSPACE_BACKEND.md.
+
+
+## v0.15 — pinned frozen Nocturnal bridge
+
+The authenticated local private backend now accepts version-pinned TRACE-5
+Nocturnal empirical cases into the Practical layer. It preserves source
+citations, original editorial and epistemic states, roles, and reviewed
+accountability links without inventing Academic or Program coverage. Import
+requires preview and an explicit trusted queue submission. Private Nocturnal
+case content is not committed to the public repository. The Vercel read-only
+public demo is unchanged. See docs/NOCTURNAL_FROZEN_CASE_BRIDGE.md.
