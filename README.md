@@ -385,3 +385,20 @@ The bearer credential stays in page memory, the page has a strict same-origin
 Content Security Policy, and research data never enters the separate public
 Vercel atlas. See `docs/PRIVATE_EVOLUTION_UI_V022.md` for local setup and
 security/evidence interpretation boundaries.
+
+## v0.23 — public GitHub project observations and pinned dependency changes
+
+An optional source-limited Program feeder collects timestamped PUBLIC
+GitHub repository counters, published releases (never draft), tag refs,
+latest sampled commits and verifies dependency declaration changes from
+exact selected local Git base/head revisions. Public provider metadata is
+kept distinct from source-pinned implementation evidence and from any
+claims about adoption, growth, security or product readiness. Later
+operator-approved samples can report net counter differences between
+observations but never turn them into performance or market quality scores.
+The first live pilot covers public Research Drive and Hardware Splicer;
+private Nocturnal, Refinery and Policy Lab repositories are excluded from
+the public collector. Manual review, private ingestion and the protected
+local evidence-evolution UI remain independent of the static Vercel demo.
+See docs/GITHUB_PROJECT_SIGNALS_V023.md and
+examples/github_public_signals_20261019.json.
