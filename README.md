@@ -372,3 +372,16 @@ evidence coverage are NOT performance, adoption or production-readiness
 improvements. The private CLI/API remains local; the protected public Vercel
 demo contains none of these private snapshots. See
 docs/CAPABILITY_EVOLUTION_SNAPSHOTS_V021.md.
+
+## v0.22 — private module-by-module evidence evolution interface
+
+The authenticated **local private API** now serves a standalone read-only
+`/private/evolution` page for selecting project checkpoints, exploring exactly
+which semantic modules and Practical/Academic/Program nodes changed, inspecting
+source evidence, filtering unresolved/candidate relationships, and explicitly
+separating new evidence from updated existing receipts. Owner/editor users can
+create version-pinned snapshots; viewers can compare authorized checkpoints.
+The bearer credential stays in page memory, the page has a strict same-origin
+Content Security Policy, and research data never enters the separate public
+Vercel atlas. See `docs/PRIVATE_EVOLUTION_UI_V022.md` for local setup and
+security/evidence interpretation boundaries.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cite-refinery"
-version = "0.21.0"
+version = "0.22.0"
 description = "Clustered three-layer semantic research mapping across practical evidence, academic knowledge, and program supply."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -29,6 +29,9 @@ cite-refinery-evolution = "cite_refinery.capability_evolution_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+cite_refinery = ["private_evolution_assets/*.html", "private_evolution_assets/*.css", "private_evolution_assets/*.js"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
