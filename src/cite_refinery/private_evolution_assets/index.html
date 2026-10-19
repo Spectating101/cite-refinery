@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cite-Refinery · Private Evolution</title>
+<link rel="stylesheet" href="/private/evolution/app.css">
+<script defer src="/private/evolution/app.js"></script></head>
+<body><div class="shell"><aside class="sidebar">
+  <div class="brand">Cite-Refinery <small>Private evidence evolution</small></div>
+  <label for="credential">Bearer token</label>
+  <input type="password" id="credential" autocomplete="off" placeholder="Authorized private token">
+  <button id="connect">Connect</button><button id="disconnect" hidden>Disconnect</button>
+  <p class="hint">Token stays in page memory and is never put in a URL, file or browser storage.</p>
+  <label for="project">Project</label><select id="project" disabled><option value="">Connect first</option></select>
+  <label for="before">Earlier checkpoint</label><select id="before" disabled></select>
+  <label for="after">Later checkpoint</label><select id="after" disabled></select>
+  <button id="compare" disabled>Compare evidence</button>
+  <div class="capture"><label for="captureLabel">New checkpoint label</label>
+  <input id="captureLabel" placeholder="After evaluated repository import" disabled maxlength="140">
+  <button id="capture" disabled>Capture current revision</button>
+  <p class="hint">Owner/editor only. Captures are immutable and do not change research records.</p></div>
+</aside><main class="main">
+  <header><span class="eyebrow">Practical / Academic / Program</span>
+  <h1>Evidence evolution</h1>
+  <p>Inspect exactly what changed around a specific semantic problem or capability. This view reports evidence history—not performance uplift or market adoption.</p>
+  <div id="status" role="status" aria-live="polite">Connect to a private project to begin.</div></header>
+  <section id="welcome" class="panel blank">Choose two saved project revisions to compare.</section>
+  <section id="report" hidden>
+    <div id="summary" class="summary"></div>
+    <div class="layout"><section class="panel">
+      <h2>Changed semantic modules</h2>
+      <label for="search">Search modules</label><input id="search" placeholder="Topic, source, layer">
+      <label for="filter">Evidence change</label><select id="filter">
+        <option value="all">All changes</option><option value="practical">Practical</option>
+        <option value="academic">Academic</option><option value="program">Program</option>
+        <option value="candidate">Candidate connections</option><option value="limitation">Limitations</option>
+      </select><div id="modules" class="modules"></div>
+    </section><section id="detail" class="panel"><p class="muted">Choose a module to inspect changed nodes, original source links, and relations.</p></section></div>
+    <section id="boundary" class="panel boundary"></section>
+  </section>
+</main></div></body></html>

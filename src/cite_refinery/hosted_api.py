@@ -12,7 +12,7 @@ from .hosted_store import NotFound, PermissionDenied, StateConflict, WorkspaceDB
 def create_private_app(db_path: str):
     try:
         from fastapi import Depends, FastAPI, Header, HTTPException, Request
-        from fastapi.responses import JSONResponse
+        from fastapi.responses import JSONResponse, HTMLResponse, PlainTextResponse
         from pydantic import BaseModel, Field
     except ImportError as exc:
         raise RuntimeError("Install cite-refinery[server] for private HTTP API") from exc
@@ -20,7 +20,7 @@ def create_private_app(db_path: str):
     store = WorkspaceDB(db_path)
     app = FastAPI(
         title="Cite-Refinery Private Workspaces",
-        version="0.21.0",
+        version="0.22.0",
         docs_url=None, redoc_url=None, openapi_url=None,
     )
 
@@ -37,6 +37,12 @@ def create_private_app(db_path: str):
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Referrer-Policy"] = "no-referrer"
         response.headers["X-Frame-Options"] = "DENY"
+        if request.url.path.startswith("/private/evolution"):
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'none'; connect-src 'self'; script-src 'self'; "
+                "style-src 'self'; base-uri 'none'; form-action 'none'; "
+                "frame-ancestors 'none'; object-src 'none'"
+            )
         return response
 
     @app.exception_handler(PermissionDenied)
@@ -86,6 +92,23 @@ def create_private_app(db_path: str):
     @app.get("/health")
     def health():
         return {"status": "ok", "service": "cite-refinery-private-api"}
+
+    @app.get("/private/evolution", include_in_schema=False)
+    def evolution_page():
+        # Publicly readable shell ONLY. No workspace data, token or cookies are
+        # ever interpolated. Data endpoints require a bearer credential.
+        from .private_evolution_ui import load_asset
+        return HTMLResponse(load_asset("index.html"))
+
+    @app.get("/private/evolution/app.js", include_in_schema=False)
+    def evolution_script():
+        from .private_evolution_ui import load_asset
+        return PlainTextResponse(load_asset("app.js"), media_type="text/javascript")
+
+    @app.get("/private/evolution/app.css", include_in_schema=False)
+    def evolution_stylesheet():
+        from .private_evolution_ui import load_asset
+        return PlainTextResponse(load_asset("app.css"), media_type="text/css")
 
     @app.get("/api/projects")
     def projects(user: str = Depends(current_user)):

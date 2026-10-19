@@ -62,6 +62,120 @@ def _lineage(node: dict[str, Any]) -> list[str]:
     return sorted(tokens)
 
 
+def _module_deltas(
+    old: dict[str, dict[str, dict]], new: dict[str, dict[str, dict]],
+    added: dict[str, list[str]], changed: dict[str, list[str]],
+) -> dict[str, Any]:
+    """Module-local evidence changes, not project-wide or aggregate scorecards."""
+    old_clusters = old["semantic_clusters"]
+    new_clusters = new["semantic_clusters"]
+    old_nodes, new_nodes = old["semantic_nodes"], new["semantic_nodes"]
+    old_edges, new_edges = old["semantic_edges"], new["semantic_edges"]
+    added_nodes = set(added["semantic_nodes"])
+    changed_nodes = set(changed["semantic_nodes"])
+    added_edges = set(added["semantic_edges"])
+    changed_edges = set(changed["semantic_edges"])
+    output = []
+    for cluster_id, cluster in sorted(new_clusters.items(),
+                                      key=lambda p: (p[1].get("title") or "", p[0])):
+        members = {
+            nid for nid, n in new_nodes.items()
+            if cluster_id in (n.get("cluster_ids") or [])
+        }
+        old_members = {
+            nid for nid, n in old_nodes.items()
+            if cluster_id in (n.get("cluster_ids") or [])
+        }
+        changed_member_ids = {
+            nid for nid in members if nid in added_nodes or nid in changed_nodes
+            or nid not in old_members
+        }
+        newly_linked = [
+            (eid, e) for eid, e in new_edges.items()
+            if eid in added_edges or eid in changed_edges
+            if e.get("source_id") in members or e.get("target_id") in members
+        ]
+        if not changed_member_ids and not newly_linked and cluster_id not in added["semantic_clusters"] and cluster_id not in changed["semantic_clusters"]:
+            continue
+        by_layer = Counter(new_nodes[nid].get("layer", "neutral") for nid in changed_member_ids)
+        node_rows = []
+        for nid in sorted(changed_member_ids):
+            n = new_nodes[nid]
+            receipts = n.get("provenance_receipts") or []
+            origin = [
+                {"source_system": r.get("source_system"),
+                 "refinery_commit": r.get("refinery_commit"),
+                 "source_commit": r.get("snapshot_commit") or r.get("commit"),
+                 "decision": r.get("decision_code") or r.get("decision"),
+                 "execution_ready": r.get("execution_ready"),
+                 "scope": r.get("verification_scope") or r.get("boundary")}
+                for r in receipts if isinstance(r, dict)
+            ][:4]
+            node_rows.append({
+                "id": nid, "change": "added" if nid in added_nodes else "updated_or_new_membership",
+                "statement": n.get("statement", ""), "layer": n.get("layer"),
+                "kind": n.get("kind"), "source_refs": (n.get("source_refs") or [])[:6],
+                "evidence_scope": origin,
+            })
+        edge_rows = []
+        for eid, e in sorted(newly_linked):
+            edge_rows.append({
+                "id": eid, "change": "added" if eid in added_edges else "revised",
+                "source_id": e.get("source_id"), "target_id": e.get("target_id"),
+                "relation": e.get("relation"), "status": e.get("status"),
+                "cross_module": not (e.get("source_id") in members and e.get("target_id") in members),
+                "source_refs": (e.get("evidence_refs") or [])[:5],
+            })
+        output.append({
+            "id": cluster_id, "title": cluster.get("title") or "Unclustered",
+            "external_key": cluster.get("external_key"),
+            "change": "added" if cluster_id in added["semantic_clusters"] else "updated_evidence",
+            "changed_node_counts": dict(sorted(by_layer.items())),
+            "changed_nodes_total": len(node_rows),
+            "new_nodes_total": sum(nid in added_nodes for nid in changed_member_ids),
+            "revised_nodes_total": sum(nid not in added_nodes for nid in changed_member_ids),
+            "changed_relations_total": len(edge_rows),
+            "changed_relations_qualified_or_asserted": sum(
+                e["status"] in {"asserted", "qualified"} for e in edge_rows),
+            "changed_relations_candidate_or_unresolved": sum(
+                e["status"] in {"candidate", "unresolved", "not_established"} for e in edge_rows),
+            "nodes": node_rows[:60], "relations": edge_rows[:60],
+            "nodes_truncated": len(node_rows) > 60,
+            "relations_truncated": len(edge_rows) > 60,
+            "boundary": "Changes to represented source evidence, not proof of solved problems or quality improvement.",
+        })
+    # Unclustered nodes remain a real navigation unit rather than disappearing.
+    unclustered = {
+        nid for nid, n in new_nodes.items()
+        if not n.get("cluster_ids") and nid in added_nodes | changed_nodes
+    }
+    if unclustered:
+        output.append({
+            "id": "__unclustered__", "title": "Unclustered evidence",
+            "external_key": None, "change": "updated_evidence",
+            "changed_node_counts": dict(sorted(Counter(
+                new_nodes[nid].get("layer", "neutral") for nid in unclustered).items())),
+            "changed_nodes_total": len(unclustered),
+            "new_nodes_total": sum(nid in added_nodes for nid in unclustered),
+            "revised_nodes_total": sum(nid not in added_nodes for nid in unclustered),
+            "changed_relations_total": 0,
+            "changed_relations_qualified_or_asserted": 0,
+            "changed_relations_candidate_or_unresolved": 0,
+            "nodes": [
+                {"id": nid, "change": "added" if nid in added_nodes else "revised",
+                 "statement": new_nodes[nid].get("statement"), "layer": new_nodes[nid].get("layer"),
+                 "kind": new_nodes[nid].get("kind"),
+                 "source_refs": (new_nodes[nid].get("source_refs") or [])[:6],
+                 "evidence_scope": []} for nid in sorted(unclustered)[:60]],
+            "relations": [], "nodes_truncated": len(unclustered) > 60,
+            "relations_truncated": False,
+            "boundary": "Unclustered evidence must not be silently ignored.",
+        })
+    return {"count": len(output), "items": output[:120],
+            "truncated": len(output) > 120,
+            "boundary": "Multiple clusters can contain the same node or edge. Counts must not be summed as unique evidence."}
+
+
 def compare_states(
     before: dict[str, Any], after: dict[str, Any], project_id: str, *,
     old_revision: int, new_revision: int,
@@ -149,6 +263,7 @@ def compare_states(
         "edge_status_transitions": added_qualifications,
         "new_program_evidence": new_outcomes[:80],
         "same_source_identity_groups": longitudinal,
+        "module_changes": _module_deltas(old, new, added, changed),
         "interpretation": {
             "unit": "two private workspace graph revisions, not two scientific study cohorts",
             "comparability": "not_established",
