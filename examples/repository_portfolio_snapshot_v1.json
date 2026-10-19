@@ -1,0 +1,133 @@
+{
+  "schema": "cite_refinery.repository_portfolio.v1",
+  "topics": [
+    {
+      "key": "evidence_accountability",
+      "title": "Source provenance, review accountability, and claim custody"
+    },
+    {
+      "key": "research_workflows",
+      "title": "Research access, dataset workflows, and scientific context"
+    },
+    {
+      "key": "execution_verification",
+      "title": "Executable checks, reproducibility, and implementation evidence"
+    },
+    {
+      "key": "policy_constraints",
+      "title": "Policy admissibility, constrained quantities, and settlement outcomes"
+    }
+  ],
+  "repositories": [
+    {
+      "repository": "Spectating101/nocturnal-oversight",
+      "directory": "nocturnal-oversight",
+      "base": "c0989dc7148d9509da6ee59c9ebb9463cdd2eff3",
+      "head": "d7f914f6e3b57f6cc65c827de868c284673b8876",
+      "evidence": [
+        {
+          "key": "custody",
+          "topic": "evidence_accountability",
+          "path": "README.md",
+          "needle": "source provenance and custody;",
+          "summary": "Nocturnal documents source provenance and custody for evidence investigations"
+        },
+        {
+          "key": "memory",
+          "topic": "evidence_accountability",
+          "path": "README.md",
+          "needle": "identity, corrections, disputes, later outcomes",
+          "summary": "Nocturnal documents longitudinal identity, correction and dispute tracking"
+        }
+      ]
+    },
+    {
+      "repository": "Spectating101/refinery",
+      "directory": "refinery",
+      "base": "7254c7fbaf00e83141af6fc843c9d8227eec1fa1",
+      "head": "2b03ad20f8ab3d55462adb38852855b940194c94",
+      "evidence": [
+        {
+          "key": "capability_authority",
+          "topic": "evidence_accountability",
+          "path": "README.md",
+          "needle": "capability/implementation identity, exact-subject evidence, software-supply-chain verification",
+          "summary": "Refinery documents capability and implementation identities with exact-subject evidence"
+        },
+        {
+          "key": "campaign_research",
+          "topic": "research_workflows",
+          "path": "README.md",
+          "needle": "read-only Research view",
+          "summary": "Refinery documents a read-only, source-backed campaign research view"
+        }
+      ]
+    },
+    {
+      "repository": "Spectating101/yzu-cluster",
+      "directory": "yzu-cluster",
+      "base": "7ea19e39984cba9127d40aef0b9d3221be4838e8",
+      "head": "f4b84c3a168f16eb1442f0dd5a5cdf4975cb6e62",
+      "evidence": [
+        {
+          "key": "drive_contract",
+          "topic": "research_workflows",
+          "path": "README.md",
+          "needle": "researcher-facing UI, design canon, visual-review evidence, interoperability contracts",
+          "summary": "Research Drive documents its researcher UI and interoperability contracts"
+        },
+        {
+          "key": "reference_runtime",
+          "topic": "execution_verification",
+          "path": "README.md",
+          "needle": "dependency-free executable reference runtime",
+          "summary": "Research Drive documents a dependency-free executable reference runtime"
+        }
+      ]
+    },
+    {
+      "repository": "Spectating101/hardware-splicer",
+      "directory": "Hardware-Splicer",
+      "base": "fdaad56cf88d8f81db48bf6cd69430c79d7d5820",
+      "head": "1545ae806f9dd1e260e5da64c2b4475e49496276",
+      "evidence": [
+        {
+          "key": "pcb_checks",
+          "topic": "execution_verification",
+          "path": "README.md",
+          "needle": "KiCad ERC and DRC, schematic-to-PCB parity",
+          "summary": "Hardware Splicer documents ERC, DRC and schematic-to-board consistency checks"
+        },
+        {
+          "key": "agent_audit",
+          "topic": "evidence_accountability",
+          "path": "README.md",
+          "needle": "runs are traced and audited against a fixed test set",
+          "summary": "Hardware Splicer documents traced and audited external-agent runs"
+        }
+      ]
+    },
+    {
+      "repository": "Spectating101/solarpunk-coin",
+      "directory": "solarpunk-main-tip",
+      "base": "d247c3c0cf79ddaa013175fdadbd65454937ec25",
+      "head": "fe430f1fcd8a8d7306ad58555b594ad48f2ccd85",
+      "evidence": [
+        {
+          "key": "admission",
+          "topic": "policy_constraints",
+          "path": "README.md",
+          "needle": "admission gates",
+          "summary": "Policy Lab documents evidence-based admission gates"
+        },
+        {
+          "key": "decision",
+          "topic": "execution_verification",
+          "path": "README.md",
+          "needle": "deterministic DecisionResult",
+          "summary": "Policy Lab documents a deterministic decision result as part of its case workflow"
+        }
+      ]
+    }
+  ]
+}

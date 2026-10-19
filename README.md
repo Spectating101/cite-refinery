@@ -326,3 +326,15 @@ the quotes are checked against previously imported DOI-indexed abstracts.
 Claim-to-paper relations are qualified; claim-to-Nocturnal context links remain
 candidate. The three-layer map remains fully browsable without AI.
 See docs/CITE_ABSTRACT_GROUNDING_BRIDGE.md for the exact workflow and limits.
+
+## v0.18 — source-pinned repository and project trend mapping
+
+The Program layer now includes a standalone, AI-optional bridge for pinned
+Git repository identity, exact source-backed capability excerpts and bounded
+commit-range history across multiple projects. Curated topic clusters and
+explicit candidate links to existing Practical/Academic nodes let repository
+supply participate in the same research map without pretending documentation
+is working code or commit activity is market adoption. Use the local private
+reviewed queue; see docs/REPOSITORY_TREND_SEMANTIC_MAP.md and the pinned
+examples/repository_portfolio_snapshot_v1.json example. Public Vercel
+remains a separate read-only demo.
