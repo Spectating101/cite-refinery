@@ -415,3 +415,21 @@ counter differences appear as restricted Program evidence, not adoption or
 readiness claims. The v0.23 PUBLIC collector and the protected Vercel demo
 remain unchanged. No real private source sample is committed.
 See docs/PRIVATE_GITHUB_OBSERVATIONS_V024.md.
+
+## Infrastructure freeze and first product acceptance case
+
+Infrastructure v0.24 is preserved by immutable annotated Git tag
+`infrastructure-v0.24-freeze-20261019` (commit `798a3129`). New work should
+favor falsifiable, externally inspectable **problem-specific three-layer
+acceptance cases**, not continuously expanding adapters or product plumbing.
+
+**Acceptance case 01:** source-attributed concern about sensitive LLM prompts,
+two manually reviewed scholarly source excerpts (Casper preprint and ALSA ACM
+SIGKDD), and the real pinned Refinery CloakPipe experiment with 27 required
+checks passed but **4 broader failures**. The local private acceptance runner
+reports `ACCEPTED_WITH_OPEN_GAPS`: Practical 1 / Academic 4 / Program 6,
+five cross-layer links (four candidate, one qualified methodological scope
+comparison). It explicitly does not infer production readiness, independently
+verify a user-reported incident, or treat unlike studies as matched tests.
+See `docs/PRODUCT_ACCEPTANCE_PROMPT_PRIVACY_01.md`. No private source bundle or
+live workspace is included in the public Vercel static preview.
