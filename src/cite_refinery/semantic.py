@@ -3,7 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from collections import deque
+from copy import deepcopy
+from collections import Counter, deque
 from typing import Any, Iterable
 
 from .models import machine_id, utcnow
@@ -134,6 +135,19 @@ def _validate_state(status: str) -> str:
     if value not in EDGE_STATES:
         raise ValueError(f"semantic edge status must be one of {sorted(EDGE_STATES)}")
     return value
+
+
+class _StagedStore:
+    """In-memory store used to fully apply and validate a packet before writing."""
+
+    def __init__(self, state: dict[str, Any]) -> None:
+        self.state = deepcopy(state)
+
+    def load(self) -> dict[str, Any]:
+        return deepcopy(self.state)
+
+    def save(self, state: dict[str, Any]) -> None:
+        self.state = deepcopy(state)
 
 
 class SemanticGraph:
@@ -349,7 +363,113 @@ class SemanticGraph:
         self.store.save(state)
         return dict(edge)
 
+    def _stage_packet(
+        self,
+        project_id: str,
+        packet: dict[str, Any],
+        packet_ref: str | None,
+    ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+        current = self.store.load()
+        staged_store = _StagedStore(current)
+        receipt = SemanticGraph(staged_store)._ingest_packet_unchecked(
+            project_id, packet, packet_ref=packet_ref
+        )
+        return current, staged_store.load(), receipt
+
+    def preview_packet(
+        self,
+        project_id: str,
+        packet: dict[str, Any],
+        *,
+        packet_ref: str | None = None,
+    ) -> dict[str, Any]:
+        """Validate the *entire* semantic packet without mutating persisted state."""
+        current, proposed, receipt = self._stage_packet(project_id, packet, packet_ref)
+        buckets = ("semantic_clusters", "semantic_nodes", "semantic_edges", "semantic_packets")
+        delta = {
+            bucket: len(set(proposed[bucket]) - set(current[bucket]))
+            for bucket in buckets
+        }
+        created_ids = set(proposed["semantic_edges"]) - set(current["semantic_edges"])
+        statuses = Counter(
+            proposed["semantic_edges"][key]["status"]
+            for key in created_ids
+        )
+        status_changes = []
+        for key in sorted(set(current["semantic_edges"]) & set(proposed["semantic_edges"])):
+            before = current["semantic_edges"][key].get("status")
+            after = proposed["semantic_edges"][key].get("status")
+            if before != after:
+                status_changes.append({"edge_id": key, "from": before, "to": after})
+        source_label = str(packet.get("source_system") or "").strip().casefold()
+        authority = {
+            "nocturnal": "practical",
+            "nocturnal-oversight": "practical",
+            "cite": "academic",
+            "cite-agent": "academic",
+            "refinery": "program",
+        }.get(source_label)
+        declared_layers = Counter(
+            str(node.get("layer") or "neutral").strip().lower()
+            for node in packet.get("nodes", []) or []
+        )
+        boundary_warnings = []
+        if authority:
+            unexpected = sorted(layer for layer in declared_layers
+                                if layer not in {authority, "neutral"})
+            if unexpected:
+                boundary_warnings.append(
+                    f"{source_label} packet proposes nodes outside its {authority} authority: "
+                    + ", ".join(unexpected) + "; review original sources and provenance"
+                )
+        if status_changes:
+            boundary_warnings.append(
+                "Import would change existing edge statuses; inspect every transition "
+                "before approving the packet"
+            )
+        return {
+            "declared_node_layers": dict(sorted(declared_layers.items())),
+            "authority_boundary_warnings": boundary_warnings,
+            "changed_existing_edge_statuses": status_changes,
+            "schema": "cite_refinery.semantic_ingest_preview.v1",
+            "project_id": project_id,
+            "packet_digest": _digest(packet),
+            "state_digest": _digest(current),
+            "source_system": packet.get("source_system"),
+            "already_imported": bool(receipt["id"] in current["semantic_packets"]),
+            "projected_new_records": delta,
+            "new_relation_statuses": dict(sorted(statuses.items())),
+            "boundary": (
+                "Preview validates structure and local graph consistency, not evidence truth, "
+                "source authority, causal validity, or suitability for public release."
+            ),
+        }
+
     def ingest_packet(
+        self,
+        project_id: str,
+        packet: dict[str, Any],
+        *,
+        packet_ref: str | None = None,
+        expected_state_digest: str | None = None,
+    ) -> dict[str, Any]:
+        """Commit only a completely valid packet in one state write.
+
+        Optimistic digest guards explicitly reviewed imports. This local JSON
+        store is not a multi-writer transaction database: other write entrypoints
+        do not coordinate on locks; hosted operation needs a proper DB transaction.
+        """
+        current, proposed, receipt = self._stage_packet(project_id, packet, packet_ref)
+        if expected_state_digest is not None and _digest(current) != expected_state_digest:
+            raise ValueError("workspace state changed after review; preview again")
+        if proposed != current:
+            # Check once more before the single commit; prevents common stale previews.
+            if _digest(self.store.load()) != _digest(current):
+                raise ValueError("workspace state changed during ingestion; retry")
+            self.store.save(proposed)
+        return receipt
+
+    def _ingest_packet_unchecked(
         self,
         project_id: str,
         packet: dict[str, Any],
@@ -370,7 +490,7 @@ class SemanticGraph:
         state = self.store.load()
         self._project(state, project_id)
         digest = _digest(packet)
-        receipt_id = f"sgpacket:{digest[:16]}"
+        receipt_id = f"sgpacket:{_digest({'project_id': project_id, 'packet_digest': digest})[:16]}"
         existing = state.get("semantic_packets", {}).get(receipt_id)
         if existing is not None:
             return dict(existing)

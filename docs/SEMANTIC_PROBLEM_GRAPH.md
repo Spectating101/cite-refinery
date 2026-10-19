@@ -264,3 +264,31 @@ The semantic graph records and queries relationships; it does not silently upgra
 - an absent edge is not proof of real-world absence.
 
 The graph is designed to make those distinctions visible while still allowing the three source families to meet at the exact semantic node where they actually overlap.
+
+## Local review-and-commit boundary (v0.13)
+
+Do not connect autonomous Nocturnal, Cite or Refinery ingest jobs directly to a
+public write endpoint. For a local project, use:
+
+    cite-refinery graph-review --workspace .cite-refinery rproject:ID --input packet.json
+
+Review additions, status changes and authority warnings, then explicitly approve
+the unchanged packet against the unchanged workspace state:
+
+    cite-refinery graph-review --workspace .cite-refinery rproject:ID --input packet.json --apply --expected-state-digest REVIEW_STATE_DIGEST --expected-packet-digest REVIEW_PACKET_DIGEST
+
+Preview executes a full graph ingestion on an in-memory copy. Invalid late edge
+references or bad cluster links do not mutate real state. Approved application
+stages again and saves the complete JSON state in one atomic replacement. Exact
+replay creates no extra nodes. Packet receipts are project-scoped.
+
+The preview reports three-layer node declarations, new relation states, existing
+edge status changes, and authority warnings when an identified specialist
+source proposes nodes outside its usual evidence authority. It does NOT verify
+the truth of a claim, a source's reliability or any causal implication.
+
+JsonStore remains a local single-user state file, NOT a serializable multi-writer
+database. Concurrent writers outside this path are not protected by this check.
+Hosted ingestion requires DB transactions, identity/tenant authorization, audit
+history, rate controls and trusted ingress workers. The Vercel demo remains
+read-only and imports no private workspace state.

@@ -72,6 +72,24 @@ def _graph_ingest_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _graph_review_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-review")
+    parser.add_argument("--workspace", default=".cite-refinery", help="Local workspace")
+    parser.add_argument("project_id")
+    parser.add_argument("--input", required=True, help="Semantic packet JSON")
+    parser.add_argument("--packet-ref", help="Provenance packet reference")
+    parser.add_argument("--apply", action="store_true", help="Commit approved packet")
+    parser.add_argument(
+        "--expected-state-digest",
+        help="Workspace digest from an earlier graph-review preview; required with --apply",
+    )
+    parser.add_argument(
+        "--expected-packet-digest",
+        help="Exact packet digest from an earlier preview; required with --apply",
+    )
+    return parser
+
+
 def _graph_bootstrap_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="cite-refinery graph-bootstrap")
     parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
@@ -213,6 +231,37 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(scorecard, indent=2, ensure_ascii=False, default=str))
             return 0
         except KeyError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+
+    if "graph-review" in raw:
+        args = _graph_review_parser().parse_args(_special_args(raw, "graph-review"))
+        try:
+            input_path = Path(args.input)
+            if input_path.stat().st_size > 8 * 1024 * 1024:
+                raise ValueError("semantic packet exceeds 8 MiB local review limit")
+            packet = json.loads(input_path.read_text(encoding="utf-8"))
+            graph = SemanticGraph(CiteRefinery(args.workspace).store)
+            if args.apply:
+                if not args.expected_state_digest or not args.expected_packet_digest:
+                    raise ValueError("--apply requires both --expected-state-digest and --expected-packet-digest")
+                reviewed = graph.preview_packet(args.project_id, packet, packet_ref=args.packet_ref or str(input_path))
+                if reviewed["packet_digest"] != args.expected_packet_digest:
+                    raise ValueError("packet changed after review; preview again")
+                result = graph.ingest_packet(
+                    args.project_id, packet,
+                    packet_ref=args.packet_ref or str(input_path),
+                    expected_state_digest=args.expected_state_digest,
+                )
+                print(json.dumps({"action": "applied", "receipt": result}, indent=2, ensure_ascii=False))
+            else:
+                result = graph.preview_packet(
+                    args.project_id, packet,
+                    packet_ref=args.packet_ref or str(input_path),
+                )
+                print(json.dumps({"action": "preview_only", **result}, indent=2, ensure_ascii=False))
+            return 0
+        except (OSError, json.JSONDecodeError, KeyError, ValueError, TypeError) as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 2
 

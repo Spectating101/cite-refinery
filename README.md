@@ -278,3 +278,13 @@ Nocturnal and Refinery retain independent repositories, schemas and APIs. The us
 - A protected Vercel public-data demo builds from the checked-in pilot.
   It does not offer live ingestion or private multi-user workspaces.
   See docs/PUBLIC_ATLAS_PREVIEW.md for security and deployment boundaries.
+
+
+## v0.13 — controlled local three-layer ingestion
+
+Graph imports now validate whole typed cluster/node/edge packets in memory before
+one atomic JSON-state replacement. Use graph-review --input to preview proposed
+changes, layer authority/status warnings and hash constraints; apply only with
+both reviewed packet and workspace digests. Receipts are per-project.
+This is NOT a hosted write API or a concurrent multi-user database. See
+docs/SEMANTIC_PROBLEM_GRAPH.md for the review workflow and its limits.

@@ -290,6 +290,10 @@ def _handler(workspace: str) -> type[BaseHTTPRequestHandler]:
 
 
 def make_server(workspace: str, *, host: str = "127.0.0.1", port: int = 8765) -> ThreadingHTTPServer:
+    # This is a local operator UI, not an authenticated web service. Forbid
+    # network exposure until proper identity and project authorization exist.
+    if host not in {"127.0.0.1", "localhost"}:
+        raise ValueError("unauthenticated Cite-Refinery workspace must bind to loopback only")
     return ThreadingHTTPServer((host, int(port)), _handler(workspace))
 
 
