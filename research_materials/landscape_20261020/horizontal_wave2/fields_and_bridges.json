@@ -1,0 +1,286 @@
+{
+  "fields": [
+    {
+      "id": "LM",
+      "title": "Labor markets and occupational work",
+      "modules": [
+        [
+          "LM-01",
+          "Youth employment, unemployment and NEET measurement",
+          "Joblessness, informal work, underemployment and participation require different measures."
+        ],
+        [
+          "LM-02",
+          "Occupational injuries, exposure and underreporting",
+          "Injury rates, hazard exposure, employer reporting and regulatory coverage are distinct."
+        ]
+      ]
+    },
+    {
+      "id": "TR",
+      "title": "Transport safety and mobility",
+      "modules": [
+        [
+          "TR-01",
+          "Road traffic mortality and preventable injury",
+          "Deaths, exposure, enforcement, roads, vehicles and emergency response are distinct mechanisms."
+        ],
+        [
+          "TR-02",
+          "Safe access for pedestrians, cyclists and other vulnerable road users",
+          "Street safety, transport access, exposure, design and injury risk differ across user groups."
+        ]
+      ]
+    },
+    {
+      "id": "AQ",
+      "title": "Air quality and environmental exposure",
+      "modules": [
+        [
+          "AQ-01",
+          "Ambient air pollution exposure and health burden",
+          "PM2.5, spatial exposure, monitoring completeness and attributable health burden must be distinguished."
+        ],
+        [
+          "AQ-02",
+          "Air-quality standards, measurement and comparability",
+          "Guidelines, measurement stations, settlement means and pollutant indicators are not interchangeable."
+        ]
+      ]
+    },
+    {
+      "id": "DR",
+      "title": "Disaster risk and preparedness",
+      "modules": [
+        [
+          "DR-01",
+          "Multi-hazard early warning coverage and last-mile reach",
+          "Declared warning systems, forecast skill, communications, comprehension and protective action are different requirements."
+        ],
+        [
+          "DR-02",
+          "Disaster loss measurement and cascading economic impacts",
+          "Direct damages, disruption, ecosystem effects and reported losses require separate measures."
+        ]
+      ]
+    }
+  ],
+  "new_module_origin": "Breadth diversification, independently selected from previous nine fields; not from original 54-node Deep Research CSV",
+  "bridges": [
+    {
+      "id": "HBR-01",
+      "from": "LM-01",
+      "to": "ED-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-25"
+      ],
+      "status": "candidate",
+      "boundary": "Foundational skills can inform workforce preparation but labor-market outcomes and schooling outcomes are distinct."
+    },
+    {
+      "id": "HBR-02",
+      "from": "LM-01",
+      "to": "HO-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-25"
+      ],
+      "status": "candidate",
+      "boundary": "Income and labor markets are relevant household-resource context; no quantification of housing affordability here."
+    },
+    {
+      "id": "HBR-03",
+      "from": "LM-02",
+      "to": "AQ-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-27",
+        "H-33"
+      ],
+      "status": "candidate",
+      "boundary": "Workplace and ambient air hazards can overlap; exposure populations and methods differ."
+    },
+    {
+      "id": "HBR-04",
+      "from": "TR-01",
+      "to": "PH-02",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-29"
+      ],
+      "status": "candidate",
+      "boundary": "Injury burden may involve emergency/health service capacity; no locality-specific link observed."
+    },
+    {
+      "id": "HBR-05",
+      "from": "TR-02",
+      "to": "AQ-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-31",
+        "H-33"
+      ],
+      "status": "candidate",
+      "boundary": "Transport modes and urban environmental exposure coexist but no reduction effect is verified."
+    },
+    {
+      "id": "HBR-06",
+      "from": "TR-02",
+      "to": "HO-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-31"
+      ],
+      "status": "candidate",
+      "boundary": "Transport location/access may affect residential accessibility; not proven housing burden causality."
+    },
+    {
+      "id": "HBR-07",
+      "from": "AQ-01",
+      "to": "PH-06",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-33"
+      ],
+      "status": "candidate",
+      "boundary": "Air quality is a health risk context relevant to chronic disease; does not prove a specific intervention."
+    },
+    {
+      "id": "HBR-08",
+      "from": "AQ-02",
+      "to": "HO-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-35"
+      ],
+      "status": "candidate",
+      "boundary": "Housing exposure and ambient pollution may share contextual risk; measurements and scales differ."
+    },
+    {
+      "id": "HBR-09",
+      "from": "DR-01",
+      "to": "WA-06",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-37"
+      ],
+      "status": "candidate",
+      "boundary": "Hydrological monitoring can inform warning systems but local warning effectiveness is unmeasured."
+    },
+    {
+      "id": "HBR-10",
+      "from": "DR-01",
+      "to": "CO-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-37"
+      ],
+      "status": "candidate",
+      "boundary": "Warning dissemination requires communication pathways; telecom coverage is not confirmed delivery."
+    },
+    {
+      "id": "HBR-11",
+      "from": "DR-02",
+      "to": "HO-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-39"
+      ],
+      "status": "candidate",
+      "boundary": "Housing climate exposure is one component of disaster risk; accounting dimensions differ."
+    },
+    {
+      "id": "HBR-12",
+      "from": "FS-06",
+      "to": "CO-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-13",
+        "H-15"
+      ],
+      "status": "candidate",
+      "boundary": "Smallholder logistical infrastructure may involve connectivity; no site-level intervention evaluated."
+    },
+    {
+      "id": "HBR-13",
+      "from": "WA-04",
+      "to": "CO-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-17",
+        "H-15"
+      ],
+      "status": "candidate",
+      "boundary": "Smart utility operations can depend on communications; not every water-balance tool uses connectivity."
+    },
+    {
+      "id": "HBR-14",
+      "from": "HO-06",
+      "to": "EN-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-11"
+      ],
+      "status": "candidate",
+      "boundary": "Efficiency could alter electricity load; relationship has no location-specific grid evaluation."
+    },
+    {
+      "id": "HBR-15",
+      "from": "PH-06",
+      "to": "FS-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-05"
+      ],
+      "status": "candidate",
+      "boundary": "Diet risk is relevant to NCD policy; no inferred diet-outcome effect."
+    },
+    {
+      "id": "HBR-16",
+      "from": "AW-03",
+      "to": "PH-02",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-21"
+      ],
+      "status": "candidate",
+      "boundary": "Rabies control involves public-health service pathways, with no local care-capacity evaluation."
+    },
+    {
+      "id": "HBR-17",
+      "from": "DP-05",
+      "to": "ED-05",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-19",
+        "H-01"
+      ],
+      "status": "candidate",
+      "boundary": "Educational data systems and privacy technology may intersect but this corpus lacks deployment proof."
+    },
+    {
+      "id": "HBR-18",
+      "from": "EN-06",
+      "to": "WA-03",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-23"
+      ],
+      "status": "candidate",
+      "boundary": "Local data-centre load and water supply may interact; no individual site resource conflict shown."
+    },
+    {
+      "id": "HBR-19",
+      "from": "LM-02",
+      "to": "DR-01",
+      "relation": "CONTEXT_FOR",
+      "source_ids": [
+        "H-27",
+        "H-37"
+      ],
+      "status": "candidate",
+      "boundary": "Workplace emergency preparedness and public early warnings may interact; separate requirements."
+    }
+  ]
+}
