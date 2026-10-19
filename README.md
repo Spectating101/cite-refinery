@@ -288,3 +288,13 @@ changes, layer authority/status warnings and hash constraints; apply only with
 both reviewed packet and workspace digests. Receipts are per-project.
 This is NOT a hosted write API or a concurrent multi-user database. See
 docs/SEMANTIC_PROBLEM_GRAPH.md for the review workflow and its limits.
+
+
+## v0.14 — first transactional private workspace backend
+
+A separate local SQLite API now supports tenant-scoped bearer credentials,
+read/editor/owner roles, revisioned project graph state, reviewed import queues,
+single-transaction worker commits and audit records. The three-layer map stays
+the conceptual core and remains operable without AI. The protected Vercel
+demonstration is unchanged and receives no private data. For setup, security
+boundaries and migration gates, read docs/PRIVATE_WORKSPACE_BACKEND.md.
