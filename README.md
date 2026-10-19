@@ -361,3 +361,14 @@ like-for-like improvement, and links episodes only at an exact shared
 upstream commit. An authenticated local review/queue command is available.
 See `docs/REFINERY_EVIDENCE_HISTORY_V020.md`; the protected public demo
 remains separate and read-only.
+
+## v0.21 — capability evolution with revision-pinned private snapshots
+
+Cite-Refinery can now record immutable, authorized project-graph checkpoints
+and compare changes in Practical/Academic/Program evidence, repository
+histories, implementation tests, known limitations, source-qualified versus
+candidate relationships, and exact source identity groups. Differences in
+evidence coverage are NOT performance, adoption or production-readiness
+improvements. The private CLI/API remains local; the protected public Vercel
+demo contains none of these private snapshots. See
+docs/CAPABILITY_EVOLUTION_SNAPSHOTS_V021.md.

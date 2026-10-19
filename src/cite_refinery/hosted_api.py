@@ -20,7 +20,7 @@ def create_private_app(db_path: str):
     store = WorkspaceDB(db_path)
     app = FastAPI(
         title="Cite-Refinery Private Workspaces",
-        version="0.14.0",
+        version="0.21.0",
         docs_url=None, redoc_url=None, openapi_url=None,
     )
 
@@ -71,6 +71,10 @@ def create_private_app(db_path: str):
         title: str = Field(min_length=1, max_length=300)
         problem: str = Field(min_length=1, max_length=10000)
 
+    class EvolutionCapture(BaseModel):
+        label: str = Field(min_length=5, max_length=140)
+        expected_revision: int = Field(ge=0)
+
     class PacketRequest(BaseModel):
         packet: dict[str, Any]
 
@@ -108,6 +112,22 @@ def create_private_app(db_path: str):
         if node_id not in data["semantic_nodes"]:
             raise NotFound("unknown node")
         return ProductWorkspace(_MemoryStore(data)).node_view(project_id, node_id)
+
+    @app.get("/api/projects/{project_id}/evolution/snapshots")
+    def snapshots(project_id: str, user: str = Depends(current_user)):
+        return store.list_snapshots(user, project_id)
+
+    @app.post("/api/projects/{project_id}/evolution/snapshots", status_code=201)
+    def capture_snapshot(project_id: str, body: EvolutionCapture,
+                         user: str = Depends(current_user)):
+        return store.capture_snapshot(
+            user, project_id, body.label, body.expected_revision)
+
+    @app.get("/api/projects/{project_id}/evolution/compare")
+    def compare_evolution(project_id: str, from_snapshot: str, to_snapshot: str,
+                          user: str = Depends(current_user)):
+        return store.compare_snapshots(
+            user, project_id, from_snapshot, to_snapshot)
 
     @app.post("/api/projects/{project_id}/ingest/preview")
     def preview(project_id: str, body: PacketRequest, user: str = Depends(current_user)):
