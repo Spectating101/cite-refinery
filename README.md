@@ -433,3 +433,20 @@ comparison). It explicitly does not infer production readiness, independently
 verify a user-reported incident, or treat unlike studies as matched tests.
 See `docs/PRODUCT_ACCEPTANCE_PROMPT_PRIVACY_01.md`. No private source bundle or
 live workspace is included in the public Vercel static preview.
+
+## Acceptance case 02 — real Taiwanese free-roaming dog management evidence
+
+The v0.24 infrastructure remains frozen. A second product acceptance case
+extends the independently sourced dog pilot without rewriting its original
+packet: Ministry of Agriculture 2024 estimates (with **statistical
+non-significance** explicitly preserved), the Miaoli local problem, published
+free-roaming dog population methods, and Shoushan immigration modelling are
+mapped against a **documented**, not locally tested, Talea survey tool and the
+announced 2026 source-control policy. The acceptance map conservatively
+represents Talea's inability to attach an animal photo to a sighting, the
+missing individual-ID/local-estimation pipeline and missing effectiveness
+outcomes. Four machine-checked researcher questions and a reproducible
+private Chrome source-navigation audit accompany source-tampering tests.
+The result is `ACCEPTED_WITH_OPEN_GAPS` for **research representation**, not
+field execution, causal verification, or human usability approval. See
+`docs/PRODUCT_ACCEPTANCE_FREE_ROAMING_DOGS_02.md`.
