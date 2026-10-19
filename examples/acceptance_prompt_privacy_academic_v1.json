@@ -1,0 +1,31 @@
+{
+  "schema": "cite_refinery.acceptance_academic_sources.v1",
+  "case": "llm-prompt-sensitive-data-local-redaction",
+  "reviewed_on": "2026-10-19",
+  "review_scope": "Primary-source title/abstract excerpt review only; not full text or independent replication",
+  "papers": [
+    {
+      "key": "casper-arxiv-2408-07004",
+      "title": "Casper: Prompt Sanitization for Protecting User Privacy in Web-Based Large Language Models",
+      "year": 2024,
+      "publication_status": "arxiv_preprint",
+      "source_url": "https://arxiv.org/abs/2408.07004",
+      "source_locator": "abstract; section 1",
+      "citation_quote": "Casper runs entirely on the user's device as a browser extension",
+      "claim": "The Casper authors describe client-side sanitization of prompts before transmission to an online LLM, using several detection approaches beyond fixed pattern matching.",
+      "source_boundary": "Study of Casper's prototype, not an independent evaluation of CloakPipe or verification of a specific user's leak."
+    },
+    {
+      "key": "alsa-kdd-2025",
+      "title": "ALSA: Context-Sensitive Prompt Privacy Preservation in Large Language Models",
+      "year": 2025,
+      "publication_status": "peer_reviewed_conference_abstract",
+      "doi": "10.1145/3711896.3736840",
+      "source_url": "https://doi.org/10.1145/3711896.3736840",
+      "source_locator": "ACM SIGKDD abstract",
+      "citation_quote": "text anonymization is considered an effective approach to preventing privacy leakage in prompts through text substitution",
+      "claim": "The ALSA authors study prompt text anonymization and its tension with preserving contextual meaning.",
+      "source_boundary": "Conference abstract describes ALSA, not a head-to-head test against the pinned CloakPipe experiment."
+    }
+  ]
+}
