@@ -54,6 +54,9 @@ cite-refinery-opportunity-match = "cite_refinery.opportunity_match_cli:main"
 cite-refinery-wide-scan = "cite_refinery.opportunity_atlas_collect:main"
 cite-refinery-ted-context = "cite_refinery.opportunity_atlas_ted:main"
 cite-refinery-opportunity-atlas = "cite_refinery.opportunity_atlas:main"
+cite-refinery-notice-details = "cite_refinery.opportunity_atlas_notice_details:main"
+cite-refinery-source-bridge-input = "cite_refinery.opportunity_atlas_source_input:main"
+cite-refinery-connected-atlas = "cite_refinery.opportunity_atlas_connected:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

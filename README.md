@@ -470,3 +470,8 @@ See [real-world conversion cases](docs/OPPORTUNITY_CONVERSION_V1.md) and the cas
 ### Wide opportunity atlas — map before targeting (2026-10-21)
 
 [Survey and mechanism dossier](docs/BROAD_OPPORTUNITY_ATLAS_V1.md) and [navigable field atlas](research_materials/opportunity_atlas/OPPORTUNITY_ATLAS.md) collect public implementation listings across engineering, energy, operations, civic/public, research/data and finance/investigations, plus distinct TED published-notice context, source registries and 21 mechanistic bridges. The analysis is intentionally **unranked and non-commercially-validated**: GitHub tags, procurement notice metadata and AI relevance labels are NOT proof of capability, active tenders or underconversion. Original sealed research holdout is unchanged.
+
+
+### Source-connected opportunity atlas v2 — substantive relationships
+
+See [source-connected mapping and scope audit](docs/SOURCE_CONNECTED_ATLAS_V2.md) and the [readable connected atlas](research_materials/opportunity_atlas/CONNECTED_ATLAS.md). Cross-sector source linking now compares actual published work descriptions with bounded repository capability descriptions, attaches original README checks where available, and records rejected semantic matches. No confirmed bid eligibility, customer, economic capture or causal research relationship is inferred; the original sealed evaluation holdout remains untouched.

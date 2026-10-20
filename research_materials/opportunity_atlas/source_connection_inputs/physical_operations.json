@@ -1,0 +1,182 @@
+{
+  "schema": "cite_refinery.source_connected_input.v1",
+  "macro": "physical_operations",
+  "needs": [
+    {
+      "id": "ted:683922-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/683922-2026",
+      "title": "Norway – Food, beverages, tobacco and related products – Food for commerical kitchens",
+      "description": "Sunnhordland Procurement Forum is conducting this tender procedure on behalf of the municipalities of Stord, Tysnes, Bømlo, Fitjar, and Kvinnherad. Each municipality is a separate legal entity, and the final contract must therefore be signed by the authorized representative of the respective municipality. The municipalities aim to enter into a contract for the supply of food products for commercial kitchens. The scope of the supply is described in the attached specification of requirements and pricing schedule. This contract is intended for production kitchens/commercial kitchen operations. Other municipal departments have the right, but not ",
+      "buyer": "Stord kommune",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:593156-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/593156-2026",
+      "title": "Ireland – Food, beverages, tobacco and related products – Prior Information Notice for the Establishment of a Panel of Artisan Food Suppliers for ATU",
+      "description": "This is a Prior Information Notice (PIN) and not a call for competition. Atlantic Technological University wishes to establish a Panel of Artisan Food Suppliers for the provision of Artisan Food Supplies to its Culinary Arts School, Dublin Road, Galway. Sustainable food ingredients are a fundamental component of food education and food research for culinary students. ATU culinary graduates must have access to best in practice producers and farmers in areas such as: • Green Procurement • Organic Food Supply • Sustainable food supply chains – Farm to Fork strategy • Seasonality • Access to local farms/producers. The Panel is open for applicatio",
+      "buyer": "Atlantic Technological University",
+      "lifecycle_category": "prior_information_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:606356-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/606356-2026",
+      "title": "Malta – Analytical or scientific software development services – MAFA/CIO 3/2026 - Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF",
+      "description": "Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF",
+      "buyer": "Ministry for Agriculture Fisheries and Food Supply",
+      "lifecycle_category": "voluntary_ex_ante_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    }
+  ],
+  "repo_assets": [
+    {
+      "id": "github:farmOS/farmOS",
+      "url": "https://github.com/farmOS/farmOS",
+      "description": "farmOS: A web-based farm record keeping application.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:Fields2Cover/Fields2Cover",
+      "url": "https://github.com/Fields2Cover/Fields2Cover",
+      "description": "Robust and efficient coverage paths for autonomous agricultural vehicles.  A modular and extensible Coverage Path Planning library",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:microsoft/farmvibes-ai",
+      "url": "https://github.com/microsoft/farmvibes-ai",
+      "description": "FarmVibes.AI: Multi-Modal GeoSpatial ML Models for Agriculture and Sustainability",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "unreviewed_cross_domain_asset",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:timmbogner/Farm-Data-Relay-System",
+      "url": "https://github.com/timmbogner/Farm-Data-Relay-System",
+      "description": "A system that uses ESP-NOW, LoRa, and other protocols to transport sensor data in remote areas without relying on WiFi.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:dadaloop82/EverShelf",
+      "url": "https://github.com/dadaloop82/EverShelf",
+      "description": "EverShelf: Your pantry's best friend. A self-hosted, open source smart pantry manager with AI expiry tracking, barcode scanning, smart shopping lists, and Android Kiosk support.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:CesiumGS/cesium",
+      "url": "https://github.com/CesiumGS/cesium",
+      "description": "An open-source JavaScript library for world-class 3D globes and maps :earth_americas:",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:Turfjs/turf",
+      "url": "https://github.com/Turfjs/turf",
+      "description": "A modular geospatial engine written in JavaScript and TypeScript",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:domlysz/BlenderGIS",
+      "url": "https://github.com/domlysz/BlenderGIS",
+      "description": "Blender addons to make the bridge between Blender and geographic data",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:crbnos/carbon",
+      "url": "https://github.com/crbnos/carbon",
+      "description": "Open-source manufacturing ERP, MES and QMS. Quoting, MRP, inventory, shop floor, quality and lot/serial traceability on one Postgres schema, with a REST API and MCP server. Self-host or use Carbon Cloud.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:apache/airflow",
+      "url": "https://github.com/apache/airflow",
+      "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:ckan/ckan",
+      "url": "https://github.com/ckan/ckan",
+      "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers catalog.data.gov, open.canada.ca/data, data.humdata.org among many other sites.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:civicrm/civicrm-core",
+      "url": "https://github.com/civicrm/civicrm-core",
+      "description": "CiviCRM (Core Application and Framework)",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    }
+  ],
+  "research": [
+    {
+      "id": "EPMC-7deb988ae2ab",
+      "source_url": "https://doi.org/10.1111/nbu.70053",
+      "statement": "Social supermarkets alleviate immediate food insecurity using customer-choice retail models, but remain structurally dependent on the continuous generation of commercial food surplus.",
+      "caveat": "Synthesizes scoping literature on customer experiences and models; does not report quantitative nutritional or clinical outcomes.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "EPMC-826342b4eec2",
+      "source_url": "https://doi.org/10.3390/foods15040645",
+      "statement": "Fresh produce redistribution scenarios consistently produce net environmental benefits across five lifecycle metrics, maximized when gleaning intermediaries transport surplus directly to food pantries.",
+      "caveat": "Parametric life cycle simulation; does not track actual nutritional uptake or consumer-level food spoilage rates.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-da5bbdb0bf0dd0",
+      "source_url": "https://doi.org/10.55041/ijsmt.v2i5.132",
+      "statement": "An IoT-enabled platform tracking temperature, humidity, and gas rescued 847 kg of surplus food and reduced pickup times by 42% in a multi-stakeholder pilot.",
+      "caveat": "Pilot deployment outcomes reported in an abstract; does not show long-term institutional permanence, cost sustainability, or recipient nutritional impacts.",
+      "role": "measured_program_outcome",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-8e75d5d1b1f35b",
+      "source_url": "https://doi.org/10.1093/nutrit/nuac012",
+      "statement": "A scoping review identified that the burden of redistributing food waste to resolve food insecurity relies heavily on under-resourced rescue charities requiring structural subsidies and nutrition expertise.",
+      "caveat": "Scoping review of existing literature and policy recommendations; does not quantify population-level health, dietary, or nutritional impact.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-dbc0b8d397869b",
+      "source_url": "https://openalex.org/W2906684235",
+      "statement": "Surplus food redistribution organizations expand immediate food access but find their ability to challenge systemic causes of food precarity and waste constrained by alignments with corporate and state entities.",
+      "caveat": "Ethnographic qualitative evaluation; does not quantify recipient nutritional security or broader poverty reduction metrics",
+      "role": "practical_observation",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    }
+  ],
+  "scope": "Published institutional requirement excerpts and repository descriptions, not evidence of open commercial demand or actual product compatibility."
+}

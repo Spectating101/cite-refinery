@@ -1,0 +1,214 @@
+{
+  "schema": "cite_refinery.source_connected_input.v1",
+  "macro": "investigation_finance",
+  "needs": [
+    {
+      "id": "ted:646960-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/646960-2026",
+      "title": "Ireland – Records management – Invitation to Tender (ITT) for the provision of an Integrated Board Governance and Risk Management Software Solution [641]",
+      "description": "The CRU requires access to an integrated, off-the-shelf software solution comprising Board Governance and Risk Management functionality. The solution may be delivered through a single platform, separate modules, partner components provided that the Tenderer acts as the prime contractor and remains fully responsible for the configuration, delivery, integration, implementation, training, performance, security, support, maintenance and contractual obligations of the complete solution. The complete integrated solution is expected to support approximately 100 users overall, comprising approximately 40 users of the Board Governance functionality an",
+      "buyer": "Commission for Regulation of Utilities",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:434418-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/434418-2026",
+      "title": "Ireland – Software package and information systems – UCC-2025-02 Provision of an Enterprise Risk Management Software System",
+      "description": "UCC are looking for suitable tenderers to provide a cloud-based software platform that supports UCC’s risk management objectives.",
+      "buyer": "University College Cork",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:404621-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/404621-2026",
+      "title": "Luxembourg – Compliance software development services – Operational Risk Management Software",
+      "description": "The objective of this procurement procedure is to identify a Service Provider able to provide an Operational Risk Management Software containing the following functionalities: Policies and procedure repository, Business processes / controls repository, RCSA, Operational risk incident management, Key risk indicators, Reporting. This tool should enable the Operational Risk Management team to work in a more effective manner, by automating and enhancing the existing processes.",
+      "buyer": "European Stability Mechanism (ESM)",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    }
+  ],
+  "repo_assets": [
+    {
+      "id": "github:blockchain-etl/ethereum-etl",
+      "url": "https://github.com/blockchain-etl/ethereum-etl",
+      "description": "Python scripts for ETL (extract, transform and load) jobs for Ethereum blocks, transactions, ERC20 / ERC721 tokens, transfers, receipts, logs, contracts, internal transactions. Data is available in Google BigQuery https://goo.gl/oY5BCQ",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:blockchain-etl/bitcoin-etl",
+      "url": "https://github.com/blockchain-etl/bitcoin-etl",
+      "description": "ETL scripts for Bitcoin, Litecoin, Dash, Zcash, Doge, Bitcoin Cash. Available in Google BigQuery https://goo.gl/oY5BCQ",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:blockchain-etl/ethereum-etl-airflow",
+      "url": "https://github.com/blockchain-etl/ethereum-etl-airflow",
+      "description": "Airflow DAGs for exporting, loading, and parsing the Ethereum blockchain data. How to get any Ethereum smart contract into BigQuery https://towardsdatascience.com/how-to-get-any-ethereum-smart-contract-into-bigquery-in-8-mins-bab5db1fdeee",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:blockchain-etl/awesome-bigquery-views",
+      "url": "https://github.com/blockchain-etl/awesome-bigquery-views",
+      "description": "Useful SQL queries for Blockchain ETL datasets in BigQuery.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework",
+      "url": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework",
+      "description": "The European Digital Identity Wallet",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:walt-id/waltid-identity",
+      "url": "https://github.com/walt-id/waltid-identity",
+      "description": "All-in-one open-source identity and wallet toolkit. ",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:w3c-fedid/digital-credentials",
+      "url": "https://github.com/w3c-fedid/digital-credentials",
+      "description": "Digital Credentials API",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:GAIR-NLP/factool",
+      "url": "https://github.com/GAIR-NLP/factool",
+      "description": "FacTool: Factuality Detection in Generative AI",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:superwesleyhys-ux/factcircuit",
+      "url": "https://github.com/superwesleyhys-ux/factcircuit",
+      "description": "FactCircuit: an auditable claim-and-evidence verification loop with immutable provenance, staged checks, bounded retrieval, and reproducible evaluation.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "description": "Hunt down social media accounts by username across social networks",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:koala73/worldmonitor",
+      "url": "https://github.com/koala73/worldmonitor",
+      "description": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "description": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:soxoj/maigret",
+      "url": "https://github.com/soxoj/maigret",
+      "description": "🕵️‍♂️ Collect a dossier on a person by username from 6K websites",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:lissy93/web-check",
+      "url": "https://github.com/lissy93/web-check",
+      "description": "🕵️‍♂️ All-in-one OSINT tool for analysing any website",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:openbq-org/OpenBB",
+      "url": "https://github.com/openbq-org/OpenBB",
+      "description": "Open Data Platform for analysts, quants and AI agents.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:apache/airflow",
+      "url": "https://github.com/apache/airflow",
+      "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:ckan/ckan",
+      "url": "https://github.com/ckan/ckan",
+      "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers catalog.data.gov, open.canada.ca/data, data.humdata.org among many other sites.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "description": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    }
+  ],
+  "research": [
+    {
+      "id": "OA-6642b2dc88be44",
+      "source_url": "https://doi.org/10.1111/1748-8583.12258",
+      "statement": "Algorithmic management constitutes a distinct structural mechanism within app-based gig work requiring delineated investigation into performance management and labor relations.",
+      "caveat": "Theoretical agenda setting without empirical data on worker experiences or health consequences.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-79031782b475fb",
+      "source_url": "https://doi.org/10.1002/ajim.70007",
+      "statement": "A scoping review of 45 studies on platform-mediated gig work found reports of physical and mental health risks, but concluded the literature is constrained by cross-sectional designs and a lack of causal evidence.",
+      "caveat": "Identifies associations only; cannot establish causal relationships between digital platform labor dynamics and worker health outcomes.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-e29dc4e0a782ec",
+      "source_url": "https://doi.org/10.1002/job.2831",
+      "statement": "A systematic review uses topic modeling and an input-process-output framework to synthesize fragmented research on how dimensions of algorithmic management influence gig worker outcomes.",
+      "caveat": "Conceptual literature synthesis; does not directly measure empirical worker welfare, platform productivity, or wage impacts",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "EPMC-83a764d60470",
+      "source_url": "https://doi.org/10.3390/bs16091709",
+      "statement": "Online gig-worker discourse displays a predominance of negative sentiment, with anxiety, frustration, and anger reflecting concerns over algorithmic control and fairness.",
+      "caveat": "Reflects aggregate online discourse rather than within-person longitudinal trajectories or direct causal psychological effects.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    }
+  ],
+  "scope": "Published institutional requirement excerpts and repository descriptions, not evidence of open commercial demand or actual product compatibility."
+}

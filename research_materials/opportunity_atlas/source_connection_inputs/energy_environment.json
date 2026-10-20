@@ -1,0 +1,222 @@
+{
+  "schema": "cite_refinery.source_connected_input.v1",
+  "macro": "energy_environment",
+  "needs": [
+    {
+      "id": "ted:726035-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/726035-2026",
+      "title": "Germany – Environmental monitoring for construction – A8 Albaufstieg - Bodenbaubegleitung (BBB)",
+      "description": "A8 Albaufstieg - Bodenbaubegleitung (BBB)",
+      "buyer": "Die Autobahn GmbH des Bundes - NL Südwest",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:725724-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/725724-2026",
+      "title": "Italy – Energy-management services – Procedura aperta per la Gestione dei Vettori Energetici delle Aziende Sanitarie della Regione del Veneto parte 2 (a favore delle Aziende ULSS nn. 1, 2, 3, 4, 5 e dell’ Ospedale Riabilitativo di Alta Specializzazio",
+      "description": "Gestione dei vettori energetici per Azienda ULSS n. 1 Dolomiti",
+      "buyer": "Azienda Zero",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:723891-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/723891-2026",
+      "title": "Sweden – Architectural, construction, engineering and inspection services – Tekniska konsulttjänster VVS",
+      "description": "Upphandlingen avser tekniska konsulttjänster VVS. Uppdragen inom avtalet innefattar programarbete, projektering, utredningsarbete, kostnadsberäkningar, kalkylering, entreprenadbesiktning, besiktning, framtagande av förfrågningsunderlag m.m och tillhörande tjänster. Konsulter ska i uppdrag stötta B att öka andelen återbrukat material. VVS- områden som uppdrag kan förekomma inom är: - Ventilation - Värme, - Kyla ,- Sanitet, - Styr- och reglersystem, - Energieffektivisering, - Installationssamordning, Avtalet omfattar även besiktning inom VVS-områden. En stor del av uppdragen kan komma kräva att konsulter utför delar av uppdrag på plats. Beställ",
+      "buyer": "Upphandlingscenter Falun Borlänge-regionen",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    }
+  ],
+  "repo_assets": [
+    {
+      "id": "github:NatLabRockies/PV_ICE",
+      "url": "https://github.com/NatLabRockies/PV_ICE",
+      "description": "An open-source tool to quantify Solar Photovoltaics (PV) Energy and Mass Flows in the Circular Economy, from a Reliability and Lifetime approach",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:raghudeepika/urban-resource-cadastre-repository",
+      "url": "https://github.com/raghudeepika/urban-resource-cadastre-repository",
+      "description": "Urban Resource Cadastre Repository: Multi-label classification model and annotated street-level imagery dataset for building facade material detection. Curated from cities including Tokyo, NYC, and Zurich.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:CMLPlatform/pycirk",
+      "url": "https://github.com/CMLPlatform/pycirk",
+      "description": "A python package to model Circular Economy policy and technological interventions in Environmentally Extended Input-Output Analysis starting from mrSUTs (EXIOBASE V3.3)",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:electricitymaps/electricitymaps-contrib",
+      "url": "https://github.com/electricitymaps/electricitymaps-contrib",
+      "description": "The open source repository for Electricity Maps data parsers that powers the world's most comprehensive electricity data platform",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:protontypes/open-sustainable-technology",
+      "url": "https://github.com/protontypes/open-sustainable-technology",
+      "description": "A directory and analysis of the open source ecosystem in the areas of climate change, sustainable energy, biodiversity and natural resources.  https://docs.getgrist.com/doc/gSscJkc5Rb1Rw45gh1o1Yc",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:CliMA/Oceananigans.jl",
+      "url": "https://github.com/CliMA/Oceananigans.jl",
+      "description": "🌊  Julia software for fast, friendly, flexible, ocean-flavored fluid dynamics on CPUs and GPUs",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:philsturgeon/awesome-earth",
+      "url": "https://github.com/philsturgeon/awesome-earth",
+      "description": "\"What can I do about the climate crisis?\" Here are 326 things you can do.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:PyPSA/PyPSA",
+      "url": "https://github.com/PyPSA/PyPSA",
+      "description": "PyPSA: Python for Power System Analysis",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:u9n/dlms-cosem",
+      "url": "https://github.com/u9n/dlms-cosem",
+      "description": "A Python library for DLMS/COSEM",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:pwitab/iec62056-21",
+      "url": "https://github.com/pwitab/iec62056-21",
+      "description": "A Python library for IEC62056-21, Local Data Readout of Energy Meters. Former IEC1107",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:mesmo-dev/mesmo",
+      "url": "https://github.com/mesmo-dev/mesmo",
+      "description": "MESMO - Multi-Energy System Modeling and Optimization",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:mzy2240/ESA",
+      "url": "https://github.com/mzy2240/ESA",
+      "description": "Easy SimAuto (ESA): An easy-to-use Power System Analysis Automation Environment atop PowerWorld Simulator Automation Server (SimAuto)",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:pvlib/pvlib-python",
+      "url": "https://github.com/pvlib/pvlib-python",
+      "description": "A set of documented functions for simulating the performance of photovoltaic energy systems.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:wlcrs/huawei_solar",
+      "url": "https://github.com/wlcrs/huawei_solar",
+      "description": "Home Assistant integration for Huawei Solar inverters via Modbus",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:DOI-USGS/EGRET",
+      "url": "https://github.com/DOI-USGS/EGRET",
+      "description": "An R-package for the analysis of long-term changes in water quality and streamflow, including the water-quality method Weighted Regressions on Time, Discharge, and Season (WRTDS). https://doi-usgs.github.io/EGRET/",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:apache/airflow",
+      "url": "https://github.com/apache/airflow",
+      "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:CesiumGS/cesium",
+      "url": "https://github.com/CesiumGS/cesium",
+      "description": "An open-source JavaScript library for world-class 3D globes and maps :earth_americas:",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:ckan/ckan",
+      "url": "https://github.com/ckan/ckan",
+      "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers catalog.data.gov, open.canada.ca/data, data.humdata.org among many other sites.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    }
+  ],
+  "research": [
+    {
+      "id": "EPMC-0715c73feecf",
+      "source_url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+      "statement": "Grid-based global simulation projects that heatwave-attributable annual deaths could increase to between 5.3 million and 16.1 million by the 2090s depending on emissions and adaptation pathways, with Sub-Saharan Africa bearing the highest burden.",
+      "caveat": "Model-derived projections dependent on CMIP6 climate models and socioeconomic assumptions; cannot demonstrate observed future mortality or measure empirical local public health adaptation success.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "EPMC-871d10af9889",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+      "statement": "Urban flood risk and reported severity in Uganda vary by geography and hydrology, with rapid-onset floods presenting elevated risk ratios over slow-onset events.",
+      "caveat": "Cross-sectional survey and focus-group data; does not measure long-term health outcomes or test causal impacts of municipal flood adaptation measures.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "EPMC-fb93375cb76d",
+      "source_url": "https://doi.org/10.5334/aogh.5294",
+      "statement": "Recurrent flooding between 2022 and 2025 affected over 26 million people in Pakistan, compounding health system strain and accelerating infectious disease outbreaks and undernutrition.",
+      "caveat": "Bibliographic perspective/commentary abstract; does not provide primary epidemiological incidence data or systematic evaluations of health sector interventions.",
+      "role": "practical_observation",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-f84a08fcbd0caa",
+      "source_url": "https://doi.org/10.3390/hydrology9030050",
+      "statement": "Urban flood risk modelling and management face growing complexity across multiple flood sources, with vulnerability compounding under climate change, urban densification, and population expansion.",
+      "caveat": "Review paper abstract outlining conceptual and modelling challenges; does not measure local hydrologic outcomes, infrastructure failure rates, or post-intervention flood mitigation efficacy.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OFFICIAL-dbee83ba8137",
+      "source_url": "https://www.who.int/europe/health-topics/floods",
+      "statement": "WHO/Europe guidance recommends shifting from reactive disaster response to integrated, long-term health risk management and preparedness to address increasing flood-related mortality, disease, and mental health risks.",
+      "caveat": "Regional policy guidance document; does not provide audit findings or empirical compliance metrics for specific local implementation plans",
+      "role": "program_guidance",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    }
+  ],
+  "scope": "Published institutional requirement excerpts and repository descriptions, not evidence of open commercial demand or actual product compatibility."
+}

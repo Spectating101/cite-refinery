@@ -1,0 +1,222 @@
+{
+  "schema": "cite_refinery.source_connected_input.v1",
+  "macro": "public_services",
+  "needs": [
+    {
+      "id": "ted:723212-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/723212-2026",
+      "title": "Romania – Works related to water-distribution pipelines – CL 9: Construire/ reabilitare/ modernizare surse de apa (captare, tratare) Beclean, Sangeorz-Bai, Anies, Rebra, Tarlisua, Zagra, Sieu, Runcu Salvei",
+      "description": "Sistemul Zonal de alimentare cu apa Nasaud (sursa si STAP Rebra)  Lucrari de reabilitare a captarii de apa de suprafata Rebra;  Reabilitarea si modernizarea STAP Rebra Sistemul de alimentare cu apa Sangeorz -Bai  Reabilitarea captarii subterane  Reabilitarea conductei de aductiune apa bruta, Ltot=387m;  Reabilitarea statiei de tratare/dezinfectie Sangeorz. Sistemul de alimentare cu apa Maieru- Rodna (Anies)  Reabilitarea captarii de suprafata Anies;  Statie de tratare noua Anies. Sistemul Zonal Beclean  Reabilitarea sursei de apa;  dezafectarea conductelor de (2 fire – OL - DN 600 mm) cu lungimea totala de cca. 4.900 m si diametrul d",
+      "buyer": "AQUABIS SA BISTRITA-NASAUD",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:675938-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/675938-2026",
+      "title": "France – Printing and related services – Prestations de service de communication : prestations techniques, audiovisuelles et hybridation (lot 1) et d'impressions et de reprographie de supports de communication (lot 2) pour la PDS",
+      "description": "Lot n°1 Prestations techniques, audiovisuelles et logistiques d'événements",
+      "buyer": "PLATEFORME DES DONNEES DE SANTE",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:635530-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/635530-2026",
+      "title": "Ireland – IT services: consulting, software development, Internet and support – HSE 28439 - Restricted Procedure to procure a HSE Enterprise Integration Platform as a Service ( EiPaaS)",
+      "description": "The HSE is seeking to procure an Enterprise Integration Platform as a Service (EiPaaS) to establish a secure, scalable, governed and reusable national interoperability capability. The platform must support the HSE’s current heterogeneous integration landscape and provide a foundation for future digital health transformation. The EiPaaS proposal also supports future compliance and readiness for evolving national and European health data exchange (EHDS) requirements by establishing a controlled and standards-based interoperability foundation. This tender seeks to appoint a suitably qualified and experienced service provider capable of providing",
+      "buyer": "Health Service Executive (HSE)",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    }
+  ],
+  "repo_assets": [
+    {
+      "id": "github:cjpais/Handy",
+      "url": "https://github.com/cjpais/Handy",
+      "description": "A free, open source, and extensible speech-to-text application that works completely offline.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:opendataloader-project/opendataloader-pdf",
+      "url": "https://github.com/opendataloader-project/opendataloader-pdf",
+      "description": "PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:tailwindlabs/headlessui",
+      "url": "https://github.com/tailwindlabs/headlessui",
+      "description": "Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:biopython/biopython",
+      "url": "https://github.com/biopython/biopython",
+      "description": "Official git repository for Biopython (originally converted from CVS)",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:okfn-brasil/serenata-de-amor",
+      "url": "https://github.com/okfn-brasil/serenata-de-amor",
+      "description": "🕵 Artificial Intelligence for social control of public administration | **This repository does not receive frequent updates. Check out the README**",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:decidim/decidim",
+      "url": "https://github.com/decidim/decidim",
+      "description": "The participatory democracy framework. A generator and multiple gems made with Ruby on Rails",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:okfn-brasil/querido-diario",
+      "url": "https://github.com/okfn-brasil/querido-diario",
+      "description": "📰 Diários oficiais brasileiros acessíveis a todos     |     📰 Brazilian government gazettes, accessible to everyone.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:compdemocracy/polis",
+      "url": "https://github.com/compdemocracy/polis",
+      "description": ":milky_way: Open Source AI for large scale open ended feedback",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:freeCodeCamp/freeCodeCamp",
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+      "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:civicrm/civicrm-core",
+      "url": "https://github.com/civicrm/civicrm-core",
+      "description": "CiviCRM (Core Application and Framework)",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:consuldemocracy/consuldemocracy",
+      "url": "https://github.com/consuldemocracy/consuldemocracy",
+      "description": "Consul Democracy - Open Government and E-Participation Web Software",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:mwananchi-tech/bunge-bits",
+      "url": "https://github.com/mwananchi-tech/bunge-bits",
+      "description": "Bunge Bits provides convenient summaries of Kenyan National Assembly and Senate sittings, making legislative information more accessible and digestible.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:PopulateTools/gobierto",
+      "url": "https://github.com/PopulateTools/gobierto",
+      "description": "Plataforma de gobierno abierto open source",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:Chicago/food-inspections-evaluation",
+      "url": "https://github.com/Chicago/food-inspections-evaluation",
+      "description": "This repository contains the code to generate predictions of critical violations at food establishments in Chicago. It also contains the results of an evaluation of the effectiveness of those predictions.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:ckan/ckan",
+      "url": "https://github.com/ckan/ckan",
+      "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers catalog.data.gov, open.canada.ca/data, data.humdata.org among many other sites.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:walt-id/waltid-identity",
+      "url": "https://github.com/walt-id/waltid-identity",
+      "description": "All-in-one open-source identity and wallet toolkit. ",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:apache/airflow",
+      "url": "https://github.com/apache/airflow",
+      "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "description": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    }
+  ],
+  "research": [
+    {
+      "id": "OA-1139840a6d83ac",
+      "source_url": "https://openalex.org/W29580953",
+      "statement": "Indoor air quality in educational facilities is degraded by HVAC moisture, dust, and outdoor pollutant intake, substantially contributing to student asthma burdens and absenteeism.",
+      "caveat": "General narrative review citing secondary sources; does not perform controlled experimental evaluations of specific air cleaning or HVAC protocols.",
+      "role": "practical_observation",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-4f0f6d04561a0f",
+      "source_url": "https://doi.org/10.1590/s1806-37132014000300009",
+      "statement": "An evaluation of 1,019 elementary school students found that indoor CO2 concentrations above maximum recommended levels were significantly associated with lack of concentration, but found no other significant associations with respiratory or allergic conditions.",
+      "caveat": "Cross-sectional observational study in an urban setting with low background pollution; does not establish causal mechanisms for chronic respiratory illness",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OFFICIAL-6d6012da212a",
+      "source_url": "https://www.who.int/health-topics/digital-health",
+      "statement": "WHO policy framework establishes strategic objectives to advance digital health adoption, data interoperability, and evidence-informed digital health workforce solutions.",
+      "caveat": "High-level institutional policy text; does not report empirical implementation rates, verified payment distribution data, or measurable health worker retention metrics.",
+      "role": "program_guidance",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OFFICIAL-31e8ca003c74",
+      "source_url": "https://www.who.int/europe/groups/action-network-on-measuring-population-and-organizational-health-literacy-(m-pohl)",
+      "statement": "The WHO M-POHL network conducted the HLS19 comparative survey across 17 European countries between 2019 and 2021 to measure population and digital health literacy.",
+      "caveat": "Webpage excerpt describes survey execution and organizational intent; it does not present empirical survey findings, intervention outcomes, or health status improvements.",
+      "role": "reported_implementation",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "EPMC-15ee874ecc38",
+      "source_url": "https://doi.org/10.3390/pathogens15080811",
+      "statement": "Indoor non-viable and viable microbial bioaerosols trigger respiratory inflammatory markers and immune responses, though the evidence base remains limited by observational and cross-sectional designs.",
+      "caveat": "Narrative review of heterogeneous observational literature; cannot demonstrate clinical causation or establish definitive exposure thresholds across populations.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    }
+  ],
+  "scope": "Published institutional requirement excerpts and repository descriptions, not evidence of open commercial demand or actual product compatibility."
+}

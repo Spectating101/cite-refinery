@@ -1,0 +1,35 @@
+{
+  "schema": "cite_refinery.repo_readme_scoped_checks.v1",
+  "as_of": "2026-10-21",
+  "method": "GitHub connector read repo README at reported blob SHA, no clone or code execution",
+  "reviews": [
+    {
+      "repo_id": "github:u9n/dlms-cosem",
+      "source_url": "https://github.com/u9n/dlms-cosem/blob/main/README.md",
+      "blob_sha": "f699f429c296648aed8ee64e29e10060ce335e28",
+      "description": "a Python DLMS/COSEM protocol library with APDU encoding/decoding, selective access, HDLC serial and TCP client transport.",
+      "not_demonstrated": "Meter installation, regulated Italian healthcare integration, multi-site energy operations, or a completed commercial product.",
+      "review_state": "readme_scoped_evidence_not_execution",
+      "source_language": "English"
+    },
+    {
+      "repo_id": "github:opendataloader-project/opendataloader-pdf",
+      "source_url": "https://github.com/opendataloader-project/opendataloader-pdf/blob/main/README.md",
+      "blob_sha": "e4907dc4461578d71dd8170f12103c71cc0d0f03",
+      "description": "PDF-to-JSON/Markdown/HTML parsing with local extraction and developer SDKs, plus an enterprise accessibility add-on.",
+      "not_demonstrated": "The on-prem Swedavia property-document portal, drawing/CAD semantics, asset records, staff permissions, service SLAs or existing procurement compliance.",
+      "review_state": "readme_scoped_evidence_not_execution",
+      "source_language": "English"
+    },
+    {
+      "repo_id": "github:microsoft/farmvibes-ai",
+      "source_url": "https://github.com/microsoft/farmvibes-ai/blob/main/README.md",
+      "blob_sha": "83ee475c8535e3a99c57d6f13c4ee899f9c68197",
+      "description": "README documents multispectral/radar/satellite and weather data fusion pipelines with agricultural model-training and crop identification examples.",
+      "not_demonstrated": "A Malta-specific crop-identification service, regulatory IACS/LPIS integration, locally benchmarked crop classifier, availability to compete for an award/negotiated procurement.",
+      "review_state": "readme_scoped_evidence_not_execution",
+      "source_language": "English"
+    }
+  ],
+  "boundary": "README text shows documented potential capability, not operational technical fitness, independently confirmed performance, legal rights, or procurement eligibility."
+}

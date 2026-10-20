@@ -1,0 +1,214 @@
+{
+  "schema": "cite_refinery.source_connected_input.v1",
+  "macro": "engineering",
+  "needs": [
+    {
+      "id": "ted:723344-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/723344-2026",
+      "title": "Finland – Repair, maintenance and associated services related to marine and other equipment – VENESATAMIEN HOITO",
+      "description": "Varkauden kaupungin venesatamien hoidon urakka sisältää urakka-asiakirjoissa esitettyjen pienvenesatamien ja laitureiden hoidon urakka-asiakirjojen mukaisesti. Lisäksi urakkaan kuuluu rakennettujen rantapaikkojen sekä talvisäilytyspaikkojen hoito urakka-asiakirjojen mukaisesti. Urakkaan kuuluu venepaikkamaksujen valvonta kaikissa pienvenesatamissa, rakentamattomilla ja rakennetuilla rantapaikoilla ja talvisäilytyspaikoilla. Urakkaan kuuluu yksityislaitureiden valvonta kaupungin maalla sekä polttoainemyynnin järjestäminen Taipaleen matkailusataman veneilijöille.",
+      "buyer": "Varkauden kaupunki",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:714960-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/714960-2026",
+      "title": "Germany – Architectural, construction, engineering and inspection services – Klinikum Bayreuth_TMon IBM",
+      "description": "Die Klinikum Bayreuth GmbH beabsichtigt die Umsetzung des ersten und zweiten Bauabschnitts der neu ausgerichteten Zielplanung zur Modernisierung des Klinikstandorts Bayreuth. Gegenstand der Maßnahme ist der Neubau eines OP-Gebäudes südlich des bestehenden Klinikkomplexes. Der Neubau ersetzt die bisherige Planung des ersten Bauabschnitts und bildet den Auftakt einer langfristigen, abschnittsweisen Erneuerung des Gesamtstandorts. Grundlage der Planung sind das überarbeitete Funktions- und Raumprogramm sowie die Ergebnisse der Nutzerabstimmungen. Der Neubau des Bauabschnitts 1 (BA1) umfasst die zentralen medizinischen Funktionsbereiche des Klini",
+      "buyer": "Klinikum Bayreuth GmbH",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:707304-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/707304-2026",
+      "title": "Ireland – Building and facilities management services – M700.CN.1025 - Soft Facilities Management Services for MetroLink (TII)",
+      "description": "Transport Infrastructure Ireland (TII), acting as the Sponsoring Agency for the Dublin MetroLink programme, is seeking to appoint a contractor for the provision of Soft Facilities Management (Soft FM) Services for MetroLink. TII has signed a new 10-year lease, with the option to extend up to a maximum of 15 years, for the MetroLink project team at Coopers Cross, a landmark mixed-use campus in Dublin’s North Docklands. The services to be included in the scope of this contract will be: • Staff requirements for the Coopers Cross Office including 2 x reception staff and 2 x facilities assistants. • Cleaning services and consumables; • Coffee mach",
+      "buyer": "Transport Infrastructure Ireland (TII)",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    }
+  ],
+  "repo_assets": [
+    {
+      "id": "github:FreeCAD/FreeCAD",
+      "url": "https://github.com/FreeCAD/FreeCAD",
+      "description": "Official source code of FreeCAD, a free and opensource multiplatform 3D parametric modeler.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:openscad/openscad",
+      "url": "https://github.com/openscad/openscad",
+      "description": "OpenSCAD - The Programmers Solid 3D CAD Modeller  ",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:tangency-labs/solidcraft",
+      "url": "https://github.com/tangency-labs/solidcraft",
+      "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:deepmodeling/deepmd-kit",
+      "url": "https://github.com/deepmodeling/deepmd-kit",
+      "description": "A deep learning package for many-body potential energy representation and molecular dynamics",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:MDAnalysis/mdanalysis",
+      "url": "https://github.com/MDAnalysis/mdanalysis",
+      "description": "MDAnalysis is a Python library to analyze molecular dynamics simulations.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:psi4/psi4",
+      "url": "https://github.com/psi4/psi4",
+      "description": "Open-Source Quantum Chemistry – an electronic structure package in C++ driven by Python",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:OpenTimer/OpenTimer",
+      "url": "https://github.com/OpenTimer/OpenTimer",
+      "description": "A High-performance Timing Analysis Tool for VLSI Systems",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:librelane/librelane",
+      "url": "https://github.com/librelane/librelane",
+      "description": "ASIC implementation flow infrastructure, successor to OpenLane",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:qiskit-community/qiskit-metal",
+      "url": "https://github.com/qiskit-community/qiskit-metal",
+      "description": "Python framework for designing & analyzing superconducting quantum chips. Lite-by-default, headless-friendly, EDA-grade.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:RT-Thread/rt-thread",
+      "url": "https://github.com/RT-Thread/rt-thread",
+      "description": "RT-Thread is an open source IoT Real-Time Operating System (RTOS).                                                                                                https://rt-thread.github.io/rt-thread/",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:nasa/fprime",
+      "url": "https://github.com/nasa/fprime",
+      "description": "F´ - A flight software and embedded systems framework",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:JWock82/Pynite",
+      "url": "https://github.com/JWock82/Pynite",
+      "description": "A 3D structural engineering finite element library for Python.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:deepchem/deepchem",
+      "url": "https://github.com/deepchem/deepchem",
+      "description": "Democratizing Deep-Learning for Drug Discovery, Quantum Chemistry, Materials Science and Biology",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:materialsproject/pymatgen",
+      "url": "https://github.com/materialsproject/pymatgen",
+      "description": "Python Materials Genomics (pymatgen) is a robust materials analysis code that defines classes for structures and molecules with support for many electronic structure codes. It powers the Materials Project.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:andreisperid/E-TKT",
+      "url": "https://github.com/andreisperid/E-TKT",
+      "description": "open source embossed label maker",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:DOI-USGS/EGRET",
+      "url": "https://github.com/DOI-USGS/EGRET",
+      "description": "An R-package for the analysis of long-term changes in water quality and streamflow, including the water-quality method Weighted Regressions on Time, Discharge, and Season (WRTDS). https://doi-usgs.github.io/EGRET/",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:apache/airflow",
+      "url": "https://github.com/apache/airflow",
+      "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    }
+  ],
+  "research": [
+    {
+      "id": "EPMC-1d4b60c85f48",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+      "statement": "An integrated MnO₂-catalyzed hydrothermal regeneration strategy restores degraded LiFePO₄ cathode materials to a Li/Fe molar ratio of 0.98 and 142.3 mAh·g⁻¹ discharge capacity at 0.2 C.",
+      "caveat": "Does not evaluate industrial-scale implementation, commercial plant economics, lifecycle emissions, or occupational exposures.",
+      "role": "academic_method",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-2c8a36e510bc7f",
+      "source_url": "https://doi.org/10.1016/j.isci.2021.102787",
+      "statement": "A techno-economic model estimates that electric vehicle lithium-ion battery recycling profitability ranges from -$21.43 to +$21.91 per kWh depending on logistics, wages, pack design, and cathode chemistry.",
+      "caveat": "Theoretical techno-economic simulation; does not report actual empirical profit-and-loss accounting or audited operational yields from operating commercial facilities.",
+      "role": "academic_method",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-4a59c468fd7941",
+      "source_url": "https://doi.org/10.3390/met10030316",
+      "statement": "Recycling pathways for spent lithium-ion batteries can be systematically structured into unit processes and stages aligned with circular economy waste treatment frameworks.",
+      "caveat": "Presents a descriptive taxonomy of treatment processes; does not measure recycling efficiency rates, costs, or lifecycle toxicity.",
+      "role": "academic_method",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-8d5107d133682c",
+      "source_url": "https://doi.org/10.3390/fire9020076",
+      "statement": "End-of-life lithium-ion battery recycling faces acute environmental and occupational hazards from thermal runaway, fires, and toxic releases during collection, dismantling, and processing.",
+      "caveat": "Academic review paper; does not measure incident rates under specific occupational safety standards or prove the field efficacy of suggested mitigation protocols.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OA-53d2760b3abab4",
+      "source_url": "https://doi.org/10.1039/d0gc02745f",
+      "statement": "Upstream product design is a critical determinant governing the operational efficiency and economic viability of lithium-ion battery recycling systems.",
+      "caveat": "Extremely brief bibliographic abstract lead; does not detail specific design modifications, recycling chemistries, recovery rates, or empirical cost-benefit analyses.",
+      "role": "academic_finding",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    }
+  ],
+  "scope": "Published institutional requirement excerpts and repository descriptions, not evidence of open commercial demand or actual product compatibility."
+}

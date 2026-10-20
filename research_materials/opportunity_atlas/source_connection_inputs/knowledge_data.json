@@ -1,0 +1,190 @@
+{
+  "schema": "cite_refinery.source_connected_input.v1",
+  "macro": "knowledge_data",
+  "needs": [
+    {
+      "id": "ted:722526-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/722526-2026",
+      "title": "Germany – Software package and information systems – Rahmenvereinbarung (RV) über die Beschaffung von Veeam Lizenzen und Produkten",
+      "description": "Die Rahmenvereinbarung dient der zentralen Beschaffung von Bedarfen, die in der Menge ungewiss und im Umfang nicht abschließend bestimmbar, jedoch regelmäßig wiederkehrend sind. Die Art der voraussichtlich benötigten Beschaffungen können die folgenden Lizenzen und Produkte (Technical Account Manager (TAM)) vom Hersteller Veeam umfassen: Veeam Data Platform - Premium (VUL) Veeam Kasten Lizenzen - Knoten-basierte Subscription-Lizenz Veeam Backup for Microsoft 365 Veeam Data Cloud Dabei hat der Bieter feste Rabattsätze auf Neugeschäfte, beispielsweise bei Erweiterungen um zusätzliche VUL-Pakete und eine Rabattierung in Höhe von einem Rabattsatz ",
+      "buyer": "Rechenzentrum der Finanzverwaltung des Landes NRW",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:718613-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/718613-2026",
+      "title": "Sweden – IT services: consulting, software development, Internet and support – Asset data platform- ADP",
+      "description": "Swedavia will procure a new framework agreement for the Asset Data Platform, which will replace the current property portal. The system shall handle technical facility information and documentation of Swedavia's facilities and be a library for all drawings and documents that operations and contractors may need in the work at the airport. The system is to be delivered as an on-Preem solution, and the agreement applies to all ten airports. \"If the candidate wants to use the European Single Procurement Document (ESPD) this will be made available by Swedavia upon request. The document can then be filled out and enclosed to the application. Please",
+      "buyer": "Swedavia AB",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    },
+    {
+      "id": "ted:703130-2026",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/703130-2026",
+      "title": "Romania – Software package and information systems – Achiziție de produse software – 2 loturi: Lot 1 - Subscripție licențe și suport pentru platforma de virtualizare Vmware Vsphere; Lot 2 - Mentenanță licențe si suport pentru soluția software de salv",
+      "description": "Este necesară subscripție licențe și suport pentru 128 licențe VMware vSphere Foundation - Per Core - 1 Year, conform caietului de sarcini.",
+      "buyer": "INSPECTORATUL DE STAT IN CONSTRUCTII-I.S.C",
+      "lifecycle_category": "competition_notice",
+      "evidence_status": "published_notice_excerpt_not_active_or_eligible_tender"
+    }
+  ],
+  "repo_assets": [
+    {
+      "id": "github:morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "description": "DeepSeek Harness: Everything is a Plugin.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:apache/airflow",
+      "url": "https://github.com/apache/airflow",
+      "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "description": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:Egonex-AI/Understand-Anything",
+      "url": "https://github.com/Egonex-AI/Understand-Anything",
+      "description": "Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:DeusData/codebase-memory-mcp",
+      "url": "https://github.com/DeusData/codebase-memory-mcp",
+      "description": "High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 162 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:ckan/ckan",
+      "url": "https://github.com/ckan/ckan",
+      "description": "CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers catalog.data.gov, open.canada.ca/data, data.humdata.org among many other sites.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:hudl/open-data",
+      "url": "https://github.com/hudl/open-data",
+      "description": "Free football data from StatsBomb",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:common-voice/common-voice",
+      "url": "https://github.com/common-voice/common-voice",
+      "description": "Common Voice is part of Mozilla's initiative to help teach machines how real people speak.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:logannye/rosalind",
+      "url": "https://github.com/logannye/rosalind",
+      "description": "Reusable genomic evidence for research and analysis tools: exact read evidence, portable datasets, and managed analyzers.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:XiantingWu/VeriRepro",
+      "url": "https://github.com/XiantingWu/VeriRepro",
+      "description": "VeriRepro: Evidence-grounded reproduction for computational papers.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:tracel-ai/burn",
+      "url": "https://github.com/tracel-ai/burn",
+      "description": "Burn is a next generation tensor library and Deep Learning Framework that doesn't compromise on flexibility, efficiency and portability.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:scipy/scipy",
+      "url": "https://github.com/scipy/scipy",
+      "description": "SciPy library main repository",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:walt-id/waltid-identity",
+      "url": "https://github.com/walt-id/waltid-identity",
+      "description": "All-in-one open-source identity and wallet toolkit. ",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:civicrm/civicrm-core",
+      "url": "https://github.com/civicrm/civicrm-core",
+      "description": "CiviCRM (Core Application and Framework)",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    },
+    {
+      "id": "github:opendataloader-project/opendataloader-pdf",
+      "url": "https://github.com/opendataloader-project/opendataloader-pdf",
+      "description": "PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.",
+      "evidence_status": "github_description_claim_not_code_verified",
+      "domain_relevance": "model_metadata_review",
+      "no_license_rights_granted": true
+    }
+  ],
+  "research": [
+    {
+      "id": "OFFICIAL-6d6012da212a",
+      "source_url": "https://www.who.int/health-topics/digital-health",
+      "statement": "WHO policy framework establishes strategic objectives to advance digital health adoption, data interoperability, and evidence-informed digital health workforce solutions.",
+      "caveat": "High-level institutional policy text; does not report empirical implementation rates, verified payment distribution data, or measurable health worker retention metrics.",
+      "role": "program_guidance",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    },
+    {
+      "id": "OFFICIAL-a6feb7e72ecd",
+      "source_url": "https://www.emro.who.int/media/news/opening-remarks-by-dr-adham-ismail-officer-in-charge-who-eastern-mediterranean-region-at-the-launch-of-the-first-digital-platform-for-health-research-prioritization-in-the-eastern-mediterranean-region.html",
+      "statement": "An official regional office has launched a digital platform aimed at making health research prioritization more systematic, transparent, and collaborative.",
+      "caveat": "Reports only platform launch; does not show health outcome improvements, resource allocation impacts, or actual user uptake.",
+      "role": "reported_implementation",
+      "evidence_status": "unverified_model_source_reading_not_original_article"
+    }
+  ],
+  "scope": "Published institutional requirement excerpts and repository descriptions, not evidence of open commercial demand or actual product compatibility."
+}

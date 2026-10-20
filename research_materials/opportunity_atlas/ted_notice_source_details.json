@@ -1,0 +1,416 @@
+{
+  "schema": "cite_refinery.ted_notice_enrichment.v1",
+  "notices": [
+    {
+      "id": "ted:726035-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/726035-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "A8 Albaufstieg - Bodenbaubegleitung (BBB)",
+        "Bodenbaubegleitung zur Umsetzung aller Maßnahmen vor und während der Bauphase."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Germany – Environmental monitoring for construction – A8 Albaufstieg - Bodenbaubegleitung (BBB)",
+      "buyer": "Die Autobahn GmbH des Bundes - NL Südwest",
+      "publication_date": "2026-10-20",
+      "themes": [
+        "environment_monitoring"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:725724-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/725724-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Gestione dei vettori energetici per Azienda ULSS n. 1 Dolomiti",
+        "Procedura aperta per la Gestione dei Vettori Energetici delle Aziende Sanitarie della Regione del Veneto parte 2 (a favore delle Aziende ULSS nn. 1, 2, 3, 4, 5 e dell’ Ospedale Riabilitativo di Alta Specializzazione - ORAS) 2^ Ed."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Italy – Energy-management services – Procedura aperta per la Gestione dei Vettori Energetici delle Aziende Sanitarie della Regione del Veneto parte 2 (a favore delle Aziende ULSS nn. 1, 2, 3, 4, 5 e dell’ Ospedale Riabilitativo di Alta Specializzazione - ORAS) 2^ Ed.",
+      "buyer": "Azienda Zero",
+      "publication_date": "2026-10-20",
+      "themes": [
+        "energy_management"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:723891-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/723891-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Upphandlingen avser tekniska konsulttjänster VVS. Uppdragen inom avtalet innefattar programarbete, projektering, utredningsarbete, kostnadsberäkningar, kalkylering, entreprenadbesiktning, besiktning, framtagande av förfrågningsunderlag m.m och tillhörande tjänster. Konsulter ska i uppdrag stötta B att öka andelen återbrukat material. VVS- områden som uppdrag kan förekomma inom är: - Ventilation - Värme, - Kyla ,- Sanitet, - Styr- och reglersystem, - Energieffektivisering, - Installationssamordning, Avtalet omfattar även besiktning inom VVS-områden. En stor del av uppdragen kan komma kräva att konsulter utför delar av uppdrag på plats. Beställaren har behov av att konsulter ska kunna, på kort varsel, infinna sig fysiskt på plats. Välkommen med ert bästa anbud!"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Sweden – Architectural, construction, engineering and inspection services – Tekniska konsulttjänster VVS",
+      "buyer": "Upphandlingscenter Falun Borlänge-regionen",
+      "publication_date": "2026-10-20",
+      "themes": [
+        "energy_management"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:723344-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/723344-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Varkauden kaupungin venesatamien hoidon urakka sisältää urakka-asiakirjoissa esitettyjen pienvenesatamien ja laitureiden hoidon urakka-asiakirjojen mukaisesti. Lisäksi urakkaan kuuluu rakennettujen rantapaikkojen sekä talvisäilytyspaikkojen hoito urakka-asiakirjojen mukaisesti. Urakkaan kuuluu venepaikkamaksujen valvonta kaikissa pienvenesatamissa, rakentamattomilla ja rakennetuilla rantapaikoilla ja talvisäilytyspaikoilla. Urakkaan kuuluu yksityislaitureiden valvonta kaupungin maalla sekä polttoainemyynnin järjestäminen Taipaleen matkailusataman veneilijöille."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Finland – Repair, maintenance and associated services related to marine and other equipment – VENESATAMIEN HOITO",
+      "buyer": "Varkauden kaupunki",
+      "publication_date": "2026-10-20",
+      "themes": [
+        "equipment_maintenance"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:714960-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/714960-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Die Klinikum Bayreuth GmbH beabsichtigt die Umsetzung des ersten und zweiten Bauabschnitts der neu ausgerichteten Zielplanung zur Modernisierung des Klinikstandorts Bayreuth. Gegenstand der Maßnahme ist der Neubau eines OP-Gebäudes südlich des bestehenden Klinikkomplexes. Der Neubau ersetzt die bisherige Planung des ersten Bauabschnitts und bildet den Auftakt einer langfristigen, abschnittsweisen Erneuerung des Gesamtstandorts. Grundlage der Planung sind das überarbeitete Funktions- und Raumprogramm sowie die Ergebnisse der Nutzerabstimmungen. Der Neubau des Bauabschnitts 1 (BA1) umfasst die zentralen medizinischen Funktionsbereiche des Klinikbetriebs, darunter die Zentrale Notaufnahme (ZNA), die Radiologie, die Zentralsterilisation (ZSVA), Ambulanz- und Diagnoktikbereiche, Intensiv- und Intermediate-Care-Einheiten, Entbindungsbereiche, d",
+        "Technisches Monitoring (TMon) und Inbetriebnahmemanagement (IBM)"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Germany – Architectural, construction, engineering and inspection services – Klinikum Bayreuth_TMon IBM",
+      "buyer": "Klinikum Bayreuth GmbH",
+      "publication_date": "2026-10-15",
+      "themes": [
+        "industrial_inspection"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:707304-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/707304-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Transport Infrastructure Ireland (TII), acting as the Sponsoring Agency for the Dublin MetroLink programme, is seeking to appoint a contractor for the provision of Soft Facilities Management (Soft FM) Services for MetroLink. TII has signed a new 10-year lease, with the option to extend up to a maximum of 15 years, for the MetroLink project team at Coopers Cross, a landmark mixed-use campus in Dublin’s North Docklands. The services to be included in the scope of this contract will be: • Staff requirements for the Coopers Cross Office including 2 x reception staff and 2 x facilities assistants. • Cleaning services and consumables; • Coffee machines (rental, servicing, maintenance, beans etc); • Office stationery and supplies; • Courier services; • Taxi services; • Postal services; • Franking machine services; • Canteen supplies (tea, coffee"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Ireland – Building and facilities management services – M700.CN.1025 - Soft Facilities Management Services for MetroLink (TII)",
+      "buyer": "Transport Infrastructure Ireland (TII)",
+      "publication_date": "2026-10-13",
+      "themes": [
+        "equipment_maintenance"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:646960-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/646960-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "The CRU requires access to an integrated, off-the-shelf software solution comprising Board Governance and Risk Management functionality. The solution may be delivered through a single platform, separate modules, partner components provided that the Tenderer acts as the prime contractor and remains fully responsible for the configuration, delivery, integration, implementation, training, performance, security, support, maintenance and contractual obligations of the complete solution. The complete integrated solution is expected to support approximately 100 users overall, comprising approximately 40 users of the Board Governance functionality and 60 users of the Risk Management functionality."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Ireland – Records management – Invitation to Tender (ITT) for the provision of an Integrated Board Governance and Risk Management Software Solution [641]",
+      "buyer": "Commission for Regulation of Utilities",
+      "publication_date": "2026-09-21",
+      "themes": [
+        "financial_risk"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:434418-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/434418-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "UCC are looking for suitable tenderers to provide a cloud-based software platform that supports UCC’s risk management objectives."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Ireland – Software package and information systems – UCC-2025-02 Provision of an Enterprise Risk Management Software System",
+      "buyer": "University College Cork",
+      "publication_date": "2026-06-25",
+      "themes": [
+        "financial_risk"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:404621-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/404621-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "The objective of this procurement procedure is to identify a Service Provider able to provide an Operational Risk Management Software containing the following functionalities: Policies and procedure repository, Business processes / controls repository, RCSA, Operational risk incident management, Key risk indicators, Reporting. This tool should enable the Operational Risk Management team to work in a more effective manner, by automating and enhancing the existing processes.",
+        "The objective of this procurement procedure is to identify a Service Provider able to provide an Operational Risk Management Software containing the following functionalities: Policies and procedure repository, Business processes / controls repository, RCSA, Operational risk incident management, Key risk indicators, Reporting. This tool should enable the Operational Risk Management team to work in a more effective manner, by automating and enhancing the existing processes. The Contract will be awarded for an initial period of four (4) years. The ESM may, at its sole discretion, extend the Contract for up to an additional three (3) years, resulting in a maximum potential Contract term of seven (7) years."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Luxembourg – Compliance software development services – Operational Risk Management Software",
+      "buyer": "European Stability Mechanism (ESM)",
+      "publication_date": "2026-06-12",
+      "themes": [
+        "financial_risk"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:722526-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/722526-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Die Rahmenvereinbarung dient der zentralen Beschaffung von Bedarfen, die in der Menge ungewiss und im Umfang nicht abschließend bestimmbar, jedoch regelmäßig wiederkehrend sind. Die Art der voraussichtlich benötigten Beschaffungen können die folgenden Lizenzen und Produkte (Technical Account Manager (TAM)) vom Hersteller Veeam umfassen: Veeam Data Platform - Premium (VUL) Veeam Kasten Lizenzen - Knoten-basierte Subscription-Lizenz Veeam Backup for Microsoft 365 Veeam Data Cloud Dabei hat der Bieter feste Rabattsätze auf Neugeschäfte, beispielsweise bei Erweiterungen um zusätzliche VUL-Pakete und eine Rabattierung in Höhe von einem Rabattsatz auf den jeweils gültigen Listenpreis für Subscription-Laufzeiten abzugeben. Ausgenommen von den vorgenannten Rabattregelungen sind Vertragsverlängerungen sowie Bestandslizenzen (Renewals). Für diese g",
+        "Gegenstand dieser Ausschreibung ist ein Abschluss einer Rahmenvereinbarung ohne Abrufverpflichtung zur Beschaffung von zeitlich befristeten Veeam Lizenzen und Produkten inkl. Upgrade und Verlängerung alter Bestandslizenzen."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Germany – Software package and information systems – Rahmenvereinbarung (RV) über die Beschaffung von Veeam Lizenzen und Produkten",
+      "buyer": "Rechenzentrum der Finanzverwaltung des Landes NRW",
+      "publication_date": "2026-10-19",
+      "themes": [
+        "data_infrastructure"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:718613-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/718613-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Swedavia will procure a new framework agreement for the Asset Data Platform, which will replace the current property portal. The system shall handle technical facility information and documentation of Swedavia's facilities and be a library for all drawings and documents that operations and contractors may need in the work at the airport. The system is to be delivered as an on-Preem solution, and the agreement applies to all ten airports. \"If the candidate wants to use the European Single Procurement Document (ESPD) this will be made available by Swedavia upon request. The document can then be filled out and enclosed to the application. Please note that this is voluntarily."
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Sweden – IT services: consulting, software development, Internet and support – Asset data platform- ADP",
+      "buyer": "Swedavia AB",
+      "publication_date": "2026-10-16",
+      "themes": [
+        "data_infrastructure"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:703130-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/703130-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Este necesară subscripție licențe și suport pentru 128 licențe VMware vSphere Foundation - Per Core - 1 Year, conform caietului de sarcini.",
+        "Autoritatea contractantă – Inspectoratul de Stat în Construcții – ISC dorește să achiziționeze pachete software – update (subscripție/mentenanță anuală) a licențelor pentru o perioadă de 12 luni , pe 2 loturi, după cum urmează: LOT 1: Subscripție licențe și suport pentru platforma de virtualizare Vmware Vsphere; LOT 2: Mentenanță licențe si suport pentru soluția software de salvare și restaurare mașini virtuale Veeam Enterprise Plus. Obiectivul urmărit prin prezenta documentație este asigurarea subscripției licențelor și suportul aferent în vederea funcționării în parametri optimi a aplicațiilor de producție de tip business ce rulează pe mașinile virtuale, prin accesul la ultimele versiuni software ale soluției informatice de virtualizare Vmware Vsphere precum și asigurarea backup-ului mașinilor virtuale ce deservesc aplicațiile de produc"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Romania – Software package and information systems – Achiziție de produse software – 2 loturi: Lot 1 - Subscripție licențe și suport pentru platforma de virtualizare Vmware Vsphere; Lot 2 - Mentenanță licențe si suport pentru soluția software de salvare și restaurare mașini virtuale Veeam Enterprise Plus",
+      "buyer": "INSPECTORATUL DE STAT IN CONSTRUCTII-I.S.C",
+      "publication_date": "2026-10-12",
+      "themes": [
+        "data_infrastructure"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:683922-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/683922-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Sunnhordland Procurement Forum is conducting this tender procedure on behalf of the municipalities of Stord, Tysnes, Bømlo, Fitjar, and Kvinnherad. Each municipality is a separate legal entity, and the final contract must therefore be signed by the authorized representative of the respective municipality. The municipalities aim to enter into a contract for the supply of food products for commercial kitchens. The scope of the supply is described in the attached specification of requirements and pricing schedule. This contract is intended for production kitchens/commercial kitchen operations. Other municipal departments have the right, but not the obligation, to use the contract. The contract includes food products within the following categories: bread and bakery products; grocery products; fruit and vegetables; fish and seafood products; "
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Norway – Food, beverages, tobacco and related products – Food for commerical kitchens",
+      "buyer": "Stord kommune",
+      "publication_date": "2026-10-05",
+      "themes": [
+        "food_supply"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:593156-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/593156-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "pin-only",
+      "lifecycle_category": "prior_information_notice",
+      "excerpts": [
+        "This is a Prior Information Notice (PIN) and not a call for competition. Atlantic Technological University wishes to establish a Panel of Artisan Food Suppliers for the provision of Artisan Food Supplies to its Culinary Arts School, Dublin Road, Galway. Sustainable food ingredients are a fundamental component of food education and food research for culinary students. ATU culinary graduates must have access to best in practice producers and farmers in areas such as: • Green Procurement • Organic Food Supply • Sustainable food supply chains – Farm to Fork strategy • Seasonality • Access to local farms/producers. The Panel is open for applications for admittance until 29 September 2028 as a minimum, however it will become operational with effect from 30 September 2026. The Panel will be continually open for access. Should the Panel cease to "
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Ireland – Food, beverages, tobacco and related products – Prior Information Notice for the Establishment of a Panel of Artisan Food Suppliers for ATU",
+      "buyer": "Atlantic Technological University",
+      "publication_date": "2026-08-27",
+      "themes": [
+        "food_supply"
+      ],
+      "notice_type_metadata": "pin-only"
+    },
+    {
+      "id": "ted:606356-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/606356-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "veat",
+      "lifecycle_category": "voluntary_ex_ante_notice",
+      "excerpts": [
+        "Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Malta – Analytical or scientific software development services – MAFA/CIO 3/2026 - Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF",
+      "buyer": "Ministry for Agriculture Fisheries and Food Supply",
+      "publication_date": "2026-09-03",
+      "themes": [
+        "food_supply"
+      ],
+      "notice_type_metadata": "veat"
+    },
+    {
+      "id": "ted:723212-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/723212-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Sistemul Zonal de alimentare cu apa Nasaud (sursa si STAP Rebra)  Lucrari de reabilitare a captarii de apa de suprafata Rebra;  Reabilitarea si modernizarea STAP Rebra Sistemul de alimentare cu apa Sangeorz -Bai  Reabilitarea captarii subterane  Reabilitarea conductei de aductiune apa bruta, Ltot=387m;  Reabilitarea statiei de tratare/dezinfectie Sangeorz. Sistemul de alimentare cu apa Maieru- Rodna (Anies)  Reabilitarea captarii de suprafata Anies;  Statie de tratare noua Anies. Sistemul Zonal Beclean  Reabilitarea sursei de apa;  dezafectarea conductelor de (2 fire – OL - DN 600 mm) cu lungimea totala de cca. 4.900 m si diametrul de 600 mm, PAFSIN (aductiune de apa bruta);  Realizare conducta de aductiune noua (1 fir- fonta ductila-DN600 mm) lungime totala 2433 m;  Reabilitarea prin inlocuire a conductei de aductiune apa trat",
+        "Prezentul proiect cuprinde urmatoarele specialitati: - INSTALATII TEHNOLOGICE: gospodaria de apa, retele de alimentare cu apa ; - CONSTRUCTII: trateaza structurile de rezistenta necesare obiectelor tehnologice; - INSTALATII ELECTRICE SI SCADA: aferente obiectelor tehnologice Contractul include: - Elaborare documentatii pentru autorizarea executiei Lucrarilor inclusiv documentatii necesare obtinerii autorizatiilor si avizelor necesare executiei - Proiectare tehnica pentru toate lucrarile - Lucrari de constructie; - Furnizare si montaj utilaje si echipamente tehnologice; - Testare si punere in functiune; -Remedierea eventualelor defecte aparute in Perioada de Garantie. Entitatea contractanta va raspunde in mod clar si complet tuturor solicitarilor de clarificari / informatiilor suplimentare astfel: cu 11 zile inainte de data limita de depun"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Romania – Works related to water-distribution pipelines – CL 9: Construire/ reabilitare/ modernizare surse de apa (captare, tratare) Beclean, Sangeorz-Bai, Anies, Rebra, Tarlisua, Zagra, Sieu, Runcu Salvei",
+      "buyer": "AQUABIS SA BISTRITA-NASAUD",
+      "publication_date": "2026-10-20",
+      "themes": [
+        "accessibility"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:675938-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/675938-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "Lot n°1 Prestations techniques, audiovisuelles et logistiques d'événements",
+        "La PDS sollicite diverses prestations concourant à l'organisation et le bon déroulement de ses événements internes ou externes : un appui technique, audiovisuel et d'hybridation d'autre part (lot 1), ainsi qu'un appui en matière d'impressions et de reprographie de supports de communication (lot 2). La PDS organise tout au long de l'année des événements internes et externes variés tant sur leur typologie que sur leur dimension (conférences, colloque, webinaires, afterworks, événements internes d'équipe…)"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "France – Printing and related services – Prestations de service de communication : prestations techniques, audiovisuelles et hybridation (lot 1) et d'impressions et de reprographie de supports de communication (lot 2) pour la PDS",
+      "buyer": "PLATEFORME DES DONNEES DE SANTE",
+      "publication_date": "2026-10-01",
+      "themes": [
+        "health_data"
+      ],
+      "notice_type_metadata": "cn-standard"
+    },
+    {
+      "id": "ted:635530-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/635530-2026",
+      "api_source": "https://api.ted.europa.eu/v3/notices/search",
+      "notice_type_code": "cn-standard",
+      "lifecycle_category": "competition_notice",
+      "excerpts": [
+        "The HSE is seeking to procure an Enterprise Integration Platform as a Service (EiPaaS) to establish a secure, scalable, governed and reusable national interoperability capability. The platform must support the HSE’s current heterogeneous integration landscape and provide a foundation for future digital health transformation. The EiPaaS proposal also supports future compliance and readiness for evolving national and European health data exchange (EHDS) requirements by establishing a controlled and standards-based interoperability foundation. This tender seeks to appoint a suitably qualified and experienced service provider capable of providing a product platform, associated vendor support and establishment of the core capability. This procurement is for the EiPaaS product capability, including software licensing or subscription, vendor sup"
+      ],
+      "excerpt_scope": "official TED Search API notice-procedure and lot-description fields, truncated",
+      "is_verified_currently_open": false,
+      "full_tender_document_reviewed": false,
+      "buyer_spending_commitment_to_us": false,
+      "publication_is_not_contract_opportunity": true,
+      "published_title": "Ireland – IT services: consulting, software development, Internet and support – HSE 28439 - Restricted Procedure to procure a HSE Enterprise Integration Platform as a Service ( EiPaaS)",
+      "buyer": "Health Service Executive (HSE)",
+      "publication_date": "2026-09-15",
+      "themes": [
+        "health_data"
+      ],
+      "notice_type_metadata": "cn-standard"
+    }
+  ],
+  "failures": {},
+  "lifecycle_counts": {
+    "competition_notice": 16,
+    "prior_information_notice": 1,
+    "voluntary_ex_ante_notice": 1
+  },
+  "evidence_boundary": "UBL work-description excerpts and notice lifecycles only; not tender spec, bidding rights, current procurement availability, or buyer contract."
+}
