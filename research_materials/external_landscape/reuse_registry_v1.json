@@ -1,0 +1,372 @@
+{
+  "schema": "cite_refinery.external_reuse_registry.v1",
+  "as_of": "2026-10-20",
+  "policy": "discovery_only_no_auto_authority",
+  "freeze": {
+    "state": "evaluation_first",
+    "corpus_unique_sources": 232,
+    "new_development_sources": 103,
+    "holdout_sources": 66,
+    "holdout_sha256": "282f2595728f970f29fc3c208d86a8992b96dcbb6f11a8f7d7e1b3e26de1ea00",
+    "no_new_corpus_collection": true,
+    "no_new_unvalidated_feature_expansion": true,
+    "allow": [
+      "read_only_external_source_reuse",
+      "development_mapping_completion",
+      "independent_blind_annotation",
+      "comparative_agent_benchmark",
+      "bugfixes_and_security"
+    ]
+  },
+  "records": [
+    {
+      "id": "gittrend",
+      "url": "https://gittrend.io/",
+      "category": "project_discovery",
+      "capability": "GitHub project rankings and topical curation",
+      "status": "reference_only",
+      "action": "Use for discovery UX/product comparator; not scientific validation",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Hardware Splicer"
+      ]
+    },
+    {
+      "id": "oss-insight",
+      "url": "https://ossinsight.io/",
+      "category": "software_intelligence",
+      "capability": "GitHub repository trends and analytics",
+      "status": "reference_only",
+      "action": "Avoid duplicating generic repository popularity intelligence",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Nocturnal"
+      ]
+    },
+    {
+      "id": "open-knowledge-maps",
+      "url": "https://openknowledgemaps.org/",
+      "category": "research_mapping",
+      "capability": "Visual topic clusters and scientific discovery",
+      "status": "reference_only",
+      "action": "Baseline for semantic map usability and document grouping",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "3ie-gap-maps",
+      "url": "https://www.3ieimpact.org/evidence-hub/evidence-gap-maps",
+      "category": "evidence_mapping",
+      "capability": "Intervention, outcome and gap matrices",
+      "status": "reference_only",
+      "action": "Use as evidence mapping benchmark not an automatic source of conclusions",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Policy Lab"
+      ]
+    },
+    {
+      "id": "elicit",
+      "url": "https://elicit.com/",
+      "category": "evidence_synthesis",
+      "capability": "Research search and paper synthesis",
+      "status": "reference_only",
+      "action": "Strong general research workflow baseline",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "scite",
+      "url": "https://scite.ai/",
+      "category": "citation_assessment",
+      "capability": "Citation context and supporting or contrasting classifications",
+      "status": "reference_only",
+      "action": "Avoid claiming novelty in citation-role extraction",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "moyomap",
+      "url": "https://moyomap.com/",
+      "category": "claim_graph",
+      "capability": "Source-linked claims and competing maps",
+      "status": "reference_only",
+      "action": "Evaluate claim graph overlap before custom UX",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Nocturnal"
+      ]
+    },
+    {
+      "id": "opensustain",
+      "url": "https://opensustain.tech/",
+      "category": "implementation_directory",
+      "capability": "Sustainability open-source project discovery",
+      "status": "reference_only",
+      "action": "Use existing public interest solution inventory",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Policy Lab"
+      ]
+    },
+    {
+      "id": "oecd-opsi",
+      "url": "https://oecd-opsi.org/",
+      "category": "institutional_cases",
+      "capability": "Public-sector innovation case studies",
+      "status": "reference_only",
+      "action": "Case reports are claims requiring independent outcome verification",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Policy Lab"
+      ]
+    },
+    {
+      "id": "dpg-registry",
+      "url": "https://github.com/DPGAlliance/dpg-api",
+      "category": "implementation_directory",
+      "capability": "Recognized digital public goods listings",
+      "status": "adapter_code_added_unverified_live",
+      "action": "Registry acceptance is not observed project impact; local lexical search only",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Research Drive"
+      ]
+    },
+    {
+      "id": "dimensions",
+      "url": "https://www.dimensions.ai/",
+      "category": "research_policy_graph",
+      "capability": "Cross-linked grants, papers, datasets, patents, policy and trials",
+      "status": "reference_only",
+      "action": "Commercial competitor; not assumed API-accessible",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "overton",
+      "url": "https://www.overton.io/",
+      "category": "policy_evidence_graph",
+      "capability": "Policy documents and research-to-policy linkages",
+      "status": "reference_only",
+      "action": "Commercial competitor; no presumed license to ingest",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Policy Lab"
+      ]
+    },
+    {
+      "id": "data-commons",
+      "url": "https://datacommons.org/",
+      "category": "statistical_graph",
+      "capability": "Standardized statistical and geographic facts",
+      "status": "reference_only",
+      "action": "Consider later after provenance and unit compatibility checks",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Research Drive"
+      ]
+    },
+    {
+      "id": "wikidata",
+      "url": "https://www.wikidata.org/w/api.php",
+      "category": "semantic_topics",
+      "capability": "Entity and topic discovery",
+      "status": "adapter_available",
+      "action": "Existing read-only adapter; labels are not evidence",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "openalex",
+      "url": "https://help.openalex.org/api/",
+      "category": "scholarly_metadata",
+      "capability": "Scholarly works, topics and author metadata",
+      "status": "adapter_available",
+      "action": "Existing topic adapter plus separate optional paper retrieval",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Research Drive"
+      ]
+    },
+    {
+      "id": "openaire",
+      "url": "https://graph.openaire.eu/docs/apis/graph-api-v4/research-products/examples/",
+      "category": "research_graph",
+      "capability": "Publications, datasets, research software and project links",
+      "status": "adapter_live_smoke",
+      "action": "Read-only metadata; source links and research roles require verification",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Research Drive"
+      ]
+    },
+    {
+      "id": "ecosystems",
+      "url": "https://docs.ecosyste.ms/docs/services/data-services/repositories/",
+      "category": "repo_metadata",
+      "capability": "Repository metadata, dependency/package ecosystem records",
+      "status": "adapter_live_smoke",
+      "action": "Repository metadata or stars never count as deployed outcomes",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Hardware Splicer",
+        "Refinery"
+      ]
+    },
+    {
+      "id": "github",
+      "url": "https://docs.github.com/en/rest",
+      "category": "repo_metadata",
+      "capability": "Canonical repository and commit evidence",
+      "status": "existing_other_modules",
+      "action": "Existing GitHub signals, do not duplicate GitHub integration",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Hardware Splicer",
+        "Nocturnal"
+      ]
+    },
+    {
+      "id": "graph-rag",
+      "url": "https://github.com/microsoft/graphrag",
+      "category": "semantic_infrastructure",
+      "capability": "Graph extraction and community clustering",
+      "status": "reference_only",
+      "action": "Evaluate before building another generic graph engine",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Refinery"
+      ]
+    },
+    {
+      "id": "light-rag",
+      "url": "https://github.com/HKUDS/LightRAG",
+      "category": "semantic_infrastructure",
+      "capability": "Incremental graph retrieval",
+      "status": "existing_optional_engine",
+      "action": "Existing optional dependency, not accepted claim generator",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "neo4j-graphrag",
+      "url": "https://neo4j.com/docs/neo4j-graphrag-python/current/",
+      "category": "semantic_infrastructure",
+      "capability": "Graph-backed RAG library",
+      "status": "reference_only",
+      "action": "Consider only if needed by persistent graph requirements",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Refinery"
+      ]
+    },
+    {
+      "id": "lens",
+      "url": "https://docs.api.lens.org/",
+      "category": "patent_discovery",
+      "capability": "Patent and scholarly links",
+      "status": "reference_only",
+      "action": "Requires entitlement/licensing review before API usage",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Hardware Splicer"
+      ]
+    },
+    {
+      "id": "product-hunt",
+      "url": "https://www.producthunt.com/",
+      "category": "product_discovery",
+      "capability": "New launches and positioning",
+      "status": "reference_only",
+      "action": "Competitive discovery only, not commercial traction proof",
+      "reuse_for": [
+        "Portfolio"
+      ]
+    },
+    {
+      "id": "alternative-to",
+      "url": "https://alternativeto.net/",
+      "category": "product_discovery",
+      "capability": "Adjacent commercial and free alternatives",
+      "status": "reference_only",
+      "action": "Check before implementing a feature category",
+      "reuse_for": [
+        "Portfolio"
+      ]
+    },
+    {
+      "id": "openalternative",
+      "url": "https://openalternative.co/",
+      "category": "software_discovery",
+      "capability": "Open-source product alternatives",
+      "status": "reference_only",
+      "action": "Substitution and reuse scouting",
+      "reuse_for": [
+        "Portfolio"
+      ]
+    },
+    {
+      "id": "stackshare",
+      "url": "https://stackshare.io/",
+      "category": "technical_discovery",
+      "capability": "Technology stack references",
+      "status": "reference_only",
+      "action": "No inferred quality or license to replicate stacks",
+      "reuse_for": [
+        "Portfolio"
+      ]
+    },
+    {
+      "id": "hf-spaces",
+      "url": "https://huggingface.co/spaces",
+      "category": "prototype_discovery",
+      "capability": "Runnable ML applications and prototypes",
+      "status": "reference_only",
+      "action": "Baseline for readily available model workflows",
+      "reuse_for": [
+        "Portfolio"
+      ]
+    },
+    {
+      "id": "eu-osor",
+      "url": "https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/oss-repositories",
+      "category": "implementation_directory",
+      "capability": "Reusable public-sector OSS registries",
+      "status": "reference_only",
+      "action": "Potential solution listings, not proof of deployment success",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Policy Lab"
+      ]
+    },
+    {
+      "id": "hypothesis-atlas",
+      "url": "https://github.com/luxinlabs/Hypothesis-Atlas",
+      "category": "research_mapping",
+      "capability": "AI-assisted hypothesis or knowledge-tree prototypes",
+      "status": "reference_only",
+      "action": "Evaluate overlap with emergent scientific mapping",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "solved",
+      "url": "https://challengesolved.ai/knowledge-base/index.php",
+      "category": "problem_solution_catalog",
+      "capability": "Problem and solution listings",
+      "status": "reference_only",
+      "action": "Evaluate direct problem-to-solution directory overlap",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    }
+  ]
+}

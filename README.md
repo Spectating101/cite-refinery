@@ -450,3 +450,8 @@ private Chrome source-navigation audit accompany source-tampering tests.
 The result is `ACCEPTED_WITH_OPEN_GAPS` for **research representation**, not
 field execution, causal verification, or human usability approval. See
 `docs/PRODUCT_ACCEPTANCE_FREE_ROAMING_DOGS_02.md`.
+
+
+### External discovery reuse / evaluation freeze (2026-10-20)
+
+See [External landscape and freeze gate](docs/EXTERNAL_LANDSCAPE_AND_FREEZE_GATE_V1.md) and the [30-source reuse registry](research_materials/external_landscape/reuse_registry_v1.json). The 232-record evaluation corpus and its sealed 66-source holdout stay frozen. The optional `cite-refinery-landscape` and `cite-refinery-topics` CLIs generate **non-authoritative discovery candidates only**, never accepted evidence, program outcomes, or automatically imported graph relations.
