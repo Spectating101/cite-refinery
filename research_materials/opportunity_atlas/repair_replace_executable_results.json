@@ -1,0 +1,181 @@
+{
+  "schema": "cite_refinery.repair_replace_executable_review.v1",
+  "source_pins": {
+    "lingrany__EverBatt-LFP-Recycling-Analysis": "246c4d478f9ceb05c580856720ca56a66064e205",
+    "WeixuanZ__flood-warning-system": "c1c7facf2c5577a155edd93a0b7279ad7630518c",
+    "ajlongshanks__co2_esphome": "d1b3c500ae475e3dcfef6e5dbb38279cdc267708",
+    "Jamie-Hough__Batteryloop": "f1751351e64b3072eb3522caa95c4cbac98d7a36",
+    "RomainGehrig__ESPHome-CO2Sensor": "d7d988175a93a0697862aef3b2c9878011eb3fb9",
+    "langchr86__homesensor": "646735bfd75ea9c7c7528a29ccb54c074527e08a"
+  },
+  "domains": [
+    {
+      "mechanism_id": "mechanism:battery_recycling_economics",
+      "source_asset": "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "upstream_source_sha": "246c4d478f9ceb05c580856720ca56a66064e205",
+      "local_repair_synthetic_pass": true,
+      "route_trials": [
+        {
+          "method": "Pyro",
+          "passed": true,
+          "original_paid_fee_profit_delta_usd": 0.0,
+          "local_repair_paid_fee_profit_delta_usd": -10000000.0,
+          "local_repair_cost_increase_usd": 10000000.0,
+          "negative_fee_income_preserved_usd": 20000000.0
+        },
+        {
+          "method": "Hydro",
+          "passed": true,
+          "original_paid_fee_profit_delta_usd": 0.0,
+          "local_repair_paid_fee_profit_delta_usd": -10000000.0,
+          "local_repair_cost_increase_usd": 10000000.0,
+          "negative_fee_income_preserved_usd": 20000000.0
+        },
+        {
+          "method": "Direct",
+          "passed": true,
+          "original_paid_fee_profit_delta_usd": 0.0,
+          "local_repair_paid_fee_profit_delta_usd": -10000000.0,
+          "local_repair_cost_increase_usd": 10000000.0,
+          "negative_fee_income_preserved_usd": 20000000.0
+        }
+      ],
+      "repair_modifies_upstream": false,
+      "alternative_asset": "github:Jamie-Hough/Batteryloop",
+      "alternative_sha": "f1751351e64b3072eb3522caa95c4cbac98d7a36",
+      "alternative_economics_module_empty": true,
+      "alternative_root_license_detected": false,
+      "alternative_gate_fee_model_executed": false,
+      "operational_profit_established": false
+    },
+    {
+      "mechanism_id": "mechanism:flood_warning_to_impact",
+      "source_asset": "github:WeixuanZ/flood-warning-system",
+      "upstream_source_sha": "c1c7facf2c5577a155edd93a0b7279ad7630518c",
+      "local_repair_synthetic_pass": true,
+      "input_ordering_trials": [
+        {
+          "order": [
+            "low",
+            "nan",
+            "high"
+          ],
+          "top_one": [
+            "high"
+          ],
+          "pass": true
+        },
+        {
+          "order": [
+            "low",
+            "high",
+            "nan"
+          ],
+          "top_one": [
+            "high"
+          ],
+          "pass": true
+        },
+        {
+          "order": [
+            "nan",
+            "low",
+            "high"
+          ],
+          "top_one": [
+            "high"
+          ],
+          "pass": true
+        },
+        {
+          "order": [
+            "nan",
+            "high",
+            "low"
+          ],
+          "top_one": [
+            "high"
+          ],
+          "pass": true
+        },
+        {
+          "order": [
+            "high",
+            "low",
+            "nan"
+          ],
+          "top_one": [
+            "high"
+          ],
+          "pass": true
+        },
+        {
+          "order": [
+            "high",
+            "nan",
+            "low"
+          ],
+          "top_one": [
+            "high"
+          ],
+          "pass": true
+        }
+      ],
+      "invalid_level_returned_none": true,
+      "repair_modifies_upstream": false,
+      "equivalent_replacement_verified": false,
+      "real_warning_performance_verified": false
+    },
+    {
+      "mechanism_id": "mechanism:classroom_ventilation_outcomes",
+      "source_asset": "github:ajlongshanks/co2_esphome",
+      "original_yaml_valid": false,
+      "config_alternative_asset": "github:RomainGehrig/ESPHome-CO2Sensor",
+      "config_alternative_sha": "d7d988175a93a0697862aef3b2c9878011eb3fb9",
+      "config_alternative_checks": [
+        {
+          "file": "CO2Sensor.yaml",
+          "yaml_parsed_with_supported_secret_tag": true,
+          "sensor_platforms": [
+            "scd4x"
+          ],
+          "missing_fonts": [
+            "fonts/PragmataPro.ttf"
+          ],
+          "esphome_compiled": false,
+          "hardware_compatible_verified": false
+        },
+        {
+          "file": "CO2Sensor-nograph.yaml",
+          "yaml_parsed_with_supported_secret_tag": true,
+          "sensor_platforms": [
+            "scd4x"
+          ],
+          "missing_fonts": [
+            "fonts/PragmataPro.ttf"
+          ],
+          "esphome_compiled": false,
+          "hardware_compatible_verified": false
+        }
+      ],
+      "config_alternative_license_file_detected": false,
+      "config_alternative_drop_in_for_scd30": false,
+      "licensed_other_architecture_asset": "github:langchr86/homesensor",
+      "licensed_other_architecture_sha": "646735bfd75ea9c7c7528a29ccb54c074527e08a",
+      "mit_license_detected": true,
+      "scd30_driver_source_present": true,
+      "other_architecture_is_esphome_yaml": false,
+      "firmware_compiled": false,
+      "sensor_accuracy_verified": false
+    }
+  ],
+  "outcomes": {
+    "battery_local_fee_repair_passed": true,
+    "flood_nan_sort_repair_passed": true,
+    "alternative_co2_parses_only": true,
+    "verified_drop_in_replacement": false,
+    "commercial_value_or_real_world_effect_verified": false,
+    "native_graph_promoted": false
+  },
+  "boundary": "Temporary-copy repair prototypes only; no upstream edits, firmware builds, operational deployments, external paid lead or sealed holdout use."
+}

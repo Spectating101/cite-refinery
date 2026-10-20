@@ -185,6 +185,29 @@
           "claim_authority": "synthetic_code_or_static_configuration_probe_only"
         },
         {
+          "name": "nonfinite_station_corrupts_top_one_ordering",
+          "requirement": "At input [low=0.2, invalid=NaN, high=1.6], top-one must select the high station, irrespective of telemetry insertion order.",
+          "status": "fail",
+          "critical": true,
+          "actual": {
+            "input_order": [
+              "low",
+              "nan",
+              "high2"
+            ],
+            "top_one": [
+              "low"
+            ]
+          },
+          "expected": {
+            "top_one": [
+              "high2"
+            ]
+          },
+          "interpretation": "Upstream Python float NaN breaks total ordering and can suppress a truly higher station. Synthetic fixture is a direct module test; it does not establish actual public-warning failures.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
           "name": "local_warning_distribution_and_health_outcomes",
           "requirement": "A forecast/threshold module must be paired with validated local alert delivery and downstream response.",
           "status": "not_tested",
@@ -197,7 +220,7 @@
       ],
       "check_counts": {
         "pass": 3,
-        "fail": 1,
+        "fail": 2,
         "not_tested": 1
       },
       "reproducible_component_defect_detected": true,
