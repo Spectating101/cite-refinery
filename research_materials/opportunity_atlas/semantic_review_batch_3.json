@@ -1,0 +1,448 @@
+{
+  "schema": "cite_refinery.opportunity_atlas_semantic_review.v1",
+  "batch_id": "semantic_audit_3",
+  "judgments": [
+    {
+      "domain_id": "supply_chain",
+      "repository_id": "muxuuu/serenity-skill",
+      "label": "adjacent",
+      "reason": "Focuses on financial equity and stock market research concerning bottlenecks rather than physical supply chain operations.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/muxuuu/serenity-skill"
+    },
+    {
+      "domain_id": "supply_chain",
+      "repository_id": "guacsec/guac",
+      "label": "different_meaning",
+      "reason": "Addresses software supply chain security and SBOM metadata rather than physical supply chain logistics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/guacsec/guac"
+    },
+    {
+      "domain_id": "supply_chain",
+      "repository_id": "ikatsov/tensor-house",
+      "label": "adjacent",
+      "reason": "Collection of general enterprise ML/AI demo notebooks that includes supply chain among various other business domains.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ikatsov/tensor-house"
+    },
+    {
+      "domain_id": "supply_chain",
+      "repository_id": "pypa/pip-audit",
+      "label": "different_meaning",
+      "reason": "Audits Python dependencies for software security vulnerabilities rather than physical goods supply chain operations.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/pypa/pip-audit"
+    },
+    {
+      "domain_id": "supply_chain",
+      "repository_id": "ossf/best-practices-badge",
+      "label": "different_meaning",
+      "reason": "Certifies open-source software engineering practices, unrelated to physical supply chain coordination.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ossf/best-practices-badge"
+    },
+    {
+      "domain_id": "manufacturing",
+      "repository_id": "frappe/erpnext",
+      "label": "adjacent",
+      "reason": "Broad general enterprise resource planning software spanning accounting, CRM, and HR rather than dedicated factory automation.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/frappe/erpnext"
+    },
+    {
+      "domain_id": "manufacturing",
+      "repository_id": "emqx/emqx",
+      "label": "adjacent",
+      "reason": "General-purpose and Industrial IoT MQTT broker providing messaging infrastructure rather than direct manufacturing execution.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/emqx/emqx"
+    },
+    {
+      "domain_id": "manufacturing",
+      "repository_id": "aureuserp/aureuserp",
+      "label": "adjacent",
+      "reason": "Generic ERP application focused primarily on general business accounting, HR, and invoicing.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/aureuserp/aureuserp"
+    },
+    {
+      "domain_id": "manufacturing",
+      "repository_id": "vernemq/vernemq",
+      "label": "adjacent",
+      "reason": "Distributed MQTT broker infrastructure used in industrial communication rather than factory workflow or quality management software.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/vernemq/vernemq"
+    },
+    {
+      "domain_id": "manufacturing",
+      "repository_id": "crbnos/carbon",
+      "label": "relevant",
+      "reason": "Explicitly built as a manufacturing ERP, MES, and QMS for shop floor control, MRP, and quality management.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/crbnos/carbon"
+    },
+    {
+      "domain_id": "geospatial",
+      "repository_id": "bilawalsidhu/gods-eye-view",
+      "label": "relevant",
+      "reason": "Provides live spatial intelligence and satellite tracking on a photorealistic 3D globe.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/bilawalsidhu/gods-eye-view"
+    },
+    {
+      "domain_id": "geospatial",
+      "repository_id": "CesiumGS/cesium",
+      "label": "relevant",
+      "reason": "Core JavaScript mapping library specifically created for 3D globe visualization and geospatial data.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/CesiumGS/cesium"
+    },
+    {
+      "domain_id": "geospatial",
+      "repository_id": "BigBodyCobain/Shadowbroker",
+      "label": "adjacent",
+      "reason": "Multi-source open-source intelligence platform that integrates geospatial tracking among broader surveillance feeds.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/BigBodyCobain/Shadowbroker"
+    },
+    {
+      "domain_id": "geospatial",
+      "repository_id": "Turfjs/turf",
+      "label": "relevant",
+      "reason": "Dedicated modular computational geometry and spatial analysis engine for geospatial data.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Turfjs/turf"
+    },
+    {
+      "domain_id": "geospatial",
+      "repository_id": "domlysz/BlenderGIS",
+      "label": "relevant",
+      "reason": "Direct bridge addon linking geographic data and GIS formats into Blender 3D.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/domlysz/BlenderGIS"
+    },
+    {
+      "domain_id": "civic_tech",
+      "repository_id": "okfn-brasil/serenata-de-amor",
+      "label": "relevant",
+      "reason": "Applies artificial intelligence to public administration data to enable civic oversight and public accountability.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/okfn-brasil/serenata-de-amor"
+    },
+    {
+      "domain_id": "civic_tech",
+      "repository_id": "iiab/iiab",
+      "label": "adjacent",
+      "reason": "Educational hardware/software digital library for remote communities rather than direct civic service or governance software.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/iiab/iiab"
+    },
+    {
+      "domain_id": "civic_tech",
+      "repository_id": "decidim/decidim",
+      "label": "relevant",
+      "reason": "Citizen participation and participatory democracy framework designed for public civic engagement.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/decidim/decidim"
+    },
+    {
+      "domain_id": "civic_tech",
+      "repository_id": "okfn-brasil/querido-diario",
+      "label": "relevant",
+      "reason": "Public interest project making official municipal government gazettes open and accessible to citizens.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/okfn-brasil/querido-diario"
+    },
+    {
+      "domain_id": "civic_tech",
+      "repository_id": "compdemocracy/polis",
+      "label": "relevant",
+      "reason": "Large-scale civic deliberation platform collecting open-ended citizen feedback for democratic decision-making.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/compdemocracy/polis"
+    },
+    {
+      "domain_id": "open_government",
+      "repository_id": "github/government.github.com",
+      "label": "adjacent",
+      "reason": "Curated showcase documenting open government innovation stories rather than an open government data tool or platform.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/github/government.github.com"
+    },
+    {
+      "domain_id": "open_government",
+      "repository_id": "consuldemocracy/consuldemocracy",
+      "label": "relevant",
+      "reason": "Open-source e-participation and open government platform for citizen consultation and governance.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/consuldemocracy/consuldemocracy"
+    },
+    {
+      "domain_id": "open_government",
+      "repository_id": "datagouv/data.gouv.fr",
+      "label": "adjacent",
+      "reason": "Technical issue-tracking repository for the French national open data portal rather than the open data system itself.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/datagouv/data.gouv.fr"
+    },
+    {
+      "domain_id": "open_government",
+      "repository_id": "mwananchi-tech/bunge-bits",
+      "label": "relevant",
+      "reason": "Automates summaries of parliamentary legislative sessions to enhance legislative transparency and public access.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/mwananchi-tech/bunge-bits"
+    },
+    {
+      "domain_id": "open_government",
+      "repository_id": "PopulateTools/gobierto",
+      "label": "relevant",
+      "reason": "Comprehensive open-source platform specifically providing municipal transparency and open government services.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/PopulateTools/gobierto"
+    },
+    {
+      "domain_id": "public_health",
+      "repository_id": "Chicago/food-inspections-evaluation",
+      "label": "relevant",
+      "reason": "Municipal public health analytics system predicting critical food safety inspection violations.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Chicago/food-inspections-evaluation"
+    },
+    {
+      "domain_id": "public_health",
+      "repository_id": "opensaludlab/ciencia_datos",
+      "label": "adjacent",
+      "reason": "Educational training course on healthcare data science rather than a public health surveillance or operations system.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/opensaludlab/ciencia_datos"
+    },
+    {
+      "domain_id": "public_health",
+      "repository_id": "google/ground-android",
+      "label": "adjacent",
+      "reason": "General mobile data collection application used across environmental, field survey, and public health activities.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/google/ground-android"
+    },
+    {
+      "domain_id": "public_health",
+      "repository_id": "judegomila/OnCo",
+      "label": "adjacent",
+      "reason": "Clinical oncology knowledge graph focusing on disease biology and clinical trials rather than population public health systems.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/judegomila/OnCo"
+    },
+    {
+      "domain_id": "public_health",
+      "repository_id": "COVID-19-electronic-health-system/Corona-tracker",
+      "label": "relevant",
+      "reason": "Epidemiological and personal health tracking application tailored for public health surveillance during COVID-19.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/COVID-19-electronic-health-system/Corona-tracker"
+    },
+    {
+      "domain_id": "bioinformatics",
+      "repository_id": "Developer-Y/cs-video-courses",
+      "label": "adjacent",
+      "reason": "Educational directory of general computer science video courses rather than a bioinformatics computational package.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Developer-Y/cs-video-courses"
+    },
+    {
+      "domain_id": "bioinformatics",
+      "repository_id": "K-Dense-AI/scientific-agent-skills",
+      "label": "adjacent",
+      "reason": "Broad scientific AI agent skill collection spanning multiple science fields rather than a dedicated bioinformatics analysis tool.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/K-Dense-AI/scientific-agent-skills"
+    },
+    {
+      "domain_id": "bioinformatics",
+      "repository_id": "plotly/dash",
+      "label": "different_meaning",
+      "reason": "General-purpose web application framework for data visualization without dedicated bioinformatics computational logic.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/plotly/dash"
+    },
+    {
+      "domain_id": "bioinformatics",
+      "repository_id": "biopython/biopython",
+      "label": "relevant",
+      "reason": "Foundational computational biology and bioinformatics library for sequence, structural, and genomic analysis.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/biopython/biopython"
+    },
+    {
+      "domain_id": "bioinformatics",
+      "repository_id": "danielecook/Awesome-Bioinformatics",
+      "label": "adjacent",
+      "reason": "Curated directory listing bioinformatics software rather than a computational analysis package itself.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/danielecook/Awesome-Bioinformatics"
+    },
+    {
+      "domain_id": "education",
+      "repository_id": "freeCodeCamp/freeCodeCamp",
+      "label": "relevant",
+      "reason": "Open-source interactive learning platform and structured curriculum for programming and computer science.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/freeCodeCamp/freeCodeCamp"
+    },
+    {
+      "domain_id": "education",
+      "repository_id": "EbookFoundation/free-programming-books",
+      "label": "adjacent",
+      "reason": "Curated directory of educational books rather than an educational service tool or learning platform.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/EbookFoundation/free-programming-books"
+    },
+    {
+      "domain_id": "education",
+      "repository_id": "TheAlgorithms/Python",
+      "label": "adjacent",
+      "reason": "Educational reference library of algorithm implementations rather than an instructional service or school management tool.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/TheAlgorithms/Python"
+    },
+    {
+      "domain_id": "education",
+      "repository_id": "DigitalPlatDev/FreeDomain",
+      "label": "adjacent",
+      "reason": "Domain registration platform that provides DNS tutorials rather than a dedicated educational service or school tool.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/DigitalPlatDev/FreeDomain"
+    },
+    {
+      "domain_id": "education",
+      "repository_id": "getify/You-Dont-Know-JS",
+      "label": "adjacent",
+      "reason": "Manuscript repository for an educational programming book series rather than learning software.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/getify/You-Dont-Know-JS"
+    },
+    {
+      "domain_id": "accessibility",
+      "repository_id": "gkd-kit/gkd",
+      "label": "different_meaning",
+      "reason": "Uses Android Accessibility APIs for UI automation and screen tapping rather than assistive technology for disabilities.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/gkd-kit/gkd"
+    },
+    {
+      "domain_id": "accessibility",
+      "repository_id": "cjpais/Handy",
+      "label": "relevant",
+      "reason": "Speech-to-text assistive software providing offline voice input accessible to individuals with motor or typing impairments.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/cjpais/Handy"
+    },
+    {
+      "domain_id": "accessibility",
+      "repository_id": "AllThingsSmitty/css-protips",
+      "label": "different_meaning",
+      "reason": "General tips and best practices for CSS web development, unrelated to assistive technology for disabilities.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/AllThingsSmitty/css-protips"
+    },
+    {
+      "domain_id": "accessibility",
+      "repository_id": "opendataloader-project/opendataloader-pdf",
+      "label": "relevant",
+      "reason": "Automates PDF document remediation and formatting specifically for digital accessibility standards.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/opendataloader-project/opendataloader-pdf"
+    },
+    {
+      "domain_id": "accessibility",
+      "repository_id": "tailwindlabs/headlessui",
+      "label": "relevant",
+      "reason": "UI component library explicitly engineered to provide accessible interactive web patterns conforming to a11y standards.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/tailwindlabs/headlessui"
+    },
+    {
+      "domain_id": "nonprofits",
+      "repository_id": "oppia/oppia",
+      "label": "adjacent",
+      "reason": "Online educational platform created by a nonprofit rather than software for managing nonprofit operations, grants, or fundraising.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/oppia/oppia"
+    },
+    {
+      "domain_id": "nonprofits",
+      "repository_id": "openfoodfoundation/openfoodnetwork",
+      "label": "adjacent",
+      "reason": "E-commerce and distribution platform for local food hubs rather than internal operational software for nonprofit management.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/openfoodfoundation/openfoodnetwork"
+    },
+    {
+      "domain_id": "nonprofits",
+      "repository_id": "civicrm/civicrm-core",
+      "label": "relevant",
+      "reason": "Constituent relationship management (CRM) software purpose-built for nonprofits, fundraising, and donor engagement.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/civicrm/civicrm-core"
+    },
+    {
+      "domain_id": "nonprofits",
+      "repository_id": "aaryansamanta/ai-ethos",
+      "label": "adjacent",
+      "reason": "Web codebase for a specific nonprofit organization's tutoring initiative rather than reusable nonprofit operational software.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/aaryansamanta/ai-ethos"
+    },
+    {
+      "domain_id": "nonprofits",
+      "repository_id": "aaryansamanta/nextgen-ai",
+      "label": "adjacent",
+      "reason": "Website for a student-led organization rather than an operational system for volunteer, grant, or nonprofit management.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/aaryansamanta/nextgen-ai"
+    },
+    {
+      "domain_id": "scientific_computing",
+      "repository_id": "K-Dense-AI/scientific-agent-skills",
+      "label": "adjacent",
+      "reason": "Automation agent skill framework for scientific workflows rather than a core numerical computation engine.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/K-Dense-AI/scientific-agent-skills"
+    },
+    {
+      "domain_id": "scientific_computing",
+      "repository_id": "tracel-ai/burn",
+      "label": "relevant",
+      "reason": "Numerical tensor computation library and autodiff deep learning framework.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/tracel-ai/burn"
+    },
+    {
+      "domain_id": "scientific_computing",
+      "repository_id": "scipy/scipy",
+      "label": "relevant",
+      "reason": "Core scientific computing and numerical analysis package providing mathematical algorithms and routines.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/scipy/scipy"
+    },
+    {
+      "domain_id": "scientific_computing",
+      "repository_id": "goplus/xgo",
+      "label": "adjacent",
+      "reason": "General-purpose programming language rather than a specialized scientific numerical computation package.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/goplus/xgo"
+    },
+    {
+      "domain_id": "scientific_computing",
+      "repository_id": "gonum/gonum",
+      "label": "relevant",
+      "reason": "Numerical computing libraries for matrices, statistics, and mathematical optimization in Go.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/gonum/gonum"
+    }
+  ],
+  "source": "authenticated_model_on_public_repo_metadata",
+  "limitation": "No README/code inspection; classification can be wrong; unaudited repos stay unlabeled."
+}

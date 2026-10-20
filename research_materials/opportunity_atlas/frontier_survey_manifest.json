@@ -1,0 +1,370 @@
+{
+  "schema": "cite_refinery.opportunity_atlas_survey.v1",
+  "version": "2026-10-21-frontier",
+  "intent": "broad_mapping_not_target_selection",
+  "collection": {
+    "provider": "GitHub search/repositories",
+    "per_domain": 15,
+    "query_basis": "topic",
+    "sort": "updated",
+    "include_forks": false,
+    "include_archived": false,
+    "rate_limit_policy": "bounded_respect_api_quota",
+    "commercial_inference": false,
+    "sample_segment": "recent_lower_visibility"
+  },
+  "domains": [
+    {
+      "macro": "engineering",
+      "id": "electronic_design",
+      "github_topic": "electronic-design-automation",
+      "query": "topic:electronic-design-automation stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "pcb",
+      "github_topic": "pcb",
+      "query": "topic:pcb stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "embedded",
+      "github_topic": "embedded-systems",
+      "query": "topic:embedded-systems stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "repair",
+      "github_topic": "repair",
+      "query": "topic:repair stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "robotics",
+      "github_topic": "robotics",
+      "query": "topic:robotics stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "mechatronics",
+      "github_topic": "mechatronics",
+      "query": "topic:mechatronics stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "cad",
+      "github_topic": "cad",
+      "query": "topic:cad stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "simulation",
+      "github_topic": "simulation",
+      "query": "topic:simulation stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "finite_elements",
+      "github_topic": "finite-element-analysis",
+      "query": "topic:finite-element-analysis stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "computational_chemistry",
+      "github_topic": "computational-chemistry",
+      "query": "topic:computational-chemistry stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "materials",
+      "github_topic": "materials-science",
+      "query": "topic:materials-science stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "engineering",
+      "id": "batteries",
+      "github_topic": "battery",
+      "query": "topic:battery stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "solar",
+      "github_topic": "solar-energy",
+      "query": "topic:solar-energy stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "smart_grid",
+      "github_topic": "smart-grid",
+      "query": "topic:smart-grid stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "energy",
+      "github_topic": "energy",
+      "query": "topic:energy stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "climate",
+      "github_topic": "climate-change",
+      "query": "topic:climate-change stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "flood",
+      "github_topic": "flood",
+      "query": "topic:flood stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "water",
+      "github_topic": "water-quality",
+      "query": "topic:water-quality stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "circular",
+      "github_topic": "circular-economy",
+      "query": "topic:circular-economy stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "energy_environment",
+      "id": "sustainability",
+      "github_topic": "sustainability",
+      "query": "topic:sustainability stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "physical_operations",
+      "id": "agriculture",
+      "github_topic": "agriculture",
+      "query": "topic:agriculture stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "physical_operations",
+      "id": "food_waste",
+      "github_topic": "food-waste",
+      "query": "topic:food-waste stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "physical_operations",
+      "id": "supply_chain",
+      "github_topic": "supply-chain",
+      "query": "topic:supply-chain stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "physical_operations",
+      "id": "manufacturing",
+      "github_topic": "manufacturing",
+      "query": "topic:manufacturing stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "physical_operations",
+      "id": "geospatial",
+      "github_topic": "gis",
+      "query": "topic:gis stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "public_services",
+      "id": "civic_tech",
+      "github_topic": "civic-tech",
+      "query": "topic:civic-tech stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "public_services",
+      "id": "open_government",
+      "github_topic": "open-government",
+      "query": "topic:open-government stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "public_services",
+      "id": "public_health",
+      "github_topic": "public-health",
+      "query": "topic:public-health stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "public_services",
+      "id": "bioinformatics",
+      "github_topic": "bioinformatics",
+      "query": "topic:bioinformatics stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "public_services",
+      "id": "education",
+      "github_topic": "education",
+      "query": "topic:education stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "public_services",
+      "id": "accessibility",
+      "github_topic": "accessibility",
+      "query": "topic:accessibility stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "public_services",
+      "id": "nonprofits",
+      "github_topic": "nonprofit",
+      "query": "topic:nonprofit stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "knowledge_data",
+      "id": "scientific_computing",
+      "github_topic": "scientific-computing",
+      "query": "topic:scientific-computing stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "knowledge_data",
+      "id": "research_software",
+      "github_topic": "research-software",
+      "query": "topic:research-software stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "knowledge_data",
+      "id": "data_engineering",
+      "github_topic": "data-engineering",
+      "query": "topic:data-engineering stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "knowledge_data",
+      "id": "knowledge_graphs",
+      "github_topic": "knowledge-graph",
+      "query": "topic:knowledge-graph stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "knowledge_data",
+      "id": "open_data",
+      "github_topic": "open-data",
+      "query": "topic:open-data stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "knowledge_data",
+      "id": "ai_agents",
+      "github_topic": "ai-agents",
+      "query": "topic:ai-agents stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "investigation_finance",
+      "id": "osint",
+      "github_topic": "osint",
+      "query": "topic:osint stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "investigation_finance",
+      "id": "fact_check",
+      "github_topic": "fact-checking",
+      "query": "topic:fact-checking stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "investigation_finance",
+      "id": "quant_finance",
+      "github_topic": "quantitative-finance",
+      "query": "topic:quantitative-finance stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "investigation_finance",
+      "id": "blockchain_analytics",
+      "github_topic": "blockchain-analytics",
+      "query": "topic:blockchain-analytics stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "investigation_finance",
+      "id": "security",
+      "github_topic": "cybersecurity",
+      "query": "topic:cybersecurity stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    },
+    {
+      "macro": "investigation_finance",
+      "id": "digital_identity",
+      "github_topic": "digital-identity",
+      "query": "topic:digital-identity stars:5..300 pushed:>2025-10-20 fork:false archived:false",
+      "evidence_family": "implementation_listing",
+      "mode": "public_repo_metadata_only"
+    }
+  ]
+}

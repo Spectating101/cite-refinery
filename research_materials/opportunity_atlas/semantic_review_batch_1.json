@@ -1,0 +1,448 @@
+{
+  "schema": "cite_refinery.opportunity_atlas_semantic_review.v1",
+  "batch_id": "semantic_audit_1",
+  "judgments": [
+    {
+      "domain_id": "electronic_design",
+      "repository_id": "ai4co/rl4co",
+      "label": "adjacent",
+      "reason": "Library targets generic combinatorial optimization via reinforcement learning rather than dedicated electronic circuit or EDA engineering.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ai4co/rl4co"
+    },
+    {
+      "domain_id": "electronic_design",
+      "repository_id": "OpenTimer/OpenTimer",
+      "label": "relevant",
+      "reason": "Timing analysis tool specifically built for VLSI electronic circuit systems and EDA workflows.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/OpenTimer/OpenTimer"
+    },
+    {
+      "domain_id": "electronic_design",
+      "repository_id": "librelane/librelane",
+      "label": "relevant",
+      "reason": "Infrastructure dedicated to ASIC electronic chip design and implementation flows.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/librelane/librelane"
+    },
+    {
+      "domain_id": "electronic_design",
+      "repository_id": "qiskit-community/qiskit-metal",
+      "label": "relevant",
+      "reason": "EDA-grade framework for designing and analyzing physical superconducting quantum chip circuits.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/qiskit-community/qiskit-metal"
+    },
+    {
+      "domain_id": "electronic_design",
+      "repository_id": "ai4co/reevo",
+      "label": "different_meaning",
+      "reason": "Focuses on LLM hyper-heuristics and evolutionary search algorithms rather than electronic circuit design.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ai4co/reevo"
+    },
+    {
+      "domain_id": "pcb",
+      "repository_id": "kitspace/awesome-electronics",
+      "label": "adjacent",
+      "reason": "Curated directory of general electronics resources that includes PCB topics alongside broader electronics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/kitspace/awesome-electronics"
+    },
+    {
+      "domain_id": "pcb",
+      "repository_id": "openscopeproject/InteractiveHtmlBom",
+      "label": "relevant",
+      "reason": "Directly generates interactive BOMs for major PCB design suites such as KiCad, Allegro, and Eagle.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/openscopeproject/InteractiveHtmlBom"
+    },
+    {
+      "domain_id": "pcb",
+      "repository_id": "help-14/mechanical-keyboard",
+      "label": "adjacent",
+      "reason": "Directory of DIY mechanical keyboards, which utilize custom PCBs but focus primarily on keyboards.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/help-14/mechanical-keyboard"
+    },
+    {
+      "domain_id": "pcb",
+      "repository_id": "Keycapsss/awesome-mechanical-keyboard",
+      "label": "adjacent",
+      "reason": "Curated resource list for mechanical keyboards rather than a dedicated PCB engineering tool.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Keycapsss/awesome-mechanical-keyboard"
+    },
+    {
+      "domain_id": "pcb",
+      "repository_id": "KiCad/kicad-source-mirror",
+      "label": "relevant",
+      "reason": "Source mirror of KiCad, a comprehensive EDA suite for schematic capture and PCB layout.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/KiCad/kicad-source-mirror"
+    },
+    {
+      "domain_id": "embedded",
+      "repository_id": "Developer-Y/cs-video-courses",
+      "label": "different_meaning",
+      "reason": "General computer science video course directory with no specific embedded firmware engineering mechanism.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Developer-Y/cs-video-courses"
+    },
+    {
+      "domain_id": "embedded",
+      "repository_id": "m3y54m/Embedded-Engineering-Roadmap",
+      "label": "adjacent",
+      "reason": "Curriculum roadmap and learning resource compilation for embedded engineering rather than firmware code.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/m3y54m/Embedded-Engineering-Roadmap"
+    },
+    {
+      "domain_id": "embedded",
+      "repository_id": "RT-Thread/rt-thread",
+      "label": "relevant",
+      "reason": "Open-source real-time operating system specifically designed for embedded microcontrollers and IoT devices.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/RT-Thread/rt-thread"
+    },
+    {
+      "domain_id": "embedded",
+      "repository_id": "nasa/fprime",
+      "label": "relevant",
+      "reason": "Flight software and embedded systems framework for microcontroller and spaceflight hardware.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/nasa/fprime"
+    },
+    {
+      "domain_id": "embedded",
+      "repository_id": "rust-embedded/awesome-embedded-rust",
+      "label": "adjacent",
+      "reason": "Curated catalog of resources and crates for embedded and low-level development in Rust.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/rust-embedded/awesome-embedded-rust"
+    },
+    {
+      "domain_id": "repair",
+      "repository_id": "josdejong/jsonrepair",
+      "label": "different_meaning",
+      "reason": "Polysemy: repairs invalid JSON text documents rather than diagnosing or repairing physical hardware.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/josdejong/jsonrepair"
+    },
+    {
+      "domain_id": "repair",
+      "repository_id": "noob-hackers/m-wiz",
+      "label": "different_meaning",
+      "reason": "Installs and fixes Metasploit software packages in Android Termux, not physical equipment repair.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/noob-hackers/m-wiz"
+    },
+    {
+      "domain_id": "repair",
+      "repository_id": "ImpulseAdventure/JPEGsnoop",
+      "label": "different_meaning",
+      "reason": "Software decoder and file analysis tool for JPEG image streams, not physical device diagnostics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ImpulseAdventure/JPEGsnoop"
+    },
+    {
+      "domain_id": "repair",
+      "repository_id": "eclipse-repairnator/repairnator",
+      "label": "different_meaning",
+      "reason": "Automated program repair bot for software CI/CD pipelines, not physical machinery refurbishment.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/eclipse-repairnator/repairnator"
+    },
+    {
+      "domain_id": "repair",
+      "repository_id": "omarKmekkawy/Useful-Youtube-Channels",
+      "label": "adjacent",
+      "reason": "List of YouTube channels covering electronics and mechanical topics, supporting DIY repair activities.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/omarKmekkawy/Useful-Youtube-Channels"
+    },
+    {
+      "domain_id": "robotics",
+      "repository_id": "Developer-Y/cs-video-courses",
+      "label": "different_meaning",
+      "reason": "Broad computer science curriculum list without specific focus on physical robotics or motion control.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Developer-Y/cs-video-courses"
+    },
+    {
+      "domain_id": "robotics",
+      "repository_id": "commaai/openpilot",
+      "label": "relevant",
+      "reason": "Open-source autonomous driving operating system governing physical vehicular robotics and actuation.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/commaai/openpilot"
+    },
+    {
+      "domain_id": "robotics",
+      "repository_id": "NaiboWang/EasySpider",
+      "label": "different_meaning",
+      "reason": "Polysemy: web scraping/browser RPA bot rather than physical robotics automation.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/NaiboWang/EasySpider"
+    },
+    {
+      "domain_id": "robotics",
+      "repository_id": "AtsushiSakai/PythonRobotics",
+      "label": "relevant",
+      "reason": "Implementation of core physical robotics algorithms including motion planning, kinematics, and control.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/AtsushiSakai/PythonRobotics"
+    },
+    {
+      "domain_id": "robotics",
+      "repository_id": "harvard-edge/cs249r_book",
+      "label": "adjacent",
+      "reason": "Academic course text on ML systems covering edge and physical AI as broader system topics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/harvard-edge/cs249r_book"
+    },
+    {
+      "domain_id": "mechatronics",
+      "repository_id": "andreisperid/E-TKT",
+      "label": "relevant",
+      "reason": "Physical electromechanical device combining 3D-printed mechanisms, motors, and electronic control.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/andreisperid/E-TKT"
+    },
+    {
+      "domain_id": "mechatronics",
+      "repository_id": "simplefoc/Arduino-FOC-balancer",
+      "label": "relevant",
+      "reason": "Two-wheeled inverted pendulum robot integrating brushless motors, mechanical chassis, and Arduino control.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/simplefoc/Arduino-FOC-balancer"
+    },
+    {
+      "domain_id": "mechatronics",
+      "repository_id": "nasa-jpl/Pulse",
+      "label": "adjacent",
+      "reason": "Wearable electronic proximity warning device without complex mechanical actuation or control mechanisms.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/nasa-jpl/Pulse"
+    },
+    {
+      "domain_id": "mechatronics",
+      "repository_id": "jimmyval92/robotics_ebooks",
+      "label": "adjacent",
+      "reason": "Collection of e-books on robotics and mechatronics rather than an implemented mechatronic system.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/jimmyval92/robotics_ebooks"
+    },
+    {
+      "domain_id": "mechatronics",
+      "repository_id": "engyasin/awesome-mechatronics",
+      "label": "adjacent",
+      "reason": "Curated catalog of books, courses, and software resources covering mechatronics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/engyasin/awesome-mechatronics"
+    },
+    {
+      "domain_id": "cad",
+      "repository_id": "FreeCAD/FreeCAD",
+      "label": "relevant",
+      "reason": "General-purpose 3D parametric CAD modeler for mechanical engineering and physical component design.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/FreeCAD/FreeCAD"
+    },
+    {
+      "domain_id": "cad",
+      "repository_id": "pascalorg/editor",
+      "label": "adjacent",
+      "reason": "3D architectural and BIM editor rather than parametric CAD for mechanical parts and assemblies.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/pascalorg/editor"
+    },
+    {
+      "domain_id": "cad",
+      "repository_id": "earthtojake/text-to-cad",
+      "label": "insufficient_metadata",
+      "reason": "Description is an uninformative slogan ('Give your agent CAD superpowers') lacking mechanism details.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/earthtojake/text-to-cad"
+    },
+    {
+      "domain_id": "cad",
+      "repository_id": "openscad/openscad",
+      "label": "relevant",
+      "reason": "Programmer-focused solid 3D CAD modeler for parametric physical components.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/openscad/openscad"
+    },
+    {
+      "domain_id": "cad",
+      "repository_id": "tangency-labs/solidcraft",
+      "label": "relevant",
+      "reason": "Parametric 3D CAD application built for physical component design and STEP/B-rep modeling.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/tangency-labs/solidcraft"
+    },
+    {
+      "domain_id": "simulation",
+      "repository_id": "PavelDoGreat/WebGL-Fluid-Simulation",
+      "label": "adjacent",
+      "reason": "Interactive real-time fluid simulation focused on browser visual effects rather than engineering analysis.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/PavelDoGreat/WebGL-Fluid-Simulation"
+    },
+    {
+      "domain_id": "simulation",
+      "repository_id": "OpenRCT2/OpenRCT2",
+      "label": "different_meaning",
+      "reason": "Polysemy: amusement park management video game simulation rather than scientific or engineering physics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/OpenRCT2/OpenRCT2"
+    },
+    {
+      "domain_id": "simulation",
+      "repository_id": "bulletphysics/bullet3",
+      "label": "relevant",
+      "reason": "Multi-physics simulation engine providing rigid-body dynamics for robotics, engineering, and visual computing.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/bulletphysics/bullet3"
+    },
+    {
+      "domain_id": "simulation",
+      "repository_id": "jrouwe/JoltPhysics",
+      "label": "adjacent",
+      "reason": "Rigid body physics and collision detection library specifically tailored for games and VR applications.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/jrouwe/JoltPhysics"
+    },
+    {
+      "domain_id": "simulation",
+      "repository_id": "taojy123/KeymouseGo",
+      "label": "different_meaning",
+      "reason": "Polysemy: macro tool that simulates mouse and keyboard actions, not physical or scientific simulation.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/taojy123/KeymouseGo"
+    },
+    {
+      "domain_id": "finite_elements",
+      "repository_id": "pyvista/pyvista",
+      "label": "adjacent",
+      "reason": "3D mesh analysis and plotting toolkit that supports FEA workflows without being a dedicated solver.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/pyvista/pyvista"
+    },
+    {
+      "domain_id": "finite_elements",
+      "repository_id": "m2n037/awesome-mecheng",
+      "label": "adjacent",
+      "reason": "General mechanical engineering resource list referencing FEA tools alongside other mechanical topics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/m2n037/awesome-mecheng"
+    },
+    {
+      "domain_id": "finite_elements",
+      "repository_id": "FreeFem/FreeFem-sources",
+      "label": "insufficient_metadata",
+      "reason": "Description ('FreeFEM source code') provides no functional details demonstrating finite element analysis.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/FreeFem/FreeFem-sources"
+    },
+    {
+      "domain_id": "finite_elements",
+      "repository_id": "JWock82/Pynite",
+      "label": "relevant",
+      "reason": "Python finite element analysis library dedicated to 3D structural engineering and mechanics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/JWock82/Pynite"
+    },
+    {
+      "domain_id": "finite_elements",
+      "repository_id": "libMesh/libmesh",
+      "label": "insufficient_metadata",
+      "reason": "Description ('libMesh github repository') fails to state or demonstrate its numerical or FEA mechanism.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/libMesh/libmesh"
+    },
+    {
+      "domain_id": "computational_chemistry",
+      "repository_id": "deepmodeling/deepmd-kit",
+      "label": "relevant",
+      "reason": "Deep learning package for many-body potential energy representation and molecular dynamics simulations.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/deepmodeling/deepmd-kit"
+    },
+    {
+      "domain_id": "computational_chemistry",
+      "repository_id": "MDAnalysis/mdanalysis",
+      "label": "relevant",
+      "reason": "Library designed specifically to analyze trajectories from molecular dynamics simulations.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/MDAnalysis/mdanalysis"
+    },
+    {
+      "domain_id": "computational_chemistry",
+      "repository_id": "lmmentel/awesome-python-chemistry",
+      "label": "adjacent",
+      "reason": "Curated bibliography and list of Python chemistry and molecular modeling packages.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/lmmentel/awesome-python-chemistry"
+    },
+    {
+      "domain_id": "computational_chemistry",
+      "repository_id": "psi4/psi4",
+      "label": "relevant",
+      "reason": "Open-source quantum chemistry and electronic structure simulation software suite.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/psi4/psi4"
+    },
+    {
+      "domain_id": "computational_chemistry",
+      "repository_id": "3dmol/3Dmol.js",
+      "label": "adjacent",
+      "reason": "Molecular visualization and graphics library that aids computational chemistry workflows.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/3dmol/3Dmol.js"
+    },
+    {
+      "domain_id": "materials",
+      "repository_id": "K-Dense-AI/scientific-agent-skills",
+      "label": "adjacent",
+      "reason": "General scientific agent skill library covering chemistry, biology, and medicine, not dedicated materials science.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/K-Dense-AI/scientific-agent-skills"
+    },
+    {
+      "domain_id": "materials",
+      "repository_id": "deepchem/deepchem",
+      "label": "relevant",
+      "reason": "Deep learning platform explicitly addressing materials science, quantum chemistry, and molecular modeling.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/deepchem/deepchem"
+    },
+    {
+      "domain_id": "materials",
+      "repository_id": "deepmodeling/deepmd-kit",
+      "label": "adjacent",
+      "reason": "Molecular dynamics and interatomic potential library applicable to materials, though fundamentally computational chemistry.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/deepmodeling/deepmd-kit"
+    },
+    {
+      "domain_id": "materials",
+      "repository_id": "materialsproject/pymatgen",
+      "label": "relevant",
+      "reason": "Materials analysis library powering the Materials Project for structure analysis and materials genomics.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/materialsproject/pymatgen"
+    },
+    {
+      "domain_id": "materials",
+      "repository_id": "microsoft/mattergen",
+      "label": "relevant",
+      "reason": "Generative model explicitly tailored for inorganic materials design across the periodic table.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/microsoft/mattergen"
+    }
+  ],
+  "source": "authenticated_model_on_public_repo_metadata",
+  "limitation": "No README/code inspection; classification can be wrong; unaudited repos stay unlabeled."
+}

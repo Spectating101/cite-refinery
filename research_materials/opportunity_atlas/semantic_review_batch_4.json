@@ -1,0 +1,448 @@
+{
+  "schema": "cite_refinery.opportunity_atlas_semantic_review.v1",
+  "batch_id": "semantic_audit_4",
+  "judgments": [
+    {
+      "domain_id": "research_software",
+      "repository_id": "kyky2347/ALTA",
+      "label": "adjacent",
+      "reason": "Domain-specific financial trading simulation platform with auditable logs rather than general reproducible research software.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/kyky2347/ALTA"
+    },
+    {
+      "domain_id": "research_software",
+      "repository_id": "rajshah6/arXivisual",
+      "label": "insufficient_metadata",
+      "reason": "Hackathon award announcement with no description of research software functionality.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/rajshah6/arXivisual"
+    },
+    {
+      "domain_id": "research_software",
+      "repository_id": "logannye/rosalind",
+      "label": "relevant",
+      "reason": "Directly provides reproducible genomic read evidence, datasets, and analyzers for research.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/logannye/rosalind"
+    },
+    {
+      "domain_id": "research_software",
+      "repository_id": "NLeSC/python-template",
+      "label": "adjacent",
+      "reason": "Project scaffolding and template repository for scientific code rather than executable research software.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/NLeSC/python-template"
+    },
+    {
+      "domain_id": "research_software",
+      "repository_id": "XiantingWu/VeriRepro",
+      "label": "relevant",
+      "reason": "Explicitly built for evidence-grounded reproduction of computational research papers.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/XiantingWu/VeriRepro"
+    },
+    {
+      "domain_id": "data_engineering",
+      "repository_id": "apache/superset",
+      "label": "adjacent",
+      "reason": "Data visualization and exploration platform downstream of data pipelines and ETL.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/apache/superset"
+    },
+    {
+      "domain_id": "data_engineering",
+      "repository_id": "GokuMohandas/Made-With-ML",
+      "label": "adjacent",
+      "reason": "Educational resource and course on production ML systems rather than a data engineering tool.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/GokuMohandas/Made-With-ML"
+    },
+    {
+      "domain_id": "data_engineering",
+      "repository_id": "apache/airflow",
+      "label": "relevant",
+      "reason": "Core workflow orchestration platform for authoring, scheduling, and monitoring data pipelines.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/apache/airflow"
+    },
+    {
+      "domain_id": "data_engineering",
+      "repository_id": "DataTalksClub/data-engineering-zoomcamp",
+      "label": "adjacent",
+      "reason": "Educational training course covering data engineering concepts rather than pipeline software.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/DataTalksClub/data-engineering-zoomcamp"
+    },
+    {
+      "domain_id": "data_engineering",
+      "repository_id": "eugeneyan/applied-ml",
+      "label": "adjacent",
+      "reason": "Curated reading list of industry papers and blog posts rather than data engineering infrastructure.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/eugeneyan/applied-ml"
+    },
+    {
+      "domain_id": "knowledge_graphs",
+      "repository_id": "Graphify-Labs/graphify",
+      "label": "relevant",
+      "reason": "Parses codebases, schemas, and documents into queryable knowledge graphs with explicit edges.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Graphify-Labs/graphify"
+    },
+    {
+      "domain_id": "knowledge_graphs",
+      "repository_id": "Egonex-AI/Understand-Anything",
+      "label": "relevant",
+      "reason": "Converts code into interactive knowledge graphs for semantic exploration and questioning.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Egonex-AI/Understand-Anything"
+    },
+    {
+      "domain_id": "knowledge_graphs",
+      "repository_id": "666ghj/MiroFish",
+      "label": "different_meaning",
+      "reason": "Swarm intelligence forecasting engine rather than a semantic entity-relation knowledge graph.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/666ghj/MiroFish"
+    },
+    {
+      "domain_id": "knowledge_graphs",
+      "repository_id": "DeusData/codebase-memory-mcp",
+      "label": "relevant",
+      "reason": "Indexes codebases into a persistent knowledge graph for sub-millisecond graph queries.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/DeusData/codebase-memory-mcp"
+    },
+    {
+      "domain_id": "knowledge_graphs",
+      "repository_id": "logseq/logseq",
+      "label": "adjacent",
+      "reason": "Personal knowledge management and note-taking tool rather than a formal semantic entity/relation knowledge graph system.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/logseq/logseq"
+    },
+    {
+      "domain_id": "open_data",
+      "repository_id": "public-api-lists/public-api-lists",
+      "label": "adjacent",
+      "reason": "Curated directory of web APIs rather than an open government or dataset repository platform.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/public-api-lists/public-api-lists"
+    },
+    {
+      "domain_id": "open_data",
+      "repository_id": "ckan/ckan",
+      "label": "relevant",
+      "reason": "Leading data management system for powering open government data catalogs and public portals.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ckan/ckan"
+    },
+    {
+      "domain_id": "open_data",
+      "repository_id": "okfn-brasil/serenata-de-amor",
+      "label": "adjacent",
+      "reason": "Civic auditing tool that consumes open data rather than a platform for hosting or standardizing open data.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/okfn-brasil/serenata-de-amor"
+    },
+    {
+      "domain_id": "open_data",
+      "repository_id": "hudl/open-data",
+      "label": "relevant",
+      "reason": "Directly distributes open sports datasets for public access.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/hudl/open-data"
+    },
+    {
+      "domain_id": "open_data",
+      "repository_id": "common-voice/common-voice",
+      "label": "relevant",
+      "reason": "Public open speech dataset platform crowdsourcing and releasing voice data.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/common-voice/common-voice"
+    },
+    {
+      "domain_id": "ai_agents",
+      "repository_id": "morluto/rea",
+      "label": "relevant",
+      "reason": "Autonomous multi-agent orchestration for reverse engineering applications and binaries.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/morluto/rea"
+    },
+    {
+      "domain_id": "ai_agents",
+      "repository_id": "affaan-m/ECC",
+      "label": "relevant",
+      "reason": "Agent harness system managing memory, skills, and execution orchestration across LLM agents.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/affaan-m/ECC"
+    },
+    {
+      "domain_id": "ai_agents",
+      "repository_id": "deepseek-ai/deepseek-harness",
+      "label": "relevant",
+      "reason": "Extensible harness and plugin framework for orchestrating AI agent capabilities.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/deepseek-ai/deepseek-harness"
+    },
+    {
+      "domain_id": "ai_agents",
+      "repository_id": "NousResearch/hermes-agent",
+      "label": "insufficient_metadata",
+      "reason": "Vague marketing slogan that fails to describe agent tool orchestration or architecture.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/NousResearch/hermes-agent"
+    },
+    {
+      "domain_id": "ai_agents",
+      "repository_id": "firecrawl/firecrawl",
+      "label": "adjacent",
+      "reason": "Web scraping and crawling service built as a data source for agents, not an agent orchestrator itself.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/firecrawl/firecrawl"
+    },
+    {
+      "domain_id": "osint",
+      "repository_id": "sherlock-project/sherlock",
+      "label": "relevant",
+      "reason": "Automated open-source intelligence tool for investigating usernames across social media.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "domain_id": "osint",
+      "repository_id": "koala73/worldmonitor",
+      "label": "relevant",
+      "reason": "Real-time open-source geopolitical and infrastructure situational awareness dashboard.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/koala73/worldmonitor"
+    },
+    {
+      "domain_id": "osint",
+      "repository_id": "bilawalsidhu/gods-eye-view",
+      "label": "relevant",
+      "reason": "Live open-source spatial intelligence and satellite tracking on a 3D globe.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/bilawalsidhu/gods-eye-view"
+    },
+    {
+      "domain_id": "osint",
+      "repository_id": "soxoj/maigret",
+      "label": "relevant",
+      "reason": "OSINT investigation tool that collects dossiers across thousands of public websites.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/soxoj/maigret"
+    },
+    {
+      "domain_id": "osint",
+      "repository_id": "lissy93/web-check",
+      "label": "relevant",
+      "reason": "All-in-one OSINT utility for analyzing infrastructure and metadata of websites.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/lissy93/web-check"
+    },
+    {
+      "domain_id": "fact_check",
+      "repository_id": "GAIR-NLP/factool",
+      "label": "relevant",
+      "reason": "Factuality detection tool designed to identify and verify claims in generative AI outputs.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/GAIR-NLP/factool"
+    },
+    {
+      "domain_id": "fact_check",
+      "repository_id": "superwesleyhys-ux/factcircuit",
+      "label": "relevant",
+      "reason": "Auditable claim-and-evidence verification loop with provenance tracking and retrieval checks.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/superwesleyhys-ux/factcircuit"
+    },
+    {
+      "domain_id": "fact_check",
+      "repository_id": "Cartus/Automated-Fact-Checking-Resources",
+      "label": "adjacent",
+      "reason": "Bibliography of academic papers on automated fact-checking rather than a verification system.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Cartus/Automated-Fact-Checking-Resources"
+    },
+    {
+      "domain_id": "fact_check",
+      "repository_id": "jamditis/claude-skills-journalism",
+      "label": "adjacent",
+      "reason": "General journalism skills suite that includes verification alongside FOIA and academic writing.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/jamditis/claude-skills-journalism"
+    },
+    {
+      "domain_id": "fact_check",
+      "repository_id": "ICTMCG/LLM-for-misinformation-research",
+      "label": "adjacent",
+      "reason": "Literature repository and paper list on LLM misinformation rather than a claim-verification system.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ICTMCG/LLM-for-misinformation-research"
+    },
+    {
+      "domain_id": "quant_finance",
+      "repository_id": "openbq-org/OpenBB",
+      "label": "relevant",
+      "reason": "Open market data and analytical platform tailored for quants and investment researchers.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/openbq-org/OpenBB"
+    },
+    {
+      "domain_id": "quant_finance",
+      "repository_id": "ZhuLinsen/daily_stock_analysis",
+      "label": "relevant",
+      "reason": "Multi-source stock market data aggregation, analysis, and decision dashboard system.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ZhuLinsen/daily_stock_analysis"
+    },
+    {
+      "domain_id": "quant_finance",
+      "repository_id": "microsoft/qlib",
+      "label": "relevant",
+      "reason": "AI-oriented quantitative investment platform supporting market dynamics modeling and portfolio research.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/microsoft/qlib"
+    },
+    {
+      "domain_id": "quant_finance",
+      "repository_id": "HKUDS/Vibe-Trading",
+      "label": "insufficient_metadata",
+      "reason": "Tagline mentions a trading agent but fails to state quantitative modeling or analytics mechanisms.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/HKUDS/Vibe-Trading"
+    },
+    {
+      "domain_id": "quant_finance",
+      "repository_id": "Fincept-Corporation/FinceptTerminal",
+      "label": "relevant",
+      "reason": "Financial analytics terminal providing advanced market data analysis and economic research tools.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Fincept-Corporation/FinceptTerminal"
+    },
+    {
+      "domain_id": "blockchain_analytics",
+      "repository_id": "blockchain-etl/ethereum-etl",
+      "label": "relevant",
+      "reason": "ETL tool specifically designed to extract, transform, and index Ethereum on-chain data.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/blockchain-etl/ethereum-etl"
+    },
+    {
+      "domain_id": "blockchain_analytics",
+      "repository_id": "blockchain-etl/bitcoin-etl",
+      "label": "relevant",
+      "reason": "ETL tool for extracting and parsing on-chain transaction data across Bitcoin and UTXO chains.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/blockchain-etl/bitcoin-etl"
+    },
+    {
+      "domain_id": "blockchain_analytics",
+      "repository_id": "blockchain-etl/ethereum-etl-airflow",
+      "label": "relevant",
+      "reason": "Airflow orchestration DAGs for exporting and indexing Ethereum on-chain data into BigQuery.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/blockchain-etl/ethereum-etl-airflow"
+    },
+    {
+      "domain_id": "blockchain_analytics",
+      "repository_id": "blockchain-etl/public-datasets",
+      "label": "adjacent",
+      "reason": "List cataloging public blockchain datasets in BigQuery rather than an analytical pipeline or query tool.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/blockchain-etl/public-datasets"
+    },
+    {
+      "domain_id": "blockchain_analytics",
+      "repository_id": "blockchain-etl/awesome-bigquery-views",
+      "label": "relevant",
+      "reason": "Collection of analytical SQL views directly performing on-chain analysis on BigQuery blockchain datasets.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/blockchain-etl/awesome-bigquery-views"
+    },
+    {
+      "domain_id": "security",
+      "repository_id": "sherlock-project/sherlock",
+      "label": "relevant",
+      "reason": "Cybersecurity reconnaissance and OSINT tool for investigating user accounts across networks.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "domain_id": "security",
+      "repository_id": "usestrix/strix",
+      "label": "relevant",
+      "reason": "Automated penetration testing software to detect and remediate application security vulnerabilities.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/usestrix/strix"
+    },
+    {
+      "domain_id": "security",
+      "repository_id": "WerWolv/ImHex",
+      "label": "relevant",
+      "reason": "Hex editor and binary analysis tool used for reverse engineering and vulnerability assessment.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/WerWolv/ImHex"
+    },
+    {
+      "domain_id": "security",
+      "repository_id": "x64dbg/x64dbg",
+      "label": "relevant",
+      "reason": "User-mode binary debugger optimized for malware analysis and dynamic security reverse engineering.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/x64dbg/x64dbg"
+    },
+    {
+      "domain_id": "security",
+      "repository_id": "KeygraphHQ/shannon",
+      "label": "relevant",
+      "reason": "Autonomous penetration testing tool that identifies attack vectors and validates exploits.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/KeygraphHQ/shannon"
+    },
+    {
+      "domain_id": "digital_identity",
+      "repository_id": "eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework",
+      "label": "relevant",
+      "reason": "Official architecture and reference framework for the European Digital Identity Wallet.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework"
+    },
+    {
+      "domain_id": "digital_identity",
+      "repository_id": "walt-id/waltid-identity",
+      "label": "relevant",
+      "reason": "Comprehensive open-source toolkit for verifiable credentials and digital identity wallets.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/walt-id/waltid-identity"
+    },
+    {
+      "domain_id": "digital_identity",
+      "repository_id": "mvs-org/metaverse",
+      "label": "different_meaning",
+      "reason": "Blockchain token and cryptocurrency platform rather than a verifiable credential or digital identity system.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/mvs-org/metaverse"
+    },
+    {
+      "domain_id": "digital_identity",
+      "repository_id": "jruizaranguren/best-of-digital-identity",
+      "label": "adjacent",
+      "reason": "Curated directory of digital identity projects rather than an identity credential implementation.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/jruizaranguren/best-of-digital-identity"
+    },
+    {
+      "domain_id": "digital_identity",
+      "repository_id": "w3c-fedid/digital-credentials",
+      "label": "relevant",
+      "reason": "Specification and API for requesting and presenting verifiable digital credentials on the web.",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/w3c-fedid/digital-credentials"
+    }
+  ],
+  "source": "authenticated_model_on_public_repo_metadata",
+  "limitation": "No README/code inspection; classification can be wrong; unaudited repos stay unlabeled."
+}

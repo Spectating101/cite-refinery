@@ -1,0 +1,524 @@
+{
+  "schema": "cite_refinery.opportunity_atlas_mechanisms.v1",
+  "as_of": "2026-10-21",
+  "inference_status": "hypotheses_only_no_verified_problem_solution_edges",
+  "bridges": [
+    {
+      "id": "physical_sensing",
+      "title": "From field observations to instrumented measurements",
+      "domain_ids": [
+        "embedded",
+        "robotics",
+        "public_health",
+        "water",
+        "agriculture"
+      ],
+      "practical_question": "What is inadequately observed?",
+      "academic_question": "What measurement validity and error models apply?",
+      "implementation_question": "Which existing sensor/form systems can capture the signal?",
+      "economic_question": "Who pays for measurement reliability, and does it replace an existing workflow?",
+      "existing_portfolio_capabilities_to_test": [
+        "Hardware Splicer",
+        "Research Drive"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "asset_lifetime",
+      "title": "Repair, refurbishment and circular re-use",
+      "domain_ids": [
+        "repair",
+        "circular",
+        "manufacturing",
+        "batteries"
+      ],
+      "practical_question": "What assets lose usable value prematurely?",
+      "academic_question": "Which failure modes and reliability limits determine repairability?",
+      "implementation_question": "What diagnosers, parts inventories and repair instructions already exist?",
+      "economic_question": "Can recovery cost plus warranty risk undercut replacement?",
+      "existing_portfolio_capabilities_to_test": [
+        "Hardware Splicer"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "allocation_matching",
+      "title": "Matching surplus assets to time-sensitive needs",
+      "domain_ids": [
+        "food_waste",
+        "supply_chain",
+        "nonprofits",
+        "civic_tech"
+      ],
+      "practical_question": "Where do goods/services remain unused despite demand?",
+      "academic_question": "What inventory, spoilage, scheduling and fairness constraints matter?",
+      "implementation_question": "Which claims/reservation/dispatch systems work?",
+      "economic_question": "What party bears coordination costs and could fund a service?",
+      "existing_portfolio_capabilities_to_test": [
+        "Research Drive",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "disaster_response",
+      "title": "From forecast signal to measured resilience outcome",
+      "domain_ids": [
+        "flood",
+        "climate",
+        "public_health",
+        "geospatial"
+      ],
+      "practical_question": "Which communities face losses?",
+      "academic_question": "Which hazard and outcome relationships are supported?",
+      "implementation_question": "Which alert/response systems are field-deployed and maintained?",
+      "economic_question": "Who funds preparedness and is an intervention purchasable?",
+      "existing_portfolio_capabilities_to_test": [
+        "Policy Lab",
+        "Nocturnal"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "field_data_quality",
+      "title": "Field survey integrity and sampling",
+      "domain_ids": [
+        "agriculture",
+        "public_health",
+        "accessibility",
+        "nonprofits"
+      ],
+      "practical_question": "Where do missing/duplicated field observations distort decisions?",
+      "academic_question": "Which sampling and missingness effects matter?",
+      "implementation_question": "Which open form, capture and de-dup systems exist?",
+      "economic_question": "Is an auditable data-quality service worth buying?",
+      "existing_portfolio_capabilities_to_test": [
+        "Research Drive",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "constraint_optimization",
+      "title": "Operational optimization with real-world constraints",
+      "domain_ids": [
+        "smart_grid",
+        "energy",
+        "supply_chain",
+        "manufacturing"
+      ],
+      "practical_question": "Which decisions waste resources?",
+      "academic_question": "What capacity/scheduling/bottleneck constraints explain loss?",
+      "implementation_question": "Which solvers or schedulers solve compatible formulations?",
+      "economic_question": "Does a measurable operating-cost saving exceed deployment cost?",
+      "existing_portfolio_capabilities_to_test": [
+        "Policy Lab",
+        "Sharpe"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "evidence_traceability",
+      "title": "Source-to-conclusion auditing",
+      "domain_ids": [
+        "research_software",
+        "knowledge_graphs",
+        "open_government",
+        "ai_agents"
+      ],
+      "practical_question": "Which decisions lack inspectable justification?",
+      "academic_question": "What data lineage and uncertainty are required?",
+      "implementation_question": "Which provenance registries or DAGs already exist?",
+      "economic_question": "Who needs independently reproducible conclusions?",
+      "existing_portfolio_capabilities_to_test": [
+        "Refinery",
+        "Research Drive",
+        "Nocturnal"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "metrology_to_simulation",
+      "title": "Link physical measurement to simulation",
+      "domain_ids": [
+        "simulation",
+        "finite_elements",
+        "cad",
+        "materials"
+      ],
+      "practical_question": "Which prototypes lack reliable validation?",
+      "academic_question": "How do models and real measurements differ?",
+      "implementation_question": "Which open solvers and calibration tools can be joined?",
+      "economic_question": "Would a calibrated service shorten design cycles?",
+      "existing_portfolio_capabilities_to_test": [
+        "Hardware Splicer"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "materials_repairability",
+      "title": "Materials and chemical compatibility for repair",
+      "domain_ids": [
+        "computational_chemistry",
+        "materials",
+        "batteries",
+        "repair"
+      ],
+      "practical_question": "What devices or components fail through material processes?",
+      "academic_question": "What compatibility/aging/corrosion mechanisms are relevant?",
+      "implementation_question": "Which repair methods/materials exist and meet safety constraints?",
+      "economic_question": "Can compatibility checks lower repair failure rates?",
+      "existing_portfolio_capabilities_to_test": [
+        "Hardware Splicer"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "verification_as_service",
+      "title": "Reproducibility and software acceptance",
+      "domain_ids": [
+        "scientific_computing",
+        "education",
+        "data_engineering",
+        "quant_finance"
+      ],
+      "practical_question": "Which workflows are unreliable or irreproducible?",
+      "academic_question": "Which statistical/engineering guarantees are needed?",
+      "implementation_question": "Which tests and reproducible pipelines can verify them?",
+      "economic_question": "Could an operator pay for validation rather than a new product?",
+      "existing_portfolio_capabilities_to_test": [
+        "Refinery",
+        "Sharpe",
+        "Research Drive"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "signal_triage",
+      "title": "Anomaly discovery to documented investigation",
+      "domain_ids": [
+        "osint",
+        "fact_check",
+        "security",
+        "open_government"
+      ],
+      "practical_question": "Where are misleading or anomalous signals costly?",
+      "academic_question": "Which false-positive/counterevidence mechanisms must be distinguished?",
+      "implementation_question": "Which trace/attribution tools already work?",
+      "economic_question": "Would a public-interest actor fund defensible case investigation?",
+      "existing_portfolio_capabilities_to_test": [
+        "Nocturnal",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "distributed_energy",
+      "title": "Electricity supply and load resilience",
+      "domain_ids": [
+        "solar",
+        "smart_grid",
+        "batteries",
+        "energy"
+      ],
+      "practical_question": "Where is electricity access/cost/reliability binding?",
+      "academic_question": "Which grid, storage and conversion constraints apply?",
+      "implementation_question": "Which forecasting, control and electronics projects can be reused?",
+      "economic_question": "What regulated installation and payback evidence is required?",
+      "existing_portfolio_capabilities_to_test": [
+        "Policy Lab",
+        "Hardware Splicer"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "outputs_vs_outcomes",
+      "title": "Measure outcomes beyond operational throughput",
+      "domain_ids": [
+        "food_waste",
+        "public_health",
+        "climate",
+        "nonprofits"
+      ],
+      "practical_question": "Which programs report activity without measuring actual benefits?",
+      "academic_question": "Which causal counterfactual and outcome measures apply?",
+      "implementation_question": "What implemented monitoring systems exist?",
+      "economic_question": "Can an outcomes audit be funded by implementers or donors?",
+      "existing_portfolio_capabilities_to_test": [
+        "Policy Lab",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "privacy_provenance",
+      "title": "Private data access with auditable workflows",
+      "domain_ids": [
+        "digital_identity",
+        "public_health",
+        "open_government",
+        "data_engineering"
+      ],
+      "practical_question": "Who needs to share sensitive records safely?",
+      "academic_question": "What privacy and minimum-data principles apply?",
+      "implementation_question": "Which identity and access-control modules are credible?",
+      "economic_question": "Who bears compliance or trust costs?",
+      "existing_portfolio_capabilities_to_test": [
+        "Research Drive",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "knowledge_portability",
+      "title": "Moving research into usable production workflows",
+      "domain_ids": [
+        "research_software",
+        "scientific_computing",
+        "ai_agents",
+        "data_engineering"
+      ],
+      "practical_question": "Which scientific methods remain inaccessible in day-to-day systems?",
+      "academic_question": "What are the model assumptions?",
+      "implementation_question": "Which packages and interfaces already exist?",
+      "economic_question": "Who needs packaging, support or hosted infrastructure?",
+      "existing_portfolio_capabilities_to_test": [
+        "Research Drive",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "physical_digitization",
+      "title": "Physical engineering to editable electronic designs",
+      "domain_ids": [
+        "pcb",
+        "electronic_design",
+        "cad",
+        "robotics"
+      ],
+      "practical_question": "Which hardware lacks digital documentation?",
+      "academic_question": "What is observable and reconstructable?",
+      "implementation_question": "What OCR, tracing, EDA and 3D tools can interoperate?",
+      "economic_question": "Is reconstruction cheaper than redesign or replacement?",
+      "existing_portfolio_capabilities_to_test": [
+        "Hardware Splicer"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "information_authenticity",
+      "title": "Trace claims, propagation and independent verification",
+      "domain_ids": [
+        "osint",
+        "fact_check",
+        "civic_tech",
+        "open_government"
+      ],
+      "practical_question": "Which narratives or reports affect decisions?",
+      "academic_question": "How to separate fact, repetition and correlated sources?",
+      "implementation_question": "What archive/claim graph systems exist?",
+      "economic_question": "Who values independently checked evidence enough to sponsor it?",
+      "existing_portfolio_capabilities_to_test": [
+        "Nocturnal",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "integration_bottlenecks",
+      "title": "Reuse across incompatible engineering subsystems",
+      "domain_ids": [
+        "embedded",
+        "mechatronics",
+        "robotics",
+        "manufacturing"
+      ],
+      "practical_question": "What practical assemblies fail due to interface friction?",
+      "academic_question": "Which interface constraints and standards govern?",
+      "implementation_question": "What adapters, middleware and device bridges exist?",
+      "economic_question": "Can interoperability work create service demand?",
+      "existing_portfolio_capabilities_to_test": [
+        "Hardware Splicer",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "procurement_visibility",
+      "title": "Public demand versus open-source implementation supply",
+      "domain_ids": [
+        "open_government",
+        "civic_tech",
+        "accessibility",
+        "geospatial"
+      ],
+      "practical_question": "Which requirements are in funded procurements?",
+      "academic_question": "Which standards and accessibility laws apply?",
+      "implementation_question": "Which OSS components could satisfy objective acceptance tests?",
+      "economic_question": "Can a licensed integrator bid, and are terms viable?",
+      "existing_portfolio_capabilities_to_test": [
+        "Policy Lab",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "localization_conversion",
+      "title": "Localized hosting, language and institutional workflows",
+      "domain_ids": [
+        "education",
+        "open_government",
+        "nonprofits",
+        "accessibility"
+      ],
+      "practical_question": "Which imported products fail local workflows?",
+      "academic_question": "Which language, regulation and accessibility constraints matter?",
+      "implementation_question": "Which maintained software is adaptable without violating licenses?",
+      "economic_question": "Will organizations pay for localization and continuing support?",
+      "existing_portfolio_capabilities_to_test": [
+        "Research Drive",
+        "Refinery"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    },
+    {
+      "id": "economic_execution",
+      "title": "Engineering arbitrage before commercialization",
+      "domain_ids": [
+        "quant_finance",
+        "manufacturing",
+        "supply_chain",
+        "repair"
+      ],
+      "practical_question": "Where is a claimed opportunity based on weak or missing cost data?",
+      "academic_question": "Which failures, uncertainty and opportunity costs determine expected payoff?",
+      "implementation_question": "Which available systems make cheap controlled pilots possible?",
+      "economic_question": "What buyer, rights, cost and execution evidence makes conversion viable?",
+      "existing_portfolio_capabilities_to_test": [
+        "Sharpe",
+        "Hardware Splicer"
+      ],
+      "review_status": "curated_candidate_mechanism_not_validated_fit",
+      "cross_domain_impact_unproven": true
+    }
+  ],
+  "conversion_modes": [
+    {
+      "id": "self_deployed_service",
+      "route": "self",
+      "possible_value": "License-cleared third-party software packaged into hosted/operated service",
+      "evidence_required": "Operational testing; explicit software rights; supported deployments; security/privacy; identifiable paying customer",
+      "stopping_condition": "No rights or no customer evidence",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "maintenance_contract",
+      "route": "for_owner",
+      "possible_value": "Scoped bug repair, dependency upkeep, reliability or production hardening",
+      "evidence_required": "Maintainer agreement; reproducible issue; task scope; budget/payout; acceptance criteria",
+      "stopping_condition": "No approval or no buyer",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "integration_services",
+      "route": "both",
+      "possible_value": "Combine interoperable OSS capabilities into useful complete system",
+      "evidence_required": "Bounded interoperability proof; operator workflow; data rights; performance targets",
+      "stopping_condition": "No operational need or mismatched interfaces",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "localization",
+      "route": "both",
+      "possible_value": "Local language, institutional, regulatory and payment workflows",
+      "evidence_required": "Documented local requirement; legal scope; source license; deployment support budget",
+      "stopping_condition": "Localization effort exceeds addressable need",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "field_data_service",
+      "route": "self",
+      "possible_value": "Audited collection, validation, analysis and longitudinal monitoring",
+      "evidence_required": "Sampling plan; consent/privacy; outcome definitions; buyer with ongoing need",
+      "stopping_condition": "Measurements cannot resolve decision",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "open_source_bounties",
+      "route": "for_owner",
+      "possible_value": "Solve published bounty-backed GitHub issue",
+      "evidence_required": "Verified funded current issue; permission to claim; accepted payout conditions",
+      "stopping_condition": "No active bounty or payout process",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "public_procurement",
+      "route": "both",
+      "possible_value": "Respond to specific published funded RFP",
+      "evidence_required": "Live notice; eligibility; procurement rights; delivery capacity; contract economics",
+      "stopping_condition": "Cannot bid or serve required location",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "retrofit_repair",
+      "route": "self",
+      "possible_value": "Diagnostic-repair-resale or contract refurbishment",
+      "evidence_required": "Parts availability; failure rates; safety; warranty; local supply/demand margin",
+      "stopping_condition": "Expected net profit nonpositive",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "open_hardware_products",
+      "route": "self",
+      "possible_value": "Assemble and validate licensed open hardware designs",
+      "evidence_required": "BOM; build instructions; safety approval; inventory; tested unit economics",
+      "stopping_condition": "Production safety or cost unknown",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "maintainer_partnership",
+      "route": "for_owner",
+      "possible_value": "Convert under-supported upstream project into operated product or service",
+      "evidence_required": "Mutual agreement; brand/IP/data rights; ownership of support and revenue; buyer demand",
+      "stopping_condition": "Maintainer does not consent",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "auditable_evidence",
+      "route": "both",
+      "possible_value": "Sell verification of implementations, contracts or claimed outcomes",
+      "evidence_required": "Independently checkable facts; sector process; buyer that values reduced uncertainty",
+      "stopping_condition": "No independent information advantage",
+      "status": "route_model_not_an_available_contract"
+    },
+    {
+      "id": "grant_delivery",
+      "route": "both",
+      "possible_value": "Develop open-source public good against explicit grant milestones",
+      "evidence_required": "Call eligibility; project outputs; grant terms; sustainability beyond award",
+      "stopping_condition": "No eligible call or unfunded continuation",
+      "status": "route_model_not_an_available_contract"
+    }
+  ]
+}

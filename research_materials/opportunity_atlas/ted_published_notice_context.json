@@ -1,0 +1,1125 @@
+{
+  "schema": "cite_refinery.ted_notice_context.v1",
+  "observed_at": "2026-10-20T16:52:48.097566+00:00",
+  "scope": "ALL",
+  "query_strata": [
+    {
+      "id": "environment_monitoring",
+      "macro": "energy_environment",
+      "keyword": "environmental monitoring",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 649,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "energy_management",
+      "macro": "energy_environment",
+      "keyword": "energy management",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 562,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "flood_warning",
+      "macro": "energy_environment",
+      "keyword": "flood warning",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 0,
+      "sampled": 0,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "industrial_inspection",
+      "macro": "engineering",
+      "keyword": "industrial inspection",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 56,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "robotics_automation",
+      "macro": "engineering",
+      "keyword": "robotics automation",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 1,
+      "sampled": 1,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "equipment_maintenance",
+      "macro": "engineering",
+      "keyword": "equipment maintenance",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 86,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "food_supply",
+      "macro": "physical_operations",
+      "keyword": "food supply",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 10,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "supply_chain",
+      "macro": "physical_operations",
+      "keyword": "supply chain software",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 0,
+      "sampled": 0,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "health_data",
+      "macro": "public_services",
+      "keyword": "health data",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 23,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "accessibility",
+      "macro": "public_services",
+      "keyword": "accessibility software",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 102,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "scientific_data",
+      "macro": "knowledge_data",
+      "keyword": "research data platform",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 1,
+      "sampled": 1,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "data_infrastructure",
+      "macro": "knowledge_data",
+      "keyword": "data platform",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 132,
+      "sampled": 5,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "cyber_investigation",
+      "macro": "investigation_finance",
+      "keyword": "cybersecurity monitoring",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 2,
+      "sampled": 2,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    },
+    {
+      "id": "financial_risk",
+      "macro": "investigation_finance",
+      "keyword": "risk management software",
+      "status": "available",
+      "error_class": null,
+      "total_matching_reported": 4,
+      "sampled": 4,
+      "selection": "recent published notices, not current eligibility or demand estimate"
+    }
+  ],
+  "notices": [
+    {
+      "id": "ted:116493-2026",
+      "publication_number": "116493-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/116493-2026",
+      "title": "Ireland – IT services: consulting, software development, Internet and support – 20/054 Managed SOC/SIEM and Monitoring Service",
+      "buyer": "Uisce Éireann",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-02-18",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "cyber_investigation"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:117413-2026",
+      "publication_number": "117413-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/117413-2026",
+      "title": "Ireland – Training services – 2025/66 - Readvertisement Year 1 - Panel for the Provision of Service Providers to deliver Training Courses to AMTCE in 6 Lots",
+      "buyer": "Louth and Meath Education and Training Board 1384",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-02-19",
+      "deadline": "['2026-12-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "robotics_automation"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:181147-2026",
+      "publication_number": "181147-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/181147-2026",
+      "title": "Ireland – IT services: consulting, software development, Internet and support – 20/054 Managed SOC/SIEM and Monitoring Service",
+      "buyer": "Uisce Éireann",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-03-16",
+      "deadline": null,
+      "notice_type": "can-modif",
+      "sampled_themes": [
+        "cyber_investigation"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:270563-2026",
+      "publication_number": "270563-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/270563-2026",
+      "title": "Luxembourg – License management software package – Operational Risk Management Software",
+      "buyer": "European Stability Mechanism (ESM)",
+      "buyer_country": [
+        "LUX"
+      ],
+      "publication_date": "2026-04-21",
+      "deadline": null,
+      "notice_type": "pin-only",
+      "sampled_themes": [
+        "financial_risk"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:404621-2026",
+      "publication_number": "404621-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/404621-2026",
+      "title": "Luxembourg – Compliance software development services – Operational Risk Management Software",
+      "buyer": "European Stability Mechanism (ESM)",
+      "buyer_country": [
+        "LUX"
+      ],
+      "publication_date": "2026-06-12",
+      "deadline": "['2026-07-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "financial_risk"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:42229-2026",
+      "publication_number": "42229-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/42229-2026",
+      "title": "Ireland – IT services: consulting, software development, Internet and support – Medical Grade Wearable Physiological Monitoring Solution",
+      "buyer": "Royal College of Surgeons in Ireland_362",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-01-20",
+      "deadline": "['2026-01-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "scientific_data"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:434418-2026",
+      "publication_number": "434418-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/434418-2026",
+      "title": "Ireland – Software package and information systems – UCC-2025-02 Provision of an Enterprise Risk Management Software System",
+      "buyer": "University College Cork",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-06-25",
+      "deadline": "['2026-07-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "financial_risk"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:589653-2026",
+      "publication_number": "589653-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/589653-2026",
+      "title": "Netherlands – Architectural, construction, engineering and inspection services – Europees openbare aanbesteding Externe Technische Toets",
+      "buyer": "Nationaal Coördinator Groningen",
+      "buyer_country": [
+        "NLD"
+      ],
+      "publication_date": "2026-08-26",
+      "deadline": "['2026-10-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "industrial_inspection"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:593156-2026",
+      "publication_number": "593156-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/593156-2026",
+      "title": "Ireland – Food, beverages, tobacco and related products – Prior Information Notice for the Establishment of a Panel of Artisan Food Suppliers for ATU",
+      "buyer": "Atlantic Technological University",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-08-27",
+      "deadline": null,
+      "notice_type": "pin-only",
+      "sampled_themes": [
+        "food_supply"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:606356-2026",
+      "publication_number": "606356-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/606356-2026",
+      "title": "Malta – Analytical or scientific software development services – MAFA/CIO 3/2026 - Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF",
+      "buyer": "Ministry for Agriculture Fisheries and Food Supply",
+      "buyer_country": [
+        "MLT"
+      ],
+      "publication_date": "2026-09-03",
+      "deadline": null,
+      "notice_type": "veat",
+      "sampled_themes": [
+        "food_supply"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:609653-2026",
+      "publication_number": "609653-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/609653-2026",
+      "title": "Netherlands – Architectural, construction, engineering and inspection services – Europese aanbesteding Bouwkostendeskundigheid",
+      "buyer": "Nationaal Coördinator Groningen",
+      "buyer_country": [
+        "NLD"
+      ],
+      "publication_date": "2026-09-04",
+      "deadline": "['2026-10-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "industrial_inspection"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:629828-2026",
+      "publication_number": "629828-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/629828-2026",
+      "title": "Belgium – IT services: consulting, software development, Internet and support – European Health Data Space IT systems development, operations and support",
+      "buyer": "European Commission, DG SANTE - Health and Food Safety",
+      "buyer_country": [
+        "BEL"
+      ],
+      "publication_date": "2026-09-14",
+      "deadline": "['2026-09-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "health_data"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:635530-2026",
+      "publication_number": "635530-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/635530-2026",
+      "title": "Ireland – IT services: consulting, software development, Internet and support – HSE 28439 - Restricted Procedure to procure a HSE Enterprise Integration Platform as a Service ( EiPaaS)",
+      "buyer": "Health Service Executive (HSE)",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-09-15",
+      "deadline": "['2026-09-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "health_data"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:635885-2026",
+      "publication_number": "635885-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/635885-2026",
+      "title": "Netherlands – Architectural, construction, engineering and inspection services – Europese aanbesteding Bouwkostendeskundigheid",
+      "buyer": "Nationaal Coördinator Groningen",
+      "buyer_country": [
+        "NLD"
+      ],
+      "publication_date": "2026-09-15",
+      "deadline": "['2026-10-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "industrial_inspection"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:639771-2026",
+      "publication_number": "639771-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/639771-2026",
+      "title": "Spain – Industrial inspection services – Servicios de inspección de inmisarios y trabajos subacuáticos a la ITAM Llobregat y la ITAM Tordera",
+      "buyer": "Ens d'Abastament d'Aigua Ter-Llobregat (ATL)",
+      "buyer_country": [
+        "ESP"
+      ],
+      "publication_date": "2026-09-17",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "industrial_inspection"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:646957-2026",
+      "publication_number": "646957-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/646957-2026",
+      "title": "Poland – Network equipment – „Wdrożenie e-usług w Centrum Opieki Medycznej w Jarosławiu”",
+      "buyer": "Centrum Opieki Medycznej",
+      "buyer_country": [
+        "POL"
+      ],
+      "publication_date": "2026-09-21",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "accessibility"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:646960-2026",
+      "publication_number": "646960-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/646960-2026",
+      "title": "Ireland – Records management – Invitation to Tender (ITT) for the provision of an Integrated Board Governance and Risk Management Software Solution [641]",
+      "buyer": "Commission for Regulation of Utilities",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-09-21",
+      "deadline": "['2026-09-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "financial_risk"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:658081-2026",
+      "publication_number": "658081-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/658081-2026",
+      "title": "Sweden – Construction work for water projects – Ramavtal - Underhåll av bryggsystem och hamnanläggningar",
+      "buyer": "Nynäshamn kommun",
+      "buyer_country": [
+        "SWE"
+      ],
+      "publication_date": "2026-09-24",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "equipment_maintenance"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:660458-2026",
+      "publication_number": "660458-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/660458-2026",
+      "title": "Ireland – Marina construction work – Pontoon Enhancement - Stonehams Lake, Roscommon",
+      "buyer": "Roscommon County Council_424",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-09-25",
+      "deadline": "['2026-10-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "equipment_maintenance"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:661009-2026",
+      "publication_number": "661009-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/661009-2026",
+      "title": "Slovakia – Software-related services – Nákup a podpora softvérových produktov",
+      "buyer": "DataCentrum",
+      "buyer_country": [
+        "SVK"
+      ],
+      "publication_date": "2026-09-25",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "accessibility"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:663182-2026",
+      "publication_number": "663182-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/663182-2026",
+      "title": "Austria – Installation of signalling equipment – (ProVia-ID 97418) Erneuerungsstrategie Stellwerke 2.0; Digitales Stellwerk DSTW – Streckenausrüstung Errichtung, Erweiterungen, Umbauten und Instandhaltung Beschreibung",
+      "buyer": "ÖBB-Infrastruktur AG",
+      "buyer_country": [
+        "AUT"
+      ],
+      "publication_date": "2026-09-25",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "accessibility"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:675938-2026",
+      "publication_number": "675938-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/675938-2026",
+      "title": "France – Printing and related services – Prestations de service de communication : prestations techniques, audiovisuelles et hybridation (lot 1) et d'impressions et de reprographie de supports de communication (lot 2) pour la PDS",
+      "buyer": "PLATEFORME DES DONNEES DE SANTE",
+      "buyer_country": [
+        "FRA"
+      ],
+      "publication_date": "2026-10-01",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "health_data"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:676246-2026",
+      "publication_number": "676246-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/676246-2026",
+      "title": "Belgium – Research and development services and related consultancy services – AI for Public Good Lot 1 (Health: Innovative AI-based cancer imaging solutions for breast and prostate diagnosis) and Lot 2 (Energy: Innovative AI-based solutions for electric grid optimization)",
+      "buyer": "European Commission, DG CNECT - Communications Networks, Content and Technology",
+      "buyer_country": [
+        "BEL"
+      ],
+      "publication_date": "2026-10-01",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "health_data"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:677429-2026",
+      "publication_number": "677429-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/677429-2026",
+      "title": "Belgium – Research and development services and related consultancy services – AI for Public Good Lot 1 (Health: Innovative AI-based cancer imaging solutions for breast and prostate diagnosis) and Lot 2 (Energy: Innovative AI-based solutions for electric grid optimization)",
+      "buyer": "European Commission, DG CNECT - Communications Networks, Content and Technology",
+      "buyer_country": [
+        "BEL"
+      ],
+      "publication_date": "2026-10-01",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "health_data"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:683922-2026",
+      "publication_number": "683922-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/683922-2026",
+      "title": "Norway – Food, beverages, tobacco and related products – Food for commerical kitchens",
+      "buyer": "Stord kommune",
+      "buyer_country": [
+        "NOR",
+        "NOR",
+        "NOR",
+        "NOR",
+        "NOR",
+        "NOR"
+      ],
+      "publication_date": "2026-10-05",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "food_supply"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:684763-2026",
+      "publication_number": "684763-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/684763-2026",
+      "title": "Ireland – Building and facilities management services – M700.CN.1025 - Soft Facilities Management Services for MetroLink (TII)",
+      "buyer": "Transport Infrastructure Ireland (TII)",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-10-05",
+      "deadline": "['2026-10-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "equipment_maintenance"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:690989-2026",
+      "publication_number": "690989-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/690989-2026",
+      "title": "Malta – Analytical or scientific software development services – MAFA/CIO 3/2026 - Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF",
+      "buyer": "Ministry for Agriculture Fisheries and Food Supply",
+      "buyer_country": [
+        "MLT"
+      ],
+      "publication_date": "2026-10-07",
+      "deadline": null,
+      "notice_type": "can-social",
+      "sampled_themes": [
+        "food_supply"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:693230-2026",
+      "publication_number": "693230-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/693230-2026",
+      "title": "Belgium – Computer-related professional services – Service Delivery for the Data Product Mesh & Data Platform Engineering",
+      "buyer": "International Post Corporation",
+      "buyer_country": [
+        "BEL"
+      ],
+      "publication_date": "2026-10-08",
+      "deadline": "['2026-11-",
+      "notice_type": "pin-cfc-standard",
+      "sampled_themes": [
+        "data_infrastructure"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:694287-2026",
+      "publication_number": "694287-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/694287-2026",
+      "title": "Ireland – Software package and information systems – RFT for the supply of a Test Data Management Solution (for SQL Server)",
+      "buyer": "Department of Social Protection_349",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-10-08",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "data_infrastructure"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:696113-2026",
+      "publication_number": "696113-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/696113-2026",
+      "title": "Romania – Invalid carriages, wheelchairs and associated devices – Furnizare Echipamente și Aplicație Accesibilizare- PACTS",
+      "buyer": "Universitatea Stefan cel Mare Suceava",
+      "buyer_country": [
+        "ROU"
+      ],
+      "publication_date": "2026-10-08",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "accessibility"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:703130-2026",
+      "publication_number": "703130-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/703130-2026",
+      "title": "Romania – Software package and information systems – Achiziție de produse software – 2 loturi: Lot 1 - Subscripție licențe și suport pentru platforma de virtualizare Vmware Vsphere; Lot 2 - Mentenanță licențe si suport pentru soluția software de salvare și restaurare mașini virtuale Veeam Enterprise Plus",
+      "buyer": "INSPECTORATUL DE STAT IN CONSTRUCTII-I.S.C",
+      "buyer_country": [
+        "ROU"
+      ],
+      "publication_date": "2026-10-12",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "data_infrastructure"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:707304-2026",
+      "publication_number": "707304-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/707304-2026",
+      "title": "Ireland – Building and facilities management services – M700.CN.1025 - Soft Facilities Management Services for MetroLink (TII)",
+      "buyer": "Transport Infrastructure Ireland (TII)",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-10-13",
+      "deadline": "['2026-11-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "equipment_maintenance"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:709704-2026",
+      "publication_number": "709704-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/709704-2026",
+      "title": "Ireland – Cereals, potatoes, vegetables, fruits and nuts – 26/363 Provision of Food and Beverage Supplies to Galway City Canteen at Atlantic Technological University from DPS for Food Supplies to all ATU sites (1799206/26011)",
+      "buyer": "Atlantic Technological University",
+      "buyer_country": [
+        "IRL"
+      ],
+      "publication_date": "2026-10-14",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "food_supply"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:714960-2026",
+      "publication_number": "714960-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/714960-2026",
+      "title": "Germany – Architectural, construction, engineering and inspection services – Klinikum Bayreuth_TMon IBM",
+      "buyer": "Klinikum Bayreuth GmbH",
+      "buyer_country": [
+        "DEU"
+      ],
+      "publication_date": "2026-10-15",
+      "deadline": "['2026-11-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "industrial_inspection"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:716168-2026",
+      "publication_number": "716168-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/716168-2026",
+      "title": "France – Engineering services – MISSION D'ASSISTANCE À MAÎTRISE D'OUVRAGE PLAN DE RENOVATION DES BÂTIMENTS DÉPARTEMENTAUX - 2 LOTS GEOGRAPHIQUES",
+      "buyer": "Département du Var",
+      "buyer_country": [
+        "FRA"
+      ],
+      "publication_date": "2026-10-16",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "energy_management"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:718613-2026",
+      "publication_number": "718613-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/718613-2026",
+      "title": "Sweden – IT services: consulting, software development, Internet and support – Asset data platform- ADP",
+      "buyer": "Swedavia AB",
+      "buyer_country": [
+        "SWE"
+      ],
+      "publication_date": "2026-10-16",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "data_infrastructure"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:719272-2026",
+      "publication_number": "719272-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/719272-2026",
+      "title": "Poland – Environmental monitoring other than for construction – Monitoring osadów dennych zbiorników zaporowych i wybranych rzek w 2026 roku",
+      "buyer": "Główny Inspektorat Ochrony Środowiska",
+      "buyer_country": [
+        "POL"
+      ],
+      "publication_date": "2026-10-19",
+      "deadline": null,
+      "notice_type": "can-standard",
+      "sampled_themes": [
+        "environment_monitoring"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:719641-2026",
+      "publication_number": "719641-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/719641-2026",
+      "title": "Poland – Environmental monitoring other than for construction – Monitoring gatunków roślin z uwzględnieniem specjalnych obszarów ochrony siedlisk Natura 2000 w latach 2026-2028",
+      "buyer": "Główny Inspektorat Ochrony Środowiska",
+      "buyer_country": [
+        "POL"
+      ],
+      "publication_date": "2026-10-19",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "environment_monitoring"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:719802-2026",
+      "publication_number": "719802-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/719802-2026",
+      "title": "Spain – Technical assistance services – Servicios de Dirección facultativa, Coordinación de Seguridad y Salud, Consultoría, Asistencia Técnica y control de calidad para las obras de ejecución del proyecto de ampliación del Muelle de Pechina",
+      "buyer": "Presidencia de la Autoridad Portuaria de Almería",
+      "buyer_country": [
+        "ESP"
+      ],
+      "publication_date": "2026-10-19",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "environment_monitoring"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:721888-2026",
+      "publication_number": "721888-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/721888-2026",
+      "title": "Czechia – Electric motors, generators and transformers – Klimaticky odolná živá laboratoř Podluží",
+      "buyer": "Region Podluží",
+      "buyer_country": [
+        "CZE"
+      ],
+      "publication_date": "2026-10-19",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "energy_management"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:722107-2026",
+      "publication_number": "722107-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/722107-2026",
+      "title": "France – Repair and maintenance services of central heating – Marché Public Global de Performance pour l'Exploitation-maintenance des installations de Chauffage, Ventilation, Climatisation (CVC) avec garantie de performance énergétique",
+      "buyer": "Etablissement Public de Santé de Ville-Evrard",
+      "buyer_country": [
+        "FRA"
+      ],
+      "publication_date": "2026-10-19",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "energy_management"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:722526-2026",
+      "publication_number": "722526-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/722526-2026",
+      "title": "Germany – Software package and information systems – Rahmenvereinbarung (RV) über die Beschaffung von Veeam Lizenzen und Produkten",
+      "buyer": "Rechenzentrum der Finanzverwaltung des Landes NRW",
+      "buyer_country": [
+        "DEU"
+      ],
+      "publication_date": "2026-10-19",
+      "deadline": "['2026-11-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "data_infrastructure"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:722527-2026",
+      "publication_number": "722527-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/722527-2026",
+      "title": "Germany – Environmental monitoring for construction – HWSB Elbdeich rechts MD-Cracau km 40,4 - 42,1 Umweltbaubegleitung",
+      "buyer": "Landesbetrieb für Hochwasserschutz und Wasserwirtschaft Sachsen-Anhalt",
+      "buyer_country": [
+        "DEU"
+      ],
+      "publication_date": "2026-10-19",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "environment_monitoring"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:723212-2026",
+      "publication_number": "723212-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/723212-2026",
+      "title": "Romania – Works related to water-distribution pipelines – CL 9: Construire/ reabilitare/ modernizare surse de apa (captare, tratare) Beclean, Sangeorz-Bai, Anies, Rebra, Tarlisua, Zagra, Sieu, Runcu Salvei",
+      "buyer": "AQUABIS SA BISTRITA-NASAUD",
+      "buyer_country": [
+        "ROU"
+      ],
+      "publication_date": "2026-10-20",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "accessibility"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:723344-2026",
+      "publication_number": "723344-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/723344-2026",
+      "title": "Finland – Repair, maintenance and associated services related to marine and other equipment – VENESATAMIEN HOITO",
+      "buyer": "Varkauden kaupunki",
+      "buyer_country": [
+        "FIN"
+      ],
+      "publication_date": "2026-10-20",
+      "deadline": "['2026-11-",
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "equipment_maintenance"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:723891-2026",
+      "publication_number": "723891-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/723891-2026",
+      "title": "Sweden – Architectural, construction, engineering and inspection services – Tekniska konsulttjänster VVS",
+      "buyer": "Upphandlingscenter Falun Borlänge-regionen",
+      "buyer_country": [
+        "SWE",
+        "SWE",
+        "SWE",
+        "SWE",
+        "SWE",
+        "SWE",
+        "SWE",
+        "SWE",
+        "SWE",
+        "SWE"
+      ],
+      "publication_date": "2026-10-20",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "energy_management"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:725724-2026",
+      "publication_number": "725724-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/725724-2026",
+      "title": "Italy – Energy-management services – Procedura aperta per la Gestione dei Vettori Energetici delle Aziende Sanitarie della Regione del Veneto parte 2 (a favore delle Aziende ULSS nn. 1, 2, 3, 4, 5 e dell’ Ospedale Riabilitativo di Alta Specializzazione - ORAS) 2^ Ed.",
+      "buyer": "Azienda Zero",
+      "buyer_country": [
+        "ITA"
+      ],
+      "publication_date": "2026-10-20",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "energy_management"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    },
+    {
+      "id": "ted:726035-2026",
+      "publication_number": "726035-2026",
+      "url": "https://ted.europa.eu/en/notice/-/detail/726035-2026",
+      "title": "Germany – Environmental monitoring for construction – A8 Albaufstieg - Bodenbaubegleitung (BBB)",
+      "buyer": "Die Autobahn GmbH des Bundes - NL Südwest",
+      "buyer_country": [
+        "DEU"
+      ],
+      "publication_date": "2026-10-20",
+      "deadline": null,
+      "notice_type": "cn-standard",
+      "sampled_themes": [
+        "environment_monitoring"
+      ],
+      "demand_evidence": "published_notice_metadata_not_verified_currently_open",
+      "bid_eligibility": "unknown",
+      "full_scope_reviewed": false,
+      "financial_claim": "no_budget_or_award_inferred"
+    }
+  ],
+  "source": "EU TED published notices v3",
+  "boundary": "This is cross-sector published procurement context. 'ALL' may include expired/awarded notices; no tender is claimed currently active, eligible, funded for our work or commercially captured."
+}

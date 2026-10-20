@@ -1,0 +1,82 @@
+{
+  "schema": "cite_refinery.ted_broad_demand_survey.v1",
+  "as_of": "2026-10-21",
+  "provider": "EU TED v3 public notice search",
+  "scope": "ALL",
+  "since": "2026-01-01",
+  "limit_per_query": 5,
+  "sample_method": "expert fulltext query, most recent within broad published historical archive",
+  "themes": [
+    {
+      "id": "environment_monitoring",
+      "macro": "energy_environment",
+      "keyword": "environmental monitoring"
+    },
+    {
+      "id": "energy_management",
+      "macro": "energy_environment",
+      "keyword": "energy management"
+    },
+    {
+      "id": "flood_warning",
+      "macro": "energy_environment",
+      "keyword": "flood warning"
+    },
+    {
+      "id": "industrial_inspection",
+      "macro": "engineering",
+      "keyword": "industrial inspection"
+    },
+    {
+      "id": "robotics_automation",
+      "macro": "engineering",
+      "keyword": "robotics automation"
+    },
+    {
+      "id": "equipment_maintenance",
+      "macro": "engineering",
+      "keyword": "equipment maintenance"
+    },
+    {
+      "id": "food_supply",
+      "macro": "physical_operations",
+      "keyword": "food supply"
+    },
+    {
+      "id": "supply_chain",
+      "macro": "physical_operations",
+      "keyword": "supply chain software"
+    },
+    {
+      "id": "health_data",
+      "macro": "public_services",
+      "keyword": "health data"
+    },
+    {
+      "id": "accessibility",
+      "macro": "public_services",
+      "keyword": "accessibility software"
+    },
+    {
+      "id": "scientific_data",
+      "macro": "knowledge_data",
+      "keyword": "research data platform"
+    },
+    {
+      "id": "data_infrastructure",
+      "macro": "knowledge_data",
+      "keyword": "data platform"
+    },
+    {
+      "id": "cyber_investigation",
+      "macro": "investigation_finance",
+      "keyword": "cybersecurity monitoring"
+    },
+    {
+      "id": "financial_risk",
+      "macro": "investigation_finance",
+      "keyword": "risk management software"
+    }
+  ],
+  "boundary": "Published notice metadata only; not assured active tender, budget available, bidder eligibility, award or unserved demand."
+}

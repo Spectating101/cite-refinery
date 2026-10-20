@@ -465,3 +465,8 @@ Read [the outcome-first cross-layer dossier](docs/CROSS_LAYER_INTERPRETATION_V1.
 ### Opportunity conversion from evidence to repo/service fit (2026-10-21)
 
 See [real-world conversion cases](docs/OPPORTUNITY_CONVERSION_V1.md) and the case inputs under research_materials/opportunity_conversion/. Bounded semantic problem→repository matching, rights-aware decisions, buyer-demand gates and human-readable next actions are available via the cite-refinery-opportunity-match and cite-refinery-opportunities CLIs. No buyer, upstream approval or actual revenue is inferred from a README, issue, metadata or generated graph. This work is stacked on the cross-layer reasoning PR; the sealed evaluation split remains untouched.
+
+
+### Wide opportunity atlas — map before targeting (2026-10-21)
+
+[Survey and mechanism dossier](docs/BROAD_OPPORTUNITY_ATLAS_V1.md) and [navigable field atlas](research_materials/opportunity_atlas/OPPORTUNITY_ATLAS.md) collect public implementation listings across engineering, energy, operations, civic/public, research/data and finance/investigations, plus distinct TED published-notice context, source registries and 21 mechanistic bridges. The analysis is intentionally **unranked and non-commercially-validated**: GitHub tags, procurement notice metadata and AI relevance labels are NOT proof of capability, active tenders or underconversion. Original sealed research holdout is unchanged.

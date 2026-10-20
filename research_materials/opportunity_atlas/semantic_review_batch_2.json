@@ -1,0 +1,448 @@
+{
+  "schema": "cite_refinery.opportunity_atlas_semantic_review.v1",
+  "batch_id": "semantic_audit_2",
+  "judgments": [
+    {
+      "domain_id": "batteries",
+      "repository_id": "exelban/stats",
+      "label": "different_meaning",
+      "reason": "macOS menu bar system resource monitor displaying laptop battery status rather than battery modeling or BMS",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/exelban/stats"
+    },
+    {
+      "domain_id": "batteries",
+      "repository_id": "AdnanHodzic/auto-cpufreq",
+      "label": "different_meaning",
+      "reason": "Linux CPU power management daemon adjusting processor frequencies based on battery state rather than energy storage engineering",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/AdnanHodzic/auto-cpufreq"
+    },
+    {
+      "domain_id": "batteries",
+      "repository_id": "evcc-io/evcc",
+      "label": "adjacent",
+      "reason": "EV solar charging controller managing charging sessions and storage battery interactions",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/evcc-io/evcc"
+    },
+    {
+      "domain_id": "batteries",
+      "repository_id": "SpriteOvO/AirPodsDesktop",
+      "label": "different_meaning",
+      "reason": "Desktop companion utility monitoring wireless earbud peripheral battery status",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/SpriteOvO/AirPodsDesktop"
+    },
+    {
+      "domain_id": "batteries",
+      "repository_id": "johnfanv2/LenovoLegionLinux",
+      "label": "different_meaning",
+      "reason": "Laptop hardware driver managing fan curves and charging preservation modes on PC hardware",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/johnfanv2/LenovoLegionLinux"
+    },
+    {
+      "domain_id": "solar",
+      "repository_id": "pvlib/pvlib-python",
+      "label": "relevant",
+      "reason": "Documented simulation functions specifically for photovoltaic energy system performance",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/pvlib/pvlib-python"
+    },
+    {
+      "domain_id": "solar",
+      "repository_id": "ReikanYsora/Helios",
+      "label": "adjacent",
+      "reason": "Home Assistant Lovelace dashboard card for visualizing residential energy flow",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/ReikanYsora/Helios"
+    },
+    {
+      "domain_id": "solar",
+      "repository_id": "wlcrs/huawei_solar",
+      "label": "relevant",
+      "reason": "Home Assistant integration for monitoring and controlling Huawei solar inverters via Modbus",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/wlcrs/huawei_solar"
+    },
+    {
+      "domain_id": "solar",
+      "repository_id": "Giorgio866/lumina-energy-card",
+      "label": "adjacent",
+      "reason": "Home Assistant UI card displaying electricity metrics from solar arrays, home load, and EV charging",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Giorgio866/lumina-energy-card"
+    },
+    {
+      "domain_id": "solar",
+      "repository_id": "zae-bayern/elpv-dataset",
+      "label": "relevant",
+      "reason": "Computer vision dataset of functional and defective photovoltaic cells from electroluminescence module images",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/zae-bayern/elpv-dataset"
+    },
+    {
+      "domain_id": "smart_grid",
+      "repository_id": "zhgqcn/awesome-NILM-with-code",
+      "label": "adjacent",
+      "reason": "Curated list of non-intrusive load monitoring and energy disaggregation algorithms",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/zhgqcn/awesome-NILM-with-code"
+    },
+    {
+      "domain_id": "smart_grid",
+      "repository_id": "u9n/dlms-cosem",
+      "label": "relevant",
+      "reason": "Library implementing the DLMS/COSEM communication standard for smart utility meters",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/u9n/dlms-cosem"
+    },
+    {
+      "domain_id": "smart_grid",
+      "repository_id": "pwitab/iec62056-21",
+      "label": "relevant",
+      "reason": "Library implementing the IEC 62056-21 standard for local readout of smart energy meters",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/pwitab/iec62056-21"
+    },
+    {
+      "domain_id": "smart_grid",
+      "repository_id": "mesmo-dev/mesmo",
+      "label": "relevant",
+      "reason": "Multi-energy system modeling, optimal power flow, and grid operation optimization",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/mesmo-dev/mesmo"
+    },
+    {
+      "domain_id": "smart_grid",
+      "repository_id": "mzy2240/ESA",
+      "label": "relevant",
+      "reason": "Power system contingency analysis and grid simulation automation environment",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/mzy2240/ESA"
+    },
+    {
+      "domain_id": "energy",
+      "repository_id": "intel/pcm",
+      "label": "different_meaning",
+      "reason": "Hardware performance and energy counter monitor for Intel computing processors rather than energy systems engineering",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/intel/pcm"
+    },
+    {
+      "domain_id": "energy",
+      "repository_id": "protontypes/open-sustainable-technology",
+      "label": "adjacent",
+      "reason": "Curated directory and ecosystem index encompassing sustainable energy and climate technologies",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/protontypes/open-sustainable-technology"
+    },
+    {
+      "domain_id": "energy",
+      "repository_id": "mathworks/MATLAB-Simulink-Challenge-Project-Hub",
+      "label": "different_meaning",
+      "reason": "General hub of student design and research project ideas across miscellaneous engineering fields",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/mathworks/MATLAB-Simulink-Challenge-Project-Hub"
+    },
+    {
+      "domain_id": "energy",
+      "repository_id": "PyPSA/PyPSA",
+      "label": "relevant",
+      "reason": "Power system simulation and capacity expansion modeling for electrical energy networks",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/PyPSA/PyPSA"
+    },
+    {
+      "domain_id": "energy",
+      "repository_id": "hubblo-org/scaphandre",
+      "label": "adjacent",
+      "reason": "Metrology agent monitoring electrical power consumption of IT servers and software applications",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/hubblo-org/scaphandre"
+    },
+    {
+      "domain_id": "climate",
+      "repository_id": "electricitymaps/electricitymaps-contrib",
+      "label": "relevant",
+      "reason": "Data parser platform calculating real-time grid electricity carbon intensity to support energy transition",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/electricitymaps/electricitymaps-contrib"
+    },
+    {
+      "domain_id": "climate",
+      "repository_id": "protontypes/open-sustainable-technology",
+      "label": "relevant",
+      "reason": "Directory tracking open source projects for climate change mitigation, sustainable energy, and natural resources",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/protontypes/open-sustainable-technology"
+    },
+    {
+      "domain_id": "climate",
+      "repository_id": "PyPSA/PyPSA",
+      "label": "adjacent",
+      "reason": "Power system analysis framework used to plan decarbonization and clean energy transitions",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/PyPSA/PyPSA"
+    },
+    {
+      "domain_id": "climate",
+      "repository_id": "CliMA/Oceananigans.jl",
+      "label": "relevant",
+      "reason": "Ocean fluid dynamics simulation engine used in climate modeling",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/CliMA/Oceananigans.jl"
+    },
+    {
+      "domain_id": "climate",
+      "repository_id": "philsturgeon/awesome-earth",
+      "label": "relevant",
+      "reason": "Curated collection of practical actions and tools addressing the climate crisis and emissions reduction",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/philsturgeon/awesome-earth"
+    },
+    {
+      "domain_id": "flood",
+      "repository_id": "MatrixTM/MHDDoS",
+      "label": "different_meaning",
+      "reason": "Network distributed denial-of-service attack script, polysemous with hydrological flooding",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/MatrixTM/MHDDoS"
+    },
+    {
+      "domain_id": "flood",
+      "repository_id": "LimerBoy/Impulse",
+      "label": "different_meaning",
+      "reason": "Denial-of-service toolkit for network and message flooding attacks",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/LimerBoy/Impulse"
+    },
+    {
+      "domain_id": "flood",
+      "repository_id": "spacehuhn/esp8266_beaconSpam",
+      "label": "different_meaning",
+      "reason": "Wireless network tool for generating spam WiFi beacon frames",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/spacehuhn/esp8266_beaconSpam"
+    },
+    {
+      "domain_id": "flood",
+      "repository_id": "yunginnanet/HellPot",
+      "label": "different_meaning",
+      "reason": "HTTP honeypot designed to entrap and flood malicious web crawlers",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/yunginnanet/HellPot"
+    },
+    {
+      "domain_id": "flood",
+      "repository_id": "Leeon123/CC-attack",
+      "label": "different_meaning",
+      "reason": "Network multithreaded HTTP/HTTPS flood attack tool",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Leeon123/CC-attack"
+    },
+    {
+      "domain_id": "water",
+      "repository_id": "wilsto/pool-monitor-card",
+      "label": "different_meaning",
+      "reason": "Home Assistant UI card for recreational swimming pools, excluded by intent",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/wilsto/pool-monitor-card"
+    },
+    {
+      "domain_id": "water",
+      "repository_id": "DOI-USGS/EGRET",
+      "label": "relevant",
+      "reason": "USGS analytical package for river streamflow discharge and environmental water quality trends",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/DOI-USGS/EGRET"
+    },
+    {
+      "domain_id": "water",
+      "repository_id": "KnowFlow/KnowFlow_AWM",
+      "label": "relevant",
+      "reason": "Open-source IoT hardware device for environmental water quality monitoring",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/KnowFlow/KnowFlow_AWM"
+    },
+    {
+      "domain_id": "water",
+      "repository_id": "SERVIR/water-quality-gee",
+      "label": "relevant",
+      "reason": "Google Earth Engine remote sensing scripts for environmental surface water quality monitoring",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/SERVIR/water-quality-gee"
+    },
+    {
+      "domain_id": "water",
+      "repository_id": "Vitens/phreeqpython",
+      "label": "relevant",
+      "reason": "Python wrapper for geochemical equilibrium modeling used in water treatment and chemistry",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Vitens/phreeqpython"
+    },
+    {
+      "domain_id": "circular",
+      "repository_id": "pogopaule/awesome-sustainability-jobs",
+      "label": "different_meaning",
+      "reason": "Job board directory for tech employment in sustainability rather than circular material reuse",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/pogopaule/awesome-sustainability-jobs"
+    },
+    {
+      "domain_id": "circular",
+      "repository_id": "Alkia/electra",
+      "label": "adjacent",
+      "reason": "Decentralized microgrid electricity exchange platform rather than industrial material recycling or asset reuse",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Alkia/electra"
+    },
+    {
+      "domain_id": "circular",
+      "repository_id": "NatLabRockies/PV_ICE",
+      "label": "relevant",
+      "reason": "Material mass flow and reliability model analyzing photovoltaics in circular economy lifecycles",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/NatLabRockies/PV_ICE"
+    },
+    {
+      "domain_id": "circular",
+      "repository_id": "raghudeepika/urban-resource-cadastre-repository",
+      "label": "relevant",
+      "reason": "Computer vision model detecting building facade materials to facilitate urban material cadastre and reuse",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/raghudeepika/urban-resource-cadastre-repository"
+    },
+    {
+      "domain_id": "circular",
+      "repository_id": "CMLPlatform/pycirk",
+      "label": "relevant",
+      "reason": "Environmentally extended input-output modeling package evaluating circular economy policy interventions",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/CMLPlatform/pycirk"
+    },
+    {
+      "domain_id": "sustainability",
+      "repository_id": "electricitymaps/electricitymaps-contrib",
+      "label": "relevant",
+      "reason": "Open platform measuring electricity grid emissions and consumption sustainability metrics",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/electricitymaps/electricitymaps-contrib"
+    },
+    {
+      "domain_id": "sustainability",
+      "repository_id": "feross/thanks",
+      "label": "different_meaning",
+      "reason": "Financial maintainer donation CLI for open source software, polysemous with ecological sustainability",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/feross/thanks"
+    },
+    {
+      "domain_id": "sustainability",
+      "repository_id": "protontypes/open-sustainable-technology",
+      "label": "adjacent",
+      "reason": "Ecosystem directory indexing open source environmental sustainability projects",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/protontypes/open-sustainable-technology"
+    },
+    {
+      "domain_id": "sustainability",
+      "repository_id": "opencollective/opencollective",
+      "label": "different_meaning",
+      "reason": "Issue repository for open source financial sponsorship platform rather than environmental sustainability",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/opencollective/opencollective"
+    },
+    {
+      "domain_id": "sustainability",
+      "repository_id": "hubblo-org/scaphandre",
+      "label": "relevant",
+      "reason": "Energy metrology agent providing quantifiable power consumption metrics for digital sustainability",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/hubblo-org/scaphandre"
+    },
+    {
+      "domain_id": "agriculture",
+      "repository_id": "brycejohnston/awesome-agriculture",
+      "label": "adjacent",
+      "reason": "Curated list indexing agricultural and farming software projects",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/brycejohnston/awesome-agriculture"
+    },
+    {
+      "domain_id": "agriculture",
+      "repository_id": "farmOS/farmOS",
+      "label": "relevant",
+      "reason": "Web application for farm management, crop planning, and agricultural record keeping",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/farmOS/farmOS"
+    },
+    {
+      "domain_id": "agriculture",
+      "repository_id": "Fields2Cover/Fields2Cover",
+      "label": "relevant",
+      "reason": "Coverage path planning library for autonomous agricultural vehicles in farm fields",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Fields2Cover/Fields2Cover"
+    },
+    {
+      "domain_id": "agriculture",
+      "repository_id": "microsoft/farmvibes-ai",
+      "label": "relevant",
+      "reason": "Geospatial machine learning models for agricultural monitoring and farm analytics",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/microsoft/farmvibes-ai"
+    },
+    {
+      "domain_id": "agriculture",
+      "repository_id": "timmbogner/Farm-Data-Relay-System",
+      "label": "relevant",
+      "reason": "Telemetry relay system transporting on-farm environmental sensor data across fields",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/timmbogner/Farm-Data-Relay-System"
+    },
+    {
+      "domain_id": "food_waste",
+      "repository_id": "philsturgeon/awesome-earth",
+      "label": "adjacent",
+      "reason": "Broad directory of climate crisis solutions that includes but is not specialized in surplus food logistics",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/philsturgeon/awesome-earth"
+    },
+    {
+      "domain_id": "food_waste",
+      "repository_id": "dadaloop82/EverShelf",
+      "label": "relevant",
+      "reason": "Smart pantry manager tracking food expiration dates to minimize household food spoilage and waste",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/dadaloop82/EverShelf"
+    },
+    {
+      "domain_id": "food_waste",
+      "repository_id": "Achaak/toogoodtogo-bot",
+      "label": "different_meaning",
+      "reason": "Notification scraper bot for a commercial surplus food app, excluded by intent ('not food scraping bots')",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/Achaak/toogoodtogo-bot"
+    },
+    {
+      "domain_id": "food_waste",
+      "repository_id": "peterschwps/TooGoodToGo-CLI",
+      "label": "different_meaning",
+      "reason": "Automated checkout purchasing bot, excluded by intent ('not food scraping bots')",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/peterschwps/TooGoodToGo-CLI"
+    },
+    {
+      "domain_id": "food_waste",
+      "repository_id": "maks-p/restaurant_sales_forecasting",
+      "label": "adjacent",
+      "reason": "Restaurant sales forecasting tool related to food demand planning but focused on commercial sales analytics",
+      "review_state": "model_metadata_judgment_not_code_verified",
+      "source_url": "https://github.com/maks-p/restaurant_sales_forecasting"
+    }
+  ],
+  "source": "authenticated_model_on_public_repo_metadata",
+  "limitation": "No README/code inspection; classification can be wrong; unaudited repos stay unlabeled."
+}
