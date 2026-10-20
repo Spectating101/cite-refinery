@@ -480,3 +480,8 @@ See [source-connected mapping and scope audit](docs/SOURCE_CONNECTED_ATLAS_V2.md
 ### Primary-source mechanism bridges and integrated provenance
 
 [Read the original-source-anchored mechanism dossiers](research_materials/opportunity_atlas/PRIMARY_MECHANISM_ATLAS.md) and [inspect the two-track coverage gaps](research_materials/opportunity_atlas/INTEGRATED_GAPS.md). Eight mechanisms from 31 source identities are checked against SHA-256 of the authorized development originals, with seven candidate repository README blobs independently matched. The merged graph preserves disconnected source clusters rather than inferring unsupported source-to-procurement or economic links. This is research provenance, not commercial proof; no frozen holdout accessed.
+
+
+### Single three-layer atlas (experimental read-only projection)
+
+[Open the three-layer problem view](research_materials/opportunity_atlas/THREE_LAYER_ATLAS.md). Practical problems, source-bounded explanatory mechanisms and implementation leads are now represented in a single typed graph with source documents kept as provenance; the conversion analysis remains downstream. A structural three-layer path is not proof of suitability, a scientific effect or a buyer. This CLI projection **does not yet migrate** its records into the native persistent SemanticGraph; candidate promotion and source authority gates remain separate engineering work.

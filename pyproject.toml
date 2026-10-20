@@ -59,6 +59,7 @@ cite-refinery-source-bridge-input = "cite_refinery.opportunity_atlas_source_inpu
 cite-refinery-connected-atlas = "cite_refinery.opportunity_atlas_connected:main"
 cite-refinery-primary-mechanisms = "cite_refinery.opportunity_mechanism_primary:main"
 cite-refinery-merge-atlas-evidence = "cite_refinery.opportunity_atlas_union:main"
+cite-refinery-three-layer = "cite_refinery.three_layer_projection:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
