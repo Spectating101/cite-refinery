@@ -158,8 +158,18 @@ class SemanticGraph:
     qualify or contradict it, and where requested semantic paths break.
     """
 
-    def __init__(self, store: Any) -> None:
+    def __init__(self, store: Any, *, _stage_for_preview: bool = False) -> None:
         self.store = store
+        # Only an isolated, in-memory staging graph can simulate existing status
+        # transitions. A caller writing the real store cannot change a status
+        # implicitly by repeating the same source/relation/target write.
+        self._stage_for_preview = _stage_for_preview
+
+    def investigate_three_layers(self, project_id: str, node_id: str, *,
+                                 max_depth: int = 2) -> dict[str, Any]:
+        """Project-scoped, bidirectional navigation over the native stored graph."""
+        from .native_three_layer import investigate
+        return investigate(self.store.load(), project_id, node_id, max_depth=max_depth)
 
     def cross_layer_dossier(self, project_id: str) -> dict[str, Any]:
         """Interpret reviewed three-layer chains in a project without writing new edges."""
@@ -341,6 +351,13 @@ class SemanticGraph:
         })
         for edge in state.get("semantic_edges", {}).values():
             if edge.get("project_id") == project_id and edge.get("fingerprint") == fingerprint:
+                old_status = edge.get("status")
+                if old_status != status_value and not self._stage_for_preview:
+                    raise ValueError(
+                        f"existing edge status change {old_status} -> {status_value} "
+                        "requires a reviewed packet with explicit transition approval; "
+                        "direct add_edge cannot change authority"
+                    )
                 edge["status"] = status_value
                 edge["evidence_refs"] = _unique_strings([*edge.get("evidence_refs", []), *(evidence_refs or [])])
                 edge["tags"] = _unique_strings([*edge.get("tags", []), *(tags or [])])
@@ -376,7 +393,7 @@ class SemanticGraph:
     ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         current = self.store.load()
         staged_store = _StagedStore(current)
-        receipt = SemanticGraph(staged_store)._ingest_packet_unchecked(
+        receipt = SemanticGraph(staged_store, _stage_for_preview=True)._ingest_packet_unchecked(
             project_id, packet, packet_ref=packet_ref
         )
         return current, staged_store.load(), receipt
@@ -436,6 +453,7 @@ class SemanticGraph:
             "declared_node_layers": dict(sorted(declared_layers.items())),
             "authority_boundary_warnings": boundary_warnings,
             "changed_existing_edge_statuses": status_changes,
+            "status_change_requires_explicit_approval": bool(status_changes),
             "schema": "cite_refinery.semantic_ingest_preview.v1",
             "project_id": project_id,
             "packet_digest": _digest(packet),
@@ -457,6 +475,8 @@ class SemanticGraph:
         *,
         packet_ref: str | None = None,
         expected_state_digest: str | None = None,
+        approved_status_changes: list[dict[str, str]] | None = None,
+        approval_reason: str | None = None,
     ) -> dict[str, Any]:
         """Commit only a completely valid packet in one state write.
 
@@ -467,6 +487,35 @@ class SemanticGraph:
         current, proposed, receipt = self._stage_packet(project_id, packet, packet_ref)
         if expected_state_digest is not None and _digest(current) != expected_state_digest:
             raise ValueError("workspace state changed after review; preview again")
+        changed = [
+            {"edge_id": key,
+             "from": current["semantic_edges"][key].get("status"),
+             "to": proposed["semantic_edges"][key].get("status")}
+            for key in sorted(set(current["semantic_edges"]) & set(proposed["semantic_edges"]))
+            if current["semantic_edges"][key].get("status")
+               != proposed["semantic_edges"][key].get("status")
+        ]
+        if changed:
+            # Approval describes *exactly* the edges and transitions from preview.
+            # A plain bool does not constitute evidence of an explicit review.
+            if (not expected_state_digest or
+                approved_status_changes != changed or
+                not isinstance(approval_reason, str) or
+                not approval_reason.strip() or len(approval_reason.strip()) < 12):
+                raise ValueError(
+                    "explicit approval for existing edge status changes requires a matching state digest, "
+                    "exact approved_status_changes from preview, and review rationale"
+                )
+            stored_receipt = proposed["semantic_packets"][receipt["id"]]
+            stored_receipt["status_transition_review"] = {
+                "changes": changed, "rationale": approval_reason.strip(),
+                "reviewed_state_digest": expected_state_digest,
+                "packet_digest": _digest(packet),
+                "scope": "explicit local operator acknowledgement, not externally verified reviewer identity",
+            }
+            receipt = dict(stored_receipt)
+        elif approved_status_changes:
+            raise ValueError("unexpected status-change approval for packet without transitions")
         if proposed != current:
             # Check once more before the single commit; prevents common stale previews.
             if _digest(self.store.load()) != _digest(current):

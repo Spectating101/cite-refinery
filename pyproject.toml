@@ -60,6 +60,7 @@ cite-refinery-connected-atlas = "cite_refinery.opportunity_atlas_connected:main"
 cite-refinery-primary-mechanisms = "cite_refinery.opportunity_mechanism_primary:main"
 cite-refinery-merge-atlas-evidence = "cite_refinery.opportunity_atlas_union:main"
 cite-refinery-three-layer = "cite_refinery.three_layer_projection:main"
+cite-refinery-three-layer-native-packet = "cite_refinery.three_layer_native_ingest:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

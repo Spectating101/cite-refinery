@@ -112,7 +112,10 @@ class CapabilityEvolutionTests(unittest.TestCase):
         project = project or self.project
         review = self.db.preview(user, project, packet)
         self.db.enqueue(user, project, packet,
-                        review["project_revision"], review["packet_digest"])
+                        review["project_revision"], review["packet_digest"],
+                        approved_status_changes=review["changed_existing_edge_statuses"] or None,
+                        approval_reason=("Owner reviewed the exact source changes and authorizes this evidence transition."
+                                         if review["changed_existing_edge_statuses"] else None))
         result = self.db.run_one_job()
         self.assertEqual(result["status"], "succeeded")
         return review

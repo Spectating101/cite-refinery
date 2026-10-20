@@ -88,6 +88,8 @@ def create_private_app(db_path: str):
         packet: dict[str, Any]
         expected_revision: int = Field(ge=0)
         expected_packet_digest: str = Field(min_length=64, max_length=64)
+        approved_status_changes: list[dict[str, str]] | None = None
+        approval_reason: str | None = Field(default=None, max_length=1000)
 
     @app.get("/health")
     def health():
@@ -160,7 +162,8 @@ def create_private_app(db_path: str):
     def enqueue(project_id: str, body: EnqueueRequest, user: str = Depends(current_user)):
         job_id = store.enqueue(
             user, project_id, body.packet,
-            body.expected_revision, body.expected_packet_digest)
+            body.expected_revision, body.expected_packet_digest,
+            body.approved_status_changes, body.approval_reason)
         return {"job_id": job_id, "status": "queued"}
 
     @app.get("/api/jobs/{job_id}")

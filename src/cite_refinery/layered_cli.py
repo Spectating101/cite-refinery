@@ -87,6 +87,14 @@ def _graph_review_parser() -> argparse.ArgumentParser:
         "--expected-packet-digest",
         help="Exact packet digest from an earlier preview; required with --apply",
     )
+    parser.add_argument(
+        "--approve-status-changes", action="store_true",
+        help="Acknowledge every exact existing-edge status transition in the current preview",
+    )
+    parser.add_argument(
+        "--approval-reason",
+        help="Required rationale (12+ chars) when approving existing edge status changes",
+    )
     return parser
 
 
@@ -110,6 +118,15 @@ def _graph_neighborhood_parser() -> argparse.ArgumentParser:
     parser.add_argument("project_id")
     parser.add_argument("node_id")
     parser.add_argument("--depth", type=int, default=1)
+    return parser
+
+
+def _graph_investigate_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery graph-investigate")
+    parser.add_argument("--workspace", default=".cite-refinery")
+    parser.add_argument("project_id")
+    parser.add_argument("node_id")
+    parser.add_argument("--depth", type=int, default=2)
     return parser
 
 
@@ -252,6 +269,11 @@ def main(argv: list[str] | None = None) -> int:
                     args.project_id, packet,
                     packet_ref=args.packet_ref or str(input_path),
                     expected_state_digest=args.expected_state_digest,
+                    approved_status_changes=(
+                        reviewed["changed_existing_edge_statuses"]
+                        if args.approve_status_changes else None
+                    ),
+                    approval_reason=args.approval_reason,
                 )
                 print(json.dumps({"action": "applied", "receipt": result}, indent=2, ensure_ascii=False))
             else:
@@ -270,6 +292,7 @@ def main(argv: list[str] | None = None) -> int:
         "graph-bootstrap",
         "graph-project",
         "graph-neighborhood",
+        "graph-investigate",
         "graph-coverage",
         "graph-query",
         "graph-trace",
@@ -283,6 +306,7 @@ def main(argv: list[str] | None = None) -> int:
             "graph-bootstrap": _graph_bootstrap_parser,
             "graph-project": _graph_project_parser,
             "graph-neighborhood": _graph_neighborhood_parser,
+            "graph-investigate": _graph_investigate_parser,
             "graph-coverage": _graph_coverage_parser,
             "graph-query": _graph_query_parser,
             "graph-trace": _graph_trace_parser,
@@ -309,6 +333,10 @@ def main(argv: list[str] | None = None) -> int:
                 result = SemanticProjection(graph).project_all(args.project_id)
             elif selected_graph_command == "graph-neighborhood":
                 result = graph.neighborhood(args.project_id, args.node_id, depth=args.depth)
+            elif selected_graph_command == "graph-investigate":
+                result = graph.investigate_three_layers(
+                    args.project_id, args.node_id, max_depth=args.depth,
+                )
             elif selected_graph_command == "graph-coverage":
                 result = graph.coverage(args.project_id, args.node_id, depth=args.depth)
             elif selected_graph_command == "graph-query":

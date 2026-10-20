@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS ingest_jobs (
   packet_json TEXT NOT NULL,
   packet_hash TEXT NOT NULL,
   expected_revision INTEGER NOT NULL,
+  approval_json TEXT,
   status TEXT NOT NULL CHECK(status IN ('queued','running','succeeded','failed')),
   result_json TEXT, error TEXT, created_at TEXT NOT NULL,
   started_at TEXT, finished_at TEXT
@@ -118,6 +119,11 @@ class WorkspaceDB:
         self.path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
         with self._connection() as db:
             db.executescript(SCHEMA)
+            # Explicit forward migration for already-created private workspace DBs.
+            columns = {r["name"] for r in db.execute("PRAGMA table_info(ingest_jobs)").fetchall()}
+            if "approval_json" not in columns:
+                db.execute("ALTER TABLE ingest_jobs ADD COLUMN approval_json TEXT")
+                db.commit()
         # SQLite may create a file with the caller's permissive default umask.
         os.chmod(self.path, 0o600)
 
@@ -370,7 +376,9 @@ class WorkspaceDB:
         return {**data, "project_revision": revision}
 
     def enqueue(self, user_id: str, project_id: str, packet: dict[str, Any],
-                expected_revision: int, expected_packet_digest: str) -> str:
+                expected_revision: int, expected_packet_digest: str,
+                approved_status_changes: list[dict[str, str]] | None = None,
+                approval_reason: str | None = None) -> str:
         if not isinstance(packet, dict):
             raise ValueError("packet must be an object")
         raw = json.dumps(packet, sort_keys=True, ensure_ascii=False)
@@ -378,7 +386,7 @@ class WorkspaceDB:
             raise ValueError("packet exceeds 8 MiB")
         with self._write() as db:
             row = self._project(db, project_id)
-            self._require(db, user_id, row["tenant_id"], {"owner", "editor"})
+            role = self._require(db, user_id, row["tenant_id"], {"owner", "editor"})
             if row["revision"] != expected_revision:
                 raise StateConflict("project changed since preview")
             review = SemanticGraph(_MemoryStore(json.loads(row["state_json"]))).preview_packet(
@@ -387,12 +395,29 @@ class WorkspaceDB:
                 raise StateConflict("packet differs from reviewed content")
             if review["already_imported"]:
                 raise StateConflict("packet already imported")
+            changes = review["changed_existing_edge_statuses"]
+            approval_json = None
+            if changes:
+                if role != "owner":
+                    raise PermissionDenied("only tenant owner may approve an existing evidence status change")
+                if (approved_status_changes != changes or
+                    not isinstance(approval_reason, str) or
+                    len(approval_reason.strip()) < 12):
+                    raise StateConflict("explicit exact status transition approval and rationale required")
+                approval_json = json.dumps({
+                    "changes":changes,"reason":approval_reason.strip(),
+                    "state_digest":review["state_digest"],
+                    "reviewed_by":user_id,
+                    "packet_digest":review["packet_digest"],
+                },sort_keys=True)
+            elif approved_status_changes:
+                raise StateConflict("no existing status transition requires approval")
             job_id = _id("job")
             db.execute(
                 "INSERT INTO ingest_jobs(id,tenant_id,project_id,submitted_by,packet_json,"
-                "packet_hash,expected_revision,status,created_at) VALUES(?,?,?,?,?,?,?,?,?)",
+                "packet_hash,expected_revision,approval_json,status,created_at) VALUES(?,?,?,?,?,?,?,?,?,?)",
                 (job_id, row["tenant_id"], project_id, user_id, raw,
-                 expected_packet_digest, expected_revision, "queued", _now()),
+                 expected_packet_digest, expected_revision, approval_json, "queued", _now()),
             )
             self._audit(db, row["tenant_id"], project_id, user_id, "ingest_queued",
                         {"job_id": job_id, "revision": expected_revision})
@@ -436,7 +461,23 @@ class WorkspaceDB:
                 review = graph.preview_packet(row["project_id"], packet)
                 if review["packet_digest"] != row["packet_hash"]:
                     raise StateConflict("queued packet digest mismatch")
-                receipt = graph.ingest_packet(row["project_id"], packet)
+                approval = json.loads(row["approval_json"]) if row["approval_json"] else None
+                changes = review["changed_existing_edge_statuses"]
+                if changes:
+                    if (not approval or
+                        approval.get("changes") != changes or
+                        approval.get("state_digest") != review["state_digest"] or
+                        approval.get("packet_digest") != review["packet_digest"] or
+                        approval.get("reviewed_by") != row["submitted_by"]):
+                        raise StateConflict("queued status review evidence missing or stale")
+                elif approval:
+                    raise StateConflict("unexpected queued status approval")
+                receipt = graph.ingest_packet(
+                    row["project_id"], packet,
+                    expected_state_digest=review["state_digest"],
+                    approved_status_changes=approval["changes"] if approval else None,
+                    approval_reason=approval["reason"] if approval else None,
+                )
                 committed = graph.store.load()
                 db.execute("UPDATE projects SET state_json=?,revision=revision+1 WHERE id=?",
                            (json.dumps(committed, ensure_ascii=False), row["project_id"]))
@@ -447,6 +488,16 @@ class WorkspaceDB:
                 )
                 self._audit(db, row["tenant_id"], row["project_id"], row["submitted_by"],
                             "ingest_committed", {"job_id": row["id"], "receipt_id": receipt["id"]})
+                if approval:
+                    self._audit(
+                        db, row["tenant_id"], row["project_id"], row["submitted_by"],
+                        "existing_evidence_status_transition_approved",
+                        {"job_id":row["id"],"receipt_id":receipt["id"],
+                         "transitions":approval["changes"],
+                         "reviewer_id":approval["reviewed_by"],
+                         "rationale":approval["reason"],
+                         "reviewed_state_digest":approval["state_digest"]},
+                    )
                 status = "succeeded"
             except (ValueError, KeyError, StateConflict) as exc:
                 db.execute("UPDATE ingest_jobs SET status='failed',error=?,finished_at=? WHERE id=?",

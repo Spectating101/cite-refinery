@@ -30,7 +30,12 @@ class PrivateEvolutionUITests(unittest.TestCase):
 
     def ingest(self, p):
         r=self.db.preview(self.uid, self.project, p)
-        self.db.enqueue(self.uid, self.project, p, r["project_revision"], r["packet_digest"])
+        self.db.enqueue(
+            self.uid, self.project, p, r["project_revision"], r["packet_digest"],
+            approved_status_changes=r["changed_existing_edge_statuses"] or None,
+            approval_reason=("Owner reviewed the exact source changes and approved this status transition."
+                             if r["changed_existing_edge_statuses"] else None),
+        )
         self.assertEqual(self.db.run_one_job()["status"],"succeeded")
 
     def test_private_shell_no_embedded_research_token_or_unprotected_api(self):

@@ -485,3 +485,8 @@ See [source-connected mapping and scope audit](docs/SOURCE_CONNECTED_ATLAS_V2.md
 ### Single three-layer atlas (experimental read-only projection)
 
 [Open the three-layer problem view](research_materials/opportunity_atlas/THREE_LAYER_ATLAS.md). Practical problems, source-bounded explanatory mechanisms and implementation leads are now represented in a single typed graph with source documents kept as provenance; the conversion analysis remains downstream. A structural three-layer path is not proof of suitability, a scientific effect or a buyer. This CLI projection **does not yet migrate** its records into the native persistent SemanticGraph; candidate promotion and source authority gates remain separate engineering work.
+
+
+### Native three-layer review gate and bidirectional queries (2026-10-21)
+
+[Read the implementation and safety notes](docs/NATIVE_THREE_LAYER_REVIEW_AND_QUERY_V1.md). A candidate-only bridge now exports the unified atlas as a standard native SemanticGraph packet for digest-bound graph-review approval. Existing evidence-status transitions require exact reviewer acknowledgment and rationale; direct repeat edge writes cannot silently change status. Project-scoped `graph-investigate` traverses explicit relations in both directions across Practical / Academic / Implementation without treating unreviewed or negative links as evidence of fit. Demonstrated on isolated workspaces, not an automatic production migration.
