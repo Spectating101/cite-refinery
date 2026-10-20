@@ -20,6 +20,18 @@ class LLMUnavailable(RuntimeError):
     pass
 
 
+# Explicitly discovered from the authenticated Optiplex `agy models` catalog
+# on 2026-10-21; arbitrary model strings are still rejected.
+AGY_VERIFIED_MODELS = frozenset(
+    f"{family}-{tier}"
+    for family in (
+        "gemini-3.8-flash", "gemini-4-argon",
+        "claude-opus-5-5", "claude-sonnet-5-5"
+    )
+    for tier in ("low", "medium", "high")
+)
+
+
 def _parse_response(payload):
     if isinstance(payload, dict) and all(k in payload for k in ("propositions","bridges","open_questions")):
         return payload
@@ -128,8 +140,8 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
             if not agy:
                 raise LLMUnavailable("Antigravity CLI not found; set CITE_REFINERY_ANTIGRAVITY_BIN")
             selected=model or "gemini-3.8-flash-medium"
-            if selected not in {"gemini-3.8-flash-low","gemini-3.8-flash-medium","gemini-3.8-flash-high"}:
-                raise ValueError("Select a verified Gemini 3.8 Flash tier")
+            if selected not in AGY_VERIFIED_MODELS:
+                raise ValueError("Select an explicitly catalog-verified Antigravity model/tier")
             cmd=[agy,"--mode","plan","--sandbox","--disable-slash-commands",
                  "--model",selected,"--output-format","json",
                  "--print-timeout",f"{max(10,timeout_seconds-5)}s",

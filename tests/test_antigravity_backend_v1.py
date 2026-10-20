@@ -1,4 +1,4 @@
-"""Authenticated Antigravity Gemini 3.8 Flash model route contracts."""
+"""Authenticated Antigravity explicit catalog route contracts."""
 from __future__ import annotations
 import json
 import subprocess
@@ -45,6 +45,28 @@ class AntigravityBackendTests(unittest.TestCase):
             invoke_semantic_llm(PROMPT,provider="antigravity",model="gemini-3.8-flash-unknown")
         with self.assertRaises(ValueError):
             invoke_semantic_llm(PROMPT,provider="antigravity",model="gemini-4-argon")
+    def test_explicit_argon_opus_sonnet_55_catalog_ids(self):
+        for model in ("gemini-4-argon-medium", "claude-opus-5-5-medium",
+                      "claude-sonnet-5-5-medium"):
+            calls=[]
+            def mock_run(command,**kwargs):
+                calls.append(command)
+                return subprocess.CompletedProcess(command,0,stdout=json.dumps({
+                    "status":"SUCCESS","response":'{"verdict":"candidate_only"}'}),
+                    stderr="")
+            with self.subTest(model=model):
+                with patch("cite_refinery.external_llm_runtime.subprocess.run",side_effect=mock_run):
+                    r=invoke_semantic_llm(PROMPT,provider="antigravity",model=model)
+                self.assertEqual(r["model"],model)
+                self.assertEqual(calls[0][calls[0].index("--model")+1],model)
+                self.assertIn("--sandbox",calls[0])
+                self.assertIn("Do not use tools.",calls[0][-1])
+                self.assertEqual(r["raw"]["verdict"],"candidate_only")
+        for malformed in ("claude-opus-5.5", "gemini-4-argon-ultra",
+                          "claude-sonnet-5-5", "claude-opus-5-5-unknown"):
+            with self.assertRaises(ValueError):
+                invoke_semantic_llm(PROMPT,provider="antigravity",model=malformed)
+
     def test_default_selects_gemini_medium(self):
         def mock_run(command,**kwargs):
             self.assertEqual(command[command.index("--model")+1],"gemini-3.8-flash-medium")
