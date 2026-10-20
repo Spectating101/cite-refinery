@@ -1,6 +1,7 @@
 """Cross-shard semantic atlas; model-derived candidate domains, never verified outcomes."""
 from __future__ import annotations
 import json
+import re
 from collections import Counter
 
 def synthesis_prompt(provisional):
@@ -19,9 +20,12 @@ def synthesis_prompt(provisional):
       "the actual heterogeneous topics; not vague repeated clusters on 'health' "
       "or 'risks'. Each area must specify the concrete problem node, "
       "measurement or academic evidence node, real or proposed intervention "
-      "node, and main evidence gaps. Say explicitly when there is NO "
-      "verified deployed intervention or measured outcome; injury endpoints "
-      "do not transfer to toxicant burden. Use only real source IDs from input, "
+      "node, and main evidence gaps. If there is no intervention or outcome "
+      "in the supplied evidence, say only NOT FOUND IN THESE RETRIEVED SOURCES. "
+      "Never infer worldwide nonexistence from a limited search; absence "
+      "from this corpus is not absence in the field. Distinguish measured "
+      "observational associations from verified causal effects; injury "
+      "endpoints do not transfer to toxicant burden. Use only real source IDs from input, "
       "not original collection query labels or invented sources. Sources may "
       "belong to two linked areas maximum. Leave off-topic/unusable passages "
       "in unplaced_source_ids. Cross-domain links must not claim causality "
@@ -52,6 +56,24 @@ def _txt(v,key,n=10):
         raise ValueError("Missing "+key)
     return v.strip()
 
+_ABSOLUTE_ABSENCE = re.compile(r"\bno\s+(?:verified|measured|independently validated)\b", re.I)
+_SOURCE_SCOPED = re.compile(
+    r"\b(?:within|among|in)\s+(?:the\s+|these\s+|this\s+)?"
+    r"(?:(?:retrieved|supplied|sampled|provided|mapped|current)\s+)?"
+    r"(?:sources|corpus|sample|records)\b", re.I,
+)
+
+
+def reject_unscoped_absence(text: str) -> str:
+    """Reject absolute absence claims unless explicitly scoped to the selected source set.
+
+    This is a narrow safety contract, not a semantic entailment or causality test.
+    """
+    if _ABSOLUTE_ABSENCE.search(text) and not _SOURCE_SCOPED.search(text):
+        raise ValueError("Unscoped absence of intervention/outcome asserted from incomplete corpus")
+    return text
+
+
 def validate_synthesis(raw,provisional):
     ds=raw.get("domains") if isinstance(raw,dict) else None
     if not isinstance(ds,list) or not 5<=len(ds)<=16:
@@ -76,7 +98,7 @@ def validate_synthesis(raw,provisional):
           "label":label,"source_ids":ids,
           "problem_node":_txt(d.get("problem_node"),"problem node",15),
           "measurement_node":_txt(d.get("measurement_node"),"measurement node",15),
-          "intervention_node":_txt(d.get("intervention_node"),"intervention node",15),
+          "intervention_node":reject_unscoped_absence(_txt(d.get("intervention_node"),"intervention node",15)),
           "evidence_limit":_txt(d.get("evidence_limit"),"evidence limit",18),
           "questions":questions,
           "candidate_role_distribution":dict(Counter(refs[i]["role"] for i in ids)),

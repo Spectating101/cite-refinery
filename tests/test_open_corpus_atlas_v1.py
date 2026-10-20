@@ -2,6 +2,8 @@
 from __future__ import annotations
 import copy
 import unittest
+import json
+from pathlib import Path
 from cite_refinery.open_corpus_atlas import validate_synthesis,synthesis_prompt
 
 def fixture():
@@ -44,6 +46,27 @@ class AtlasContractTests(unittest.TestCase):
         x["domains"][1]["source_ids"]=["S0","S1"]
         x["domains"][2]["source_ids"]=["S0","S1"]
         with self.assertRaisesRegex(ValueError,"over-assigned"):validate_synthesis(x,p)
+    def test_absolute_negative_intervention_claim_rejected_from_incomplete_sample(self):
+        p,base=fixture()
+        x=copy.deepcopy(base)
+        x["domains"][0]["intervention_node"] = (
+            "There is NO verified deployed intervention or measured outcome demonstrating mortality reduction.")
+        with self.assertRaisesRegex(ValueError,"Unscoped absence"):
+            validate_synthesis(x,p)
+        x["domains"][0]["intervention_node"] = (
+            "No verified deployment was identified within these retrieved sources; further investigation is needed.")
+        self.assertEqual(len(validate_synthesis(x,p)["domains"]), 6)
+        prompt=synthesis_prompt(p)
+        self.assertIn("NOT FOUND IN THESE RETRIEVED SOURCES",prompt)
+
+    def test_original_atlas_global_absence_overclaim_is_flagged(self):
+        from cite_refinery.open_corpus_atlas import reject_unscoped_absence
+        path=Path(__file__).resolve().parents[1] / "research_materials/runtime_trials/open_corpus_20261020/global_atlas.json"
+        atlas=json.loads(path.read_text(encoding="utf-8"))
+        heat=next(x for x in atlas["domains"] if "Heat" in x["label"])
+        with self.assertRaisesRegex(ValueError,"Unscoped absence"):
+            reject_unscoped_absence(heat["intervention_node"])
+
     def test_cross_area_relation_must_be_from_accepted_domain_labels(self):
         p,base=fixture()
         x=copy.deepcopy(base);x["cross_domain_links"]=[{
