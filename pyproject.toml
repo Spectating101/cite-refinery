@@ -39,6 +39,7 @@ cite-refinery-external = "cite_refinery.external_cli:main"
 cite-refinery-llm = "cite_refinery.external_llm_cli:main"
 cite-refinery-investigate = "cite_refinery.investigation_cli:main"
 cite-refinery-adjudicate = "cite_refinery.investigation_adjudication_cli:main"
+cite-refinery-repair = "cite_refinery.evidence_repair_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

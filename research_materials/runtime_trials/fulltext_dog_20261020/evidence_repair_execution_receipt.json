@@ -1,0 +1,35 @@
+{
+  "schema": "cite_refinery.evidence_repair_execution_receipt.v1",
+  "source_doi": "10.14202/vetworld.2026.2816-2849",
+  "primary_jats_sha256": "4210e7ebc871f3db31dee6cb761f09d82e4f29f49aceed6a860c268e74176b7e",
+  "original_investigation": "2ca16ed4bdde441cabb1",
+  "original_investigation_status": "done",
+  "original_rounds": 2,
+  "new_investigation": "49ecd664b5044b24abfc",
+  "new_investigation_status": "plan",
+  "new_investigation_fulltext_enrichment": true,
+  "source_quality_issue_count": 5,
+  "publicly_searchable_issue_keys": [
+    "external-population-outcome-gap"
+  ],
+  "awaiting_external_author_or_publisher_keys": [
+    "table3-reproduction-definition-gap",
+    "table6-buffer-exposure-design-gap",
+    "table2-sex-total-2023-3-2",
+    "table2-sex-total-2024-3-1"
+  ],
+  "packet_declared_nodes": 11,
+  "packet_declared_edges": 15,
+  "packet_edge_states": {
+    "candidate": 5,
+    "unresolved": 10
+  },
+  "graph_packet_receipt": "sgpacket:fabe402d061f908f",
+  "graph_idempotent_replay_confirmed": true,
+  "changed_original_edge_statuses": 0,
+  "live_model_planning_status": "not_completed_authenticated_codex_usage_limit",
+  "original_publication_error_verified": false,
+  "author_records_obtained": false,
+  "email_sent": false,
+  "boundary": "Evidence-quality signals are neutral review issues. No source-level causal truth, independent medical outcome or original-data replication has been established."
+}

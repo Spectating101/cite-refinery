@@ -1,0 +1,125 @@
+{
+  "schema": "cite_refinery.evidence_repair_frontier.v1",
+  "source_doi": "10.14202/vetworld.2026.2816-2849",
+  "source_sha256": "4210e7ebc871f3db31dee6cb761f09d82e4f29f49aceed6a860c268e74176b7e",
+  "investigation_id": "2ca16ed4bdde441cabb1",
+  "project_id": "rproject:404ca1c7a445",
+  "cases": [
+    {
+      "key": "table2-sex-total-2023-3-2",
+      "issue_type": "published_row_arithmetic_discrepancy",
+      "priority": "P1",
+      "resolution_channel": "author_records_or_publisher_correction",
+      "statement": "Published Table 2 2023, zone 3, program 2: total 62 but male 11 plus female 47 equals 58.",
+      "why_unresolved": "An internal published table count discrepancy is present; the underlying row definition and raw data have not been independently obtained.",
+      "question": "What original record, sex-classification convention or publication correction explains the Table 2 2023 zone 3 program 2 total/sex-count discrepancy?",
+      "required_evidence": "Original program row, verified sex-total definition and dated analysis extract or publisher correction",
+      "claim_ids": [],
+      "table_ref": "T2",
+      "source_row": 63,
+      "value_receipt": {
+        "type": "within_row_sex_total_mismatch",
+        "table_row": 63,
+        "year": "2023",
+        "zone": "3",
+        "program": "2",
+        "total": 62,
+        "male": 11,
+        "female": 47,
+        "sex_sum": 58,
+        "difference_total_minus_sex_sum": 4,
+        "boundary": "Source table arithmetic discrepancy; cause unknown, no automatic correction."
+      }
+    },
+    {
+      "key": "table2-sex-total-2024-3-1",
+      "issue_type": "published_row_arithmetic_discrepancy",
+      "priority": "P1",
+      "resolution_channel": "author_records_or_publisher_correction",
+      "statement": "Published Table 2 2024, zone 3, program 1: total 120 but male 49 plus female 87 equals 136.",
+      "why_unresolved": "An internal published table count discrepancy is present; the underlying row definition and raw data have not been independently obtained.",
+      "question": "What original record, sex-classification convention or publication correction explains the Table 2 2024 zone 3 program 1 total/sex-count discrepancy?",
+      "required_evidence": "Original program row, verified sex-total definition and dated analysis extract or publisher correction",
+      "claim_ids": [],
+      "table_ref": "T2",
+      "source_row": 78,
+      "value_receipt": {
+        "type": "within_row_sex_total_mismatch",
+        "table_row": 78,
+        "year": "2024",
+        "zone": "3",
+        "program": "1",
+        "total": 120,
+        "male": 49,
+        "female": 87,
+        "sex_sum": 136,
+        "difference_total_minus_sex_sum": -16,
+        "boundary": "Source table arithmetic discrepancy; cause unknown, no automatic correction."
+      }
+    },
+    {
+      "key": "table3-reproduction-definition-gap",
+      "issue_type": "published_model_reproduction_gap",
+      "priority": "P0",
+      "resolution_channel": "author_analysis_data_required",
+      "statement": "None of 12 specified published-Table-2 negative-binomial sensitivity fits jointly reproduces the Table 3 IRR and p-value within both 0.005 tolerances.",
+      "why_unresolved": "The author's exact model-ready inputs, exclusions, offset definition and R script are unavailable; this does not identify a model or publication error.",
+      "question": "Which exact analysis dataset, year/effort coding, inclusion rules and R glm.nb specification produced the published Table 3 annual incidence rate ratios and p-values?",
+      "required_evidence": "Author-approved T3 input frame, R code, package versions, model diagnostics, and count/effort data dictionary",
+      "claim_ids": [],
+      "table_ref": "T3",
+      "source_row": null,
+      "value_receipt": {
+        "candidate_variants": 12,
+        "close_joint_reproductions": 0,
+        "published_total_IRR": 1.03,
+        "published_total_p": 0.55488235
+      }
+    },
+    {
+      "key": "table6-buffer-exposure-design-gap",
+      "issue_type": "missing_model_design_matrix",
+      "priority": "P0",
+      "resolution_channel": "author_analysis_data_required",
+      "statement": "The exact contemporaneous, program-aligned buffer exposure matrix behind Table T6C is not published with the accessible Table 2 summaries.",
+      "why_unresolved": "Published T2 rows and T6C estimates do not establish the author's program alignment, regressors and confounder controls. Absence from the public paper is not proof original data do not exist.",
+      "question": "What program alignment, buffer-operation timing and Zone × Period × Buffer Total regression design matrix generated the reported zone 1 male and zone 3 female buffer estimates?",
+      "required_evidence": "Author-approved program dates, buffer_total join, zone/sex/program frame, code and CI method",
+      "claim_ids": [
+        "R2:P6",
+        "R2:P7"
+      ],
+      "table_ref": "T6C",
+      "source_row": null,
+      "value_receipt": {
+        "data_access": "corresponding_author_on_request"
+      }
+    },
+    {
+      "key": "external-population-outcome-gap",
+      "issue_type": "missing_independent_outcome_measurement",
+      "priority": "P1",
+      "resolution_channel": "public_independent_source_discovery",
+      "statement": "Published program catch counts do not independently measure total free-roaming dog abundance or district-specific human rabies incidence.",
+      "why_unresolved": "The article reports resource limits on community-wide surveys and incomplete locally matched bite/PEP/rabies outcome series.",
+      "question": "Which independent, geographically matched dog-abundance survey and bite/PEP/rabies records could test whether program catch-rate changes correspond to population and human-health changes?",
+      "required_evidence": "Comparable effort- or detection-adjusted community survey plus deidentified geographically and temporally matched public-health indicators",
+      "claim_ids": [
+        "R2:P4",
+        "R2:P6",
+        "R2:P7"
+      ],
+      "table_ref": "study_limitations",
+      "source_row": null,
+      "value_receipt": {
+        "impact_verified": false
+      }
+    }
+  ],
+  "limitations": [
+    "All entries are review questions, not established causal mistakes.",
+    "A derived Table T2 CSV is not the author's original operational dataset.",
+    "No author data request has been sent and no correction is asserted."
+  ],
+  "authority": "neutral_unresolved_needs_primary_data"
+}

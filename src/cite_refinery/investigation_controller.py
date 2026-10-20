@@ -64,6 +64,10 @@ def planning_prompt(state):
         "counterargument and an empirical measurement gap. Avoid repeated searches; "
         "do not invent citations. Keep the focus narrower than a whole field, "
         "and state a concrete reason to compare the evidence families. "
+        "If this is an evidence-repair investigation, distinguish public scholarly "
+        "methods from author-held unpublished data; never imply a web search "
+        "can independently reproduce data that are only available upon request. "
+        "Do not treat an audit discrepancy as proof of misconduct or program failure. "
         "Return JSON object ONLY with fields "
         "{\"focus\":str,\"reason\":str,\"hypotheses\":[str],"
         "\"queries\":[{\"lane\":\"academic|official\",\"query\":str}]}. "
@@ -71,7 +75,8 @@ def planning_prompt(state):
         "DO NOT supply model answers or assume an intervention worked.\n\n"
         +json.dumps({"original_question":state["question"],"current_focus":focused,
                       "modules":state["modules"],"previous_rounds":history,
-                      "remaining_frontier":state["frontier"][:8]},
+                      "remaining_frontier":state["frontier"][:8],
+                      "evidence_repair_lineage":state.get("lineage")},
                      ensure_ascii=False,separators=(",",":"))
     )
 
