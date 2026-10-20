@@ -37,6 +37,7 @@ Probes use original pinned upstream files in a separate research scratch directo
 | missing_level_handling | **PASS** | null |
 | invalid_typical_range_handling | **PASS** | null |
 | nonfinite_sensor_level_is_excluded | **FAIL** | {"nan_in_ranked_stations": true, "nan_relative_value": "nan"} |
+| nonfinite_station_corrupts_top_one_ordering | **FAIL** | {"input_order": ["low", "nan", "high2"], "top_one": ["low"]} |
 | local_warning_distribution_and_health_outcomes | **NOT_TESTED** | "Synthetic UK-style MonitoringStation data only." |
 
 **Scope boundary:** Station threshold/ranking utilities; not weather forecast skill, alert delivery, local calibration or reduced harm.
@@ -46,6 +47,7 @@ Probes use original pinned upstream files in a separate research scratch directo
 ### Interpretation
 
 - **nonfinite_sensor_level_is_excluded** (fail): Nonfinite measurements are invalid telemetry; passing them into risk sorting can mislead downstream processing.
+- **nonfinite_station_corrupts_top_one_ordering** (fail): Upstream Python float NaN breaks total ordering and can suppress a truly higher station. Synthetic fixture is a direct module test; it does not establish actual public-warning failures.
 - **local_warning_distribution_and_health_outcomes** (not_tested): No live station feed, dissemination authority or health endpoint was tested.
 
 ## [ajlongshanks/co2_esphome](https://github.com/ajlongshanks/co2_esphome/tree/d1b3c500ae475e3dcfef6e5dbb38279cdc267708)
