@@ -1,0 +1,27 @@
+{
+  "schema": "source-to-module-human-expectations.v1",
+  "sealed_before_encoding": true,
+  "criterion": "Named concepts expected from direct source passage, not tested intervention effectiveness. Gold is not supplied to embedding model.",
+  "gold": {
+    "WMO": [
+      "WA-06",
+      "DR-01"
+    ],
+    "RABIES": [
+      "AW-03",
+      "PH-02"
+    ],
+    "AIR": [
+      "AQ-01",
+      "PH-06"
+    ],
+    "WATER": [
+      "WA-01",
+      "PH-02"
+    ]
+  },
+  "limitations": [
+    "Single annotator; four source excerpts; some links potentially debatable, especially primary-care module scope.",
+    "This gold tests recovery of plausible module endpoints, not whether source entails a proposed edge."
+  ]
+}

@@ -1,0 +1,676 @@
+{
+  "experiment": "source_first_semantic_retrieval_20261020",
+  "independent_gold_file": "gold.json",
+  "module_count": 62,
+  "source_count": 4,
+  "sources": [
+    {
+      "id": "AIR",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+      "source_page_sha256": "db0db64b30d620dfcf7a6ad33d764f3f20b22a2efb1a656d576bd715091adcc2",
+      "source_passage_sha256": "1ce39bbfde78d9272f5378bd80a028bc6d00cbde5b947d40a35137a38847d522"
+    },
+    {
+      "id": "RABIES",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/rabies",
+      "source_page_sha256": "7917206a4b719d6206600a24b7501126ea411651a3eaa22edce2ee50b601744f",
+      "source_passage_sha256": "d0b098105f61de728f38ec9a3e6c77322c2c897922d152436d79ea6b4b9fac1b"
+    },
+    {
+      "id": "WATER",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/drinking-water",
+      "source_page_sha256": "435fbda13e3a0587db2f6115e44088e7581960e71551650234e9e71201968b64",
+      "source_passage_sha256": "c286c9bb464490136dbf1bab5d983cc6a31c4e3e818a4c1b7f0e605c1c22a987"
+    },
+    {
+      "id": "WMO",
+      "url": "https://wmo.int/activities/hydrosos",
+      "source_page_sha256": "542c8d33a1baf1fc27657572f2737922b0b33b2e32ef4ee8db4cddeff5428fb8",
+      "source_passage_sha256": "b3e949529b49259165b51ea86fd96c4d6f6f59f7f6fbbfe2652bbcc3e8292b24"
+    }
+  ],
+  "retrieval_embedding": "sentence-transformers/all-MiniLM-L6-v2 (locally cached CPU) vs TF-IDF",
+  "inputs": {
+    "module_registry": "54-module file from landscape reconnaissance branch",
+    "additional_modules": "8 newly diversified modules from landscape horizontal wave branch",
+    "source_snapshot": "four official WMO/WHO passages pinned in the original ephemeral runtime; no long passages committed"
+  },
+  "paragraph_engines": {
+    "tfidf": {
+      "duration_seconds": 0.005,
+      "metrics": {
+        "source_count": 4,
+        "endpoint_recall_at_3": 0.5,
+        "endpoint_recall_at_5": 0.625,
+        "endpoint_recall_at_10": 0.625,
+        "both_endpoints_in_top_5": 1,
+        "expected_pairs_queued": 0,
+        "candidate_pair_count": 0,
+        "rows": [
+          {
+            "source_id": "AIR",
+            "expected_relevant_endpoints": [
+              "AQ-01",
+              "PH-06"
+            ],
+            "ranks": {
+              "AQ-01": 1,
+              "PH-06": 56
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": false,
+            "both_in_top_10": false,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 0
+          },
+          {
+            "source_id": "RABIES",
+            "expected_relevant_endpoints": [
+              "AW-03",
+              "PH-02"
+            ],
+            "ranks": {
+              "AW-03": 1,
+              "PH-02": 12
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": false,
+            "both_in_top_10": false,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 0
+          },
+          {
+            "source_id": "WATER",
+            "expected_relevant_endpoints": [
+              "WA-01",
+              "PH-02"
+            ],
+            "ranks": {
+              "WA-01": 2,
+              "PH-02": 15
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": false,
+            "both_in_top_10": false,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 0
+          },
+          {
+            "source_id": "WMO",
+            "expected_relevant_endpoints": [
+              "WA-06",
+              "DR-01"
+            ],
+            "ranks": {
+              "WA-06": 1,
+              "DR-01": 5
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": true,
+            "both_in_top_10": true,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 0
+          }
+        ],
+        "warning": "Module endpoint recall is not semantic relation precision, entailment, causal strength or scientific coverage."
+      },
+      "top5": {
+        "AIR": [
+          {
+            "module_id": "AQ-01",
+            "title": "Ambient air pollution exposure and health burden",
+            "score": 0.103057,
+            "rank": 1
+          },
+          {
+            "module_id": "TR-01",
+            "title": "Road traffic mortality and preventable injury",
+            "score": 0.056944,
+            "rank": 2
+          },
+          {
+            "module_id": "CO-03",
+            "title": "Rural and last-mile infrastructure economics",
+            "score": 0.047795,
+            "rank": 3
+          },
+          {
+            "module_id": "CO-06",
+            "title": "Satellite/LEO connectivity for remote areas",
+            "score": 0.024808,
+            "rank": 4
+          },
+          {
+            "module_id": "PH-05",
+            "title": "Respiratory-pandemic surveillance and preparedness",
+            "score": 0.023719,
+            "rank": 5
+          }
+        ],
+        "RABIES": [
+          {
+            "module_id": "AW-03",
+            "title": "Rabies vaccination and One Health integration",
+            "score": 0.124268,
+            "rank": 1
+          },
+          {
+            "module_id": "PH-04",
+            "title": "Mental-health treatment gap and service capacity",
+            "score": 0.049515,
+            "rank": 2
+          },
+          {
+            "module_id": "PH-05",
+            "title": "Respiratory-pandemic surveillance and preparedness",
+            "score": 0.047176,
+            "rank": 3
+          },
+          {
+            "module_id": "AQ-01",
+            "title": "Ambient air pollution exposure and health burden",
+            "score": 0.046065,
+            "rank": 4
+          },
+          {
+            "module_id": "HO-03",
+            "title": "Homelessness measurement and prevention",
+            "score": 0.037595,
+            "rank": 5
+          }
+        ],
+        "WATER": [
+          {
+            "module_id": "WA-02",
+            "title": "Sanitation/hygiene access under climate stress",
+            "score": 0.086003,
+            "rank": 1
+          },
+          {
+            "module_id": "WA-01",
+            "title": "Safely managed drinking-water access and inequality",
+            "score": 0.073945,
+            "rank": 2
+          },
+          {
+            "module_id": "PH-04",
+            "title": "Mental-health treatment gap and service capacity",
+            "score": 0.047439,
+            "rank": 3
+          },
+          {
+            "module_id": "AQ-01",
+            "title": "Ambient air pollution exposure and health burden",
+            "score": 0.035735,
+            "rank": 4
+          },
+          {
+            "module_id": "FS-03",
+            "title": "Climate-resilient production and adaptation",
+            "score": 0.033075,
+            "rank": 5
+          }
+        ],
+        "WMO": [
+          {
+            "module_id": "WA-06",
+            "title": "Hydrological observation, forecasting and early warning",
+            "score": 0.072486,
+            "rank": 1
+          },
+          {
+            "module_id": "CO-05",
+            "title": "Backbone and submarine-cable resilience",
+            "score": 0.065502,
+            "rank": 2
+          },
+          {
+            "module_id": "PH-05",
+            "title": "Respiratory-pandemic surveillance and preparedness",
+            "score": 0.048325,
+            "rank": 3
+          },
+          {
+            "module_id": "FS-04",
+            "title": "Food-supply-chain shock resilience",
+            "score": 0.031851,
+            "rank": 4
+          },
+          {
+            "module_id": "DR-01",
+            "title": "Multi-hazard early warning coverage and last-mile reach",
+            "score": 0.030342,
+            "rank": 5
+          }
+        ]
+      },
+      "candidate_pairs": []
+    },
+    "minilm": {
+      "duration_seconds": 3.987,
+      "metrics": {
+        "source_count": 4,
+        "endpoint_recall_at_3": 0.5,
+        "endpoint_recall_at_5": 0.5,
+        "endpoint_recall_at_10": 0.625,
+        "both_endpoints_in_top_5": 0,
+        "expected_pairs_queued": 0,
+        "candidate_pair_count": 17,
+        "rows": [
+          {
+            "source_id": "AIR",
+            "expected_relevant_endpoints": [
+              "AQ-01",
+              "PH-06"
+            ],
+            "ranks": {
+              "AQ-01": 1,
+              "PH-06": 11
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": false,
+            "both_in_top_10": false,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 14
+          },
+          {
+            "source_id": "RABIES",
+            "expected_relevant_endpoints": [
+              "AW-03",
+              "PH-02"
+            ],
+            "ranks": {
+              "AW-03": 1,
+              "PH-02": 27
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": false,
+            "both_in_top_10": false,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 0
+          },
+          {
+            "source_id": "WATER",
+            "expected_relevant_endpoints": [
+              "WA-01",
+              "PH-02"
+            ],
+            "ranks": {
+              "WA-01": 2,
+              "PH-02": 30
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": false,
+            "both_in_top_10": false,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 0
+          },
+          {
+            "source_id": "WMO",
+            "expected_relevant_endpoints": [
+              "WA-06",
+              "DR-01"
+            ],
+            "ranks": {
+              "WA-06": 1,
+              "DR-01": 6
+            },
+            "both_in_top_3": false,
+            "both_in_top_5": false,
+            "both_in_top_10": true,
+            "expected_pair_in_candidate_queue": false,
+            "candidate_cross_field_pair_count": 3
+          }
+        ],
+        "warning": "Module endpoint recall is not semantic relation precision, entailment, causal strength or scientific coverage."
+      },
+      "top5": {
+        "AIR": [
+          {
+            "module_id": "AQ-01",
+            "title": "Ambient air pollution exposure and health burden",
+            "score": 0.697201,
+            "rank": 1
+          },
+          {
+            "module_id": "LM-02",
+            "title": "Occupational injuries, exposure and underreporting",
+            "score": 0.409528,
+            "rank": 2
+          },
+          {
+            "module_id": "TR-01",
+            "title": "Road traffic mortality and preventable injury",
+            "score": 0.404498,
+            "rank": 3
+          },
+          {
+            "module_id": "FS-05",
+            "title": "Agrifood emissions and mitigation",
+            "score": 0.387096,
+            "rank": 4
+          },
+          {
+            "module_id": "HO-05",
+            "title": "Climate-resilient housing and heat/flood health",
+            "score": 0.378938,
+            "rank": 5
+          }
+        ],
+        "RABIES": [
+          {
+            "module_id": "AW-03",
+            "title": "Rabies vaccination and One Health integration",
+            "score": 0.743565,
+            "rank": 1
+          },
+          {
+            "module_id": "PH-03",
+            "title": "AMR surveillance and stewardship",
+            "score": 0.32702,
+            "rank": 2
+          },
+          {
+            "module_id": "PH-05",
+            "title": "Respiratory-pandemic surveillance and preparedness",
+            "score": 0.317853,
+            "rank": 3
+          },
+          {
+            "module_id": "AW-04",
+            "title": "Shelter intake, capacity and welfare quality",
+            "score": 0.309029,
+            "rank": 4
+          },
+          {
+            "module_id": "DP-05",
+            "title": "PET adoption and utility/compute trade-offs",
+            "score": 0.303611,
+            "rank": 5
+          }
+        ],
+        "WATER": [
+          {
+            "module_id": "WA-02",
+            "title": "Sanitation/hygiene access under climate stress",
+            "score": 0.538638,
+            "rank": 1
+          },
+          {
+            "module_id": "WA-01",
+            "title": "Safely managed drinking-water access and inequality",
+            "score": 0.522899,
+            "rank": 2
+          },
+          {
+            "module_id": "WA-04",
+            "title": "Non-revenue water and utility performance",
+            "score": 0.373708,
+            "rank": 3
+          },
+          {
+            "module_id": "WA-03",
+            "title": "Urban water scarcity and demand governance",
+            "score": 0.369708,
+            "rank": 4
+          },
+          {
+            "module_id": "LM-02",
+            "title": "Occupational injuries, exposure and underreporting",
+            "score": 0.336371,
+            "rank": 5
+          }
+        ],
+        "WMO": [
+          {
+            "module_id": "WA-06",
+            "title": "Hydrological observation, forecasting and early warning",
+            "score": 0.442486,
+            "rank": 1
+          },
+          {
+            "module_id": "FS-03",
+            "title": "Climate-resilient production and adaptation",
+            "score": 0.383111,
+            "rank": 2
+          },
+          {
+            "module_id": "DR-02",
+            "title": "Disaster loss measurement and cascading economic impacts",
+            "score": 0.368391,
+            "rank": 3
+          },
+          {
+            "module_id": "WA-03",
+            "title": "Urban water scarcity and demand governance",
+            "score": 0.348041,
+            "rank": 4
+          },
+          {
+            "module_id": "WA-01",
+            "title": "Safely managed drinking-water access and inequality",
+            "score": 0.343448,
+            "rank": 5
+          }
+        ]
+      },
+      "candidate_pairs": [
+        {
+          "source_id": "AIR",
+          "source": "AQ-01",
+          "target": "LM-02",
+          "similarity_min": 0.409528,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "AQ-01",
+          "target": "TR-01",
+          "similarity_min": 0.404498,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "AQ-01",
+          "target": "FS-05",
+          "similarity_min": 0.387096,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "AQ-01",
+          "target": "HO-05",
+          "similarity_min": 0.378938,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "LM-02",
+          "target": "TR-01",
+          "similarity_min": 0.404498,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "LM-02",
+          "target": "FS-05",
+          "similarity_min": 0.387096,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "LM-02",
+          "target": "HO-05",
+          "similarity_min": 0.378938,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "LM-02",
+          "target": "AQ-02",
+          "similarity_min": 0.361504,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "TR-01",
+          "target": "FS-05",
+          "similarity_min": 0.387096,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "TR-01",
+          "target": "HO-05",
+          "similarity_min": 0.378938,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "TR-01",
+          "target": "AQ-02",
+          "similarity_min": 0.361504,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "FS-05",
+          "target": "HO-05",
+          "similarity_min": 0.378938,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "FS-05",
+          "target": "AQ-02",
+          "similarity_min": 0.361504,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "AIR",
+          "source": "HO-05",
+          "target": "AQ-02",
+          "similarity_min": 0.361504,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "WMO",
+          "source": "WA-06",
+          "target": "FS-03",
+          "similarity_min": 0.383111,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "WMO",
+          "source": "WA-06",
+          "target": "DR-02",
+          "similarity_min": 0.368391,
+          "status": "candidate_not_validated"
+        },
+        {
+          "source_id": "WMO",
+          "source": "FS-03",
+          "target": "DR-02",
+          "similarity_min": 0.368391,
+          "status": "candidate_not_validated"
+        }
+      ]
+    }
+  },
+  "sentence_followup": {
+    "review_status": "post_hoc_exploration_not_independent_holdout",
+    "sentence_count": 7,
+    "metrics": {
+      "source_count": 4,
+      "endpoint_recall_at_3": 0.625,
+      "endpoint_recall_at_5": 0.75,
+      "endpoint_recall_at_10": 0.75,
+      "both_endpoints_in_top_5": 2,
+      "expected_pairs_queued": 0,
+      "candidate_pair_count": 0,
+      "rows": [
+        {
+          "source_id": "AIR",
+          "expected_relevant_endpoints": [
+            "AQ-01",
+            "PH-06"
+          ],
+          "ranks": {
+            "AQ-01": 1,
+            "PH-06": 11
+          },
+          "both_in_top_3": false,
+          "both_in_top_5": false,
+          "both_in_top_10": false,
+          "expected_pair_in_candidate_queue": false,
+          "candidate_cross_field_pair_count": 0
+        },
+        {
+          "source_id": "RABIES",
+          "expected_relevant_endpoints": [
+            "AW-03",
+            "PH-02"
+          ],
+          "ranks": {
+            "AW-03": 1,
+            "PH-02": 27
+          },
+          "both_in_top_3": false,
+          "both_in_top_5": false,
+          "both_in_top_10": false,
+          "expected_pair_in_candidate_queue": false,
+          "candidate_cross_field_pair_count": 0
+        },
+        {
+          "source_id": "WATER",
+          "expected_relevant_endpoints": [
+            "WA-01",
+            "PH-02"
+          ],
+          "ranks": {
+            "WA-01": 1,
+            "PH-02": 5
+          },
+          "both_in_top_3": false,
+          "both_in_top_5": true,
+          "both_in_top_10": true,
+          "expected_pair_in_candidate_queue": false,
+          "candidate_cross_field_pair_count": 0
+        },
+        {
+          "source_id": "WMO",
+          "expected_relevant_endpoints": [
+            "WA-06",
+            "DR-01"
+          ],
+          "ranks": {
+            "WA-06": 3,
+            "DR-01": 1
+          },
+          "both_in_top_3": true,
+          "both_in_top_5": true,
+          "both_in_top_10": true,
+          "expected_pair_in_candidate_queue": false,
+          "candidate_cross_field_pair_count": 0
+        }
+      ],
+      "warning": "Module endpoint recall is not semantic relation precision, entailment, causal strength or scientific coverage."
+    }
+  },
+  "stage_packet": {
+    "status": "EXTERNAL_SOURCE_TO_MODULE_CANDIDATES_UNREVIEWED",
+    "clusters": 63,
+    "nodes": 69,
+    "source_nodes": 7,
+    "candidate_source_links": 20,
+    "auto_module_to_module_edges": 0,
+    "tested_isolated_import": true,
+    "tested_idempotent_replay": true
+  },
+  "warnings": [
+    "No independently validated discovered problem-to-problem relation in this sample.",
+    "Relevance score and common source are not evidence of semantic entailment.",
+    "Four hand-curated prompts, not representative sampling.",
+    "Do not use a post-hoc sentence improvement as an unbiased generalization estimate."
+  ]
+}

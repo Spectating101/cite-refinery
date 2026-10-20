@@ -20,6 +20,7 @@ paperqa = ["paper-qa>=5"]
 lightrag = ["lightrag-hku>=1.4"]
 provenance = ["prov>=2,<3"]
 services = ["httpx>=0.27,<1"]
+semantic_discovery = ["numpy>=1.26", "scikit-learn>=1.4", "sentence-transformers>=3", "requests>=2.31", "beautifulsoup4>=4.12"]
 
 [project.scripts]
 cite-refinery = "cite_refinery.layered_cli:main"
