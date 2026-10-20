@@ -7,8 +7,8 @@ Source-state checked at 2026-10-20T19:57:12.948359+00:00. **This is an external 
 | [lingrany/EverBatt-LFP-Recycling-Analysis](https://github.com/lingrany/EverBatt-LFP-Recycling-Analysis) | no specific current issue validated in this case record | scratch only synthetic repair verified | propose opt in upstream contribution |
 | [WeixuanZ/flood-warning-system](https://github.com/WeixuanZ/flood-warning-system) | no specific current issue validated in this case record | scratch only synthetic repair verified | propose opt in upstream contribution |
 | [ajlongshanks/co2_esphome](https://github.com/ajlongshanks/co2_esphome) | pending license PR; rights unclear | invalid config reproduced deployment blocked | license and deployment blocked |
-| [openfoodfoundation/openfoodnetwork](https://github.com/openfoodfoundation/openfoodnetwork) | open public issue | source pinned arithmetic analog requires runtime test | reproduce public maintainer issue |
-| [foodcoops/foodsoft](https://github.com/foodcoops/foodsoft) | open public issue | source pinned arithmetic analog requires runtime test | reproduce public maintainer issue |
+| [openfoodfoundation/openfoodnetwork](https://github.com/openfoodfoundation/openfoodnetwork) | open public issue | original upstream component executed candidate needs integration | complete viewport solution then integration test |
+| [foodcoops/foodsoft](https://github.com/foodcoops/foodsoft) | open public issue | original upstream component executed candidate needs integration | run original app integration before contribution |
 
 ## Conversion evidence still required
 
