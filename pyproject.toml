@@ -36,6 +36,7 @@ cite-refinery-evolution = "cite_refinery.capability_evolution_cli:main"
 cite-refinery-github-signals = "cite_refinery.github_signals_cli:main"
 cite-refinery-github-private = "cite_refinery.github_private_signals_cli:main"
 cite-refinery-external = "cite_refinery.external_cli:main"
+cite-refinery-llm = "cite_refinery.external_llm_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
