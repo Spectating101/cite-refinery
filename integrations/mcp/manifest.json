@@ -1,0 +1,40 @@
+{
+  "schema": "portfolio.mcp.manifest.v1",
+  "project": "cite-refinery",
+  "repository": "Spectating101/cite-refinery",
+  "mode": "bridge",
+  "required_files": ["src/cite_refinery/cli.py"],
+  "pythonpath": ["src"],
+  "env_passthrough": ["CITE_REFINERY_WORKSPACE"],
+  "timeout_seconds": 60,
+  "tools": [
+    {
+      "name": "cite_refinery_dossier",
+      "description": "Retrieve the native dossier from an operator-selected workspace. Preserve project-local evidence and authorization boundaries.",
+      "effect": "read",
+      "input_schema": {"type":"object","properties":{"project_id":{"type":"string","pattern":"^rproject:[A-Za-z0-9_-]+$","maxLength":4096}},"required":["project_id"],"additionalProperties":false},
+      "argv": ["$PYTHON","-m","cite_refinery.cli","--workspace",{"env":"CITE_REFINERY_WORKSPACE"},"dossier",{"arg":"project_id"},"--format","json"]
+    },
+    {
+      "name": "cite_refinery_search",
+      "description": "Search native project-local and shared capabilities; discovery is not execution authorization.",
+      "effect": "read",
+      "input_schema": {"type":"object","properties":{"project_id":{"type":"string","pattern":"^rproject:[A-Za-z0-9_-]+$","maxLength":4096},"query":{"type":"string","minLength":1,"maxLength":4096},"limit":{"type":"integer","minimum":1,"maximum":50}},"required":["project_id","query","limit"],"additionalProperties":false},
+      "argv": ["$PYTHON","-m","cite_refinery.cli","--workspace",{"env":"CITE_REFINERY_WORKSPACE"},"cap-search","--limit",{"arg":"limit"},"--",{"arg":"project_id"},{"arg":"query"}]
+    },
+    {
+      "name": "cite_refinery_create_project",
+      "description": "Create a native project. Requires bridge --allow-writes; no arbitrary implementation registration.",
+      "effect": "write",
+      "input_schema": {"type":"object","properties":{"title":{"type":"string","minLength":1,"maxLength":4096},"problem":{"type":"string","minLength":1,"maxLength":4096,"pattern":"^[^-]"}},"required":["title","problem"],"additionalProperties":false},
+      "argv": ["$PYTHON","-m","cite_refinery.cli","--workspace",{"env":"CITE_REFINERY_WORKSPACE"},"init","--problem",{"arg":"problem"},"--",{"arg":"title"}]
+    },
+    {
+      "name": "cite_refinery_add_claim",
+      "description": "Record an unverified claim. Requires bridge --allow-writes; recording a claim does not establish support.",
+      "effect": "write",
+      "input_schema": {"type":"object","properties":{"project_id":{"type":"string","pattern":"^rproject:[A-Za-z0-9_-]+$","maxLength":4096},"claim":{"type":"string","minLength":1,"maxLength":4096}},"required":["project_id","claim"],"additionalProperties":false},
+      "argv": ["$PYTHON","-m","cite_refinery.cli","--workspace",{"env":"CITE_REFINERY_WORKSPACE"},"claim-add","--",{"arg":"project_id"},{"arg":"claim"}]
+    }
+  ]
+}
