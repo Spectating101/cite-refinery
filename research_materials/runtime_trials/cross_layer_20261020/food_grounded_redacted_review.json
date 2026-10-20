@@ -1,0 +1,40 @@
+{
+  "schema": "cite_refinery.cross_layer_alignment.v1",
+  "topic": "Food Surplus Redistribution Logistics, Institutional Charity, and Nutritional Gaps",
+  "missing_layers": [],
+  "authority": "MODEL_GENERATED_HYPOTHESIS_ONLY",
+  "boundary": "Original source excerpts and quote existence were checked, but semantic entailment is NOT independently validated. No independent causal validation or field outcome approval.",
+  "accepted_candidate_alignments": [
+    {
+      "id": "alignment-1",
+      "mechanism": "Surplus food redistribution creates an operational co-dependency wherein community food initiatives relieve immediate hunger symptoms while structurally relying upon the perpetuation of upstream corporate food waste and systemic economic inequality.",
+      "interpretation": "The ethnographic observations of UK and North American redistribution organizations (OA-dbc0b8d397869b) identify that charitable partnerships with corporate and state entities depoliticize hunger and restrict organizations from contesting root drivers of precarity. This directly aligns with the scoping review of social supermarkets (EPMC-7deb988ae2ab), which concludes that while client-choice models offer immediate food access, they fail to resolve underlying income inequality and paradoxically require dysfunctional, surplus-generating supply chains to maintain operational viability.",
+      "solution_fit": "The documented models establish dignified, non-stigmatizing consumer-facing food distribution and temporary diversion of retail waste, but do NOT establish structural poverty reduction, systemic reform of retail supply-chain overproduction, or permanent resolution of household food insecurity.",
+      "evidence_tension": "The qualitative ethnographic findings and scoping review synthesize organizational discourse, customer perspectives, and operational structures across international contexts, but lack longitudinal quantitative household income tracking or measured health and nutritional impact endpoints.",
+      "counterargument": "An alternative interpretation is that social supermarkets and redistribution charities serve as pragmatic, harm-reduction stopgaps that provide essential immediate relief without necessarily dampening broader political pressure or systemic policy advocacy for living wages and social safety nets.",
+      "next_test": "Conduct a multi-year comparative cohort study tracking household economic self-sufficiency, dependency duration, and nutritional status among clients of choice-based social supermarkets versus direct unconditional cash transfer recipients.",
+      "sources": {
+        "practical": [
+          {
+            "id": "OA-dbc0b8d397869b",
+            "url": "https://openalex.org/W2906684235"
+          }
+        ],
+        "academic": [
+          {
+            "id": "EPMC-7deb988ae2ab",
+            "url": "https://doi.org/10.1111/nbu.70053"
+          }
+        ],
+        "program": []
+      },
+      "source_text_checked": true,
+      "complete_three_layer_stack": false
+    }
+  ],
+  "rejected_overclaim_count": 1,
+  "rejection_reasons": [
+    "interpretation: unsubstantiated direct cross-source implementation or validation link"
+  ],
+  "publisher_quote_texts_omitted": true
+}

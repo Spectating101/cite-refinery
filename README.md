@@ -455,3 +455,8 @@ field execution, causal verification, or human usability approval. See
 ### External discovery reuse / evaluation freeze (2026-10-20)
 
 See [External landscape and freeze gate](docs/EXTERNAL_LANDSCAPE_AND_FREEZE_GATE_V1.md) and the [30-source reuse registry](research_materials/external_landscape/reuse_registry_v1.json). The 232-record evaluation corpus and its sealed 66-source holdout stay frozen. The optional `cite-refinery-landscape` and `cite-refinery-topics` CLIs generate **non-authoritative discovery candidates only**, never accepted evidence, program outcomes, or automatically imported graph relations.
+
+
+### Cross-layer interpretation (experimental)
+
+Read [the outcome-first cross-layer dossier](docs/CROSS_LAYER_INTERPRETATION_V1.md) for substantive Taiwan dogs / food redistribution / flood findings, their source boundaries and reproduction commands. Native project method: SemanticGraph.cross_layer_dossier(project_id). CLI: cite-refinery-stack. No automatic scientific claim promotion or changes to the sealed holdout.

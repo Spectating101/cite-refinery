@@ -1,0 +1,84 @@
+{
+  "schema": "cite_refinery.cross_layer_alignment.v1",
+  "topic": "Urban Flood Hydrology, Warning Systems, and Public Health Vulnerability",
+  "alignments": [
+    {
+      "id": "alignment-1",
+      "perspectives": {
+        "practical": [],
+        "academic": [
+          {
+            "source_id": "EPMC-871d10af9889",
+            "source_url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+            "source_reading": "Urban flood risk and reported severity in Uganda vary by geography and hydrology, with rapid-onset floods presenting elevated risk ratios over slow-onset events.",
+            "source_scope": "939 surveyed households, local leaders, and focus groups in Greater Kampala Metropolitan Area (GKMA) and Kasese, Uganda.",
+            "source_caveat": "Cross-sectional survey and focus-group data; does not measure long-term health outcomes or test causal impacts of municipal flood adaptation measures."
+          }
+        ],
+        "program": [
+          {
+            "source_id": "OFFICIAL-f3e30d7ac5a5",
+            "source_url": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+            "source_reading": "Multi-agency early warning systems and trained local response teams were deployed in Ban Kao Many, Laos, to forecast flash flooding and mitigate drowning hazards.",
+            "source_scope": "Ban Kao Many community, Nan District, Luang Prabang Province, Laos; global FFGS deployment across 72 countries",
+            "source_caveat": "Institutional narrative excerpt asserting reduced drowning deaths without providing empirical control baselines or epidemiological audit data."
+          }
+        ]
+      },
+      "mechanism": "Rapid-onset flash flooding severely compresses warning and evacuation lead times, causing acute life-safety hazards such as drowning; deploying localized early warning systems coupled with trained response teams aims to operationalize hydrologic detection into accelerated evacuation before peak flood velocity occurs.",
+      "interpretation": "EPMC-871d10af9889 empirically demonstrates that rapid-onset floods generate significantly elevated risk ratios compared to slow-onset flooding in Ugandan communities. OFFICIAL-f3e30d7ac5a5 reflects an operational response to this specific hazard profile in Ban Kao Many, Laos, deploying early warning systems and village response teams explicitly to mitigate flash-flood drowning hazards.",
+      "solution_fit": "The reported program establishes the execution of administrative outputs (deployment of warning systems and community team training) and asserts drowning mitigation, but does not establish counterfactual-controlled efficacy, sensor uptime reliability, or whether warning dissemination successfully reached all vulnerable households.",
+      "evidence_tension": "Substantial geographic, demographic, and hydrologic scope divergence between a cross-sectional household survey in urban/semi-urban Uganda and a single-village narrative in rural Laos; the program report lacks empirical control baselines, audit metrics, or epidemiological data to confirm that casualty reductions were causally attributable to the intervention.",
+      "counterargument": "Reported casualty avoidance may stem from autonomous community actions, informal neighbor warnings, daylight flood timing, or localized variations in runoff intensity rather than formal institutional early warning mechanisms.",
+      "next_test": "Execute a comparative quasi-experimental evaluation assessing warning lead time, dissemination fidelity, and casualty rates across flood-prone communities equipped with operational early warning response teams versus matched control communities during comparable flash flood events.",
+      "complete_three_layer_stack": false,
+      "status": "llm_candidate_requires_independent_source_review",
+      "outcome_verified": false
+    },
+    {
+      "id": "alignment-2",
+      "perspectives": {
+        "practical": [
+          {
+            "source_id": "EPMC-fb93375cb76d",
+            "source_url": "https://doi.org/10.5334/aogh.5294",
+            "source_reading": "Recurrent flooding between 2022 and 2025 affected over 26 million people in Pakistan, compounding health system strain and accelerating infectious disease outbreaks and undernutrition.",
+            "source_scope": "Flood-affected populations, displaced communities, and health systems in Pakistan from 2022 to 2025.",
+            "source_caveat": "Bibliographic perspective/commentary abstract; does not provide primary epidemiological incidence data or systematic evaluations of health sector interventions."
+          }
+        ],
+        "academic": [
+          {
+            "source_id": "OA-f84a08fcbd0caa",
+            "source_url": "https://doi.org/10.3390/hydrology9030050",
+            "source_reading": "Urban flood risk modelling and management face growing complexity across multiple flood sources, with vulnerability compounding under climate change, urban densification, and population expansion.",
+            "source_scope": "Global urban areas; scientific review of flood risk modelling, management, and adaptation",
+            "source_caveat": "Review paper abstract outlining conceptual and modelling challenges; does not measure local hydrologic outcomes, infrastructure failure rates, or post-intervention flood mitigation efficacy."
+          }
+        ],
+        "program": [
+          {
+            "source_id": "OFFICIAL-dbee83ba8137",
+            "source_url": "https://www.who.int/europe/health-topics/floods",
+            "source_reading": "WHO/Europe guidance recommends shifting from reactive disaster response to integrated, long-term health risk management and preparedness to address increasing flood-related mortality, disease, and mental health risks.",
+            "source_scope": "53 Member States of the WHO European Region, incorporating climate risk projections through the 2080s",
+            "source_caveat": "Regional policy guidance document; does not provide audit findings or empirical compliance metrics for specific local implementation plans"
+          }
+        ]
+      },
+      "mechanism": "Extensive flood inundation compromises water, sanitation, and primary healthcare delivery networks, transforming acute physical hazards into cascading secondary morbidity (infectious outbreaks and malnutrition); reactive post-disaster relief fails to arrest compounding systemic risks once health infrastructure is overwhelmed.",
+      "interpretation": "EPMC-fb93375cb76d documents real-world compounding health impacts in Pakistan, where recurrent flooding overwhelmed healthcare capacity and escalated disease outbreaks. OA-f84a08fcbd0caa conceptually characterizes flood vulnerability as increasingly compound and multi-source under climate change, supporting OFFICIAL-dbee83ba8137's programmatic recommendation to transition from reactive disaster response to integrated, long-term health risk management.",
+      "solution_fit": "The WHO guidance outlines policy frameworks and strategic guidance for long-term health risk management, but does not provide empirical compliance audits, operational resource mechanisms, or demonstrated reductions in disease transmission within resource-constrained, high-exposure environments.",
+      "evidence_tension": "Major geographic, economic, and institutional mismatch between an active humanitarian and health system crisis in Pakistan and regional policy guidance scoped for 53 WHO European Member States; neither the perspective commentary nor the policy guidance provides primary longitudinal epidemiological incidence data.",
+      "counterargument": "Post-disaster disease outbreaks and health system strain may be predominantly driven by chronic baseline structural underfunding, pre-existing poverty, and endemic sanitation deficits rather than the specific failure or format of municipal disaster response frameworks.",
+      "next_test": "Conduct an interrupted time-series or prospective cohort study evaluating post-flood disease attack rates and health facility continuity across vulnerable flood-affected districts implementing multi-hazard integrated health preparedness plans versus those relying on standard reactive disaster relief.",
+      "complete_three_layer_stack": true,
+      "status": "llm_candidate_requires_independent_source_review",
+      "outcome_verified": false
+    }
+  ],
+  "rejected_candidates": [],
+  "missing_layers": [],
+  "authority": "MODEL_GENERATED_HYPOTHESIS_ONLY",
+  "boundary": "A second LLM interpreted first-pass LLM source readings, not original documents. No independent entailment, causal validation or field outcome approval."
+}

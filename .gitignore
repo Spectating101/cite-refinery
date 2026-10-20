@@ -15,3 +15,7 @@ build/
 .env.*
 !.env.example
 .private-refinery/
+
+# Source-original experimental model responses remain only on authorized Optiplex
+research_materials/runtime_trials/cross_layer_20261020/*_raw.json
+research_materials/runtime_trials/cross_layer_20261020/food_grounded_candidate.json

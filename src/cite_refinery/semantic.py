@@ -161,6 +161,11 @@ class SemanticGraph:
     def __init__(self, store: Any) -> None:
         self.store = store
 
+    def cross_layer_dossier(self, project_id: str) -> dict[str, Any]:
+        """Interpret reviewed three-layer chains in a project without writing new edges."""
+        from .cross_layer_stack import stack_project_graph
+        return stack_project_graph(self, project_id)
+
     @staticmethod
     def _project(state: dict[str, Any], project_id: str) -> dict[str, Any]:
         project = state.get("projects", {}).get(project_id)

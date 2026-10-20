@@ -1,0 +1,254 @@
+{
+  "schema": "cite_refinery.cross_layer_stack.v1",
+  "source_system": "public_animal_welfare_case_review",
+  "problems": [
+    {
+      "problem": {
+        "id": "continuous_state_problem",
+        "layer": "neutral",
+        "kind": "problem_claim",
+        "statement": "The current local free-roaming dog population is not continuously enumerated by the periodic national survey system.",
+        "sources": []
+      },
+      "practical": [
+        {
+          "id": "tw_periodic_estimate",
+          "layer": "practical",
+          "kind": "observation",
+          "statement": "Taiwan estimates the national free-roaming dog population every two years using a photographic capture survey method; the 2024 estimate was 141,584 dogs.",
+          "sources": [
+            "https://animal.moa.gov.tw/Frontend/Know/Detail/LT00000864?parentID=Tab0000143",
+            "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599"
+          ],
+          "relation": "SUPPORTS",
+          "edge_status": "qualified"
+        }
+      ],
+      "academic": [
+        {
+          "id": "estimation_validity_claim",
+          "layer": "academic",
+          "kind": "academic_claim",
+          "statement": "Free-ranging dog abundance estimates can be biased when detection probability, individual identification, registration, or population closure assumptions are inadequately handled.",
+          "sources": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/"
+          ],
+          "relation": "QUALIFIES",
+          "edge_status": "qualified"
+        },
+        {
+          "id": "capture_recapture_method",
+          "layer": "academic",
+          "kind": "method",
+          "statement": "Photographic mark-recapture and capture-recapture methods can use repeated individual observations to estimate free-roaming dog abundance under explicit assumptions.",
+          "sources": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12363366/",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/"
+          ],
+          "relation": "MEASURED_BY",
+          "edge_status": "qualified"
+        }
+      ],
+      "implementations": [
+        {
+          "id": "talea",
+          "layer": "program",
+          "kind": "program",
+          "statement": "Talea is a street-survey system that records roaming animal sightings, characteristics, routes, survey areas, and geolocated observations.",
+          "sources": [
+            "https://www.icam-coalition.org/talea-user-guide/",
+            "https://www.icam-coalition.org/tool/talea-street-survey-app/"
+          ],
+          "relation": "PARTIALLY_ADDRESSES",
+          "edge_status": "candidate"
+        }
+      ],
+      "findings": [
+        {
+          "type": "scope_qualification",
+          "interpretation": "The Ministry of Agriculture cautioned that the 2024 national decline relative to 2022 was not statistically significant.",
+          "why": "This qualification changes how the practical observation can be interpreted.",
+          "source_refs": [
+            "https://animal.moa.gov.tw/Frontend/Know/Detail/LT00000864?parentID=Tab0000143",
+            "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599"
+          ],
+          "nodes": [
+            "tw_periodic_estimate",
+            "survey_decline_not_significant",
+            "continuous_state_problem"
+          ],
+          "reasoning_chain": [
+            {
+              "from": "tw_periodic_estimate",
+              "relation": "SUPPORTS",
+              "to": "continuous_state_problem",
+              "status": "qualified",
+              "evidence_refs": []
+            },
+            {
+              "from": "survey_decline_not_significant",
+              "relation": "QUALIFIES",
+              "to": "tw_periodic_estimate",
+              "status": "qualified",
+              "evidence_refs": [
+                "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599"
+              ]
+            }
+          ],
+          "review_state": "source_bounded_qualification_requires_review",
+          "next_check": "Review sampling, significance and whether a causal interpretation is supported."
+        },
+        {
+          "type": "method_implementation_mismatch",
+          "interpretation": "Talea is a street-survey system that records roaming animal sightings, characteristics, routes, survey areas, and geolocated observations. However: ICAM's Talea guide says a sighting cannot include an animal photograph; the app can record textual notes. The scientific method requires: Repeated sightings need reliable individual reconciliation before they can support individual-aware population estimation.",
+          "why": "The implementation limitation interrupts a named requirement of the linked scientific method.",
+          "source_refs": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC12363366/",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+            "https://www.icam-coalition.org/talea-user-guide/",
+            "https://www.icam-coalition.org/tool/talea-street-survey-app/"
+          ],
+          "nodes": [
+            "continuous_state_problem",
+            "capture_recapture_method",
+            "identity_reconciliation_requirement",
+            "talea",
+            "talea_sighting_photo_limit"
+          ],
+          "reasoning_chain": [
+            {
+              "from": "talea",
+              "relation": "PARTIALLY_ADDRESSES",
+              "to": "continuous_state_problem",
+              "status": "candidate",
+              "evidence_refs": []
+            },
+            {
+              "from": "continuous_state_problem",
+              "relation": "MEASURED_BY",
+              "to": "capture_recapture_method",
+              "status": "qualified",
+              "evidence_refs": []
+            },
+            {
+              "from": "capture_recapture_method",
+              "relation": "REQUIRES",
+              "to": "identity_reconciliation_requirement",
+              "status": "qualified",
+              "evidence_refs": []
+            },
+            {
+              "from": "talea",
+              "relation": "LIMITED_BY",
+              "to": "talea_sighting_photo_limit",
+              "status": "qualified",
+              "evidence_refs": [
+                "https://www.icam-coalition.org/talea-user-guide/"
+              ]
+            },
+            {
+              "from": "talea_sighting_photo_limit",
+              "relation": "MISSING_LINK",
+              "to": "identity_reconciliation_requirement",
+              "status": "unresolved",
+              "evidence_refs": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+                "https://www.icam-coalition.org/talea-user-guide/"
+              ]
+            }
+          ],
+          "review_state": "unresolved_capability_fit_not_a_proven_incompatibility",
+          "next_check": "Verify whether talea can actually satisfy: Repeated sightings need reliable individual reconciliation before they can support individual-aware population estimation."
+        }
+      ],
+      "coverage": {
+        "practical": true,
+        "academic": true,
+        "program": true
+      },
+      "boundary": "Path synthesis is based only on explicit reviewed relationships; it cannot establish causal outcomes or global absence."
+    },
+    {
+      "problem": {
+        "id": "open_population_problem",
+        "layer": "neutral",
+        "kind": "problem_claim",
+        "statement": "Immigration and replenishment can undermine fertility-control effects in an open free-roaming dog population.",
+        "sources": []
+      },
+      "practical": [
+        {
+          "id": "miaoli_persistence",
+          "layer": "practical",
+          "kind": "observation",
+          "statement": "Miaoli reported about 7,400 roaming dogs in 2025 and stated that intensified capture and inspection were still being outpaced by abandonment, free-roaming owned dogs, and reproduction.",
+          "sources": [
+            "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002313"
+          ],
+          "relation": "SUPPORTS",
+          "edge_status": "qualified"
+        }
+      ],
+      "academic": [
+        {
+          "id": "shoushan_immigration",
+          "layer": "academic",
+          "kind": "academic_claim",
+          "statement": "In Shoushan, modelling indicated that maintaining female sterilization above 75 percent could theoretically control the dog population, while roughly 50 to 100 incoming dogs per year could severely disrupt the TNR effect.",
+          "sources": [
+            "https://www.sciencedirect.com/science/article/pii/S235198942400194X"
+          ],
+          "relation": "SUPPORTS",
+          "edge_status": "qualified"
+        }
+      ],
+      "implementations": [
+        {
+          "id": "tw_source_control_policy",
+          "layer": "program",
+          "kind": "program",
+          "statement": "Taiwan's 2026 community free-roaming dog management program prioritizes risk hotspots, female-dog source control, pet registration, sterilization, owner responsibility, and community participation.",
+          "sources": [
+            "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002234"
+          ],
+          "relation": "ADDRESSES",
+          "edge_status": "qualified"
+        }
+      ],
+      "findings": [
+        {
+          "type": "implementation_outcome_unestablished",
+          "interpretation": "Taiwan's 2026 community free-roaming dog management program prioritizes risk hotspots, female-dog source control, pet registration, sterilization, owner responsibility, and community participation.",
+          "why": "The reviewed graph links a documented program to this problem but provides no outcome-evaluation edge.",
+          "source_refs": [
+            "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000002234"
+          ],
+          "nodes": [
+            "open_population_problem",
+            "tw_source_control_policy"
+          ],
+          "reasoning_chain": [
+            {
+              "from": "tw_source_control_policy",
+              "relation": "ADDRESSES",
+              "to": "open_population_problem",
+              "status": "qualified",
+              "evidence_refs": []
+            }
+          ],
+          "review_state": "absence_only_in_this_reviewed_graph",
+          "next_check": "Locate an independent intervention evaluation with a specified outcome, baseline and population."
+        }
+      ],
+      "coverage": {
+        "practical": true,
+        "academic": true,
+        "program": true
+      },
+      "boundary": "Path synthesis is based only on explicit reviewed relationships; it cannot establish causal outcomes or global absence."
+    }
+  ],
+  "disconnected_or_unmatched_nodes": 3,
+  "authority": "source_bounded_candidate_interpretation_only",
+  "no_graph_mutation": true
+}
