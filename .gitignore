@@ -23,4 +23,6 @@ research_materials/runtime_trials/cross_layer_20261020/food_candidate.json
 
 # Developer-controlled AI model raw output is not a trusted public evidence artifact
 research_materials/opportunity_conversion/*_model_raw_local.json
-\n# Authenticated model raw outputs remain on authorized research host\nresearch_materials/opportunity_atlas/source_connection_results/*_raw_local.json\n
+
+# Authenticated model raw outputs remain on authorized research host
+research_materials/opportunity_atlas/source_connection_results/*_raw_local.json
