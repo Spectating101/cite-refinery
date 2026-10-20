@@ -226,7 +226,8 @@ def _technical(case:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any])
     }
 
 def decide(snapshot:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any],
-           issue_contracts:dict[str,Any],*,now:datetime|None=None)->dict[str,Any]:
+           issue_contracts:dict[str,Any],*,now:datetime|None=None,
+           original_runtime:dict[str,Any]|None=None)->dict[str,Any]:
     if snapshot.get("schema")!=SNAPSHOT or snapshot.get("no_maintainer_contact") is not True or \
        snapshot.get("no_payment_or_contract_sourcing") is not True:
         raise ValueError("untrusted external observation")
@@ -249,6 +250,19 @@ def decide(snapshot:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any],
     code_contracts={r["id"]:r for r in issue_contracts.get("cases",[])}
     if len(code_contracts)!=2:
         raise ValueError("exact two source-backed reported issue contracts required")
+    runtime_by_id={}
+    if original_runtime is not None:
+        if (original_runtime.get("schema")!="cite_refinery.pinned_original_component_trials.v1" or
+            original_runtime.get("limitations",{}).get("actual_original_functions_executed") is not True or
+            original_runtime.get("limitations",{}).get("full_angular_app_or_browser_tested") is not False or
+            original_runtime.get("limitations",{}).get("rails_database_or_complete_suite_tested") is not False or
+            original_runtime.get("limitations",{}).get("commercial_conversion_achieved") is not False or
+            original_runtime.get("limitations",{}).get("native_graph_status_promoted") is not False):
+            raise ValueError("original runtime evidence cannot be confused with complete app validation")
+        runtime_by_id={x["id"]:x for x in original_runtime["cases"]}
+        if set(runtime_by_id)!={"ofn_canada_map_bounds","foodsoft_order_quantity_rounding"} or (
+            len(original_runtime["cases"])!=2):
+            raise ValueError("must present exactly both inspected original runtime cases")
     observations=[]
     for case in CASES:
         repo=found.get(case["repo"])
@@ -296,12 +310,50 @@ def decide(snapshot:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any],
                 "original_application_executed":False,
                 "deployed_fit_verified":False,
             }
+        if case.get("issue") and runtime_by_id:
+            component=runtime_by_id[case["id"]]
+            pins=original_runtime["original_source_pins"]
+            expected_pin=pins["openfoodnetwork" if case["id"]=="ofn_canada_map_bounds" else "foodsoft"]
+            if (component.get("issue_url")!=refs[0] or
+                (case["id"]=="ofn_canada_map_bounds" and
+                 expected_pin["git_commit"]!=case["source_expected_commit"]) or
+                expected_pin["blob"]!=case["source_expected_blob_sha"] or
+                component.get("original_defect_reproduced") is not True or
+                component.get("original_execution",{}).get("source_kind")!="pinned_upstream" or
+                component.get("temporary_candidate_execution",{}).get("source_kind")!="local_candidate_patch"):
+                raise ValueError("component runtime result mismatches the pinned public reported issue")
+            if case["id"]=="foodsoft_order_quantity_rounding" and (
+                expected_pin["path"]!="app/helpers/orders_helper.rb" or
+                component.get("candidate_ordered_received_pass") is not True or
+                component.get("rails_application_integration_verified") is not False):
+                raise ValueError("Foodsoft component evidence cannot be treated as Rails integration")
+            if case["id"]=="ofn_canada_map_bounds" and (
+                component.get("candidate_one_outlier_passes") is not True or
+                component.get("candidate_multiple_outliers_passes") is not False or
+                component.get("candidate_zoom_and_geographic_bounds_verified") is not False):
+                raise ValueError("unfinished map candidate must remain explicitly incomplete")
+            tech={
+                **tech,
+                "status":"original_upstream_component_executed_candidate_needs_integration",
+                "source_app_component_runtime_verified":True,
+                "full_original_application_test_suite_executed":False,
+                "source_blob_sha":expected_pin["blob"],
+                "scope":"Original pinned CoffeeScript factory / Ruby helper executed on synthetic inputs, not original application suite.",
+                "temporary_candidate_partial":True,
+                "buyer_demand_evidence_unchanged":True,
+            }
         if stale:
             lane="refresh_public_source_before_contact"
             reason="GitHub evidence snapshot is over 14 days old; no current issue or maintainer state may be claimed."
         elif repo.get("archived") or repo.get("disabled"):
             lane="inactive_repository_requires_owner_review"
             reason="Repository is archived/disabled; do not route work as an ordinary active maintainer request."
+        elif reported and original_runtime is not None and case["id"]=="ofn_canada_map_bounds":
+            lane="complete_viewport_solution_then_integration_test"
+            reason="Original CoffeeScript factory failure reproduced, but median candidate still fails multiple outliers and zoom is unaddressed; no budget."
+        elif reported and original_runtime is not None and case["id"]=="foodsoft_order_quantity_rounding":
+            lane="run_original_app_integration_before_contribution"
+            reason="Original Ruby helper bug and scratch correction reproduced; Rails integration and maintainer consent still absent."
         elif reported:
             lane="reproduce_public_maintainer_issue"
             reason="Open, specific public problem report plus pinned-source arithmetic analog; original application regression and buyer budget still absent."
@@ -389,6 +441,8 @@ def main(argv:list[str]|None=None)->int:
     p.add_argument("--functional",type=Path,required=True)
     p.add_argument("--repair",type=Path,required=True)
     p.add_argument("--issue-contracts",type=Path,required=True)
+    p.add_argument("--original-runtime",type=Path,
+                   help="Optional executed original-component evidence, never a substitute for full app integration")
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--markdown",type=Path,required=True)
     p.add_argument("--collect",action="store_true",
@@ -400,7 +454,8 @@ def main(argv:list[str]|None=None)->int:
         args.snapshot.write_text(json.dumps(snap,ensure_ascii=False,indent=2)+"\n")
     def read(path):return json.loads(path.read_text(encoding="utf-8"))
     result=decide(read(args.snapshot),read(args.functional),
-                  read(args.repair),read(args.issue_contracts))
+                  read(args.repair),read(args.issue_contracts),
+                  original_runtime=read(args.original_runtime) if args.original_runtime else None)
     args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
     args.markdown.write_text(markdown(result),encoding="utf-8")
     print("Source-backed issue signals",result["checks"]["source_backed_open_public_issues"],
