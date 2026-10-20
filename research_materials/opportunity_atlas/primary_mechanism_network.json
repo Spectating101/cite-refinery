@@ -1,0 +1,1133 @@
+{
+  "schema": "cite_refinery.primary_mechanism_graph.v1",
+  "observed_at": "2026-10-20T17:33:17.804541+00:00",
+  "development_sources_total": 63,
+  "briefs": [
+    {
+      "id": "mechanism:battery_recycling_economics",
+      "family": "materials_circularity",
+      "problem": "Battery recycling profitability varies with pack design, logistics, labor and recovery process; a technically feasible regeneration method is not a validated profitable operation.",
+      "mechanism": "Disassembly and transport costs, recycling route, material recovery yield and hazard-control overhead interact with regional prices; cathode restoration alone cannot settle the processing margin.",
+      "capability_contract": "Parameter-sensitive route comparison plus physical safety controls and measurable material recovery yields, with scenario assumptions explicit.",
+      "validation": "Compare route net margins under realistic regional labor/transport/collection conditions; report failure-path hazard and processing costs instead of extrapolating lab yield.",
+      "gap": "Model inputs, LFP chemistry, permit/safety compliance and economics must be recalibrated independently; its published model output is not operator profit evidence.",
+      "primary_sources": [
+        {
+          "id": "OA-2c8a36e510bc7f",
+          "url": "https://doi.org/10.1016/j.isci.2021.102787",
+          "title": "Financial viability of electric vehicle lithium-ion battery recycling",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "6516f476848bf67ed7ea03e403297703872651a1a29c49e9a9f83e3b038bb4b4",
+          "quote": "$·kWh −1 but strongly depends on transport distances, wages, pack design and recycling method. Comparing commercial battery packs, the Tesla Model S",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_method",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-53d2760b3abab4",
+          "url": "https://doi.org/10.1039/d0gc02745f",
+          "title": "The importance of design in lithium ion battery recycling – a critical review",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "edaf85f0cb26bd8deca91f907df175f5200412be7eba737e57dd3ff44c4a5593",
+          "quote": "battery recycling – a critical review. Product design is an important factor which can control the efficiency and economics of a recycling",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-8d5107d133682c",
+          "url": "https://doi.org/10.3390/fire9020076",
+          "title": "A Review of Fire and Explosion Hazards in Sustainable Lithium-Ion Battery Recycling Industries",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "feeba5d10746e97a63ca5365cc21ee4edf3781682c2303abae5180c2ef8a1817",
+          "quote": "However, EOL-LIBs are more prone to thermal runaway due to defects and aging-induced degradation, which can lead to fire and explosion incidents,",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "EPMC-1d4b60c85f48",
+          "url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+          "title": "MnO₂ catalyzed hydrothermal regeneration of spent LiFePO₄ cathode materials for sustainable lithium-ion battery recycling",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC abstract from broadened search, not full-text verification",
+          "original_sha256": "96c5a64d505e3572abfb8eb4f8617a851ee25e85dbee1927e0c7d2bb357f0a01",
+          "quote": "lattice repair. Herein, a recyclable MnO₂-catalyzed hydrothermal strategy is proposed for high-value regeneration of degraded LFP cathodes. Integrated hydrothermal treatment with Li₃PO₄@MnO₂",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_method",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": {
+        "id": "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+        "url": "https://github.com/lingrany/EverBatt-LFP-Recycling-Analysis",
+        "readme_url": "https://github.com/lingrany/EverBatt-LFP-Recycling-Analysis/blob/HEAD/README.md",
+        "git_blob_sha": "0d77d157ea53a2361eedac46629c9bcb5feeffba",
+        "readme_anchor": "[**中文文档 → 新手完全指南.md**](新手完全指南.md)\n\nPython implementation of **Techno-Economic Analysis (TEA)** and **Life Cycle Assessment (LCA)** for LFP (LiFePO₄) battery recycling, based on",
+        "role": "model_candidate_only",
+        "status": "bounded_readme_capability_only_not_tested",
+        "component_gap": "Model inputs, LFP chemistry, permit/safety compliance and economics must be recalibrated independently; its published model output is not operator profit evidence.",
+        "license_clearance": "not_reviewed",
+        "buyer_demand": "not_reviewed",
+        "integration_test": "not_executed"
+      },
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No tested end-to-end technical solution; bounded implementation lead is a hypothesis.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    },
+    {
+      "id": "mechanism:food_redistribution_outcomes",
+      "family": "food_and_logistics",
+      "problem": "Food redistribution programs often measure recovered kilograms or pickup performance while actual beneficiary nutritional and net lifecycle benefits remain insufficiently linked to real operations.",
+      "mechanism": "Redistribution changes supply-chain routing, storage energy, spoilage and beneficiary access; causal and environmental effects depend on which food would otherwise be wasted or purchased.",
+      "capability_contract": "Time-bounded donor/recipient availability, verified pickup and temperature history plus outcomes and LCA-ready operational records.",
+      "validation": "Trace a sample donation from origin to recipient, determine actual consumption/spoilage and measure transport/energy costs for a counterfactual comparison.",
+      "gap": "A producer marketplace is not automatically a charity surplus claiming system, traceable food safety process, or beneficiary nutrition study.",
+      "primary_sources": [
+        {
+          "id": "EPMC-7deb988ae2ab",
+          "url": "https://doi.org/10.1111/nbu.70053",
+          "title": "Exploring the Role of Social Supermarkets in Addressing Food Insecurity and Food Waste: A Scoping Review.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "212d02a11dce9fff510b32b2c617967b8c6a49382989c4d049731b9c6ff80737",
+          "quote": "Exploring the Role of Social Supermarkets in Addressing Food Insecurity and Food Waste: A Scoping Review.. Tackling food insecurity and food waste",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "EPMC-826342b4eec2",
+          "url": "https://doi.org/10.3390/foods15040645",
+          "title": "Comparing the Environmental Impacts of Representative Food Donation and Redistribution Strategies.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "b35e1abaa04eec381287d09b09c839667b7eab7694539f450eb6211354d7bd4f",
+          "quote": "configurations and operational management options, using 391.8 kg of redistributed food over two weeks as the functional unit. Each of the eight",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-da5bbdb0bf0dd0",
+          "url": "https://doi.org/10.55041/ijsmt.v2i5.132",
+          "title": "Smart Food Waste Rescue Hub Application: IOT-Enabled Platform for Surplus Food Redistribution",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "9537e99faa11bb2b533e13e39e993e739a4364b7e75ac7644381e00d189f672a",
+          "quote": "of an ESP32 microcontroller equipped with DHT22 temperature/humidity sensors and MQ-series gas sensors, which continuously monitor environmental conditions during food storage and",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "measured_program_outcome",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-dbc0b8d397869b",
+          "url": "https://openalex.org/W2906684235",
+          "title": "Eating waste : a critical evaluation of surplus food redistribution as solution to food waste and food insecurity",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "46299d8a3df861777feb2533571391fc15661af8c2aa8f49fc01089a50503d3a",
+          "quote": "thesis argues that SFR can boost food access and create important spaces of encounter. However, it demonstrates how organisations’ articulations with corporations,",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "practical_observation",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": {
+        "id": "github:openfoodfoundation/openfoodnetwork",
+        "url": "https://github.com/openfoodfoundation/openfoodnetwork",
+        "readme_url": "https://github.com/openfoodfoundation/openfoodnetwork/blob/HEAD/README.md",
+        "git_blob_sha": "bd855e097d0a091a6c42defe5a40c26b4502b00e",
+        "readme_anchor": "The Open Food Network is an online marketplace for local food. It enables a network of independent online food stores that",
+        "role": "adjacent_distribution_platform",
+        "status": "bounded_readme_capability_only_not_tested",
+        "component_gap": "A producer marketplace is not automatically a charity surplus claiming system, traceable food safety process, or beneficiary nutrition study.",
+        "license_clearance": "not_reviewed",
+        "buyer_demand": "not_reviewed",
+        "integration_test": "not_executed"
+      },
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No tested end-to-end technical solution; bounded implementation lead is a hypothesis.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    },
+    {
+      "id": "mechanism:flood_warning_to_impact",
+      "family": "climate_resilience",
+      "problem": "Flood vulnerability and community early-warning deployments can be documented separately without knowing whether warnings prevented injury, drowning, displacement or service disruption.",
+      "mechanism": "Rainfall and water-level forecasts must be translated into geographically appropriate lead times, accessible warnings and practical evacuation/health-facility response.",
+      "capability_contract": "Location-specific station feeds, forecast uncertainty, alert thresholds, dissemination reliability, response actions, and event-linked health outcomes.",
+      "validation": "Replay historical water levels against thresholds; assess false alarms, useful lead time, message receipt, evacuation behavior and health-service continuity.",
+      "gap": "A water-level prediction prototype cannot be treated as a validated local warning network or demonstrated reduction in health harms.",
+      "primary_sources": [
+        {
+          "id": "EPMC-871d10af9889",
+          "url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+          "title": "Climate induced flooding exposure among urban residents in Uganda",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC abstract from broadened search, not full-text verification",
+          "original_sha256": "999fb59319bcac4f01332b1b5e9afba7d5e2f72d3fbacbee3b2620dc16d00265",
+          "quote": "differ, GKMA is primarily affected by rapid-onset flash and pluvial floods, whereas Kasese faces recurrent, longer-lasting riverine floods associated with more severe",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "EPMC-fb93375cb76d",
+          "url": "https://doi.org/10.5334/aogh.5294",
+          "title": "Climate Change as a Health Security Threat in Pakistan: Preparing Health Systems for Extreme Events.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "fb08c935b0c1fc4e881286a73aebac0adf49df1cf7f05d023ee404f6fbab9949",
+          "quote": "more than 26 million people, damaged health infrastructure, disrupted essential services, and placed the country at the top of the Germanwatch Climate",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "practical_observation",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OFFICIAL-f3e30d7ac5a5",
+          "url": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+          "title": "When floods hit the Ban Kao Many community in Nan District, Luang Prabang Province, Laos, people were prepared. An early warning system from national agencies helped to forecast th",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "original_sha256": "1a01a816e707feaf8761a134bebb80aa4704584bfa7f8cd0bb6b40cbcf921aab",
+          "quote": "Province, Laos, people were prepared. An early warning system from national agencies helped to forecast the flood. Once the announcement had been",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "reported_implementation",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OFFICIAL-dbee83ba8137",
+          "url": "https://www.who.int/europe/health-topics/floods",
+          "title": "The Intergovernmental Panel on Climate Change defines floods as “the overflowing of the normal confines of a stream or other body of water, or the accumulation of water over areas",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "original_sha256": "84feac0d6fb561c252f76fb31e866a60f651e34f9e86dcb6796a57dc17404650",
+          "quote": "Floods are the most common form of natural disaster in the European Region, which has experienced in recent years some of the",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "program_guidance",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": {
+        "id": "github:WeixuanZ/flood-warning-system",
+        "url": "https://github.com/WeixuanZ/flood-warning-system",
+        "readme_url": "https://github.com/WeixuanZ/flood-warning-system/blob/HEAD/README.md",
+        "git_blob_sha": "fd2316be4fdf1ac210963268aba20c8a47e6000e",
+        "readme_anchor": "src=\"/docs/search.png\" alt=\"\" width=80%>\n</p>\n\n### Prediction\n\nHigh risk stations are displayed, and predicted for future changes in water level.\n\n<p align=\"center\">",
+        "role": "forecast_interface_prototype",
+        "status": "bounded_readme_capability_only_not_tested",
+        "component_gap": "A water-level prediction prototype cannot be treated as a validated local warning network or demonstrated reduction in health harms.",
+        "license_clearance": "not_reviewed",
+        "buyer_demand": "not_reviewed",
+        "integration_test": "not_executed"
+      },
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No tested end-to-end technical solution; bounded implementation lead is a hypothesis.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    },
+    {
+      "id": "mechanism:classroom_ventilation_outcomes",
+      "family": "built_environment_health",
+      "problem": "Schools can show high indoor CO₂ and respiratory burden without evidence that a given sensing or ventilation intervention improves clinical outcomes in those classrooms.",
+      "mechanism": "CO₂ is primarily an occupancy/ventilation proxy rather than a direct measurement of all particles, molds or pathogens; source exposure and response mechanisms differ.",
+      "capability_contract": "Calibrated CO₂ logging, time/occupancy metadata and feasible ventilation intervention with parallel PM/filtration and independently measured outcomes.",
+      "validation": "Check reference-sensor calibration and ventilation states; measure CO₂ and PM changes, then avoid claiming clinical impact absent an adequately designed health evaluation.",
+      "gap": "A device design measures carbon dioxide and does not automatically quantify health benefits, deliver ventilation remediation, or guarantee reliable institutional calibration.",
+      "primary_sources": [
+        {
+          "id": "OA-4f0f6d04561a0f",
+          "url": "https://doi.org/10.1590/s1806-37132014000300009",
+          "title": "Indoor air quality and health in schools",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "97ee0b85cfb6d8332dc9ae35e5d245fbdbf29c17dcfa5bbb897bc811899cca79",
+          "quote": "diseases in children. METHODS: We evaluated 1,019 students at 51 elementary schools in the city of Coimbra, Portugal. We applied a questionnaire",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-1139840a6d83ac",
+          "url": "https://openalex.org/W29580953",
+          "title": "School Indoor Air Quality",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "28d757c6efc1d4e73d316a6805dd176d582358cb72acfc7070c9a369cb35f931",
+          "quote": "School Indoor Air Quality. Indoor air quality is affected by emitence of various sources and air movement dynamics. Indoor air pollutants can",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "practical_observation",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "EPMC-e2f3b5123391",
+          "url": "https://doi.org/10.1371/journal.pone.0358221",
+          "title": "Asthma Intervention with Residential Ventilation and Air Cleaner (AIRVAC) Study: A 4-arm parallel-group randomized controlled trial protocol.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "c78b0670d9c7155e7a30dc43a8a5587a6dfd606e99f0c26bcea240618fdf7001",
+          "quote": "improve indoor air quality (IAQ); however, clinical evidence on their comparative health impacts remains limited. Therefore, this trial aims to evaluate the",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_method",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": {
+        "id": "github:ajlongshanks/co2_esphome",
+        "url": "https://github.com/ajlongshanks/co2_esphome",
+        "readme_url": "https://github.com/ajlongshanks/co2_esphome/blob/HEAD/README.md",
+        "git_blob_sha": "7ab060fb9951087fa564bac9d06980009f6d3608",
+        "readme_anchor": "2021-07-31 at 3 30 18 PM](https://user-images.githubusercontent.com/78609906/127737056-21c92be9-78cf-49c9-88bf-fd5cdb5c010e.jpeg)\nA co2 Monitor based on ESP32 with SCD30 sensor\n\n**Board selection:**\nusing lilygo TTGO T-DISPLAY",
+        "role": "measurement_component_only",
+        "status": "bounded_readme_capability_only_not_tested",
+        "component_gap": "A device design measures carbon dioxide and does not automatically quantify health benefits, deliver ventilation remediation, or guarantee reliable institutional calibration.",
+        "license_clearance": "not_reviewed",
+        "buyer_demand": "not_reviewed",
+        "integration_test": "not_executed"
+      },
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No tested end-to-end technical solution; bounded implementation lead is a hypothesis.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    },
+    {
+      "id": "mechanism:dog_population_identity_and_movement",
+      "family": "animal_population_management",
+      "problem": "Free-roaming dog counts and vaccination campaigns need individual/temporal reconciliation and movement understanding, while program outputs do not alone establish sustained population or rabies effects.",
+      "mechanism": "Births, deaths, immigration, ownership changes and observation effort affect apparent abundance; vaccination coverage and campaign effort require distinct denominators.",
+      "capability_contract": "Repeated geotagged sightings or individual photo IDs linked to survey effort, capture/re-capture assumptions and vaccination/source-control events.",
+      "validation": "Compare repeated-sighting identity reconciliation against blinded human labels and independent field sampling; check stability and immigration effects.",
+      "gap": "KPI project README identifies survey infrastructure but the selected excerpt does not verify animal re-identification, population estimation or legal field deployment.",
+      "primary_sources": [
+        {
+          "id": "OA-d94945c2bf53f3",
+          "url": "https://doi.org/10.1111/1365-2664.12279",
+          "title": "The demography of free‐roaming dog populations and applications to disease and population control",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "83bf5054d231895a328b52149395a9c99617a30ddef98abfc9e7f38862f2a818",
+          "quote": "the contribution of demographic processes (i.e. births, deaths and movement) to variations in dog population size or density, or determined the factors",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "EPMC-088e66a2f887",
+          "url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+          "title": "Long-term evaluation of a zoned catch-neuter-vaccinate-release program integrating owner engagement and buffer zone strategies for humane dog population management and rabies control in Anuradhapura, Sri Lanka.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "182d7293ba8dff9bebf50f23056a4e3245f1081113f233b5ec7a4bfe5f69d898",
+          "quote": "free-roaming dogs. Materials and methods From 2021 to 2025, sexually intact free-roaming dogs were captured along predefined routes with standardized effort, while",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "measured_program_outcome",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "EPMC-7329c77af95d",
+          "url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+          "title": "The vacuum effect in free-roaming dog management: Conceptual foundations, boundary conditions, and One Health implications.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC abstract from broadened search, not full-text verification",
+          "original_sha256": "65ba87d740806c07eaa2dce6b4cff635972271d9330a926bccebf83acfe49eb5",
+          "quote": "The vacuum effect in free-roaming dog management: Conceptual foundations, boundary conditions, and One Health implications.. Management of free-roaming animal populations in human-dominated",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-cac905fc406101",
+          "url": "https://doi.org/10.1371/journal.pntd.0004177",
+          "title": "Population Dynamics of Owned, Free-Roaming Dogs: Implications for Rabies Control",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "f0fdc11420c6f2677372e46d2e4ffdb67e56592dbe455bd3d6125bd72f2bde8e",
+          "quote": "but maintaining the critical threshold of vaccination coverage for herd immunity in these populations is hampered by their rapid turnover. Knowledge of",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": {
+        "id": "github:kobotoolbox/kpi",
+        "url": "https://github.com/kobotoolbox/kpi",
+        "readme_url": "https://github.com/kobotoolbox/kpi/blob/HEAD/README.md",
+        "git_blob_sha": "92cc2c9e7f44a3a5dc5998d6f05ebc496833b190",
+        "readme_anchor": "# KPI\n\n[![Python Build Status](https://github.com/kobotoolbox/kpi/actions/workflows/pytest.yml/badge.svg?branch=main)](https://github.com/kobotoolbox/kpi/actions?query=workflow%3Apytest+branch%3Amain)\n[![Python Coverage Status](https://coveralls.io/repos/github/kobotoolbox/kpi/badge.svg?branch=main)](https://coveralls.io/github/kobotoolbox/kpi?branch=main)\n[![JavaScript Build Status](https://github.com/kobotoolbox/kpi/actions/workflows/npm-test.yml/badge.svg?branch=main)](https://github.com/kobotoolbox/kpi/actions?query=workflow%3Anpm-test+branch%3Amain)\n[![DPG Badge](https://img.shields.io/badge/Verified-DPG-3333AB?logo=data:image/svg%2bxml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMzMiIHZpZXdCb3g9IjAgMCAzMSAzMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjIwMDggMjEuMzY3OEwxMC4xNzM2IDE4LjAxMjRMMTEuNTIxOSAxNi40MDAzTDEzLjk5MjggMTguNDU5TDE5LjYyNjkgMTIuMjExMUwyMS4xOTA5IDEzLjYxNkwxNC4yMDA4IDIxLjM2NzhaTTI0LjYyNDEgOS4zNTEyN0wyNC44MDcxIDMuMDcyOTdMMTguODgxIDUuMTg2NjJMMTUuMzMxNCAtMi4zMzA4MmUtMDVMMTEuNzgyMSA1LjE4NjYyTDUuODU2MDEgMy4wNzI5N0w2LjAzOTA2IDkuMzUxMjdMMCAxMS4xMTc3TDMuODQ1MjEgMTYuMDg5NUwwIDIxLjA2MTJMNi4wMzkwNiAyMi44Mjc3TDUuODU2MDEgMjkuMTA2TDExLjc4MjEgMjYuOTkyM0wxNS4zMzE0IDMyLjE3OUwxOC44ODEgMjYuOTkyM0wyNC44MDcxIDI5LjEwNkwyNC42MjQxIDIyLjgyNzdMMzAuNjYzMSAyMS4wNjEyTDI2LjgxNzYgMTYuMDg5NUwzMC42NjMxIDExLjExNzdMMjQuNjI0MSA5LjM1MTI3WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==)](https://digitalpublicgoods.net/r/kobotoolbox)\n\nFor production always use a specific release branch,",
+        "role": "data_capture_infrastructure_only",
+        "status": "bounded_readme_capability_only_not_tested",
+        "component_gap": "KPI project README identifies survey infrastructure but the selected excerpt does not verify animal re-identification, population estimation or legal field deployment.",
+        "license_clearance": "not_reviewed",
+        "buyer_demand": "not_reviewed",
+        "integration_test": "not_executed"
+      },
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No tested end-to-end technical solution; bounded implementation lead is a hypothesis.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    },
+    {
+      "id": "mechanism:heat_warning_to_protective_action",
+      "family": "climate_resilience",
+      "problem": "Heat mortality projections and early-warning plans are widespread sources of concern, but a meteorological warning is not itself evidence that vulnerable households received or acted on protection.",
+      "mechanism": "Heat hazards affect people differently by age, occupation, housing and access to cooling; forecasting only supplies one input to risk communication and response.",
+      "capability_contract": "Local forecast/historical weather streams plus vulnerability stratification, accessible alerts, cooling access and attributable response records.",
+      "validation": "Backtest spatial heat-warning thresholds and measure protection reach and subsequent outcomes in defined at-risk groups.",
+      "gap": "Forecast feeds do not provide vulnerability targeting or health outcomes; hosted API explicitly distinguishes commercial use rights.",
+      "primary_sources": [
+        {
+          "id": "EPMC-0715c73feecf",
+          "url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+          "title": "Global, regional and national projections of heatwave-related death burdens under climate change, urbanisation, adaptation and population growth scenarios.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "9a1c54a7e6c2c080e58d1391380d84ca7bd79655d24ba86404130a2832ba0655",
+          "quote": "adaptation scenarios, were incorporated to estimate excess heatwave-attributable deaths during the 2030s, 2050s, and 2090s, with uncertainty quantified via Monte Carlo simulations.",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-cf7a010e9ed8d1",
+          "url": "https://doi.org/10.3390/ijerph8124623",
+          "title": "Heatwave Early Warning Systems and Adaptation Advice to Reduce Human Health Consequences of Heatwaves",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "e84c2c1400644f2c6c085c3331313b5d1deb485e09fb9b2e92e108a0e02e6b2d",
+          "quote": "Heatwave Early Warning Systems and Adaptation Advice to Reduce Human Health Consequences of Heatwaves. INTRODUCTION: With climate change, there has been an",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OFFICIAL-194f3653ddf1",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+          "title": "Heat is an important environmental and occupational health hazard. Heat stress is a leading cause of weather-related deaths and can exacerbate underlying illnesses including cardio",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "original_sha256": "e59c364c0f2912bebc14475cf12910db9e02ffc05ca48a97d3733c55d3d67fae",
+          "quote": "heatwaves by developing heat action plans, heat early warning systems and advisories, and emergency response plans that map the risks, vulnerable populations,",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "program_guidance",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-57bba7412a5fbd",
+          "url": "https://doi.org/10.1007/s43621-024-00697-2",
+          "title": "Urban household adaptation to extreme heatwaves: health impacts, socio-economic disparities and sustainable strategies in Rajshahi",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "5dd58af338654efd6239ca5c05902d2b67e73417e4fbe066609e38bc5a90a4f6",
+          "quote": "to address heatwave vulnerability, particularly among low-income urban households. To enhance heatwave resilience in urban areas, the study proposes sustainable and long-term",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": {
+        "id": "github:open-meteo/open-meteo",
+        "url": "https://github.com/open-meteo/open-meteo",
+        "readme_url": "https://github.com/open-meteo/open-meteo/blob/HEAD/README.md",
+        "git_blob_sha": "5cca45c596f1b87e5850f3f8dbf0ded08abb72af",
+        "readme_anchor": "curl \"https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m\"\n```\n\n## Features\n\n- [Hourly weather forecast](https://open-meteo.com/en/docs) for up to 16 days\n- Global weather models with 11 km",
+        "role": "weather_data_component_only",
+        "status": "bounded_readme_capability_only_not_tested",
+        "component_gap": "Forecast feeds do not provide vulnerability targeting or health outcomes; hosted API explicitly distinguishes commercial use rights.",
+        "license_clearance": "not_reviewed",
+        "buyer_demand": "not_reviewed",
+        "integration_test": "not_executed"
+      },
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No tested end-to-end technical solution; bounded implementation lead is a hypothesis.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    },
+    {
+      "id": "mechanism:ewaste_toxicant_control",
+      "family": "materials_circularity",
+      "problem": "Informal and formal electronic recycling expose workers and communities to metals and flame retardants, while an environmental modeling toolkit cannot replace occupational monitoring or hazard controls.",
+      "mechanism": "Thermal/mechanical dismantling disperses dust, volatile compounds and contaminated material streams; exposure depends on process conditions and worker protection.",
+      "capability_contract": "Site-specific emissions/exposure sampling, traceable process inventories, validated protective measures and comparable environmental impact accounting.",
+      "validation": "Measure airborne/workplace exposures by process and compare risk controls before and after intervention; distinguish LCA impacts from personal exposure.",
+      "gap": "LCA is a different endpoint from measured worker exposure and does not enforce on-site toxicant controls.",
+      "primary_sources": [
+        {
+          "id": "OA-eb3cd7c2915125",
+          "url": "https://doi.org/10.1016/j.envint.2014.07.006",
+          "title": "Formal recycling of e-waste leads to increased exposure to toxic metals: An occupational exposure study from Sweden",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "aee68febec70ff39dae151d4b46817661b06b6672ec90229472c1e9bf2d4152d",
+          "quote": "digestion. The air sampling indicated greater airborne exposure, 10 to 30 times higher, to most metals among the recycling workers handling e-waste",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-0c2db6ec316fbc",
+          "url": "https://doi.org/10.1016/j.envint.2012.11.006",
+          "title": "Contamination of indoor dust and air by polychlorinated biphenyls and brominated flame retardants and relevance of non-dietary exposure in Vietnamese informal e-waste recycling sites",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "bef3848e3bf46818b2bd1fd16a1999e6209806164e2b30997a65f59f8cc20643",
+          "quote": "and air by polychlorinated biphenyls and brominated flame retardants and relevance of non-dietary exposure in Vietnamese informal e-waste recycling sites. This study",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OFFICIAL-ac48369a71d0",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+          "title": "E-waste is one of the fastest growing solid waste streams in the world (1).",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "original_sha256": "a0ead6920a19383cb389165604d8999fd9405657b1e4fa6d7d90cd80b820efa9",
+          "quote": "Informal e-waste recycling activities may have several adverse health effects. Children and pregnant women are particularly vulnerable. Children and pregnant women are",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "program_guidance",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "EPMC-c4308276b606",
+          "url": "https://doi.org/10.3390/nano16140892",
+          "title": "Electronic Waste-Derived Nanomaterials: Environmental Release, Toxicity, and Public Health Risks.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "d33caba1ebadedc84070641a6097291a65433917366500f2343ba274ec2f5227",
+          "quote": "and biological processes, can transform into nanoscale materials. These electronic waste-derived nanomaterials are increasingly recognized for their potential environmental mobility, bioavailability, and",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": {
+        "id": "github:brightway-lca/brightway2",
+        "url": "https://github.com/brightway-lca/brightway2",
+        "readme_url": "https://github.com/brightway-lca/brightway2/blob/HEAD/README.md",
+        "git_blob_sha": "0f7115f9be7eba5ce2e835df0cde397d68365baa",
+        "readme_anchor": "framework\n\nBrightway2 is a framework for advanced life cycle assessment calculations. It consists of several components which each accomplish specific tasks.",
+        "role": "lifecycle_accounting_adjacent",
+        "status": "bounded_readme_capability_only_not_tested",
+        "component_gap": "LCA is a different endpoint from measured worker exposure and does not enforce on-site toxicant controls.",
+        "license_clearance": "not_reviewed",
+        "buyer_demand": "not_reviewed",
+        "integration_test": "not_executed"
+      },
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No tested end-to-end technical solution; bounded implementation lead is a hypothesis.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    },
+    {
+      "id": "mechanism:gig_worker_algorithmic_harm",
+      "family": "labor_platforms",
+      "problem": "Food-delivery platforms face reported accident and health risks associated with workload and algorithmic management; no listed software implementation here is independently shown to reduce worker injury.",
+      "mechanism": "Automated task assignment and incentives interact with deadline pressure, fatigue, road exposure and worker autonomy; descriptive sentiment data alone cannot isolate causal impacts.",
+      "capability_contract": "Ethical, privacy-aware assignment/exposure telemetry, labor outcomes with counterfactual evaluation and operator/worker consent.",
+      "validation": "Define injury/fatigue reporting, verify consent, examine variations in dispatch policies and confounders before alleging causal effect.",
+      "gap": "Commercial or humanitarian intervention cannot be inferred from social media analytics or a theoretical algorithmic management discussion.",
+      "primary_sources": [
+        {
+          "id": "EPMC-aa4339ee2731",
+          "url": "https://doi.org/10.3389/fpubh.2026.1932962",
+          "title": "Occupational injuries and health risks among food delivery riders in China: research progress and prevention strategies.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "original_sha256": "b784801e964df20858f4998829e169d366cfe00059a0f359ff58d0bbb10b55a7",
+          "quote": "in China, reshaping delivery work through strict deadlines, piece-rate pay, algorithmic management, long working hours, and intensive road exposure. These conditions may",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-6642b2dc88be44",
+          "url": "https://doi.org/10.1111/1748-8583.12258",
+          "title": "Algorithmic management and app‐work in the gig economy: A research agenda for employment relations and HRM",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "36b77b2de1bc9089a63b05e78f90c1cdca7aef1de7568ecb46d522858a247610",
+          "quote": "Algorithmic management and app‐work in the gig economy: A research agenda for employment relations and HRM. Abstract Current understanding of what constitutes",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-79031782b475fb",
+          "url": "https://doi.org/10.1002/ajim.70007",
+          "title": "Platform‐Mediated Gig Work and Health: A Scoping Review",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "6e70b5423b219f0d0d256b1532a358a6dec82cba3834240385faccded5bdca08",
+          "quote": "and any measure of physical or mental health. We abstracted country, study design, population, sample size, exposure measure, and health outcome. We",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        },
+        {
+          "id": "OA-e29dc4e0a782ec",
+          "url": "https://doi.org/10.1002/job.2831",
+          "title": "Algorithmic management in the gig economy: A systematic review and research integration",
+          "origin_type": "openalex_bibliographic_abstract_lead",
+          "scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+          "original_sha256": "c91fc233ca09d9e1bf1a0aa13c6500cf1ed9f5c581b8cef38bd6d7a93074c794",
+          "quote": "Algorithmic management in the gig economy: A systematic review and research integration. Summary Rapid growth in the gig economy has been facilitated",
+          "quote_word_limit": 22,
+          "previous_mapper_role_unverified": "academic_finding",
+          "verification": "original_text_hash_and_literal_quote_checked_only"
+        }
+      ],
+      "implementation_lead": null,
+      "program_outcome_confirmed": false,
+      "technical_fitness_confirmed": false,
+      "buyer_demand_confirmed": false,
+      "economics_confirmed": false,
+      "missing_capability": "No evidence-bounded OSS capability lead selected for this problem.",
+      "verification_status": "original_source_excerpts_verified_investigator_mechanism_hypothesis_only"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "github:WeixuanZ/flood-warning-system",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/WeixuanZ/flood-warning-system",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:ajlongshanks/co2_esphome",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/ajlongshanks/co2_esphome",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:brightway-lca/brightway2",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/brightway-lca/brightway2",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:kobotoolbox/kpi",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/kobotoolbox/kpi",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/lingrany/EverBatt-LFP-Recycling-Analysis",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:open-meteo/open-meteo",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/open-meteo/open-meteo",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:openfoodfoundation/openfoodnetwork",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/openfoodfoundation/openfoodnetwork",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "mechanism:battery_recycling_economics",
+      "type": "interpreted_operational_mechanism",
+      "label": "Battery recycling profitability varies with pack design, logistics, labor and recovery process; a technically feasible regeneration method is not a validated profitable operation.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:classroom_ventilation_outcomes",
+      "type": "interpreted_operational_mechanism",
+      "label": "Schools can show high indoor CO₂ and respiratory burden without evidence that a given sensing or ventilation intervention improves clinical outcomes in those classrooms.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:dog_population_identity_and_movement",
+      "type": "interpreted_operational_mechanism",
+      "label": "Free-roaming dog counts and vaccination campaigns need individual/temporal reconciliation and movement understanding, while program outputs do not alone establish sustained population or rabies effects.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:ewaste_toxicant_control",
+      "type": "interpreted_operational_mechanism",
+      "label": "Informal and formal electronic recycling expose workers and communities to metals and flame retardants, while an environmental modeling toolkit cannot replace occupational monitoring or hazard controls.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:flood_warning_to_impact",
+      "type": "interpreted_operational_mechanism",
+      "label": "Flood vulnerability and community early-warning deployments can be documented separately without knowing whether warnings prevented injury, drowning, displacement or service disruption.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:food_redistribution_outcomes",
+      "type": "interpreted_operational_mechanism",
+      "label": "Food redistribution programs often measure recovered kilograms or pickup performance while actual beneficiary nutritional and net lifecycle benefits remain insufficiently linked to real operations.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:gig_worker_algorithmic_harm",
+      "type": "interpreted_operational_mechanism",
+      "label": "Food-delivery platforms face reported accident and health risks associated with workload and algorithmic management; no listed software implementation here is independently shown to reduce worker injury.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:heat_warning_to_protective_action",
+      "type": "interpreted_operational_mechanism",
+      "label": "Heat mortality projections and early-warning plans are widespread sources of concern, but a meteorological warning is not itself evidence that vulnerable households received or acted on protection.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "source:EPMC-0715c73feecf",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-088e66a2f887",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-1d4b60c85f48",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-7329c77af95d",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-7deb988ae2ab",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1111/nbu.70053",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-826342b4eec2",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/foods15040645",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-871d10af9889",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-aa4339ee2731",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3389/fpubh.2026.1932962",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-c4308276b606",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/nano16140892",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-e2f3b5123391",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1371/journal.pone.0358221",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-fb93375cb76d",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.5334/aogh.5294",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-0c2db6ec316fbc",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.envint.2012.11.006",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-1139840a6d83ac",
+      "type": "documentary_source",
+      "url": "https://openalex.org/W29580953",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-2c8a36e510bc7f",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.isci.2021.102787",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-4f0f6d04561a0f",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1590/s1806-37132014000300009",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-53d2760b3abab4",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1039/d0gc02745f",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-57bba7412a5fbd",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1007/s43621-024-00697-2",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-6642b2dc88be44",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1111/1748-8583.12258",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-79031782b475fb",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1002/ajim.70007",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-8d5107d133682c",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/fire9020076",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-cac905fc406101",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1371/journal.pntd.0004177",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-cf7a010e9ed8d1",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/ijerph8124623",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-d94945c2bf53f3",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1111/1365-2664.12279",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-da5bbdb0bf0dd0",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.55041/ijsmt.v2i5.132",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-dbc0b8d397869b",
+      "type": "documentary_source",
+      "url": "https://openalex.org/W2906684235",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-e29dc4e0a782ec",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1002/job.2831",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-eb3cd7c2915125",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.envint.2014.07.006",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-194f3653ddf1",
+      "type": "documentary_source",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-ac48369a71d0",
+      "type": "documentary_source",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-dbee83ba8137",
+      "type": "documentary_source",
+      "url": "https://www.who.int/europe/health-topics/floods",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-f3e30d7ac5a5",
+      "type": "documentary_source",
+      "url": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    }
+  ],
+  "edges": [
+    {
+      "from": "source:OA-2c8a36e510bc7f",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-53d2760b3abab4",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-8d5107d133682c",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:EPMC-1d4b60c85f48",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "from": "source:EPMC-7deb988ae2ab",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:EPMC-826342b4eec2",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-da5bbdb0bf0dd0",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-dbc0b8d397869b",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "github:openfoodfoundation/openfoodnetwork",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "from": "source:EPMC-871d10af9889",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:EPMC-fb93375cb76d",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OFFICIAL-f3e30d7ac5a5",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OFFICIAL-dbee83ba8137",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "github:WeixuanZ/flood-warning-system",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "from": "source:OA-4f0f6d04561a0f",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-1139840a6d83ac",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:EPMC-e2f3b5123391",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "github:ajlongshanks/co2_esphome",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "from": "source:OA-d94945c2bf53f3",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:EPMC-088e66a2f887",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:EPMC-7329c77af95d",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-cac905fc406101",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "github:kobotoolbox/kpi",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "from": "source:EPMC-0715c73feecf",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-cf7a010e9ed8d1",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OFFICIAL-194f3653ddf1",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-57bba7412a5fbd",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "github:open-meteo/open-meteo",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "from": "source:OA-eb3cd7c2915125",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-0c2db6ec316fbc",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OFFICIAL-ac48369a71d0",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:EPMC-c4308276b606",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "github:brightway-lca/brightway2",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "from": "source:EPMC-aa4339ee2731",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-6642b2dc88be44",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-79031782b475fb",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "from": "source:OA-e29dc4e0a782ec",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    }
+  ],
+  "coverage": {
+    "operational_mechanisms_described": 8,
+    "families": {
+      "materials_circularity": 2,
+      "food_and_logistics": 1,
+      "climate_resilience": 2,
+      "built_environment_health": 1,
+      "animal_population_management": 1,
+      "labor_platforms": 1
+    },
+    "primary_source_identities": 31,
+    "repo_readme_blobs_verified": 7,
+    "full_operational_stacks_validated": 0,
+    "commercial_contracts_verified": 0,
+    "research_holdout_touched": false
+  },
+  "authority": "SOURCE_HASH_AND_QUOTE_CHECKED_NOT_SEMANTIC_OR_TECHNICAL_VALIDATION",
+  "boundary": "All source text from authorized development corpus only. Source exactness is not proof of interpretation; README existence is not functionality, safety or licensing. No independent buyer, paid demand or deployed outcome confirmed."
+}

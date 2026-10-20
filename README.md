@@ -475,3 +475,8 @@ See [real-world conversion cases](docs/OPPORTUNITY_CONVERSION_V1.md) and the cas
 ### Source-connected opportunity atlas v2 — substantive relationships
 
 See [source-connected mapping and scope audit](docs/SOURCE_CONNECTED_ATLAS_V2.md) and the [readable connected atlas](research_materials/opportunity_atlas/CONNECTED_ATLAS.md). Cross-sector source linking now compares actual published work descriptions with bounded repository capability descriptions, attaches original README checks where available, and records rejected semantic matches. No confirmed bid eligibility, customer, economic capture or causal research relationship is inferred; the original sealed evaluation holdout remains untouched.
+
+
+### Primary-source mechanism bridges and integrated provenance
+
+[Read the original-source-anchored mechanism dossiers](research_materials/opportunity_atlas/PRIMARY_MECHANISM_ATLAS.md) and [inspect the two-track coverage gaps](research_materials/opportunity_atlas/INTEGRATED_GAPS.md). Eight mechanisms from 31 source identities are checked against SHA-256 of the authorized development originals, with seven candidate repository README blobs independently matched. The merged graph preserves disconnected source clusters rather than inferring unsupported source-to-procurement or economic links. This is research provenance, not commercial proof; no frozen holdout accessed.

@@ -1,0 +1,252 @@
+{
+  "schema": "cite_refinery.primary_mechanism_dossiers_input.v1",
+  "as_of": "2026-10-21",
+  "source_corpus": "development_only_original_63_source_corpus",
+  "entries": [
+    {
+      "key": "battery_recycling_economics",
+      "family": "materials_circularity",
+      "problem": "Battery recycling profitability varies with pack design, logistics, labor and recovery process; a technically feasible regeneration method is not a validated profitable operation.",
+      "mechanism": "Disassembly and transport costs, recycling route, material recovery yield and hazard-control overhead interact with regional prices; cathode restoration alone cannot settle the processing margin.",
+      "capability_contract": "Parameter-sensitive route comparison plus physical safety controls and measurable material recovery yields, with scenario assumptions explicit.",
+      "validation": "Compare route net margins under realistic regional labor/transport/collection conditions; report failure-path hazard and processing costs instead of extrapolating lab yield.",
+      "basis": [
+        [
+          "OA-2c8a36e510bc7f",
+          "transport distances"
+        ],
+        [
+          "OA-53d2760b3abab4",
+          "Product design is an important factor"
+        ],
+        [
+          "OA-8d5107d133682c",
+          "thermal runaway"
+        ],
+        [
+          "EPMC-1d4b60c85f48",
+          "hydrothermal strategy"
+        ]
+      ],
+      "repo": "lingrany/EverBatt-LFP-Recycling-Analysis",
+      "repo_role": "model_candidate_only",
+      "repo_excerpt": "Techno-Economic Analysis (TEA)",
+      "repo_sha": "0d77d157ea53a2361eedac46629c9bcb5feeffba",
+      "gap": "Model inputs, LFP chemistry, permit/safety compliance and economics must be recalibrated independently; its published model output is not operator profit evidence."
+    },
+    {
+      "key": "food_redistribution_outcomes",
+      "family": "food_and_logistics",
+      "problem": "Food redistribution programs often measure recovered kilograms or pickup performance while actual beneficiary nutritional and net lifecycle benefits remain insufficiently linked to real operations.",
+      "mechanism": "Redistribution changes supply-chain routing, storage energy, spoilage and beneficiary access; causal and environmental effects depend on which food would otherwise be wasted or purchased.",
+      "capability_contract": "Time-bounded donor/recipient availability, verified pickup and temperature history plus outcomes and LCA-ready operational records.",
+      "validation": "Trace a sample donation from origin to recipient, determine actual consumption/spoilage and measure transport/energy costs for a counterfactual comparison.",
+      "basis": [
+        [
+          "EPMC-7deb988ae2ab",
+          "social supermarkets"
+        ],
+        [
+          "EPMC-826342b4eec2",
+          "391.8 kg of redistributed food"
+        ],
+        [
+          "OA-da5bbdb0bf0dd0",
+          "DHT22 temperature/humidity sensors"
+        ],
+        [
+          "OA-dbc0b8d397869b",
+          "food access"
+        ]
+      ],
+      "repo": "openfoodfoundation/openfoodnetwork",
+      "repo_role": "adjacent_distribution_platform",
+      "repo_excerpt": "online marketplace for local food",
+      "repo_sha": "bd855e097d0a091a6c42defe5a40c26b4502b00e",
+      "gap": "A producer marketplace is not automatically a charity surplus claiming system, traceable food safety process, or beneficiary nutrition study."
+    },
+    {
+      "key": "flood_warning_to_impact",
+      "family": "climate_resilience",
+      "problem": "Flood vulnerability and community early-warning deployments can be documented separately without knowing whether warnings prevented injury, drowning, displacement or service disruption.",
+      "mechanism": "Rainfall and water-level forecasts must be translated into geographically appropriate lead times, accessible warnings and practical evacuation/health-facility response.",
+      "capability_contract": "Location-specific station feeds, forecast uncertainty, alert thresholds, dissemination reliability, response actions, and event-linked health outcomes.",
+      "validation": "Replay historical water levels against thresholds; assess false alarms, useful lead time, message receipt, evacuation behavior and health-service continuity.",
+      "basis": [
+        [
+          "EPMC-871d10af9889",
+          "rapid-onset flash"
+        ],
+        [
+          "EPMC-fb93375cb76d",
+          "health infrastructure"
+        ],
+        [
+          "OFFICIAL-f3e30d7ac5a5",
+          "early warning"
+        ],
+        [
+          "OFFICIAL-dbee83ba8137",
+          "floods"
+        ]
+      ],
+      "repo": "WeixuanZ/flood-warning-system",
+      "repo_role": "forecast_interface_prototype",
+      "repo_excerpt": "High risk stations are displayed",
+      "repo_sha": "fd2316be4fdf1ac210963268aba20c8a47e6000e",
+      "gap": "A water-level prediction prototype cannot be treated as a validated local warning network or demonstrated reduction in health harms."
+    },
+    {
+      "key": "classroom_ventilation_outcomes",
+      "family": "built_environment_health",
+      "problem": "Schools can show high indoor CO₂ and respiratory burden without evidence that a given sensing or ventilation intervention improves clinical outcomes in those classrooms.",
+      "mechanism": "CO₂ is primarily an occupancy/ventilation proxy rather than a direct measurement of all particles, molds or pathogens; source exposure and response mechanisms differ.",
+      "capability_contract": "Calibrated CO₂ logging, time/occupancy metadata and feasible ventilation intervention with parallel PM/filtration and independently measured outcomes.",
+      "validation": "Check reference-sensor calibration and ventilation states; measure CO₂ and PM changes, then avoid claiming clinical impact absent an adequately designed health evaluation.",
+      "basis": [
+        [
+          "OA-4f0f6d04561a0f",
+          "1,019 students"
+        ],
+        [
+          "OA-1139840a6d83ac",
+          "Indoor air quality"
+        ],
+        [
+          "EPMC-e2f3b5123391",
+          "clinical evidence"
+        ]
+      ],
+      "repo": "ajlongshanks/co2_esphome",
+      "repo_role": "measurement_component_only",
+      "repo_excerpt": "A co2 Monitor based on ESP32 with SCD30 sensor",
+      "repo_sha": "7ab060fb9951087fa564bac9d06980009f6d3608",
+      "gap": "A device design measures carbon dioxide and does not automatically quantify health benefits, deliver ventilation remediation, or guarantee reliable institutional calibration."
+    },
+    {
+      "key": "dog_population_identity_and_movement",
+      "family": "animal_population_management",
+      "problem": "Free-roaming dog counts and vaccination campaigns need individual/temporal reconciliation and movement understanding, while program outputs do not alone establish sustained population or rabies effects.",
+      "mechanism": "Births, deaths, immigration, ownership changes and observation effort affect apparent abundance; vaccination coverage and campaign effort require distinct denominators.",
+      "capability_contract": "Repeated geotagged sightings or individual photo IDs linked to survey effort, capture/re-capture assumptions and vaccination/source-control events.",
+      "validation": "Compare repeated-sighting identity reconciliation against blinded human labels and independent field sampling; check stability and immigration effects.",
+      "basis": [
+        [
+          "OA-d94945c2bf53f3",
+          "births, deaths and movement"
+        ],
+        [
+          "EPMC-088e66a2f887",
+          "2021 to 2025"
+        ],
+        [
+          "EPMC-7329c77af95d",
+          "vacuum effect"
+        ],
+        [
+          "OA-cac905fc406101",
+          "vaccination coverage"
+        ]
+      ],
+      "repo": "kobotoolbox/kpi",
+      "repo_role": "data_capture_infrastructure_only",
+      "repo_excerpt": "# KPI",
+      "repo_sha": "92cc2c9e7f44a3a5dc5998d6f05ebc496833b190",
+      "gap": "KPI project README identifies survey infrastructure but the selected excerpt does not verify animal re-identification, population estimation or legal field deployment."
+    },
+    {
+      "key": "heat_warning_to_protective_action",
+      "family": "climate_resilience",
+      "problem": "Heat mortality projections and early-warning plans are widespread sources of concern, but a meteorological warning is not itself evidence that vulnerable households received or acted on protection.",
+      "mechanism": "Heat hazards affect people differently by age, occupation, housing and access to cooling; forecasting only supplies one input to risk communication and response.",
+      "capability_contract": "Local forecast/historical weather streams plus vulnerability stratification, accessible alerts, cooling access and attributable response records.",
+      "validation": "Backtest spatial heat-warning thresholds and measure protection reach and subsequent outcomes in defined at-risk groups.",
+      "basis": [
+        [
+          "EPMC-0715c73feecf",
+          "excess heatwave-attributable deaths"
+        ],
+        [
+          "OA-cf7a010e9ed8d1",
+          "Heatwave Early Warning Systems"
+        ],
+        [
+          "OFFICIAL-194f3653ddf1",
+          "heat early warning systems"
+        ],
+        [
+          "OA-57bba7412a5fbd",
+          "Low-income urban households"
+        ]
+      ],
+      "repo": "open-meteo/open-meteo",
+      "repo_role": "weather_data_component_only",
+      "repo_excerpt": "Hourly weather forecast",
+      "repo_sha": "5cca45c596f1b87e5850f3f8dbf0ded08abb72af",
+      "gap": "Forecast feeds do not provide vulnerability targeting or health outcomes; hosted API explicitly distinguishes commercial use rights."
+    },
+    {
+      "key": "ewaste_toxicant_control",
+      "family": "materials_circularity",
+      "problem": "Informal and formal electronic recycling expose workers and communities to metals and flame retardants, while an environmental modeling toolkit cannot replace occupational monitoring or hazard controls.",
+      "mechanism": "Thermal/mechanical dismantling disperses dust, volatile compounds and contaminated material streams; exposure depends on process conditions and worker protection.",
+      "capability_contract": "Site-specific emissions/exposure sampling, traceable process inventories, validated protective measures and comparable environmental impact accounting.",
+      "validation": "Measure airborne/workplace exposures by process and compare risk controls before and after intervention; distinguish LCA impacts from personal exposure.",
+      "basis": [
+        [
+          "OA-eb3cd7c2915125",
+          "airborne exposure"
+        ],
+        [
+          "OA-0c2db6ec316fbc",
+          "brominated flame retardants"
+        ],
+        [
+          "OFFICIAL-ac48369a71d0",
+          "Informal e-waste recycling"
+        ],
+        [
+          "EPMC-c4308276b606",
+          "nanoscale materials"
+        ]
+      ],
+      "repo": "brightway-lca/brightway2",
+      "repo_role": "lifecycle_accounting_adjacent",
+      "repo_excerpt": "advanced life cycle assessment calculations",
+      "repo_sha": "0f7115f9be7eba5ce2e835df0cde397d68365baa",
+      "gap": "LCA is a different endpoint from measured worker exposure and does not enforce on-site toxicant controls."
+    },
+    {
+      "key": "gig_worker_algorithmic_harm",
+      "family": "labor_platforms",
+      "problem": "Food-delivery platforms face reported accident and health risks associated with workload and algorithmic management; no listed software implementation here is independently shown to reduce worker injury.",
+      "mechanism": "Automated task assignment and incentives interact with deadline pressure, fatigue, road exposure and worker autonomy; descriptive sentiment data alone cannot isolate causal impacts.",
+      "capability_contract": "Ethical, privacy-aware assignment/exposure telemetry, labor outcomes with counterfactual evaluation and operator/worker consent.",
+      "validation": "Define injury/fatigue reporting, verify consent, examine variations in dispatch policies and confounders before alleging causal effect.",
+      "basis": [
+        [
+          "EPMC-aa4339ee2731",
+          "strict deadlines"
+        ],
+        [
+          "OA-6642b2dc88be44",
+          "algorithmic management"
+        ],
+        [
+          "OA-79031782b475fb",
+          "mental health"
+        ],
+        [
+          "OA-e29dc4e0a782ec",
+          "gig economy"
+        ]
+      ],
+      "repo": null,
+      "repo_role": "no_credible_repo_link_yet",
+      "repo_excerpt": null,
+      "repo_sha": null,
+      "gap": "Commercial or humanitarian intervention cannot be inferred from social media analytics or a theoretical algorithmic management discussion."
+    }
+  ],
+  "boundary": "Dossiers are investigator-authored, source-excerpt checked; claims and interface hypotheses are NOT confirmed scientific or commercial outcomes. No holdout."
+}

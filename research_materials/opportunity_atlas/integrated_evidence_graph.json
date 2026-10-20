@@ -1,0 +1,1009 @@
+{
+  "schema": "cite_refinery.integrated_opportunity_provenance.v1",
+  "nodes": [
+    {
+      "id": "github:DOI-USGS/EGRET",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/DOI-USGS/EGRET",
+      "label": "DOI-USGS/EGRET",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:Fields2Cover/Fields2Cover",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/Fields2Cover/Fields2Cover",
+      "label": "Fields2Cover/Fields2Cover",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:FreeCAD/FreeCAD",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/FreeCAD/FreeCAD",
+      "label": "FreeCAD/FreeCAD",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:Graphify-Labs/graphify",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/Graphify-Labs/graphify",
+      "label": "Graphify-Labs/graphify",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:WeixuanZ/flood-warning-system",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/WeixuanZ/flood-warning-system",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:ajlongshanks/co2_esphome",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/ajlongshanks/co2_esphome",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:apache/airflow",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/apache/airflow",
+      "label": "apache/airflow",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:biopython/biopython",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/biopython/biopython",
+      "label": "biopython/biopython",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:brightway-lca/brightway2",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/brightway-lca/brightway2",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:ckan/ckan",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/ckan/ckan",
+      "label": "ckan/ckan",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:dadaloop82/EverShelf",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/dadaloop82/EverShelf",
+      "label": "dadaloop82/EverShelf",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:koala73/worldmonitor",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/koala73/worldmonitor",
+      "label": "koala73/worldmonitor",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:kobotoolbox/kpi",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/kobotoolbox/kpi",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/lingrany/EverBatt-LFP-Recycling-Analysis",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:microsoft/farmvibes-ai",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/microsoft/farmvibes-ai",
+      "label": "microsoft/farmvibes-ai",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:open-meteo/open-meteo",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/open-meteo/open-meteo",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:openbq-org/OpenBB",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/openbq-org/OpenBB",
+      "label": "openbq-org/OpenBB",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:opendataloader-project/opendataloader-pdf",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/opendataloader-project/opendataloader-pdf",
+      "label": "opendataloader-project/opendataloader-pdf",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:openfoodfoundation/openfoodnetwork",
+      "type": "reusable_implementation_lead",
+      "url": "https://github.com/openfoodfoundation/openfoodnetwork",
+      "evidence_status": "source_readme_blob_verified_not_operationally_replicated"
+    },
+    {
+      "id": "github:raghudeepika/urban-resource-cadastre-repository",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/raghudeepika/urban-resource-cadastre-repository",
+      "label": "raghudeepika/urban-resource-cadastre-repository",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "github:u9n/dlms-cosem",
+      "layer": "implementation_capability_listing",
+      "source_url": "https://github.com/u9n/dlms-cosem",
+      "label": "u9n/dlms-cosem",
+      "status": "repository_description_not_code_or_deployment_verified"
+    },
+    {
+      "id": "mechanism:battery_recycling_economics",
+      "type": "interpreted_operational_mechanism",
+      "label": "Battery recycling profitability varies with pack design, logistics, labor and recovery process; a technically feasible regeneration method is not a validated profitable operation.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:classroom_ventilation_outcomes",
+      "type": "interpreted_operational_mechanism",
+      "label": "Schools can show high indoor CO₂ and respiratory burden without evidence that a given sensing or ventilation intervention improves clinical outcomes in those classrooms.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:dog_population_identity_and_movement",
+      "type": "interpreted_operational_mechanism",
+      "label": "Free-roaming dog counts and vaccination campaigns need individual/temporal reconciliation and movement understanding, while program outputs do not alone establish sustained population or rabies effects.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:ewaste_toxicant_control",
+      "type": "interpreted_operational_mechanism",
+      "label": "Informal and formal electronic recycling expose workers and communities to metals and flame retardants, while an environmental modeling toolkit cannot replace occupational monitoring or hazard controls.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:flood_warning_to_impact",
+      "type": "interpreted_operational_mechanism",
+      "label": "Flood vulnerability and community early-warning deployments can be documented separately without knowing whether warnings prevented injury, drowning, displacement or service disruption.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:food_redistribution_outcomes",
+      "type": "interpreted_operational_mechanism",
+      "label": "Food redistribution programs often measure recovered kilograms or pickup performance while actual beneficiary nutritional and net lifecycle benefits remain insufficiently linked to real operations.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:gig_worker_algorithmic_harm",
+      "type": "interpreted_operational_mechanism",
+      "label": "Food-delivery platforms face reported accident and health risks associated with workload and algorithmic management; no listed software implementation here is independently shown to reduce worker injury.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "mechanism:heat_warning_to_protective_action",
+      "type": "interpreted_operational_mechanism",
+      "label": "Heat mortality projections and early-warning plans are widespread sources of concern, but a meteorological warning is not itself evidence that vulnerable households received or acted on protection.",
+      "evidence_status": "investigator_candidate_not_reviewed_for_entailment"
+    },
+    {
+      "id": "source:EPMC-0715c73feecf",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-088e66a2f887",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-1d4b60c85f48",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-7329c77af95d",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-7deb988ae2ab",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1111/nbu.70053",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-826342b4eec2",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/foods15040645",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-871d10af9889",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-aa4339ee2731",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3389/fpubh.2026.1932962",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-c4308276b606",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/nano16140892",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-e2f3b5123391",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1371/journal.pone.0358221",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:EPMC-fb93375cb76d",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.5334/aogh.5294",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-0c2db6ec316fbc",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.envint.2012.11.006",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-1139840a6d83ac",
+      "type": "documentary_source",
+      "url": "https://openalex.org/W29580953",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-2c8a36e510bc7f",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.isci.2021.102787",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-4f0f6d04561a0f",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1590/s1806-37132014000300009",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-53d2760b3abab4",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1039/d0gc02745f",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-57bba7412a5fbd",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1007/s43621-024-00697-2",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-6642b2dc88be44",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1111/1748-8583.12258",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-79031782b475fb",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1002/ajim.70007",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-8d5107d133682c",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/fire9020076",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-cac905fc406101",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1371/journal.pntd.0004177",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-cf7a010e9ed8d1",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.3390/ijerph8124623",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-d94945c2bf53f3",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1111/1365-2664.12279",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-da5bbdb0bf0dd0",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.55041/ijsmt.v2i5.132",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-dbc0b8d397869b",
+      "type": "documentary_source",
+      "url": "https://openalex.org/W2906684235",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-e29dc4e0a782ec",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1002/job.2831",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OA-eb3cd7c2915125",
+      "type": "documentary_source",
+      "url": "https://doi.org/10.1016/j.envint.2014.07.006",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-194f3653ddf1",
+      "type": "documentary_source",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-ac48369a71d0",
+      "type": "documentary_source",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-dbee83ba8137",
+      "type": "documentary_source",
+      "url": "https://www.who.int/europe/health-topics/floods",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "source:OFFICIAL-f3e30d7ac5a5",
+      "type": "documentary_source",
+      "url": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+      "evidence_status": "original_excerpt_verified_semantic_entailment_not_adjudicated"
+    },
+    {
+      "id": "ted:404621-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/404621-2026",
+      "label": "Luxembourg – Compliance software development services – Operational Risk Management Software",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:434418-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/434418-2026",
+      "label": "Ireland – Software package and information systems – UCC-2025-02 Provision of an Enterprise Risk Management Software System",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:606356-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/606356-2026",
+      "label": "Malta – Analytical or scientific software development services – MAFA/CIO 3/2026 - Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:635530-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/635530-2026",
+      "label": "Ireland – IT services: consulting, software development, Internet and support – HSE 28439 - Restricted Procedure to procure a HSE Enterprise Integration Platform as a Service ( EiPaaS)",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:646960-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/646960-2026",
+      "label": "Ireland – Records management – Invitation to Tender (ITT) for the provision of an Integrated Board Governance and Risk Management Software Solution [641]",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:683922-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/683922-2026",
+      "label": "Norway – Food, beverages, tobacco and related products – Food for commerical kitchens",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:707304-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/707304-2026",
+      "label": "Ireland – Building and facilities management services – M700.CN.1025 - Soft Facilities Management Services for MetroLink (TII)",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:714960-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/714960-2026",
+      "label": "Germany – Architectural, construction, engineering and inspection services – Klinikum Bayreuth_TMon IBM",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:718613-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/718613-2026",
+      "label": "Sweden – IT services: consulting, software development, Internet and support – Asset data platform- ADP",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:723344-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/723344-2026",
+      "label": "Finland – Repair, maintenance and associated services related to marine and other equipment – VENESATAMIEN HOITO",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:723891-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/723891-2026",
+      "label": "Sweden – Architectural, construction, engineering and inspection services – Tekniska konsulttjänster VVS",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:725724-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/725724-2026",
+      "label": "Italy – Energy-management services – Procedura aperta per la Gestione dei Vettori Energetici delle Aziende Sanitarie della Regione del Veneto parte 2 (a favore delle Aziende ULSS nn. 1, 2, 3, 4, 5 e dell’ Ospedale Riabilitativo di Alta Specializzazio",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    },
+    {
+      "id": "ted:726035-2026",
+      "layer": "documented_institutional_requirement",
+      "source_url": "https://ted.europa.eu/en/notice/-/detail/726035-2026",
+      "label": "Germany – Environmental monitoring for construction – A8 Albaufstieg - Bodenbaubegleitung (BBB)",
+      "status": "published_notice_description_not_verified_active_or_eligible"
+    }
+  ],
+  "edges": [
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:u9n/dlms-cosem",
+      "to": "ted:725724-2026",
+      "relation": "candidate_component",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/u9n/dlms-cosem",
+        "https://ted.europa.eu/en/notice/-/detail/725724-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:raghudeepika/urban-resource-cadastre-repository",
+      "to": "ted:723891-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/raghudeepika/urban-resource-cadastre-repository",
+        "https://ted.europa.eu/en/notice/-/detail/723891-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:DOI-USGS/EGRET",
+      "to": "ted:726035-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/DOI-USGS/EGRET",
+        "https://ted.europa.eu/en/notice/-/detail/726035-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:FreeCAD/FreeCAD",
+      "to": "ted:714960-2026",
+      "relation": "implementation_category_only",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/FreeCAD/FreeCAD",
+        "https://ted.europa.eu/en/notice/-/detail/714960-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:DOI-USGS/EGRET",
+      "to": "ted:723344-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/DOI-USGS/EGRET",
+        "https://ted.europa.eu/en/notice/-/detail/723344-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:apache/airflow",
+      "to": "ted:707304-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/apache/airflow",
+        "https://ted.europa.eu/en/notice/-/detail/707304-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:koala73/worldmonitor",
+      "to": "ted:404621-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/koala73/worldmonitor",
+        "https://ted.europa.eu/en/notice/-/detail/404621-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:openbq-org/OpenBB",
+      "to": "ted:434418-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/openbq-org/OpenBB",
+        "https://ted.europa.eu/en/notice/-/detail/434418-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:apache/airflow",
+      "to": "ted:646960-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/apache/airflow",
+        "https://ted.europa.eu/en/notice/-/detail/646960-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:opendataloader-project/opendataloader-pdf",
+      "to": "ted:718613-2026",
+      "relation": "candidate_component",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/opendataloader-project/opendataloader-pdf",
+        "https://ted.europa.eu/en/notice/-/detail/718613-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:ckan/ckan",
+      "to": "ted:718613-2026",
+      "relation": "implementation_category_only",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/ckan/ckan",
+        "https://ted.europa.eu/en/notice/-/detail/718613-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:Graphify-Labs/graphify",
+      "to": "ted:718613-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/Graphify-Labs/graphify",
+        "https://ted.europa.eu/en/notice/-/detail/718613-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:microsoft/farmvibes-ai",
+      "to": "ted:606356-2026",
+      "relation": "candidate_component",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/microsoft/farmvibes-ai",
+        "https://ted.europa.eu/en/notice/-/detail/606356-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:Fields2Cover/Fields2Cover",
+      "to": "ted:606356-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/Fields2Cover/Fields2Cover",
+        "https://ted.europa.eu/en/notice/-/detail/606356-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:dadaloop82/EverShelf",
+      "to": "ted:683922-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/dadaloop82/EverShelf",
+        "https://ted.europa.eu/en/notice/-/detail/683922-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:apache/airflow",
+      "to": "ted:635530-2026",
+      "relation": "implementation_category_only",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/apache/airflow",
+        "https://ted.europa.eu/en/notice/-/detail/635530-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "institutional_published_requirements",
+      "from": "github:biopython/biopython",
+      "to": "ted:635530-2026",
+      "relation": "wrong_fit",
+      "status": "model_candidate_with_exact_source_anchors",
+      "evidence_refs": [
+        "https://github.com/biopython/biopython",
+        "https://ted.europa.eu/en/notice/-/detail/635530-2026"
+      ],
+      "technical_fit_confirmed": false,
+      "commercial_underconversion_confirmed": false
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-2c8a36e510bc7f",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-53d2760b3abab4",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-8d5107d133682c",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-1d4b60c85f48",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "to": "mechanism:battery_recycling_economics",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-7deb988ae2ab",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-826342b4eec2",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-da5bbdb0bf0dd0",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-dbc0b8d397869b",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "github:openfoodfoundation/openfoodnetwork",
+      "to": "mechanism:food_redistribution_outcomes",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-871d10af9889",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-fb93375cb76d",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OFFICIAL-f3e30d7ac5a5",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OFFICIAL-dbee83ba8137",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "github:WeixuanZ/flood-warning-system",
+      "to": "mechanism:flood_warning_to_impact",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-4f0f6d04561a0f",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-1139840a6d83ac",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-e2f3b5123391",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "github:ajlongshanks/co2_esphome",
+      "to": "mechanism:classroom_ventilation_outcomes",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-d94945c2bf53f3",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-088e66a2f887",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-7329c77af95d",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-cac905fc406101",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "github:kobotoolbox/kpi",
+      "to": "mechanism:dog_population_identity_and_movement",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-0715c73feecf",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-cf7a010e9ed8d1",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OFFICIAL-194f3653ddf1",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-57bba7412a5fbd",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "github:open-meteo/open-meteo",
+      "to": "mechanism:heat_warning_to_protective_action",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-eb3cd7c2915125",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-0c2db6ec316fbc",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OFFICIAL-ac48369a71d0",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-c4308276b606",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "github:brightway-lca/brightway2",
+      "to": "mechanism:ewaste_toxicant_control",
+      "relation": "POSSIBLE_PARTIAL_CAPABILITY_OR_ADJACENCY",
+      "verification": "README_git_blob_and_quote_only_not_implementation_fitness"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:EPMC-aa4339ee2731",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-6642b2dc88be44",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-79031782b475fb",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    },
+    {
+      "layer": "original_source_mechanisms",
+      "from": "source:OA-e29dc4e0a782ec",
+      "to": "mechanism:gig_worker_algorithmic_harm",
+      "relation": "POSSIBLE_EVIDENCE_FOR",
+      "verification": "literal_source_quote_only_not_entailment_or_causal_proof"
+    }
+  ],
+  "inventory_links": {
+    "problem_mechanism_repos": [
+      "github:WeixuanZ/flood-warning-system",
+      "github:ajlongshanks/co2_esphome",
+      "github:brightway-lca/brightway2",
+      "github:kobotoolbox/kpi",
+      "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "github:open-meteo/open-meteo",
+      "github:openfoodfoundation/openfoodnetwork"
+    ],
+    "institutional_requirement_repos": [
+      "github:DOI-USGS/EGRET",
+      "github:Fields2Cover/Fields2Cover",
+      "github:FreeCAD/FreeCAD",
+      "github:Graphify-Labs/graphify",
+      "github:apache/airflow",
+      "github:biopython/biopython",
+      "github:ckan/ckan",
+      "github:dadaloop82/EverShelf",
+      "github:koala73/worldmonitor",
+      "github:microsoft/farmvibes-ai",
+      "github:openbq-org/OpenBB",
+      "github:opendataloader-project/opendataloader-pdf",
+      "github:raghudeepika/urban-resource-cadastre-repository",
+      "github:u9n/dlms-cosem"
+    ],
+    "shared_verified_repository_identities": [],
+    "problem_driven_repos_absent_from_topic_search_sample": [
+      "github:WeixuanZ/flood-warning-system",
+      "github:ajlongshanks/co2_esphome",
+      "github:brightway-lca/brightway2",
+      "github:kobotoolbox/kpi",
+      "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "github:open-meteo/open-meteo"
+    ],
+    "cross_track_inferred_edges_created": 0
+  },
+  "next_work": {
+    "source_to_mechanism": "Independent semantic audit of original excerpts and population/outcome scope.",
+    "mechanism_to_implementation": "Reproduce capability behavior with real datasets and safety/failure cases.",
+    "implementation_to_buyers": "Verify operator need, rights, current procurement rules and paid scope.",
+    "cross_track": "Search for procurement needs that actually require the same mechanisms as the original-source cases; do not infer these links by subject keywords."
+  },
+  "validated_outcomes": {
+    "end_to_end_technical_systems": 0,
+    "contracted_buyers": 0,
+    "financial_arbitrage_cases": 0,
+    "causal_public_health_outcomes": 0
+  },
+  "boundary": "Exact source excerpts, README blob checks and notice ID links do not establish causal interpretation or conversion. Disconnected source clusters remain disconnected."
+}

@@ -57,6 +57,8 @@ cite-refinery-opportunity-atlas = "cite_refinery.opportunity_atlas:main"
 cite-refinery-notice-details = "cite_refinery.opportunity_atlas_notice_details:main"
 cite-refinery-source-bridge-input = "cite_refinery.opportunity_atlas_source_input:main"
 cite-refinery-connected-atlas = "cite_refinery.opportunity_atlas_connected:main"
+cite-refinery-primary-mechanisms = "cite_refinery.opportunity_mechanism_primary:main"
+cite-refinery-merge-atlas-evidence = "cite_refinery.opportunity_atlas_union:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
