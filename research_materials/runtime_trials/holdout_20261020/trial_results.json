@@ -1,0 +1,101 @@
+{
+  "experiment": "semantic_holdout_paperqa_runtime_v1",
+  "date": "2026-10-20",
+  "source_ledger": [
+    {
+      "id": "WMO",
+      "url": "https://wmo.int/activities/hydrosos",
+      "source_sha256": "542c8d33a1baf1fc27657572f2737922b0b33b2e32ef4ee8db4cddeff5428fb8",
+      "passage_sha256": "b3e949529b49259165b51ea86fd96c4d6f6f59f7f6fbbfe2652bbcc3e8292b24"
+    },
+    {
+      "id": "RABIES",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/rabies",
+      "source_sha256": "7917206a4b719d6206600a24b7501126ea411651a3eaa22edce2ee50b601744f",
+      "passage_sha256": "d0b098105f61de728f38ec9a3e6c77322c2c897922d152436d79ea6b4b9fac1b"
+    },
+    {
+      "id": "AIR",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health",
+      "source_sha256": "db0db64b30d620dfcf7a6ad33d764f3f20b22a2efb1a656d576bd715091adcc2",
+      "passage_sha256": "1ce39bbfde78d9272f5378bd80a028bc6d00cbde5b947d40a35137a38847d522"
+    },
+    {
+      "id": "WATER",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/drinking-water",
+      "source_sha256": "435fbda13e3a0587db2f6115e44088e7581960e71551650234e9e71201968b64",
+      "passage_sha256": "c286c9bb464490136dbf1bab5d983cc6a31c4e3e818a4c1b7f0e605c1c22a987"
+    }
+  ],
+  "blind_case_count": 8,
+  "source_count": 4,
+  "truth_file": "gold_labels.json (never supplied to model)",
+  "positive_cases": 4,
+  "negative_cases": 4,
+  "generation_attempts": [
+    {
+      "model": "qwen2.5:7b-instruct",
+      "task": "verbose_batch",
+      "status": "failed",
+      "elapsed_seconds": null,
+      "error_type": "ReadTimeout",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=230)",
+      "accuracy": null
+    },
+    {
+      "model": "qwen2.5:7b-instruct",
+      "task": "short_binary",
+      "status": "failed",
+      "elapsed_seconds": 125.1,
+      "error_type": "ReadTimeout",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=11434): Read timed out. (read timeout=125)",
+      "accuracy": null
+    }
+  ],
+  "paperqa": {
+    "version": "2026.8.12",
+    "source_title": "Population Estimation Methods for Free-Ranging Dogs: A Systematic Review",
+    "source_doi": "10.1371/journal.pone.0144830",
+    "source_pmcid": "PMC4684217",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4684217/fullTextXML",
+    "source_xml_sha256": "dcb00583aa760b5f1947689944a0cd9b43d13b79addadc1c250d47d1173401da",
+    "source_text_sha256": "395487028440789c9ebf772402ed8415ea5312028b2da26905ac7a34e1135505",
+    "source_text_characters": 38217,
+    "initial_index": {
+      "state": "index_complete",
+      "elapsed_seconds": 8.63
+    },
+    "retrieval_cli": {
+      "state": "completed",
+      "match_count": 3,
+      "elapsed_seconds_excluding_python_startup": 0.012,
+      "citation_state": "unreviewed excerpt candidates",
+      "metadata_network_lookup": "disabled",
+      "llm_answer_generation": "disabled",
+      "chunk_ids": [
+        "Belo2015 chunk 7",
+        "Belo2015 chunk 2",
+        "Belo2015 chunk 1"
+      ]
+    },
+    "first_answer_attempt": {
+      "state": "failed",
+      "failure": "Semantic Scholar metadata enrichment HTTP 429",
+      "fix": "ParsingSettings(use_doc_details=False, multimodal=False)"
+    },
+    "second_answer_attempt": {
+      "state": "failed",
+      "error_type": "TimeoutError",
+      "elapsed_seconds": 125.06,
+      "error": "",
+      "completed_answer": false
+    }
+  },
+  "limitations": [
+    "No 7B precision, recall or accuracy score is available because both generations timed out.",
+    "Eight hand-authored binary source-support questions are not blind autonomous discovery.",
+    "Observed local model throughput is affected by other running Ollama workloads.",
+    "PaperQA2 sparse retrieval is not verified academic claim extraction.",
+    "No accepted Cite-Refinery semantic edges created or mutated."
+  ]
+}

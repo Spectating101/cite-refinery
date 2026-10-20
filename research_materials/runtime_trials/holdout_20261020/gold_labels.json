@@ -1,0 +1,30 @@
+{
+  "rubric": "Explicit support in the supplied specific source passage, not just topical overlap or intervention promise. These labels are not supplied to model.",
+  "gold": {
+    "WMO-context": {
+      "supported": true
+    },
+    "Rabies-context": {
+      "supported": true
+    },
+    "Air-context": {
+      "supported": true
+    },
+    "Water-context": {
+      "supported": true
+    },
+    "WMO-overclaim": {
+      "supported": false
+    },
+    "Rabies-overclaim": {
+      "supported": false
+    },
+    "Air-overclaim": {
+      "supported": false
+    },
+    "Water-overclaim": {
+      "supported": false
+    }
+  },
+  "frozen_before_model_inference": true
+}

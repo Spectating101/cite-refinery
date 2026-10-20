@@ -9,7 +9,7 @@ from pathlib import Path
 
 from .external_engines import (
     docling_extract, executable_claims_analyze, grobid_extract, openalex_discover,
-    paperqa_ask, prov_export_packet,
+    paperqa_ask, paperqa_retrieve_local, prov_export_packet,
 )
 from .external_explorer import export_cytoscape_explorer
 from .external_packets import source_lead_packet, relation_proposal_packet
@@ -55,6 +55,13 @@ def main(argv: list[str] | None = None) -> int:
     paper.add_argument("directory")
     paper.add_argument("question")
     paper.add_argument("--timeout", type=int, default=240)
+    ret = commands.add_parser("paperqa-retrieve", help="Retrieve local scholarly source passages, no LLM/API")
+    ret.add_argument("path")
+    ret.add_argument("question")
+    ret.add_argument("--citation", required=True)
+    ret.add_argument("--title")
+    ret.add_argument("--doi")
+    ret.add_argument("--limit", type=int, default=3)
     gro = commands.add_parser("grobid", help="Parse local PDF using a loopback GROBID TEI service")
     gro.add_argument("path")
     gro.add_argument("--endpoint", default="http://127.0.0.1:8070")
@@ -76,7 +83,7 @@ def main(argv: list[str] | None = None) -> int:
     span.add_argument("--subject")
     span.add_argument("--object-name")
     span.add_argument("--model-decision", choices=["yes", "no", "unparseable"])
-    for cmd in (oa, doc, paper, gro, clm, pv, rel, span):
+    for cmd in (oa, doc, paper, ret, gro, clm, pv, rel, span):
         cmd.add_argument("--output", help="Write result as JSON rather than stdout")
     opts = parser.parse_args(argv)
     if opts.command == "engines":
@@ -90,6 +97,11 @@ def main(argv: list[str] | None = None) -> int:
         result = docling_extract(opts.path)
     elif opts.command == "paperqa":
         result = paperqa_ask(opts.directory, opts.question, timeout_seconds=opts.timeout)
+    elif opts.command == "paperqa-retrieve":
+        import asyncio
+        result = asyncio.run(paperqa_retrieve_local(
+            opts.path, opts.question, citation=opts.citation,
+            title=opts.title, doi=opts.doi, k=opts.limit))
     elif opts.command == "grobid":
         result = grobid_extract(opts.path, endpoint=opts.endpoint)
     elif opts.command == "claims":

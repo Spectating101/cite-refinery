@@ -362,3 +362,69 @@ def prov_export_packet(packet: dict[str, Any]) -> dict:
         "source_count": len(source_index), "node_count": len(packet["nodes"]),
         "boundary": "PROV source derivation records provenance only; it never asserts that evidence supports a semantic claim.",
     }
+
+
+async def paperqa_retrieve_local(
+    source_path: str | Path,
+    question: str,
+    *,
+    citation: str,
+    title: str | None = None,
+    doi: str | None = None,
+    k: int = 3,
+    docs_factory=None,
+    settings=None,
+) -> dict[str, Any]:
+    """Actually ingest and retrieve PaperQA2 passages, without LLM answering.
+
+    PaperQA2 metadata enrichment is explicitly disabled: source details are
+    provided by caller, not silently fetched from rate-limited providers.
+    The retrieved chunks are source candidates, not accepted academic claims.
+    """
+    import time
+    p = _safe_file(source_path, {".pdf", ".txt", ".md", ".html", ".docx"}, max_mb=25)
+    q = _valid_query(question, 1200)
+    c = _valid_query(citation, 600)
+    if not isinstance(k, int) or not 1 <= k <= 12:
+        raise ValueError("k must be between 1 and 12")
+    if docs_factory is None or settings is None:
+        try:
+            from paperqa import Docs, Settings
+            from paperqa.settings import ParsingSettings
+        except ImportError as exc:
+            raise EngineUnavailable("Install cite-refinery[paperqa] for native PaperQA2 retrieval") from exc
+        if docs_factory is None:
+            docs_factory = Docs
+        if settings is None:
+            settings = Settings(
+                llm="ollama/llama3.2:3b",
+                summary_llm="ollama/llama3.2:3b",
+                embedding="sparse",
+                parsing=ParsingSettings(use_doc_details=False, multimodal=False),
+            )
+    docs = docs_factory()
+    start = time.monotonic()
+    await docs.aadd(str(p), citation=c, title=title or p.stem,
+                    doi=doi, settings=settings)
+    results = await docs.retrieve_texts(q, k=k, settings=settings)
+    return {
+        "engine": "PaperQA2 sparse retrieval",
+        "source_document_sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
+        "source_name": p.name,
+        "citation_supplied_by_caller": c,
+        "doi_supplied_by_caller": doi,
+        "query": q,
+        "matches": [
+            {
+                "chunk_id": str(getattr(chunk, "name", "")),
+                "excerpt": str(getattr(chunk, "text", ""))[:4500],
+                "source_document_id": str(getattr(getattr(chunk, "doc", None), "dockey", "")),
+                "review_status": "retrieved_text_requires_passage_and_entailment_review",
+            }
+            for chunk in results
+        ],
+        "elapsed_seconds_excluding_python_startup": round(time.monotonic() - start, 3),
+        "metadata_network_lookup": "disabled",
+        "llm_answer_generation": "disabled",
+        "boundary": "Retrieval is not semantic entailment, intervention effectiveness, or an accepted Academic claim.",
+    }
