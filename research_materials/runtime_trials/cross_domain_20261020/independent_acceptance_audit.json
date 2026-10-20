@@ -1,0 +1,190 @@
+{
+  "urban_heat": {
+    "schema": "cite_refinery.cross_domain_acceptance_audit.v1",
+    "domain": "urban_heat",
+    "before_and_after": {
+      "initial": {
+        "source_count": 8,
+        "role_counts": {
+          "academic_finding": 2,
+          "program_guidance_or_proposal": 1,
+          "academic_method": 1,
+          "off_topic": 4
+        },
+        "per_perspective": {
+          "practical": {
+            "module": "HT-01",
+            "coverage": "gap_no_direct_source",
+            "direct_role_matching_count": 0,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "academic": {
+            "module": "HT-02",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 1,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "program": {
+            "module": "HT-03",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 1,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          }
+        },
+        "reported_outcome_endpoints": []
+      },
+      "recovered": {
+        "source_count": 12,
+        "role_counts": {
+          "academic_finding": 4,
+          "program_guidance_or_proposal": 2,
+          "academic_method": 1,
+          "off_topic": 4,
+          "practical_problem_report": 1
+        },
+        "per_perspective": {
+          "practical": {
+            "module": "HT-01",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 3,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "academic": {
+            "module": "HT-02",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 1,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "program": {
+            "module": "HT-03",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 2,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          }
+        },
+        "reported_outcome_endpoints": []
+      }
+    },
+    "coverage_improved_in": [
+      "practical"
+    ],
+    "remaining_missing_role": [],
+    "independent_source_entailment_validation": false,
+    "measured_outcome_endpoint_scope_checked": true,
+    "authority": "neutral_cross_domain_diagnostic",
+    "generalized_across_distinct_problems": true,
+    "broad_accuracy_estimated": false,
+    "limitations": [
+      "Publisher identity does not establish intervention implementation or effects.",
+      "Role agreement from Gemini Medium/High is not independent validation.",
+      "Study-specific outcome evidence cannot silently transfer to another biomarker or population.",
+      "Improved retrieval coverage is not evidence that a module has comprehensive field coverage."
+    ]
+  },
+  "ewaste_exposure": {
+    "schema": "cite_refinery.cross_domain_acceptance_audit.v1",
+    "domain": "ewaste_exposure",
+    "before_and_after": {
+      "initial": {
+        "source_count": 8,
+        "role_counts": {
+          "academic_finding": 1,
+          "off_topic": 4,
+          "academic_method": 2,
+          "background_only": 1
+        },
+        "per_perspective": {
+          "practical": {
+            "module": "EW-01",
+            "coverage": "topic_mentioned_without_perspective_evidence",
+            "direct_role_matching_count": 0,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "academic": {
+            "module": "EW-02",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 1,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "program": {
+            "module": "EW-03",
+            "coverage": "topic_mentioned_without_perspective_evidence",
+            "direct_role_matching_count": 0,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          }
+        },
+        "reported_outcome_endpoints": []
+      },
+      "recovered": {
+        "source_count": 12,
+        "role_counts": {
+          "academic_finding": 1,
+          "off_topic": 6,
+          "academic_method": 2,
+          "background_only": 1,
+          "program_guidance_or_proposal": 1,
+          "measured_program_outcome": 1
+        },
+        "per_perspective": {
+          "practical": {
+            "module": "EW-01",
+            "coverage": "topic_mentioned_without_perspective_evidence",
+            "direct_role_matching_count": 0,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "academic": {
+            "module": "EW-02",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 1,
+            "measured_outcome_reported": false,
+            "independent_replication": false
+          },
+          "program": {
+            "module": "EW-03",
+            "coverage": "role_specific_direct_source",
+            "direct_role_matching_count": 2,
+            "measured_outcome_reported": true,
+            "independent_replication": false
+          }
+        },
+        "reported_outcome_endpoints": [
+          {
+            "source_id": "EPMC-02c902bca5bf",
+            "domain": "ewaste_exposure",
+            "reported_outcome_type": "self_reported_workplace_injury",
+            "evidence_quote": "the intervention reduced self-reported injuries over three months [difference-in-differences: -58%, 95% confidence interval (CI) -19- -79%].",
+            "is_independent_replication": false,
+            "toxicity_biomarker_reduction_verified": false
+          }
+        ]
+      }
+    },
+    "coverage_improved_in": [
+      "program"
+    ],
+    "remaining_missing_role": [
+      "practical"
+    ],
+    "independent_source_entailment_validation": false,
+    "measured_outcome_endpoint_scope_checked": true,
+    "authority": "neutral_cross_domain_diagnostic",
+    "generalized_across_distinct_problems": true,
+    "broad_accuracy_estimated": false,
+    "limitations": [
+      "Publisher identity does not establish intervention implementation or effects.",
+      "Role agreement from Gemini Medium/High is not independent validation.",
+      "Study-specific outcome evidence cannot silently transfer to another biomarker or population.",
+      "Improved retrieval coverage is not evidence that a module has comprehensive field coverage."
+    ]
+  }
+}
