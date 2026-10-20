@@ -1,0 +1,231 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-00",
+  "source_readings": [
+    {
+      "source_id": "OA-4ecb63fe5958c9",
+      "source_url": "https://doi.org/10.1007/s13201-018-0881-9",
+      "source_sha256": "34c04d4d72bb02154e02503d5a791b40f759b49cbd58efd36a6c47e7874dd345",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Flood hazard research in major Indian coastal cities has emphasized riverine and urban flooding over coastal surges, with adaptation assessments lagging outside Mumbai and Kolkata.",
+      "quote_sha256": "c3df3f6487c4a0c51570686fda8d1446d9b6fb36c06dd6ee7d716ef60146cf04",
+      "scope": "Surat, Mumbai, Chennai, and Kolkata, India; recent and historical flood risk scenarios.",
+      "caveat": "Bibliographic abstract of a review article; provides no direct empirical measurements, causal evaluation, or verified audit of municipal flood project execution.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-04c6c3a2a87e",
+      "source_url": "https://www.who.int/news-room/questions-and-answers/item/q-a-children-and-masks-related-to-covid-19",
+      "source_sha256": "6e6fc30bbb953b3109dfd4e8498fcb7431765fd76a9d32529cafdbde16a5d465",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Pediatric mask recommendations depend on age, transmission context, and ventilation status, exempting children aged 5 and under or those with developmental or respiratory contraindications.",
+      "quote_sha256": "5b7d00e9b96c1be12a2a024f7c018cf391372f684e6eee8e885fb1b21c820a37",
+      "scope": "Global pediatric populations, schools, and domestic settings during the SARS-CoV-2 pandemic.",
+      "caveat": "Normative guidance document; does not measure real-world mask adherence, supply availability, or quantitative impacts on infection rates.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-da5bbdb0bf0dd0",
+      "source_url": "https://doi.org/10.55041/ijsmt.v2i5.132",
+      "source_sha256": "9537e99faa11bb2b533e13e39e993e739a4364b7e75ac7644381e00d189f672a",
+      "role": "measured_program_outcome",
+      "fit": "relevant",
+      "statement": "An IoT-enabled platform tracking temperature, humidity, and gas rescued 847 kg of surplus food and reduced pickup times by 42% in a multi-stakeholder pilot.",
+      "quote_sha256": "9e73de90d6bfcdddbeed7442d496be475a04fe4daad2a5402061b4ee88d19ec1",
+      "scope": "Coimbatore, India; 15 restaurants and 8 NGOs during a 3-month pilot deployment.",
+      "caveat": "Pilot deployment outcomes reported in an abstract; does not show long-term institutional permanence, cost sustainability, or recipient nutritional impacts.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-0f3441051449",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/asthma",
+      "source_sha256": "a1ce253ca8719057b3645566239ce7635c3cd4065df5ea784647323fe11e6b85",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Chronic respiratory illnesses require primary-care clinical management and environmental trigger control, supported by structured noncommunicable disease intervention packages in low-resource settings.",
+      "quote_sha256": "812ca2be73b773d5bf7c1e4cfced13b8dfce4381b1c730c370c72187cd01c5b0",
+      "scope": "Low-resource primary health care settings globally; children and adults with chronic respiratory diseases.",
+      "caveat": "Institutional program framework; does not measure field implementation fidelity, clinic penetration, or longitudinal patient morbidity outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-1139840a6d83ac",
+      "source_url": "https://openalex.org/W29580953",
+      "source_sha256": "28d757c6efc1d4e73d316a6805dd176d582358cb72acfc7070c9a369cb35f931",
+      "role": "practical_observation",
+      "fit": "relevant",
+      "statement": "Indoor air quality in educational facilities is degraded by HVAC moisture, dust, and outdoor pollutant intake, substantially contributing to student asthma burdens and absenteeism.",
+      "quote_sha256": "0474c8fec499a4a7db79e2a39c033c75c608ddf2e6ffcb9edd88ff7632f27178",
+      "scope": "United States school facilities; school-aged children.",
+      "caveat": "General narrative review citing secondary sources; does not perform controlled experimental evaluations of specific air cleaning or HVAC protocols.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-8d5107d133682c",
+      "source_url": "https://doi.org/10.3390/fire9020076",
+      "source_sha256": "feeba5d10746e97a63ca5365cc21ee4edf3781682c2303abae5180c2ef8a1817",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "End-of-life lithium-ion battery recycling faces acute environmental and occupational hazards from thermal runaway, fires, and toxic releases during collection, dismantling, and processing.",
+      "quote_sha256": "3306ba6330f4730690863539a842b30bb0fb4ef9edb393d4afae9739425f1785",
+      "scope": "Industrial lithium-ion battery storage, transport, and recycling facilities globally.",
+      "caveat": "Academic review paper; does not measure incident rates under specific occupational safety standards or prove the field efficacy of suggested mitigation protocols.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-194f3653ddf1",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "source_sha256": "e59c364c0f2912bebc14475cf12910db9e02ffc05ca48a97d3733c55d3d67fae",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Extreme heat constitutes a predictable environmental health hazard requiring municipal heat action plans and early warning systems to protect vulnerable and under-resourced populations.",
+      "quote_sha256": "f5cc5199559346a978726d3855a62803d1d9116587b2a193d5fca179cec74252",
+      "scope": "Global public health sector, municipal health systems, and vulnerable populations (urban poor, older adults, outdoor workers).",
+      "caveat": "Policy guidance and risk overview; does not present quantitative evaluations of mortality reductions achieved by operational heat action plans.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-19f69df74e84",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/health-care-waste",
+      "source_sha256": "e2c6377c703743df13ed05289b3e0b6ad8bd4960ce47d20eafe34577bd4fac4e",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Health-care facilities must prioritize waste minimization and segregated handling to avoid biological infection hazards and hazardous airborne emissions from low-temperature burning.",
+      "quote_sha256": "b50a8d67b44ea66aebe245edad378487b0eba7ce660ae10584550f3720152ceb",
+      "scope": "Global health-care facilities, hospital management, and waste treatment systems.",
+      "caveat": "Institutional guidance document; does not report quantitative audit data on global waste compliance or measured toxic emission levels from incinerators.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-1bf7efd28d64",
+      "source_url": "https://www.who.int/news-room/questions-and-answers/item/population-ageing",
+      "source_sha256": "2ab7af621aca8342e356a3b202f7d81d290ceee13a55d91e5d254f847c82d81d",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Global population ageing requires systemic public health shifts toward age-friendly environments, integrated primary care, and long-term care systems to support functional ability.",
+      "quote_sha256": "7d546bf595e86edd91e99193ac081acf451d78ca5cb87fc542ec4349edb5f1d2",
+      "scope": "Global older population (aged 60+) and health governance systems, 2021–2030.",
+      "caveat": "Policy agenda and demographic overview; does not show empirical efficacy data or verified service coverage for the UN Decade of Healthy Ageing programs.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Indoor Environmental Health and Pediatric Respiratory Protection",
+      "source_ids": [
+        "OA-1139840a6d83ac",
+        "OFFICIAL-0f3441051449",
+        "OFFICIAL-04c6c3a2a87e"
+      ],
+      "question": "How can school and primary-care environmental protocols balance indoor ventilation requirements for airborne infection prevention against the ingress of particulate and chemical triggers that exacerbate pediatric asthma?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Municipal Vulnerability, Extreme Climate Hazards, and Adaptation Planning",
+      "source_ids": [
+        "OA-4ecb63fe5958c9",
+        "OFFICIAL-194f3653ddf1"
+      ],
+      "question": "How do municipal urban adaptation strategies incorporate multiple overlapping climate hazards, such as localized riverine/coastal flooding and urban heat island effects in informal settlements?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Specialized Waste Streams, Traceability, and Industrial Hazard Mitigation",
+      "source_ids": [
+        "OA-8d5107d133682c",
+        "OFFICIAL-19f69df74e84",
+        "OA-da5bbdb0bf0dd0"
+      ],
+      "question": "What technological tracking and containment methods are effective for managing non-municipal waste streams that present biological contamination, thermal runaway, or spoilage risks?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Demographic Longevity and Long-Term Care Infrastructure",
+      "source_ids": [
+        "OFFICIAL-1bf7efd28d64"
+      ],
+      "question": "What institutional frameworks are required to align primary health care systems with long-term care needs in regions undergoing rapid demographic ageing?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "OA-1139840a6d83ac",
+      "to_source": "OFFICIAL-0f3441051449",
+      "relation": "corroborates",
+      "reason": "OA-1139840a6d83ac documents that environmental air pollutants circulating through ventilation systems exacerbate student asthma, corroborating WHO's guidance in OFFICIAL-0f3441051449 that air pollution exposure is a primary risk factor for chronic asthma.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OFFICIAL-04c6c3a2a87e",
+      "to_source": "OA-1139840a6d83ac",
+      "relation": "qualifies",
+      "reason": "OFFICIAL-04c6c3a2a87e recommends increasing indoor air exchange and opening windows to mitigate pathogen transmission, whereas OA-1139840a6d83ac notes that drawing outdoor air directly inside can introduce outdoor industrial toxins and particulate allergens into school buildings.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OFFICIAL-194f3653ddf1",
+      "to_source": "OA-4ecb63fe5958c9",
+      "relation": "qualifies",
+      "reason": "While OA-4ecb63fe5958c9 focuses coastal urban risk adaptation primarily on hydrologic flooding threats, OFFICIAL-194f3653ddf1 qualifies municipal climate adaptation priorities by identifying heatwaves as an equally critical weather-related hazard disproportionately impacting urban poor and informal settlements.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OFFICIAL-1bf7efd28d64",
+      "to_source": "OFFICIAL-194f3653ddf1",
+      "relation": "corroborates",
+      "reason": "OFFICIAL-1bf7efd28d64 emphasizes that older populations carry high rates of noncommunicable cardiovascular and chronic conditions, corroborating OFFICIAL-194f3653ddf1's designation of older adults as physiologically high-risk cohorts requiring prioritized cooling and early warnings during extreme heat.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "What quantitative reductions in pediatric asthma flare-ups occur when school HVAC upgrades are combined with active indoor air filtration versus standard window ventilation in polluted urban zones?",
+      "source_ids": [
+        "OA-1139840a6d83ac",
+        "OFFICIAL-0f3441051449",
+        "OFFICIAL-04c6c3a2a87e"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Does continuous sensor monitoring during transit maintain cold-chain food safety and bacterial thresholds reliably across seasonal monsoon and high-temperature conditions in regional food rescue operations?",
+      "source_ids": [
+        "OA-da5bbdb0bf0dd0"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "To what degree do current Indian coastal city master plans integrate heat action interventions with structural flood mitigation infrastructure in vulnerable informal coastal settlements?",
+      "source_ids": [
+        "OA-4ecb63fe5958c9",
+        "OFFICIAL-194f3653ddf1"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What specific pre-treatment and inerting standards reliably suppress thermal runaway risk during the commercial storage and transit of end-of-life battery black mass?",
+      "source_ids": [
+        "OA-8d5107d133682c"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}

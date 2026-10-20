@@ -1,0 +1,232 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-06",
+  "source_readings": [
+    {
+      "source_id": "OA-88cafd9405fbed",
+      "source_url": "https://doi.org/10.70251/hyjr2348.3593102",
+      "source_sha256": "708cd56251e341f85b8e0bc64cd2e99d451d862c22244119a595a4cf8144a684",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Surplus food redistribution across the US faces structural barriers including liability protection, ambiguous date labeling, and household sector drop-off, despite logistical opportunities.",
+      "quote_sha256": "89707c8aeb58a75d405aeff5eb0e4c2e24774720aa5826d79bbe955f131c5b6d",
+      "scope": "United States; retail, food service, and consumer food waste sectors; recent qualitative review period",
+      "caveat": "Based on a qualitative bibliographic review rather than empirical causal tracking or program audit data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-4a59c468fd7941",
+      "source_url": "https://doi.org/10.3390/met10030316",
+      "source_sha256": "0aa89eea169d94cabfe8af729e5e361d66beba6e0cd76a697654827c0f5823a8",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "Recycling pathways for spent lithium-ion batteries can be systematically structured into unit processes and stages aligned with circular economy waste treatment frameworks.",
+      "quote_sha256": "dcbf97dd3016df1f834bc8723f3d9bae1a95e4afe1ded86b26ec733e4dab03f5",
+      "scope": "Global; industrial concepts for spent lithium-ion batteries",
+      "caveat": "Presents a descriptive taxonomy of treatment processes; does not measure recycling efficiency rates, costs, or lifecycle toxicity.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-7deb988ae2ab",
+      "source_url": "https://doi.org/10.1111/nbu.70053",
+      "source_sha256": "212d02a11dce9fff510b32b2c617967b8c6a49382989c4d049731b9c6ff80737",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Social supermarkets alleviate immediate food insecurity using customer-choice retail models, but remain structurally dependent on the continuous generation of commercial food surplus.",
+      "quote_sha256": "fb3461c4e324256902d0dcdfe890551d43b9c15741ecd91d63b7abb7aea2d70b",
+      "scope": "International literature; 14 scoping review studies examining social supermarket models",
+      "caveat": "Synthesizes scoping literature on customer experiences and models; does not report quantitative nutritional or clinical outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-f3af73407d74",
+      "source_url": "https://www.who.int/health-topics/malnutrition",
+      "source_sha256": "74e1e1b041af8feee322347c01a13a962b7873cd10acf4f1e6cec5807084a250",
+      "role": "program_guidance",
+      "fit": "context",
+      "statement": "The WHO defines wasting, stunting, and underweight as distinct manifestations of malnutrition requiring resilient food systems to meet 2030 Sustainable Development Goals.",
+      "quote_sha256": "8acb8d31a8f153bd2bcdab2be724faa87c833afbafe195e7ddf1d1d1b6b36130",
+      "scope": "Global; pediatric and vulnerable populations under WHO SDG 2030 targets",
+      "caveat": "Official institutional text detailing diagnostic definitions and policy agendas; contains no intervention evaluation or local survey data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-f3e30d7ac5a5",
+      "source_url": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+      "source_sha256": "1a01a816e707feaf8761a134bebb80aa4704584bfa7f8cd0bb6b40cbcf921aab",
+      "role": "reported_implementation",
+      "fit": "relevant",
+      "statement": "Multi-agency early warning systems and trained local response teams were deployed in Ban Kao Many, Laos, to forecast flash flooding and mitigate drowning hazards.",
+      "quote_sha256": "84a82a03936e4bef85e277741569a9c1ed251c9a5218999ffa5e7914c6e78977",
+      "scope": "Ban Kao Many community, Nan District, Luang Prabang Province, Laos; global FFGS deployment across 72 countries",
+      "caveat": "Institutional narrative excerpt asserting reduced drowning deaths without providing empirical control baselines or epidemiological audit data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-c4308276b606",
+      "source_url": "https://doi.org/10.3390/nano16140892",
+      "source_sha256": "d33caba1ebadedc84070641a6097291a65433917366500f2343ba274ec2f5227",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Weathering and recycling of electronic waste generate incidental nanomaterials that present distinct mobility, bioavailability, and human health hazards.",
+      "quote_sha256": "452c0c0cfad7295cc8e46e65f721964023bc45c47004ad513db04b1d07513f6c",
+      "scope": "Global; electronic waste streams, recycling operations, and surrounding ecosystems",
+      "caveat": "Bibliographic abstract overview; does not quantify specific toxic exposure thresholds or clinical disease incidence.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-d26245f891f838",
+      "source_url": "https://doi.org/10.1016/j.healthplace.2018.08.017",
+      "source_sha256": "dc36e9a67ccd3866b5188a470c4c4dd4f6a427421f237434952dcfbff933666b",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Global heatwave health impact research is heavily skewed toward mid-latitude, high-income nations, systematically neglecting regions with the highest projected extreme heat risk.",
+      "quote_sha256": "f553d4c5b6cfc72f3b0573f8c32073ae93706a72b9927685e8a5e21f7758e505",
+      "scope": "Global; systematic review of historical epidemiological literature on heatwave mortality and morbidity",
+      "caveat": "Analyzes the geographic distribution of research literature rather than assessing localized epidemiological exposure-response mechanisms.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-826342b4eec2",
+      "source_url": "https://doi.org/10.3390/foods15040645",
+      "source_sha256": "b35e1abaa04eec381287d09b09c839667b7eab7694539f450eb6211354d7bd4f",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Fresh produce redistribution scenarios consistently produce net environmental benefits across five lifecycle metrics, maximized when gleaning intermediaries transport surplus directly to food pantries.",
+      "quote_sha256": "a6c3717527e2354106d1041806214eed26d2cef0b5f03b0b900c8b9a25b9c67b",
+      "scope": "Modeled fresh produce supply chains; functional unit of 391.8 kg redistributed food over a two-week period",
+      "caveat": "Parametric life cycle simulation; does not track actual nutritional uptake or consumer-level food spoilage rates.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-9e020968a7d4",
+      "source_url": "https://doi.org/10.1016/j.lanwpc.2026.101922",
+      "source_sha256": "2fd90144b712e99271f04e6631ae1fec69ee92f55349b1a2f8ea8ce6ddec8b09",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Children under five in rural China experience significantly higher heat-related mortality risks than urban peers, particularly during compound and nighttime heatwaves.",
+      "quote_sha256": "2993f6570cd4dc8c1f143ad0dd43ecf52444c24dee07ecfeb5279c328f37f11e",
+      "scope": "China nationwide; 61,464 under-5 mortality cases; 2009–2019",
+      "caveat": "Time-stratified case-crossover design examining mortality associations; does not capture personal indoor thermal exposure or specific household cooling resources.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Food Surplus Redistribution and Nutrition Assistance Systems",
+      "source_ids": [
+        "OA-88cafd9405fbed",
+        "EPMC-7deb988ae2ab",
+        "OFFICIAL-f3af73407d74",
+        "EPMC-826342b4eec2"
+      ],
+      "question": "How do operational configurations and social market models in food surplus redistribution affect environmental savings, food insecurity relief, and underlying systemic supply-chain waste?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Extreme Heat Exposure and Pediatric Vulnerability Disparities",
+      "source_ids": [
+        "OA-d26245f891f838",
+        "EPMC-9e020968a7d4"
+      ],
+      "question": "How do geographical publication biases in heatwave research compare with localized empirical disparities in pediatric heatwave mortality across urban and rural settings?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Electronic Waste Processing, Battery Recycling, and Nanomaterial Hazards",
+      "source_ids": [
+        "OA-4a59c468fd7941",
+        "EPMC-c4308276b606"
+      ],
+      "question": "What technological schemes and toxicological risks characterize the lifecycle management of spent batteries and electronic waste weathering?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Community-Level Flash Flood Early Warning and Drowning Mitigation",
+      "source_ids": [
+        "OFFICIAL-f3e30d7ac5a5"
+      ],
+      "question": "How do international early warning frameworks integrate with local search-and-rescue protocols to mitigate drowning mortality during flash floods?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "OA-d26245f891f838",
+      "to_source": "EPMC-9e020968a7d4",
+      "relation": "qualifies",
+      "reason": "OA-d26245f891f838 identifies a severe underrepresentation of vulnerable regions and non-high-income contexts in global heatwave literature, which EPMC-9e020968a7d4 directly qualifies by analyzing under-5 mortality in China across rural and urban populations.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-88cafd9405fbed",
+      "to_source": "EPMC-7deb988ae2ab",
+      "relation": "corroborates",
+      "reason": "Both reviews corroborate that while surplus redistribution channels provide vital proximate relief, they operate as palliative interventions constrained by larger supply-chain inefficiencies and regulatory hurdles.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "EPMC-826342b4eec2",
+      "to_source": "EPMC-7deb988ae2ab",
+      "relation": "corroborates",
+      "reason": "EPMC-826342b4eec2 provides life cycle evidence demonstrating net environmental benefits from diverting surplus food from landfilling, corroborating the waste-reduction role described for social supermarket models in EPMC-7deb988ae2ab.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-4a59c468fd7941",
+      "to_source": "EPMC-c4308276b606",
+      "relation": "qualifies",
+      "reason": "OA-4a59c468fd7941 focuses on process categorization for recycling spent lithium-ion batteries, while EPMC-c4308276b606 qualifies recycling systems by emphasizing that processing and weathering of electronic waste generate bioavailable nanoscale pollutants.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "To what degree do redistribution programs delivering surplus produce improve verified biological indicators of malnutrition (such as wasting or stunting) rather than merely providing temporary caloric assistance?",
+      "source_ids": [
+        "OA-88cafd9405fbed",
+        "EPMC-7deb988ae2ab",
+        "OFFICIAL-f3af73407d74"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What specific microclimatic, housing, or healthcare access mechanisms account for the heightened nighttime heatwave mortality observed in rural infants compared to urban peers?",
+      "source_ids": [
+        "OA-d26245f891f838",
+        "EPMC-9e020968a7d4"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What proportion of battery and electronic waste recycling facilities worldwide release hazardous electronic waste-derived nanomaterials during mechanical or thermal processing stages?",
+      "source_ids": [
+        "OA-4a59c468fd7941",
+        "EPMC-c4308276b606"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What are the independently measured causal reductions in drowning mortality attributable to the Flash Flood Guidance System versus baseline evacuation capability in rural communities?",
+      "source_ids": [
+        "OFFICIAL-f3e30d7ac5a5"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}

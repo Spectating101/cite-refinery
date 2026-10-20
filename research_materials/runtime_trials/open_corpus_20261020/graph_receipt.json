@@ -1,0 +1,11 @@
+{
+  "project_id": "rproject:ffd0b47ec746",
+  "packet_id": "sgpacket:203a1115253ec6af",
+  "declared_nodes": 79,
+  "declared_edges": 68,
+  "actual_project_nodes": 79,
+  "actual_project_edges": 68,
+  "replayed": false,
+  "accepted_scientific_conclusions": 0,
+  "boundary": "Staged review graph, not an accepted scientific authority."
+}

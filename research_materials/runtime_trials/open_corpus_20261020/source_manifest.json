@@ -1,0 +1,874 @@
+{
+  "schema": "cite_refinery.open_corpus_manifest.v1",
+  "count": 63,
+  "source_records": [
+    {
+      "id": "EPMC-0715c73feecf",
+      "url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+      "title": "Global, regional and national projections of heatwave-related death burdens under climate change, urbanisation, adaptation and population growth scenarios.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=heatwave+urban+cooling+access+health+vulnerability&format=json&resultType=core&pageSize=2",
+      "source_record": "10.1016/j.ebiom.2026.106419",
+      "year": null,
+      "sha256": "9a1c54a7e6c2c080e58d1391380d84ca7bd79655d24ba86404130a2832ba0655"
+    },
+    {
+      "id": "EPMC-088e66a2f887",
+      "url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+      "title": "Long-term evaluation of a zoned catch-neuter-vaccinate-release program integrating owner engagement and buffer zone strategies for humane dog population management and rabies control in Anuradhapura, Sri Lanka.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=free+roaming+dogs+population+vaccination+sterilization+rabies&format=json&resultType=core&pageSize=2",
+      "source_record": "10.14202/vetworld.2026.2816-2849",
+      "year": null,
+      "sha256": "182d7293ba8dff9bebf50f23056a4e3245f1081113f233b5ec7a4bfe5f69d898"
+    },
+    {
+      "id": "EPMC-15ee874ecc38",
+      "url": "https://doi.org/10.3390/pathogens15080811",
+      "title": "Beyond Infection-Indoor Airborne Pathogens as Contributors to Respiratory Inflammation and Immune Dysregulation: A Narrative Review.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=school+indoor+air+quality+ventilation+asthma+children&format=json&resultType=core&pageSize=2",
+      "source_record": "10.3390/pathogens15080811",
+      "year": null,
+      "sha256": "9954910ab2af66390a967e5d96e43be13041a41f89dcac912e2ce7736ef85b29"
+    },
+    {
+      "id": "EPMC-1d4b60c85f48",
+      "url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+      "title": "MnO₂ catalyzed hydrothermal regeneration of spent LiFePO₄ cathode materials for sustainable lithium-ion battery recycling",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC abstract from broadened search, not full-text verification",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=lithium+ion+battery+recycling&format=json&resultType=core&pageSize=3",
+      "source_record": "10.21203/rs.3.rs-10790610/v1",
+      "year": null,
+      "sha256": "96c5a64d505e3572abfb8eb4f8617a851ee25e85dbee1927e0c7d2bb357f0a01"
+    },
+    {
+      "id": "EPMC-5e474470179c",
+      "url": "https://doi.org/10.1039/d6ra08243b",
+      "title": "Artificial intelligence-driven monitoring and sustainable management of lithium-ion battery waste: integrating advanced sensing, environmental remediation, and circular resource recovery.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=lithium+ion+battery+recycling+safety+fire+waste&format=json&resultType=core&pageSize=2",
+      "source_record": "10.1039/d6ra08243b",
+      "year": null,
+      "sha256": "a0eb36ac8c57e8c3efe8b9af6e3b5a3a0d34df84557b33b92c4a7a2b8fab9d14"
+    },
+    {
+      "id": "EPMC-64a62b7ee309",
+      "url": "https://doi.org/10.2196/96702",
+      "title": "Investigation of Exposure to Plasticizers Among Electronic Waste Recycling Workers and Their Health: Protocol for a Cross-Sectional Study.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=informal+electronics+waste+recycling+toxic+occupational+exposure&format=json&resultType=core&pageSize=2",
+      "source_record": "10.2196/96702",
+      "year": null,
+      "sha256": "e75c5047c15ff92f4099bb7979573c5710bb5673e684ce572e19bf9c4ce4e729"
+    },
+    {
+      "id": "EPMC-7329c77af95d",
+      "url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+      "title": "The vacuum effect in free-roaming dog management: Conceptual foundations, boundary conditions, and One Health implications.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC abstract from broadened search, not full-text verification",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=free+roaming+dogs+population&format=json&resultType=core&pageSize=3",
+      "source_record": "10.1016/j.onehlt.2026.101556",
+      "year": null,
+      "sha256": "65ba87d740806c07eaa2dce6b4cff635972271d9330a926bccebf83acfe49eb5"
+    },
+    {
+      "id": "EPMC-7deb988ae2ab",
+      "url": "https://doi.org/10.1111/nbu.70053",
+      "title": "Exploring the Role of Social Supermarkets in Addressing Food Insecurity and Food Waste: A Scoping Review.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=food+surplus+redistribution+food+insecurity+waste+rescue&format=json&resultType=core&pageSize=2",
+      "source_record": "10.1111/nbu.70053",
+      "year": null,
+      "sha256": "212d02a11dce9fff510b32b2c617967b8c6a49382989c4d049731b9c6ff80737"
+    },
+    {
+      "id": "EPMC-826342b4eec2",
+      "url": "https://doi.org/10.3390/foods15040645",
+      "title": "Comparing the Environmental Impacts of Representative Food Donation and Redistribution Strategies.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=food+surplus+redistribution+food+insecurity+waste+rescue&format=json&resultType=core&pageSize=2",
+      "source_record": "10.3390/foods15040645",
+      "year": null,
+      "sha256": "b35e1abaa04eec381287d09b09c839667b7eab7694539f450eb6211354d7bd4f"
+    },
+    {
+      "id": "EPMC-83a764d60470",
+      "url": "https://doi.org/10.3390/bs16091709",
+      "title": "Algorithmic Management and Gig-Worker Sentiment over Time: A Comparative Analysis of Literature and Computational Evidence.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=platform+gig+work+algorithmic+management+occupational+health&format=json&resultType=core&pageSize=2",
+      "source_record": "10.3390/bs16091709",
+      "year": null,
+      "sha256": "3547142f69aba6540e096fafefaf0e1ac987ea72ae9a6ebe3d428baa86c2c74f"
+    },
+    {
+      "id": "EPMC-871d10af9889",
+      "url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+      "title": "Climate induced flooding exposure among urban residents in Uganda",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC abstract from broadened search, not full-text verification",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=flood+adaptation+urban+displacement&format=json&resultType=core&pageSize=3",
+      "source_record": "10.21203/rs.3.rs-9885849/v1",
+      "year": null,
+      "sha256": "999fb59319bcac4f01332b1b5e9afba7d5e2f72d3fbacbee3b2620dc16d00265"
+    },
+    {
+      "id": "EPMC-9e020968a7d4",
+      "url": "https://doi.org/10.1016/j.lanwpc.2026.101922",
+      "title": "Urban-rural disparities in heatwave effects on under-5 mortality in China, 2009-2019: a nationwide case-crossover study.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=heatwave+urban+cooling+access+health+vulnerability&format=json&resultType=core&pageSize=2",
+      "source_record": "10.1016/j.lanwpc.2026.101922",
+      "year": null,
+      "sha256": "2fd90144b712e99271f04e6631ae1fec69ee92f55349b1a2f8ea8ce6ddec8b09"
+    },
+    {
+      "id": "EPMC-aa4339ee2731",
+      "url": "https://doi.org/10.3389/fpubh.2026.1932962",
+      "title": "Occupational injuries and health risks among food delivery riders in China: research progress and prevention strategies.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=platform+gig+work+algorithmic+management+occupational+health&format=json&resultType=core&pageSize=2",
+      "source_record": "10.3389/fpubh.2026.1932962",
+      "year": null,
+      "sha256": "b784801e964df20858f4998829e169d366cfe00059a0f359ff58d0bbb10b55a7"
+    },
+    {
+      "id": "EPMC-c4308276b606",
+      "url": "https://doi.org/10.3390/nano16140892",
+      "title": "Electronic Waste-Derived Nanomaterials: Environmental Release, Toxicity, and Public Health Risks.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=informal+electronics+waste+recycling+toxic+occupational+exposure&format=json&resultType=core&pageSize=2",
+      "source_record": "10.3390/nano16140892",
+      "year": null,
+      "sha256": "d33caba1ebadedc84070641a6097291a65433917366500f2343ba274ec2f5227"
+    },
+    {
+      "id": "EPMC-e2f3b5123391",
+      "url": "https://doi.org/10.1371/journal.pone.0358221",
+      "title": "Asthma Intervention with Residential Ventilation and Air Cleaner (AIRVAC) Study: A 4-arm parallel-group randomized controlled trial protocol.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=school+indoor+air+quality+ventilation+asthma+children&format=json&resultType=core&pageSize=2",
+      "source_record": "10.1371/journal.pone.0358221",
+      "year": null,
+      "sha256": "c78b0670d9c7155e7a30dc43a8a5587a6dfd606e99f0c26bcea240618fdf7001"
+    },
+    {
+      "id": "EPMC-fb93375cb76d",
+      "url": "https://doi.org/10.5334/aogh.5294",
+      "title": "Climate Change as a Health Security Threat in Pakistan: Preparing Health Systems for Extreme Events.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=flood+adaptation+urban+displacement+risk+early+warning&format=json&resultType=core&pageSize=2",
+      "source_record": "10.5334/aogh.5294",
+      "year": null,
+      "sha256": "fb08c935b0c1fc4e881286a73aebac0adf49df1cf7f05d023ee404f6fbab9949"
+    },
+    {
+      "id": "OA-0b799176aa3262",
+      "url": "https://doi.org/10.3390/rs17173104",
+      "title": "Digital Twin Technology for Urban Flood Risk Management: A Systematic Review of Remote Sensing Applications and Early Warning Systems",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=flood+adaptation+urban+displacement+risk+early+warning&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4414214901",
+      "year": 2025,
+      "sha256": "12d06d6bbecabc4f9f195ba2cb1e0246ad7a0f0a5ee14e7e78767a6f35f4565a"
+    },
+    {
+      "id": "OA-0c2db6ec316fbc",
+      "url": "https://doi.org/10.1016/j.envint.2012.11.006",
+      "title": "Contamination of indoor dust and air by polychlorinated biphenyls and brominated flame retardants and relevance of non-dietary exposure in Vietnamese informal e-waste recycling sites",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=informal+electronics+waste+recycling+toxic+occupational+exposure&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2030392271",
+      "year": 2012,
+      "sha256": "bef3848e3bf46818b2bd1fd16a1999e6209806164e2b30997a65f59f8cc20643"
+    },
+    {
+      "id": "OA-1139840a6d83ac",
+      "url": "https://openalex.org/W29580953",
+      "title": "School Indoor Air Quality",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=school+indoor+air+quality+ventilation+asthma+children&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W29580953",
+      "year": 2002,
+      "sha256": "28d757c6efc1d4e73d316a6805dd176d582358cb72acfc7070c9a369cb35f931"
+    },
+    {
+      "id": "OA-2c8a36e510bc7f",
+      "url": "https://doi.org/10.1016/j.isci.2021.102787",
+      "title": "Financial viability of electric vehicle lithium-ion battery recycling",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=lithium+ion+battery+recycling+safety+fire+waste&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W3173281103",
+      "year": 2021,
+      "sha256": "6516f476848bf67ed7ea03e403297703872651a1a29c49e9a9f83e3b038bb4b4"
+    },
+    {
+      "id": "OA-3c3cd5c7fc6491",
+      "url": "https://doi.org/10.15421/022426",
+      "title": "A pilot study on the impact of parenteral vaccination of free-roaming dogs within the rabies control framework in Ukraine",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=free+roaming+dogs+population+vaccination+sterilization+rabies&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4396865482",
+      "year": 2024,
+      "sha256": "96e7b9844a00439b1a05a58d7ef1b1582af03a63d28cf00daf920e61a2e9454a"
+    },
+    {
+      "id": "OA-3e8660cfa6d4bf",
+      "url": "https://doi.org/10.1111/j.1365-2656.2012.02033.x",
+      "title": "Evidence‐based control of canine rabies: a critical review of population density reduction",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=free+roaming+dogs+population+vaccination+sterilization+rabies&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2036050320",
+      "year": 2012,
+      "sha256": "da7993ed973199d3bfa291048b2564fe2f586e9298b67a9f133b3790ec2d00b2"
+    },
+    {
+      "id": "OA-4a59c468fd7941",
+      "url": "https://doi.org/10.3390/met10030316",
+      "title": "Recycling Chain for Spent Lithium-Ion Batteries",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=lithium+ion+battery+recycling+safety+fire+waste&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W3009171229",
+      "year": 2020,
+      "sha256": "0aa89eea169d94cabfe8af729e5e361d66beba6e0cd76a697654827c0f5823a8"
+    },
+    {
+      "id": "OA-4ecb63fe5958c9",
+      "url": "https://doi.org/10.1007/s13201-018-0881-9",
+      "title": "Flood risk and adaptation in Indian coastal cities: recent scenarios",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=flood+adaptation+urban+displacement+risk+early+warning&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2903256322",
+      "year": 2018,
+      "sha256": "34c04d4d72bb02154e02503d5a791b40f759b49cbd58efd36a6c47e7874dd345"
+    },
+    {
+      "id": "OA-4f0f6d04561a0f",
+      "url": "https://doi.org/10.1590/s1806-37132014000300009",
+      "title": "Indoor air quality and health in schools",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=school+indoor+air+quality+ventilation+asthma+children&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2164963128",
+      "year": 2014,
+      "sha256": "97ee0b85cfb6d8332dc9ae35e5d245fbdbf29c17dcfa5bbb897bc811899cca79"
+    },
+    {
+      "id": "OA-53d2760b3abab4",
+      "url": "https://doi.org/10.1039/d0gc02745f",
+      "title": "The importance of design in lithium ion battery recycling – a critical review",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=lithium+ion+battery+recycling+safety+fire+waste&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W3094074392",
+      "year": 2020,
+      "sha256": "edaf85f0cb26bd8deca91f907df175f5200412be7eba737e57dd3ff44c4a5593"
+    },
+    {
+      "id": "OA-57bba7412a5fbd",
+      "url": "https://doi.org/10.1007/s43621-024-00697-2",
+      "title": "Urban household adaptation to extreme heatwaves: health impacts, socio-economic disparities and sustainable strategies in Rajshahi",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=heatwave+urban+cooling+access+health+vulnerability&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4405743105",
+      "year": 2024,
+      "sha256": "5dd58af338654efd6239ca5c05902d2b67e73417e4fbe066609e38bc5a90a4f6"
+    },
+    {
+      "id": "OA-6642b2dc88be44",
+      "url": "https://doi.org/10.1111/1748-8583.12258",
+      "title": "Algorithmic management and app‐work in the gig economy: A research agenda for employment relations and HRM",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=platform+gig+work+algorithmic+management+occupational+health&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2972413052",
+      "year": 2019,
+      "sha256": "36b77b2de1bc9089a63b05e78f90c1cdca7aef1de7568ecb46d522858a247610"
+    },
+    {
+      "id": "OA-79031782b475fb",
+      "url": "https://doi.org/10.1002/ajim.70007",
+      "title": "Platform‐Mediated Gig Work and Health: A Scoping Review",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=platform+gig+work+algorithmic+management+occupational+health&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4412427190",
+      "year": 2025,
+      "sha256": "6e70b5423b219f0d0d256b1532a358a6dec82cba3834240385faccded5bdca08"
+    },
+    {
+      "id": "OA-88cafd9405fbed",
+      "url": "https://doi.org/10.70251/hyjr2348.3593102",
+      "title": "Tackling Food Insecurity Through Food Surplus Redistribution",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=food+surplus+redistribution+food+insecurity+waste+rescue&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4414008885",
+      "year": 2025,
+      "sha256": "708cd56251e341f85b8e0bc64cd2e99d451d862c22244119a595a4cf8144a684"
+    },
+    {
+      "id": "OA-8d5107d133682c",
+      "url": "https://doi.org/10.3390/fire9020076",
+      "title": "A Review of Fire and Explosion Hazards in Sustainable Lithium-Ion Battery Recycling Industries",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=lithium+ion+battery+recycling+safety+fire+waste&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W7128433153",
+      "year": 2026,
+      "sha256": "feeba5d10746e97a63ca5365cc21ee4edf3781682c2303abae5180c2ef8a1817"
+    },
+    {
+      "id": "OA-8e75d5d1b1f35b",
+      "url": "https://doi.org/10.1093/nutrit/nuac012",
+      "title": "Enablers and barriers of harnessing food waste to address food insecurity: a scoping review",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=food+surplus+redistribution+food+insecurity+waste+rescue&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4211206109",
+      "year": 2022,
+      "sha256": "8a8e586199f18e8c82fcd5bb66e90d6971213e0fb82821bae60298f489429b8b"
+    },
+    {
+      "id": "OA-a22f19815c0834",
+      "url": "https://openalex.org/W2601661552",
+      "title": "Indoor air quality at school: ventilation rates and it impacts towards children: a review",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=school+indoor+air+quality+ventilation+asthma+children&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2601661552",
+      "year": 2011,
+      "sha256": "e4aac3df0d36af73ecd7e97e742e7f42588980bdbb8780effec682abf68c4416"
+    },
+    {
+      "id": "OA-b004c71e7a2adf",
+      "url": "https://doi.org/10.1016/s2214-109x(13)70101-3",
+      "title": "Health consequences of exposure to e-waste: a systematic review",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=informal+electronics+waste+recycling+toxic+occupational+exposure&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2106308613",
+      "year": 2013,
+      "sha256": "d61e7f13e764e67535e06d32d96d05f821df7aabce4df9f1c7c5b7fa43d57589"
+    },
+    {
+      "id": "OA-ba418ee71ac82d",
+      "url": "https://doi.org/10.1093/eurpub/ckl049",
+      "title": "Heatwaves and public health in Europe",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=heatwave+urban+cooling+access+health+vulnerability&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2038416825",
+      "year": 2006,
+      "sha256": "7d192d841463affa8cce401795f4e16c2aa00b348071b27ca6c5401b1bc035c2"
+    },
+    {
+      "id": "OA-bdb9fd8d22baf8",
+      "url": "https://doi.org/10.4337/9781035313389.ch25",
+      "title": "Gig work",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=platform+gig+work+algorithmic+management+occupational+health&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4400905426",
+      "year": 2024,
+      "sha256": "9cc14000d663ec5130fe1611aa53f29565e36a7ad59445d19e6dffb793819bb8"
+    },
+    {
+      "id": "OA-cac905fc406101",
+      "url": "https://doi.org/10.1371/journal.pntd.0004177",
+      "title": "Population Dynamics of Owned, Free-Roaming Dogs: Implications for Rabies Control",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=free+roaming+dogs+population+vaccination+sterilization+rabies&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2149446053",
+      "year": 2015,
+      "sha256": "f0fdc11420c6f2677372e46d2e4ffdb67e56592dbe455bd3d6125bd72f2bde8e"
+    },
+    {
+      "id": "OA-cf7a010e9ed8d1",
+      "url": "https://doi.org/10.3390/ijerph8124623",
+      "title": "Heatwave Early Warning Systems and Adaptation Advice to Reduce Human Health Consequences of Heatwaves",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=heatwave+urban+cooling+access+health+vulnerability&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2057775518",
+      "year": 2011,
+      "sha256": "e84c2c1400644f2c6c085c3331313b5d1deb485e09fb9b2e92e108a0e02e6b2d"
+    },
+    {
+      "id": "OA-d018a574aec782",
+      "url": "https://doi.org/10.1034/j.1600-0668.2003.00153.x",
+      "title": "Indoor air quality, ventilation and health symptoms in schools: an analysis of existing information",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=school+indoor+air+quality+ventilation+asthma+children&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2109503832",
+      "year": 2003,
+      "sha256": "7f7b6edd6d8164e6cd53c67976feb1c46c7096f2ff78134acbd0836b335af4fa"
+    },
+    {
+      "id": "OA-d26245f891f838",
+      "url": "https://doi.org/10.1016/j.healthplace.2018.08.017",
+      "title": "Heatwave and health impact research: A global review",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=heatwave+urban+cooling+access+health+vulnerability&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2890406574",
+      "year": 2018,
+      "sha256": "dc36e9a67ccd3866b5188a470c4c4dd4f6a427421f237434952dcfbff933666b"
+    },
+    {
+      "id": "OA-d94945c2bf53f3",
+      "url": "https://doi.org/10.1111/1365-2664.12279",
+      "title": "The demography of free‐roaming dog populations and applications to disease and population control",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=free+roaming+dogs+population+vaccination+sterilization+rabies&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2071697524",
+      "year": 2014,
+      "sha256": "83bf5054d231895a328b52149395a9c99617a30ddef98abfc9e7f38862f2a818"
+    },
+    {
+      "id": "OA-da5bbdb0bf0dd0",
+      "url": "https://doi.org/10.55041/ijsmt.v2i5.132",
+      "title": "Smart Food Waste Rescue Hub Application: IOT-Enabled Platform for Surplus Food Redistribution",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=food+surplus+redistribution+food+insecurity+waste+rescue&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W7160704962",
+      "year": 2026,
+      "sha256": "9537e99faa11bb2b533e13e39e993e739a4364b7e75ac7644381e00d189f672a"
+    },
+    {
+      "id": "OA-dbc0b8d397869b",
+      "url": "https://openalex.org/W2906684235",
+      "title": "Eating waste : a critical evaluation of surplus food redistribution as solution to food waste and food insecurity",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=food+surplus+redistribution+food+insecurity+waste+rescue&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2906684235",
+      "year": 2018,
+      "sha256": "46299d8a3df861777feb2533571391fc15661af8c2aa8f49fc01089a50503d3a"
+    },
+    {
+      "id": "OA-e29dc4e0a782ec",
+      "url": "https://doi.org/10.1002/job.2831",
+      "title": "Algorithmic management in the gig economy: A systematic review and research integration",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=platform+gig+work+algorithmic+management+occupational+health&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4402322682",
+      "year": 2024,
+      "sha256": "c91fc233ca09d9e1bf1a0aa13c6500cf1ed9f5c581b8cef38bd6d7a93074c794"
+    },
+    {
+      "id": "OA-eb3cd7c2915125",
+      "url": "https://doi.org/10.1016/j.envint.2014.07.006",
+      "title": "Formal recycling of e-waste leads to increased exposure to toxic metals: An occupational exposure study from Sweden",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=informal+electronics+waste+recycling+toxic+occupational+exposure&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2031513471",
+      "year": 2014,
+      "sha256": "aee68febec70ff39dae151d4b46817661b06b6672ec90229472c1e9bf2d4152d"
+    },
+    {
+      "id": "OA-f6a6c0d295f4a1",
+      "url": "https://doi.org/10.1136/jech-2016-208597",
+      "title": "Waste management, informal recycling, environmental pollution and public health",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=informal+electronics+waste+recycling+toxic+occupational+exposure&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W2773358496",
+      "year": 2017,
+      "sha256": "3475c8f69a96bc3b59432023cb0ec5cde9efe0926348bc5221b3cb9ac7ab410c"
+    },
+    {
+      "id": "OA-f84a08fcbd0caa",
+      "url": "https://doi.org/10.3390/hydrology9030050",
+      "title": "Flood Risk in Urban Areas: Modelling, Management and Adaptation to Climate Change. A Review",
+      "origin_type": "openalex_bibliographic_abstract_lead",
+      "source_scope": "OpenAlex metadata/abstract; not verified full text, causal study or actual program",
+      "retrieval_url": "https://api.openalex.org/works?search=flood+adaptation+urban+displacement+risk+early+warning&per-page=4&filter=has_abstract%3Atrue&select=id%2Cdoi%2Cdisplay_name%2Cabstract_inverted_index%2Cpublication_year%2Ctype%2Cprimary_location",
+      "source_record": "https://openalex.org/W4220807507",
+      "year": 2022,
+      "sha256": "77dcb85ec077ffe97ade2df267fb71c50398ef96fb5ada119718bfbd7a8b86b0"
+    },
+    {
+      "id": "OFFICIAL-04c6c3a2a87e",
+      "url": "https://www.who.int/news-room/questions-and-answers/item/q-a-children-and-masks-related-to-covid-19",
+      "title": "These questions and answers were developed by WHO and UNICEF. Each country is facing a different situation in the pandemic with changing transmission intensity, circulating variant",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+school+indoo",
+      "source_record": "https://www.who.int/news-room/questions-and-answers/item/q-a-children-and-masks-related-to-covid-19",
+      "year": null,
+      "sha256": "6e6fc30bbb953b3109dfd4e8498fcb7431765fd76a9d32529cafdbde16a5d465"
+    },
+    {
+      "id": "OFFICIAL-0f3441051449",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/asthma",
+      "title": "Asthma is a major noncommunicable disease (NCD), affecting both children and adults, and is the most common chronic disease among children.",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+school+indoo",
+      "source_record": "https://www.who.int/news-room/fact-sheets/detail/asthma",
+      "year": null,
+      "sha256": "a1ce253ca8719057b3645566239ce7635c3cd4065df5ea784647323fe11e6b85"
+    },
+    {
+      "id": "OFFICIAL-194f3653ddf1",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "title": "Heat is an important environmental and occupational health hazard. Heat stress is a leading cause of weather-related deaths and can exacerbate underlying illnesses including cardio",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+urban+heat+h",
+      "source_record": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "year": null,
+      "sha256": "e59c364c0f2912bebc14475cf12910db9e02ffc05ca48a97d3733c55d3d67fae"
+    },
+    {
+      "id": "OFFICIAL-19f69df74e84",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/health-care-waste",
+      "title": "Of the total amount of waste generated by health-care activities, about 85% is general, non-hazardous waste.",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+waste+inform",
+      "source_record": "https://www.who.int/news-room/fact-sheets/detail/health-care-waste",
+      "year": null,
+      "sha256": "e2c6377c703743df13ed05289b3e0b6ad8bd4960ce47d20eafe34577bd4fac4e"
+    },
+    {
+      "id": "OFFICIAL-1bf7efd28d64",
+      "url": "https://www.who.int/news-room/questions-and-answers/item/population-ageing",
+      "title": "Longer lives are one of our most remarkable collective achievements. Advances in social and economic development as well as in health have lowered mortality rates, particularly amo",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+population+m",
+      "source_record": "https://www.who.int/news-room/questions-and-answers/item/population-ageing",
+      "year": null,
+      "sha256": "2ab7af621aca8342e356a3b202f7d81d290ceee13a55d91e5d254f847c82d81d"
+    },
+    {
+      "id": "OFFICIAL-31e8ca003c74",
+      "url": "https://www.who.int/europe/groups/action-network-on-measuring-population-and-organizational-health-literacy-(m-pohl)",
+      "title": "The WHO Action Network on Measuring Population and Organizational Health Literacy (M-POHL) is an international network for measuring and improving health literacy in populations an",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+population+m",
+      "source_record": "https://www.who.int/europe/groups/action-network-on-measuring-population-and-organizational-health-literacy-(m-pohl)",
+      "year": null,
+      "sha256": "63318aa5f7b301cf70c19230d98bcd8e12b8d8811cbb8de6b551222e2cbc145f"
+    },
+    {
+      "id": "OFFICIAL-6d6012da212a",
+      "url": "https://www.who.int/health-topics/digital-health",
+      "title": "Digital technologies are now integral to daily life, and the world’s population has never been more interconnected. Innovation, particularly in the digital sphere, is happening at",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+digital+plat",
+      "source_record": "https://www.who.int/health-topics/digital-health",
+      "year": null,
+      "sha256": "caaaf9014af5c35cf45f040555e1369b7d0ce466da6700c440661fff158daffa"
+    },
+    {
+      "id": "OFFICIAL-738822d05941",
+      "url": "https://www.who.int/publications/i/item/9789241512855",
+      "title": "This document explains how recycling used lead-acid batteries can cause significant environmental contamination and human exposure to lead. It provides information about the mechan",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+battery+recy",
+      "source_record": "https://www.who.int/publications/i/item/9789241512855",
+      "year": null,
+      "sha256": "6057bc8c04d663d2ce4eb1db0105f28196574e8602f3f166bbd5fbd969b7ee22"
+    },
+    {
+      "id": "OFFICIAL-7e900895fc66",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/lead-poisoning-and-health",
+      "title": "Exposure to lead can affect multiple body systems and is particularly harmful to young children and women of child-bearing age.",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+battery+recy",
+      "source_record": "https://www.who.int/news-room/fact-sheets/detail/lead-poisoning-and-health",
+      "year": null,
+      "sha256": "0fbb197ea12d5b3bd797d82654fccb6551e9d5f02f1de3e72021684ceded91bf"
+    },
+    {
+      "id": "OFFICIAL-86c5d4ade74b",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/malnutrition",
+      "title": "Malnutrition, in all its forms, includes undernutrition (wasting, stunting, underweight), inadequate vitamins or minerals, overweight, obesity, and resulting diet-related noncommun",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+food+loss+re",
+      "source_record": "https://www.who.int/news-room/fact-sheets/detail/malnutrition",
+      "year": null,
+      "sha256": "a9e676bb8e7e6b2d83a191f4258f6ae83c3687ffa84d7841adc5252c1593d2a1"
+    },
+    {
+      "id": "OFFICIAL-a6feb7e72ecd",
+      "url": "https://www.emro.who.int/media/news/opening-remarks-by-dr-adham-ismail-officer-in-charge-who-eastern-mediterranean-region-at-the-launch-of-the-first-digital-platform-for-health-research-prioritization-in-the-eastern-mediterranean-region.html",
+      "title": "{{texts.summary}} {{#options.result.rssIcon}} RSS {{/options.result.rssIcon}}",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+digital+plat",
+      "source_record": "https://www.emro.who.int/media/news/opening-remarks-by-dr-adham-ismail-officer-in-charge-who-eastern-mediterranean-region-at-the-launch-of-the-first-digital-platform-for-health-research-prioritization-in-the-eastern-mediterranean-region.html",
+      "year": null,
+      "sha256": "88f791211fb55a40c3e214be3f725784123ec101c9a19962e64b88f9beeecc4f"
+    },
+    {
+      "id": "OFFICIAL-ac48369a71d0",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "title": "E-waste is one of the fastest growing solid waste streams in the world (1).",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+waste+inform",
+      "source_record": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "year": null,
+      "sha256": "a0ead6920a19383cb389165604d8999fd9405657b1e4fa6d7d90cd80b820efa9"
+    },
+    {
+      "id": "OFFICIAL-b67462393768",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/urban-health",
+      "title": "Over 55% of the world’s population live in urban areas and this is set to rise to 68% by 2050.",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+urban+heat+h",
+      "source_record": "https://www.who.int/news-room/fact-sheets/detail/urban-health",
+      "year": null,
+      "sha256": "701adc6554dac0989168658e5df9dea7af94cbb8da5712a46218e12e0de4d722"
+    },
+    {
+      "id": "OFFICIAL-dbee83ba8137",
+      "url": "https://www.who.int/europe/health-topics/floods",
+      "title": "The Intergovernmental Panel on Climate Change defines floods as “the overflowing of the normal confines of a stream or other body of water, or the accumulation of water over areas",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+urban+flood+",
+      "source_record": "https://www.who.int/europe/health-topics/floods",
+      "year": null,
+      "sha256": "84feac0d6fb561c252f76fb31e866a60f651e34f9e86dcb6796a57dc17404650"
+    },
+    {
+      "id": "OFFICIAL-f3af73407d74",
+      "url": "https://www.who.int/health-topics/malnutrition",
+      "title": "Malnutrition refers to deficiencies or excesses in nutrient intake, imbalance of essential nutrients or impaired nutrient utilization. The double burden of malnutrition consists of",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+food+loss+re",
+      "source_record": "https://www.who.int/health-topics/malnutrition",
+      "year": null,
+      "sha256": "74e1e1b041af8feee322347c01a13a962b7873cd10acf4f1e6cec5807084a250"
+    },
+    {
+      "id": "OFFICIAL-f3e30d7ac5a5",
+      "url": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+      "title": "When floods hit the Ban Kao Many community in Nan District, Luang Prabang Province, Laos, people were prepared. An early warning system from national agencies helped to forecast th",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "retrieval_url": "https://search.brave.com/search?q=site%3Awho.int+urban+flood+",
+      "source_record": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+      "year": null,
+      "sha256": "1a01a816e707feaf8761a134bebb80aa4704584bfa7f8cd0bb6b40cbcf921aab"
+    }
+  ],
+  "collection_queries": [
+    {
+      "quota_code": "h01",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "heatwave urban cooling access health vulnerability",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h01",
+      "retrieval_lane": "academic_openalex",
+      "query": "heatwave urban cooling access health vulnerability",
+      "returned": 4,
+      "accepted_new": 4
+    },
+    {
+      "quota_code": "h01",
+      "retrieval_lane": "institutional",
+      "query": "urban heat heat health action community cooling WHO",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h02",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "informal electronics waste recycling toxic occupational exposure",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h02",
+      "retrieval_lane": "academic_openalex",
+      "query": "informal electronics waste recycling toxic occupational exposure",
+      "returned": 4,
+      "accepted_new": 4
+    },
+    {
+      "quota_code": "h02",
+      "retrieval_lane": "institutional",
+      "query": "e-waste informal recycling children workers WHO",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h03",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "food surplus redistribution food insecurity waste rescue",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h03",
+      "retrieval_lane": "academic_openalex",
+      "query": "food surplus redistribution food insecurity waste rescue",
+      "returned": 4,
+      "accepted_new": 4
+    },
+    {
+      "quota_code": "h03",
+      "retrieval_lane": "institutional",
+      "query": "food loss redistribution food banks sustainable cities FAO",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h04",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "free roaming dogs population vaccination sterilization rabies",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h04",
+      "retrieval_lane": "academic_openalex",
+      "query": "free roaming dogs population vaccination sterilization rabies",
+      "returned": 4,
+      "accepted_new": 4
+    },
+    {
+      "quota_code": "h04",
+      "retrieval_lane": "institutional",
+      "query": "dog population management rabies community WOAH",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h05",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "flood adaptation urban displacement risk early warning",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h05",
+      "retrieval_lane": "academic_openalex",
+      "query": "flood adaptation urban displacement risk early warning",
+      "returned": 3,
+      "accepted_new": 3
+    },
+    {
+      "quota_code": "h05",
+      "retrieval_lane": "institutional",
+      "query": "urban flood displacement risk disaster response UN",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h06",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "lithium ion battery recycling safety fire waste",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h06",
+      "retrieval_lane": "academic_openalex",
+      "query": "lithium ion battery recycling safety fire waste",
+      "returned": 4,
+      "accepted_new": 4
+    },
+    {
+      "quota_code": "h06",
+      "retrieval_lane": "institutional",
+      "query": "battery recycling fires circular economy OECD",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h07",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "school indoor air quality ventilation asthma children",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h07",
+      "retrieval_lane": "academic_openalex",
+      "query": "school indoor air quality ventilation asthma children",
+      "returned": 4,
+      "accepted_new": 4
+    },
+    {
+      "quota_code": "h07",
+      "retrieval_lane": "institutional",
+      "query": "school indoor air quality ventilation respiratory health WHO",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h08",
+      "retrieval_lane": "academic_europe_pmc",
+      "query": "platform gig work algorithmic management occupational health",
+      "returned": 2,
+      "accepted_new": 2
+    },
+    {
+      "quota_code": "h08",
+      "retrieval_lane": "academic_openalex",
+      "query": "platform gig work algorithmic management occupational health",
+      "returned": 4,
+      "accepted_new": 4
+    },
+    {
+      "quota_code": "h08",
+      "retrieval_lane": "institutional",
+      "query": "digital platform workers algorithm management labour policy OECD",
+      "returned": 2,
+      "accepted_new": 2
+    }
+  ],
+  "retrieval_errors": [],
+  "all_perspectives_preassigned": false,
+  "ontology_preassigned": false,
+  "mapping_status": "not_yet_interpreted",
+  "publication_policy": "Extracted copyrighted abstracts/publisher text remain on authorized local machine; this manifest excludes verbatim source passages."
+}

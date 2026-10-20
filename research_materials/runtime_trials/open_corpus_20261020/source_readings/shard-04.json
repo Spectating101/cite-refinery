@@ -1,0 +1,232 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-04",
+  "source_readings": [
+    {
+      "source_id": "EPMC-83a764d60470",
+      "source_url": "https://doi.org/10.3390/bs16091709",
+      "source_sha256": "3547142f69aba6540e096fafefaf0e1ac987ea72ae9a6ebe3d428baa86c2c74f",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Online gig-worker discourse displays a predominance of negative sentiment, with anxiety, frustration, and anger reflecting concerns over algorithmic control and fairness.",
+      "quote_sha256": "26d542601f2f6e77d9d861e37e8861a98ebda951ba356932bc336b295362d592",
+      "scope": "Digital communities and platforms for gig workers globally during 12 consecutive months in 2025.",
+      "caveat": "Reflects aggregate online discourse rather than within-person longitudinal trajectories or direct causal psychological effects.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-a6feb7e72ecd",
+      "source_url": "https://www.emro.who.int/media/news/opening-remarks-by-dr-adham-ismail-officer-in-charge-who-eastern-mediterranean-region-at-the-launch-of-the-first-digital-platform-for-health-research-prioritization-in-the-eastern-mediterranean-region.html",
+      "source_sha256": "88f791211fb55a40c3e214be3f725784123ec101c9a19962e64b88f9beeecc4f",
+      "role": "reported_implementation",
+      "fit": "relevant",
+      "statement": "An official regional office has launched a digital platform aimed at making health research prioritization more systematic, transparent, and collaborative.",
+      "quote_sha256": "fcc35622301c5383a207e7a60642d40ecfae8448adefa9eacfe02670d16859c7",
+      "scope": "Regional health office and member state decision-makers at time of official announcement.",
+      "caveat": "Reports only platform launch; does not show health outcome improvements, resource allocation impacts, or actual user uptake.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-ac48369a71d0",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "source_sha256": "a0ead6920a19383cb389165604d8999fd9405657b1e4fa6d7d90cd80b820efa9",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Informal e-waste recycling exposes vulnerable populations, particularly children and pregnant women, to hazardous neurotoxicants such as lead and mercury.",
+      "quote_sha256": "7b9352b6958a423951ac8e334f1327f1831ecb2d2041c301bf9b98347e563f99",
+      "scope": "Global informal e-waste recycling sectors, predominantly in low- and middle-income countries, citing 2020-2022 context.",
+      "caveat": "High-level guidance synthesis lacking local epidemiological datasets, exposure quantification, or program audit outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-cac905fc406101",
+      "source_url": "https://doi.org/10.1371/journal.pntd.0004177",
+      "source_sha256": "f0fdc11420c6f2677372e46d2e4ffdb67e56592dbe455bd3d6125bd72f2bde8e",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Demographic surveillance and modeling indicate that annual 70% vaccination coverage can maintain herd immunity against rabies despite high turnover in free-roaming dog populations.",
+      "quote_sha256": "e2fdfb806bb98eb49d11638d1f8ea2bf1db08a6c516bef7904eab1384b1aba50",
+      "scope": "Owned, free-roaming dog population in Mpumalanga Province, South Africa, monitored between January 2012 and January 2014.",
+      "caveat": "Relies on a demographic simulation from one community; does not verify sustained real-world interruption of rabies virus transmission across broader geographic regions.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-f6a6c0d295f4a1",
+      "source_url": "https://doi.org/10.1136/jech-2016-208597",
+      "source_sha256": "3475c8f69a96bc3b59432023cb0ec5cde9efe0926348bc5221b3cb9ac7ab410c",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Informal waste recyclers using primitive methods suffer elevated occupational hazards and secondary environmental contamination, which integration with formal systems can help mitigate.",
+      "quote_sha256": "5f6f4dea7e515e97de243ef51996b434aaee9a8d9b4b3f2371ecd77f8c44dbcc",
+      "scope": "Global informal waste workforce, especially in low- and middle-income countries, spanning review literature up to 2018.",
+      "caveat": "Narrative review synthesis without primary intervention trial data or standardized exposure-response quantification.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-7329c77af95d",
+      "source_url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+      "source_sha256": "65ba87d740806c07eaa2dce6b4cff635972271d9330a926bccebf83acfe49eb5",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "The 'vacuum effect' in free-roaming dog management is ecologically plausible but has limited empirical demonstration, with replacement dynamics constrained by specific boundary conditions.",
+      "quote_sha256": "461aef0547198f9c8276739fc094a4d46d6742aa510b6cb14cffe8932c6c1226",
+      "scope": "Free-roaming domestic dog populations in human-dominated urban habitats globally.",
+      "caveat": "Presents a conceptual framework and literature synthesis rather than empirical field intervention results.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-b67462393768",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/urban-health",
+      "source_sha256": "701adc6554dac0989168658e5df9dea7af94cbb8da5712a46218e12e0de4d722",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Rapid urban growth exposes concentrated populations to combined environmental, infectious, and noncommunicable disease risks requiring multisectoral governance.",
+      "quote_sha256": "004e17b34b86246a837a46050785c12fb2562e99f0c40f007ebe9d7df6d26662",
+      "scope": "Global urban populations, projecting urbanization trends through 2050.",
+      "caveat": "Strategic institutional policy overview; does not measure specific intervention efficacy or local health outcome changes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-b004c71e7a2adf",
+      "source_url": "https://doi.org/10.1016/s2214-109x(13)70101-3",
+      "source_sha256": "d61e7f13e764e67535e06d32d96d05f821df7aabce4df9f1c7c5b7fa43d57589",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Systematic review evidence demonstrates significant associations between informal e-waste exposure and decreased pediatric lung function, adverse neonatal outcomes, and DNA damage.",
+      "quote_sha256": "cd6f635be1952bfd71207e062911fcb08166172e59124a22d3a466870d2e9875",
+      "scope": "Human populations living in e-waste processing towns in southeast China from 1965 through December 2012.",
+      "caveat": "All included epidemiological studies were restricted geographically to southeast China, and causal mechanisms require confirmation via prospective cohorts.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-6642b2dc88be44",
+      "source_url": "https://doi.org/10.1111/1748-8583.12258",
+      "source_sha256": "36b77b2de1bc9089a63b05e78f90c1cdca7aef1de7568ecb46d522858a247610",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Algorithmic management constitutes a distinct structural mechanism within app-based gig work requiring delineated investigation into performance management and labor relations.",
+      "quote_sha256": "6eff2c24137fb5d6c099764cb5671fedfce44ce960c7fe65e3c0f63eca10b76d",
+      "scope": "Conceptual and human resource management literature regarding gig economy organizational forms.",
+      "caveat": "Theoretical agenda setting without empirical data on worker experiences or health consequences.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Informal Waste and E-Waste Occupational Health Hazards",
+      "source_ids": [
+        "OFFICIAL-ac48369a71d0",
+        "OA-f6a6c0d295f4a1",
+        "OA-b004c71e7a2adf"
+      ],
+      "question": "What are the specific toxicological, respiratory, and developmental health consequences of informal waste and e-waste recycling on vulnerable worker and pediatric populations?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Free-Roaming Dog Population Ecology and Rabies Control",
+      "source_ids": [
+        "OA-cac905fc406101",
+        "EPMC-7329c77af95d"
+      ],
+      "question": "How do demographic turnover, carrying capacity, and post-removal compensation affect the feasibility of maintaining herd immunity thresholds against rabies in free-roaming dogs?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Algorithmic Governance and Labor Dynamics in the Gig Economy",
+      "source_ids": [
+        "EPMC-83a764d60470",
+        "OA-6642b2dc88be44"
+      ],
+      "question": "How does algorithmic management in app-mediated gig work shape employment relationships and manifest in worker sentiment regarding autonomy and fairness?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Institutional Health Prioritization and Urban Public Health Strategy",
+      "source_ids": [
+        "OFFICIAL-a6feb7e72ecd",
+        "OFFICIAL-b67462393768"
+      ],
+      "question": "How can institutional prioritization frameworks and multisectoral governance translate high-level strategies into measurable urban health improvements?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "OA-b004c71e7a2adf",
+      "to_source": "OFFICIAL-ac48369a71d0",
+      "relation": "corroborates",
+      "reason": "Empirical epidemiological findings of decreased pediatric forced vital capacity and adverse neonatal outcomes substantiate official guidance regarding pediatric vulnerability to e-waste toxicants.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-b004c71e7a2adf",
+      "to_source": "OA-f6a6c0d295f4a1",
+      "relation": "corroborates",
+      "reason": "Observed DNA damage and respiratory deficits confirm broader review findings that primitive informal recycling techniques create serious occupational and public health injuries.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "EPMC-7329c77af95d",
+      "to_source": "OA-cac905fc406101",
+      "relation": "qualifies",
+      "reason": "Conceptual demonstration that dog replacement dynamics are bounded and context-specific qualifies assumptions regarding demographic instability and supports the empirical feasibility of maintaining vaccination coverage.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "EPMC-83a764d60470",
+      "to_source": "OA-6642b2dc88be44",
+      "relation": "corroborates",
+      "reason": "Computational analysis showing predominant negative sentiment around algorithmic control provides empirical discourse evidence for the theoretical claim that algorithmic management alters employment relations in app-work.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Do the epidemiological associations between informal e-waste exposure and adverse neonatal/respiratory outcomes observed in southeast China replicate in other LMIC informal recycling contexts?",
+      "source_ids": [
+        "OA-b004c71e7a2adf",
+        "OFFICIAL-ac48369a71d0"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Does achieving an annual 70% vaccination coverage rate in free-roaming dog populations successfully halt rabies transmission when open-population recruitment and immigration are high?",
+      "source_ids": [
+        "OA-cac905fc406101",
+        "EPMC-7329c77af95d"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "How do negative affective expressions in aggregate online gig-worker discourse map onto individual worker retention, clinical psychological morbidity, and distinct gig work variants?",
+      "source_ids": [
+        "EPMC-83a764d60470",
+        "OA-6642b2dc88be44"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What measurable impact does the implementation of institutional digital research prioritization platforms have on resource allocation and downstream urban population health indicators?",
+      "source_ids": [
+        "OFFICIAL-a6feb7e72ecd",
+        "OFFICIAL-b67462393768"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}

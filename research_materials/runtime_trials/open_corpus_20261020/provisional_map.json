@@ -1,0 +1,1608 @@
+{
+  "schema": "cite_refinery.open_corpus_provisional_map.v1",
+  "source_count": 63,
+  "readings": [
+    {
+      "source_id": "EPMC-0715c73feecf",
+      "source_url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+      "source_sha256": "9a1c54a7e6c2c080e58d1391380d84ca7bd79655d24ba86404130a2832ba0655",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Grid-based global simulation projects that heatwave-attributable annual deaths could increase to between 5.3 million and 16.1 million by the 2090s depending on emissions and adaptation pathways, with Sub-Saharan Africa bearing the highest burden.",
+      "quote_sha256": "0d24370e9ab65a9185590de1f04706c05f7a342f6258aa31a84d1e1a87277753",
+      "scope": "Global grid-level simulation across 176 countries and 750 historical baseline locations, projecting to the 2030s, 2050s, and 2090s across SSP scenarios",
+      "caveat": "Model-derived projections dependent on CMIP6 climate models and socioeconomic assumptions; cannot demonstrate observed future mortality or measure empirical local public health adaptation success.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-088e66a2f887",
+      "source_url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+      "source_sha256": "182d7293ba8dff9bebf50f23056a4e3245f1081113f233b5ec7a4bfe5f69d898",
+      "role": "measured_program_outcome",
+      "fit": "relevant",
+      "statement": "A five-year zoned catch-neuter-vaccinate-release program in Anuradhapura reduced free-roaming dogs requiring sterilization from 1,368 to 484 and achieved over 78% adult female sterilization, though overall community dog count declines per unit effort were not statistically significant.",
+      "quote_sha256": "be43d0ab399093263beec430fa4cf823fb7d0f501b43f361590f95174f30b622",
+      "scope": "Free-roaming and owned dog populations in Anuradhapura, Sri Lanka from 2021 to 2025",
+      "caveat": "Does not report or measure reductions in human rabies transmission, incidence, or mortality rates",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-15ee874ecc38",
+      "source_url": "https://doi.org/10.3390/pathogens15080811",
+      "source_sha256": "9954910ab2af66390a967e5d96e43be13041a41f89dcac912e2ce7736ef85b29",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Indoor non-viable and viable microbial bioaerosols trigger respiratory inflammatory markers and immune responses, though the evidence base remains limited by observational and cross-sectional designs.",
+      "quote_sha256": "7a227b512f72c45a02b993b6e8a6af597efe36c0d5f34c183dd59d20463e4ea9",
+      "scope": "Synthesized global studies (PubMed, Scopus, Web of Science) published between 2000 and February 2026.",
+      "caveat": "Narrative review of heterogeneous observational literature; cannot demonstrate clinical causation or establish definitive exposure thresholds across populations.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-1d4b60c85f48",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+      "source_sha256": "96c5a64d505e3572abfb8eb4f8617a851ee25e85dbee1927e0c7d2bb357f0a01",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "An integrated MnO₂-catalyzed hydrothermal regeneration strategy restores degraded LiFePO₄ cathode materials to a Li/Fe molar ratio of 0.98 and 142.3 mAh·g⁻¹ discharge capacity at 0.2 C.",
+      "quote_sha256": "16e4618e09d142c4cc8e021e54eafd52976e664d31309bdc63fc5e2c57b960a1",
+      "scope": "Laboratory-scale material regeneration experiment on spent LiFePO₄ batteries.",
+      "caveat": "Does not evaluate industrial-scale implementation, commercial plant economics, lifecycle emissions, or occupational exposures.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-5e474470179c",
+      "source_url": "https://doi.org/10.1039/d6ra08243b",
+      "source_sha256": "a0eb36ac8c57e8c3efe8b9af6e3b5a3a0d34df84557b33b92c4a7a2b8fab9d14",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "AI-driven monitoring and circular management of lithium-ion battery waste are constrained by insufficient external model validation, mixed-stream sensor calibration difficulties, and lack of industrial-scale evidence.",
+      "quote_sha256": "16729a66b29f450811002c482eca263286e7ffa1f5a187c9bdb11db641b3758c",
+      "scope": "Academic literature and technologies concerning end-of-life lithium-ion battery waste management",
+      "caveat": "Review paper; does not provide empirical primary data or test AI models across operational commercial recycling facilities",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-64a62b7ee309",
+      "source_url": "https://doi.org/10.2196/96702",
+      "source_sha256": "e75c5047c15ff92f4099bb7979573c5710bb5673e684ce572e19bf9c4ce4e729",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "A cross-sectional protocol establishes a biological and questionnaire-based method to measure phthalate exposures and health parameters among informal e-waste workers.",
+      "quote_sha256": "7f1128c3f9a9a48e6debb5b9c3f199d62fd3377387c0474882ea2507eef6a76f",
+      "scope": "253 adult informal electronic waste workers in Bui village, Vietnam (survey conducted March 2025)",
+      "caveat": "Study protocol and preliminary feasibility description; does not present peer-reviewed toxicological associations or causal health outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-7329c77af95d",
+      "source_url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+      "source_sha256": "65ba87d740806c07eaa2dce6b4cff635972271d9330a926bccebf83acfe49eb5",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "The 'vacuum effect' in free-roaming dog management is ecologically plausible but has limited empirical demonstration, with replacement dynamics constrained by specific boundary conditions.",
+      "quote_sha256": "461aef0547198f9c8276739fc094a4d46d6742aa510b6cb14cffe8932c6c1226",
+      "scope": "Free-roaming domestic dog populations in human-dominated urban habitats globally.",
+      "caveat": "Presents a conceptual framework and literature synthesis rather than empirical field intervention results.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-7deb988ae2ab",
+      "source_url": "https://doi.org/10.1111/nbu.70053",
+      "source_sha256": "212d02a11dce9fff510b32b2c617967b8c6a49382989c4d049731b9c6ff80737",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Social supermarkets alleviate immediate food insecurity using customer-choice retail models, but remain structurally dependent on the continuous generation of commercial food surplus.",
+      "quote_sha256": "fb3461c4e324256902d0dcdfe890551d43b9c15741ecd91d63b7abb7aea2d70b",
+      "scope": "International literature; 14 scoping review studies examining social supermarket models",
+      "caveat": "Synthesizes scoping literature on customer experiences and models; does not report quantitative nutritional or clinical outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-826342b4eec2",
+      "source_url": "https://doi.org/10.3390/foods15040645",
+      "source_sha256": "b35e1abaa04eec381287d09b09c839667b7eab7694539f450eb6211354d7bd4f",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Fresh produce redistribution scenarios consistently produce net environmental benefits across five lifecycle metrics, maximized when gleaning intermediaries transport surplus directly to food pantries.",
+      "quote_sha256": "a6c3717527e2354106d1041806214eed26d2cef0b5f03b0b900c8b9a25b9c67b",
+      "scope": "Modeled fresh produce supply chains; functional unit of 391.8 kg redistributed food over a two-week period",
+      "caveat": "Parametric life cycle simulation; does not track actual nutritional uptake or consumer-level food spoilage rates.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-83a764d60470",
+      "source_url": "https://doi.org/10.3390/bs16091709",
+      "source_sha256": "3547142f69aba6540e096fafefaf0e1ac987ea72ae9a6ebe3d428baa86c2c74f",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Online gig-worker discourse displays a predominance of negative sentiment, with anxiety, frustration, and anger reflecting concerns over algorithmic control and fairness.",
+      "quote_sha256": "26d542601f2f6e77d9d861e37e8861a98ebda951ba356932bc336b295362d592",
+      "scope": "Digital communities and platforms for gig workers globally during 12 consecutive months in 2025.",
+      "caveat": "Reflects aggregate online discourse rather than within-person longitudinal trajectories or direct causal psychological effects.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-871d10af9889",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+      "source_sha256": "999fb59319bcac4f01332b1b5e9afba7d5e2f72d3fbacbee3b2620dc16d00265",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Urban flood risk and reported severity in Uganda vary by geography and hydrology, with rapid-onset floods presenting elevated risk ratios over slow-onset events.",
+      "quote_sha256": "3293763bf39fb08b94ecb3d7675f8dc94676e985e3767bbfa59ab8cdf589043d",
+      "scope": "939 surveyed households, local leaders, and focus groups in Greater Kampala Metropolitan Area (GKMA) and Kasese, Uganda.",
+      "caveat": "Cross-sectional survey and focus-group data; does not measure long-term health outcomes or test causal impacts of municipal flood adaptation measures.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-9e020968a7d4",
+      "source_url": "https://doi.org/10.1016/j.lanwpc.2026.101922",
+      "source_sha256": "2fd90144b712e99271f04e6631ae1fec69ee92f55349b1a2f8ea8ce6ddec8b09",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Children under five in rural China experience significantly higher heat-related mortality risks than urban peers, particularly during compound and nighttime heatwaves.",
+      "quote_sha256": "2993f6570cd4dc8c1f143ad0dd43ecf52444c24dee07ecfeb5279c328f37f11e",
+      "scope": "China nationwide; 61,464 under-5 mortality cases; 2009–2019",
+      "caveat": "Time-stratified case-crossover design examining mortality associations; does not capture personal indoor thermal exposure or specific household cooling resources.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-aa4339ee2731",
+      "source_url": "https://doi.org/10.3389/fpubh.2026.1932962",
+      "source_sha256": "b784801e964df20858f4998829e169d366cfe00059a0f359ff58d0bbb10b55a7",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Narrative review identifies platform food delivery riders in China as facing severe interrelated occupational injuries, sleep disturbance, and psychological stress driven structurally by algorithmic management and delivery pressure.",
+      "quote_sha256": "9779abf3101ed6e0ab31d03042bcf66c64778b67cf1c4f33007ecabd9240a089",
+      "scope": "Platform-based on-demand food delivery couriers in China; review of 47 studies published from 2015 to 2026",
+      "caveat": "Synthesizes primarily cross-sectional and self-reported studies; lacks causal longitudinal evaluations and measured outcomes from specific regulatory or algorithmic governance interventions.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-c4308276b606",
+      "source_url": "https://doi.org/10.3390/nano16140892",
+      "source_sha256": "d33caba1ebadedc84070641a6097291a65433917366500f2343ba274ec2f5227",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Weathering and recycling of electronic waste generate incidental nanomaterials that present distinct mobility, bioavailability, and human health hazards.",
+      "quote_sha256": "452c0c0cfad7295cc8e46e65f721964023bc45c47004ad513db04b1d07513f6c",
+      "scope": "Global; electronic waste streams, recycling operations, and surrounding ecosystems",
+      "caveat": "Bibliographic abstract overview; does not quantify specific toxic exposure thresholds or clinical disease incidence.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-e2f3b5123391",
+      "source_url": "https://doi.org/10.1371/journal.pone.0358221",
+      "source_sha256": "c78b0670d9c7155e7a30dc43a8a5587a6dfd606e99f0c26bcea240618fdf7001",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "A single-blind four-arm randomized controlled trial protocol designs long-term evaluation of active versus sham energy recovery ventilators and portable air cleaners on indoor pollutants and asthma control.",
+      "quote_sha256": "8c36b175c2b36feb1ac99e091bf03cb636a95a4910225534539ce7f61fc45fcc",
+      "scope": "Children (aged 5-17) and adults with physician-diagnosed asthma across >80 households in Dallas-Fort Worth, Texas",
+      "caveat": "Methodological trial protocol only; does not provide measured clinical trial results or proven intervention efficacy data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-fb93375cb76d",
+      "source_url": "https://doi.org/10.5334/aogh.5294",
+      "source_sha256": "fb08c935b0c1fc4e881286a73aebac0adf49df1cf7f05d023ee404f6fbab9949",
+      "role": "practical_observation",
+      "fit": "relevant",
+      "statement": "Recurrent flooding between 2022 and 2025 affected over 26 million people in Pakistan, compounding health system strain and accelerating infectious disease outbreaks and undernutrition.",
+      "quote_sha256": "2f151d3b8299fed3667c9ecdd0acdf03a3ea952a4658a835cb4c76a3cedb8ff7",
+      "scope": "Flood-affected populations, displaced communities, and health systems in Pakistan from 2022 to 2025.",
+      "caveat": "Bibliographic perspective/commentary abstract; does not provide primary epidemiological incidence data or systematic evaluations of health sector interventions.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-0b799176aa3262",
+      "source_url": "https://doi.org/10.3390/rs17173104",
+      "source_sha256": "12d06d6bbecabc4f9f195ba2cb1e0246ad7a0f0a5ee14e7e78767a6f35f4565a",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A systematic review of 85 peer-reviewed studies finds that digital twin technology integrating remote sensing and machine learning can reduce urban flood response times by up to 40%, but faces data interoperability and computational challenges.",
+      "quote_sha256": "00d9eb425cccd05227e60a1243ef0d29d37fb12e07b1e8d0341754374fe15e5b",
+      "scope": "Global peer-reviewed literature on urban flood digital twins published between 2018 and 2025",
+      "caveat": "Synthesizes existing literature and case studies; does not demonstrate real-world flood mitigation efficacy or performance in resource-constrained regions",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-0c2db6ec316fbc",
+      "source_url": "https://doi.org/10.1016/j.envint.2012.11.006",
+      "source_sha256": "bef3848e3bf46818b2bd1fd16a1999e6209806164e2b30997a65f59f8cc20643",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Settled dust and indoor air in Vietnamese informal e-waste recycling sites contain elevated levels of brominated flame retardants and PCBs, with dust ingestion driving 60% to 88% of estimated daily PBDE intake.",
+      "quote_sha256": "595d89639250ce095d8012527e84f5a3983887c26020b5fe9a3f6d234b7f8e4b",
+      "scope": "Informal e-waste recycling workshop sites and one urban reference site in Vietnam.",
+      "caveat": "Quantifies environmental concentrations and modeled non-dietary intake estimates; does not assess clinical biomarkers or long-term health endpoints in exposed workers.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-1139840a6d83ac",
+      "source_url": "https://openalex.org/W29580953",
+      "source_sha256": "28d757c6efc1d4e73d316a6805dd176d582358cb72acfc7070c9a369cb35f931",
+      "role": "practical_observation",
+      "fit": "relevant",
+      "statement": "Indoor air quality in educational facilities is degraded by HVAC moisture, dust, and outdoor pollutant intake, substantially contributing to student asthma burdens and absenteeism.",
+      "quote_sha256": "0474c8fec499a4a7db79e2a39c033c75c608ddf2e6ffcb9edd88ff7632f27178",
+      "scope": "United States school facilities; school-aged children.",
+      "caveat": "General narrative review citing secondary sources; does not perform controlled experimental evaluations of specific air cleaning or HVAC protocols.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-2c8a36e510bc7f",
+      "source_url": "https://doi.org/10.1016/j.isci.2021.102787",
+      "source_sha256": "6516f476848bf67ed7ea03e403297703872651a1a29c49e9a9f83e3b038bb4b4",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "A techno-economic model estimates that electric vehicle lithium-ion battery recycling profitability ranges from -$21.43 to +$21.91 per kWh depending on logistics, wages, pack design, and cathode chemistry.",
+      "quote_sha256": "44624fa3d75a7d09fd5c03df907d39745b221d50c838bc759c1d9c2ef083fd27",
+      "scope": "Global techno-economic simulation model comparing commercial EV battery packs (e.g., Tesla Model S).",
+      "caveat": "Theoretical techno-economic simulation; does not report actual empirical profit-and-loss accounting or audited operational yields from operating commercial facilities.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-3c3cd5c7fc6491",
+      "source_url": "https://doi.org/10.15421/022426",
+      "source_sha256": "96e7b9844a00439b1a05a58d7ef1b1582af03a63d28cf00daf920e61a2e9454a",
+      "role": "measured_program_outcome",
+      "fit": "relevant",
+      "statement": "In an empirical pilot vaccination program of 160 free-roaming dogs in Ukraine, only 56.3% of the sampled subgroup achieved virus-neutralizing antibody levels exceeding the 0.5 IU/mL protective threshold four months post-vaccination.",
+      "quote_sha256": "f4079062204e9d4f1c82f36be29371dbe8f7aaa43892388b247fe947b9e65129",
+      "scope": "Endemic rabies sectors in Ukraine; pilot cohort of 160 vaccinated free-roaming dogs with 16 serologically tested animals over 4 months",
+      "caveat": "Very small serological sample size (n=16) and cross-sectional sampling; does not demonstrate herd immunity durability, clinical bite protection, or community-wide rabies transmission reduction.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-3e8660cfa6d4bf",
+      "source_url": "https://doi.org/10.1111/j.1365-2656.2012.02033.x",
+      "source_sha256": "da7993ed973199d3bfa291048b2564fe2f586e9298b67a9f133b3790ec2d00b2",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Critical review finds canine rabies transmission does not follow simple density-dependent assumptions, culling fails to control the disease, and vaccination represents the most effective intervention.",
+      "quote_sha256": "89e3b4e46f62ee96a16ac7f1f653172bb85a730e8d72a30800d2c7bf26b0e5db",
+      "scope": "Global canine and wildlife rabies epidemiology and disease control literature",
+      "caveat": "Bibliographic abstract of a literature review; does not provide original field trial data, empirical coverage thresholds, or direct program implementation outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-4a59c468fd7941",
+      "source_url": "https://doi.org/10.3390/met10030316",
+      "source_sha256": "0aa89eea169d94cabfe8af729e5e361d66beba6e0cd76a697654827c0f5823a8",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "Recycling pathways for spent lithium-ion batteries can be systematically structured into unit processes and stages aligned with circular economy waste treatment frameworks.",
+      "quote_sha256": "dcbf97dd3016df1f834bc8723f3d9bae1a95e4afe1ded86b26ec733e4dab03f5",
+      "scope": "Global; industrial concepts for spent lithium-ion batteries",
+      "caveat": "Presents a descriptive taxonomy of treatment processes; does not measure recycling efficiency rates, costs, or lifecycle toxicity.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-4ecb63fe5958c9",
+      "source_url": "https://doi.org/10.1007/s13201-018-0881-9",
+      "source_sha256": "34c04d4d72bb02154e02503d5a791b40f759b49cbd58efd36a6c47e7874dd345",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Flood hazard research in major Indian coastal cities has emphasized riverine and urban flooding over coastal surges, with adaptation assessments lagging outside Mumbai and Kolkata.",
+      "quote_sha256": "c3df3f6487c4a0c51570686fda8d1446d9b6fb36c06dd6ee7d716ef60146cf04",
+      "scope": "Surat, Mumbai, Chennai, and Kolkata, India; recent and historical flood risk scenarios.",
+      "caveat": "Bibliographic abstract of a review article; provides no direct empirical measurements, causal evaluation, or verified audit of municipal flood project execution.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-4f0f6d04561a0f",
+      "source_url": "https://doi.org/10.1590/s1806-37132014000300009",
+      "source_sha256": "97ee0b85cfb6d8332dc9ae35e5d245fbdbf29c17dcfa5bbb897bc811899cca79",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "An evaluation of 1,019 elementary school students found that indoor CO2 concentrations above maximum recommended levels were significantly associated with lack of concentration, but found no other significant associations with respiratory or allergic conditions.",
+      "quote_sha256": "f0fa7da56c64a5f410f42f8ed21a7e518136f048a990f30cd15281528ee5ae52",
+      "scope": "1,019 students across 51 elementary schools in Coimbra, Portugal during fall and winter",
+      "caveat": "Cross-sectional observational study in an urban setting with low background pollution; does not establish causal mechanisms for chronic respiratory illness",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-53d2760b3abab4",
+      "source_url": "https://doi.org/10.1039/d0gc02745f",
+      "source_sha256": "edaf85f0cb26bd8deca91f907df175f5200412be7eba737e57dd3ff44c4a5593",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Upstream product design is a critical determinant governing the operational efficiency and economic viability of lithium-ion battery recycling systems.",
+      "quote_sha256": "85d82a827df4a0edf6d06dce5db724a9e112cb84b479e75a69345b264d53c864",
+      "scope": "Lithium-ion battery manufacturing design and recycling flowsheet engineering",
+      "caveat": "Extremely brief bibliographic abstract lead; does not detail specific design modifications, recycling chemistries, recovery rates, or empirical cost-benefit analyses.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-57bba7412a5fbd",
+      "source_url": "https://doi.org/10.1007/s43621-024-00697-2",
+      "source_sha256": "5dd58af338654efd6239ca5c05902d2b67e73417e4fbe066609e38bc5a90a4f6",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Low-income urban households and outdoor laborers in Rajshahi face disproportionate heatwave health risks and reduced adaptive capacity due to socioeconomic constraints and reliance on passive cooling methods.",
+      "quote_sha256": "cfa99ec63ac6effc98a1b69356f432755a840539a88cb82eb42a443733afa4ad",
+      "scope": "Urban households and outdoor laborers in Rajshahi, Bangladesh during extreme heat periods",
+      "caveat": "Mixed-methods survey and PCA study; does not clinically measure long-term health outcomes or evaluate the actual implementation of recommended green infrastructure",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-6642b2dc88be44",
+      "source_url": "https://doi.org/10.1111/1748-8583.12258",
+      "source_sha256": "36b77b2de1bc9089a63b05e78f90c1cdca7aef1de7568ecb46d522858a247610",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Algorithmic management constitutes a distinct structural mechanism within app-based gig work requiring delineated investigation into performance management and labor relations.",
+      "quote_sha256": "6eff2c24137fb5d6c099764cb5671fedfce44ce960c7fe65e3c0f63eca10b76d",
+      "scope": "Conceptual and human resource management literature regarding gig economy organizational forms.",
+      "caveat": "Theoretical agenda setting without empirical data on worker experiences or health consequences.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-79031782b475fb",
+      "source_url": "https://doi.org/10.1002/ajim.70007",
+      "source_sha256": "6e70b5423b219f0d0d256b1532a358a6dec82cba3834240385faccded5bdca08",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A scoping review of 45 studies on platform-mediated gig work found reports of physical and mental health risks, but concluded the literature is constrained by cross-sectional designs and a lack of causal evidence.",
+      "quote_sha256": "68d6afd612dd24144182383d34b8b3504710cf1a535371bf9d76eaed35738282",
+      "scope": "45 peer-reviewed studies published internationally between January 1, 2000, and May 29, 2024.",
+      "caveat": "Identifies associations only; cannot establish causal relationships between digital platform labor dynamics and worker health outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-88cafd9405fbed",
+      "source_url": "https://doi.org/10.70251/hyjr2348.3593102",
+      "source_sha256": "708cd56251e341f85b8e0bc64cd2e99d451d862c22244119a595a4cf8144a684",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Surplus food redistribution across the US faces structural barriers including liability protection, ambiguous date labeling, and household sector drop-off, despite logistical opportunities.",
+      "quote_sha256": "89707c8aeb58a75d405aeff5eb0e4c2e24774720aa5826d79bbe955f131c5b6d",
+      "scope": "United States; retail, food service, and consumer food waste sectors; recent qualitative review period",
+      "caveat": "Based on a qualitative bibliographic review rather than empirical causal tracking or program audit data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-8d5107d133682c",
+      "source_url": "https://doi.org/10.3390/fire9020076",
+      "source_sha256": "feeba5d10746e97a63ca5365cc21ee4edf3781682c2303abae5180c2ef8a1817",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "End-of-life lithium-ion battery recycling faces acute environmental and occupational hazards from thermal runaway, fires, and toxic releases during collection, dismantling, and processing.",
+      "quote_sha256": "3306ba6330f4730690863539a842b30bb0fb4ef9edb393d4afae9739425f1785",
+      "scope": "Industrial lithium-ion battery storage, transport, and recycling facilities globally.",
+      "caveat": "Academic review paper; does not measure incident rates under specific occupational safety standards or prove the field efficacy of suggested mitigation protocols.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-8e75d5d1b1f35b",
+      "source_url": "https://doi.org/10.1093/nutrit/nuac012",
+      "source_sha256": "8a8e586199f18e8c82fcd5bb66e90d6971213e0fb82821bae60298f489429b8b",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A scoping review identified that the burden of redistributing food waste to resolve food insecurity relies heavily on under-resourced rescue charities requiring structural subsidies and nutrition expertise.",
+      "quote_sha256": "ee8a9ce2582a6de7754ad035e37c2d02fb55ca719d6bc0db8d8dbb532254d9fc",
+      "scope": "Food sectors (retail, household, food rescue charities) and food-insecure populations in Australia",
+      "caveat": "Scoping review of existing literature and policy recommendations; does not quantify population-level health, dietary, or nutritional impact.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-a22f19815c0834",
+      "source_url": "https://openalex.org/W2601661552",
+      "source_sha256": "e4aac3df0d36af73ecd7e97e742e7f42588980bdbb8780effec682abf68c4416",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A literature review indicates that classroom indoor air quality frequently fails to meet occupational and environmental standards, contributing to elevated risks of respiratory symptoms in children.",
+      "quote_sha256": "3e5d80b0381fba1152338cb03554bef90554aeb4761741fe06af56be0cc40b84",
+      "scope": "School classrooms and preschool environments globally, framed to inform future assessments in Malaysia",
+      "caveat": "Literature review summarizing secondary reports; does not conduct primary environmental monitoring or clinical intervention verification.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-b004c71e7a2adf",
+      "source_url": "https://doi.org/10.1016/s2214-109x(13)70101-3",
+      "source_sha256": "d61e7f13e764e67535e06d32d96d05f821df7aabce4df9f1c7c5b7fa43d57589",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Systematic review evidence demonstrates significant associations between informal e-waste exposure and decreased pediatric lung function, adverse neonatal outcomes, and DNA damage.",
+      "quote_sha256": "cd6f635be1952bfd71207e062911fcb08166172e59124a22d3a466870d2e9875",
+      "scope": "Human populations living in e-waste processing towns in southeast China from 1965 through December 2012.",
+      "caveat": "All included epidemiological studies were restricted geographically to southeast China, and causal mechanisms require confirmation via prospective cohorts.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-ba418ee71ac82d",
+      "source_url": "https://doi.org/10.1093/eurpub/ckl049",
+      "source_sha256": "7d192d841463affa8cce401795f4e16c2aa00b348071b27ca6c5401b1bc035c2",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "European heat health warning systems are being deployed despite inadequate evidence verifying the effectiveness of specific heatwave interventions in reducing mortality or morbidity.",
+      "quote_sha256": "af99a16881405023fbc2a1548b203616d6f6ac6c690b97b06f524b910e45d96d",
+      "scope": "Populations and public health systems in Europe; unspecified publication timeframe.",
+      "caveat": "Does not provide measured morbidity or mortality reduction outcomes from any evaluated European heat health warning system.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-bdb9fd8d22baf8",
+      "source_url": "https://doi.org/10.4337/9781035313389.ch25",
+      "source_sha256": "9cc14000d663ec5130fe1611aa53f29565e36a7ad59445d19e6dffb793819bb8",
+      "role": "background_only",
+      "fit": "context",
+      "statement": "Independent platform gig work and algorithmic management introduce specific structural considerations for occupational health and collective organizing.",
+      "quote_sha256": "4b22ecb3fc43e918046f0daf0e6b55540c1ae05876f0d6977e9db110abb43724",
+      "scope": "Global platform gig workforce; unstated temporal period",
+      "caveat": "Bibliographic abstract overview only; does not provide empirical health outcome measurements, intervention trials, or causal risk estimates.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-cac905fc406101",
+      "source_url": "https://doi.org/10.1371/journal.pntd.0004177",
+      "source_sha256": "f0fdc11420c6f2677372e46d2e4ffdb67e56592dbe455bd3d6125bd72f2bde8e",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Demographic surveillance and modeling indicate that annual 70% vaccination coverage can maintain herd immunity against rabies despite high turnover in free-roaming dog populations.",
+      "quote_sha256": "e2fdfb806bb98eb49d11638d1f8ea2bf1db08a6c516bef7904eab1384b1aba50",
+      "scope": "Owned, free-roaming dog population in Mpumalanga Province, South Africa, monitored between January 2012 and January 2014.",
+      "caveat": "Relies on a demographic simulation from one community; does not verify sustained real-world interruption of rabies virus transmission across broader geographic regions.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-cf7a010e9ed8d1",
+      "source_url": "https://doi.org/10.3390/ijerph8124623",
+      "source_sha256": "e84c2c1400644f2c6c085c3331313b5d1deb485e09fb9b2e92e108a0e02e6b2d",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "An analysis of public documents across 33 European countries revealed that only 12 had established Heatwave Early Warning Systems, with notable variation in action thresholds and notification pathways.",
+      "quote_sha256": "68ce6216367080153c574cf2c74fd27c9c68554adf177b8d75aa90d81cf0e426",
+      "scope": "Government and public health policy documents across 33 European nations",
+      "caveat": "Catalogues institutional system presence and policy specifications; does not measure implementation adherence or heatwave mortality reduction.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-d018a574aec782",
+      "source_url": "https://doi.org/10.1034/j.1600-0668.2003.00153.x",
+      "source_sha256": "7f7b6edd6d8164e6cd53c67976feb1c46c7096f2ff78134acbd0836b335af4fa",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A synthesis of pre-2000 school studies indicates inadequate classroom ventilation and elevated CO2 levels are prevalent, with building-related health symptoms more directly linked to volatile organic compounds, molds, and allergens.",
+      "quote_sha256": "ebb77c665de551d7a2f5986490f811ea545e7ed4082337c888206c940ece2dca",
+      "scope": "Published literature and building monitoring data on school indoor environments up to 1999",
+      "caveat": "Historical literature review; limited by a lack of rigorous causal studies isolating specific chemical or microbiological pollutant thresholds",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-d26245f891f838",
+      "source_url": "https://doi.org/10.1016/j.healthplace.2018.08.017",
+      "source_sha256": "dc36e9a67ccd3866b5188a470c4c4dd4f6a427421f237434952dcfbff933666b",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Global heatwave health impact research is heavily skewed toward mid-latitude, high-income nations, systematically neglecting regions with the highest projected extreme heat risk.",
+      "quote_sha256": "f553d4c5b6cfc72f3b0573f8c32073ae93706a72b9927685e8a5e21f7758e505",
+      "scope": "Global; systematic review of historical epidemiological literature on heatwave mortality and morbidity",
+      "caveat": "Analyzes the geographic distribution of research literature rather than assessing localized epidemiological exposure-response mechanisms.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-d94945c2bf53f3",
+      "source_url": "https://doi.org/10.1111/1365-2664.12279",
+      "source_sha256": "83bf5054d231895a328b52149395a9c99617a30ddef98abfc9e7f38862f2a818",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A 3-year cohort study shows free-roaming dog populations were stable or declining and regulated by human ownership and demand rather than resource carrying capacity, with significant population influx driven by human translocation.",
+      "quote_sha256": "8d0cb8984a48233756f80cff2afe95c7fdcc79e848aecfd664acdae358e46e51",
+      "scope": "Four free-roaming dog communities in Bali, Indonesia and Johannesburg, South Africa across a 3-year longitudinal monitoring period",
+      "caveat": "Conducted in communities without municipal management interventions; does not test the comparative epidemiological efficacy of active vaccination campaigns or spay/neuter programs.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-da5bbdb0bf0dd0",
+      "source_url": "https://doi.org/10.55041/ijsmt.v2i5.132",
+      "source_sha256": "9537e99faa11bb2b533e13e39e993e739a4364b7e75ac7644381e00d189f672a",
+      "role": "measured_program_outcome",
+      "fit": "relevant",
+      "statement": "An IoT-enabled platform tracking temperature, humidity, and gas rescued 847 kg of surplus food and reduced pickup times by 42% in a multi-stakeholder pilot.",
+      "quote_sha256": "9e73de90d6bfcdddbeed7442d496be475a04fe4daad2a5402061b4ee88d19ec1",
+      "scope": "Coimbatore, India; 15 restaurants and 8 NGOs during a 3-month pilot deployment.",
+      "caveat": "Pilot deployment outcomes reported in an abstract; does not show long-term institutional permanence, cost sustainability, or recipient nutritional impacts.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-dbc0b8d397869b",
+      "source_url": "https://openalex.org/W2906684235",
+      "source_sha256": "46299d8a3df861777feb2533571391fc15661af8c2aa8f49fc01089a50503d3a",
+      "role": "practical_observation",
+      "fit": "relevant",
+      "statement": "Surplus food redistribution organizations expand immediate food access but find their ability to challenge systemic causes of food precarity and waste constrained by alignments with corporate and state entities.",
+      "quote_sha256": "8f27871eb6c298d900f21410237c531bce0c209e521950666c21b8a2b7a423ef",
+      "scope": "Surplus food redistribution organizations and food aid networks in the UK and North America",
+      "caveat": "Ethnographic qualitative evaluation; does not quantify recipient nutritional security or broader poverty reduction metrics",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-e29dc4e0a782ec",
+      "source_url": "https://doi.org/10.1002/job.2831",
+      "source_sha256": "c91fc233ca09d9e1bf1a0aa13c6500cf1ed9f5c581b8cef38bd6d7a93074c794",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A systematic review uses topic modeling and an input-process-output framework to synthesize fragmented research on how dimensions of algorithmic management influence gig worker outcomes.",
+      "quote_sha256": "6398598148be3cba75b67362eeb3b1573b2da2ba7bd3e174c60c99996524433b",
+      "scope": "Cross-disciplinary academic literature examining algorithmic management across online gig platforms",
+      "caveat": "Conceptual literature synthesis; does not directly measure empirical worker welfare, platform productivity, or wage impacts",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-eb3cd7c2915125",
+      "source_url": "https://doi.org/10.1016/j.envint.2014.07.006",
+      "source_sha256": "aee68febec70ff39dae151d4b46817661b06b6672ec90229472c1e9bf2d4152d",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Workers in formal Swedish e-waste facilities experienced 10- to 30-fold higher airborne metal exposures and significantly elevated biological concentrations of chromium, cobalt, indium, lead, and mercury compared to office controls.",
+      "quote_sha256": "9139abd28cfa82793f8324d109d63b19cf1cbbd63bd96bc19139fb0bc68c7123",
+      "scope": "55 e-waste recycling workers and 10 office controls at three formal e-waste recycling facilities in Sweden, with 6-month follow-up",
+      "caveat": "Measures exposure biomarkers and airborne dust concentrations; does not establish long-term clinical morbidity, organ pathology, or chronic disease outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-f6a6c0d295f4a1",
+      "source_url": "https://doi.org/10.1136/jech-2016-208597",
+      "source_sha256": "3475c8f69a96bc3b59432023cb0ec5cde9efe0926348bc5221b3cb9ac7ab410c",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Informal waste recyclers using primitive methods suffer elevated occupational hazards and secondary environmental contamination, which integration with formal systems can help mitigate.",
+      "quote_sha256": "5f6f4dea7e515e97de243ef51996b434aaee9a8d9b4b3f2371ecd77f8c44dbcc",
+      "scope": "Global informal waste workforce, especially in low- and middle-income countries, spanning review literature up to 2018.",
+      "caveat": "Narrative review synthesis without primary intervention trial data or standardized exposure-response quantification.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-f84a08fcbd0caa",
+      "source_url": "https://doi.org/10.3390/hydrology9030050",
+      "source_sha256": "77dcb85ec077ffe97ade2df267fb71c50398ef96fb5ada119718bfbd7a8b86b0",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Urban flood risk modelling and management face growing complexity across multiple flood sources, with vulnerability compounding under climate change, urban densification, and population expansion.",
+      "quote_sha256": "8b47a04682e6ecd37d104a803385c0fa6a159ce140b74bf3abd716e9981eb5ad",
+      "scope": "Global urban areas; scientific review of flood risk modelling, management, and adaptation",
+      "caveat": "Review paper abstract outlining conceptual and modelling challenges; does not measure local hydrologic outcomes, infrastructure failure rates, or post-intervention flood mitigation efficacy.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-04c6c3a2a87e",
+      "source_url": "https://www.who.int/news-room/questions-and-answers/item/q-a-children-and-masks-related-to-covid-19",
+      "source_sha256": "6e6fc30bbb953b3109dfd4e8498fcb7431765fd76a9d32529cafdbde16a5d465",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Pediatric mask recommendations depend on age, transmission context, and ventilation status, exempting children aged 5 and under or those with developmental or respiratory contraindications.",
+      "quote_sha256": "5b7d00e9b96c1be12a2a024f7c018cf391372f684e6eee8e885fb1b21c820a37",
+      "scope": "Global pediatric populations, schools, and domestic settings during the SARS-CoV-2 pandemic.",
+      "caveat": "Normative guidance document; does not measure real-world mask adherence, supply availability, or quantitative impacts on infection rates.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-0f3441051449",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/asthma",
+      "source_sha256": "a1ce253ca8719057b3645566239ce7635c3cd4065df5ea784647323fe11e6b85",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Chronic respiratory illnesses require primary-care clinical management and environmental trigger control, supported by structured noncommunicable disease intervention packages in low-resource settings.",
+      "quote_sha256": "812ca2be73b773d5bf7c1e4cfced13b8dfce4381b1c730c370c72187cd01c5b0",
+      "scope": "Low-resource primary health care settings globally; children and adults with chronic respiratory diseases.",
+      "caveat": "Institutional program framework; does not measure field implementation fidelity, clinic penetration, or longitudinal patient morbidity outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-194f3653ddf1",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "source_sha256": "e59c364c0f2912bebc14475cf12910db9e02ffc05ca48a97d3733c55d3d67fae",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Extreme heat constitutes a predictable environmental health hazard requiring municipal heat action plans and early warning systems to protect vulnerable and under-resourced populations.",
+      "quote_sha256": "f5cc5199559346a978726d3855a62803d1d9116587b2a193d5fca179cec74252",
+      "scope": "Global public health sector, municipal health systems, and vulnerable populations (urban poor, older adults, outdoor workers).",
+      "caveat": "Policy guidance and risk overview; does not present quantitative evaluations of mortality reductions achieved by operational heat action plans.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-19f69df74e84",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/health-care-waste",
+      "source_sha256": "e2c6377c703743df13ed05289b3e0b6ad8bd4960ce47d20eafe34577bd4fac4e",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Health-care facilities must prioritize waste minimization and segregated handling to avoid biological infection hazards and hazardous airborne emissions from low-temperature burning.",
+      "quote_sha256": "b50a8d67b44ea66aebe245edad378487b0eba7ce660ae10584550f3720152ceb",
+      "scope": "Global health-care facilities, hospital management, and waste treatment systems.",
+      "caveat": "Institutional guidance document; does not report quantitative audit data on global waste compliance or measured toxic emission levels from incinerators.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-1bf7efd28d64",
+      "source_url": "https://www.who.int/news-room/questions-and-answers/item/population-ageing",
+      "source_sha256": "2ab7af621aca8342e356a3b202f7d81d290ceee13a55d91e5d254f847c82d81d",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Global population ageing requires systemic public health shifts toward age-friendly environments, integrated primary care, and long-term care systems to support functional ability.",
+      "quote_sha256": "7d546bf595e86edd91e99193ac081acf451d78ca5cb87fc542ec4349edb5f1d2",
+      "scope": "Global older population (aged 60+) and health governance systems, 2021–2030.",
+      "caveat": "Policy agenda and demographic overview; does not show empirical efficacy data or verified service coverage for the UN Decade of Healthy Ageing programs.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-31e8ca003c74",
+      "source_url": "https://www.who.int/europe/groups/action-network-on-measuring-population-and-organizational-health-literacy-(m-pohl)",
+      "source_sha256": "63318aa5f7b301cf70c19230d98bcd8e12b8d8811cbb8de6b551222e2cbc145f",
+      "role": "reported_implementation",
+      "fit": "context",
+      "statement": "The WHO M-POHL network conducted the HLS19 comparative survey across 17 European countries between 2019 and 2021 to measure population and digital health literacy.",
+      "quote_sha256": "96e802b06c4052dfeb93f346d2cf0b6423a1cceaf42364421e2de2519867c39b",
+      "scope": "17 European member countries participating in the M-POHL network between 2019 and 2021.",
+      "caveat": "Webpage excerpt describes survey execution and organizational intent; it does not present empirical survey findings, intervention outcomes, or health status improvements.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-6d6012da212a",
+      "source_url": "https://www.who.int/health-topics/digital-health",
+      "source_sha256": "caaaf9014af5c35cf45f040555e1369b7d0ce466da6700c440661fff158daffa",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "WHO policy framework establishes strategic objectives to advance digital health adoption, data interoperability, and evidence-informed digital health workforce solutions.",
+      "quote_sha256": "27e72fa7911b9a641ce74aab76acceb86bd07948c0944965055c336e26e0d26b",
+      "scope": "Global health policy guidance and strategic roadmap adopted by the World Health Assembly in 2020",
+      "caveat": "High-level institutional policy text; does not report empirical implementation rates, verified payment distribution data, or measurable health worker retention metrics.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-738822d05941",
+      "source_url": "https://www.who.int/publications/i/item/9789241512855",
+      "source_sha256": "6057bc8c04d663d2ce4eb1db0105f28196574e8602f3f166bbd5fbd969b7ee22",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Official guidance outlines health and environmental hazards from informal and unregulated used lead-acid battery recycling, providing control measures and advocacy targets for policymakers.",
+      "quote_sha256": "9afcfa2804293716cda15290fc83a3c2ae54d87183ba604c29abec019b88b08f",
+      "scope": "Global public health sector and regulatory bodies managing used lead-acid battery recycling",
+      "caveat": "Informational advocacy brief; does not audit specific recycling facility compliance, quantify workplace emission reductions, or measure clinical lead biomarker drops.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-7e900895fc66",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/lead-poisoning-and-health",
+      "source_sha256": "0fbb197ea12d5b3bd797d82654fccb6551e9d5f02f1de3e72021684ceded91bf",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Lead exposure poses severe multi-system health risks particularly to young children and child-bearing women, with major sources including battery recycling and industrial manufacturing.",
+      "quote_sha256": "567bd917c242f8351511c77cf8b47437fe7a275edd4eb700336926a7ad445ff2",
+      "scope": "Global population, specifically young children and women of child-bearing age; includes global 2023 mortality estimate",
+      "caveat": "Official website excerpt outlining toxicological risk factors and global burden; does not evaluate specific local environmental intervention outcomes or audit program implementation.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-86c5d4ade74b",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/malnutrition",
+      "source_sha256": "a9e676bb8e7e6b2d83a191f4258f6ae83c3687ffa84d7841adc5252c1593d2a1",
+      "role": "program_guidance",
+      "fit": "context",
+      "statement": "International policy frameworks under the UN Decade of Action on Nutrition set strategic targets for 2025 and 2030 to address malnutrition, stunting, wasting, and obesity.",
+      "quote_sha256": "6eb86f8ce4f7a1417d3fae5d15f5d8cbffcbfbdba80e4d05fc98c4edea0c442d",
+      "scope": "Global member states and populations facing malnutrition; policy framework period 2016–2025 and 2030 Agenda",
+      "caveat": "Organizational policy and mandate documentation; does not report audited program implementation metrics or measured population nutritional outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-a6feb7e72ecd",
+      "source_url": "https://www.emro.who.int/media/news/opening-remarks-by-dr-adham-ismail-officer-in-charge-who-eastern-mediterranean-region-at-the-launch-of-the-first-digital-platform-for-health-research-prioritization-in-the-eastern-mediterranean-region.html",
+      "source_sha256": "88f791211fb55a40c3e214be3f725784123ec101c9a19962e64b88f9beeecc4f",
+      "role": "reported_implementation",
+      "fit": "relevant",
+      "statement": "An official regional office has launched a digital platform aimed at making health research prioritization more systematic, transparent, and collaborative.",
+      "quote_sha256": "fcc35622301c5383a207e7a60642d40ecfae8448adefa9eacfe02670d16859c7",
+      "scope": "Regional health office and member state decision-makers at time of official announcement.",
+      "caveat": "Reports only platform launch; does not show health outcome improvements, resource allocation impacts, or actual user uptake.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-ac48369a71d0",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "source_sha256": "a0ead6920a19383cb389165604d8999fd9405657b1e4fa6d7d90cd80b820efa9",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Informal e-waste recycling exposes vulnerable populations, particularly children and pregnant women, to hazardous neurotoxicants such as lead and mercury.",
+      "quote_sha256": "7b9352b6958a423951ac8e334f1327f1831ecb2d2041c301bf9b98347e563f99",
+      "scope": "Global informal e-waste recycling sectors, predominantly in low- and middle-income countries, citing 2020-2022 context.",
+      "caveat": "High-level guidance synthesis lacking local epidemiological datasets, exposure quantification, or program audit outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-b67462393768",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/urban-health",
+      "source_sha256": "701adc6554dac0989168658e5df9dea7af94cbb8da5712a46218e12e0de4d722",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Rapid urban growth exposes concentrated populations to combined environmental, infectious, and noncommunicable disease risks requiring multisectoral governance.",
+      "quote_sha256": "004e17b34b86246a837a46050785c12fb2562e99f0c40f007ebe9d7df6d26662",
+      "scope": "Global urban populations, projecting urbanization trends through 2050.",
+      "caveat": "Strategic institutional policy overview; does not measure specific intervention efficacy or local health outcome changes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-dbee83ba8137",
+      "source_url": "https://www.who.int/europe/health-topics/floods",
+      "source_sha256": "84feac0d6fb561c252f76fb31e866a60f651e34f9e86dcb6796a57dc17404650",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "WHO/Europe guidance recommends shifting from reactive disaster response to integrated, long-term health risk management and preparedness to address increasing flood-related mortality, disease, and mental health risks.",
+      "quote_sha256": "9f122d01835e8e165cc06fccc911c4805b4956a4c0499c570e24ef6aeb04546c",
+      "scope": "53 Member States of the WHO European Region, incorporating climate risk projections through the 2080s",
+      "caveat": "Regional policy guidance document; does not provide audit findings or empirical compliance metrics for specific local implementation plans",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-f3af73407d74",
+      "source_url": "https://www.who.int/health-topics/malnutrition",
+      "source_sha256": "74e1e1b041af8feee322347c01a13a962b7873cd10acf4f1e6cec5807084a250",
+      "role": "program_guidance",
+      "fit": "context",
+      "statement": "The WHO defines wasting, stunting, and underweight as distinct manifestations of malnutrition requiring resilient food systems to meet 2030 Sustainable Development Goals.",
+      "quote_sha256": "8acb8d31a8f153bd2bcdab2be724faa87c833afbafe195e7ddf1d1d1b6b36130",
+      "scope": "Global; pediatric and vulnerable populations under WHO SDG 2030 targets",
+      "caveat": "Official institutional text detailing diagnostic definitions and policy agendas; contains no intervention evaluation or local survey data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-f3e30d7ac5a5",
+      "source_url": "https://www.who.int/news-room/feature-stories/detail/the-importance-of-preparedness--strengthening-community-resilience-against-flash-floods",
+      "source_sha256": "1a01a816e707feaf8761a134bebb80aa4704584bfa7f8cd0bb6b40cbcf921aab",
+      "role": "reported_implementation",
+      "fit": "relevant",
+      "statement": "Multi-agency early warning systems and trained local response teams were deployed in Ban Kao Many, Laos, to forecast flash flooding and mitigate drowning hazards.",
+      "quote_sha256": "84a82a03936e4bef85e277741569a9c1ed251c9a5218999ffa5e7914c6e78977",
+      "scope": "Ban Kao Many community, Nan District, Luang Prabang Province, Laos; global FFGS deployment across 72 countries",
+      "caveat": "Institutional narrative excerpt asserting reduced drowning deaths without providing empirical control baselines or epidemiological audit data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "emergent_clusters": [
+    {
+      "batch_id": "shard-00",
+      "name": "Indoor Environmental Health and Pediatric Respiratory Protection",
+      "source_ids": [
+        "OA-1139840a6d83ac",
+        "OFFICIAL-0f3441051449",
+        "OFFICIAL-04c6c3a2a87e"
+      ],
+      "question": "How can school and primary-care environmental protocols balance indoor ventilation requirements for airborne infection prevention against the ingress of particulate and chemical triggers that exacerbate pediatric asthma?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-00",
+      "name": "Municipal Vulnerability, Extreme Climate Hazards, and Adaptation Planning",
+      "source_ids": [
+        "OA-4ecb63fe5958c9",
+        "OFFICIAL-194f3653ddf1"
+      ],
+      "question": "How do municipal urban adaptation strategies incorporate multiple overlapping climate hazards, such as localized riverine/coastal flooding and urban heat island effects in informal settlements?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-00",
+      "name": "Specialized Waste Streams, Traceability, and Industrial Hazard Mitigation",
+      "source_ids": [
+        "OA-8d5107d133682c",
+        "OFFICIAL-19f69df74e84",
+        "OA-da5bbdb0bf0dd0"
+      ],
+      "question": "What technological tracking and containment methods are effective for managing non-municipal waste streams that present biological contamination, thermal runaway, or spoilage risks?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-00",
+      "name": "Demographic Longevity and Long-Term Care Infrastructure",
+      "source_ids": [
+        "OFFICIAL-1bf7efd28d64"
+      ],
+      "question": "What institutional frameworks are required to align primary health care systems with long-term care needs in regions undergoing rapid demographic ageing?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-01",
+      "name": "Climate Extreme Vulnerability and Health System Strain",
+      "source_ids": [
+        "OA-ba418ee71ac82d",
+        "EPMC-871d10af9889",
+        "EPMC-fb93375cb76d"
+      ],
+      "question": "How do extreme climate hazards translate into acute population vulnerabilities and health system operational deficits?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-01",
+      "name": "Indoor and Occupational Environmental Contaminant Exposures",
+      "source_ids": [
+        "EPMC-15ee874ecc38",
+        "OA-0c2db6ec316fbc"
+      ],
+      "question": "What are the non-dietary, inhalation, and bioaerosol pathways through which micro-environmental exposures induce biological risk?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-01",
+      "name": "Lithium-Ion Battery Recycling Technologies and Techno-Economics",
+      "source_ids": [
+        "EPMC-1d4b60c85f48",
+        "OA-2c8a36e510bc7f"
+      ],
+      "question": "What chemical processes and logistical factors determine the technical regenerability and economic viability of spent lithium-ion battery recycling?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-01",
+      "name": "Health Policy Infrastructure and Digital Work Vulnerabilities",
+      "source_ids": [
+        "OFFICIAL-31e8ca003c74",
+        "OA-79031782b475fb"
+      ],
+      "question": "How do structural, institutional, and platform arrangements shape health literacy and occupational health outcomes?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-02",
+      "name": "Canine rabies transmission dynamics and free-roaming dog population management",
+      "source_ids": [
+        "OA-3e8660cfa6d4bf",
+        "OA-3c3cd5c7fc6491",
+        "OA-d94945c2bf53f3"
+      ],
+      "question": "How do human ownership practices, dog translocation, and post-vaccination seroconversion failure rates limit the efficacy of canine rabies elimination strategies compared to density-reduction assumptions?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-02",
+      "name": "Battery recycling system engineering and toxic exposure regulation",
+      "source_ids": [
+        "OA-53d2760b3abab4",
+        "OFFICIAL-738822d05941"
+      ],
+      "question": "How can battery design optimization and regulatory controls mitigate environmental contamination while maintaining operational feasibility across differing battery recycling sectors?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-02",
+      "name": "Urban exposure and population vulnerability to climate extremes",
+      "source_ids": [
+        "OA-f84a08fcbd0caa",
+        "EPMC-0715c73feecf"
+      ],
+      "question": "How do urban growth and demographic changes interact with climate extremes to drive projected mortality and flood risks in urban centers?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-02",
+      "name": "Platform delivery labor conditions and algorithmic occupational injury",
+      "source_ids": [
+        "EPMC-aa4339ee2731"
+      ],
+      "question": "What structural and algorithmic determinants cause elevated rates of traffic collisions and musculoskeletal injuries among platform delivery riders?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-02",
+      "name": "Global digital health policy and workforce infrastructure",
+      "source_ids": [
+        "OFFICIAL-6d6012da212a"
+      ],
+      "question": "How do international digital health frameworks and payment mechanisms translate institutional strategies into frontline healthcare delivery?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-03",
+      "name": "Occupational and Environmental Toxicant Exposures in E-Waste and Recycling",
+      "source_ids": [
+        "OFFICIAL-7e900895fc66",
+        "EPMC-64a62b7ee309",
+        "OA-eb3cd7c2915125"
+      ],
+      "question": "To what extent do formal and informal electronic waste recycling processes elevate heavy metal and plasticizer exposures and associated biomarkers in workers and nearby populations?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-03",
+      "name": "Indoor Air Quality, Mechanical Ventilation, and Respiratory Health",
+      "source_ids": [
+        "EPMC-e2f3b5123391",
+        "OA-a22f19815c0834"
+      ],
+      "question": "How effectively do mechanical ventilation and filtration interventions reduce pollutant concentrations and improve respiratory outcomes in vulnerable children and asthmatic households?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-03",
+      "name": "Structural Policies and Practical Realities of Malnutrition and Food Insecurity",
+      "source_ids": [
+        "OFFICIAL-86c5d4ade74b",
+        "OA-8e75d5d1b1f35b"
+      ],
+      "question": "How do grassroots food redistribution initiatives align with or fall short of high-level international nutrition targets and institutional policy frameworks?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-03",
+      "name": "Organizational and Environmental Risk Mitigation Systems",
+      "source_ids": [
+        "OA-bdb9fd8d22baf8",
+        "OA-cf7a010e9ed8d1"
+      ],
+      "question": "How do early warning systems and worker protection frameworks address systemic vulnerabilities arising from climate extremes and precarious work structures?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-04",
+      "name": "Informal Waste and E-Waste Occupational Health Hazards",
+      "source_ids": [
+        "OFFICIAL-ac48369a71d0",
+        "OA-f6a6c0d295f4a1",
+        "OA-b004c71e7a2adf"
+      ],
+      "question": "What are the specific toxicological, respiratory, and developmental health consequences of informal waste and e-waste recycling on vulnerable worker and pediatric populations?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-04",
+      "name": "Free-Roaming Dog Population Ecology and Rabies Control",
+      "source_ids": [
+        "OA-cac905fc406101",
+        "EPMC-7329c77af95d"
+      ],
+      "question": "How do demographic turnover, carrying capacity, and post-removal compensation affect the feasibility of maintaining herd immunity thresholds against rabies in free-roaming dogs?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-04",
+      "name": "Algorithmic Governance and Labor Dynamics in the Gig Economy",
+      "source_ids": [
+        "EPMC-83a764d60470",
+        "OA-6642b2dc88be44"
+      ],
+      "question": "How does algorithmic management in app-mediated gig work shape employment relationships and manifest in worker sentiment regarding autonomy and fairness?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-04",
+      "name": "Institutional Health Prioritization and Urban Public Health Strategy",
+      "source_ids": [
+        "OFFICIAL-a6feb7e72ecd",
+        "OFFICIAL-b67462393768"
+      ],
+      "question": "How can institutional prioritization frameworks and multisectoral governance translate high-level strategies into measurable urban health improvements?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-05",
+      "name": "Classroom Indoor Air Quality and Occupant Health",
+      "source_ids": [
+        "OA-4f0f6d04561a0f",
+        "OA-d018a574aec782"
+      ],
+      "question": "To what extent do inadequate ventilation and elevated indoor CO2 levels directly impair cognitive performance versus causing respiratory and allergic symptoms in school environments?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-05",
+      "name": "Urban Climate Hazards and Disaster Health Preparedness",
+      "source_ids": [
+        "OA-0b799176aa3262",
+        "OA-57bba7412a5fbd",
+        "OFFICIAL-dbee83ba8137"
+      ],
+      "question": "How can predictive technologies and long-term risk management policies protect vulnerable urban populations from intensifying hydrometeorological and extreme heat disasters?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-05",
+      "name": "Waste Stream Circularity and Resource Recovery Governance",
+      "source_ids": [
+        "EPMC-5e474470179c",
+        "OA-dbc0b8d397869b"
+      ],
+      "question": "What institutional, technological, and infrastructural constraints prevent circular recovery and redistribution systems from mitigating systemic environmental and socio-economic hazards?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-05",
+      "name": "Algorithmic Labor Coordination and Worker Impacts",
+      "source_ids": [
+        "OA-e29dc4e0a782ec"
+      ],
+      "question": "Through what mediating pathways do specific dimensions of platform algorithmic management impact gig worker outcomes and behavior?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-05",
+      "name": "Zoned Animal Population Control and Rabies Management",
+      "source_ids": [
+        "EPMC-088e66a2f887"
+      ],
+      "question": "How effectively do spatial zoning and buffer-zone interventions sustain free-roaming dog population reduction and community vaccination coverage?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-06",
+      "name": "Food Surplus Redistribution and Nutrition Assistance Systems",
+      "source_ids": [
+        "OA-88cafd9405fbed",
+        "EPMC-7deb988ae2ab",
+        "OFFICIAL-f3af73407d74",
+        "EPMC-826342b4eec2"
+      ],
+      "question": "How do operational configurations and social market models in food surplus redistribution affect environmental savings, food insecurity relief, and underlying systemic supply-chain waste?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-06",
+      "name": "Extreme Heat Exposure and Pediatric Vulnerability Disparities",
+      "source_ids": [
+        "OA-d26245f891f838",
+        "EPMC-9e020968a7d4"
+      ],
+      "question": "How do geographical publication biases in heatwave research compare with localized empirical disparities in pediatric heatwave mortality across urban and rural settings?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-06",
+      "name": "Electronic Waste Processing, Battery Recycling, and Nanomaterial Hazards",
+      "source_ids": [
+        "OA-4a59c468fd7941",
+        "EPMC-c4308276b606"
+      ],
+      "question": "What technological schemes and toxicological risks characterize the lifecycle management of spent batteries and electronic waste weathering?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "batch_id": "shard-06",
+      "name": "Community-Level Flash Flood Early Warning and Drowning Mitigation",
+      "source_ids": [
+        "OFFICIAL-f3e30d7ac5a5"
+      ],
+      "question": "How do international early warning frameworks integrate with local search-and-rescue protocols to mitigate drowning mortality during flash floods?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "proposed_links": [
+    {
+      "batch_id": "shard-00",
+      "from_source": "OA-1139840a6d83ac",
+      "to_source": "OFFICIAL-0f3441051449",
+      "relation": "corroborates",
+      "reason": "OA-1139840a6d83ac documents that environmental air pollutants circulating through ventilation systems exacerbate student asthma, corroborating WHO's guidance in OFFICIAL-0f3441051449 that air pollution exposure is a primary risk factor for chronic asthma.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-00",
+      "from_source": "OFFICIAL-04c6c3a2a87e",
+      "to_source": "OA-1139840a6d83ac",
+      "relation": "qualifies",
+      "reason": "OFFICIAL-04c6c3a2a87e recommends increasing indoor air exchange and opening windows to mitigate pathogen transmission, whereas OA-1139840a6d83ac notes that drawing outdoor air directly inside can introduce outdoor industrial toxins and particulate allergens into school buildings.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-00",
+      "from_source": "OFFICIAL-194f3653ddf1",
+      "to_source": "OA-4ecb63fe5958c9",
+      "relation": "qualifies",
+      "reason": "While OA-4ecb63fe5958c9 focuses coastal urban risk adaptation primarily on hydrologic flooding threats, OFFICIAL-194f3653ddf1 qualifies municipal climate adaptation priorities by identifying heatwaves as an equally critical weather-related hazard disproportionately impacting urban poor and informal settlements.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-00",
+      "from_source": "OFFICIAL-1bf7efd28d64",
+      "to_source": "OFFICIAL-194f3653ddf1",
+      "relation": "corroborates",
+      "reason": "OFFICIAL-1bf7efd28d64 emphasizes that older populations carry high rates of noncommunicable cardiovascular and chronic conditions, corroborating OFFICIAL-194f3653ddf1's designation of older adults as physiologically high-risk cohorts requiring prioritized cooling and early warnings during extreme heat.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-01",
+      "from_source": "EPMC-871d10af9889",
+      "to_source": "EPMC-fb93375cb76d",
+      "relation": "corroborates",
+      "reason": "Both document that recurrent flooding causes severe infrastructure damage, displacement, and elevated injury or infectious disease risks in urbanizing Global South populations.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-01",
+      "from_source": "OA-ba418ee71ac82d",
+      "to_source": "EPMC-fb93375cb76d",
+      "relation": "corroborates",
+      "reason": "Both identify multi-sectoral institutional coordination and early warning integration as critical weak points in preparing health systems for climate shocks.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-01",
+      "from_source": "EPMC-1d4b60c85f48",
+      "to_source": "OA-2c8a36e510bc7f",
+      "relation": "qualifies",
+      "reason": "The economic model highlights that profitability depends strongly on recycling method and cathode chemistry (e.g., high revenue for cobalt in Tesla Model S), whereas EPMC-1d4b60c85f48 develops a low-cost regeneration process targeting cobalt-free LiFePO₄ cathodes.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-01",
+      "from_source": "EPMC-15ee874ecc38",
+      "to_source": "OA-0c2db6ec316fbc",
+      "relation": "corroborates",
+      "reason": "Both demonstrate that non-dietary micro-environmental exposure routes (indoor air inhalation and settled dust) constitute significant exposure pathways to biological and chemical stressors.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-01",
+      "from_source": "OA-79031782b475fb",
+      "to_source": "EPMC-15ee874ecc38",
+      "relation": "methodological_gap",
+      "reason": "Both reviews highlight that the respective evidence bases are constrained by a predominance of observational/cross-sectional data and lack longitudinal or causal designs.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-02",
+      "from_source": "OA-d94945c2bf53f3",
+      "to_source": "OA-3e8660cfa6d4bf",
+      "relation": "corroborates",
+      "reason": "Empirical cohort observation that free-roaming dog numbers are governed by human ownership and translocation rather than environmental carrying capacity corroborates the review's conclusion that density-reduction via culling is theoretically flawed and ineffective.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-02",
+      "from_source": "OA-3c3cd5c7fc6491",
+      "to_source": "OA-3e8660cfa6d4bf",
+      "relation": "qualifies",
+      "reason": "Pilot field testing showing that only 56.3% of free-roaming dogs maintained protective antibody levels four months after parenteral vaccination qualifies the general conclusion that vaccination alone reliably eliminates rabies without address of booster timing and individual immune variation.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-02",
+      "from_source": "OA-d94945c2bf53f3",
+      "to_source": "OA-3c3cd5c7fc6491",
+      "relation": "qualifies",
+      "reason": "Demonstration that dog populations experience substantial ongoing turnover via human translocation qualifies the expected community-level duration of immunity achieved in localized cohort vaccinations.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-02",
+      "from_source": "OA-f84a08fcbd0caa",
+      "to_source": "EPMC-0715c73feecf",
+      "relation": "corroborates",
+      "reason": "Both sources identify urban densification and rapid demographic expansion as primary non-climatic drivers exacerbating the health and physical impacts of environmental extremes.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-03",
+      "from_source": "OA-eb3cd7c2915125",
+      "to_source": "OFFICIAL-7e900895fc66",
+      "relation": "corroborates",
+      "reason": "Empirically confirms elevated lead biomarkers among recycling workers, validating lead-acid and e-waste recycling as significant sources of toxicant exposure described in official toxicological guidance.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-03",
+      "from_source": "OA-eb3cd7c2915125",
+      "to_source": "EPMC-64a62b7ee309",
+      "relation": "qualifies",
+      "reason": "Demonstrates that substantial toxicant exposure occurs even in formal Swedish e-waste facilities, qualifying assumptions that hazardous recycling exposures are solely confined to informal sector contexts.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-03",
+      "from_source": "EPMC-e2f3b5123391",
+      "to_source": "OA-a22f19815c0834",
+      "relation": "methodological_gap",
+      "reason": "Addresses the limitation of observational classroom IAQ reviews by deploying a randomized, placebo-controlled trial protocol to directly evaluate active ventilation and air cleaning.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-03",
+      "from_source": "OA-8e75d5d1b1f35b",
+      "to_source": "OFFICIAL-86c5d4ade74b",
+      "relation": "qualifies",
+      "reason": "Identifies that local food insecurity efforts often place excessive burden on under-resourced rescue charities, qualifying top-down international commitments that presume functional food redistribution systems.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-04",
+      "from_source": "OA-b004c71e7a2adf",
+      "to_source": "OFFICIAL-ac48369a71d0",
+      "relation": "corroborates",
+      "reason": "Empirical epidemiological findings of decreased pediatric forced vital capacity and adverse neonatal outcomes substantiate official guidance regarding pediatric vulnerability to e-waste toxicants.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-04",
+      "from_source": "OA-b004c71e7a2adf",
+      "to_source": "OA-f6a6c0d295f4a1",
+      "relation": "corroborates",
+      "reason": "Observed DNA damage and respiratory deficits confirm broader review findings that primitive informal recycling techniques create serious occupational and public health injuries.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-04",
+      "from_source": "EPMC-7329c77af95d",
+      "to_source": "OA-cac905fc406101",
+      "relation": "qualifies",
+      "reason": "Conceptual demonstration that dog replacement dynamics are bounded and context-specific qualifies assumptions regarding demographic instability and supports the empirical feasibility of maintaining vaccination coverage.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-04",
+      "from_source": "EPMC-83a764d60470",
+      "to_source": "OA-6642b2dc88be44",
+      "relation": "corroborates",
+      "reason": "Computational analysis showing predominant negative sentiment around algorithmic control provides empirical discourse evidence for the theoretical claim that algorithmic management alters employment relations in app-work.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-05",
+      "from_source": "OA-4f0f6d04561a0f",
+      "to_source": "OA-d018a574aec782",
+      "relation": "qualifies",
+      "reason": "OA-4f0f6d04561a0f corroborates the prevalence of elevated classroom CO2 and ventilation deficiencies noted in OA-d018a574aec782, but qualifies the health symptom profile by finding that CO2 was significantly associated only with concentration deficits (p = 0.002) and had no other significant associations with respiratory or allergic diseases.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-05",
+      "from_source": "OA-0b799176aa3262",
+      "to_source": "OFFICIAL-dbee83ba8137",
+      "relation": "corroborates",
+      "reason": "OA-0b799176aa3262 corroborates the WHO regional guidance's emphasis on timely and coordinated disaster emergency response by demonstrating that digital twin technology and remote sensing can reduce urban flood response times by up to 40%.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-06",
+      "from_source": "OA-d26245f891f838",
+      "to_source": "EPMC-9e020968a7d4",
+      "relation": "qualifies",
+      "reason": "OA-d26245f891f838 identifies a severe underrepresentation of vulnerable regions and non-high-income contexts in global heatwave literature, which EPMC-9e020968a7d4 directly qualifies by analyzing under-5 mortality in China across rural and urban populations.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-06",
+      "from_source": "OA-88cafd9405fbed",
+      "to_source": "EPMC-7deb988ae2ab",
+      "relation": "corroborates",
+      "reason": "Both reviews corroborate that while surplus redistribution channels provide vital proximate relief, they operate as palliative interventions constrained by larger supply-chain inefficiencies and regulatory hurdles.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-06",
+      "from_source": "EPMC-826342b4eec2",
+      "to_source": "EPMC-7deb988ae2ab",
+      "relation": "corroborates",
+      "reason": "EPMC-826342b4eec2 provides life cycle evidence demonstrating net environmental benefits from diverting surplus food from landfilling, corroborating the waste-reduction role described for social supermarket models in EPMC-7deb988ae2ab.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "batch_id": "shard-06",
+      "from_source": "OA-4a59c468fd7941",
+      "to_source": "EPMC-c4308276b606",
+      "relation": "qualifies",
+      "reason": "OA-4a59c468fd7941 focuses on process categorization for recycling spent lithium-ion batteries, while EPMC-c4308276b606 qualifies recycling systems by emphasizing that processing and weathering of electronic waste generate bioavailable nanoscale pollutants.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "batch_id": "shard-00",
+      "question": "What quantitative reductions in pediatric asthma flare-ups occur when school HVAC upgrades are combined with active indoor air filtration versus standard window ventilation in polluted urban zones?",
+      "source_ids": [
+        "OA-1139840a6d83ac",
+        "OFFICIAL-0f3441051449",
+        "OFFICIAL-04c6c3a2a87e"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-00",
+      "question": "Does continuous sensor monitoring during transit maintain cold-chain food safety and bacterial thresholds reliably across seasonal monsoon and high-temperature conditions in regional food rescue operations?",
+      "source_ids": [
+        "OA-da5bbdb0bf0dd0"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-00",
+      "question": "To what degree do current Indian coastal city master plans integrate heat action interventions with structural flood mitigation infrastructure in vulnerable informal coastal settlements?",
+      "source_ids": [
+        "OA-4ecb63fe5958c9",
+        "OFFICIAL-194f3653ddf1"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-00",
+      "question": "What specific pre-treatment and inerting standards reliably suppress thermal runaway risk during the commercial storage and transit of end-of-life battery black mass?",
+      "source_ids": [
+        "OA-8d5107d133682c"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-01",
+      "question": "Do heat health warning systems (HHWS) in European municipalities produce measurable reductions in all-cause excess mortality during prolonged extreme heat episodes?",
+      "source_ids": [
+        "OA-ba418ee71ac82d"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-01",
+      "question": "Does the hydrothermally regenerated LiFePO₄ cathode material retain cycling stability and cost advantages when scaled up from laboratory batches to industrial recycling lines?",
+      "source_ids": [
+        "EPMC-1d4b60c85f48",
+        "OA-2c8a36e510bc7f"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-01",
+      "question": "What are the measured clinical biomarkers of organ toxicity or neuroendocrine disruption in informal e-waste workers exposed to high levels of BFRs and PCBs via dust ingestion?",
+      "source_ids": [
+        "OA-0c2db6ec316fbc"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-01",
+      "question": "What prospective, longitudinal health outcomes differentiate platform gig workers from comparable non-gig workers after controlling for baseline socio-demographic confounders?",
+      "source_ids": [
+        "OA-79031782b475fb"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-02",
+      "question": "What minimum annual revaccination coverage rate is necessary to prevent rabies outbreaks in free-roaming dog populations characterized by high rates of human-mediated translocation and suboptimal individual seroconversion?",
+      "source_ids": [
+        "OA-3e8660cfa6d4bf",
+        "OA-3c3cd5c7fc6491",
+        "OA-d94945c2bf53f3"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-02",
+      "question": "How do upstream design modifications in lithium-ion battery packs alter the release and occupational exposure to toxic components relative to the well-documented heavy metal emission pathways in lead-acid battery recycling?",
+      "source_ids": [
+        "OA-53d2760b3abab4",
+        "OFFICIAL-738822d05941"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-02",
+      "question": "What empirically measured reduction in heatwave-related mortality or flood-induced economic loss has been achieved by specific implemented urban climate adaptation frameworks versus simulated scenarios?",
+      "source_ids": [
+        "OA-f84a08fcbd0caa",
+        "EPMC-0715c73feecf"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-02",
+      "question": "Which specific upstream modifications to platform dispatch algorithms or piece-rate incentives yield measurable reductions in delivery courier road traffic injuries in longitudinal evaluations?",
+      "source_ids": [
+        "EPMC-aa4339ee2731"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-03",
+      "question": "Do formal e-waste facilities with engineering controls prevent long-term clinical toxicant pathologies compared to unregulated informal dismantling sites?",
+      "source_ids": [
+        "OA-eb3cd7c2915125",
+        "EPMC-64a62b7ee309"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-03",
+      "question": "Do residential mechanical ventilation (ERV) or portable air cleaning interventions yield sustained, clinically significant improvements in pediatric asthma control over multi-year periods?",
+      "source_ids": [
+        "EPMC-e2f3b5123391",
+        "OA-a22f19815c0834"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-03",
+      "question": "To what extent do food waste redistribution charities meet the specific dietary and micronutrient standards required to prevent child wasting and malnutrition?",
+      "source_ids": [
+        "OA-8e75d5d1b1f35b",
+        "OFFICIAL-86c5d4ade74b"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-03",
+      "question": "What measurable reduction in heat-related morbidity and mortality is attributable to European Heatwave Early Warning Systems across different vulnerable demographics?",
+      "source_ids": [
+        "OA-cf7a010e9ed8d1"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-04",
+      "question": "Do the epidemiological associations between informal e-waste exposure and adverse neonatal/respiratory outcomes observed in southeast China replicate in other LMIC informal recycling contexts?",
+      "source_ids": [
+        "OA-b004c71e7a2adf",
+        "OFFICIAL-ac48369a71d0"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-04",
+      "question": "Does achieving an annual 70% vaccination coverage rate in free-roaming dog populations successfully halt rabies transmission when open-population recruitment and immigration are high?",
+      "source_ids": [
+        "OA-cac905fc406101",
+        "EPMC-7329c77af95d"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-04",
+      "question": "How do negative affective expressions in aggregate online gig-worker discourse map onto individual worker retention, clinical psychological morbidity, and distinct gig work variants?",
+      "source_ids": [
+        "EPMC-83a764d60470",
+        "OA-6642b2dc88be44"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-04",
+      "question": "What measurable impact does the implementation of institutional digital research prioritization platforms have on resource allocation and downstream urban population health indicators?",
+      "source_ids": [
+        "OFFICIAL-a6feb7e72ecd",
+        "OFFICIAL-b67462393768"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-05",
+      "question": "Does the documented reduction in free-roaming dogs requiring sterilization under the zoned CNVR program translate to a measurable reduction in human rabies incidence or animal-to-human bite rates in Anuradhapura?",
+      "source_ids": [
+        "EPMC-088e66a2f887"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-05",
+      "question": "Are the cognitive concentration deficits observed under elevated classroom CO2 caused directly by CO2 exposure or do they reflect unmeasured co-occurring contaminants resulting from low ventilation?",
+      "source_ids": [
+        "OA-4f0f6d04561a0f",
+        "OA-d018a574aec782"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-05",
+      "question": "Can digital twin urban flood models achieve reported response time improvements in resource-constrained municipalities without access to dense IoT networks and high-resolution satellite streams?",
+      "source_ids": [
+        "OA-0b799176aa3262",
+        "OFFICIAL-dbee83ba8137"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-05",
+      "question": "What measurable impact do municipal structural adaptations and green infrastructure have on reducing clinical heat exhaustion among low-income outdoor workers compared to individual behavioral modifications?",
+      "source_ids": [
+        "OA-57bba7412a5fbd"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-05",
+      "question": "What standardized validation metrics and closed-loop process controls are required to scale AI-driven battery waste sorting from laboratory demonstrations to heterogeneous commercial scrap streams?",
+      "source_ids": [
+        "EPMC-5e474470179c"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-06",
+      "question": "To what degree do redistribution programs delivering surplus produce improve verified biological indicators of malnutrition (such as wasting or stunting) rather than merely providing temporary caloric assistance?",
+      "source_ids": [
+        "OA-88cafd9405fbed",
+        "EPMC-7deb988ae2ab",
+        "OFFICIAL-f3af73407d74"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-06",
+      "question": "What specific microclimatic, housing, or healthcare access mechanisms account for the heightened nighttime heatwave mortality observed in rural infants compared to urban peers?",
+      "source_ids": [
+        "OA-d26245f891f838",
+        "EPMC-9e020968a7d4"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-06",
+      "question": "What proportion of battery and electronic waste recycling facilities worldwide release hazardous electronic waste-derived nanomaterials during mechanical or thermal processing stages?",
+      "source_ids": [
+        "OA-4a59c468fd7941",
+        "EPMC-c4308276b606"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "batch_id": "shard-06",
+      "question": "What are the independently measured causal reductions in drowning mortality attributable to the Flash Flood Guidance System versus baseline evacuation capability in rural communities?",
+      "source_ids": [
+        "OFFICIAL-f3e30d7ac5a5"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "independent_scientific_validation": false,
+  "accepted_evidence": 0,
+  "no_preassigned_module_taxonomy": true,
+  "all_sources_mapped": true,
+  "boundary": "Mapping is model-generated from a heterogeneous dump; ontology, clusters and links still need blind review."
+}

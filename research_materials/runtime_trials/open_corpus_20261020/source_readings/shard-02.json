@@ -1,0 +1,239 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-02",
+  "source_readings": [
+    {
+      "source_id": "OA-3e8660cfa6d4bf",
+      "source_url": "https://doi.org/10.1111/j.1365-2656.2012.02033.x",
+      "source_sha256": "da7993ed973199d3bfa291048b2564fe2f586e9298b67a9f133b3790ec2d00b2",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Critical review finds canine rabies transmission does not follow simple density-dependent assumptions, culling fails to control the disease, and vaccination represents the most effective intervention.",
+      "quote_sha256": "89e3b4e46f62ee96a16ac7f1f653172bb85a730e8d72a30800d2c7bf26b0e5db",
+      "scope": "Global canine and wildlife rabies epidemiology and disease control literature",
+      "caveat": "Bibliographic abstract of a literature review; does not provide original field trial data, empirical coverage thresholds, or direct program implementation outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-53d2760b3abab4",
+      "source_url": "https://doi.org/10.1039/d0gc02745f",
+      "source_sha256": "edaf85f0cb26bd8deca91f907df175f5200412be7eba737e57dd3ff44c4a5593",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Upstream product design is a critical determinant governing the operational efficiency and economic viability of lithium-ion battery recycling systems.",
+      "quote_sha256": "85d82a827df4a0edf6d06dce5db724a9e112cb84b479e75a69345b264d53c864",
+      "scope": "Lithium-ion battery manufacturing design and recycling flowsheet engineering",
+      "caveat": "Extremely brief bibliographic abstract lead; does not detail specific design modifications, recycling chemistries, recovery rates, or empirical cost-benefit analyses.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-f84a08fcbd0caa",
+      "source_url": "https://doi.org/10.3390/hydrology9030050",
+      "source_sha256": "77dcb85ec077ffe97ade2df267fb71c50398ef96fb5ada119718bfbd7a8b86b0",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Urban flood risk modelling and management face growing complexity across multiple flood sources, with vulnerability compounding under climate change, urban densification, and population expansion.",
+      "quote_sha256": "8b47a04682e6ecd37d104a803385c0fa6a159ce140b74bf3abd716e9981eb5ad",
+      "scope": "Global urban areas; scientific review of flood risk modelling, management, and adaptation",
+      "caveat": "Review paper abstract outlining conceptual and modelling challenges; does not measure local hydrologic outcomes, infrastructure failure rates, or post-intervention flood mitigation efficacy.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-0715c73feecf",
+      "source_url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+      "source_sha256": "9a1c54a7e6c2c080e58d1391380d84ca7bd79655d24ba86404130a2832ba0655",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Grid-based global simulation projects that heatwave-attributable annual deaths could increase to between 5.3 million and 16.1 million by the 2090s depending on emissions and adaptation pathways, with Sub-Saharan Africa bearing the highest burden.",
+      "quote_sha256": "0d24370e9ab65a9185590de1f04706c05f7a342f6258aa31a84d1e1a87277753",
+      "scope": "Global grid-level simulation across 176 countries and 750 historical baseline locations, projecting to the 2030s, 2050s, and 2090s across SSP scenarios",
+      "caveat": "Model-derived projections dependent on CMIP6 climate models and socioeconomic assumptions; cannot demonstrate observed future mortality or measure empirical local public health adaptation success.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-3c3cd5c7fc6491",
+      "source_url": "https://doi.org/10.15421/022426",
+      "source_sha256": "96e7b9844a00439b1a05a58d7ef1b1582af03a63d28cf00daf920e61a2e9454a",
+      "role": "measured_program_outcome",
+      "fit": "relevant",
+      "statement": "In an empirical pilot vaccination program of 160 free-roaming dogs in Ukraine, only 56.3% of the sampled subgroup achieved virus-neutralizing antibody levels exceeding the 0.5 IU/mL protective threshold four months post-vaccination.",
+      "quote_sha256": "f4079062204e9d4f1c82f36be29371dbe8f7aaa43892388b247fe947b9e65129",
+      "scope": "Endemic rabies sectors in Ukraine; pilot cohort of 160 vaccinated free-roaming dogs with 16 serologically tested animals over 4 months",
+      "caveat": "Very small serological sample size (n=16) and cross-sectional sampling; does not demonstrate herd immunity durability, clinical bite protection, or community-wide rabies transmission reduction.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-d94945c2bf53f3",
+      "source_url": "https://doi.org/10.1111/1365-2664.12279",
+      "source_sha256": "83bf5054d231895a328b52149395a9c99617a30ddef98abfc9e7f38862f2a818",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A 3-year cohort study shows free-roaming dog populations were stable or declining and regulated by human ownership and demand rather than resource carrying capacity, with significant population influx driven by human translocation.",
+      "quote_sha256": "8d0cb8984a48233756f80cff2afe95c7fdcc79e848aecfd664acdae358e46e51",
+      "scope": "Four free-roaming dog communities in Bali, Indonesia and Johannesburg, South Africa across a 3-year longitudinal monitoring period",
+      "caveat": "Conducted in communities without municipal management interventions; does not test the comparative epidemiological efficacy of active vaccination campaigns or spay/neuter programs.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-6d6012da212a",
+      "source_url": "https://www.who.int/health-topics/digital-health",
+      "source_sha256": "caaaf9014af5c35cf45f040555e1369b7d0ce466da6700c440661fff158daffa",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "WHO policy framework establishes strategic objectives to advance digital health adoption, data interoperability, and evidence-informed digital health workforce solutions.",
+      "quote_sha256": "27e72fa7911b9a641ce74aab76acceb86bd07948c0944965055c336e26e0d26b",
+      "scope": "Global health policy guidance and strategic roadmap adopted by the World Health Assembly in 2020",
+      "caveat": "High-level institutional policy text; does not report empirical implementation rates, verified payment distribution data, or measurable health worker retention metrics.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-738822d05941",
+      "source_url": "https://www.who.int/publications/i/item/9789241512855",
+      "source_sha256": "6057bc8c04d663d2ce4eb1db0105f28196574e8602f3f166bbd5fbd969b7ee22",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Official guidance outlines health and environmental hazards from informal and unregulated used lead-acid battery recycling, providing control measures and advocacy targets for policymakers.",
+      "quote_sha256": "9afcfa2804293716cda15290fc83a3c2ae54d87183ba604c29abec019b88b08f",
+      "scope": "Global public health sector and regulatory bodies managing used lead-acid battery recycling",
+      "caveat": "Informational advocacy brief; does not audit specific recycling facility compliance, quantify workplace emission reductions, or measure clinical lead biomarker drops.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-aa4339ee2731",
+      "source_url": "https://doi.org/10.3389/fpubh.2026.1932962",
+      "source_sha256": "b784801e964df20858f4998829e169d366cfe00059a0f359ff58d0bbb10b55a7",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Narrative review identifies platform food delivery riders in China as facing severe interrelated occupational injuries, sleep disturbance, and psychological stress driven structurally by algorithmic management and delivery pressure.",
+      "quote_sha256": "9779abf3101ed6e0ab31d03042bcf66c64778b67cf1c4f33007ecabd9240a089",
+      "scope": "Platform-based on-demand food delivery couriers in China; review of 47 studies published from 2015 to 2026",
+      "caveat": "Synthesizes primarily cross-sectional and self-reported studies; lacks causal longitudinal evaluations and measured outcomes from specific regulatory or algorithmic governance interventions.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Canine rabies transmission dynamics and free-roaming dog population management",
+      "source_ids": [
+        "OA-3e8660cfa6d4bf",
+        "OA-3c3cd5c7fc6491",
+        "OA-d94945c2bf53f3"
+      ],
+      "question": "How do human ownership practices, dog translocation, and post-vaccination seroconversion failure rates limit the efficacy of canine rabies elimination strategies compared to density-reduction assumptions?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Battery recycling system engineering and toxic exposure regulation",
+      "source_ids": [
+        "OA-53d2760b3abab4",
+        "OFFICIAL-738822d05941"
+      ],
+      "question": "How can battery design optimization and regulatory controls mitigate environmental contamination while maintaining operational feasibility across differing battery recycling sectors?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Urban exposure and population vulnerability to climate extremes",
+      "source_ids": [
+        "OA-f84a08fcbd0caa",
+        "EPMC-0715c73feecf"
+      ],
+      "question": "How do urban growth and demographic changes interact with climate extremes to drive projected mortality and flood risks in urban centers?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Platform delivery labor conditions and algorithmic occupational injury",
+      "source_ids": [
+        "EPMC-aa4339ee2731"
+      ],
+      "question": "What structural and algorithmic determinants cause elevated rates of traffic collisions and musculoskeletal injuries among platform delivery riders?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Global digital health policy and workforce infrastructure",
+      "source_ids": [
+        "OFFICIAL-6d6012da212a"
+      ],
+      "question": "How do international digital health frameworks and payment mechanisms translate institutional strategies into frontline healthcare delivery?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "OA-d94945c2bf53f3",
+      "to_source": "OA-3e8660cfa6d4bf",
+      "relation": "corroborates",
+      "reason": "Empirical cohort observation that free-roaming dog numbers are governed by human ownership and translocation rather than environmental carrying capacity corroborates the review's conclusion that density-reduction via culling is theoretically flawed and ineffective.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-3c3cd5c7fc6491",
+      "to_source": "OA-3e8660cfa6d4bf",
+      "relation": "qualifies",
+      "reason": "Pilot field testing showing that only 56.3% of free-roaming dogs maintained protective antibody levels four months after parenteral vaccination qualifies the general conclusion that vaccination alone reliably eliminates rabies without address of booster timing and individual immune variation.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-d94945c2bf53f3",
+      "to_source": "OA-3c3cd5c7fc6491",
+      "relation": "qualifies",
+      "reason": "Demonstration that dog populations experience substantial ongoing turnover via human translocation qualifies the expected community-level duration of immunity achieved in localized cohort vaccinations.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-f84a08fcbd0caa",
+      "to_source": "EPMC-0715c73feecf",
+      "relation": "corroborates",
+      "reason": "Both sources identify urban densification and rapid demographic expansion as primary non-climatic drivers exacerbating the health and physical impacts of environmental extremes.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "What minimum annual revaccination coverage rate is necessary to prevent rabies outbreaks in free-roaming dog populations characterized by high rates of human-mediated translocation and suboptimal individual seroconversion?",
+      "source_ids": [
+        "OA-3e8660cfa6d4bf",
+        "OA-3c3cd5c7fc6491",
+        "OA-d94945c2bf53f3"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "How do upstream design modifications in lithium-ion battery packs alter the release and occupational exposure to toxic components relative to the well-documented heavy metal emission pathways in lead-acid battery recycling?",
+      "source_ids": [
+        "OA-53d2760b3abab4",
+        "OFFICIAL-738822d05941"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What empirically measured reduction in heatwave-related mortality or flood-induced economic loss has been achieved by specific implemented urban climate adaptation frameworks versus simulated scenarios?",
+      "source_ids": [
+        "OA-f84a08fcbd0caa",
+        "EPMC-0715c73feecf"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Which specific upstream modifications to platform dispatch algorithms or piece-rate incentives yield measurable reductions in delivery courier road traffic injuries in longitudinal evaluations?",
+      "source_ids": [
+        "EPMC-aa4339ee2731"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}

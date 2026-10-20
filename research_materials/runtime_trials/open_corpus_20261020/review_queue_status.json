@@ -1,0 +1,23 @@
+{
+  "schema": "cite_refinery.blinded_review_manifest.v1",
+  "source_count": 12,
+  "source_ids": [
+    "EPMC-0715c73feecf",
+    "EPMC-15ee874ecc38",
+    "EPMC-9e020968a7d4",
+    "EPMC-c4308276b606",
+    "OA-6642b2dc88be44",
+    "OA-8d5107d133682c",
+    "OA-8e75d5d1b1f35b",
+    "OA-d018a574aec782",
+    "OFFICIAL-0f3441051449",
+    "OFFICIAL-31e8ca003c74",
+    "OFFICIAL-ac48369a71d0",
+    "OFFICIAL-b67462393768"
+  ],
+  "annotation_status": "not_started",
+  "gold_label_count": 0,
+  "precision_recall_computed": false,
+  "source_excerpts": "available_only_in_authorized_local_dump",
+  "note": "Human reviewer must annotate raw passages without seeing model labels. No annotations exist yet."
+}

@@ -1,0 +1,230 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-05",
+  "source_readings": [
+    {
+      "source_id": "OA-0b799176aa3262",
+      "source_url": "https://doi.org/10.3390/rs17173104",
+      "source_sha256": "12d06d6bbecabc4f9f195ba2cb1e0246ad7a0f0a5ee14e7e78767a6f35f4565a",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A systematic review of 85 peer-reviewed studies finds that digital twin technology integrating remote sensing and machine learning can reduce urban flood response times by up to 40%, but faces data interoperability and computational challenges.",
+      "quote_sha256": "00d9eb425cccd05227e60a1243ef0d29d37fb12e07b1e8d0341754374fe15e5b",
+      "scope": "Global peer-reviewed literature on urban flood digital twins published between 2018 and 2025",
+      "caveat": "Synthesizes existing literature and case studies; does not demonstrate real-world flood mitigation efficacy or performance in resource-constrained regions",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-57bba7412a5fbd",
+      "source_url": "https://doi.org/10.1007/s43621-024-00697-2",
+      "source_sha256": "5dd58af338654efd6239ca5c05902d2b67e73417e4fbe066609e38bc5a90a4f6",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Low-income urban households and outdoor laborers in Rajshahi face disproportionate heatwave health risks and reduced adaptive capacity due to socioeconomic constraints and reliance on passive cooling methods.",
+      "quote_sha256": "cfa99ec63ac6effc98a1b69356f432755a840539a88cb82eb42a443733afa4ad",
+      "scope": "Urban households and outdoor laborers in Rajshahi, Bangladesh during extreme heat periods",
+      "caveat": "Mixed-methods survey and PCA study; does not clinically measure long-term health outcomes or evaluate the actual implementation of recommended green infrastructure",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-5e474470179c",
+      "source_url": "https://doi.org/10.1039/d6ra08243b",
+      "source_sha256": "a0eb36ac8c57e8c3efe8b9af6e3b5a3a0d34df84557b33b92c4a7a2b8fab9d14",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "AI-driven monitoring and circular management of lithium-ion battery waste are constrained by insufficient external model validation, mixed-stream sensor calibration difficulties, and lack of industrial-scale evidence.",
+      "quote_sha256": "16729a66b29f450811002c482eca263286e7ffa1f5a187c9bdb11db641b3758c",
+      "scope": "Academic literature and technologies concerning end-of-life lithium-ion battery waste management",
+      "caveat": "Review paper; does not provide empirical primary data or test AI models across operational commercial recycling facilities",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-088e66a2f887",
+      "source_url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+      "source_sha256": "182d7293ba8dff9bebf50f23056a4e3245f1081113f233b5ec7a4bfe5f69d898",
+      "role": "measured_program_outcome",
+      "fit": "relevant",
+      "statement": "A five-year zoned catch-neuter-vaccinate-release program in Anuradhapura reduced free-roaming dogs requiring sterilization from 1,368 to 484 and achieved over 78% adult female sterilization, though overall community dog count declines per unit effort were not statistically significant.",
+      "quote_sha256": "be43d0ab399093263beec430fa4cf823fb7d0f501b43f361590f95174f30b622",
+      "scope": "Free-roaming and owned dog populations in Anuradhapura, Sri Lanka from 2021 to 2025",
+      "caveat": "Does not report or measure reductions in human rabies transmission, incidence, or mortality rates",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-dbc0b8d397869b",
+      "source_url": "https://openalex.org/W2906684235",
+      "source_sha256": "46299d8a3df861777feb2533571391fc15661af8c2aa8f49fc01089a50503d3a",
+      "role": "practical_observation",
+      "fit": "relevant",
+      "statement": "Surplus food redistribution organizations expand immediate food access but find their ability to challenge systemic causes of food precarity and waste constrained by alignments with corporate and state entities.",
+      "quote_sha256": "8f27871eb6c298d900f21410237c531bce0c209e521950666c21b8a2b7a423ef",
+      "scope": "Surplus food redistribution organizations and food aid networks in the UK and North America",
+      "caveat": "Ethnographic qualitative evaluation; does not quantify recipient nutritional security or broader poverty reduction metrics",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-dbee83ba8137",
+      "source_url": "https://www.who.int/europe/health-topics/floods",
+      "source_sha256": "84feac0d6fb561c252f76fb31e866a60f651e34f9e86dcb6796a57dc17404650",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "WHO/Europe guidance recommends shifting from reactive disaster response to integrated, long-term health risk management and preparedness to address increasing flood-related mortality, disease, and mental health risks.",
+      "quote_sha256": "9f122d01835e8e165cc06fccc911c4805b4956a4c0499c570e24ef6aeb04546c",
+      "scope": "53 Member States of the WHO European Region, incorporating climate risk projections through the 2080s",
+      "caveat": "Regional policy guidance document; does not provide audit findings or empirical compliance metrics for specific local implementation plans",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-e29dc4e0a782ec",
+      "source_url": "https://doi.org/10.1002/job.2831",
+      "source_sha256": "c91fc233ca09d9e1bf1a0aa13c6500cf1ed9f5c581b8cef38bd6d7a93074c794",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A systematic review uses topic modeling and an input-process-output framework to synthesize fragmented research on how dimensions of algorithmic management influence gig worker outcomes.",
+      "quote_sha256": "6398598148be3cba75b67362eeb3b1573b2da2ba7bd3e174c60c99996524433b",
+      "scope": "Cross-disciplinary academic literature examining algorithmic management across online gig platforms",
+      "caveat": "Conceptual literature synthesis; does not directly measure empirical worker welfare, platform productivity, or wage impacts",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-4f0f6d04561a0f",
+      "source_url": "https://doi.org/10.1590/s1806-37132014000300009",
+      "source_sha256": "97ee0b85cfb6d8332dc9ae35e5d245fbdbf29c17dcfa5bbb897bc811899cca79",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "An evaluation of 1,019 elementary school students found that indoor CO2 concentrations above maximum recommended levels were significantly associated with lack of concentration, but found no other significant associations with respiratory or allergic conditions.",
+      "quote_sha256": "f0fa7da56c64a5f410f42f8ed21a7e518136f048a990f30cd15281528ee5ae52",
+      "scope": "1,019 students across 51 elementary schools in Coimbra, Portugal during fall and winter",
+      "caveat": "Cross-sectional observational study in an urban setting with low background pollution; does not establish causal mechanisms for chronic respiratory illness",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-d018a574aec782",
+      "source_url": "https://doi.org/10.1034/j.1600-0668.2003.00153.x",
+      "source_sha256": "7f7b6edd6d8164e6cd53c67976feb1c46c7096f2ff78134acbd0836b335af4fa",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A synthesis of pre-2000 school studies indicates inadequate classroom ventilation and elevated CO2 levels are prevalent, with building-related health symptoms more directly linked to volatile organic compounds, molds, and allergens.",
+      "quote_sha256": "ebb77c665de551d7a2f5986490f811ea545e7ed4082337c888206c940ece2dca",
+      "scope": "Published literature and building monitoring data on school indoor environments up to 1999",
+      "caveat": "Historical literature review; limited by a lack of rigorous causal studies isolating specific chemical or microbiological pollutant thresholds",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Classroom Indoor Air Quality and Occupant Health",
+      "source_ids": [
+        "OA-4f0f6d04561a0f",
+        "OA-d018a574aec782"
+      ],
+      "question": "To what extent do inadequate ventilation and elevated indoor CO2 levels directly impair cognitive performance versus causing respiratory and allergic symptoms in school environments?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Urban Climate Hazards and Disaster Health Preparedness",
+      "source_ids": [
+        "OA-0b799176aa3262",
+        "OA-57bba7412a5fbd",
+        "OFFICIAL-dbee83ba8137"
+      ],
+      "question": "How can predictive technologies and long-term risk management policies protect vulnerable urban populations from intensifying hydrometeorological and extreme heat disasters?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Waste Stream Circularity and Resource Recovery Governance",
+      "source_ids": [
+        "EPMC-5e474470179c",
+        "OA-dbc0b8d397869b"
+      ],
+      "question": "What institutional, technological, and infrastructural constraints prevent circular recovery and redistribution systems from mitigating systemic environmental and socio-economic hazards?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Algorithmic Labor Coordination and Worker Impacts",
+      "source_ids": [
+        "OA-e29dc4e0a782ec"
+      ],
+      "question": "Through what mediating pathways do specific dimensions of platform algorithmic management impact gig worker outcomes and behavior?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Zoned Animal Population Control and Rabies Management",
+      "source_ids": [
+        "EPMC-088e66a2f887"
+      ],
+      "question": "How effectively do spatial zoning and buffer-zone interventions sustain free-roaming dog population reduction and community vaccination coverage?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "OA-4f0f6d04561a0f",
+      "to_source": "OA-d018a574aec782",
+      "relation": "qualifies",
+      "reason": "OA-4f0f6d04561a0f corroborates the prevalence of elevated classroom CO2 and ventilation deficiencies noted in OA-d018a574aec782, but qualifies the health symptom profile by finding that CO2 was significantly associated only with concentration deficits (p = 0.002) and had no other significant associations with respiratory or allergic diseases.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-0b799176aa3262",
+      "to_source": "OFFICIAL-dbee83ba8137",
+      "relation": "corroborates",
+      "reason": "OA-0b799176aa3262 corroborates the WHO regional guidance's emphasis on timely and coordinated disaster emergency response by demonstrating that digital twin technology and remote sensing can reduce urban flood response times by up to 40%.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Does the documented reduction in free-roaming dogs requiring sterilization under the zoned CNVR program translate to a measurable reduction in human rabies incidence or animal-to-human bite rates in Anuradhapura?",
+      "source_ids": [
+        "EPMC-088e66a2f887"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Are the cognitive concentration deficits observed under elevated classroom CO2 caused directly by CO2 exposure or do they reflect unmeasured co-occurring contaminants resulting from low ventilation?",
+      "source_ids": [
+        "OA-4f0f6d04561a0f",
+        "OA-d018a574aec782"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Can digital twin urban flood models achieve reported response time improvements in resource-constrained municipalities without access to dense IoT networks and high-resolution satellite streams?",
+      "source_ids": [
+        "OA-0b799176aa3262",
+        "OFFICIAL-dbee83ba8137"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What measurable impact do municipal structural adaptations and green infrastructure have on reducing clinical heat exhaustion among low-income outdoor workers compared to individual behavioral modifications?",
+      "source_ids": [
+        "OA-57bba7412a5fbd"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What standardized validation metrics and closed-loop process controls are required to scale AI-driven battery waste sorting from laboratory demonstrations to heterogeneous commercial scrap streams?",
+      "source_ids": [
+        "EPMC-5e474470179c"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}

@@ -1,0 +1,259 @@
+{
+  "schema": "cite_refinery.open_corpus_atlas.v1",
+  "mapped_source_count": 63,
+  "domains": [
+    {
+      "label": "Free-Roaming Dog Demography and Rabies Herd Immunity Control",
+      "source_ids": [
+        "EPMC-088e66a2f887",
+        "EPMC-7329c77af95d",
+        "OA-3c3cd5c7fc6491",
+        "OA-3e8660cfa6d4bf",
+        "OA-cac905fc406101",
+        "OA-d94945c2bf53f3"
+      ],
+      "problem_node": "Canine rabies persists in human-dominated habitats where free-roaming dog population dynamics are regulated primarily by human ownership, demand, and translocation rather than biological carrying capacity, producing rapid demographic turnover that threatens herd immunity maintenance.",
+      "measurement_node": "Demographic surveillance models indicate a 70% annual vaccination coverage threshold maintains herd immunity, but empirical field pilots show that only 56.3% of vaccinated dogs achieve protective neutralizing antibody titers (>0.5 IU/mL) at 4 months, and municipal dog count declines per unit effort often fail to reach statistical significance.",
+      "intervention_node": "Zoned catch-neuter-vaccinate-release (CNVR) protocols achieve high female sterilization rates (e.g., 78% in Anuradhapura) and culling is widely recognized as ineffective, but there is NO verified deployed intervention or measured outcome demonstrating community-level human rabies bite incidence drops or sustained interruption of transmission across porous administrative borders.",
+      "evidence_limit": "Serological cohorts are critically underpowered (e.g., n=16), population replacement models ('vacuum effect') remain largely conceptual without empirical validation across diverse urban habitats, and studies fail to track post-intervention rabies mortality in humans.",
+      "questions": [
+        "How do continuous human-mediated dog translocations affect the spatial velocity and stability of rabies vaccination barrier zones?",
+        "What immunological factors explain post-vaccination failure to reach protective neutralizing antibody thresholds under field conditions?"
+      ],
+      "candidate_role_distribution": {
+        "measured_program_outcome": 2,
+        "academic_finding": 4
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    },
+    {
+      "label": "Lithium-Ion Battery Material Regeneration and Techno-Economic Scalability",
+      "source_ids": [
+        "EPMC-1d4b60c85f48",
+        "EPMC-5e474470179c",
+        "OA-2c8a36e510bc7f",
+        "OA-4a59c468fd7941",
+        "OA-53d2760b3abab4",
+        "OA-8d5107d133682c"
+      ],
+      "problem_node": "Spent lithium-ion battery waste generates acute fire, thermal runaway, and toxic release hazards during collection and storage, while closed-loop material recovery is obstructed by pack design heterogeneity, mixed-stream sensor calibration failures, and volatile recycling economics.",
+      "measurement_node": "Hydrothermal catalytic regeneration restores cathode discharge capacity to 142.3 mAh/g at 0.2 C on benchtop scales, and techno-economic models estimate unit margins between -$21.43 and +$21.91 per kWh; however, measurements rely entirely on laboratory simulations and theoretical flowsheets rather than audited industrial operating data.",
+      "intervention_node": "Circular taxonomy frameworks, AI-driven sorting algorithms, and upstream design-for-recycling standards are widely advocated, but there is NO verified deployed intervention or measured outcome demonstrating commercial plant profitability, closed-loop material recovery yields, or verified reductions in thermal runaway incidents under actual operating conditions.",
+      "evidence_limit": "Literature is dominated by bench-scale laboratory experiments and theoretical engineering reviews lacking independent lifecycle environmental audits, operational commercial plant validation, and real-world worker hazard tracking.",
+      "questions": [
+        "What automated mechanical dismantling configurations can mitigate thermal runaway risks across heterogeneous commercial battery pack designs?",
+        "What are the audited lifecycle emissions and cost-benefit ratios of catalytic hydrothermal regeneration relative to conventional pyrometallurgical smelting?"
+      ],
+      "candidate_role_distribution": {
+        "academic_method": 3,
+        "academic_finding": 3
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    },
+    {
+      "label": "Occupational and Environmental Toxicant Exposures from Electronic and Lead-Acid Waste",
+      "source_ids": [
+        "EPMC-64a62b7ee309",
+        "EPMC-c4308276b606",
+        "OA-0c2db6ec316fbc",
+        "OA-b004c71e7a2adf",
+        "OA-eb3cd7c2915125",
+        "OA-f6a6c0d295f4a1",
+        "OFFICIAL-738822d05941",
+        "OFFICIAL-7e900895fc66",
+        "OFFICIAL-ac48369a71d0"
+      ],
+      "problem_node": "Informal and formal recycling of electronic waste and used lead-acid batteries releases hazardous neurotoxicants—including lead, mercury, indium, brominated flame retardants, PCBs, and weathering-generated incidental nanomaterials—into occupational settings and ambient ecosystems.",
+      "measurement_node": "Dust ingestion accounts for 60% to 88% of daily PBDE intake in informal workshops, and Swedish formal e-waste workers exhibit 10- to 30-fold elevations in airborne metal exposures; however, acute physical injury endpoints do not transfer to toxicant burden, and cross-sectional designs cannot prove causal organ pathology.",
+      "intervention_node": "International regulatory guidelines promote waste segregation, protective engineering controls, and the formalization of informal collectors, but there is NO verified deployed intervention or measured outcome demonstrating audited drops in biological toxicant body burdens or pediatric blood lead concentrations in informal processing communities.",
+      "evidence_limit": "Evidence remains heavily clustered in specific geographic hubs (such as southeast China and northern Vietnam), relying on cross-sectional questionnaires and exposure proxies without prospective multi-year cohort validation or independent toxicological audits.",
+      "questions": [
+        "How do specific formalization models for informal e-waste collectors alter longitudinal blood lead and flame retardant biomarker concentrations in pediatric populations?",
+        "What are the cytotoxic and systemic translocation pathways of weathering-induced incidental nanomaterials generated during informal plastic dismantling?"
+      ],
+      "candidate_role_distribution": {
+        "academic_method": 1,
+        "academic_finding": 5,
+        "program_guidance": 3
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    },
+    {
+      "label": "Extreme Heat Mortality Projections and Heat Early Warning System Implementation Gaps",
+      "source_ids": [
+        "EPMC-0715c73feecf",
+        "EPMC-9e020968a7d4",
+        "OA-57bba7412a5fbd",
+        "OA-ba418ee71ac82d",
+        "OA-cf7a010e9ed8d1",
+        "OA-d26245f891f838",
+        "OFFICIAL-194f3653ddf1"
+      ],
+      "problem_node": "Accelerating frequency and intensity of compound and nighttime heatwaves disproportionately elevate mortality among vulnerable populations—including rural infants and low-income outdoor workers—while public health early warning systems remain unevenly deployed and unverified.",
+      "measurement_node": "Grid-based simulations project 5.3 to 16.1 million annual heatwave deaths globally by the 2090s, and case-crossover studies demonstrate heightened mortality in rural children under five; however, measurements rely on macro-level climate models and death registries, failing to capture personal indoor thermal exposures or adaptive micro-behaviors.",
+      "intervention_node": "Municipal heat health warning systems and national heat action plans have been established across several regions, but there is NO verified deployed intervention or measured outcome demonstrating empirical reductions in heatwave-attributable clinical morbidity or mortality resulting from these warning mechanisms.",
+      "evidence_limit": "Literature reflects severe geographic publication bias toward high-income mid-latitude countries, systematically omitting the most vulnerable tropical and low-income populations in Sub-Saharan Africa and South Asia, and lacks intervention-control evaluation designs.",
+      "questions": [
+        "What specific passive cooling interventions in low-cost rural housing provide measurable protection against nighttime compound heatwaves for infants?",
+        "Why do operational heatwave warning systems exhibit high institutional variation in action thresholds and notification pathways across adjacent jurisdictions?"
+      ],
+      "candidate_role_distribution": {
+        "academic_finding": 5,
+        "program_guidance": 2
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    },
+    {
+      "label": "Urban Flood Hydrology, Warning Systems, and Public Health Vulnerability",
+      "source_ids": [
+        "EPMC-871d10af9889",
+        "EPMC-fb93375cb76d",
+        "OA-0b799176aa3262",
+        "OA-4ecb63fe5958c9",
+        "OA-f84a08fcbd0caa",
+        "OFFICIAL-dbee83ba8137",
+        "OFFICIAL-f3e30d7ac5a5"
+      ],
+      "problem_node": "Rapid urban densification, coastal storm surges, and riverine flooding overwhelm municipal drainage and public health infrastructure, accelerating secondary infectious disease outbreaks and acute drowning hazards in informal and flood-prone settlements.",
+      "measurement_node": "Surveys distinguish elevated risk ratios for rapid-onset over slow-onset floods in Uganda, and systematic reviews indicate digital twins can model a 40% reduction in response times; however, findings are limited by self-reported post-disaster surveys, cross-sectional designs, and computational simulations lacking real-time field validation.",
+      "intervention_node": "Multi-agency flash flood early warning systems (such as FFGS in Laos), digital twin modeling, and regional preparedness frameworks have been deployed, but there is NO verified deployed intervention or measured outcome documenting audited reductions in flood-induced waterborne disease incidence or long-term mortality prevention during catastrophic events.",
+      "evidence_limit": "Research concentrates predominantly on large coastal metropolitan centers (e.g., Mumbai, Kolkata) while omitting secondary cities, and program descriptions lack control baselines, longitudinal health audits, or data interoperability assessments in resource-limited contexts.",
+      "questions": [
+        "How can real-time digital twin hydrological modeling be successfully integrated into municipal disaster response workflows under computational and data-scarcity constraints?",
+        "What primary care and water sanitation interventions effectively interrupt post-flood enteric disease transmission in recurrently inundated communities?"
+      ],
+      "candidate_role_distribution": {
+        "academic_finding": 4,
+        "practical_observation": 1,
+        "program_guidance": 1,
+        "reported_implementation": 1
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    },
+    {
+      "label": "Classroom and Domestic Indoor Air Quality, Bioaerosols, and Pediatric Respiratory Health",
+      "source_ids": [
+        "EPMC-15ee874ecc38",
+        "EPMC-e2f3b5123391",
+        "OA-1139840a6d83ac",
+        "OA-4f0f6d04561a0f",
+        "OA-a22f19815c0834",
+        "OA-d018a574aec782",
+        "OFFICIAL-04c6c3a2a87e",
+        "OFFICIAL-0f3441051449"
+      ],
+      "problem_node": "Inadequate ventilation and moisture buildup in educational and domestic buildings elevate indoor concentrations of carbon dioxide, microbial bioaerosols, molds, and particulate matter, exacerbating pediatric asthma burdens, allergic sensitization, and cognitive inattention.",
+      "measurement_node": "Observational surveys demonstrate associations between classroom CO2 exceedances and student concentration loss, while systematic reviews link bioaerosols to inflammatory markers; however, evidence is constrained by cross-sectional designs, lack of causal pollutant isolation, and absence of standardized exposure-response thresholds.",
+      "intervention_node": "Proposed interventions include mechanical energy recovery ventilators, portable air cleaners, pediatric mask protocols, and essential primary care management packages; however, randomized controlled trial protocols remain uncompleted and there is NO verified deployed intervention or measured outcome proving long-term clinical asthma reduction across diverse school districts.",
+      "evidence_limit": "Published evidence relies heavily on retrospective narrative syntheses, unblinded observational surveys, and study protocols without clinical outcome verification or exposure-controlled longitudinal tracking.",
+      "questions": [
+        "Does mechanical ventilation with energy recovery produce clinically significant reductions in pediatric asthma exacerbations compared to filtration-only portable cleaners?",
+        "What specific bioaerosol and VOC exposure thresholds trigger acute respiratory inflammatory cascades in children independent of ambient outdoor pollution?"
+      ],
+      "candidate_role_distribution": {
+        "academic_finding": 4,
+        "academic_method": 1,
+        "practical_observation": 1,
+        "program_guidance": 2
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    },
+    {
+      "label": "Algorithmic Management, Delivery Couriers, and Platform Gig Worker Occupational Harm",
+      "source_ids": [
+        "EPMC-83a764d60470",
+        "EPMC-aa4339ee2731",
+        "OA-6642b2dc88be44",
+        "OA-79031782b475fb",
+        "OA-bdb9fd8d22baf8",
+        "OA-e29dc4e0a782ec"
+      ],
+      "problem_node": "Platform gig workers, particularly on-demand food delivery couriers, face intense algorithmic management, dynamic time penalties, and opaque performance evaluations that induce severe occupational injury risks, physical exhaustion, sleep deprivation, and psychological distress.",
+      "measurement_node": "Topic modeling of online discourse reveals pervasive worker frustration and anxiety, and narrative reviews identify high rates of musculoskeletal and traffic trauma; however, injury endpoints do not transfer to toxicant burden, and cross-sectional or discourse data cannot establish causal etiologies or long-term clinical trajectories.",
+      "intervention_node": "While worker collective organizing, algorithmic transparency demands, and regulatory oversight have been proposed, there is NO verified deployed intervention or measured outcome demonstrating that algorithmic dispatch modifications or platform safety policies have reduced traffic collisions or chronic psychological morbidity.",
+      "evidence_limit": "Literature is dominated by conceptual HR management frameworks, cross-sectional self-reported surveys, and public digital scraping, completely lacking independent platform telemetry audits, objective health records, or longitudinal intervention trials.",
+      "questions": [
+        "How do algorithmic delivery deadline relaxations directly impact courier road traffic accident rates and musculoskeletal strain?",
+        "What structural policy mechanisms can effectively enforce transparency in platform performance ratings without undermining dispatch efficiency?"
+      ],
+      "candidate_role_distribution": {
+        "academic_finding": 5,
+        "background_only": 1
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    },
+    {
+      "label": "Food Surplus Redistribution Logistics, Institutional Charity, and Nutritional Gaps",
+      "source_ids": [
+        "EPMC-7deb988ae2ab",
+        "EPMC-826342b4eec2",
+        "OA-88cafd9405fbed",
+        "OA-8e75d5d1b1f35b",
+        "OA-da5bbdb0bf0dd0",
+        "OA-dbc0b8d397869b",
+        "OFFICIAL-86c5d4ade74b",
+        "OFFICIAL-f3af73407d74"
+      ],
+      "problem_node": "Secondary redistribution of commercial food surplus to alleviate food insecurity is structurally constrained by perishable cold-chain logistics, liability fears, ambiguous date labeling, and an institutional reliance of charitable models on the continuous generation of retail waste.",
+      "measurement_node": "Parametric life cycle assessments show direct gleaning and pantry delivery yield net environmental benefits across five metrics, and IoT pilots document 847 kg rescued over 3 months; however, metrics track gross tonnage or pickup speed rather than recipient nutritional uptake, diet quality, or physiological health markers.",
+      "intervention_node": "Interventions include social supermarkets, IoT sensor-based dispatch platforms, gleaning networks, and food rescue charities; however, there is NO verified deployed intervention or measured outcome demonstrating that surplus redistribution structurally resolves systemic food insecurity, prevents pediatric stunting/wasting, or achieves financial solvency without ongoing state and corporate subsidies.",
+      "evidence_limit": "Evidence relies on short-term pilot studies, qualitative scoping reviews, and ethnographic evaluations that lack clinical dietary assessments, longitudinal household food security audits, or population-level nutrition data.",
+      "questions": [
+        "Does regular utilization of social supermarkets or food pantries produce measurable improvements in dietary diversity and micronutrient status among food-insecure individuals?",
+        "How can real-time IoT freshness tracking be scaled to reduce perishable food waste in emergency redistribution networks without imposing prohibitive capital costs on under-resourced charities?"
+      ],
+      "candidate_role_distribution": {
+        "academic_finding": 4,
+        "measured_program_outcome": 1,
+        "practical_observation": 1,
+        "program_guidance": 2
+      },
+      "status": "provisional_semantic_domain",
+      "independent_empirical_validation": false
+    }
+  ],
+  "cross_domain_links": [
+    {
+      "from_label": "Extreme Heat Mortality Projections and Heat Early Warning System Implementation Gaps",
+      "to_label": "Urban Flood Hydrology, Warning Systems, and Public Health Vulnerability",
+      "relation": "shared_constraint",
+      "rationale": "Both domains rely on predictive simulation and early warning protocols (e.g., European heat health warning systems and urban flood digital twins) that encounter severe municipal implementation bottlenecks and currently lack empirical evaluations demonstrating verified reductions in population-level clinical morbidity or mortality.",
+      "status": "provisional_cross_domain_comparison"
+    },
+    {
+      "from_label": "Lithium-Ion Battery Material Regeneration and Techno-Economic Scalability",
+      "to_label": "Occupational and Environmental Toxicant Exposures from Electronic and Lead-Acid Waste",
+      "relation": "shared_constraint",
+      "rationale": "Both secondary recovery sectors confront acute occupational release pathways during manual and mechanical processing (thermal runaway and toxic emissions in battery dismantling; heavy metal dust and brominated flame retardants in e-waste processing), while practical hazard mitigation is hindered by the absence of verified industrial-scale controls and informal sector integration.",
+      "status": "provisional_cross_domain_comparison"
+    },
+    {
+      "from_label": "Algorithmic Management, Delivery Couriers, and Platform Gig Worker Occupational Harm",
+      "to_label": "Food Surplus Redistribution Logistics, Institutional Charity, and Nutritional Gaps",
+      "relation": "methodological_analogy",
+      "rationale": "Both fields employ digital platforms and algorithmic routing (such as on-demand food delivery dispatch and IoT surplus food rescue matching) to optimize distributed logistics, while academic research across both sectors remains heavily reliant on cross-sectional or pilot metrics that fail to evaluate causal worker welfare or recipient health outcomes.",
+      "status": "provisional_cross_domain_comparison"
+    }
+  ],
+  "unplaced_source_ids": [
+    "OFFICIAL-19f69df74e84",
+    "OFFICIAL-1bf7efd28d64",
+    "OFFICIAL-31e8ca003c74",
+    "OFFICIAL-6d6012da212a",
+    "OFFICIAL-a6feb7e72ecd",
+    "OFFICIAL-b67462393768"
+  ],
+  "exhaustive_coverage": false,
+  "blind_human_validation": false,
+  "accepted_scientific_claims": 0,
+  "map_limit": "The 63-source non-exhaustive dump clusters heterogeneous public health, environmental, and technological sources into emergent problem areas, but lacks longitudinal causal studies across informal labor sectors, primary epidemiological disease surveillance in climate-vulnerable regions, and audited operational performance data from scaled commercial and municipal interventions.",
+  "boundary": "The map emerged from unstructured sources, but remains a generative proposal with no independent role/causality benchmark.",
+  "generation_provenance": "antigravity:gemini-3.8-flash-medium"
+}

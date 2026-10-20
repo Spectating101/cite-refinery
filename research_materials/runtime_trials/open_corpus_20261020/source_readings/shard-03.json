@@ -1,0 +1,231 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-03",
+  "source_readings": [
+    {
+      "source_id": "OA-bdb9fd8d22baf8",
+      "source_url": "https://doi.org/10.4337/9781035313389.ch25",
+      "source_sha256": "9cc14000d663ec5130fe1611aa53f29565e36a7ad59445d19e6dffb793819bb8",
+      "role": "background_only",
+      "fit": "context",
+      "statement": "Independent platform gig work and algorithmic management introduce specific structural considerations for occupational health and collective organizing.",
+      "quote_sha256": "4b22ecb3fc43e918046f0daf0e6b55540c1ae05876f0d6977e9db110abb43724",
+      "scope": "Global platform gig workforce; unstated temporal period",
+      "caveat": "Bibliographic abstract overview only; does not provide empirical health outcome measurements, intervention trials, or causal risk estimates.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-7e900895fc66",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/lead-poisoning-and-health",
+      "source_sha256": "0fbb197ea12d5b3bd797d82654fccb6551e9d5f02f1de3e72021684ceded91bf",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "Lead exposure poses severe multi-system health risks particularly to young children and child-bearing women, with major sources including battery recycling and industrial manufacturing.",
+      "quote_sha256": "567bd917c242f8351511c77cf8b47437fe7a275edd4eb700336926a7ad445ff2",
+      "scope": "Global population, specifically young children and women of child-bearing age; includes global 2023 mortality estimate",
+      "caveat": "Official website excerpt outlining toxicological risk factors and global burden; does not evaluate specific local environmental intervention outcomes or audit program implementation.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-64a62b7ee309",
+      "source_url": "https://doi.org/10.2196/96702",
+      "source_sha256": "e75c5047c15ff92f4099bb7979573c5710bb5673e684ce572e19bf9c4ce4e729",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "A cross-sectional protocol establishes a biological and questionnaire-based method to measure phthalate exposures and health parameters among informal e-waste workers.",
+      "quote_sha256": "7f1128c3f9a9a48e6debb5b9c3f199d62fd3377387c0474882ea2507eef6a76f",
+      "scope": "253 adult informal electronic waste workers in Bui village, Vietnam (survey conducted March 2025)",
+      "caveat": "Study protocol and preliminary feasibility description; does not present peer-reviewed toxicological associations or causal health outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-86c5d4ade74b",
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/malnutrition",
+      "source_sha256": "a9e676bb8e7e6b2d83a191f4258f6ae83c3687ffa84d7841adc5252c1593d2a1",
+      "role": "program_guidance",
+      "fit": "context",
+      "statement": "International policy frameworks under the UN Decade of Action on Nutrition set strategic targets for 2025 and 2030 to address malnutrition, stunting, wasting, and obesity.",
+      "quote_sha256": "6eb86f8ce4f7a1417d3fae5d15f5d8cbffcbfbdba80e4d05fc98c4edea0c442d",
+      "scope": "Global member states and populations facing malnutrition; policy framework period 2016–2025 and 2030 Agenda",
+      "caveat": "Organizational policy and mandate documentation; does not report audited program implementation metrics or measured population nutritional outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-e2f3b5123391",
+      "source_url": "https://doi.org/10.1371/journal.pone.0358221",
+      "source_sha256": "c78b0670d9c7155e7a30dc43a8a5587a6dfd606e99f0c26bcea240618fdf7001",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "A single-blind four-arm randomized controlled trial protocol designs long-term evaluation of active versus sham energy recovery ventilators and portable air cleaners on indoor pollutants and asthma control.",
+      "quote_sha256": "8c36b175c2b36feb1ac99e091bf03cb636a95a4910225534539ce7f61fc45fcc",
+      "scope": "Children (aged 5-17) and adults with physician-diagnosed asthma across >80 households in Dallas-Fort Worth, Texas",
+      "caveat": "Methodological trial protocol only; does not provide measured clinical trial results or proven intervention efficacy data.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-8e75d5d1b1f35b",
+      "source_url": "https://doi.org/10.1093/nutrit/nuac012",
+      "source_sha256": "8a8e586199f18e8c82fcd5bb66e90d6971213e0fb82821bae60298f489429b8b",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A scoping review identified that the burden of redistributing food waste to resolve food insecurity relies heavily on under-resourced rescue charities requiring structural subsidies and nutrition expertise.",
+      "quote_sha256": "ee8a9ce2582a6de7754ad035e37c2d02fb55ca719d6bc0db8d8dbb532254d9fc",
+      "scope": "Food sectors (retail, household, food rescue charities) and food-insecure populations in Australia",
+      "caveat": "Scoping review of existing literature and policy recommendations; does not quantify population-level health, dietary, or nutritional impact.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-eb3cd7c2915125",
+      "source_url": "https://doi.org/10.1016/j.envint.2014.07.006",
+      "source_sha256": "aee68febec70ff39dae151d4b46817661b06b6672ec90229472c1e9bf2d4152d",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Workers in formal Swedish e-waste facilities experienced 10- to 30-fold higher airborne metal exposures and significantly elevated biological concentrations of chromium, cobalt, indium, lead, and mercury compared to office controls.",
+      "quote_sha256": "9139abd28cfa82793f8324d109d63b19cf1cbbd63bd96bc19139fb0bc68c7123",
+      "scope": "55 e-waste recycling workers and 10 office controls at three formal e-waste recycling facilities in Sweden, with 6-month follow-up",
+      "caveat": "Measures exposure biomarkers and airborne dust concentrations; does not establish long-term clinical morbidity, organ pathology, or chronic disease outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-cf7a010e9ed8d1",
+      "source_url": "https://doi.org/10.3390/ijerph8124623",
+      "source_sha256": "e84c2c1400644f2c6c085c3331313b5d1deb485e09fb9b2e92e108a0e02e6b2d",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "An analysis of public documents across 33 European countries revealed that only 12 had established Heatwave Early Warning Systems, with notable variation in action thresholds and notification pathways.",
+      "quote_sha256": "68ce6216367080153c574cf2c74fd27c9c68554adf177b8d75aa90d81cf0e426",
+      "scope": "Government and public health policy documents across 33 European nations",
+      "caveat": "Catalogues institutional system presence and policy specifications; does not measure implementation adherence or heatwave mortality reduction.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-a22f19815c0834",
+      "source_url": "https://openalex.org/W2601661552",
+      "source_sha256": "e4aac3df0d36af73ecd7e97e742e7f42588980bdbb8780effec682abf68c4416",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A literature review indicates that classroom indoor air quality frequently fails to meet occupational and environmental standards, contributing to elevated risks of respiratory symptoms in children.",
+      "quote_sha256": "3e5d80b0381fba1152338cb03554bef90554aeb4761741fe06af56be0cc40b84",
+      "scope": "School classrooms and preschool environments globally, framed to inform future assessments in Malaysia",
+      "caveat": "Literature review summarizing secondary reports; does not conduct primary environmental monitoring or clinical intervention verification.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Occupational and Environmental Toxicant Exposures in E-Waste and Recycling",
+      "source_ids": [
+        "OFFICIAL-7e900895fc66",
+        "EPMC-64a62b7ee309",
+        "OA-eb3cd7c2915125"
+      ],
+      "question": "To what extent do formal and informal electronic waste recycling processes elevate heavy metal and plasticizer exposures and associated biomarkers in workers and nearby populations?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Indoor Air Quality, Mechanical Ventilation, and Respiratory Health",
+      "source_ids": [
+        "EPMC-e2f3b5123391",
+        "OA-a22f19815c0834"
+      ],
+      "question": "How effectively do mechanical ventilation and filtration interventions reduce pollutant concentrations and improve respiratory outcomes in vulnerable children and asthmatic households?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Structural Policies and Practical Realities of Malnutrition and Food Insecurity",
+      "source_ids": [
+        "OFFICIAL-86c5d4ade74b",
+        "OA-8e75d5d1b1f35b"
+      ],
+      "question": "How do grassroots food redistribution initiatives align with or fall short of high-level international nutrition targets and institutional policy frameworks?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Organizational and Environmental Risk Mitigation Systems",
+      "source_ids": [
+        "OA-bdb9fd8d22baf8",
+        "OA-cf7a010e9ed8d1"
+      ],
+      "question": "How do early warning systems and worker protection frameworks address systemic vulnerabilities arising from climate extremes and precarious work structures?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "OA-eb3cd7c2915125",
+      "to_source": "OFFICIAL-7e900895fc66",
+      "relation": "corroborates",
+      "reason": "Empirically confirms elevated lead biomarkers among recycling workers, validating lead-acid and e-waste recycling as significant sources of toxicant exposure described in official toxicological guidance.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-eb3cd7c2915125",
+      "to_source": "EPMC-64a62b7ee309",
+      "relation": "qualifies",
+      "reason": "Demonstrates that substantial toxicant exposure occurs even in formal Swedish e-waste facilities, qualifying assumptions that hazardous recycling exposures are solely confined to informal sector contexts.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "EPMC-e2f3b5123391",
+      "to_source": "OA-a22f19815c0834",
+      "relation": "methodological_gap",
+      "reason": "Addresses the limitation of observational classroom IAQ reviews by deploying a randomized, placebo-controlled trial protocol to directly evaluate active ventilation and air cleaning.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-8e75d5d1b1f35b",
+      "to_source": "OFFICIAL-86c5d4ade74b",
+      "relation": "qualifies",
+      "reason": "Identifies that local food insecurity efforts often place excessive burden on under-resourced rescue charities, qualifying top-down international commitments that presume functional food redistribution systems.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Do formal e-waste facilities with engineering controls prevent long-term clinical toxicant pathologies compared to unregulated informal dismantling sites?",
+      "source_ids": [
+        "OA-eb3cd7c2915125",
+        "EPMC-64a62b7ee309"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Do residential mechanical ventilation (ERV) or portable air cleaning interventions yield sustained, clinically significant improvements in pediatric asthma control over multi-year periods?",
+      "source_ids": [
+        "EPMC-e2f3b5123391",
+        "OA-a22f19815c0834"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "To what extent do food waste redistribution charities meet the specific dietary and micronutrient standards required to prevent child wasting and malnutrition?",
+      "source_ids": [
+        "OA-8e75d5d1b1f35b",
+        "OFFICIAL-86c5d4ade74b"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What measurable reduction in heat-related morbidity and mortality is attributable to European Heatwave Early Warning Systems across different vulnerable demographics?",
+      "source_ids": [
+        "OA-cf7a010e9ed8d1"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}

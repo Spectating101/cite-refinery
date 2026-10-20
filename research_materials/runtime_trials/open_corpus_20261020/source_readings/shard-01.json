@@ -1,0 +1,236 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-01",
+  "source_readings": [
+    {
+      "source_id": "OA-ba418ee71ac82d",
+      "source_url": "https://doi.org/10.1093/eurpub/ckl049",
+      "source_sha256": "7d192d841463affa8cce401795f4e16c2aa00b348071b27ca6c5401b1bc035c2",
+      "role": "program_guidance",
+      "fit": "relevant",
+      "statement": "European heat health warning systems are being deployed despite inadequate evidence verifying the effectiveness of specific heatwave interventions in reducing mortality or morbidity.",
+      "quote_sha256": "af99a16881405023fbc2a1548b203616d6f6ac6c690b97b06f524b910e45d96d",
+      "scope": "Populations and public health systems in Europe; unspecified publication timeframe.",
+      "caveat": "Does not provide measured morbidity or mortality reduction outcomes from any evaluated European heat health warning system.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-871d10af9889",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+      "source_sha256": "999fb59319bcac4f01332b1b5e9afba7d5e2f72d3fbacbee3b2620dc16d00265",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Urban flood risk and reported severity in Uganda vary by geography and hydrology, with rapid-onset floods presenting elevated risk ratios over slow-onset events.",
+      "quote_sha256": "3293763bf39fb08b94ecb3d7675f8dc94676e985e3767bbfa59ab8cdf589043d",
+      "scope": "939 surveyed households, local leaders, and focus groups in Greater Kampala Metropolitan Area (GKMA) and Kasese, Uganda.",
+      "caveat": "Cross-sectional survey and focus-group data; does not measure long-term health outcomes or test causal impacts of municipal flood adaptation measures.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-1d4b60c85f48",
+      "source_url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+      "source_sha256": "96c5a64d505e3572abfb8eb4f8617a851ee25e85dbee1927e0c7d2bb357f0a01",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "An integrated MnO₂-catalyzed hydrothermal regeneration strategy restores degraded LiFePO₄ cathode materials to a Li/Fe molar ratio of 0.98 and 142.3 mAh·g⁻¹ discharge capacity at 0.2 C.",
+      "quote_sha256": "16e4618e09d142c4cc8e021e54eafd52976e664d31309bdc63fc5e2c57b960a1",
+      "scope": "Laboratory-scale material regeneration experiment on spent LiFePO₄ batteries.",
+      "caveat": "Does not evaluate industrial-scale implementation, commercial plant economics, lifecycle emissions, or occupational exposures.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OFFICIAL-31e8ca003c74",
+      "source_url": "https://www.who.int/europe/groups/action-network-on-measuring-population-and-organizational-health-literacy-(m-pohl)",
+      "source_sha256": "63318aa5f7b301cf70c19230d98bcd8e12b8d8811cbb8de6b551222e2cbc145f",
+      "role": "reported_implementation",
+      "fit": "context",
+      "statement": "The WHO M-POHL network conducted the HLS19 comparative survey across 17 European countries between 2019 and 2021 to measure population and digital health literacy.",
+      "quote_sha256": "96e802b06c4052dfeb93f346d2cf0b6423a1cceaf42364421e2de2519867c39b",
+      "scope": "17 European member countries participating in the M-POHL network between 2019 and 2021.",
+      "caveat": "Webpage excerpt describes survey execution and organizational intent; it does not present empirical survey findings, intervention outcomes, or health status improvements.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-15ee874ecc38",
+      "source_url": "https://doi.org/10.3390/pathogens15080811",
+      "source_sha256": "9954910ab2af66390a967e5d96e43be13041a41f89dcac912e2ce7736ef85b29",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Indoor non-viable and viable microbial bioaerosols trigger respiratory inflammatory markers and immune responses, though the evidence base remains limited by observational and cross-sectional designs.",
+      "quote_sha256": "7a227b512f72c45a02b993b6e8a6af597efe36c0d5f34c183dd59d20463e4ea9",
+      "scope": "Synthesized global studies (PubMed, Scopus, Web of Science) published between 2000 and February 2026.",
+      "caveat": "Narrative review of heterogeneous observational literature; cannot demonstrate clinical causation or establish definitive exposure thresholds across populations.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "EPMC-fb93375cb76d",
+      "source_url": "https://doi.org/10.5334/aogh.5294",
+      "source_sha256": "fb08c935b0c1fc4e881286a73aebac0adf49df1cf7f05d023ee404f6fbab9949",
+      "role": "practical_observation",
+      "fit": "relevant",
+      "statement": "Recurrent flooding between 2022 and 2025 affected over 26 million people in Pakistan, compounding health system strain and accelerating infectious disease outbreaks and undernutrition.",
+      "quote_sha256": "2f151d3b8299fed3667c9ecdd0acdf03a3ea952a4658a835cb4c76a3cedb8ff7",
+      "scope": "Flood-affected populations, displaced communities, and health systems in Pakistan from 2022 to 2025.",
+      "caveat": "Bibliographic perspective/commentary abstract; does not provide primary epidemiological incidence data or systematic evaluations of health sector interventions.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-2c8a36e510bc7f",
+      "source_url": "https://doi.org/10.1016/j.isci.2021.102787",
+      "source_sha256": "6516f476848bf67ed7ea03e403297703872651a1a29c49e9a9f83e3b038bb4b4",
+      "role": "academic_method",
+      "fit": "relevant",
+      "statement": "A techno-economic model estimates that electric vehicle lithium-ion battery recycling profitability ranges from -$21.43 to +$21.91 per kWh depending on logistics, wages, pack design, and cathode chemistry.",
+      "quote_sha256": "44624fa3d75a7d09fd5c03df907d39745b221d50c838bc759c1d9c2ef083fd27",
+      "scope": "Global techno-economic simulation model comparing commercial EV battery packs (e.g., Tesla Model S).",
+      "caveat": "Theoretical techno-economic simulation; does not report actual empirical profit-and-loss accounting or audited operational yields from operating commercial facilities.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-0c2db6ec316fbc",
+      "source_url": "https://doi.org/10.1016/j.envint.2012.11.006",
+      "source_sha256": "bef3848e3bf46818b2bd1fd16a1999e6209806164e2b30997a65f59f8cc20643",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Settled dust and indoor air in Vietnamese informal e-waste recycling sites contain elevated levels of brominated flame retardants and PCBs, with dust ingestion driving 60% to 88% of estimated daily PBDE intake.",
+      "quote_sha256": "595d89639250ce095d8012527e84f5a3983887c26020b5fe9a3f6d234b7f8e4b",
+      "scope": "Informal e-waste recycling workshop sites and one urban reference site in Vietnam.",
+      "caveat": "Quantifies environmental concentrations and modeled non-dietary intake estimates; does not assess clinical biomarkers or long-term health endpoints in exposed workers.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "OA-79031782b475fb",
+      "source_url": "https://doi.org/10.1002/ajim.70007",
+      "source_sha256": "6e70b5423b219f0d0d256b1532a358a6dec82cba3834240385faccded5bdca08",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "A scoping review of 45 studies on platform-mediated gig work found reports of physical and mental health risks, but concluded the literature is constrained by cross-sectional designs and a lack of causal evidence.",
+      "quote_sha256": "68d6afd612dd24144182383d34b8b3504710cf1a535371bf9d76eaed35738282",
+      "scope": "45 peer-reviewed studies published internationally between January 1, 2000, and May 29, 2024.",
+      "caveat": "Identifies associations only; cannot establish causal relationships between digital platform labor dynamics and worker health outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Climate Extreme Vulnerability and Health System Strain",
+      "source_ids": [
+        "OA-ba418ee71ac82d",
+        "EPMC-871d10af9889",
+        "EPMC-fb93375cb76d"
+      ],
+      "question": "How do extreme climate hazards translate into acute population vulnerabilities and health system operational deficits?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Indoor and Occupational Environmental Contaminant Exposures",
+      "source_ids": [
+        "EPMC-15ee874ecc38",
+        "OA-0c2db6ec316fbc"
+      ],
+      "question": "What are the non-dietary, inhalation, and bioaerosol pathways through which micro-environmental exposures induce biological risk?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Lithium-Ion Battery Recycling Technologies and Techno-Economics",
+      "source_ids": [
+        "EPMC-1d4b60c85f48",
+        "OA-2c8a36e510bc7f"
+      ],
+      "question": "What chemical processes and logistical factors determine the technical regenerability and economic viability of spent lithium-ion battery recycling?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Health Policy Infrastructure and Digital Work Vulnerabilities",
+      "source_ids": [
+        "OFFICIAL-31e8ca003c74",
+        "OA-79031782b475fb"
+      ],
+      "question": "How do structural, institutional, and platform arrangements shape health literacy and occupational health outcomes?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "EPMC-871d10af9889",
+      "to_source": "EPMC-fb93375cb76d",
+      "relation": "corroborates",
+      "reason": "Both document that recurrent flooding causes severe infrastructure damage, displacement, and elevated injury or infectious disease risks in urbanizing Global South populations.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-ba418ee71ac82d",
+      "to_source": "EPMC-fb93375cb76d",
+      "relation": "corroborates",
+      "reason": "Both identify multi-sectoral institutional coordination and early warning integration as critical weak points in preparing health systems for climate shocks.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "EPMC-1d4b60c85f48",
+      "to_source": "OA-2c8a36e510bc7f",
+      "relation": "qualifies",
+      "reason": "The economic model highlights that profitability depends strongly on recycling method and cathode chemistry (e.g., high revenue for cobalt in Tesla Model S), whereas EPMC-1d4b60c85f48 develops a low-cost regeneration process targeting cobalt-free LiFePO₄ cathodes.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "EPMC-15ee874ecc38",
+      "to_source": "OA-0c2db6ec316fbc",
+      "relation": "corroborates",
+      "reason": "Both demonstrate that non-dietary micro-environmental exposure routes (indoor air inhalation and settled dust) constitute significant exposure pathways to biological and chemical stressors.",
+      "status": "proposed_unverified_semantic_relation"
+    },
+    {
+      "from_source": "OA-79031782b475fb",
+      "to_source": "EPMC-15ee874ecc38",
+      "relation": "methodological_gap",
+      "reason": "Both reviews highlight that the respective evidence bases are constrained by a predominance of observational/cross-sectional data and lack longitudinal or causal designs.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Do heat health warning systems (HHWS) in European municipalities produce measurable reductions in all-cause excess mortality during prolonged extreme heat episodes?",
+      "source_ids": [
+        "OA-ba418ee71ac82d"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Does the hydrothermally regenerated LiFePO₄ cathode material retain cycling stability and cost advantages when scaled up from laboratory batches to industrial recycling lines?",
+      "source_ids": [
+        "EPMC-1d4b60c85f48",
+        "OA-2c8a36e510bc7f"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What are the measured clinical biomarkers of organ toxicity or neuroendocrine disruption in informal e-waste workers exposed to high levels of BFRs and PCBs via dust ingestion?",
+      "source_ids": [
+        "OA-0c2db6ec316fbc"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What prospective, longitudinal health outcomes differentiate platform gig workers from comparable non-gig workers after controlling for baseline socio-demographic confounders?",
+      "source_ids": [
+        "OA-79031782b475fb"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}
