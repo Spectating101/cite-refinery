@@ -1,0 +1,22 @@
+{
+  "propositions": [
+    {
+      "id": "P1",
+      "statement": "WOAH establishes mass culling dogs as effective at lowering rabies prevalence.",
+      "claim_type": "research_finding",
+      "module_ids": [
+        "AW-03"
+      ],
+      "support": [
+        {
+          "source_id": "WOAH-DPM-2024",
+          "quote": "mass culling of dogs is ineffective and may be counterproductive"
+        }
+      ],
+      "scope": "False interpretation deliberately inserted into the demonstration",
+      "limitation": "This stress-test deliberately inverts the quoted meaning."
+    }
+  ],
+  "bridges": [],
+  "open_questions": []
+}

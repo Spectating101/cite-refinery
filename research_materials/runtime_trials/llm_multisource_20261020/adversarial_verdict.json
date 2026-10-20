@@ -1,0 +1,20 @@
+{
+  "quote_check_proposition_count": 1,
+  "critic": {
+    "schema": "cite_refinery.llm_semantic_second_opinion.v1",
+    "state": "CRITICAL_SECOND_PASS_NOT_AUTHORITY",
+    "propositions": [
+      {
+        "proposition_id": "P1",
+        "reviewer_verdict": "contradicted",
+        "literal_span_matched": true,
+        "rationale": "The actual source asserts ineffectiveness and possible counterproductivity; the proposed claim reverses the predicate.",
+        "scope_risks": "Unsupported policy outcome claim that should not enter the graph.",
+        "authority": "NONE_ACCEPTED"
+      }
+    ],
+    "bridges": [],
+    "caveat": "Second LLM agreement is not independent empirical replication or human verification. Even an entailed label is not accepted evidence."
+  },
+  "test_type": "deliberately seeded inversion, not a blinded measure of model accuracy"
+}

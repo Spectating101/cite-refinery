@@ -1,0 +1,45 @@
+[
+  {
+    "id": "WHO-RABIES-2024",
+    "url": "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+    "retrieval_status": 200,
+    "raw_page_sha256": "83c87161015a54f35593fa6907e05085f56a7c79413642a0736c47d66cec21ba",
+    "selected_excerpts_sha256": "13f8793f26942ed0d7a60e510f6ba44b33275c9805a270846b7aa3d96f42c81d",
+    "selected_paragraph_count": 4,
+    "selection_anchors": [
+      "Dog bites and scratches cause 99%",
+      "However, rabies deaths are preventable with prompt post exposure prophylaxis",
+      "WHO and its global partners aim to end human deaths",
+      "Vaccinating dogs, including puppies, through mass dog vaccination programs"
+    ],
+    "source_warning": "Fetched excerpts only, not verified original empirical data or reviewed complete source."
+  },
+  {
+    "id": "WOAH-DPM-2024",
+    "url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+    "retrieval_status": 200,
+    "raw_page_sha256": "cc33e18efa7b852ccc956acff34d3f1594715c5dd96a41f654d4c9eede600340",
+    "selected_excerpts_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e",
+    "selected_paragraph_count": 5,
+    "selection_anchors": [
+      "DPM supports effective and sustainable rabies control programmes",
+      "Development of DPM programmes should include an initial assessment",
+      "Estimation of dog population size and demography.",
+      "For evaluation of DPM programme effectiveness, monitoring changes in population trends",
+      "Acknowledging that the owned dog population"
+    ],
+    "source_warning": "Fetched excerpts only, not verified original empirical data or reviewed complete source."
+  },
+  {
+    "id": "BELO-2015",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830",
+    "retrieval_status": 200,
+    "raw_page_sha256": "a834ab9244d1eb4b6a0fd4d7be2e4a4f39134e98d2820b8954dc30aec1b14c77",
+    "selected_excerpts_sha256": "618002f0bb91c7058f628d1061ceaad87e331d0ea3af94dcd4413f38d7b70b5f",
+    "selected_paragraph_count": 1,
+    "selection_anchors": [
+      "Seven [ 33 , 36 , 44"
+    ],
+    "source_warning": "Fetched excerpts only, not verified original empirical data or reviewed complete source."
+  }
+]

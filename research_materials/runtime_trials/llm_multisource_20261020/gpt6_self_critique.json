@@ -1,0 +1,137 @@
+{
+  "reviews": [
+    {
+      "proposition_id": "P1",
+      "verdict": "entailed",
+      "quote": "This approach does not take into account the possibility of heterogeneous probabilities of animal detection",
+      "rationale": "Source supports limitations of reviewed simple-count approaches, not all population surveys.",
+      "scope_risks": "Source supports limitations of reviewed simple-count approaches, not all population surveys."
+    },
+    {
+      "proposition_id": "P2",
+      "verdict": "partially_supported",
+      "quote": "Dog population size estimates can help with planning DPM programmes.",
+      "rationale": "Size estimates are supported; demographic utility rests on adjacent text outside this exact quotation.",
+      "scope_risks": "Size estimates are supported; demographic utility rests on adjacent text outside this exact quotation."
+    },
+    {
+      "proposition_id": "P3",
+      "verdict": "entailed",
+      "quote": "DPM can contribute to rabies control by reducing population turnover",
+      "rationale": "Guidance describes a possible mechanism, not a local impact estimate.",
+      "scope_risks": "Guidance describes a possible mechanism, not a local impact estimate."
+    },
+    {
+      "proposition_id": "P4",
+      "verdict": "entailed",
+      "quote": "mass culling of dogs is ineffective and may be counterproductive",
+      "rationale": "Normative guidance directly contrasts culling and rabies control, without local effect estimates.",
+      "scope_risks": "Normative guidance directly contrasts culling and rabies control, without local effect estimates."
+    },
+    {
+      "proposition_id": "P5",
+      "verdict": "entailed",
+      "quote": "Vaccinating dogs, including puppies, through mass dog vaccination programs",
+      "rationale": "WHO recommends this strategy, but no local delivery is established.",
+      "scope_risks": "WHO recommends this strategy, but no local delivery is established."
+    },
+    {
+      "proposition_id": "P6",
+      "verdict": "partially_supported",
+      "quote": "a comprehensive One Health approach promoting mass dog vaccination, ensuring access to PEP",
+      "rationale": "WHO lists complementary prevention measures, but the mapping of specialist PEP services into the broad PH-02 module is interpretive.",
+      "scope_risks": "WHO lists complementary prevention measures, but the mapping of specialist PEP services into the broad PH-02 module is interpretive."
+    },
+    {
+      "proposition_id": "P7",
+      "verdict": "entailed",
+      "quote": "rabies deaths are preventable with prompt post exposure prophylaxis (PEP)",
+      "rationale": "WHO states clinical prevention, not actual PEP accessibility.",
+      "scope_risks": "WHO states clinical prevention, not actual PEP accessibility."
+    },
+    {
+      "proposition_id": "P8",
+      "verdict": "entailed",
+      "quote": "the owned dog population is a common source of free-roaming dogs",
+      "rationale": "General guideline statement; no location-specific ownership rates.",
+      "scope_risks": "General guideline statement; no location-specific ownership rates."
+    },
+    {
+      "proposition_id": "P9",
+      "verdict": "entailed",
+      "quote": "monitoring changes in population trends",
+      "rationale": "WOAH conditionally permits trend indicators for program evaluation; sampling consistency remains important.",
+      "scope_risks": "WOAH conditionally permits trend indicators for program evaluation; sampling consistency remains important."
+    },
+    {
+      "proposition_id": "P10",
+      "verdict": "entailed",
+      "quote": "Dog bites and scratches cause 99% of the human rabies cases",
+      "rationale": "The reported global proportion must not be treated as a specific locality's incidence.",
+      "scope_risks": "The reported global proportion must not be treated as a specific locality's incidence."
+    },
+    {
+      "proposition_id": "P11",
+      "verdict": "entailed",
+      "quote": "Development of DPM programmes should include an initial assessment and ongoing adaptation",
+      "rationale": "Recommendations do not establish local compliance.",
+      "scope_risks": "Recommendations do not establish local compliance."
+    }
+  ],
+  "bridge_reviews": [
+    {
+      "from": "P1",
+      "to": "P2",
+      "verdict": "plausible",
+      "rationale": "Bias can qualify planning estimates, but denominator validity needs local testing."
+    },
+    {
+      "from": "P2",
+      "to": "P5",
+      "verdict": "plausible",
+      "rationale": "Population estimation and vaccine strategy share coverage concerns, but no campaign performance measured."
+    },
+    {
+      "from": "P3",
+      "to": "P5",
+      "verdict": "plausible",
+      "rationale": "Turnover creates an immunity-maintenance issue; local vaccination cohorts not observed."
+    },
+    {
+      "from": "P4",
+      "to": "P5",
+      "verdict": "plausible",
+      "rationale": "Normative guidance differentiates culling and vaccination without a local comparative trial."
+    },
+    {
+      "from": "P6",
+      "to": "P7",
+      "verdict": "plausible",
+      "rationale": "WHO treats human PEP as a complementary prevention component; actual access unmeasured."
+    },
+    {
+      "from": "P8",
+      "to": "P1",
+      "verdict": "uncertain",
+      "rationale": "WOAH discusses roaming ownership whereas Belo reviews detection; combined survey bias is a hypothesis needing evidence."
+    },
+    {
+      "from": "P9",
+      "to": "P1",
+      "verdict": "plausible",
+      "rationale": "Trend and abundance measurement differ; neither is free of sampling issues."
+    },
+    {
+      "from": "P10",
+      "to": "P7",
+      "verdict": "plausible",
+      "rationale": "Exposure and PEP appear at distinct points in the human rabies prevention pathway."
+    },
+    {
+      "from": "P11",
+      "to": "P2",
+      "verdict": "plausible",
+      "rationale": "Assessment and population estimates inform adaptive planning; effectiveness not established."
+    }
+  ]
+}

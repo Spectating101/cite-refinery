@@ -1,0 +1,23 @@
+[
+  {
+    "id": "WHO-RABIES-2024",
+    "url": "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+    "source_scope": "WHO global rabies fact sheet; not local service coverage data",
+    "origin_type": "official_institutional_public_health",
+    "text": "Dog bites and scratches cause 99% of the human rabies cases and can be prevented through dog vaccination and bite prevention.\n\nHowever, rabies deaths are preventable with prompt post exposure prophylaxis (PEP) by stopping the virus from reaching the central nervous system. PEP consists of thorough wound washing, administration of a course of human rabies vaccine and, when indicated, rabies immunoglobulins (RIG) or monoclonal antibodies (RmAb).\n\nWHO and its global partners aim to end human deaths from dog-mediated rabies through a comprehensive One Health approach promoting mass dog vaccination, ensuring access to PEP, health worker training, improved surveillance, and bite prevention through community awareness.\n\nVaccinating dogs, including puppies, through mass dog vaccination programs is the most cost-effective strategy for preventing rabies in people because it stops the transmission at its source."
+  },
+  {
+    "id": "WOAH-DPM-2024",
+    "url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+    "source_scope": "WOAH 2024 Terrestrial Code chapter 7.7; normative recommendations, not observed local outcomes",
+    "origin_type": "official_program_guidance",
+    "text": "DPM supports effective and sustainable rabies control programmes and the control of other zoonoses. Recognising that mass culling of dogs is ineffective and may be counterproductive, reducing dog population size is not an effective means of reducing rabies prevalence . However, DPM can contribute to rabies control by reducing population turnover, therefore supporting maintenance of herd immunity within a vaccinated dog population. The components of population turnover most relevant for rabies control are the reduction in the birth of puppies that would be at risk of remaining unvaccinated and the improvement of welfare and life expectancy of vaccinated dogs.\n\nDevelopment of DPM programmes should include an initial assessment and ongoing adaptation based on continued monitoring and evaluation using objective methods. This evidence-based approach improves programme effectiveness and informs responses to changes in the wider context that influence dog population dynamics.\n\nEstimation of dog population size and demography. Dog population size estimates can help with planning DPM programmes. Accuracy of estimates is typically improved with more time-consuming methods and greater local engagement. Where resources are limited, a rough estimate may be sufficient at the outset. This estimate may be refined by monitoring population coverage achieved by the implementation of measures and comparing this to the number of dogs receiving these measures (e.g. rabies vaccination and sterilisation in 'Catch, Neuter, Vaccinate and Return') (see Article 7.7.19. ).\n\nFor evaluation of DPM programme effectiveness, monitoring changes in population trends (e.g. changes in the density of free-roaming dogs along routes designed to traverse areas of high free-roaming dog density, proportion of lactating females and presence of puppies) may be sufficient, rather than investing in repeated estimates of population size. Methods to estimate population size may also measure demographic factors such as age, sex, sterilisation and reproductive status (lactation and pregnancy in females) to allow for refinement of estimates to sub-populations of relevance.\n\nAcknowledging that the owned dog population is a common source of free-roaming dogs , DPM programmes should consider all dogs."
+  },
+  {
+    "id": "BELO-2015",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830",
+    "source_scope": "2015 systematic methodological review, 26 studies; not a 2026 dog population census",
+    "origin_type": "peer_reviewed_academic_article",
+    "text": "Seven [ 33 , 36 , 44 – 46 , 51 , 53 ] of the eight studies analyzed in this group used census surveys to estimate the size of the free-ranging dog populations. These studies reported the simple counting of the dogs viewed or photographed during a given period of time, and this value was computed as the population abundance. This approach does not take into account the possibility of heterogeneous probabilities of animal detection and can only generate indicators of canine abundance instead of estimates of population parameters of abundance [ 22 ]."
+  }
+]

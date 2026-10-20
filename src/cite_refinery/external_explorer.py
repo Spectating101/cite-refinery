@@ -32,6 +32,7 @@ def export_cytoscape_explorer(packet: dict, output_dir: str | Path) -> dict:
             "clusters": n.get("clusters", [])[:30],
             "refs": [str(x)[:2000] for x in n.get("source_refs", [])[:40]],
             "status": str((n.get("provenance") or {}).get("review_status") or "unreviewed")[:120],
+            "reviewer_verdict": str((n.get("provenance") or {}).get("second_pass_verdict") or "not_run")[:90],
             "boundary": str((n.get("provenance") or {}).get("boundary") or "")[:1500],
         }})
     for i, e in enumerate(packet["edges"]):
@@ -41,6 +42,7 @@ def export_cytoscape_explorer(packet: dict, output_dir: str | Path) -> dict:
             "id": f"edge_{i}", "source": e["source"], "target": e["target"],
             "relation": str(e.get("relation") or "RELATED_TO")[:100],
             "status": str(e.get("status") or "unreviewed")[:100],
+            "reviewer_verdict": str((e.get("provenance") or {}).get("second_pass_verdict") or "not_run")[:90],
             "boundary": str((e.get("provenance") or {}).get("boundary") or "")[:1500],
             "refs": [str(x)[:2000] for x in e.get("evidence_refs", [])[:40]],
         }})
@@ -108,6 +110,7 @@ const cy=cytoscape({container:document.getElementById('cy'),elements,
  {selector:'node[layer="program"]',style:{'background-color':'#f9ad65'}},
  {selector:'edge',style:{'line-color':'#53637d','target-arrow-color':'#53637d','target-arrow-shape':'triangle','curve-style':'bezier','width':1,'opacity':0.65}},
  {selector:'edge[status="candidate"]',style:{'line-style':'dashed','opacity':0.40}},
+ {selector:'edge[status="unresolved"]',style:{'line-style':'dotted','line-color':'#edb061','target-arrow-color':'#edb061','width':2,'opacity':0.85}},
  {selector:':selected',style:{'border-width':3,'border-color':'#fff','opacity':1}},
  {selector:'.faded',style:{'opacity':0.04,'text-opacity':0}},
  {selector:'.hidden_layer',style:{'display':'none'}}
@@ -118,7 +121,7 @@ const title=document.getElementById('title'), detail=document.getElementById('de
 function row(k,v){const dt=document.createElement('dt');dt.textContent=k;const dd=document.createElement('dd');dd.textContent=String(v);detail.append(dt,dd)}
 function select(ele){const d=ele.data();title.textContent=d.label||d.relation||d.id;
  detail.replaceChildren();links.replaceChildren();document.getElementById('intro').textContent='Source attribution is not evidence that the relationship is effective or causal.';
- for(const k of ['id','layer','kind','relation','status','clusters','boundary'])if(d[k]!==undefined)row(k,Array.isArray(d[k])?d[k].join(', '):d[k]);
+ for(const k of ['id','layer','kind','relation','status','reviewer_verdict','clusters','boundary'])if(d[k]!==undefined)row(k,Array.isArray(d[k])?d[k].join(', '):d[k]);
  for(const url of d.refs||[]){const li=document.createElement('li');if(/^https:\/\//i.test(url)){const a=document.createElement('a');a.href=url;a.rel='noopener noreferrer';a.target='_blank';a.textContent=url;li.append(a)}else li.textContent=url;links.append(li)}
 }
 cy.on('tap','node,edge',evt=>select(evt.target));

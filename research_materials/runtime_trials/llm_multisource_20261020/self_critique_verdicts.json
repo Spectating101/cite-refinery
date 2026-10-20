@@ -1,0 +1,160 @@
+{
+  "schema": "cite_refinery.llm_semantic_second_opinion.v1",
+  "state": "CRITICAL_SECOND_PASS_NOT_AUTHORITY",
+  "propositions": [
+    {
+      "proposition_id": "P1",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "Source supports limitations of reviewed simple-count approaches, not all population surveys.",
+      "scope_risks": "Source supports limitations of reviewed simple-count approaches, not all population surveys.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P2",
+      "reviewer_verdict": "partially_supported",
+      "literal_span_matched": true,
+      "rationale": "Size estimates are supported; demographic utility rests on adjacent text outside this exact quotation.",
+      "scope_risks": "Size estimates are supported; demographic utility rests on adjacent text outside this exact quotation.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P3",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "Guidance describes a possible mechanism, not a local impact estimate.",
+      "scope_risks": "Guidance describes a possible mechanism, not a local impact estimate.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P4",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "Normative guidance directly contrasts culling and rabies control, without local effect estimates.",
+      "scope_risks": "Normative guidance directly contrasts culling and rabies control, without local effect estimates.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P5",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "WHO recommends this strategy, but no local delivery is established.",
+      "scope_risks": "WHO recommends this strategy, but no local delivery is established.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P6",
+      "reviewer_verdict": "partially_supported",
+      "literal_span_matched": true,
+      "rationale": "WHO lists complementary prevention measures, but the mapping of specialist PEP services into the broad PH-02 module is interpretive.",
+      "scope_risks": "WHO lists complementary prevention measures, but the mapping of specialist PEP services into the broad PH-02 module is interpretive.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P7",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "WHO states clinical prevention, not actual PEP accessibility.",
+      "scope_risks": "WHO states clinical prevention, not actual PEP accessibility.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P8",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "General guideline statement; no location-specific ownership rates.",
+      "scope_risks": "General guideline statement; no location-specific ownership rates.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P9",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "WOAH conditionally permits trend indicators for program evaluation; sampling consistency remains important.",
+      "scope_risks": "WOAH conditionally permits trend indicators for program evaluation; sampling consistency remains important.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P10",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "The reported global proportion must not be treated as a specific locality's incidence.",
+      "scope_risks": "The reported global proportion must not be treated as a specific locality's incidence.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "proposition_id": "P11",
+      "reviewer_verdict": "entailed",
+      "literal_span_matched": true,
+      "rationale": "Recommendations do not establish local compliance.",
+      "scope_risks": "Recommendations do not establish local compliance.",
+      "authority": "NONE_ACCEPTED"
+    }
+  ],
+  "bridges": [
+    {
+      "from": "P1",
+      "to": "P2",
+      "reviewer_verdict": "plausible",
+      "rationale": "Bias can qualify planning estimates, but denominator validity needs local testing.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P2",
+      "to": "P5",
+      "reviewer_verdict": "plausible",
+      "rationale": "Population estimation and vaccine strategy share coverage concerns, but no campaign performance measured.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P3",
+      "to": "P5",
+      "reviewer_verdict": "plausible",
+      "rationale": "Turnover creates an immunity-maintenance issue; local vaccination cohorts not observed.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P4",
+      "to": "P5",
+      "reviewer_verdict": "plausible",
+      "rationale": "Normative guidance differentiates culling and vaccination without a local comparative trial.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P6",
+      "to": "P7",
+      "reviewer_verdict": "plausible",
+      "rationale": "WHO treats human PEP as a complementary prevention component; actual access unmeasured.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P8",
+      "to": "P1",
+      "reviewer_verdict": "uncertain",
+      "rationale": "WOAH discusses roaming ownership whereas Belo reviews detection; combined survey bias is a hypothesis needing evidence.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P9",
+      "to": "P1",
+      "reviewer_verdict": "plausible",
+      "rationale": "Trend and abundance measurement differ; neither is free of sampling issues.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P10",
+      "to": "P7",
+      "reviewer_verdict": "plausible",
+      "rationale": "Exposure and PEP appear at distinct points in the human rabies prevention pathway.",
+      "authority": "NONE_ACCEPTED"
+    },
+    {
+      "from": "P11",
+      "to": "P2",
+      "reviewer_verdict": "plausible",
+      "rationale": "Assessment and population estimates inform adaptive planning; effectiveness not established.",
+      "authority": "NONE_ACCEPTED"
+    }
+  ],
+  "caveat": "Second LLM agreement is not independent empirical replication or human verification. Even an entailed label is not accepted evidence."
+}

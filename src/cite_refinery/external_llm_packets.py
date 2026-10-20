@@ -7,9 +7,13 @@ def _key(prefix, value):
     return prefix+"_"+hashlib.sha256(str(value).encode("utf-8")).hexdigest()[:20]
 
 
-def llm_review_packet(review_input, inspected):
+def llm_review_packet(review_input, inspected, second_opinion=None):
     if inspected.get("status")!="LLM_PROPOSITIONS_REQUIRING_INDEPENDENT_SEMANTIC_REVIEW":
         raise ValueError("Only inspected LLM review results are accepted")
+    if second_opinion is not None and second_opinion.get("state") != "CRITICAL_SECOND_PASS_NOT_AUTHORITY":
+        raise ValueError("Only a checked second-pass critique can annotate the graph")
+    critic_props={p["proposition_id"]:p for p in (second_opinion or {}).get("propositions",[])}
+    critic_bridges={(e["from"],e["to"]):e for e in (second_opinion or {}).get("bridges",[])}
     modules={m["id"]:m for m in review_input["modules"]}
     sources={s["id"]:s for s in review_input["sources"]}
     clusters=[{"key":"llm_review_root","title":"LLM-assisted evidence review (not accepted)",
@@ -49,6 +53,8 @@ def llm_review_packet(review_input, inspected):
             "provenance":{"review_status":p["review_status"],"claim_type":p["claim_type"],
                           "scope":p["scope"],"limitation":p["limitation"],
                           "quote_receipts":p["support"],
+                          "second_pass_verdict":critic_props.get(p["id"],{}).get("reviewer_verdict","not_run"),
+                          "second_pass_rationale":critic_props.get(p["id"],{}).get("rationale",""),
                           "boundary":"Quotation matches source excerpt; proposition not independently checked for entailment."},
         })
         for evidence in p["support"]:
@@ -76,10 +82,14 @@ def llm_review_packet(review_input, inspected):
             s["source_url"] for pid in (b["from"],b["to"])
             for s in by_id[pid]["support"]
         })
+        verdict=critic_bridges.get((b["from"],b["to"]),{}).get("reviewer_verdict","not_run")
+        status="unresolved" if verdict in {"uncertain","unsupported","contradicted"} else "candidate"
         edges.append({
             "source":propkeys[b["from"]],"target":propkeys[b["to"]],
-            "relation":b["relation"],"status":"candidate","evidence_refs":refs,
+            "relation":b["relation"],"status":status,"evidence_refs":refs,
             "provenance":{"reason":b["reason"],"limitations":b["limitations"],
+                          "second_pass_verdict":verdict,
+                          "second_pass_rationale":critic_bridges.get((b["from"],b["to"]),{}).get("rationale",""),
                           "review_status":b["review_status"],
                           "boundary":"LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."},
         })
@@ -101,9 +111,12 @@ def llm_review_packet(review_input, inspected):
             "status":"CANDIDATE_LLM_REASONING_REQUIRES_ENTAILMENT_REVIEW",
             "propositions":len(inspected["propositions"]),
             "bridges":len(inspected["bridges"]),
+            "critic_reviewed_propositions":len(critic_props),
+            "critic_reviewed_bridges":len(critic_bridges),
+            "critic_flagged_unresolved_bridges":sum(e["status"]=="unresolved" for e in edges),
             "rejected_proposals":len(inspected["rejected"]),
             "verified_effectiveness_claims":0,
             "authoritative_graph_unchanged":True,
-            "boundary":"All nodes remain neutral and edges candidate; this is not accepted Practical, Academic, Program evidence.",
+            "boundary":"All nodes remain neutral and edges are candidate or unresolved; this is not accepted Practical, Academic, Program evidence.",
         },
     }

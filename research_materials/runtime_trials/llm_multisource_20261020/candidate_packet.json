@@ -1,0 +1,1272 @@
+{
+  "schema": "cite_refinery.semantic_graph.v1",
+  "source_system": "external_llm_reasoner_v1",
+  "clusters": [
+    {
+      "key": "llm_review_root",
+      "title": "LLM-assisted evidence review (not accepted)",
+      "tags": [
+        "source_backed_hypotheses",
+        "unverified"
+      ]
+    },
+    {
+      "key": "module_a54bce2285ec8eb98ff8",
+      "title": "AW-01 — Free-roaming animal population observability",
+      "parent": "llm_review_root",
+      "tags": [
+        "problem_ontology"
+      ]
+    },
+    {
+      "key": "module_d631a7fb95df3dff3159",
+      "title": "AW-02 — Population replenishment and reproductive control",
+      "parent": "llm_review_root",
+      "tags": [
+        "problem_ontology"
+      ]
+    },
+    {
+      "key": "module_076b28eeecf0892f894e",
+      "title": "AW-03 — Rabies vaccination and One Health integration",
+      "parent": "llm_review_root",
+      "tags": [
+        "problem_ontology"
+      ]
+    },
+    {
+      "key": "module_4991ef56b3d5c00fe2fa",
+      "title": "AW-06 — Responsible ownership, abandonment and relinquishment",
+      "parent": "llm_review_root",
+      "tags": [
+        "problem_ontology"
+      ]
+    },
+    {
+      "key": "module_9c7d99da39556b7b7898",
+      "title": "PH-02 — Equitable primary-care access and capacity",
+      "parent": "llm_review_root",
+      "tags": [
+        "problem_ontology"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "key": "module_a54bce2285ec8eb98ff8",
+      "statement": "Free-roaming animal population observability — Population estimates require abundance, turnover, ownership, movement and welfare observations; visibility and identity assumptions complicate estimation.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8"
+      ],
+      "tags": [
+        "candidate_problem_module"
+      ],
+      "provenance": {
+        "source_system": "preexisting_module_registry",
+        "boundary": "Problem-module topic only; not a verified real-world fact."
+      }
+    },
+    {
+      "key": "module_d631a7fb95df3dff3159",
+      "statement": "Population replenishment and reproductive control — Sterilization outcomes depend on births, immigration, abandonment, roaming, coverage and continuity, not procedure counts alone.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_d631a7fb95df3dff3159"
+      ],
+      "tags": [
+        "candidate_problem_module"
+      ],
+      "provenance": {
+        "source_system": "preexisting_module_registry",
+        "boundary": "Problem-module topic only; not a verified real-world fact."
+      }
+    },
+    {
+      "key": "module_076b28eeecf0892f894e",
+      "statement": "Rabies vaccination and One Health integration — Vaccination, post-exposure prophylaxis, surveillance and community engagement are distinct from population control.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_076b28eeecf0892f894e"
+      ],
+      "tags": [
+        "candidate_problem_module"
+      ],
+      "provenance": {
+        "source_system": "preexisting_module_registry",
+        "boundary": "Problem-module topic only; not a verified real-world fact."
+      }
+    },
+    {
+      "key": "module_4991ef56b3d5c00fe2fa",
+      "statement": "Responsible ownership, abandonment and relinquishment — Roaming, loss, abandonment and uncontrolled reproduction link owned animals to free-roaming populations.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_4991ef56b3d5c00fe2fa"
+      ],
+      "tags": [
+        "candidate_problem_module"
+      ],
+      "provenance": {
+        "source_system": "preexisting_module_registry",
+        "boundary": "Problem-module topic only; not a verified real-world fact."
+      }
+    },
+    {
+      "key": "module_9c7d99da39556b7b7898",
+      "statement": "Equitable primary-care access and capacity — Geographic, workforce, financial and organizational barriers affect access and continuity; PEP is specialist preventive access, not interchangeable with all primary-care services.",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_9c7d99da39556b7b7898"
+      ],
+      "tags": [
+        "candidate_problem_module"
+      ],
+      "provenance": {
+        "source_system": "preexisting_module_registry",
+        "boundary": "Problem-module topic only; not a verified real-world fact."
+      }
+    },
+    {
+      "key": "source_3df61c665470c9acc568",
+      "statement": "Institutional excerpt for review: Dog bites and scratches cause 99% of the human rabies cases and can be prevented through dog vaccination and bite prevention.\n\nHowever, rabies deaths are preventable with prompt post exposure prophylaxis (PEP) by stopping the virus from reaching the central nervous system. PEP consists of thorough wound washing, administration of a course of human rabies vaccine and, when indicated, rabies immunoglobulins (RIG) or monoclonal antibodies (RmAb).\n\nWHO and its global partners aim to end human deaths from dog-mediated rabies through a comprehensive One Health approach promoting mass dog vaccination, ensuring access to PEP, health worker training, improved surveillance, and bite prevention through community awareness.\n\nVaccinating dogs, including puppies, through mass dog vaccination programs is the most cost-effective strategy for preventing rabies in people because it stops the transmission at its source.",
+      "kind": "source",
+      "layer": "neutral",
+      "clusters": [
+        "llm_review_root"
+      ],
+      "source_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "tags": [
+        "source_excerpt_unverified_claims"
+      ],
+      "provenance": {
+        "source_id": "WHO-RABIES-2024",
+        "text_sha256": "13f8793f26942ed0d7a60e510f6ba44b33275c9805a270846b7aa3d96f42c81d",
+        "source_scope": "WHO global rabies fact sheet; not local service coverage data",
+        "boundary": "Source text was supplied; source content authentication is separate from this packet."
+      }
+    },
+    {
+      "key": "source_87d3454221152d2befc9",
+      "statement": "Institutional excerpt for review: DPM supports effective and sustainable rabies control programmes and the control of other zoonoses. Recognising that mass culling of dogs is ineffective and may be counterproductive, reducing dog population size is not an effective means of reducing rabies prevalence . However, DPM can contribute to rabies control by reducing population turnover, therefore supporting maintenance of herd immunity within a vaccinated dog population. The components of population turnover most relevant for rabies control are the reduction in the birth of puppies that would be at risk of remaining unvaccinated and the improvement of welfare and life expectancy of vaccinated dogs.\n\nDevelopment of DPM programmes should include an initial assessment and ongoing adaptation based on continued monitoring and evaluation using objective methods. This evidence-based approach improves programme effectiveness and informs responses to changes in the wider context that influence dog population dynamics.\n\nEstimation of dog population size and demography. Dog population size estimates can help with planning DPM programm",
+      "kind": "source",
+      "layer": "neutral",
+      "clusters": [
+        "llm_review_root"
+      ],
+      "source_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "tags": [
+        "source_excerpt_unverified_claims"
+      ],
+      "provenance": {
+        "source_id": "WOAH-DPM-2024",
+        "text_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e",
+        "source_scope": "WOAH 2024 Terrestrial Code chapter 7.7; normative recommendations, not observed local outcomes",
+        "boundary": "Source text was supplied; source content authentication is separate from this packet."
+      }
+    },
+    {
+      "key": "source_b0e6cf57f4c1a0a7c4cd",
+      "statement": "Institutional excerpt for review: Seven [ 33 , 36 , 44 – 46 , 51 , 53 ] of the eight studies analyzed in this group used census surveys to estimate the size of the free-ranging dog populations. These studies reported the simple counting of the dogs viewed or photographed during a given period of time, and this value was computed as the population abundance. This approach does not take into account the possibility of heterogeneous probabilities of animal detection and can only generate indicators of canine abundance instead of estimates of population parameters of abundance [ 22 ].",
+      "kind": "source",
+      "layer": "neutral",
+      "clusters": [
+        "llm_review_root"
+      ],
+      "source_refs": [
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830"
+      ],
+      "tags": [
+        "source_excerpt_unverified_claims"
+      ],
+      "provenance": {
+        "source_id": "BELO-2015",
+        "text_sha256": "618002f0bb91c7058f628d1061ceaad87e331d0ea3af94dcd4413f38d7b70b5f",
+        "source_scope": "2015 systematic methodological review, 26 studies; not a 2026 dog population census",
+        "boundary": "Source text was supplied; source content authentication is separate from this packet."
+      }
+    },
+    {
+      "key": "proposition_0b5fc911cba608423f8d",
+      "statement": "Simple counts of free-ranging dogs observed or photographed may be indicators rather than population-parameter abundance estimates when heterogeneous detection probability is not addressed.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8"
+      ],
+      "source_refs": [
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "reported_limitation"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "reported_limitation",
+        "scope": "Belo et al. 2015 systematic-methods review, census method subset",
+        "limitation": "Does not establish that every count is unusable or estimate the magnitude of bias at any current site.",
+        "quote_receipts": [
+          {
+            "source_id": "BELO-2015",
+            "quote": "This approach does not take into account the possibility of heterogeneous probabilities of animal detection and can only generate indicators of canine abundance instead of estimates of population parameters of abundance",
+            "source_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830",
+            "source_sha256": "618002f0bb91c7058f628d1061ceaad87e331d0ea3af94dcd4413f38d7b70b5f"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "Source supports limitations of reviewed simple-count approaches, not all population surveys.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_df40fce04ce984cdd267",
+      "statement": "WOAH identifies population size and demographic estimates as useful inputs when planning dog population management interventions.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8",
+        "module_076b28eeecf0892f894e"
+      ],
+      "source_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "method"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "method",
+        "scope": "WOAH 2024 normative guidance, not a measured site outcome",
+        "limitation": "Does not establish a local vaccination denominator, coverage rate, or precision threshold.",
+        "quote_receipts": [
+          {
+            "source_id": "WOAH-DPM-2024",
+            "quote": "Dog population size estimates can help with planning DPM programmes.",
+            "source_url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+            "source_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e"
+          }
+        ],
+        "second_pass_verdict": "partially_supported",
+        "second_pass_rationale": "Size estimates are supported; demographic utility rests on adjacent text outside this exact quotation.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_eeff669e4be3e54e490b",
+      "statement": "WOAH describes reduced dog population turnover as a possible contribution to maintaining herd immunity among vaccinated dogs.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_d631a7fb95df3dff3159",
+        "module_076b28eeecf0892f894e"
+      ],
+      "source_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "program_capability"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "program_capability",
+        "scope": "WOAH 2024 program guidance and proposed mechanism",
+        "limitation": "No local causal estimate or vaccine-coverage time series provided.",
+        "quote_receipts": [
+          {
+            "source_id": "WOAH-DPM-2024",
+            "quote": "DPM can contribute to rabies control by reducing population turnover, therefore supporting maintenance of herd immunity within a vaccinated dog population.",
+            "source_url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+            "source_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "Guidance describes a possible mechanism, not a local impact estimate.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_2ca23466d61f150f6fe7",
+      "statement": "WOAH advises against mass culling as an effective rabies-prevalence reduction strategy.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_d631a7fb95df3dff3159",
+        "module_076b28eeecf0892f894e"
+      ],
+      "source_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "reported_limitation"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "reported_limitation",
+        "scope": "WOAH 2024 dog-population guidance",
+        "limitation": "Does not show all DPM activities ineffective or identify local policy outcomes.",
+        "quote_receipts": [
+          {
+            "source_id": "WOAH-DPM-2024",
+            "quote": "mass culling of dogs is ineffective and may be counterproductive, reducing dog population size is not an effective means of reducing rabies prevalence",
+            "source_url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+            "source_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "Normative guidance directly contrasts culling and rabies control, without local effect estimates.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_c4f9dbc6eec83ec3303b",
+      "statement": "WHO promotes mass vaccination of dogs including puppies to prevent dog-mediated human rabies at the transmission source.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_076b28eeecf0892f894e"
+      ],
+      "source_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "program_capability"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "program_capability",
+        "scope": "WHO global rabies prevention guidance",
+        "limitation": "Not an independently measured effect of a specific campaign or proof of achieved coverage.",
+        "quote_receipts": [
+          {
+            "source_id": "WHO-RABIES-2024",
+            "quote": "Vaccinating dogs, including puppies, through mass dog vaccination programs is the most cost-effective strategy for preventing rabies in people because it stops the transmission at its source.",
+            "source_url": "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+            "source_sha256": "13f8793f26942ed0d7a60e510f6ba44b33275c9805a270846b7aa3d96f42c81d"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "WHO recommends this strategy, but no local delivery is established.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_b3385b53b065ef442f35",
+      "statement": "WHO describes vaccination, human post-exposure prophylaxis access, health-worker training, surveillance and bite prevention as complementary One Health measures.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_076b28eeecf0892f894e",
+        "module_9c7d99da39556b7b7898"
+      ],
+      "source_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "program_capability"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "program_capability",
+        "scope": "WHO global program guidance; PEP maps only conditionally to the broad PH-02 healthcare access module",
+        "limitation": "Does not establish actual local availability of timely treatment or show that a single measure replaces the others.",
+        "quote_receipts": [
+          {
+            "source_id": "WHO-RABIES-2024",
+            "quote": "a comprehensive One Health approach promoting mass dog vaccination, ensuring access to PEP, health worker training, improved surveillance, and bite prevention through community awareness.",
+            "source_url": "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+            "source_sha256": "13f8793f26942ed0d7a60e510f6ba44b33275c9805a270846b7aa3d96f42c81d"
+          }
+        ],
+        "second_pass_verdict": "partially_supported",
+        "second_pass_rationale": "WHO lists complementary prevention measures, but the mapping of specialist PEP services into the broad PH-02 module is interpretive.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_3267c09e587eee2e5c81",
+      "statement": "WHO states that prompt post-exposure prophylaxis following rabies exposure can prevent deaths.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_076b28eeecf0892f894e",
+        "module_9c7d99da39556b7b7898"
+      ],
+      "source_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "program_capability"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "program_capability",
+        "scope": "WHO global clinical prevention guidance",
+        "limitation": "Does not prove PEP access, affordability or completed treatment in a locality.",
+        "quote_receipts": [
+          {
+            "source_id": "WHO-RABIES-2024",
+            "quote": "rabies deaths are preventable with prompt post exposure prophylaxis (PEP) by stopping the virus from reaching the central nervous system.",
+            "source_url": "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+            "source_sha256": "13f8793f26942ed0d7a60e510f6ba44b33275c9805a270846b7aa3d96f42c81d"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "WHO states clinical prevention, not actual PEP accessibility.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_5942f3d41da0a9089419",
+      "statement": "WOAH identifies owned dogs as a common contributor to free-roaming populations and recommends considering all dogs in population management.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8",
+        "module_4991ef56b3d5c00fe2fa"
+      ],
+      "source_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "definition"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "definition",
+        "scope": "WOAH 2024 program guidance; locality specific proportions unavailable",
+        "limitation": "Cannot determine how many observed roaming dogs are owned versus unowned at any site.",
+        "quote_receipts": [
+          {
+            "source_id": "WOAH-DPM-2024",
+            "quote": "the owned dog population is a common source of free-roaming dogs , DPM programmes should consider all dogs.",
+            "source_url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+            "source_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "General guideline statement; no location-specific ownership rates.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_cf1479c05580090fddbf",
+      "statement": "WOAH says trends in free-roaming dog density and reproduction may sometimes suffice for DPM evaluation without repeated total-population estimates.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8",
+        "module_d631a7fb95df3dff3159"
+      ],
+      "source_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "method"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "method",
+        "scope": "WOAH monitoring guideline conditional on program objectives",
+        "limitation": "Trend measures need consistent observation protocols and do not establish program effectiveness by themselves.",
+        "quote_receipts": [
+          {
+            "source_id": "WOAH-DPM-2024",
+            "quote": "monitoring changes in population trends (e.g. changes in the density of free-roaming dogs along routes designed to traverse areas of high free-roaming dog density, proportion of lactating females and presence of puppies) may be sufficient, rather than investing in repeated estimates of population size.",
+            "source_url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+            "source_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "WOAH conditionally permits trend indicators for program evaluation; sampling consistency remains important.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_208520b995acb265e301",
+      "statement": "WHO identifies dog bites and scratches as the source of the great majority of human rabies cases globally.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_076b28eeecf0892f894e",
+        "module_9c7d99da39556b7b7898"
+      ],
+      "source_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "observation"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "observation",
+        "scope": "WHO global reported attribution, not locality-specific 2026 incidence",
+        "limitation": "Does not supply local bite surveillance, geographic risk or treatment access.",
+        "quote_receipts": [
+          {
+            "source_id": "WHO-RABIES-2024",
+            "quote": "Dog bites and scratches cause 99% of the human rabies cases",
+            "source_url": "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+            "source_sha256": "13f8793f26942ed0d7a60e510f6ba44b33275c9805a270846b7aa3d96f42c81d"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "The reported global proportion must not be treated as a specific locality's incidence.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "proposition_6c883c5bf20d7aada8f3",
+      "statement": "WOAH recommends ongoing objective monitoring and program adaptation following an initial population assessment.",
+      "kind": "concept",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8",
+        "module_d631a7fb95df3dff3159"
+      ],
+      "source_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "tags": [
+        "llm_semantic_atom",
+        "literal_quote_found",
+        "not_validated_entailment",
+        "method"
+      ],
+      "provenance": {
+        "review_status": "direct_source_quote_candidate_unverified_entailment",
+        "claim_type": "method",
+        "scope": "WOAH normative program standard",
+        "limitation": "Actual implementation quality, funding and outcomes remain unknown.",
+        "quote_receipts": [
+          {
+            "source_id": "WOAH-DPM-2024",
+            "quote": "Development of DPM programmes should include an initial assessment and ongoing adaptation based on continued monitoring and evaluation using objective methods.",
+            "source_url": "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm",
+            "source_sha256": "ae56a72fb568709e173582aae16bc5aabe4ef7fd74e07f9af076fe16515d266e"
+          }
+        ],
+        "second_pass_verdict": "entailed",
+        "second_pass_rationale": "Recommendations do not establish local compliance.",
+        "boundary": "Quotation matches source excerpt; proposition not independently checked for entailment."
+      }
+    },
+    {
+      "key": "question_58a84562e3b42a082b0e",
+      "statement": "What is the dog vaccination denominator after correcting for heterogeneous detection, ownership and roaming overlap, and changes in dog numbers over time in a specified district?",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8",
+        "module_076b28eeecf0892f894e",
+        "module_4991ef56b3d5c00fe2fa"
+      ],
+      "tags": [
+        "unresolved_llm_question_not_evidence"
+      ],
+      "provenance": {
+        "why_unresolved": "Source materials do not report local detection-corrected dog counts or denominator uncertainty.",
+        "boundary": "An LLM identified an information gap. Missing from source excerpt is not absent in the world."
+      }
+    },
+    {
+      "key": "question_55556e5a6d8943b76831",
+      "statement": "What are local birth, death, abandonment and movement rates for vaccinated and unvaccinated cohorts, and how quickly do these change effective vaccination coverage?",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_d631a7fb95df3dff3159",
+        "module_076b28eeecf0892f894e",
+        "module_4991ef56b3d5c00fe2fa"
+      ],
+      "tags": [
+        "unresolved_llm_question_not_evidence"
+      ],
+      "provenance": {
+        "why_unresolved": "WOAH's turnover mechanism is presented as guidance, not quantified for the target population.",
+        "boundary": "An LLM identified an information gap. Missing from source excerpt is not absent in the world."
+      }
+    },
+    {
+      "key": "question_6f9d81a3fbbc1df8459e",
+      "statement": "Can bite-exposed patients reach and complete timely affordable PEP, and do access barriers differ by geographic or socioeconomic group?",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_076b28eeecf0892f894e",
+        "module_9c7d99da39556b7b7898"
+      ],
+      "tags": [
+        "unresolved_llm_question_not_evidence"
+      ],
+      "provenance": {
+        "why_unresolved": "WHO clinical and program guidance contains no locality-specific service or patient-flow data.",
+        "boundary": "An LLM identified an information gap. Missing from source excerpt is not absent in the world."
+      }
+    },
+    {
+      "key": "question_39a0e70278f5bfae616d",
+      "statement": "What independent evaluation distinguishes changes in sightings, dog welfare, vaccination coverage, rabies incidence and human mortality from alternative explanations?",
+      "kind": "research_question",
+      "layer": "neutral",
+      "clusters": [
+        "module_a54bce2285ec8eb98ff8",
+        "module_d631a7fb95df3dff3159",
+        "module_076b28eeecf0892f894e",
+        "module_9c7d99da39556b7b7898"
+      ],
+      "tags": [
+        "unresolved_llm_question_not_evidence"
+      ],
+      "provenance": {
+        "why_unresolved": "None of the selected sources supplies a local causal impact evaluation.",
+        "boundary": "An LLM identified an information gap. Missing from source excerpt is not absent in the world."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "source_b0e6cf57f4c1a0a7c4cd",
+      "target": "proposition_0b5fc911cba608423f8d",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830"
+      ],
+      "provenance": {
+        "quoted_passage": "This approach does not take into account the possibility of heterogeneous probabilities of animal detection and can only generate indicators of canine abundance instead of estimates of population parameters of abundance",
+        "quote_sha256": "quote_310371ca76a647c7e220",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_0b5fc911cba608423f8d",
+      "target": "module_a54bce2285ec8eb98ff8",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "Belo et al. 2015 systematic-methods review, census method subset",
+        "limitation": "Does not establish that every count is unusable or estimate the magnitude of bias at any current site."
+      }
+    },
+    {
+      "source": "source_87d3454221152d2befc9",
+      "target": "proposition_df40fce04ce984cdd267",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "quoted_passage": "Dog population size estimates can help with planning DPM programmes.",
+        "quote_sha256": "quote_17da49a1d2bd05467f03",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_df40fce04ce984cdd267",
+      "target": "module_a54bce2285ec8eb98ff8",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 normative guidance, not a measured site outcome",
+        "limitation": "Does not establish a local vaccination denominator, coverage rate, or precision threshold."
+      }
+    },
+    {
+      "source": "proposition_df40fce04ce984cdd267",
+      "target": "module_076b28eeecf0892f894e",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 normative guidance, not a measured site outcome",
+        "limitation": "Does not establish a local vaccination denominator, coverage rate, or precision threshold."
+      }
+    },
+    {
+      "source": "source_87d3454221152d2befc9",
+      "target": "proposition_eeff669e4be3e54e490b",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "quoted_passage": "DPM can contribute to rabies control by reducing population turnover, therefore supporting maintenance of herd immunity within a vaccinated dog population.",
+        "quote_sha256": "quote_86910ed5a83b517dc884",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_eeff669e4be3e54e490b",
+      "target": "module_d631a7fb95df3dff3159",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 program guidance and proposed mechanism",
+        "limitation": "No local causal estimate or vaccine-coverage time series provided."
+      }
+    },
+    {
+      "source": "proposition_eeff669e4be3e54e490b",
+      "target": "module_076b28eeecf0892f894e",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 program guidance and proposed mechanism",
+        "limitation": "No local causal estimate or vaccine-coverage time series provided."
+      }
+    },
+    {
+      "source": "source_87d3454221152d2befc9",
+      "target": "proposition_2ca23466d61f150f6fe7",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "quoted_passage": "mass culling of dogs is ineffective and may be counterproductive, reducing dog population size is not an effective means of reducing rabies prevalence",
+        "quote_sha256": "quote_f0e6aaf0f3d5a2a6aa7f",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_2ca23466d61f150f6fe7",
+      "target": "module_d631a7fb95df3dff3159",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 dog-population guidance",
+        "limitation": "Does not show all DPM activities ineffective or identify local policy outcomes."
+      }
+    },
+    {
+      "source": "proposition_2ca23466d61f150f6fe7",
+      "target": "module_076b28eeecf0892f894e",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 dog-population guidance",
+        "limitation": "Does not show all DPM activities ineffective or identify local policy outcomes."
+      }
+    },
+    {
+      "source": "source_3df61c665470c9acc568",
+      "target": "proposition_c4f9dbc6eec83ec3303b",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "quoted_passage": "Vaccinating dogs, including puppies, through mass dog vaccination programs is the most cost-effective strategy for preventing rabies in people because it stops the transmission at its source.",
+        "quote_sha256": "quote_f30035565927f4f27b02",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_c4f9dbc6eec83ec3303b",
+      "target": "module_076b28eeecf0892f894e",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WHO global rabies prevention guidance",
+        "limitation": "Not an independently measured effect of a specific campaign or proof of achieved coverage."
+      }
+    },
+    {
+      "source": "source_3df61c665470c9acc568",
+      "target": "proposition_b3385b53b065ef442f35",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "quoted_passage": "a comprehensive One Health approach promoting mass dog vaccination, ensuring access to PEP, health worker training, improved surveillance, and bite prevention through community awareness.",
+        "quote_sha256": "quote_6d4936755ebb77e15d41",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_b3385b53b065ef442f35",
+      "target": "module_076b28eeecf0892f894e",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WHO global program guidance; PEP maps only conditionally to the broad PH-02 healthcare access module",
+        "limitation": "Does not establish actual local availability of timely treatment or show that a single measure replaces the others."
+      }
+    },
+    {
+      "source": "proposition_b3385b53b065ef442f35",
+      "target": "module_9c7d99da39556b7b7898",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WHO global program guidance; PEP maps only conditionally to the broad PH-02 healthcare access module",
+        "limitation": "Does not establish actual local availability of timely treatment or show that a single measure replaces the others."
+      }
+    },
+    {
+      "source": "source_3df61c665470c9acc568",
+      "target": "proposition_3267c09e587eee2e5c81",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "quoted_passage": "rabies deaths are preventable with prompt post exposure prophylaxis (PEP) by stopping the virus from reaching the central nervous system.",
+        "quote_sha256": "quote_df587ed55e260a821ad8",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_3267c09e587eee2e5c81",
+      "target": "module_076b28eeecf0892f894e",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WHO global clinical prevention guidance",
+        "limitation": "Does not prove PEP access, affordability or completed treatment in a locality."
+      }
+    },
+    {
+      "source": "proposition_3267c09e587eee2e5c81",
+      "target": "module_9c7d99da39556b7b7898",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WHO global clinical prevention guidance",
+        "limitation": "Does not prove PEP access, affordability or completed treatment in a locality."
+      }
+    },
+    {
+      "source": "source_87d3454221152d2befc9",
+      "target": "proposition_5942f3d41da0a9089419",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "quoted_passage": "the owned dog population is a common source of free-roaming dogs , DPM programmes should consider all dogs.",
+        "quote_sha256": "quote_a2faa6d394ec6443b6a5",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_5942f3d41da0a9089419",
+      "target": "module_a54bce2285ec8eb98ff8",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 program guidance; locality specific proportions unavailable",
+        "limitation": "Cannot determine how many observed roaming dogs are owned versus unowned at any site."
+      }
+    },
+    {
+      "source": "proposition_5942f3d41da0a9089419",
+      "target": "module_4991ef56b3d5c00fe2fa",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH 2024 program guidance; locality specific proportions unavailable",
+        "limitation": "Cannot determine how many observed roaming dogs are owned versus unowned at any site."
+      }
+    },
+    {
+      "source": "source_87d3454221152d2befc9",
+      "target": "proposition_cf1479c05580090fddbf",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "quoted_passage": "monitoring changes in population trends (e.g. changes in the density of free-roaming dogs along routes designed to traverse areas of high free-roaming dog density, proportion of lactating females and presence of puppies) may be sufficient, rather than investing in repeated estimates of population size.",
+        "quote_sha256": "quote_c5e780f324d1442ee0a0",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_cf1479c05580090fddbf",
+      "target": "module_a54bce2285ec8eb98ff8",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH monitoring guideline conditional on program objectives",
+        "limitation": "Trend measures need consistent observation protocols and do not establish program effectiveness by themselves."
+      }
+    },
+    {
+      "source": "proposition_cf1479c05580090fddbf",
+      "target": "module_d631a7fb95df3dff3159",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH monitoring guideline conditional on program objectives",
+        "limitation": "Trend measures need consistent observation protocols and do not establish program effectiveness by themselves."
+      }
+    },
+    {
+      "source": "source_3df61c665470c9acc568",
+      "target": "proposition_208520b995acb265e301",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "quoted_passage": "Dog bites and scratches cause 99% of the human rabies cases",
+        "quote_sha256": "quote_4d7b18dfb71ffa38f798",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_208520b995acb265e301",
+      "target": "module_076b28eeecf0892f894e",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WHO global reported attribution, not locality-specific 2026 incidence",
+        "limitation": "Does not supply local bite surveillance, geographic risk or treatment access."
+      }
+    },
+    {
+      "source": "proposition_208520b995acb265e301",
+      "target": "module_9c7d99da39556b7b7898",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WHO global reported attribution, not locality-specific 2026 incidence",
+        "limitation": "Does not supply local bite surveillance, geographic risk or treatment access."
+      }
+    },
+    {
+      "source": "source_87d3454221152d2befc9",
+      "target": "proposition_6c883c5bf20d7aada8f3",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "quoted_passage": "Development of DPM programmes should include an initial assessment and ongoing adaptation based on continued monitoring and evaluation using objective methods.",
+        "quote_sha256": "quote_9332e1417e433750fcdc",
+        "boundary": "Literal quote associated with model proposition; human/independent entailment review required."
+      }
+    },
+    {
+      "source": "proposition_6c883c5bf20d7aada8f3",
+      "target": "module_a54bce2285ec8eb98ff8",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH normative program standard",
+        "limitation": "Actual implementation quality, funding and outcomes remain unknown."
+      }
+    },
+    {
+      "source": "proposition_6c883c5bf20d7aada8f3",
+      "target": "module_d631a7fb95df3dff3159",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "boundary": "LLM maps this atomic topic to a module; entire module is not thereby evidenced.",
+        "scope": "WOAH normative program standard",
+        "limitation": "Actual implementation quality, funding and outcomes remain unknown."
+      }
+    },
+    {
+      "source": "proposition_0b5fc911cba608423f8d",
+      "target": "proposition_df40fce04ce984cdd267",
+      "relation": "QUALIFIES",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830",
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "reason": "Detection-biased raw sighting counts cannot automatically be interpreted as a valid planning denominator, even when dog population estimates would be useful to a DPM program.",
+        "limitations": "Site-specific sampling, detection correction, population definition and uncertainty remain to be measured.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "Bias can qualify planning estimates, but denominator validity needs local testing.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_df40fce04ce984cdd267",
+      "target": "proposition_c4f9dbc6eec83ec3303b",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "reason": "The WOAH planning requirement for dog population estimates and coverage informs how to interpret WHO vaccination-program ambitions.",
+        "limitations": "Population estimates do not demonstrate delivered vaccine doses, immunization coverage or rabies outcomes.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "Population estimation and vaccine strategy share coverage concerns, but no campaign performance measured.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_eeff669e4be3e54e490b",
+      "target": "proposition_c4f9dbc6eec83ec3303b",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "reason": "WOAH's dog-turnover mechanism provides a dynamic constraint on sustained herd immunity, complementing WHO's mass dog vaccination strategy.",
+        "limitations": "Local births, movement, dog immunity, vaccination uptake and mortality trends are absent.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "Turnover creates an immunity-maintenance issue; local vaccination cohorts not observed.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_2ca23466d61f150f6fe7",
+      "target": "proposition_c4f9dbc6eec83ec3303b",
+      "relation": "QUALIFIES",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "reason": "WOAH's rejection of dog-culling as a rabies-control substitute differentiates reducing visible dog numbers from WHO's dog vaccination strategy.",
+        "limitations": "This is a cross-source program-logic comparison, not a controlled local efficacy evaluation.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "Normative guidance differentiates culling and vaccination without a local comparative trial.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_b3385b53b065ef442f35",
+      "target": "proposition_3267c09e587eee2e5c81",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "reason": "WHO treats human PEP access as part of the same prevention package as dog vaccination, with time-sensitive clinical management following exposure.",
+        "limitations": "No population-level data on PEP timing, financial access or treatment completion were supplied.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "WHO treats human PEP as a complementary prevention component; actual access unmeasured.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_5942f3d41da0a9089419",
+      "target": "proposition_0b5fc911cba608423f8d",
+      "relation": "QUALIFIES",
+      "status": "unresolved",
+      "evidence_refs": [
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830",
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "reason": "The possibility of owned dogs roaming complicates interpretation of a simple count as a count of unowned animals and interacts with detection limitations.",
+        "limitations": "Neither source quantifies ownership-specific roaming or its contribution to estimation bias in any locality.",
+        "second_pass_verdict": "uncertain",
+        "second_pass_rationale": "WOAH discusses roaming ownership whereas Belo reviews detection; combined survey bias is a hypothesis needing evidence.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_cf1479c05580090fddbf",
+      "target": "proposition_0b5fc911cba608423f8d",
+      "relation": "QUALIFIES",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144830",
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "reason": "WOAH's acceptable program-trend monitoring targets differ from the unbiased total-abundance estimates that the systematic review warns against conflating with raw counts.",
+        "limitations": "A route-density time series still requires stable sampling conditions and cannot establish a causal program impact.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "Trend and abundance measurement differ; neither is free of sampling issues.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_208520b995acb265e301",
+      "target": "proposition_3267c09e587eee2e5c81",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.who.int/en/news-room/fact-sheets/detail/rabies"
+      ],
+      "provenance": {
+        "reason": "WHO's human-rabies attribution to dog exposure and WHO's PEP statement describe exposure and downstream clinical prevention as distinct pathway stages.",
+        "limitations": "Local incidence, care pathway, treatment delays and patient outcomes remain unobserved.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "Exposure and PEP appear at distinct points in the human rabies prevention pathway.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    },
+    {
+      "source": "proposition_6c883c5bf20d7aada8f3",
+      "target": "proposition_df40fce04ce984cdd267",
+      "relation": "CONTEXT_FOR",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://www.woah.org/fileadmin/Home/eng/Health_standards/tahc/2024/en_chapitre_aw_stray_dog.htm"
+      ],
+      "provenance": {
+        "reason": "The recommendation for initial and continuing monitoring supplies an adaptive management context for using population estimates as planning inputs.",
+        "limitations": "This is normative design logic; no monitored intervention outcome was given.",
+        "second_pass_verdict": "plausible",
+        "second_pass_rationale": "Assessment and population estimates inform adaptive planning; effectiveness not established.",
+        "review_status": "llm_semantic_proposal_not_verified_entailment",
+        "boundary": "LLM-proposed association between two atomized statements. Sources have not been independently checked for the relationship."
+      }
+    }
+  ],
+  "conversion_metadata": {
+    "status": "CANDIDATE_LLM_REASONING_REQUIRES_ENTAILMENT_REVIEW",
+    "propositions": 11,
+    "bridges": 9,
+    "critic_reviewed_propositions": 11,
+    "critic_reviewed_bridges": 9,
+    "critic_flagged_unresolved_bridges": 1,
+    "rejected_proposals": 0,
+    "verified_effectiveness_claims": 0,
+    "authoritative_graph_unchanged": true,
+    "boundary": "All nodes remain neutral and edges are candidate or unresolved; this is not accepted Practical, Academic, Program evidence."
+  }
+}

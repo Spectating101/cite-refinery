@@ -42,7 +42,7 @@ def main():
         return
     if args.response_json is not None:
         response=json.loads(args.response_json.read_text(encoding="utf-8"))
-        provider_used="external-model-output-provided-by-user"
+        provider_used="external_annotated_llm_json_file"
     else:
         execution=invoke_semantic_llm(prompt,provider=args.provider,model=args.model,
                                       timeout_seconds=args.timeout)
@@ -56,6 +56,7 @@ def main():
                                                  encoding="utf-8")
     critique_prompt=build_second_pass_prompt(payload,report)
     (args.out/"critic_prompt.txt").write_text(critique_prompt,encoding="utf-8")
+    critical=None
     if args.critic_response_json is not None or args.critic_provider:
         if args.critic_response_json:
             second=json.loads(args.critic_response_json.read_text(encoding="utf-8"))
@@ -64,9 +65,9 @@ def main():
                      model=args.critic_model,timeout_seconds=args.timeout)["raw"]
         critical=inspect_second_pass(payload,report,second)
         (args.out/"second_opinion.json").write_text(json.dumps(critical,indent=2,ensure_ascii=False)+"\n")
-        print("INDEPENDENT_ENTAILMENT_CRITIQUE",len(critical["propositions"]),
+        print("SECOND_PASS_ENTAILMENT_REVIEW",len(critical["propositions"]),
               "propositions",len(critical["bridges"]),"bridges; authority NONE")
-    packet=llm_review_packet(payload,report)
+    packet=llm_review_packet(payload,report,second_opinion=critical)
     (args.out/"candidate_packet.json").write_text(json.dumps(packet,indent=2,ensure_ascii=False)+"\n",
                                                    encoding="utf-8")
     print("LLM_PROPOSITIONS",len(report["propositions"]),"CANDIDATE_BRIDGES",len(report["bridges"]),

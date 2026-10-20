@@ -1,0 +1,27 @@
+[
+  {
+    "id": "AW-01",
+    "title": "Free-roaming animal population observability",
+    "summary": "Population estimates require abundance, turnover, ownership, movement and welfare observations; visibility and identity assumptions complicate estimation."
+  },
+  {
+    "id": "AW-02",
+    "title": "Population replenishment and reproductive control",
+    "summary": "Sterilization outcomes depend on births, immigration, abandonment, roaming, coverage and continuity, not procedure counts alone."
+  },
+  {
+    "id": "AW-03",
+    "title": "Rabies vaccination and One Health integration",
+    "summary": "Vaccination, post-exposure prophylaxis, surveillance and community engagement are distinct from population control."
+  },
+  {
+    "id": "AW-06",
+    "title": "Responsible ownership, abandonment and relinquishment",
+    "summary": "Roaming, loss, abandonment and uncontrolled reproduction link owned animals to free-roaming populations."
+  },
+  {
+    "id": "PH-02",
+    "title": "Equitable primary-care access and capacity",
+    "summary": "Geographic, workforce, financial and organizational barriers affect access and continuity; PEP is specialist preventive access, not interchangeable with all primary-care services."
+  }
+]
