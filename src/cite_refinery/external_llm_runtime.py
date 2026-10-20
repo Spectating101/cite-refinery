@@ -94,8 +94,8 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
         except (error.URLError,TimeoutError,OSError,ValueError) as exc:
             raise LLMUnavailable(f"Ollama inference unavailable: {type(exc).__name__}") from exc
         return {"provider":"ollama","model":target_model,"raw":raw}
-    if provider not in {"claude","gemini","codex","copilot"}:
-        raise ValueError("provider must be ollama, claude, gemini, codex or copilot")
+    if provider not in {"claude","gemini","codex","copilot","antigravity"}:
+        raise ValueError("provider must be ollama, claude, gemini, codex, copilot or antigravity")
     with tempfile.TemporaryDirectory(prefix="cite-refinery-readonly-llm-") as directory:
         if provider=="codex":
             codex=os.environ.get("CITE_REFINERY_CODEX_BIN") or shutil.which("codex")
@@ -121,6 +121,19 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
                  "--stream","off","--output-format","text","--silent"]
             cmd.extend(["--model",model or "auto"])
             cmd.extend(["-p","Do not use tools. Return ONLY one JSON object. "+prompt])
+        elif provider=="antigravity":
+            # Agy has its own authenticated model catalog. Avoid Gemini
+            # Code Assist CLI, which rejects this consumer-authenticated host.
+            agy=os.environ.get("CITE_REFINERY_ANTIGRAVITY_BIN") or shutil.which("agy")
+            if not agy:
+                raise LLMUnavailable("Antigravity CLI not found; set CITE_REFINERY_ANTIGRAVITY_BIN")
+            selected=model or "gemini-3.8-flash-medium"
+            if selected not in {"gemini-3.8-flash-low","gemini-3.8-flash-medium","gemini-3.8-flash-high"}:
+                raise ValueError("Select a verified Gemini 3.8 Flash tier")
+            cmd=[agy,"--mode","plan","--sandbox","--disable-slash-commands",
+                 "--model",selected,"--output-format","json",
+                 "--print-timeout",f"{max(10,timeout_seconds-5)}s",
+                 "--print","Do not use tools. Return one JSON object only. "+prompt]
         elif provider=="claude":
             cmd=["claude","--print","--tools","","--no-session-persistence",
                  "--output-format","json"]
@@ -148,7 +161,12 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
             # Never surface stderr, credentials, user metadata or session logs.
             raise LLMUnavailable(f"{provider} CLI exited {proc.returncode}; check authentication and quota locally")
         try:
-            if provider=="copilot":
+            if provider=="antigravity":
+                envelope=json.loads(proc.stdout)
+                if not isinstance(envelope,dict) or envelope.get("status")!="SUCCESS":
+                    raise ValueError("Antigravity did not complete successfully")
+                raw=_parse_response(envelope)
+            elif provider=="copilot":
                 raw=_copilot_json_from_stdout(proc.stdout)
             elif provider=="codex":
                 candidate=Path(result_file)
@@ -159,4 +177,4 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
                 raw=_parse_response(json.loads(proc.stdout))
         except (ValueError,TypeError) as exc:
             raise LLMUnavailable(f"{provider} returned invalid structured JSON") from exc
-        return {"provider":provider,"model":model or ("auto" if provider=="copilot" else "cli-default"),"raw":raw}
+        return {"provider":provider,"model":model or ("auto" if provider=="copilot" else "gemini-3.8-flash-medium" if provider=="antigravity" else "cli-default"),"raw":raw}

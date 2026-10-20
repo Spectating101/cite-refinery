@@ -48,7 +48,7 @@ def main(argv=None):
         action=sub.add_parser(name)
         action.add_argument("--id",required=True)
         if name!="status":
-            action.add_argument("--provider",choices=["copilot","codex","claude","gemini","ollama"],default="copilot")
+            action.add_argument("--provider",choices=["copilot","antigravity","codex","claude","gemini","ollama"],default="copilot")
             action.add_argument("--model",default=None)
             action.add_argument("--timeout",type=int,default=180)
         if name=="run":action.add_argument("--steps",type=int,default=5)

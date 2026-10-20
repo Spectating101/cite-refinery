@@ -10,7 +10,7 @@ def main():
  p.add_argument('--cases',type=Path,required=True)
  p.add_argument('--out',type=Path,required=True)
  p.add_argument('--response-json',type=Path,default=None,help='Externally completed predictions; no LLM run')
- p.add_argument('--provider',default='copilot',choices=['copilot','codex','claude','gemini','ollama'])
+ p.add_argument('--provider',default='copilot',choices=['copilot','antigravity','codex','claude','gemini','ollama'])
  p.add_argument('--model',default=None)
  p.add_argument('--timeout',type=int,default=180)
  args=p.parse_args()

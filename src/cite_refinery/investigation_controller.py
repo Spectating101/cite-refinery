@@ -96,7 +96,8 @@ def recovery_prompt(state):
         "2-5 queries, each with lane 'academic' or 'official'. Do NOT invent URLs. "
         "The controller will independently verify any resulting pages.\nINPUT:\n" +
         json.dumps({"focus":rnd["focus"],"last_plan":rnd["plan"],
-                    "sources_obtained":found,"failures":rnd.get("source_failures",[])},
+                    "sources_obtained":found,"failures":rnd.get("source_failures",[]),
+                    "excluded_off_topic_sources":rnd.get("excluded_off_topic_sources",[])},
                    ensure_ascii=False))
 
 
@@ -256,6 +257,32 @@ class InvestigationController:
 
             elif s["stage"]=="reason":
                 rnd=s["rounds"][-1]
+                # In a source-audit repair investigation, stop obvious topic
+                # mismatches before treating any official website as practice
+                # evidence. This is only a narrow relevance prefilter; it
+                # does not establish semantic entailment or source validity.
+                if s.get("lineage",{}).get("source_audit_digest") and (
+                    "dog" in rnd["focus"].lower() or "rabies" in rnd["focus"].lower()
+                ):
+                    from .investigation_adjudication import source_topic_fit
+                    retained=[]
+                    excluded=rnd.setdefault("excluded_off_topic_sources",[])
+                    for source in rnd["sources"]:
+                        if source["origin_type"].startswith("official_") and not source_topic_fit(
+                            [{"statement":rnd["focus"]}],source
+                        ):
+                            entry={"source_id":source["id"],"url":source["url"],
+                                   "reason":"No study-topic reference in retrieved official excerpt"}
+                            if entry not in excluded:excluded.append(entry)
+                            continue
+                        retained.append(source)
+                    rnd["sources"]=retained
+                    rnd["source_count"]=len(retained)
+                    if not any(x["origin_type"].startswith("official_") for x in retained):
+                        rnd["state"]="incomplete_source_families"
+                        s["stage"]="needs_sources" if rnd.get("source_attempts",0)<3 else "blocked"
+                        self.save(s)
+                        return s
                 # Later rounds examine new evidence alongside bounded previously
                 # retrieved sources, rather than starting from scratch. Previous
                 # *model claims* remain provisional until re-evaluated.

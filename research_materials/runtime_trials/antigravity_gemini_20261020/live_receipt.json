@@ -1,0 +1,197 @@
+{
+  "schema": "cite_refinery.antigravity_research_trial.v1",
+  "investigation_id": "49ecd664b5044b24abfc",
+  "parent_id": "2ca16ed4bdde441cabb1",
+  "focus": "Independent mark-resight abundance surveys and municipal bite/PEP surveillance records for evaluating free-roaming dog catch-neuter interventions against external population and human-health outcomes",
+  "state": "ready_next",
+  "generator_backend": "antigravity_cli",
+  "generator_model": "gemini-3.8-flash-medium",
+  "critic_backend": "antigravity_cli",
+  "critic_model": "gemini-3.8-flash-high",
+  "same_model_family_critique": true,
+  "sources": [
+    {
+      "id": "EPMC-69339d4d1242",
+      "url": "https://doi.org/10.12834/vetit.4049.41768.2",
+      "origin_type": "scholarly_abstract_lead",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "ad87230a7fc137e5b26c424bf749e16b4bac8db80bf8ec6980035258f0dba8a2"
+    },
+    {
+      "id": "EPMC-c5c54e414d55",
+      "url": "https://doi.org/10.1371/journal.pone.0317636",
+      "origin_type": "scholarly_abstract_lead",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "963c44839f97006138277cc17872defbadefe7d95eccfd3e3ac706f7514dbe26"
+    },
+    {
+      "id": "EPMC-7329c77af95d",
+      "url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+      "origin_type": "scholarly_abstract_lead",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "65ba87d740806c07eaa2dce6b4cff635972271d9330a926bccebf83acfe49eb5"
+    },
+    {
+      "id": "JATS-54d5817e66a1",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12503238/fullTextXML",
+      "origin_type": "scholarly_fulltext_excerpt_unverified",
+      "parent_source_url": "https://doi.org/10.1371/journal.pone.0317636",
+      "same_study_as_parent": true,
+      "passage_sha256": "6d83e09ec4de6575959142edd6dc11eb774cebdd865894c85ff6fee8a57c6e96"
+    },
+    {
+      "id": "OFFICIAL-f3d5243b3adc",
+      "url": "https://www.emro.who.int/emhj-volume-31-2025/volume-31-issue-8/policy-recommendations-for-managing-stray-dogs-in-morocco.html",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "80036a201937d14a86c0f10f2b3608971afbacf89f63c936f90c7e49d7ee704e"
+    }
+  ],
+  "off_topic_exclusions": [
+    {
+      "source_id": "OFFICIAL-23eefd7fe676",
+      "url": "https://www.who.int/news/item/16-12-2025-who-highlights-health-risks-and-opportunities-in-the-global-waste-crisis"
+    },
+    {
+      "source_id": "OFFICIAL-87e7e0a1013e",
+      "url": "https://www.who.int/tools/compendium-on-health-and-environment/solid-waste"
+    },
+    {
+      "source_id": "OFFICIAL-120aa53d32c1",
+      "url": "https://eurohealthobservatory.who.int/themes/health-system-functions/public-health"
+    },
+    {
+      "source_id": "OFFICIAL-53f1e6ce2e31",
+      "url": "https://www.who.int/teams/primary-health-care/health-systems-resilience/essential-public-health-functions"
+    },
+    {
+      "source_id": "OFFICIAL-65b0587d76a6",
+      "url": "https://www.who.int/publications/i/item/9789240100879"
+    },
+    {
+      "source_id": "OFFICIAL-36d54b05405b",
+      "url": "https://www.who.int/groups/expert-committee-on-biological-standardization"
+    },
+    {
+      "source_id": "OFFICIAL-2cbd3ace17c9",
+      "url": "https://www.who.int/europe/news/item/07-10-2021-syrian-law-student-muhammed-paralyzed-by-a-stray-bullet-takes-first-steps-towards-a-brighter-future-in-turkey"
+    }
+  ],
+  "source_attempts": 2,
+  "recovery_plans": 1,
+  "propositions": [
+    {
+      "id": "P1",
+      "statement": "In shelter facilities in the Abruzzo region of Italy, the regional adoption rate rose from 45% in 2023 to 49.6% in 2024, with mortality remaining at 2% and average length of stay falling from 104 to 94 days.",
+      "quoted_source_ids": [
+        "EPMC-69339d4d1242"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "Sheltered dogs aged 1 to 2 years and over 2 years had significantly lower odds of adoption compared to younger animals in Abruzzo facilities.",
+      "quoted_source_ids": [
+        "EPMC-69339d4d1242"
+      ]
+    },
+    {
+      "id": "P3",
+      "statement": "In Jamshedpur, India, following a CNVR intervention neutering and vaccinating over 20,000 dogs, the proportion of sterilised dogs observed on streets rose, yet overall street counts of dogs increased.",
+      "quoted_source_ids": [
+        "EPMC-c5c54e414d55"
+      ]
+    },
+    {
+      "id": "P4",
+      "statement": "Street counts in Jamshedpur CNVR intervention sites averaged 105 dogs in May 2014 and 144 dogs in December 2018, while sterilisation percentage rose from 27% to 50%.",
+      "quoted_source_ids": [
+        "JATS-54d5817e66a1"
+      ]
+    },
+    {
+      "id": "P5",
+      "statement": "Over the study duration in Jamshedpur, the probability of observed dogs entering the clinic with mange, transmissible venereal tumours, or pregnancy significantly decreased.",
+      "quoted_source_ids": [
+        "EPMC-c5c54e414d55"
+      ]
+    },
+    {
+      "id": "P6",
+      "statement": "The empirical manifestations of compensatory replacement dynamics (the vacuum effect) in free-roaming dog populations are limited despite being ecologically plausible.",
+      "quoted_source_ids": [
+        "EPMC-7329c77af95d"
+      ]
+    },
+    {
+      "id": "P7",
+      "statement": "Free-roaming animal removal outcomes vary with spatial scale, continuity, reproduction, abandonment, and human-mediated carrying capacity rather than inevitably triggering rapid replacement.",
+      "quoted_source_ids": [
+        "EPMC-7329c77af95d"
+      ]
+    },
+    {
+      "id": "P8",
+      "statement": "A policy brief for Morocco was compiled via scoping review of published and grey literature through December 2024 to support humane management of stray dogs addressing rabies and hydatidosis.",
+      "quoted_source_ids": [
+        "OFFICIAL-f3d5243b3adc"
+      ]
+    }
+  ],
+  "bridges": [
+    {
+      "from": "P3",
+      "to": "P4",
+      "relation": "PROVIDES_DATA_FOR"
+    },
+    {
+      "from": "P7",
+      "to": "P3",
+      "relation": "CONTEXT_FOR"
+    },
+    {
+      "from": "P6",
+      "to": "P7",
+      "relation": "QUALIFIES"
+    },
+    {
+      "from": "P1",
+      "to": "P7",
+      "relation": "RELATED_TO"
+    },
+    {
+      "from": "P8",
+      "to": "P5",
+      "relation": "REQUIRES_REVIEW_WITH"
+    }
+  ],
+  "proposition_model_review": {
+    "entailed": 7,
+    "uncertain": 1
+  },
+  "bridge_model_review": {
+    "uncertain": 3,
+    "plausible": 1,
+    "unsupported": 1
+  },
+  "unresolved_questions": [
+    "What proportion of free-roaming dog count increases in CNVR-treated areas is attributable to dog immigration or abandoned owned dogs versus increased visibility and detectability of healthy, sterilised dogs during street transects?",
+    "At what specific threshold of sterilisation coverage and spatial boundary containment does a CNVR program overcome compensatory replenishment and achieve an absolute reduction in population size?",
+    "Does regional shelter performance (e.g., increasing adoption rates from 45% to 49.6% in Abruzzo) exert any measurable downward pressure on local free-roaming dog densities or abandonment rates?"
+  ],
+  "graph_nodes": 21,
+  "graph_edges": 28,
+  "graph_receipt_id": "sgpacket:ac64f97281dcd37e",
+  "accepted_scientific_findings": 0,
+  "boundaries": [
+    "These are new source-backed candidates, not independent replication of the original Sri Lankan intervention.",
+    "Gemini 3.8 Flash medium and high use the same model family; review agreement is not an independent model consensus.",
+    "WHO-hosted regional scholarly material is not automatically an implemented institutional policy or outcome evaluation.",
+    "Off-topic official hits were removed by a scoped lexical safeguard; remaining sources still require semantic appraisal.",
+    "No verified geographically matched human rabies/PEP time series was obtained in this round.",
+    "Do not infer reduced dog abundance or human morbidity from sterilization/clinic counts."
+  ]
+}
