@@ -19,14 +19,14 @@ def main():
     p.add_argument("--sources",type=Path,required=True,help="JSON list of {id,url,text,source_scope,origin_type}")
     p.add_argument("--modules",type=Path,required=True,help="JSON list of {id,title,summary}")
     p.add_argument("--out",type=Path,required=True,help="Directory to write prompt and review artifacts")
-    p.add_argument("--provider",choices=["manual","ollama","claude","gemini"],default="manual")
+    p.add_argument("--provider",choices=["manual","ollama","copilot","codex","claude","gemini"],default="manual")
     p.add_argument("--model",default=None)
     p.add_argument("--response-json",type=Path,
                    help="Already supplied LLM reasoning JSON, e.g. output from ChatGPT")
     p.add_argument("--timeout",type=int,default=105)
     p.add_argument("--critic-response-json",type=Path,
                    help="A separate LLM critic JSON response; never an automatic acceptance gate")
-    p.add_argument("--critic-provider",choices=["ollama","claude","gemini"])
+    p.add_argument("--critic-provider",choices=["ollama","copilot","codex","claude","gemini"])
     p.add_argument("--critic-model")
     args=p.parse_args()
     sources=json.loads(args.sources.read_text(encoding="utf-8"))

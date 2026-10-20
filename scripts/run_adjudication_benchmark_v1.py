@@ -10,8 +10,8 @@ def main():
  p.add_argument('--cases',type=Path,required=True)
  p.add_argument('--out',type=Path,required=True)
  p.add_argument('--response-json',type=Path,default=None,help='Externally completed predictions; no LLM run')
- p.add_argument('--provider',default='codex',choices=['codex','claude','gemini','ollama'])
- p.add_argument('--model',default='gpt-6.1-sol')
+ p.add_argument('--provider',default='copilot',choices=['copilot','codex','claude','gemini','ollama'])
+ p.add_argument('--model',default=None)
  p.add_argument('--timeout',type=int,default=180)
  args=p.parse_args()
  dataset=json.loads(args.cases.read_text(encoding='utf-8'))
@@ -23,7 +23,7 @@ def main():
  else:
   response=invoke_semantic_llm(make_judge_prompt(cases),provider=args.provider,model=args.model,
                                timeout_seconds=args.timeout)['raw']
-  method='model_'+args.provider+'_'+args.model
+  method='model_'+args.provider+'_'+(args.model or ('auto' if args.provider=='copilot' else 'cli-default'))
  result=score_benchmark(cases,response)
  result['evaluation_method']=method
  result['source_doi']=dataset.get('source_doi')
