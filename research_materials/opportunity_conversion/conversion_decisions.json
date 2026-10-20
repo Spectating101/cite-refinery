@@ -1,0 +1,371 @@
+{
+  "schema": "cite_refinery.opportunity_batch.v1",
+  "results": [
+    {
+      "schema": "cite_refinery.opportunity_decision.v1",
+      "case_id": "ofn-paid-contributor-route",
+      "input_sha256": "789dfe6977264ef171ca2495daf4909143dc67c1d5ecd74a58a35a578bbf8182",
+      "problem": {
+        "statement": "Open Food Network Canada reports a map-centering and zoom bug: one mis-geocoded enterprise can shift the map to another continent, making local sellers hard for shoppers to find.",
+        "sources": [
+          {
+            "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+            "claim": "Open issue #14924 describes a real Canadian instance problem and reports a user threatening to leave; maintainer issue text is not independent churn measurement.",
+            "status": "reported",
+            "kind": "context"
+          }
+        ]
+      },
+      "candidate_asset": {
+        "slug": "openfoodfoundation/openfoodnetwork",
+        "repository_url": "https://github.com/openfoodfoundation/openfoodnetwork",
+        "description": "Established open-source marketplace linking growers, food hubs and purchasers across a global nonprofit network.",
+        "capability_reference": "https://github.com/openfoodfoundation/openfoodnetwork/blob/master/README.md",
+        "license_state": "copyleft",
+        "license_reference": "https://github.com/openfoodfoundation/openfoodnetwork/blob/master/LICENCE.txt",
+        "github_snapshot": {
+          "source": "github_public_repository_metadata",
+          "observed_on": "2026-10-21",
+          "stars": 1295,
+          "forks": 802
+        },
+        "caveat": "Repository activity/popularity measures do not establish user adoption, commercial underconversion or profit."
+      },
+      "cross_layer_fit": {
+        "documented_capability": "Open Food Network includes a public /map for producer discovery and a MapCentreCalculator setting map center from enterprise coordinates.",
+        "required_mechanism": "A robust, locale-aware map should display the intended country's sellers even if one enterprise is geocoded outside the service geography.",
+        "unverified_gap": "Issue #14924 identifies extreme-coordinate midpoint and hard-coded zoom defects; no patch, review or measured retention impact is demonstrated in this assessment.",
+        "fit_status": "source_reviewed",
+        "limitation": "A semantic match is not proof of operational implementation, stakeholder fit or economic value."
+      },
+      "buyer": {
+        "segment": "Open Food Foundation engineering team or existing country instance operators (paid contractor fit to confirm)",
+        "demand_status": "problem_signal",
+        "signals": [
+          {
+            "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+            "claim": "A published open bug documents current engineering need but not a paid budget for this task.",
+            "status": "reported",
+            "kind": "context"
+          }
+        ],
+        "limitation": "The business willingness-to-pay is not inferred from a research problem or popularity counts."
+      },
+      "upstream": {
+        "engagement": "public_invitation",
+        "signals": [
+          {
+            "url": "https://openfoodfoundation.org/become-a-contributor/",
+            "claim": "The foundation publicly advertises applications for paid developer and system administrator contributions; no specific offer or contract has been received.",
+            "status": "reviewed",
+            "kind": "upstream_invitation"
+          },
+          {
+            "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+            "claim": "Maintainer issue names a concrete open engineering problem; it does not promise paid engagement.",
+            "status": "reported",
+            "kind": "context"
+          }
+        ],
+        "paid_contribution_invitation": true
+      },
+      "conversion_routes": {
+        "self_execution": "conditional_on_license_compliance_review",
+        "maintainer_service": "apply_for_published_paid_contributor_process_no_contract",
+        "reuse_as_component": "technical_candidate_requires_integration_and_rights_check"
+      },
+      "unit_economics": {
+        "status": "not_estimated",
+        "gross_contribution": null,
+        "limitation": "No observed selling price or total delivery cost; no revenue projection."
+      },
+      "readiness": "evidence_lead_only",
+      "recommended_next_test": "Check whether the paid contributor application remains open and propose one bounded deliverable.",
+      "underconversion": {
+        "status": "not_established",
+        "why": "GitHub usage counters and repository feature lists do not establish a monetization gap or economically addressable demand.",
+        "alternatives": [
+          "Existing deployments may already serve buyers",
+          "Niche demand may be small",
+          "Maintainers may intentionally reject commercial arrangements",
+          "Market access or service economics may be the binding constraint"
+        ],
+        "next_evidence": "Interview operators, determine alternatives/budgets, assess conversion rights, and validate adoption economics."
+      },
+      "not_proven": [
+        "lack of commercial conversion",
+        "buyer willingness-to-pay",
+        "real deployment fitness",
+        "capture of economic surplus",
+        "ownership of third-party code"
+      ],
+      "boundary": "Research/technical reconnaissance only; no partner contact, contract, code reuse, license clearance or customer validation performed."
+    },
+    {
+      "schema": "cite_refinery.opportunity_decision.v1",
+      "case_id": "foodsoft-food-coop-deployment",
+      "input_sha256": "d429c3ab30408f85dc4ca059d0af63bfe9ead7971576718b70374bc51529aee6",
+      "problem": {
+        "statement": "Foodsoft's cooperative order-balancing UI can flag false mismatches when article quantities are rounded to three decimals but the summed group-order quantities are not.",
+        "sources": [
+          {
+            "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+            "claim": "Issue #1368 reports an explicit unit rounding discrepancy and a minimal code-location lead; this is software maintainer feedback, not proof of demand for paid consulting.",
+            "status": "reported",
+            "kind": "context"
+          }
+        ]
+      },
+      "candidate_asset": {
+        "slug": "foodcoops/foodsoft",
+        "repository_url": "https://github.com/foodcoops/foodsoft",
+        "description": "Nonprofit food cooperative software for product ordering, cooperative accounting and job scheduling.",
+        "capability_reference": "https://github.com/foodcoops/foodsoft/blob/master/README.md",
+        "license_state": "copyleft",
+        "license_reference": "https://github.com/foodcoops/foodsoft/blob/master/LICENSE.md",
+        "github_snapshot": {
+          "source": "github_public_repository_metadata",
+          "observed_on": "2026-10-21",
+          "stars": 359,
+          "forks": 160
+        },
+        "caveat": "Repository activity/popularity measures do not establish user adoption, commercial underconversion or profit."
+      },
+      "cross_layer_fit": {
+        "documented_capability": "Foodsoft supports member group orders and accounting/balancing views with a quantity-difference diagnostic.",
+        "required_mechanism": "Price and quantity reconciliation must compare values consistently at the same precision without suppressing real order mismatches.",
+        "unverified_gap": "Issue #1368 identifies a precision mismatch; a safe fix and regression fixture still need to be executed. No contract or local deployment demand is confirmed.",
+        "fit_status": "source_reviewed",
+        "limitation": "A semantic match is not proof of operational implementation, stakeholder fit or economic value."
+      },
+      "buyer": {
+        "segment": "Foodsoft maintainer community or cooperatives experiencing balancing errors",
+        "demand_status": "problem_signal",
+        "signals": [
+          {
+            "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+            "claim": "An unresolved published issue documents a software quality need, not spending authority or a purchase request.",
+            "status": "reported",
+            "kind": "context"
+          }
+        ],
+        "limitation": "The business willingness-to-pay is not inferred from a research problem or popularity counts."
+      },
+      "upstream": {
+        "engagement": "public_invitation",
+        "signals": [
+          {
+            "url": "https://github.com/foodcoops/foodsoft/blob/master/README.md",
+            "claim": "Foodsoft publicly invites contributors and participation in its community development activities; this is not a paid implementation request.",
+            "status": "reviewed",
+            "kind": "context"
+          },
+          {
+            "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+            "claim": "Unassigned open issue #1368 is an actionable contribution candidate; the maintainer has not contracted our work.",
+            "status": "reported",
+            "kind": "context"
+          }
+        ],
+        "paid_contribution_invitation": false
+      },
+      "conversion_routes": {
+        "self_execution": "conditional_on_license_compliance_review",
+        "maintainer_service": "community_contribution_invitation_not_a_paid_service",
+        "reuse_as_component": "technical_candidate_requires_integration_and_rights_check"
+      },
+      "unit_economics": {
+        "status": "not_estimated",
+        "gross_contribution": null,
+        "limitation": "No observed selling price or total delivery cost; no revenue projection."
+      },
+      "readiness": "evidence_lead_only",
+      "recommended_next_test": "Verify the named open issue and discuss a minimal, test-backed contribution; payment is unconfirmed.",
+      "underconversion": {
+        "status": "not_established",
+        "why": "GitHub usage counters and repository feature lists do not establish a monetization gap or economically addressable demand.",
+        "alternatives": [
+          "Existing deployments may already serve buyers",
+          "Niche demand may be small",
+          "Maintainers may intentionally reject commercial arrangements",
+          "Market access or service economics may be the binding constraint"
+        ],
+        "next_evidence": "Interview operators, determine alternatives/budgets, assess conversion rights, and validate adoption economics."
+      },
+      "not_proven": [
+        "lack of commercial conversion",
+        "buyer willingness-to-pay",
+        "real deployment fitness",
+        "capture of economic surplus",
+        "ownership of third-party code"
+      ],
+      "boundary": "Research/technical reconnaissance only; no partner contact, contract, code reuse, license clearance or customer validation performed."
+    },
+    {
+      "schema": "cite_refinery.opportunity_decision.v1",
+      "case_id": "kobo-dog-sighting-integration",
+      "input_sha256": "2047a1c430b3f2c348c2390bf3fa431698e01ff9d6b71f0fd2768b532b28a95d",
+      "problem": {
+        "statement": "Taiwan's periodic dog-population surveys and research on mark-recapture imply an investigation requirement for repeatable sightings with photographic identity records; this is not a confirmed local agency procurement request.",
+        "sources": [
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+            "claim": "Population estimation literature describes the importance of identification and repeat observation for free-roaming dog abundance estimation.",
+            "status": "reviewed",
+            "kind": "context"
+          },
+          {
+            "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599",
+            "claim": "Taiwan's 2024 national dog estimate and periodic survey methodology do not establish a continuously tracked local population.",
+            "status": "reviewed",
+            "kind": "context"
+          }
+        ]
+      },
+      "candidate_asset": {
+        "slug": "kobotoolbox/kpi",
+        "repository_url": "https://github.com/kobotoolbox/kpi",
+        "description": "Open-source form/data collection infrastructure for field operations and surveys.",
+        "capability_reference": "https://github.com/kobotoolbox/kpi/blob/main/README.md",
+        "license_state": "copyleft",
+        "license_reference": "https://github.com/kobotoolbox/kpi/blob/main/LICENSE",
+        "github_snapshot": {
+          "source": "github_public_repository_metadata",
+          "observed_on": "2026-10-21",
+          "stars": 186,
+          "forks": 238
+        },
+        "caveat": "Repository activity/popularity measures do not establish user adoption, commercial underconversion or profit."
+      },
+      "cross_layer_fit": {
+        "documented_capability": "KoboToolbox provides offline forms and API access to survey records and attachments, potentially allowing dog sighting photos to be collected.",
+        "required_mechanism": "Repeated dog-specific sightings with location/time/photo provenance, individual reconciliation, and valid population-estimation assumptions.",
+        "unverified_gap": "A dog-identification model and statistical abundance estimator would remain separate; no end-to-end field proof or Taiwan authority willingness-to-pay has been established.",
+        "fit_status": "untested",
+        "limitation": "A semantic match is not proof of operational implementation, stakeholder fit or economic value."
+      },
+      "buyer": {
+        "segment": "Potential animal-control departments, shelters, research organizations and field survey contractors",
+        "demand_status": "none",
+        "signals": [],
+        "limitation": "The business willingness-to-pay is not inferred from a research problem or popularity counts."
+      },
+      "upstream": {
+        "engagement": "none",
+        "signals": [],
+        "paid_contribution_invitation": false
+      },
+      "conversion_routes": {
+        "self_execution": "conditional_on_license_compliance_review",
+        "maintainer_service": "research_upstream_fit_before_permission_request",
+        "reuse_as_component": "technical_candidate_requires_integration_and_rights_check"
+      },
+      "unit_economics": {
+        "status": "not_estimated",
+        "gross_contribution": null,
+        "limitation": "No observed selling price or total delivery cost; no revenue projection."
+      },
+      "readiness": "evidence_lead_only",
+      "recommended_next_test": "Run a minimal capability-to-requirement test before proposing deployment.",
+      "underconversion": {
+        "status": "not_established",
+        "why": "GitHub usage counters and repository feature lists do not establish a monetization gap or economically addressable demand.",
+        "alternatives": [
+          "Existing deployments may already serve buyers",
+          "Niche demand may be small",
+          "Maintainers may intentionally reject commercial arrangements",
+          "Market access or service economics may be the binding constraint"
+        ],
+        "next_evidence": "Interview operators, determine alternatives/budgets, assess conversion rights, and validate adoption economics."
+      },
+      "not_proven": [
+        "lack of commercial conversion",
+        "buyer willingness-to-pay",
+        "real deployment fitness",
+        "capture of economic surplus",
+        "ownership of third-party code"
+      ],
+      "boundary": "Research/technical reconnaissance only; no partner contact, contract, code reuse, license clearance or customer validation performed."
+    },
+    {
+      "schema": "cite_refinery.opportunity_decision.v1",
+      "case_id": "food-rescue-mvp-partner-audit",
+      "input_sha256": "714a8f4d714b3ec6e517b7ca79a9ac030f131acf19dd64ab5df0727ca45c2ee4",
+      "problem": {
+        "statement": "Surplus-food donors and recipients face coordination, pickup and handling frictions, while published redistribution interventions rarely establish long-term beneficiary outcomes.",
+        "sources": [
+          {
+            "url": "https://doi.org/10.1111/nbu.70053",
+            "claim": "A scoping review discusses surplus-food redistribution models and structural limitations, not demonstrated buyer demand for this particular MVP.",
+            "status": "reported",
+            "kind": "context"
+          }
+        ]
+      },
+      "candidate_asset": {
+        "slug": "still-trying/food-rescue",
+        "repository_url": "https://github.com/still-trying/food-rescue",
+        "description": "A community surplus-food listing, discovery, claim and pickup prototype with published unverified feature claims.",
+        "capability_reference": "https://github.com/still-trying/food-rescue/blob/main/README.md",
+        "license_state": "no_license_detected",
+        "license_reference": null,
+        "github_snapshot": {
+          "source": "github_public_repository_metadata",
+          "observed_on": "2026-10-21",
+          "stars": 0,
+          "forks": 0
+        },
+        "caveat": "Repository activity/popularity measures do not establish user adoption, commercial underconversion or profit."
+      },
+      "cross_layer_fit": {
+        "documented_capability": "README claims authentication, listings, geo-discovery, atomic claiming and pickup completion.",
+        "required_mechanism": "Reliable donor-to-recipient posting, collection and traceability without unsafe food handling or identity/access failures.",
+        "unverified_gap": "No observed real adoption, business/organization onboarding, operator safety verification, food safety liability assessment or external buyer commitment. Public README mentions MIT despite no detected root license file.",
+        "fit_status": "untested",
+        "limitation": "A semantic match is not proof of operational implementation, stakeholder fit or economic value."
+      },
+      "buyer": {
+        "segment": "Potential food-rescue nonprofits or local institutions",
+        "demand_status": "none",
+        "signals": [],
+        "limitation": "The business willingness-to-pay is not inferred from a research problem or popularity counts."
+      },
+      "upstream": {
+        "engagement": "none",
+        "signals": [],
+        "paid_contribution_invitation": false
+      },
+      "conversion_routes": {
+        "self_execution": "blocked_until_rights_resolved",
+        "maintainer_service": "research_upstream_fit_before_permission_request",
+        "reuse_as_component": "blocked_until_rights_resolved"
+      },
+      "unit_economics": {
+        "status": "not_estimated",
+        "gross_contribution": null,
+        "limitation": "No observed selling price or total delivery cost; no revenue projection."
+      },
+      "readiness": "evidence_lead_only",
+      "recommended_next_test": "Ask maintainer about license/permission; do not copy, deploy or sell the code yet.",
+      "underconversion": {
+        "status": "not_established",
+        "why": "GitHub usage counters and repository feature lists do not establish a monetization gap or economically addressable demand.",
+        "alternatives": [
+          "Existing deployments may already serve buyers",
+          "Niche demand may be small",
+          "Maintainers may intentionally reject commercial arrangements",
+          "Market access or service economics may be the binding constraint"
+        ],
+        "next_evidence": "Interview operators, determine alternatives/budgets, assess conversion rights, and validate adoption economics."
+      },
+      "not_proven": [
+        "lack of commercial conversion",
+        "buyer willingness-to-pay",
+        "real deployment fitness",
+        "capture of economic surplus",
+        "ownership of third-party code"
+      ],
+      "boundary": "Research/technical reconnaissance only; no partner contact, contract, code reuse, license clearance or customer validation performed."
+    }
+  ]
+}

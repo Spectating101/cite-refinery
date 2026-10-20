@@ -1,0 +1,65 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "foodsoft-food-coop-deployment",
+  "problem": {
+    "statement": "Foodsoft's cooperative order-balancing UI can flag false mismatches when article quantities are rounded to three decimals but the summed group-order quantities are not.",
+    "sources": [
+      {
+        "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+        "claim": "Issue #1368 reports an explicit unit rounding discrepancy and a minimal code-location lead; this is software maintainer feedback, not proof of demand for paid consulting.",
+        "status": "reported"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "foodcoops/foodsoft",
+    "url": "https://github.com/foodcoops/foodsoft",
+    "description": "Nonprofit food cooperative software for product ordering, cooperative accounting and job scheduling.",
+    "capability_source": "https://github.com/foodcoops/foodsoft/blob/master/README.md",
+    "license_status": "copyleft",
+    "license_url": "https://github.com/foodcoops/foodsoft/blob/master/LICENSE.md",
+    "github_snapshot": {
+      "source": "github_public_repository_metadata",
+      "observed_on": "2026-10-21",
+      "stars": 359,
+      "forks": 160
+    }
+  },
+  "fit": {
+    "documented_capability": "Foodsoft supports member group orders and accounting/balancing views with a quantity-difference diagnostic.",
+    "problem_requirement": "Price and quantity reconciliation must compare values consistently at the same precision without suppressing real order mismatches.",
+    "unverified_gap": "Issue #1368 identifies a precision mismatch; a safe fix and regression fixture still need to be executed. No contract or local deployment demand is confirmed.",
+    "verification": "source_reviewed"
+  },
+  "market": {
+    "buyer_segment": "Foodsoft maintainer community or cooperatives experiencing balancing errors",
+    "demand_status": "problem_signal",
+    "signals": [
+      {
+        "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+        "claim": "An unresolved published issue documents a software quality need, not spending authority or a purchase request.",
+        "status": "reported"
+      }
+    ]
+  },
+  "upstream": {
+    "engagement": "public_invitation",
+    "signals": [
+      {
+        "url": "https://github.com/foodcoops/foodsoft/blob/master/README.md",
+        "claim": "Foodsoft publicly invites contributors and participation in its community development activities; this is not a paid implementation request.",
+        "status": "reviewed"
+      },
+      {
+        "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+        "claim": "Unassigned open issue #1368 is an actionable contribution candidate; the maintainer has not contracted our work.",
+        "status": "reported"
+      }
+    ]
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": null
+}

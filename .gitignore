@@ -20,3 +20,6 @@ build/
 research_materials/runtime_trials/cross_layer_20261020/*_raw.json
 research_materials/runtime_trials/cross_layer_20261020/food_grounded_candidate.json
 research_materials/runtime_trials/cross_layer_20261020/food_candidate.json
+
+# Developer-controlled AI model raw output is not a trusted public evidence artifact
+research_materials/opportunity_conversion/*_model_raw_local.json

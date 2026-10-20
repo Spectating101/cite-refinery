@@ -1,0 +1,47 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "food-rescue-mvp-partner-audit",
+  "problem": {
+    "statement": "Surplus-food donors and recipients face coordination, pickup and handling frictions, while published redistribution interventions rarely establish long-term beneficiary outcomes.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1111/nbu.70053",
+        "claim": "A scoping review discusses surplus-food redistribution models and structural limitations, not demonstrated buyer demand for this particular MVP.",
+        "status": "reported"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "still-trying/food-rescue",
+    "url": "https://github.com/still-trying/food-rescue",
+    "description": "A community surplus-food listing, discovery, claim and pickup prototype with published unverified feature claims.",
+    "capability_source": "https://github.com/still-trying/food-rescue/blob/main/README.md",
+    "license_status": "no_license_detected",
+    "github_snapshot": {
+      "source": "github_public_repository_metadata",
+      "observed_on": "2026-10-21",
+      "stars": 0,
+      "forks": 0
+    }
+  },
+  "fit": {
+    "documented_capability": "README claims authentication, listings, geo-discovery, atomic claiming and pickup completion.",
+    "problem_requirement": "Reliable donor-to-recipient posting, collection and traceability without unsafe food handling or identity/access failures.",
+    "unverified_gap": "No observed real adoption, business/organization onboarding, operator safety verification, food safety liability assessment or external buyer commitment. Public README mentions MIT despite no detected root license file.",
+    "verification": "untested"
+  },
+  "market": {
+    "buyer_segment": "Potential food-rescue nonprofits or local institutions",
+    "demand_status": "none",
+    "signals": []
+  },
+  "upstream": {
+    "engagement": "none",
+    "signals": []
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": null
+}

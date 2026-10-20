@@ -49,6 +49,8 @@ cite-refinery-rich-corpus = "cite_refinery.richer_evidence_cli:main"
 cite-refinery-topics = "cite_refinery.external_knowledge_cli:main"
 cite-refinery-landscape = "cite_refinery.external_landscape_cli:main"
 cite-refinery-stack = "cite_refinery.cross_layer_cli:main"
+cite-refinery-opportunities = "cite_refinery.opportunity_cli:main"
+cite-refinery-opportunity-match = "cite_refinery.opportunity_match_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -460,3 +460,8 @@ See [External landscape and freeze gate](docs/EXTERNAL_LANDSCAPE_AND_FREEZE_GATE
 ### Cross-layer interpretation (experimental)
 
 Read [the outcome-first cross-layer dossier](docs/CROSS_LAYER_INTERPRETATION_V1.md) for substantive Taiwan dogs / food redistribution / flood findings, their source boundaries and reproduction commands. Native project method: SemanticGraph.cross_layer_dossier(project_id). CLI: cite-refinery-stack. No automatic scientific claim promotion or changes to the sealed holdout.
+
+
+### Opportunity conversion from evidence to repo/service fit (2026-10-21)
+
+See [real-world conversion cases](docs/OPPORTUNITY_CONVERSION_V1.md) and the case inputs under research_materials/opportunity_conversion/. Bounded semantic problem→repository matching, rights-aware decisions, buyer-demand gates and human-readable next actions are available via the cite-refinery-opportunity-match and cite-refinery-opportunities CLIs. No buyer, upstream approval or actual revenue is inferred from a README, issue, metadata or generated graph. This work is stacked on the cross-layer reasoning PR; the sealed evaluation split remains untouched.

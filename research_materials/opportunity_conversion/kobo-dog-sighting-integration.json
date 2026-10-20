@@ -1,0 +1,53 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "kobo-dog-sighting-integration",
+  "problem": {
+    "statement": "Taiwan's periodic dog-population surveys and research on mark-recapture imply an investigation requirement for repeatable sightings with photographic identity records; this is not a confirmed local agency procurement request.",
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+        "claim": "Population estimation literature describes the importance of identification and repeat observation for free-roaming dog abundance estimation.",
+        "status": "reviewed"
+      },
+      {
+        "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599",
+        "claim": "Taiwan's 2024 national dog estimate and periodic survey methodology do not establish a continuously tracked local population.",
+        "status": "reviewed"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "kobotoolbox/kpi",
+    "url": "https://github.com/kobotoolbox/kpi",
+    "description": "Open-source form/data collection infrastructure for field operations and surveys.",
+    "capability_source": "https://github.com/kobotoolbox/kpi/blob/main/README.md",
+    "license_status": "copyleft",
+    "license_url": "https://github.com/kobotoolbox/kpi/blob/main/LICENSE",
+    "github_snapshot": {
+      "source": "github_public_repository_metadata",
+      "observed_on": "2026-10-21",
+      "stars": 186,
+      "forks": 238
+    }
+  },
+  "fit": {
+    "documented_capability": "KoboToolbox provides offline forms and API access to survey records and attachments, potentially allowing dog sighting photos to be collected.",
+    "problem_requirement": "Repeated dog-specific sightings with location/time/photo provenance, individual reconciliation, and valid population-estimation assumptions.",
+    "unverified_gap": "A dog-identification model and statistical abundance estimator would remain separate; no end-to-end field proof or Taiwan authority willingness-to-pay has been established.",
+    "verification": "untested"
+  },
+  "market": {
+    "buyer_segment": "Potential animal-control departments, shelters, research organizations and field survey contractors",
+    "demand_status": "none",
+    "signals": []
+  },
+  "upstream": {
+    "engagement": "none",
+    "signals": []
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": null
+}

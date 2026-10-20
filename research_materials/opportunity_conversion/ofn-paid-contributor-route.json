@@ -1,0 +1,67 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "ofn-paid-contributor-route",
+  "problem": {
+    "statement": "Open Food Network Canada reports a map-centering and zoom bug: one mis-geocoded enterprise can shift the map to another continent, making local sellers hard for shoppers to find.",
+    "sources": [
+      {
+        "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+        "claim": "Open issue #14924 describes a real Canadian instance problem and reports a user threatening to leave; maintainer issue text is not independent churn measurement.",
+        "status": "reported"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "openfoodfoundation/openfoodnetwork",
+    "url": "https://github.com/openfoodfoundation/openfoodnetwork",
+    "description": "Established open-source marketplace linking growers, food hubs and purchasers across a global nonprofit network.",
+    "capability_source": "https://github.com/openfoodfoundation/openfoodnetwork/blob/master/README.md",
+    "license_status": "copyleft",
+    "license_url": "https://github.com/openfoodfoundation/openfoodnetwork/blob/master/LICENCE.txt",
+    "github_snapshot": {
+      "source": "github_public_repository_metadata",
+      "observed_on": "2026-10-21",
+      "stars": 1295,
+      "forks": 802
+    }
+  },
+  "fit": {
+    "documented_capability": "Open Food Network includes a public /map for producer discovery and a MapCentreCalculator setting map center from enterprise coordinates.",
+    "problem_requirement": "A robust, locale-aware map should display the intended country's sellers even if one enterprise is geocoded outside the service geography.",
+    "unverified_gap": "Issue #14924 identifies extreme-coordinate midpoint and hard-coded zoom defects; no patch, review or measured retention impact is demonstrated in this assessment.",
+    "verification": "source_reviewed"
+  },
+  "market": {
+    "buyer_segment": "Open Food Foundation engineering team or existing country instance operators (paid contractor fit to confirm)",
+    "demand_status": "problem_signal",
+    "signals": [
+      {
+        "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+        "claim": "A published open bug documents current engineering need but not a paid budget for this task.",
+        "status": "reported"
+      }
+    ]
+  },
+  "upstream": {
+    "engagement": "public_invitation",
+    "signals": [
+      {
+        "url": "https://openfoodfoundation.org/become-a-contributor/",
+        "claim": "The foundation publicly advertises applications for paid developer and system administrator contributions; no specific offer or contract has been received.",
+        "status": "reviewed",
+        "kind": "upstream_invitation"
+      },
+      {
+        "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+        "claim": "Maintainer issue names a concrete open engineering problem; it does not promise paid engagement.",
+        "status": "reported"
+      }
+    ],
+    "paid_contribution_invitation": true
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": null
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "cite_refinery.opportunity_match_input.v1",
+  "problems": [
+    {
+      "id": "dog_identity",
+      "need": "For Taiwan free-roaming dog population estimation, repeated dog sightings need reliable individual identity reconciliation, and a reviewed Talea survey-guide record lacks per-sighting photographs.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+      "evidence_status": "reviewed"
+    },
+    {
+      "id": "food_pickup",
+      "need": "Surplus food donors and charities need time-bounded listings, reliable claiming, safe pickup coordination, and a way to measure recovery beyond mere collection speed.",
+      "source_url": "https://doi.org/10.1111/nbu.70053",
+      "evidence_status": "model_candidate"
+    },
+    {
+      "id": "food_coop_balance",
+      "need": "Foodsoft's balancing screen flags false quantity mismatches when one measurement is rounded to 3 decimals and another retains full fractional precision.",
+      "source_url": "https://github.com/foodcoops/foodsoft/issues/1368",
+      "evidence_status": "reported"
+    },
+    {
+      "id": "food_map_navigation",
+      "need": "Open Food Network's Canada map can center outside the service area due to outlier geocoding and fixed zoom, making legitimate nearby producers hard to locate.",
+      "source_url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+      "evidence_status": "reported"
+    }
+  ],
+  "repositories": [
+    {
+      "id": "repo_foodsoft",
+      "capability": "Foodsoft supports cooperative member order aggregation, accounting and job scheduling, including balancing/quantity computations. It is not documented as a real-time charity surplus claiming system.",
+      "source_url": "https://github.com/foodcoops/foodsoft/blob/master/README.md",
+      "license": "copyleft"
+    },
+    {
+      "id": "repo_food_rescue",
+      "capability": "Food Rescue MVP claims realtime food listings, geospatial discovery, protected claiming, pickup windows and pickup completion; no root LICENSE file was detected in the public repository.",
+      "source_url": "https://github.com/still-trying/food-rescue/blob/main/README.md",
+      "license": "unknown"
+    },
+    {
+      "id": "repo_open_food_network",
+      "capability": "Open Food Network is an established open-source marketplace for producers and community food hubs; its map feature is undergoing real user issue triage and bug correction.",
+      "source_url": "https://github.com/openfoodfoundation/openfoodnetwork/blob/master/README.md",
+      "license": "copyleft"
+    },
+    {
+      "id": "repo_kobo",
+      "capability": "KoboToolbox server supports offline survey collection, form management, data exports, permissions and analytics through API. It does not document photographic individual dog reconciliation or population estimation as a turnkey feature.",
+      "source_url": "https://github.com/kobotoolbox/kpi",
+      "license": "copyleft"
+    }
+  ]
+}

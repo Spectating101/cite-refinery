@@ -1,0 +1,83 @@
+{
+  "schema": "cite_refinery.opportunity_matches.v1",
+  "matches": [
+    {
+      "unverified_capability_absence_flag": false,
+      "absence_review_note": null,
+      "problem_id": "food_coop_balance",
+      "repository_id": "repo_foodsoft",
+      "fit": "direct_documented",
+      "mechanism": "Foodsoft's core quantity computation and balancing module directly governs the rounding discrepancies between 3-decimal displays and full-precision float storage on order settlement screens.",
+      "limitation": "The repository issue confirms developer triage of the calculation defect, but does not establish production validation across independent cooperatives, maintenance SLAs, or economic value.",
+      "next_test": "Execute a localized unit test in Foodsoft asserting zero-balance equality when comparing 3-decimal rounded inputs against full-precision fractional line items.",
+      "problem_ref": "https://github.com/foodcoops/foodsoft/issues/1368",
+      "repository_ref": "https://github.com/foodcoops/foodsoft/blob/master/README.md",
+      "review_status": "unverified_semantic_match_requires_execution_and_market_validation",
+      "rights_clearance": false,
+      "buyer_validated": false
+    },
+    {
+      "unverified_capability_absence_flag": false,
+      "absence_review_note": null,
+      "problem_id": "food_map_navigation",
+      "repository_id": "repo_open_food_network",
+      "fit": "direct_documented",
+      "mechanism": "Open Food Network's codebase directly implements the map viewport, geocoding bounding boxes, and zoom logic used to display regional producer networks.",
+      "limitation": "An open bug report confirms map centering failures for Canadian instances, but does not establish a merged production fix, maintainer deployment schedule, or commercial adoption.",
+      "next_test": "Mock a dataset containing one extreme geographic outlier coordinate alongside cluster coordinates to verify if the map view calculation defaults outside target bounds.",
+      "problem_ref": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+      "repository_ref": "https://github.com/openfoodfoundation/openfoodnetwork/blob/master/README.md",
+      "review_status": "unverified_semantic_match_requires_execution_and_market_validation",
+      "rights_clearance": false,
+      "buyer_validated": false
+    },
+    {
+      "unverified_capability_absence_flag": true,
+      "absence_review_note": "Claims that code lacks a feature need repo code/docs inspection; no negative capability claim is accepted yet.",
+      "problem_id": "food_pickup",
+      "repository_id": "repo_food_rescue",
+      "fit": "adaptation_hypothesis",
+      "mechanism": "The repository claims workflow primitives for geospatial discovery, time-bounded pickup windows, and claiming lockouts, which could form the scheduling backbone for donor-charity coordination.",
+      "limitation": "The repository lacks a root LICENSE file, leaving legal reuse rights undefined, and README claims fail to demonstrate operational uptime, safe food handling compliance, or outcome measurement metrics.",
+      "next_test": "Run a concurrent simulated claiming request against the repository's claim API endpoint to test whether atomic locks prevent duplicate claims during pickup windows.",
+      "problem_ref": "https://doi.org/10.1111/nbu.70053",
+      "repository_ref": "https://github.com/still-trying/food-rescue/blob/main/README.md",
+      "review_status": "unverified_semantic_match_requires_execution_and_market_validation",
+      "rights_clearance": false,
+      "buyer_validated": false
+    },
+    {
+      "unverified_capability_absence_flag": true,
+      "absence_review_note": "Claims that code lacks a feature need repo code/docs inspection; no negative capability claim is accepted yet.",
+      "problem_id": "dog_identity",
+      "repository_id": "repo_kobo",
+      "fit": "adaptation_hypothesis",
+      "mechanism": "KoboToolbox provides offline field survey forms and media upload pipelines that can be adapted to collect sighting coordinates and dog photographs for upstream data ingestion.",
+      "limitation": "KoboToolbox provides zero native photographic feature matching, mark-resight reconciliation algorithms, or population estimation models, requiring substantial external analytical adaptation.",
+      "next_test": "Deploy a minimal KoboToolbox XLSForm requiring per-sighting photo captures to verify if batch API photo extraction preserves metadata and image fidelity without offline data loss.",
+      "problem_ref": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+      "repository_ref": "https://github.com/kobotoolbox/kpi",
+      "review_status": "unverified_semantic_match_requires_execution_and_market_validation",
+      "rights_clearance": false,
+      "buyer_validated": false
+    },
+    {
+      "unverified_capability_absence_flag": true,
+      "absence_review_note": "Claims that code lacks a feature need repo code/docs inspection; no negative capability claim is accepted yet.",
+      "problem_id": "food_pickup",
+      "repository_id": "repo_foodsoft",
+      "fit": "not_fit",
+      "mechanism": "Foodsoft is engineered for batch coop purchasing, recurring member aggregation cycles, and financial ledger balancing, lacking real-time spontaneous donation broadcasts, fast claim locks, and dispatch logistics.",
+      "limitation": "Identifying this architectural mismatch prevents costly attempts to convert a scheduled coop ordering tool into a real-time, time-sensitive food redistribution system.",
+      "next_test": "Inspect Foodsoft's data schema to verify the total absence of real-time push notification hooks and ephemeral listing expiration lifecycles.",
+      "problem_ref": "https://doi.org/10.1111/nbu.70053",
+      "repository_ref": "https://github.com/foodcoops/foodsoft/blob/master/README.md",
+      "review_status": "unverified_semantic_match_requires_execution_and_market_validation",
+      "rights_clearance": false,
+      "buyer_validated": false
+    }
+  ],
+  "rejected_candidates": [],
+  "authority": "hypothesis_only_not_commercial_proof",
+  "boundary": "Semantic fit hypothesis from supplied problem/repository descriptions only; no purchased service, licensing, maintainer agreement, actual operational tests or economic value established."
+}
