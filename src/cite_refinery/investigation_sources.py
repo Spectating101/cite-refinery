@@ -100,7 +100,7 @@ def search_europe_pmc(query: str, *, limit=3, fetch=_fetch):
             "title":title,"origin_type":"scholarly_abstract_lead",
             "source_scope":"Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
             "retrieval_url":final,
-            "source_record":str(key),
+            "source_record":str(key),"pmcid":str(pmcid or ""),
             "passage_sha256":hashlib.sha256((title+". "+abstract)[:6500].encode()).hexdigest(),
         })
     if len(results)<limit and len(q.split())>5:
@@ -132,6 +132,7 @@ def search_europe_pmc(query: str, *, limit=3, fetch=_fetch):
                         "origin_type":"scholarly_abstract_lead",
                         "source_scope":"Europe PMC abstract from broadened search, not full-text verification",
                         "retrieval_url":actual,"source_record":str(key),
+                        "pmcid":str(article.get("pmcid") or ""),
                         "passage_sha256":hashlib.sha256(passage.encode()).hexdigest(),
                         "fallback_query":short})
                     old.add(key)

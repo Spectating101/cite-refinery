@@ -1,0 +1,90 @@
+{
+  "schema": "cite_refinery.fulltext_claim_audit.v1",
+  "doi": "10.14202/vetworld.2026.2816-2849",
+  "source_sha256": "4210e7ebc871f3db31dee6cb761f09d82e4f29f49aceed6a860c268e74176b7e",
+  "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13500148/fullTextXML",
+  "checks": {
+    "published_2021_to_2025_sterilization_need_claim": {
+      "reported_values": [
+        1368,
+        484
+      ],
+      "exact_abstract_quote": "free-roaming dogs requiring sterilization declined from 1,368 in 2021 to 484 in 2025",
+      "evidence_type": "author_reported_abstract_and_results",
+      "internal_check": "Full text and abstract may be compared; original dog-level intake file unavailable in article.",
+      "not_supported": "Not a total dog abundance time series or measured human-rabies reduction"
+    },
+    "total_count_trend": {
+      "table": "T3",
+      "response": "Total",
+      "irr_per_year": "1.03",
+      "p_value": "0.55488235",
+      "confidence_interval": "0.93–1.14",
+      "interpretation": "Effort-adjusted total dog-count trend not conventionally significant in this table."
+    },
+    "zone_1_male_simple_prepost": {
+      "table": "T6B",
+      "pre_rate": "9.95",
+      "post_rate": "10.00",
+      "p_value": "0.835",
+      "interpretation": "A separate pre/post catch-rate comparison; not the buffer-interaction estimand."
+    },
+    "zone_1_male_buffer_interaction": {
+      "table": "T6C",
+      "irr_per_buffer_dog": "0.9955",
+      "p_value": "0.038",
+      "confidence_interval": "0.9913–0.9995",
+      "interpretation": "An interaction/association within the reported model, not independent causal verification."
+    },
+    "zone_3_female_buffer_interaction": {
+      "table": "T6C",
+      "irr_per_buffer_dog": "0.9943",
+      "p_value": "0.0003",
+      "confidence_interval": "0.9912–0.9975"
+    },
+    "multiplicity_sensitivity": {
+      "six_rows_in_table": 6,
+      "illustrative_bonferroni_threshold": "0.05/6",
+      "threshold": "0.008333333333333333333333333333",
+      "zone_1_male_below_threshold": false,
+      "zone_3_female_below_threshold": true,
+      "boundary": "Illustrative six-comparison sensitivity only; not proof this is the appropriate prespecified inferential family."
+    }
+  },
+  "dataset_manifest": [
+    {
+      "item": "dog-level original survey/capture records",
+      "availability": "Corresponding author on request",
+      "quote": "The supplementary data can be made available from the corresponding author upon request."
+    },
+    {
+      "item": "systematic community-wide abundance sample",
+      "availability": "Authors acknowledge not collected due to resources",
+      "quote": "Several limitations should be considered when interpreting the findings of this study. First, the research team lacked sufficient financial and human resources to conduct systematic community dog surveys, which would have provided a more direct assessment of the intervention's impact on the overall dog population. Furthermore, age-related data were not stratified by sex, preventing a more detailed estimation of juvenile and adult survival rates f"
+    },
+    {
+      "item": "geographically matched human bite/PEP/rabies outcome series",
+      "availability": "Authors acknowledge insufficient local data",
+      "quote": "Another major limitation was the lack of comprehensive and well-documented data on dog bites, human post-exposure prophylaxis, and suspected or laboratory-confirmed rabies cases within the project area. This deficiency reflects limitations of the national health information system and is beyond the authors' control. Although district-level data from the Ministry of Health were available and cited, these records do not necessarily reflect the specific epidemiological situation within the project's geographical boundaries. Consequently, the direct contribution of the intervention to reductions i"
+    }
+  ],
+  "methodological_flags": [
+    {
+      "point": "survey_effort_endogenous_to_perceived_population",
+      "method_mentioned": true,
+      "source_scope": "Methodology describes offset; discussion acknowledges reduction in catching days responded to falling apparent numbers.",
+      "not_a_replication": "Cannot re-estimate GLM without raw time/zone/dog records"
+    },
+    {
+      "point": "no_direct_impact_on_dog_bite_human_rabies",
+      "source_scope": "The study limitation explicitly says effect on bites, PEP and rabies incidence could not be quantified accurately."
+    }
+  ],
+  "tables_inspected": [
+    "T3",
+    "T6B",
+    "T6C"
+  ],
+  "conclusion": "Within-paper source verification achieved; direct raw-data or causal replication unavailable.",
+  "source_status": "full_text_examined_not_independently_replicated"
+}

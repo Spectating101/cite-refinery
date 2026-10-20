@@ -130,7 +130,7 @@ class InvestigationController:
         self.academic_search=academic_search
         self.official_search=official_search
 
-    def start(self,question,modules,*,max_rounds=2):
+    def start(self,question,modules,*,max_rounds=2,fulltext_enrichment=False):
         if not isinstance(question,str) or not 15<=len(question)<=1200:
             raise ValueError("Investigation question must be 15-1200 characters")
         if not 1<=max_rounds<=8:raise ValueError("max_rounds must be 1-8")
@@ -148,6 +148,7 @@ class InvestigationController:
             "schema":"cite_refinery.investigation.v1",
             "id":ident,"project_id":project.id,"question":question,"focus":question,
             "modules":modules,"max_rounds":max_rounds,"stage":"plan",
+            "fulltext_enrichment":bool(fulltext_enrichment),
             "rounds":[],"frontier":[],"visited_questions":[],
             "created_at":_utc(),"updated_at":_utc(),
             "last_error":None,"authority":"candidate_neutral_only",
@@ -209,6 +210,25 @@ class InvestigationController:
                         rnd["sources"].append(item)
                         existing_urls.add(item["url"])
                 rnd.setdefault("source_failures",[]).extend(acquired["failures"])
+                if s.get("fulltext_enrichment"):
+                    # Scholar and original fulltext are ONE study; store the
+                    # explicit parent relation, not duplicate confirmations.
+                    from .fulltext_audit import enrich_academic_abstract_with_fulltext
+                    enhanced=[]
+                    candidates=[x for x in rnd["sources"] if x.get("origin_type")=="scholarly_abstract_lead"
+                                and x.get("pmcid")]
+                    for source in candidates[:2]:
+                        if any(x.get("parent_source_url")==source["url"] for x in rnd["sources"]):
+                            continue
+                        try:
+                            extra=enrich_academic_abstract_with_fulltext(source)
+                            if extra and extra["id"] not in {x["id"] for x in rnd["sources"]}:
+                                enhanced.append(extra)
+                        except Exception as e:
+                            rnd.setdefault("fulltext_enrichment_failures",[]).append({
+                                "pmcid":source.get("pmcid"),"kind":type(e).__name__,
+                                "boundary":"Original abstract retained; JATS enrichment failed"})
+                    rnd["sources"].extend(enhanced[:2])
                 rnd["source_attempts"]=rnd.get("source_attempts",0)+1
                 rnd["source_count"]=len(rnd["sources"])
                 origins={x["origin_type"] for x in rnd["sources"]}

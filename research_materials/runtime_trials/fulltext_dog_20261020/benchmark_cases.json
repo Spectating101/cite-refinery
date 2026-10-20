@@ -1,0 +1,155 @@
+{
+  "schema": "cite_refinery.adjudication_benchmark.v1",
+  "source_doi": "10.14202/vetworld.2026.2816-2849",
+  "source_sha256": "4210e7ebc871f3db31dee6cb761f09d82e4f29f49aceed6a860c268e74176b7e",
+  "gold_annotation": "curated_source_anchored_not_independent_human_gold",
+  "cases": [
+    {
+      "id": "B01",
+      "claim": "The authors report 1,368 dogs requiring sterilization in 2021 versus 484 in 2025.",
+      "evidence": "Reported number of free-roaming dogs requiring sterilization declined from 1,368 in 2021 to 484 in 2025.",
+      "expected": "entailed",
+      "gold_reason": "Directly reported eligibility-specific endpoints, not independent replication."
+    },
+    {
+      "id": "B02",
+      "claim": "The total number of all free-roaming dogs in Anuradhapura fell from 1,368 to 484.",
+      "evidence": "Reported number of free-roaming dogs requiring sterilization declined from 1,368 in 2021 to 484 in 2025.",
+      "expected": "overreach",
+      "gold_reason": "Only dogs needing sterilization, not total abundance, are counted in the quoted statistic."
+    },
+    {
+      "id": "B03",
+      "claim": "The annual effort-adjusted total dog catch rate declined significantly at p < 0.05.",
+      "evidence": "Published T3: [\"Total\", \"1.03\", \"0.93–1.14\", \"0.55488235\", \"3.0\", \"42.05 (27.18)\", \"1.67\"]",
+      "expected": "contradicted",
+      "gold_reason": "Total IRR is 1.03 (increasing) and p=0.55488235."
+    },
+    {
+      "id": "B04",
+      "claim": "The reported effort-adjusted total dog count trend was not statistically significant.",
+      "evidence": "Published T3: [\"Total\", \"1.03\", \"0.93–1.14\", \"0.55488235\", \"3.0\", \"42.05 (27.18)\", \"1.67\"]",
+      "expected": "entailed",
+      "gold_reason": "Table T3 total p >0.05."
+    },
+    {
+      "id": "B05",
+      "claim": "The zone 1 male simple pre/post comparison was statistically significant.",
+      "evidence": "Published T6B: [\"1\", \"Male\", \"9.95\", \"10.00\", \"0.964\", \"–3.6%\", \"0.835\", \"0.682–1.36\"]",
+      "expected": "contradicted",
+      "gold_reason": "Table T6B zone 1 male pre/post p=0.835."
+    },
+    {
+      "id": "B06",
+      "claim": "The reported buffer-interaction coefficient for zone 1 male dogs has p=0.038.",
+      "evidence": "Published T6C: [\"Male\", \"1\", \"–0.00455\", \"0.9955\", \"0.038*\", \"0.9913–0.9995\"]",
+      "expected": "entailed",
+      "gold_reason": "Table T6C explicitly reports p=0.038."
+    },
+    {
+      "id": "B07",
+      "claim": "The zone 1 male buffer coefficient proves the buffer reduced human rabies deaths.",
+      "evidence": "Published T6C: [\"Male\", \"1\", \"–0.00455\", \"0.9955\", \"0.038*\", \"0.9913–0.9995\"]",
+      "expected": "overreach",
+      "gold_reason": "An association in dog catches cannot establish human rabies mortality effects."
+    },
+    {
+      "id": "B08",
+      "claim": "The zone 3 female buffer-interaction p-value is 0.0003.",
+      "evidence": "Published T6C: [\"Female\", \"3\", \"–0.00568\", \"0.9943\", \"0.0003***\", \"0.9912–0.9975\"]",
+      "expected": "entailed",
+      "gold_reason": "Table T6C gives p=0.0003 for zone 3 female."
+    },
+    {
+      "id": "B09",
+      "claim": "The article says supplementary data can be requested from the corresponding author.",
+      "evidence": "The supplementary data can be made available from the corresponding author upon request.",
+      "expected": "entailed",
+      "gold_reason": "The data availability section explicitly says upon request."
+    },
+    {
+      "id": "B10",
+      "claim": "Complete individual dog-level data are freely downloadable within the article.",
+      "evidence": "The supplementary data can be made available from the corresponding author upon request.",
+      "expected": "contradicted",
+      "gold_reason": "The paper directs the reader to request supplementary data, not an openly available file."
+    },
+    {
+      "id": "B11",
+      "claim": "The authors conducted systematic community-wide dog abundance surveys.",
+      "evidence": "Several limitations should be considered when interpreting the findings of this study. First, the research team lacked sufficient financial and human resources to conduct systematic community dog surveys, which would have provided a more direct assessment of the intervention's impact on the overall dog population. Furthermore, age-related data were not stratified by sex, preventing a more detailed estimation of juvenile and adult survival rates for males and females. Such information would have enabled the derivation of more robust estimates re",
+      "expected": "contradicted",
+      "gold_reason": "Authors explicitly report being unable to conduct systematic community dog surveys."
+    },
+    {
+      "id": "B12",
+      "claim": "The article acknowledges incomplete local dog-bite, PEP and rabies-case data.",
+      "evidence": "Another major limitation was the lack of comprehensive and well-documented data on dog bites, human post-exposure prophylaxis, and suspected or laboratory-confirmed rabies cases within the project area. This deficiency reflects limitations of the national health information system and is beyond the authors' control. Although district-level data from the Ministry of Health were available and cited, these records do not necessarily reflect the specific epidemiological situation within the project's geographical boundaries. Consequently, the direct contribution of the intervention to reductions in dog bites, human post-exposure prophylaxis requi",
+      "expected": "entailed",
+      "gold_reason": "Study limitations explicitly say the locality-specific data are incomplete."
+    },
+    {
+      "id": "B13",
+      "claim": "The researchers precisely quantified the direct effect of CNVR on local human rabies incidence.",
+      "evidence": "imitation was the lack of comprehensive and well-documented data on dog bites, human post-exposure prophylaxis, and suspected or laboratory-confirmed rabies cases within the project area. This deficiency reflects limitations of the national health information system and is beyond the authors' control. Although district-level data from the Ministry of Health were available and cited, these records do not necessarily reflect the specific epidemiological situation within the project's geographical boundaries. Consequently, the direct contribution of the intervention to reductions in dog bites, human post-exposure prophylaxis requirements, and rabies incidence could not be quantified accurately.",
+      "expected": "contradicted",
+      "gold_reason": "Limitations state the direct contribution could not be quantified accurately."
+    },
+    {
+      "id": "B14",
+      "claim": "If the six Table 6C sex-by-zone p-values were tested at Bonferroni 0.05/6, the male zone 1 p=0.038 would be below that threshold.",
+      "evidence": "Table T6C contains 6 sex/zone tests; zone 1 male p=0.038; illustrative Bonferroni threshold 0.05/6=0.008333.",
+      "expected": "contradicted",
+      "gold_reason": "0.038 > 0.008333, conditional on illustrative correction."
+    },
+    {
+      "id": "B15",
+      "claim": "If the six Table 6C sex-by-zone p-values were tested at Bonferroni 0.05/6, the female zone 3 p=0.0003 would meet that threshold.",
+      "evidence": "Table T6C contains 6 sex/zone tests; zone 3 female p=0.0003; illustrative Bonferroni threshold 0.05/6=0.008333.",
+      "expected": "entailed",
+      "gold_reason": "0.0003 < 0.008333, conditional on illustrative correction."
+    },
+    {
+      "id": "B16",
+      "claim": "T6B p=0.835 and T6C p=0.038 cannot both be correct, since they estimate exactly the same effect.",
+      "evidence": "Simple pre/post male zone1: Published T6B: [\"1\", \"Male\", \"9.95\", \"10.00\", \"0.964\", \"–3.6%\", \"0.835\", \"0.682–1.36\"]. Buffer-interaction male zone1: Published T6C: [\"Male\", \"1\", \"–0.00455\", \"0.9955\", \"0.038*\", \"0.9913–0.9995\"]. These are separately titled estimates.",
+      "expected": "overreach",
+      "gold_reason": "Different pre/post and buffer-interaction estimands do not have to agree in significance."
+    },
+    {
+      "id": "B17",
+      "claim": "The 235 identified dogs in the Smith et al. Italy/Ukraine open repository are the raw dog-level observations underlying the Anuradhapura study.",
+      "evidence": "Original study: Anuradhapura, Sri Lanka, 2021–2025. Separate comparator: 235 uniquely identified dogs in Pescara Italy and Lviv Ukraine, survey 2018–2019, DOI 10.1371/journal.pone.0266636.",
+      "expected": "contradicted",
+      "gold_reason": "Different geography, period, publication and data provenance."
+    },
+    {
+      "id": "B18",
+      "claim": "The original study directly measured the causal impact of CNVR on region-specific dog-bite and PEP outcomes.",
+      "evidence": "ocumented data on dog bites, human post-exposure prophylaxis, and suspected or laboratory-confirmed rabies cases within the project area. This deficiency reflects limitations of the national health information system and is beyond the authors' control. Although district-level data from the Ministry of Health were available and cited, these records do not necessarily reflect the specific epidemiological situation within the project's geographical boundaries. Consequently, the direct contribution of the intervention to reductions in dog bites, human post-exposure prophylaxis requirements, and rabies incidence could not be quantified accurately.",
+      "expected": "contradicted",
+      "gold_reason": "Authors say inadequate direct local public-health data prevent accurately quantifying the intervention contribution."
+    },
+    {
+      "id": "B19",
+      "claim": "The paper reports that decreased catching days were partly a management response to perceived decreases in dogs.",
+      "evidence": "Although total dog counts declined over time, except for a sudden increase of 21.1% in 2023, no significant temporal trend was observed after adjustment for differences in the number of catching days. It should be emphasized, however, that the reduction in the number of catching days was intentionally implemented by project management in response to the apparent decline in free-roaming dog numbers. Consequently, including the number of days as an offset could partially mask genuine population reductions. Conversely, the absence of a significant increase over a 5-year period itself suggests successful intervention, because the absence of sterilization would normally result in annual population growth. Previous studies have estimated annual increases ranging from 2.5% over 20 years at a 30% female sterilization rate [ 20 ] to 8% over 20 yea",
+      "expected": "entailed",
+      "gold_reason": "Discussion explains effort was altered in response to apparent count decline; offset interpretation should be examined."
+    },
+    {
+      "id": "B20",
+      "claim": "Refitting the inaccessible dog-level captures with a different effort specification would reverse the zone 1 male buffer coefficient.",
+      "evidence": "Original dog-level data are available only upon author request. Table 6C male zone 1 buffer association p=0.038 and IRR=0.9955. No refitted alternative model results are supplied.",
+      "expected": "unresolved",
+      "gold_reason": "Direction under an unperformed model refit is unknown; neither support nor contradiction is available."
+    },
+    {
+      "id": "B21",
+      "claim": "An unrelated field team later replicated the Anuradhapura zone 1 male buffer result using a controlled independent population survey.",
+      "evidence": "Table 6C contains the original study’s zone 1 male interaction p=0.038; no independent replication source is included in this excerpt.",
+      "expected": "unresolved",
+      "gold_reason": "A later replication cannot be established or ruled out using only this source evidence."
+    }
+  ]
+}

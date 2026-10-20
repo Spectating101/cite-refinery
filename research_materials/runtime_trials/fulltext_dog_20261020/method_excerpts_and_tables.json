@@ -1,0 +1,266 @@
+{
+  "doi": "10.14202/vetworld.2026.2816-2849",
+  "title": "Long-term evaluation of a zoned catch-neuter-vaccinate-release program integrating owner engagement and buffer zone strategies for humane dog population management and rabies control in Anuradhapura, Sri Lanka",
+  "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13500148/fullTextXML",
+  "source_sha256": "4210e7ebc871f3db31dee6cb761f09d82e4f29f49aceed6a860c268e74176b7e",
+  "methods_sections": [
+    {
+      "heading": "Statistical analysis",
+      "section_digest": "a4b744be8f2ce87c683d179fb8307d3e2c87bca231138e5d9224fc984b3c5c12",
+      "excerpt": "All statistical analyses were performed using RStudio version 4.4.2 (R Core Team, Vienna, Austria).\n\nTemporal trends in dog counts: Temporal trends in counts per unit effort were quantified for nine demographic categories: total dog count; males; females; owned dogs; community dogs (free-roaming dogs cared for by the community without a specific owner); owned males; owned females; community males; and community females. Negative binomial regression was used for each category. The model count ~ Year + offset(log[number of days]) was fitted to annual totals for 2021–2025 (n = 5 years), where the offset adjusted for annual variation in the number of program days. The exponentiated Year coefficient was interpreted as the incidence rate ratio (IRR), representing the annual proportional change in catch per catching day. Each model was fitted using the glm.nb function in R v4.x. Model accuracy was assessed using the dispersion parameter θ, residual deviance/df, Pearson χ²/df, and DHARMa-scaled residuals, with consideration of uniformity, overdispersion, and zero-inflation. Influential observations were identified as Cook’s distance >0.8 (4/n = 4/5). All tests used α = 0.05.\n\nA directed acyclic graph (DAG) was developed to justify the structure of the negative binomial regressions. The DAG identifies Year as the primary exposure and observed dog count as the outcome, with sampling effort acting as an endogenous variable driven by the underlying true population density. Including log(number of days) as an offset in each model appropriately blocks the confounding pathway associated with non-random sampling effort. Rather than adjusting for demographic categories, including sex and "
+    },
+    {
+      "heading": "STUDY LIMITATIONS",
+      "section_digest": "445b1185f8cf4e080c6a71788185084d452a7a98e325af01726d4d54993891cd",
+      "excerpt": "Several limitations should be considered when interpreting the findings of this study. First, the research team lacked sufficient financial and human resources to conduct systematic community dog surveys, which would have provided a more direct assessment of the intervention's impact on the overall dog population. Furthermore, age-related data were not stratified by sex, preventing a more detailed estimation of juvenile and adult survival rates for males and females. Such information would have enabled the derivation of more robust estimates regarding the proportion of the population requiring annual sterilization. Existing population models primarily rely on the proportion of sexually inactive females to estimate population growth rates. However, in a setting where a considerable proportion of owned males remain unsterilized, the inability to quantify the contribution of these males to impregnating free-roaming females represents an important knowledge gap that could not be addressed in the present study.\n\nThe use of clinical intake records and field captures as proxies for population trends may also be regarded as a limitation. Nevertheless, the cumulative numbers obtained correspond closely with the estimated regional dog population, suggesting that these measures provide useful information for monitoring real-world CNVR interventions in resource-limited settings, where funding constraints necessitate balancing research objectives with operational priorities. Similarly, the questionnaire survey may have been affected by selection bias because pet owners attending the clinics are likely to represent a more responsible segment of the community. However, substantial heter"
+    },
+    {
+      "heading": "DATA AVAILABILITY",
+      "section_digest": "4332402056a10a1d29bc51e1dd7e60787a8108d8dfb24f0a206a533bf4ce838b",
+      "excerpt": "The supplementary data can be made available from the corresponding author upon request."
+    }
+  ],
+  "selected_tables": [
+    {
+      "id": "T3",
+      "caption": "Effort-adjusted annual trends in catch per day, 2021–2025*.",
+      "rows": [
+        [
+          "Response",
+          "IRR_per_year",
+          "95% CI",
+          "p-value",
+          "Percentage changes",
+          "Theta (Standard error)",
+          "Resid_dev_df"
+        ],
+        [
+          "Total",
+          "1.03",
+          "0.93–1.14",
+          "0.55488235",
+          "3.0",
+          "42.05 (27.18)",
+          "1.67"
+        ],
+        [
+          "Male",
+          "0.903",
+          "0.816–0.998",
+          "0.03622964*",
+          "-9.7",
+          "46.42 (32.47)",
+          "1.67"
+        ],
+        [
+          "Female",
+          "1.08",
+          "0.97–1.21",
+          "0.14899790",
+          "8.1",
+          "35.59 (23.07)",
+          "1.68"
+        ],
+        [
+          "Owned",
+          "1.15",
+          "0.98–1.35",
+          "0.07018171",
+          "14.7",
+          "17.91 (11.54)",
+          "1.68"
+        ],
+        [
+          "Owned Male",
+          "1.03",
+          "0.81–1.30",
+          "0.79099748",
+          "2.8",
+          "9.76 (6.57)",
+          "1.68"
+        ],
+        [
+          "Owned Female",
+          "1.24",
+          "1.03–1.49",
+          "0.01069109*",
+          "24.1",
+          "14.33 (9.20)",
+          "1.69"
+        ],
+        [
+          "Community Dog",
+          "0.963",
+          "0.88–1.06",
+          "0.41294902",
+          "-3.7",
+          "50.74 (33.51)",
+          "1.66"
+        ],
+        [
+          "Community Male",
+          "0.953",
+          "0.81–1.12",
+          "0.53483703",
+          "-4.7",
+          "17.76 (11.68)",
+          "1.66"
+        ],
+        [
+          "Community Female",
+          "0.969",
+          "0.90–1.04",
+          "0.35403199",
+          "-3.1",
+          "96.65 (69.54)",
+          "1.67"
+        ]
+      ],
+      "footnotes": [
+        "(IRR = incidence rate ratio per calendar year from negative binomial regression with log(catching_days) offset. CI = Confidence interval. Theta = dispersion parameter. Residual dev/df ∼1 indicates adequate fit. DHARMa tests showed no overdispersion or zero-inflation for any model (all p > 0.3). The asterisk (*) indicates significant p- values.)"
+      ]
+    },
+    {
+      "id": "T6B",
+      "caption": "Zone-wise change in catch rate after 2023 by sex.",
+      "rows": [
+        [
+          "Zone",
+          "Sex",
+          "Pre rate",
+          "Post rate",
+          "Ratio",
+          "% Change",
+          "p-value",
+          "95% Confidence interval"
+        ],
+        [
+          "1",
+          "Male",
+          "9.95",
+          "10.00",
+          "0.964",
+          "–3.6%",
+          "0.835",
+          "0.682–1.36"
+        ],
+        [
+          "2",
+          "Male",
+          "10.20",
+          "10.80",
+          "1.080",
+          "+7.6%",
+          "0.676",
+          "0.762–1.52"
+        ],
+        [
+          "3",
+          "Male",
+          "8.75",
+          "8.59",
+          "0.978",
+          "–2.2%",
+          "0.890",
+          "0.715–1.34"
+        ],
+        [
+          "1",
+          "Female",
+          "23.50",
+          "26.80",
+          "1.100",
+          "+10.0%",
+          "0.530",
+          "0.817–1.48"
+        ],
+        [
+          "2",
+          "Female",
+          "28.30",
+          "26.60",
+          "0.924",
+          "–7.6%",
+          "0.601",
+          "0.685–1.25"
+        ],
+        [
+          "3",
+          "Female",
+          "22.80",
+          "21.20",
+          "0.913",
+          "–8.7%",
+          "0.531",
+          "0.686–1.22"
+        ]
+      ],
+      "footnotes": []
+    },
+    {
+      "id": "T6C",
+      "caption": "Buffer spillover effect on zone catch by sex after 2023.",
+      "rows": [
+        [
+          "Sex",
+          "Zone",
+          "Coefficient",
+          "Incidence rate ratio per buffer dog",
+          "p-value",
+          "95% Confidence interval"
+        ],
+        [
+          "Male",
+          "1",
+          "–0.00455",
+          "0.9955",
+          "0.038*",
+          "0.9913–0.9995"
+        ],
+        [
+          "Male",
+          "2",
+          "–0.00241",
+          "0.9976",
+          "0.273",
+          "0.9932–1.002"
+        ],
+        [
+          "Male",
+          "3",
+          "–0.00217",
+          "0.9978",
+          "0.224",
+          "0.9943–1.001"
+        ],
+        [
+          "Female",
+          "1",
+          "–0.00253",
+          "0.9975",
+          "0.124",
+          "0.9945–1.001"
+        ],
+        [
+          "Female",
+          "2",
+          "–0.00168",
+          "0.9983",
+          "0.327",
+          "0.9950–1.002"
+        ],
+        [
+          "Female",
+          "3",
+          "–0.00568",
+          "0.9943",
+          "0.0003***",
+          "0.9912–0.9975"
+        ]
+      ],
+      "footnotes": []
+    }
+  ],
+  "rights": "Excerpt and data table evidence for review; cite journal and authors",
+  "boundary": "Published author report and tables, not independently collected dog-level raw data."
+}

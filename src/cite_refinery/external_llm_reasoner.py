@@ -51,6 +51,8 @@ def make_input(sources: list[dict], modules: list[dict]) -> dict:
             "text_sha256": _digest(body),
             "origin_type": str(source.get("origin_type") or "unknown"),
             "source_scope": _text(source.get("source_scope") or "not independently established"),
+            "parent_source_url": str(source.get("parent_source_url") or ""),
+            "same_study_as_parent":bool(source.get("same_study_as_parent",False)),
         })
     topic_list = []
     for m in modules:
@@ -83,16 +85,18 @@ Given independently sourced passages and a broad candidate problem ontology:
 2. For each proposition, distinguish what the source explicitly states from
    what it does not establish. Provide a VERBATIM source quote and its source_id,
    *not just a source URL*. Preserve population/geography/measurement scope.
-3. Link the proposition to relevant modules by their IDs, which is an
+3. Do not treat an abstract and method excerpts from the SAME publication as
+   independent confirmation: check parent_source_url and same_study_as_parent.
+4. Link the proposition to relevant modules by their IDs, which is an
    INTERPRETATION, not automatic evidence the entire problem is proven.
-4. Compare atomic propositions across sources: propose typed links between
+5. Compare atomic propositions across sources: propose typed links between
    proposition IDs, qualify alternatives, missing preconditions, and uncertainty.
    The permitted relations are CONTEXT_FOR, RELATED_TO, PROVIDES_DATA_FOR,
    QUALIFIES, REQUIRES_REVIEW_WITH. NO implied CAUSES, ADDRESSES, IMPLEMENTS,
    PROVES_EFFECTIVE, or field outcome claims.
-5. Unsupported hypotheses, apparent contradictions without direct evidence,
+6. Unsupported hypotheses, apparent contradictions without direct evidence,
    absent measurements and unknown effects go ONLY to open_questions.
-6. Explicitly surface competing explanations and scope mismatch; do not
+7. Explicitly surface competing explanations and scope mismatch; do not
    invent sources, policy outcomes, impact percentages or citations.
 
 Return a JSON object with exactly these main arrays:

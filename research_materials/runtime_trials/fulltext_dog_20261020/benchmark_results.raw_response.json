@@ -1,0 +1,109 @@
+{
+  "predictions": [
+    {
+      "id": "B01",
+      "label": "entailed",
+      "rationale": "The excerpt reports exactly these counts and years for dogs requiring sterilization."
+    },
+    {
+      "id": "B02",
+      "label": "overreach",
+      "rationale": "The counts concern dogs requiring sterilization, not all free-roaming dogs."
+    },
+    {
+      "id": "B03",
+      "label": "contradicted",
+      "rationale": "The reported p=0.55488235 exceeds 0.05, and the estimated ratio 1.03 does not indicate decline."
+    },
+    {
+      "id": "B04",
+      "label": "entailed",
+      "rationale": "The reported p=0.55488235 indicates a statistically nonsignificant trend."
+    },
+    {
+      "id": "B05",
+      "label": "contradicted",
+      "rationale": "The simple pre/post comparison reports p=0.835, exceeding 0.05."
+    },
+    {
+      "id": "B06",
+      "label": "entailed",
+      "rationale": "The zone 1 male buffer-interaction row reports p=0.038."
+    },
+    {
+      "id": "B07",
+      "label": "overreach",
+      "rationale": "A dog buffer-interaction coefficient does not establish a causal reduction in human rabies deaths."
+    },
+    {
+      "id": "B08",
+      "label": "entailed",
+      "rationale": "The zone 3 female buffer-interaction row reports p=0.0003."
+    },
+    {
+      "id": "B09",
+      "label": "entailed",
+      "rationale": "The excerpt explicitly states supplementary data can be made available upon request to the corresponding author."
+    },
+    {
+      "id": "B10",
+      "label": "contradicted",
+      "rationale": "The stated access route is author request, not free downloading within the article; completeness and individual-level detail are also unsupported."
+    },
+    {
+      "id": "B11",
+      "label": "contradicted",
+      "rationale": "The authors explicitly state they lacked resources to conduct systematic community dog surveys."
+    },
+    {
+      "id": "B12",
+      "label": "entailed",
+      "rationale": "The excerpt acknowledges a lack of comprehensive local dog-bite, PEP, and rabies-case data."
+    },
+    {
+      "id": "B13",
+      "label": "contradicted",
+      "rationale": "The authors explicitly state the intervention's direct contribution to rabies incidence could not be quantified accurately."
+    },
+    {
+      "id": "B14",
+      "label": "contradicted",
+      "rationale": "0.038 is greater than the specified Bonferroni threshold of 0.008333."
+    },
+    {
+      "id": "B15",
+      "label": "entailed",
+      "rationale": "0.0003 is below the specified Bonferroni threshold of 0.008333."
+    },
+    {
+      "id": "B16",
+      "label": "contradicted",
+      "rationale": "The excerpts identify separate estimands: a simple pre/post comparison and a buffer interaction; their p-values need not match."
+    },
+    {
+      "id": "B17",
+      "label": "contradicted",
+      "rationale": "The repository concerns a separate population in Italy and Ukraine in 2018–2019, not Anuradhapura in 2021–2025."
+    },
+    {
+      "id": "B18",
+      "label": "contradicted",
+      "rationale": "The excerpt explicitly says the intervention's direct contribution to local dog-bite and PEP reductions could not be quantified accurately."
+    },
+    {
+      "id": "B19",
+      "label": "entailed",
+      "rationale": "The paper explicitly attributes reduced catching days to management responding to an apparent decline in dog numbers."
+    },
+    {
+      "id": "B20",
+      "label": "overreach",
+      "rationale": "No alternative model results establish that changing the effort specification would reverse the coefficient."
+    },
+    {
+      "id": "B21",
+      "label": "overreach",
+      "rationale": "The excerpt supplies only the original result and no evidence of independent controlled replication."
+    }
+  ]
+}

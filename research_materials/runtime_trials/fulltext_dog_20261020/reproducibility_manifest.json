@@ -1,0 +1,61 @@
+{
+  "schema": "cite_refinery.open_comparator_reproducibility.v1",
+  "repository": "https://github.com/lauren-smith-r/Smith-et-al-Population-dynamics-free-roaming-dogs",
+  "commit": "2cd2e6bf9e9298875766ca947cb6b44036484855",
+  "source_study_doi": "10.1371/journal.pone.0266636",
+  "location_and_period": "Pescara Italy + Lviv Ukraine; 2018-2019 (not Anuradhapura Sri Lanka)",
+  "raw_identified_dogs": 235,
+  "unique_dog_ids": 235,
+  "study_area_counts": {
+    "ITSA1": 17,
+    "ITSA2": 13,
+    "ITSA3": 13,
+    "ITSA4": 10,
+    "UASA1": 27,
+    "UASA2": 35,
+    "UASA3": 56,
+    "UASA4": 64
+  },
+  "capture_observations_by_visit": {
+    "P1S1": 50,
+    "P1S2": 30,
+    "P1S3": 34,
+    "P2S1": 38,
+    "P2S2": 40,
+    "P2S3": 38,
+    "P3S1": 36,
+    "P3S2": 39,
+    "P3S3": 47,
+    "P4S1": 44,
+    "P4S2": 37,
+    "P4S3": 38,
+    "P5S1": 32,
+    "P5S2": 22,
+    "P5S3": 42
+  },
+  "raw_sighting_events": 567,
+  "population_estimate_rows": 40,
+  "population_estimate_localities": {
+    "Lviv": 20,
+    "Pescara": 20
+  },
+  "invalid_estimate_intervals": 0,
+  "files_sha256": {
+    "data/PRDMR.csv": "b52236ae21fb7bb2ae261b890c8d015475da2ce112c4f311df163ecc226efc33",
+    "output/Population_size.csv": "c505ef81803841ace6b08478162310d84632b2357faea6ca73872b88d533e96c",
+    "R/01_Bayesian_PCRD_model.R": "5d6587414459b6c75d2d67892daff5372b68ab6f3c77450e41346b0c63544471",
+    "R/hmm-three-state-dapx-two-pop.stan": "0e353a3fb0b3dba5912c82fe62dd6bba1548f8ab1c27b9035667e5422173aa02",
+    "R/02_Extracting_parameter_estimates.R": "e4bc67310284869c26443e650a771722acd634bea3064a1b9596a3927c814134",
+    "R/03_generate_figure_pop_size.R": "1d184b6b8f9d0803fc53d1f940faf3f2a8150d883d1533bccf2a39b7bfd421fc"
+  },
+  "bayesian_model_code_present": true,
+  "posterior_refitted": false,
+  "standalone_repository_license_detected": false,
+  "inferences": [
+    "R scripts, Stan model, encounter histories, and posterior-derived population estimates exist at a pinned public commit.",
+    "Descriptive counts and intervals can be independently recomputed from published CSVs.",
+    "Posterior results were NOT refitted from raw encounters; requires model runtime, exact dependency versions and convergence assessment.",
+    "This is a separate country/time/population comparator, NOT raw data for the 2026 Anuradhapura paper.",
+    "Before republishing dataset files, check upstream license; do not bundle them with this report."
+  ]
+}

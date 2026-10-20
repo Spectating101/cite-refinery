@@ -1,0 +1,231 @@
+{
+  "schema": "cite_refinery.source_entailment_benchmark_results.v1",
+  "name": "Anuradhapura source-scope diagnostic set",
+  "size": 21,
+  "correct": 18,
+  "accuracy": 0.8571428571428571,
+  "by_reference_label": {
+    "contradicted": {
+      "total": 8,
+      "correct": 8,
+      "accuracy": 1.0
+    },
+    "entailed": {
+      "total": 8,
+      "correct": 8,
+      "accuracy": 1.0
+    },
+    "overreach": {
+      "total": 3,
+      "correct": 2,
+      "accuracy": 0.6666666666666666
+    },
+    "unresolved": {
+      "total": 2,
+      "correct": 0,
+      "accuracy": 0.0
+    }
+  },
+  "confusion": {
+    "contradicted": {
+      "contradicted": 8,
+      "entailed": 0,
+      "overreach": 0,
+      "unresolved": 0
+    },
+    "entailed": {
+      "contradicted": 0,
+      "entailed": 8,
+      "overreach": 0,
+      "unresolved": 0
+    },
+    "overreach": {
+      "contradicted": 1,
+      "entailed": 0,
+      "overreach": 2,
+      "unresolved": 0
+    },
+    "unresolved": {
+      "contradicted": 0,
+      "entailed": 0,
+      "overreach": 2,
+      "unresolved": 0
+    }
+  },
+  "false_positive_entailment_count": 0,
+  "false_contradiction_count": 1,
+  "abstentions": 0,
+  "case_results": [
+    {
+      "id": "B01",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "The excerpt reports exactly these counts and years for dogs requiring sterilization.",
+      "gold_reason": "Directly reported eligibility-specific endpoints, not independent replication."
+    },
+    {
+      "id": "B02",
+      "expected": "overreach",
+      "predicted": "overreach",
+      "pass": true,
+      "rationale": "The counts concern dogs requiring sterilization, not all free-roaming dogs.",
+      "gold_reason": "Only dogs needing sterilization, not total abundance, are counted in the quoted statistic."
+    },
+    {
+      "id": "B03",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "The reported p=0.55488235 exceeds 0.05, and the estimated ratio 1.03 does not indicate decline.",
+      "gold_reason": "Total IRR is 1.03 (increasing) and p=0.55488235."
+    },
+    {
+      "id": "B04",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "The reported p=0.55488235 indicates a statistically nonsignificant trend.",
+      "gold_reason": "Table T3 total p >0.05."
+    },
+    {
+      "id": "B05",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "The simple pre/post comparison reports p=0.835, exceeding 0.05.",
+      "gold_reason": "Table T6B zone 1 male pre/post p=0.835."
+    },
+    {
+      "id": "B06",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "The zone 1 male buffer-interaction row reports p=0.038.",
+      "gold_reason": "Table T6C explicitly reports p=0.038."
+    },
+    {
+      "id": "B07",
+      "expected": "overreach",
+      "predicted": "overreach",
+      "pass": true,
+      "rationale": "A dog buffer-interaction coefficient does not establish a causal reduction in human rabies deaths.",
+      "gold_reason": "An association in dog catches cannot establish human rabies mortality effects."
+    },
+    {
+      "id": "B08",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "The zone 3 female buffer-interaction row reports p=0.0003.",
+      "gold_reason": "Table T6C gives p=0.0003 for zone 3 female."
+    },
+    {
+      "id": "B09",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "The excerpt explicitly states supplementary data can be made available upon request to the corresponding author.",
+      "gold_reason": "The data availability section explicitly says upon request."
+    },
+    {
+      "id": "B10",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "The stated access route is author request, not free downloading within the article; completeness and individual-level detail are also unsupported.",
+      "gold_reason": "The paper directs the reader to request supplementary data, not an openly available file."
+    },
+    {
+      "id": "B11",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "The authors explicitly state they lacked resources to conduct systematic community dog surveys.",
+      "gold_reason": "Authors explicitly report being unable to conduct systematic community dog surveys."
+    },
+    {
+      "id": "B12",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "The excerpt acknowledges a lack of comprehensive local dog-bite, PEP, and rabies-case data.",
+      "gold_reason": "Study limitations explicitly say the locality-specific data are incomplete."
+    },
+    {
+      "id": "B13",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "The authors explicitly state the intervention's direct contribution to rabies incidence could not be quantified accurately.",
+      "gold_reason": "Limitations state the direct contribution could not be quantified accurately."
+    },
+    {
+      "id": "B14",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "0.038 is greater than the specified Bonferroni threshold of 0.008333.",
+      "gold_reason": "0.038 > 0.008333, conditional on illustrative correction."
+    },
+    {
+      "id": "B15",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "0.0003 is below the specified Bonferroni threshold of 0.008333.",
+      "gold_reason": "0.0003 < 0.008333, conditional on illustrative correction."
+    },
+    {
+      "id": "B16",
+      "expected": "overreach",
+      "predicted": "contradicted",
+      "pass": false,
+      "rationale": "The excerpts identify separate estimands: a simple pre/post comparison and a buffer interaction; their p-values need not match.",
+      "gold_reason": "Different pre/post and buffer-interaction estimands do not have to agree in significance."
+    },
+    {
+      "id": "B17",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "The repository concerns a separate population in Italy and Ukraine in 2018–2019, not Anuradhapura in 2021–2025.",
+      "gold_reason": "Different geography, period, publication and data provenance."
+    },
+    {
+      "id": "B18",
+      "expected": "contradicted",
+      "predicted": "contradicted",
+      "pass": true,
+      "rationale": "The excerpt explicitly says the intervention's direct contribution to local dog-bite and PEP reductions could not be quantified accurately.",
+      "gold_reason": "Authors say inadequate direct local public-health data prevent accurately quantifying the intervention contribution."
+    },
+    {
+      "id": "B19",
+      "expected": "entailed",
+      "predicted": "entailed",
+      "pass": true,
+      "rationale": "The paper explicitly attributes reduced catching days to management responding to an apparent decline in dog numbers.",
+      "gold_reason": "Discussion explains effort was altered in response to apparent count decline; offset interpretation should be examined."
+    },
+    {
+      "id": "B20",
+      "expected": "unresolved",
+      "predicted": "overreach",
+      "pass": false,
+      "rationale": "No alternative model results establish that changing the effort specification would reverse the coefficient.",
+      "gold_reason": "Direction under an unperformed model refit is unknown; neither support nor contradiction is available."
+    },
+    {
+      "id": "B21",
+      "expected": "unresolved",
+      "predicted": "overreach",
+      "pass": false,
+      "rationale": "The excerpt supplies only the original result and no evidence of independent controlled replication.",
+      "gold_reason": "A later replication cannot be established or ruled out using only this source evidence."
+    }
+  ],
+  "validity_limit": "Curated source-anchored benchmark, labels authored for this project; no independent blinded human gold, uncertain generalization, no automatic scientific acceptance.",
+  "evaluation_method": "model_codex_gpt-6.1-sol",
+  "source_doi": "10.14202/vetworld.2026.2816-2849"
+}

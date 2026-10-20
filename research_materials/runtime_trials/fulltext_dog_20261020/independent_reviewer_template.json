@@ -1,0 +1,113 @@
+{
+  "schema": "cite_refinery.independent_review_submission.v1",
+  "source_packet_digest": "38097d48e7b8a4e53f3059187be2160e76b1e3952f4e00bddbe8e4afa508e7aa",
+  "reviewer_id": "",
+  "cases": [
+    {
+      "id": "B01",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B02",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B03",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B04",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B05",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B06",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B07",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B08",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B09",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B10",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B11",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B12",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B13",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B14",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B15",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B16",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B17",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B18",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B19",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B20",
+      "label": null,
+      "rationale": ""
+    },
+    {
+      "id": "B21",
+      "label": null,
+      "rationale": ""
+    }
+  ],
+  "submission_note": "Complete locally as an unaffiliated reviewer; do not consult curated gold labels."
+}

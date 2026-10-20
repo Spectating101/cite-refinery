@@ -42,6 +42,8 @@ def main(argv=None):
     init.add_argument("--question",required=True)
     init.add_argument("--modules",required=True,help="Existing problem-ontology JSON list, not sources")
     init.add_argument("--max-rounds",type=int,default=2)
+    init.add_argument("--fulltext-enrichment",action="store_true",
+                      help="Fetch bounded methods/results JATS extracts for public PMC papers")
     for name in ("step","run","status"):
         action=sub.add_parser(name)
         action.add_argument("--id",required=True)
@@ -58,7 +60,8 @@ def main(argv=None):
     ctrl=InvestigationController(args.workspace,reasoner=reasoner if args.command in {"run","step"} else None)
     if args.command=="init":
         modules=json.loads(Path(args.modules).read_text(encoding="utf-8"))
-        state=ctrl.start(args.question,modules,max_rounds=args.max_rounds)
+        state=ctrl.start(args.question,modules,max_rounds=args.max_rounds,
+                         fulltext_enrichment=args.fulltext_enrichment)
     elif args.command=="status":
         state=ctrl.load(args.id)
     elif args.command=="step":

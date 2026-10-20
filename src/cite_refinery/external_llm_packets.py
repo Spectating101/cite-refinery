@@ -39,6 +39,8 @@ def llm_review_packet(review_input, inspected, second_opinion=None):
             "tags":["source_excerpt_unverified_claims"],
             "provenance":{"source_id":sid,"text_sha256":s["text_sha256"],
                           "source_scope":s["source_scope"],
+                          "parent_source_url":s.get("parent_source_url", ""),
+                          "same_study_as_parent":s.get("same_study_as_parent",False),
                           "boundary":"Source text was supplied; source content authentication is separate from this packet."},
         })
     for p in inspected["propositions"]:
