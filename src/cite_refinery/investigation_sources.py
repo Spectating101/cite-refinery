@@ -103,6 +103,40 @@ def search_europe_pmc(query: str, *, limit=3, fetch=_fetch):
             "source_record":str(key),
             "passage_sha256":hashlib.sha256((title+". "+abstract)[:6500].encode()).hexdigest(),
         })
+    if len(results)<limit and len(q.split())>5:
+        # Scientific full-conjunction queries can be over-specific. Use a
+        # transparent broad fallback, never a fabricated abstract or citation.
+        # Preserve the *first four* topical words and record fallback URL.
+        tokens=[w for w in re.findall(r"[A-Za-z]{3,}",q) if w.lower() not in
+                {"method","evaluation","controlled","statistical","study","analyses","comparison"}]
+        short=" ".join(tokens[:4])
+        if short and short.lower()!=q.lower():
+            alt_url="https://www.ebi.ac.uk/europepmc/webservices/rest/search?"+urlencode({
+                "query":short,"format":"json","resultType":"core","pageSize":max(limit,3),
+            })
+            try:
+                extra,actual,_=fetch(alt_url)
+                j2=json.loads(extra)
+                old={x["source_record"] for x in results}
+                for article in j2.get("resultList",{}).get("result",[])[:max(limit,3)]:
+                    title=_strip_markup(article.get("title",""))
+                    abstract=_strip_markup(article.get("abstractText",""))
+                    key=article.get("doi") or article.get("pmcid") or article.get("pmid") or article.get("id")
+                    if not key or key in old or len(abstract)<100 or not title:continue
+                    url=("https://doi.org/"+article["doi"] if article.get("doi") else
+                         "https://europepmc.org/article/MED/"+str(article["pmid"]) if article.get("pmid") else
+                         "https://europepmc.org/articles/"+str(article.get("pmcid")))
+                    passage=(title+". "+abstract)[:6500]
+                    results.append({"id":"EPMC-"+hashlib.sha256(str(key).encode()).hexdigest()[:12],
+                        "url":url,"text":passage,"title":title,
+                        "origin_type":"scholarly_abstract_lead",
+                        "source_scope":"Europe PMC abstract from broadened search, not full-text verification",
+                        "retrieval_url":actual,"source_record":str(key),
+                        "passage_sha256":hashlib.sha256(passage.encode()).hexdigest(),
+                        "fallback_query":short})
+                    old.add(key)
+                    if len(results)>=limit:break
+            except (OSError,ValueError):pass
     return results
 
 

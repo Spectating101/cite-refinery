@@ -1,0 +1,117 @@
+{
+  "schema": "cite_refinery.adjudication_receipt.v1",
+  "adjudication_id": "5436b8f038344cc2ab98",
+  "original_investigation_id": "2ca16ed4bdde441cabb1",
+  "project_id": "rproject:404ca1c7a445",
+  "stage": "done",
+  "targets": [
+    {
+      "claim_id": "R2:P4",
+      "statement": "The reported number of free-roaming dogs requiring sterilization declined from 1,368 in 2021 to 484 in 2025.",
+      "scope": "Anuradhapura program; dogs requiring sterilization; 2021 and 2025 endpoints.",
+      "limitations": "This measure does not establish an equivalent decline in total free-roaming abundance or identify the mechanism of change."
+    },
+    {
+      "claim_id": "R2:P6",
+      "statement": "The abstract reports significant buffer-intervention effects on male populations in zone 1.",
+      "scope": "Male dogs in Anuradhapura zone 1; abstract-reported analysis.",
+      "limitations": "The supplied abstract does not provide an effect size or sufficient design details to independently establish causality or extrapolate to other strata."
+    }
+  ],
+  "challenge_reason": "Challenge whether fewer dogs requiring sterilization reflects reduced total abundance rather than depletion of eligible animals or changing detection, and whether sex- and zone-specific buffer findings support causal attribution rather than movement, confounding or multiple comparisons.",
+  "counter_hypotheses": [
+    "The decline from 1,368 to 484 could occur with unchanged or increasing total abundance if sterilized dogs remain present while the sexually intact fraction or capture probability falls. Independent abundance estimates and sterilization-status denominators could distinguish these explanations.",
+    "The male zone-1 finding could reflect redistribution across buffer boundaries, sex-specific catchability or concurrent interventions rather than reduced recruitment or abundance caused by the buffer. An isolated significant result could also disappear after adjustment for multiple sex-by-zone comparisons.",
+    "Neither outcome necessarily predicts public-health improvement: rabies transmission may persist if vaccination coverage among all dogs declines through turnover or immigration, even while sterilization eligibility decreases."
+  ],
+  "queries": [
+    {
+      "lane": "academic",
+      "query": "Anuradhapura zoned CNVR 2021 2025 1368 484 buffer male zone 1 dog population methods"
+    },
+    {
+      "lane": "academic",
+      "query": "free roaming dog sterilization evaluation capture probability mark resight immigration buffer zones sex multiple comparisons rabies vaccination coverage"
+    },
+    {
+      "lane": "official",
+      "query": "site.who.int dog rabies vaccination coverage population turnover sterilization monitoring evaluation"
+    },
+    {
+      "lane": "official",
+      "query": "site.woah.org dog population management monitoring evaluation population size reproductive status vaccination coverage movement"
+    }
+  ],
+  "search_attempts": 2,
+  "sources": [
+    {
+      "id": "EPMC-92e55634dabe",
+      "url": "https://doi.org/10.3390/ani16182885",
+      "title": "University-Based Animal Welfare Organizations in Ecuador: A National One Health Perspective.",
+      "origin_type": "scholarly_abstract_lead",
+      "source_scope": "Europe PMC abstract from broadened search, not full-text verification",
+      "passage_sha256": "4095eac2a7bb8f415c2d0486177263505d330eb99ae1b2d23a510e7543509aa6"
+    },
+    {
+      "id": "OFFICIAL-721b8c92dd22",
+      "url": "https://www.who.int/teams/control-of-neglected-tropical-diseases/rabies/vaccinations-and-immunization",
+      "title": "Rabies is a zoonotic viral disease which infects domestic and wild animals. It is transmitted to other animals and humans through close contact with saliva from infected animals (i",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "passage_sha256": "c579b30a8f1e4e9d26b0b32a024afc89394598de052b9d4d4a85f5b642b6e86c"
+    },
+    {
+      "id": "OFFICIAL-6e1eff8c971f",
+      "url": "https://www.who.int/activities/vaccinating-against-rabies-to-save-lives",
+      "title": "Human rabies is a 100% vaccine-preventable disease, yet it continues to kill.",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+      "passage_sha256": "d5397fe602a8f3679f8c393d61f6141922e754d543f1f8fad69038447a874d3b"
+    }
+  ],
+  "excluded_original_source_urls": [
+    "https://doi.org/10.14202/vetworld.2026.2816-2849"
+  ],
+  "excluded_off_topic_urls": [
+    "https://www.who.int/europe/groups/action-network-on-measuring-population-and-organizational-health-literacy-(m-pohl)",
+    "https://www.who.int/news-room/questions-and-answers/item/population-ageing",
+    "https://www.who.int/news-room/articles-detail/public-notice-for-comments-on-who-guideline-on-internal-contamination-assessment-and-management--transuranium-radionuclides"
+  ],
+  "findings": [
+    {
+      "claim_id": "R2:P4",
+      "verdict": "inconclusive",
+      "reason": "The original quotation directly reports the two endpoint counts, but none of the new excerpts measures dogs requiring sterilization in Anuradhapura in 2021 or 2025. The Ecuador organizational survey and WHO human rabies vaccination guidance neither independently verify nor contradict the reported decline.",
+      "scope_risk": "The relevant outcome is dogs requiring sterilization, not total free-roaming abundance. Comparable geographic coverage, survey effort, eligibility definitions, and counting methods across endpoints remain unverified. The counts alone cannot establish a causal mechanism.",
+      "alternative_explanation": "A reduction in sterilization need could reflect increased sterilization coverage, changes in recruitment or migration, or changed survey coverage and eligibility criteria without an equivalent decline in total abundance.",
+      "next_test": "Inspect the original study's endpoint tables and survey methods to verify both counts, consistent zone coverage and sterilization eligibility, and distinguish total observed dogs from those requiring sterilization.",
+      "quotes": []
+    },
+    {
+      "claim_id": "R2:P6",
+      "verdict": "inconclusive",
+      "reason": "The original quotation explicitly reports significant effects for male populations in zone 1, but the new evidence contains no Anuradhapura buffer-intervention analysis, sex-specific population estimates, or statistical results. It therefore cannot independently support or challenge the abstract's report or its causal interpretation.",
+      "scope_risk": "The claim concerns an abstract-reported result for males in zone 1 only. Effect size, timing, population denominator, sampling consistency, comparison groups, statistical model, and handling of multiple sex-by-zone comparisons are unavailable. Statistical significance alone does not establish causation.",
+      "alternative_explanation": "An apparent zone-specific change could reflect migration, concurrent interventions, baseline differences, changing detectability or sampling effort, or chance across multiple comparisons.",
+      "next_test": "Retrieve the original study's sex-by-zone estimates and buffer-intervention model; check effect sizes, confidence intervals, comparison groups, intervention timing, confounding controls, and multiple-comparison handling.",
+      "quotes": []
+    }
+  ],
+  "model_verdict_counts": {
+    "inconclusive": 2
+  },
+  "graph_nodes_added": 5,
+  "graph_edges_added": 2,
+  "graph_edge_statuses": {
+    "unresolved": 2
+  },
+  "graph_receipt_id": "sgpacket:804ee9aedf9ee93c",
+  "accepted_impact_claims": 0,
+  "limitations": [
+    "Independent source discovery does not mean independent scientific verification.",
+    "GPT-5.6 was unavailable through the authenticated Codex account; both research and challenge judge used GPT-6.1.",
+    "No claim is automatically supported or disproved by one model's interpretation.",
+    "Bibliographic abstracts and public guidance may not contain the original measurements.",
+    "New model-labeled relationships are unresolved and all original graph statuses remain unchanged."
+  ]
+}
