@@ -1,0 +1,49 @@
+{
+  "schema": "cite_refinery.cross_model_evidence_diagnostic.v1",
+  "source_case": "battery_recycling_positive_gate_fee_10k_tonnes_per_year",
+  "reference_source_commit": "246c4d478f9ceb05c580856720ca56a66064e205",
+  "reference_function": "lfp_analysis_verified.py:analyze_method",
+  "reference_expected_delta_usd": -10000000.0,
+  "reference_observed_delta_usd": -0.0,
+  "model_reviews": [
+    {
+      "model": "claude-opus-5-5-medium",
+      "model_family": "claude",
+      "reported_defect": "reproduced_accounting_defect",
+      "arithmetic_matches_executed_reference": true,
+      "rejects_actual_profitability_inference": true,
+      "diagnostic_agreement": true,
+      "model_is_independent_executor": false,
+      "automatic_evidence_promotion_allowed": false
+    },
+    {
+      "model": "claude-sonnet-5-5-medium",
+      "model_family": "claude",
+      "reported_defect": "accounting_omission",
+      "arithmetic_matches_executed_reference": true,
+      "rejects_actual_profitability_inference": true,
+      "diagnostic_agreement": true,
+      "model_is_independent_executor": false,
+      "automatic_evidence_promotion_allowed": false
+    },
+    {
+      "model": "gemini-4-argon-medium",
+      "model_family": "gemini",
+      "reported_defect": "reproduced_accounting_defect",
+      "arithmetic_matches_executed_reference": true,
+      "rejects_actual_profitability_inference": true,
+      "diagnostic_agreement": true,
+      "model_is_independent_executor": false,
+      "automatic_evidence_promotion_allowed": false
+    }
+  ],
+  "distinct_model_families": [
+    "claude",
+    "gemini"
+  ],
+  "all_reviews_agree_with_executed_reference": true,
+  "reliability_statement": "Model agreement is reproducible claim interpretation, not independent code execution; the executed upstream accounting test establishes the bounded defect, and no real plant economics have been verified.",
+  "evidence_status": "source_pinned_synthetic_accounting_defect_not_commercial_validation",
+  "research_holdout_touched": false,
+  "native_graph_status_promoted": false
+}
