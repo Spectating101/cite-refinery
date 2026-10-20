@@ -1,0 +1,28 @@
+{
+  "schema": "cite_refinery.discrimination_protocol_review.v1",
+  "original_plan_digest": "c2c132a92552e2564458149827dd13259d9cb8e3993d8ef79bec0b9857702800",
+  "reviews": [
+    {
+      "id": "T1",
+      "verdict": "conditionally_useful",
+      "limitation": "The protocol relies on open-population mark-resight models that assume perfect individual identification and spatial closure between survey passes. Photo-identification of free-roaming dogs suffers from uncertain ID attribution (false-positive splitting of visually homogeneous dogs or scar changes), which artificially inflates estimated arrivals. Furthermore, spatial confounding and unmeasured detectability shifts co-occur with true movement: resident dogs adjusting home ranges onto transects to access new resources mimic external immigration. Even if proposed data were collected, an observed increase in unique photo-IDs alongside nominally stable estimated detection probabilities would remain insufficient to establish true external immigration, as it cannot distinguish geographic influx from false-positive ID splits or resident unconfined dogs shifting activity centers into the survey corridor.",
+      "required_revision": "Incorporate a spatially explicit capture-recapture (SECR) framework paired with a double-blind photographic misidentification error model and edge-buffer boundary telemetry to formally disentangle activity-center shifts and ID errors from demographic immigration."
+    },
+    {
+      "id": "T2",
+      "verdict": "not_discriminating",
+      "limitation": "The protocol assumes tracking and demographic observation can cleanly separate immigration from local recruitment, failing to account for the simultaneous co-occurrence of both processes and unmeasured early neonatal mortality occurring prior to survey detection. Tracking unowned dogs raises severe animal-welfare constraints (collar entanglement, injury, and community interference), while tracking domestic relinquishment via household surveys risks privacy violations and heavy social desirability bias. Crucially, abandoned litters are phenotypically indistinguishable from locally whelped pups whose mothers den off-transect. Even if proposed data were collected, observing incoming juvenile cohorts with an apparent absence of lactating females on transects would remain insufficient to falsify local recruitment, because cryptic denning and early pup abandonment or maternal mortality produce the exact same observable pattern.",
+      "required_revision": "Replace invasive collaring and unconstrained household surveillance with an anonymized, privacy-minimized neighborhood reporting protocol (using randomized response techniques) combined with non-invasive genetic parentage/maternity testing of juvenile cohorts to determine kinship to resident bitches without tracking."
+    },
+    {
+      "id": "T3",
+      "verdict": "uncertain",
+      "limitation": "Distance-sampling requires that detection at zero distance g(0)=1 and that animal distribution is independent of transects, both of which are violated by free-roaming dogs that reactively approach or avoid surveyors along roadways. Additionally, reproductive state creates severe unmeasured detectability heterogeneity: lactating females and neonates exhibit cryptic denning behavior in hidden micro-habitats, rendering them systematically less detectable than sterilized, openly basking adults. Even if a fitted distance-sampling detection function appears stationary across rounds and visible lactating bitch counts remain low, this observation would remain insufficient to rule out local recruitment, as population-level whelping can occur off-transect in subterranean or structural dens completely unrepresented by roadside distance functions.",
+      "required_revision": "Implement an independent double-observer mark-recapture distance sampling (MRDS) design to empirically estimate state-specific g(0) < 1, supplemented by systematic, multi-season off-transect den-site occupancy surveys to calibrate detection probabilities specifically for lactating females and litters."
+    }
+  ],
+  "review_kind": "second_llm_same_model_family_not_independent_field_validation",
+  "approved_scientific_effect_claims": 0,
+  "review_boundary": "Reviewer evaluates proposed field design only; no field measurements, validation panel or model-independent assessment.",
+  "model": "gemini-3.8-flash-high"
+}

@@ -1,0 +1,157 @@
+{
+  "schema": "cite_refinery.mechanism_discrimination_plan.v1",
+  "origin_investigation": "49ecd664b5044b24abfc",
+  "source_digest": "c2c132a92552e2564458149827dd13259d9cb8e3993d8ef79bec0b9857702800",
+  "mechanisms": [
+    {
+      "id": "immigration_abandonment",
+      "mechanism": "Observed increases in free-roaming dog counts arise from an influx of non-resident dogs migrating into the intervention area or owned dogs being abandoned/dumped by humans, potentially compensating for sterilization or localized vacancies.",
+      "rationale": "Compensatory immigration and abandonment can replenish dog density when local reproductive capacity or population pressures shift, although these external additions operate alongside rather than mutually exclusive of local reproductive or detectability dynamics.",
+      "source_receipts": [
+        {
+          "source_id": "EPMC-7329c77af95d",
+          "source_url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+          "quote": "However, ecological theory suggests that removal may be followed by compensatory responses through immigration, increased survival, or enhanced reproduction among the remaining animals.",
+          "quote_sha256": "8ec48f495a304df8581eacb0bfca215cf6768235b3e6d810e538abd07d7f2041"
+        }
+      ]
+    },
+    {
+      "id": "survey_detectability",
+      "mechanism": "Observed increases in dog counts stem from elevated sighting probabilities, behavioral shifts in roaming or basking post-sterilization, altered observer/sampling effort, or misclassification of unconfined owned dogs rather than true increases in population abundance.",
+      "rationale": "Simple transect headcounts do not control for detection heterogeneity, observer visibility, or shifting spatial visibility, meaning unadjusted counts can rise sharply even if the absolute population remains static or declines.",
+      "source_receipts": [
+        {
+          "source_id": "JATS-0e3558be2d75",
+          "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12363366/fullTextXML",
+          "quote": "Despite consistent methodology, variable detectability of free-roaming dogs (FRD) across sites may be a potential limitation.",
+          "quote_sha256": "257136ff34ced4859a1961bc4effe2511b2c0dce1d0ef5e982d0b576b971d20b"
+        }
+      ]
+    },
+    {
+      "id": "local_recruitment",
+      "mechanism": "Observed increases in free-roaming dog counts result from in situ whelping and pup recruitment by remaining intact local female dogs, potentially sustained by density-dependent increases in litter survival.",
+      "rationale": "Unless high sterilization thresholds are achieved uniformly, residual reproductive capacity and compensatory puppy survivorship can sustain or increase local canine abundance independently of or concurrently with external immigration.",
+      "source_receipts": [
+        {
+          "source_id": "EPMC-7329c77af95d",
+          "source_url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+          "quote": "The outcome of removal of the free-roaming dogs from a particular area depends on several factors, including the spatial scale and continuity of removal, recruitment through reproduction and abandonment, environmental carrying capacity shaped by human-provided resources, and the strength of institutional regulation.",
+          "quote_sha256": "b3f423ac44063b890d951c0aff32d91b55767015faa075edde0f29a29d1857cb"
+        }
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "T1",
+      "title": "Open-Population Mark-Resight Modeling vs Detection Probability Calibration",
+      "compares": [
+        "immigration_abandonment",
+        "survey_detectability"
+      ],
+      "observations": [
+        "capture_recapture",
+        "transect_detection",
+        "sampling_effort"
+      ],
+      "unit_of_observation": "Individually photo-identified free-roaming dogs tracked across repeated standardized transect passes",
+      "timing": "Pre-CNVR baseline, active intervention phase, and post-intervention follow-ups scheduled at fixed diurnal survey times",
+      "expected_if_first": "Open-population capture-recapture models estimate a non-zero arrival rate of previously unrecorded adult individuals with stable per-individual sighting probabilities, indicating true entry of new dogs.",
+      "expected_if_second": "Estimated super-population abundance remains constant or declines once detection probability is explicitly modeled, with the count surge explained by increased individual detection probabilities or uncalibrated sampling effort.",
+      "nonidentifying_pattern": "Unadjusted transect tallies increasing without individual animal identification, which cannot distinguish more unique individuals from identical dogs being detected more frequently.",
+      "falsification_condition": "Demonstrating that per-dog detection probability did not change between survey rounds while unique photo-identified adult dog abundance grew significantly falsifies survey detectability as the dominant mechanism.",
+      "confounders": "Individual heterogeneity in catchability, unmeasured fluctuations in transect walking speed or street-level visibility conditions, and food-source relocations altering dog exposure.",
+      "data_required": "Individual photographic capture histories, repeated transect encounter records with detection covariates (time, weather), and logged surveyor path effort.",
+      "source_receipts": [
+        {
+          "source_id": "JATS-0e3558be2d75",
+          "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12363366/fullTextXML",
+          "quote": "A closed population is only met if studies are conducted over short periods with negligible immigration and emigration of dogs, no loss of marks, no misclassification between marked and unmarked dogs, and homogeneous capture probabilities ( 27 ).",
+          "quote_sha256": "b1e3af16aa0e430b6979ab7a658b103453e4b7b6e9c12f4ec43ea3953e47f003"
+        }
+      ],
+      "classification": "unexecuted_field_protocol_not_observation"
+    },
+    {
+      "id": "T2",
+      "title": "Demographic Cohort Influx and Spatial Tracking vs Maternal Whelping Records",
+      "compares": [
+        "immigration_abandonment",
+        "local_recruitment"
+      ],
+      "observations": [
+        "individual_tracking",
+        "reproductive_history",
+        "ownership_history"
+      ],
+      "unit_of_observation": "Cohort-stratified free-roaming dogs evaluated for age category, reproductive parity, spatial origin, and household affiliation",
+      "timing": "Continuous spatial monitoring and quarterly demographic cohort census across 24 months post-CNVR rollout",
+      "expected_if_first": "The newly observed dogs comprise fully grown adult or juvenile dogs entering across perimeter boundaries or documented as abandoned household pets, occurring alongside negligible local whelping.",
+      "expected_if_second": "The observed count increase is driven by neonate and weaned pup cohorts born to resident unsterilized females, verified by local maternal lactation histories and tracked litter sites.",
+      "nonidentifying_pattern": "Aggregated population increases across blended age classes without spatial telemetry or reproductive histories, where immigration and local reproduction may both be contributing unmeasured proportions.",
+      "falsification_condition": "Demonstrating that newly recruited dogs are exclusively mature adults showing cross-boundary telemetry movements or domestic relinquishment origins, with zero local lactating females or puppy recruitment, falsifies local recruitment as the primary cause.",
+      "confounders": "High early puppy mortality occurring prior to detection, misclassification of young abandoned dogs as locally whelped pups, and unrecorded abandonment of entire litters.",
+      "data_required": "Telemetry or perimeter encounter records, clinical and field female reproductive histories (pregnancy/lactation tracking), and household acquisition/relinquishment surveys.",
+      "source_receipts": [
+        {
+          "source_id": "EPMC-c5c54e414d55",
+          "source_url": "https://doi.org/10.1371/journal.pone.0317636",
+          "quote": "In CNVR-treated areas, the probability of observing lactating female dogs decreased, whereas it increased in untreated sites.",
+          "quote_sha256": "21a1d992dde2e0eaebcd34572df595584f1626f641b9f77b70190f35a412321b"
+        }
+      ],
+      "classification": "unexecuted_field_protocol_not_observation"
+    },
+    {
+      "id": "T3",
+      "title": "Distance-Sampling Detectability Function vs Female Lactation and Puppy Enumeration",
+      "compares": [
+        "survey_detectability",
+        "local_recruitment"
+      ],
+      "observations": [
+        "transect_detection",
+        "reproductive_history",
+        "sampling_effort"
+      ],
+      "unit_of_observation": "Perpendicular sighting distances and physical reproductive status of dogs observed along fixed transects",
+      "timing": "Multi-season transect surveys synchronized with regional canine breeding peaks pre- and post-intervention",
+      "expected_if_first": "Distance-sampling detection functions show widened effective strip width or higher baseline visibility of ear-notched dogs resting in open areas, while puppy counts and female lactation observations remain minimal.",
+      "expected_if_second": "Distance-sampling detection probability functions remain stationary across rounds, but observer records show rising proportions of lactating females and puppy cohorts accounting for the count increase.",
+      "nonidentifying_pattern": "Crude headcount fluctuations collected with variable survey durations or changing times of day without distance-sampling calibration or maternal status verification.",
+      "falsification_condition": "Detectability-corrected abundance estimates demonstrating no expansion in true canine density alongside documented reductions in female lactation falsifies local recruitment as the driver of count increases.",
+      "confounders": "Seasonal shifts in street canopy/weather altering sightability, altered daytime denning habits of nursing bitches masking true reproductive output, and changing observer skill levels.",
+      "data_required": "Perpendicular distance-to-detection measurements, standardized surveyor effort logs, and systematic visual scoring of female lactation and pup presence.",
+      "source_receipts": [
+        {
+          "source_id": "JATS-0e3558be2d75",
+          "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12363366/fullTextXML",
+          "quote": "Can introduce biases as this method can only provide indicators of canine abundance rather than precise estimates of population parameters of abundance.",
+          "quote_sha256": "695bdf22963d08de80e412e4f8c2f7eea01725e209a6a9e9bed805753f4ffdfb"
+        }
+      ],
+      "classification": "unexecuted_field_protocol_not_observation"
+    }
+  ],
+  "current_identifiability": "not_identifiable_from_available_sources",
+  "missing_input": [
+    "Longitudinal individual photographic mark-resight records linking individual free-roaming dogs across pre- and post-intervention survey rounds in the focal intervention area.",
+    "Empirical detection function data (e.g., perpendicular sighting distances, observer speeds, weather conditions) necessary to adjust raw transect counts for variable sightability.",
+    "Spatial movement tracking or boundary telemetry establishing movement rates into the intervention sector from surrounding non-program zones.",
+    "Standardized community-level household surveys tracking pet relinquishment, unconfined dog confinement shifts, and local litter whelping/abandonment."
+  ],
+  "next_decision": "Execute a prospective pilot study implementing photographic mark-resight transects with distance-sampling detectability calibration and concurrent household abandonment monitoring before inferring demographic mechanism dominance.",
+  "authority": "neutral_unexecuted_protocol_only",
+  "limits": [
+    "No original Anuradhapura dog-level, independently sampled community abundance, immigration or detection histories.",
+    "Different countries' source statements are methodological design input, NOT replicating outcomes.",
+    "No estimates of mechanism shares, intervention causality or human-health reduction are justified.",
+    "The generated tests themselves have not been independently expert-validated or field-executed."
+  ],
+  "generation_provenance": "antigravity:gemini-3.8-flash-medium",
+  "local_graph_receipt": "sgpacket:1ca03cd1f4129fe8",
+  "declared_graph_nodes": 7,
+  "declared_graph_edges": 9
+}

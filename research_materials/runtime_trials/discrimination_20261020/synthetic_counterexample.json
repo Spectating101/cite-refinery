@@ -1,0 +1,44 @@
+{
+  "schema": "cite_refinery.synthetic_identifiability_counterexample.v1",
+  "observation_model": "expected_unique_sightings = true_abundance * detection_probability",
+  "observations": [
+    80,
+    100
+  ],
+  "scenarios": [
+    {
+      "scenario": "immigration_or_local_recruitment",
+      "n_before": 100,
+      "n_after": 125,
+      "p_before": "4/5",
+      "p_after": "4/5",
+      "explanation": "True local population rises, detection stays fixed; counts alone cannot tell immigration from local births.",
+      "expected_count_before": 80,
+      "expected_count_after": 100
+    },
+    {
+      "scenario": "detectability_change_without_population_growth",
+      "n_before": 100,
+      "n_after": 100,
+      "p_before": "4/5",
+      "p_after": "1",
+      "explanation": "Population stays fixed, detection increases; the same observed change can arise without arrivals.",
+      "expected_count_before": 80,
+      "expected_count_after": 100
+    },
+    {
+      "scenario": "higher_base_population_with_changed_detection",
+      "n_before": 120,
+      "n_after": 120,
+      "p_before": "2/3",
+      "p_after": "5/6",
+      "explanation": "A different, unobserved baseline abundance also yields the same count series.",
+      "expected_count_before": 80,
+      "expected_count_after": 100
+    }
+  ],
+  "implication": "Identical aggregate expected sighting counts do not identify abundance growth or mechanism.",
+  "empirical_data_used": false,
+  "causal_effect_estimated": false,
+  "boundary": "Arithmetic thought experiment. No field data or actual clinical/rabies measurements."
+}

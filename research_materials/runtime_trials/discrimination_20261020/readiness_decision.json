@@ -1,0 +1,26 @@
+{
+  "schema": "cite_refinery.mechanism_discrimination_decision.v1",
+  "readiness": "revision_required",
+  "current_causal_identifiability": "not_identifiable",
+  "tests_by_status": {
+    "T1": "conditionally_useful",
+    "T2": "not_discriminating",
+    "T3": "uncertain"
+  },
+  "required_revisions": [
+    {
+      "id": "T2",
+      "limitation": "The protocol assumes tracking and demographic observation can cleanly separate immigration from local recruitment, failing to account for the simultaneous co-occurrence of both processes and unmeasured early neonatal mortality occurring prior to survey detection. Tracking unowned dogs raises severe animal-welfare constraints (collar entanglement, injury, and community interference), while tracking domestic relinquishment via household surveys risks privacy violations and heavy social desirability bias. Crucially, abandoned litters are phenotypically indistinguishable from locally whelped pups whose mothers den off-transect. Even if proposed data were collected, observing incoming juvenile cohorts with an apparent absence of lactating females on transects would remain insufficient to falsify local recruitment, because cryptic denning and early pup abandonment or maternal mortality produce the exact same observable pattern.",
+      "revision": "Replace invasive collaring and unconstrained household surveillance with an anonymized, privacy-minimized neighborhood reporting protocol (using randomized response techniques) combined with non-invasive genetic parentage/maternity testing of juvenile cohorts to determine kinship to resident bitches without tracking."
+    },
+    {
+      "id": "T3",
+      "limitation": "Distance-sampling requires that detection at zero distance g(0)=1 and that animal distribution is independent of transects, both of which are violated by free-roaming dogs that reactively approach or avoid surveyors along roadways. Additionally, reproductive state creates severe unmeasured detectability heterogeneity: lactating females and neonates exhibit cryptic denning behavior in hidden micro-habitats, rendering them systematically less detectable than sterilized, openly basking adults. Even if a fitted distance-sampling detection function appears stationary across rounds and visible lactating bitch counts remain low, this observation would remain insufficient to rule out local recruitment, as population-level whelping can occur off-transect in subterranean or structural dens completely unrepresented by roadside distance functions.",
+      "revision": "Implement an independent double-observer mark-recapture distance sampling (MRDS) design to empirically estimate state-specific g(0) < 1, supplemented by systematic, multi-season off-transect den-site occupancy surveys to calibrate detection probabilities specifically for lactating females and litters."
+    }
+  ],
+  "approved_field_protocols": 0,
+  "human_methods_review_completed": false,
+  "statistical_model_reproduction_completed": false,
+  "boundary": "No Gemini model review, positive or negative, constitutes human field-protocol approval or observed mechanism attribution."
+}
