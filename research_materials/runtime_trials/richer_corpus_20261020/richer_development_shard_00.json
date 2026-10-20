@@ -1,0 +1,214 @@
+{
+  "schema": "cite_refinery.open_corpus_map_chunk.v1",
+  "batch_id": "shard-00",
+  "source_readings": [
+    {
+      "source_id": "PMC-PMC13250393",
+      "source_url": "https://europepmc.org/articles/PMC13250393",
+      "source_sha256": "e575dff0f2fc7b63b77133f7b068ab271c05fb0fa61f85f90b7e7782cab4d918",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Household water, sanitation, and hygiene infrastructure showed no statistically significant association with under-five diarrhea, acute respiratory infections, or their comorbidity after adjusting for socioeconomic and nutritional covariates.",
+      "quote_sha256": "054c2e2cfd3884f4f445e44679bd72d386f0fb7d6ae16e790738c1754ed9c35d",
+      "scope": "6,344 children aged 0–59 months from the 2022 Ghana Demographic and Health Survey (Ghana, 2022)",
+      "caveat": "Cross-sectional survey data cannot demonstrate causal direction or temporal sequence, predictive model calibration was poor across all models, and direct point-of-use microbiological contamination was not measured.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "PMC-PMC9897739",
+      "source_url": "https://europepmc.org/articles/PMC9897739",
+      "source_sha256": "6fbac2664de5e10a336a4541404bc684233d2e7a46c4045adf97f8b6107a7aaa",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Food delivery platform work provides employment and income opportunities but imposes an onerous psychosocial work environment that challenges courier mental wellbeing.",
+      "quote_sha256": "c7b0c14dfe7f5044228759e24dd17737a15326ae064a6114fb8578ce39a27220",
+      "scope": "20 food delivery couriers working via Wolt and Foodora platforms in Helsinki, Finland (qualitative interview study, c. 2020–2022)",
+      "caveat": "Relies on qualitative accounts from a small non-probabilistic sample of 20 couriers; does not establish population-level psychiatric incidence or longitudinal health trajectories.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "ZEN-4095066",
+      "source_url": "https://zenodo.org/records/4095066",
+      "source_sha256": "5774e1775acd5d5fe74026a65444ccc4ff808f60de13b26c624006230ad3ee1a",
+      "role": "background_only",
+      "fit": "context",
+      "statement": "The record provides quantitative survey response files designed to evaluate stakeholder engagement and improve inclusivity of the IPBES work programme.",
+      "quote_sha256": "b99183fb9d19ced0de23ec6933ee022f6c6d2584de544864486ceeecf83eebe6",
+      "scope": "Global IPBES stakeholders surveyed in May–June 2020 (metadata and file manifest only)",
+      "caveat": "Underlying survey measurements, numerical response distributions, and qualitative remarks were not downloaded or verified; cannot show actual organizational effectiveness or governance outcomes.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "PMC-PMC13235400",
+      "source_url": "https://europepmc.org/articles/PMC13235400",
+      "source_sha256": "66b31940251c8d596b77689a6888e2f20531110b62cef003dfcdc7733d2aa21c",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Most WHO South-East Asia Region countries have improved health system preparedness for dog-mediated rabies, but published operational evidence remains severely limited for Myanmar and DPR Korea.",
+      "quote_sha256": "106e2723792723fb070a101c57d554509e7029b5144180517cd849e79ab03b48",
+      "scope": "178 peer-reviewed studies published from January 2013 to November 2023 on health system preparedness in WHO South-East Asia Region member countries",
+      "caveat": "Review synthesizes published literature only; lack of indexed academic publications does not substantiate the complete absence of national field surveillance or operational intervention programs.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "ZEN-22211864",
+      "source_url": "https://zenodo.org/records/22211864",
+      "source_sha256": "1739e87ce460f1a9b6ebcfe360ee19c196b15e641095361f901ee0ddbcefed4e",
+      "role": "academic_finding",
+      "fit": "context",
+      "statement": "India possesses a comprehensive environmental legal framework, but pollution mitigation remains constrained by weak enforcement, inadequate monitoring, and rapid industrialization.",
+      "quote_sha256": "f844c8a0f6ca687432723ac197d75fdca90a21b5c338f078a7342797de5ddf5c",
+      "scope": "Secondary legal analysis and regulatory literature concerning environmental protection and pollution control in India",
+      "caveat": "Doctrinal review based on secondary statutory and administrative sources; underlying article text and primary empirical ecological measurements were not downloaded or verified.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "WB-31190923",
+      "source_url": "https://documents.worldbank.org/curated/en/371621561419799771",
+      "source_sha256": "38839120d912cd96e2b69769f777fbed2fcf61b2414ea0605e506dfbf3d9c46d",
+      "role": "reported_implementation",
+      "fit": "relevant",
+      "statement": "A US$850,000 World Bank GPSA grant implemented by Oxfam established community-based monitoring mechanisms for rural water supply and sanitation across five districts in Tajikistan.",
+      "quote_sha256": "f9f93734e792c78d9b9846632090960d4db21f83932491425256ded0d5a254e6",
+      "scope": "Over 160,000 targeted residents across five districts (Kulyab, Vose, Muminabad, Farkhor, and Rudaki) in Tajikistan from April 2014 to May 2018",
+      "caveat": "Institutional completion report reflects internal project monitoring and intended beneficiary reach; it does not measure verified post-implementation changes in water potability or clinical disease incidence.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "ZEN-17984403",
+      "source_url": "https://zenodo.org/records/17984403",
+      "source_sha256": "58dfb4eeda95b89bceb00cdc7248a897869f8c1e164571ac46c10b7be9592dbd",
+      "role": "background_only",
+      "fit": "context",
+      "statement": "Peer-reviewed literature consistently associates classroom ventilation rates and indoor air quality parameters with student performance and attendance.",
+      "quote_sha256": "7044e9511410ca79abd02e7e812eefea049c0c8c5ea0cf8ced8f6597054d88f1",
+      "scope": "Summary overview of international peer-reviewed literature on school classroom ventilation and student outcomes (catalog record)",
+      "caveat": "Catalog summary and document inventory only; individual study designs, quantitative effect sizes, and underlying environmental measurements were not downloaded or assessed.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "PMC-PMC13659610",
+      "source_url": "https://europepmc.org/articles/PMC13659610",
+      "source_sha256": "2aa883d8e0f43d04186db1698886afd3bb126ac131d3e21a52afba8cab6947ad",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Stakeholders in rabies-endemic regions of Thailand widely support dog sterilization and vaccination, but only 19.3% view existing campaigns as effective due to local budget limitations and operational constraints.",
+      "quote_sha256": "364da658844e03459745f339f31710fac56976229af562b3b7783e81d4daee81",
+      "scope": "57 key stakeholders and secondary municipal surveillance data from high-endemic provinces (Songkhla and Chonburi) in Thailand (c. 2021–2025)",
+      "caveat": "Study reflects a small purposive sample (n=57) skewed toward older participants; does not directly measure canine population seroprevalence or field vaccine failure rates.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    },
+    {
+      "source_id": "PMC-PMC13474229",
+      "source_url": "https://europepmc.org/articles/PMC13474229",
+      "source_sha256": "80e0b730536f6bf5dbab8a744c8178fdc608e3c7121d7db92e72be65e2b56e60",
+      "role": "academic_finding",
+      "fit": "relevant",
+      "statement": "Sharp instrument injuries caused 92.46% of blood-borne exposures at a Chinese hospital, with hepatitis B being the most prevalent pathogen despite a low post-exposure prophylaxis completion rate of 21.21%.",
+      "quote_sha256": "d88f39912780843ebe981ecdbd3619d32e6db234dc33461f67c103fa508d8621",
+      "scope": "252 reported blood-borne occupational exposure incidents among clinical staff at Shaoxing Second Hospital, China, between January 2020 and December 2025",
+      "caveat": "Single-center retrospective registry dependent on voluntary incident reporting; does not report confirmed long-term seroconversion, viral transmission rates, or unrecorded minor needle sticks.",
+      "epistemic_status": "unverified_role_and_proposition",
+      "publisher_is_not_authority": true
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Canine rabies governance, surveillance, and community-level implementation in South-East Asia",
+      "source_ids": [
+        "PMC-PMC13235400",
+        "PMC-PMC13659610"
+      ],
+      "question": "How do operational resource deficits, municipal budget limitations, and community dog ownership practices constrain national rabies control programs in South-East Asia?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Occupational health hazards and risk factors in contemporary service and clinical environments",
+      "source_ids": [
+        "PMC-PMC9897739",
+        "PMC-PMC13474229"
+      ],
+      "question": "How do operational workflows, procedural experience, and management structures influence physical and psychosocial occupational risks among frontline workers?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Water and sanitation sector governance, social accountability, and child health outcomes",
+      "source_ids": [
+        "PMC-PMC13250393",
+        "WB-31190923"
+      ],
+      "question": "How do water and sanitation interventions—ranging from community-based accountability frameworks to household hardware improvements—correlate with actual service delivery and health metrics?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Environmental protection policy enforcement and multilateral stakeholder engagement",
+      "source_ids": [
+        "ZEN-22211864",
+        "ZEN-4095066"
+      ],
+      "question": "What mechanisms bridge the implementation gap between environmental conservation frameworks, institutional monitoring, and stakeholder participation?",
+      "status": "proposed_cluster_not_confirmed"
+    },
+    {
+      "name": "Indoor educational air quality and pupil performance metrics",
+      "source_ids": [
+        "ZEN-17984403"
+      ],
+      "question": "What empirical relationships exist between classroom ventilation parameters, indoor air pollutants, and student academic performance or attendance?",
+      "status": "proposed_cluster_not_confirmed"
+    }
+  ],
+  "links": [
+    {
+      "from_source": "PMC-PMC13659610",
+      "to_source": "PMC-PMC13235400",
+      "relation": "qualifies",
+      "reason": "While PMC-PMC13235400 identifies Thailand as a regional benchmark for institutionalized surveillance and sustained mass dog vaccination, PMC-PMC13659610 reveals that local implementation is undermined by municipal budget ceilings, low perceived campaign effectiveness (19.3%), and high dog abandonment.",
+      "status": "proposed_unverified_semantic_relation"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "What proportion of healthcare workers sustaining sharp instrument injuries involving hepatitis B virus seroconvert or develop chronic clinical infection given the reported 21.21% post-exposure prophylaxis rate?",
+      "source_ids": [
+        "PMC-PMC13474229"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Why do physical household water and sanitation improvements fail to show protective associations with childhood diarrhea in Ghana once maternal education and household wealth are controlled?",
+      "source_ids": [
+        "PMC-PMC13250393"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "Does institutionalizing community advisory boards and social accountability scorecards in rural water supply systems translate into measurable reductions in waterborne disease or water quality failure?",
+      "source_ids": [
+        "WB-31190923"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    },
+    {
+      "question": "What specific indoor ventilation thresholds (air changes per hour or carbon dioxide levels) are required to produce statistically meaningful improvements in school test scores and attendance?",
+      "source_ids": [
+        "ZEN-17984403"
+      ],
+      "status": "unknown_not_evidence_of_absence"
+    }
+  ],
+  "authority": "neutral_provisional",
+  "source_count": 9,
+  "accepted_scientific_conclusions": 0,
+  "note": "No predefined module/topic labels, no fact verification or independent adjudication.",
+  "generation_provider": "antigravity",
+  "generation_model": "gemini-3.8-flash-medium"
+}

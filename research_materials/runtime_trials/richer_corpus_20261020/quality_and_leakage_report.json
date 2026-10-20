@@ -1,0 +1,52 @@
+{
+  "schema": "cite_refinery.richer_corpus_quality_report.v1",
+  "new_retrieved_records": 177,
+  "new_original_fulltext_article_count": 79,
+  "new_original_official_report_count": 50,
+  "new_dataset_metadata_count": 48,
+  "retrieval_failure_count": 1,
+  "retrieval_failure_kinds": {
+    "HTTPError": 1
+  },
+  "zero_result_strata": [
+    {
+      "quota": "s04",
+      "lane": "wb",
+      "accepted": 0
+    },
+    {
+      "quota": "s08",
+      "lane": "wb",
+      "accepted": 0
+    }
+  ],
+  "total_new_text_word_count": 386207,
+  "combined_with_previous_distinct_source_count": 232,
+  "dedup_previous_corpus_count": 8,
+  "split": {
+    "development_count": 103,
+    "holdout_count": 66,
+    "whole_domain_holdout_count": 29,
+    "document_holdout_count": 37,
+    "holdout_quotas": [
+      "s10",
+      "s11"
+    ],
+    "holdout_seal_sha256": "282f2595728f970f29fc3c208d86a8992b96dcbb6f11a8f7d7e1b3e26de1ea00",
+    "source_fingerprint_sha256": "5e2113cc747f14d40e01f994abb3fce718c13b7584285f1df23b55db84f911ac"
+  },
+  "development_map_ready_count": 101,
+  "first_real_development_shard": {
+    "source_readings": 9,
+    "candidate_clusters": 5,
+    "candidate_links": 1,
+    "unresolved_questions": 4,
+    "quote_and_source_contract_passed": true,
+    "model": "antigravity:gemini-3.8-flash-medium"
+  },
+  "prior_baseline_63_sources": "Frozen older corpus remains separate; no new scientific accuracy score",
+  "holdout_ever_sent_to_mapper": false,
+  "heldout_annotations_created": 0,
+  "program_intervention_effects_independently_validated": 0,
+  "interpretation": "Full reports and paper texts are richer than abstracts; dataset metadata is not dataset observations. Corpus remains search-stratified and not exhaustive."
+}

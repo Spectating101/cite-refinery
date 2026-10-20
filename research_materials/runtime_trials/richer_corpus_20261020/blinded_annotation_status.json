@@ -1,0 +1,9 @@
+{
+  "schema": "cite_refinery.richer_blind_review_status.v1",
+  "holdout_count": 66,
+  "annotation_count": 0,
+  "reviewers": 0,
+  "model_predictions_or_labels_visible": false,
+  "holdout_text_local_only": true,
+  "status": "awaiting_independent_blind_annotations"
+}

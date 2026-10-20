@@ -1,0 +1,41 @@
+{
+  "schema": "cite_refinery.richer_corpus_public_manifest.v1",
+  "previous_sources": 63,
+  "new_records_queried": 177,
+  "excluded_previous_overlap": 8,
+  "eligible_new_materials": 169,
+  "development_count": 103,
+  "holdout_count": 66,
+  "whole_domain_holdout_count": 29,
+  "document_holdout_count": 37,
+  "holdout_quotas": [
+    "s10",
+    "s11"
+  ],
+  "development_type_counts": {
+    "dataset_metadata": 29,
+    "full_text_jats": 43,
+    "report_extracted_text": 31
+  },
+  "holdout_type_counts": {
+    "dataset_metadata": 18,
+    "full_text_jats": 33,
+    "report_extracted_text": 15
+  },
+  "eligible_type_counts": {
+    "dataset_metadata": 47,
+    "full_text_jats": 76,
+    "report_extracted_text": 46
+  },
+  "development_word_count": 236175,
+  "holdout_word_count": 123920,
+  "prior_63_source_overlap_excluded": true,
+  "text_seen_by_mapper_at_freeze": 0,
+  "unseen_input_not_training_data": true,
+  "source_fingerprint_sha256": "5e2113cc747f14d40e01f994abb3fce718c13b7584285f1df23b55db84f911ac",
+  "holdout_seal_sha256": "282f2595728f970f29fc3c208d86a8992b96dcbb6f11a8f7d7e1b3e26de1ea00",
+  "seed_fingerprint": "9b094de48e99234da373ccec7fcb715179f1f52b8d92de5fae9b04c807102100",
+  "holdout_status": "sealed_not_mapped_not_reviewed",
+  "accuracy_scores_available": false,
+  "boundary": "Blind within this pipeline only. Model pretraining may know publications. No human labels and no measured generalization accuracy."
+}
