@@ -1,0 +1,48 @@
+{
+  "schema": "cite_refinery.published_program_table.v1",
+  "source_doi": "10.14202/vetworld.2026.2816-2849",
+  "source_sha256": "4210e7ebc871f3db31dee6cb761f09d82e4f29f49aceed6a860c268e74176b7e",
+  "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13500148/fullTextXML",
+  "table_id": "T2",
+  "table_title": "Numbers of free-roaming dogs captured per zone from 2021 to 2025.",
+  "source_subtotals_checked": 20,
+  "row_count": 80,
+  "positive_effort_rows": 68,
+  "arithmetic_issues": [
+    {
+      "type": "unlabelled_printed_subtotal",
+      "table_row": 57,
+      "year": "2023",
+      "zone": "1",
+      "boundary": "Publisher table has blank subtotal label"
+    },
+    {
+      "type": "within_row_sex_total_mismatch",
+      "table_row": 63,
+      "year": "2023",
+      "zone": "3",
+      "program": "2",
+      "total": 62,
+      "male": 11,
+      "female": 47,
+      "sex_sum": 58,
+      "difference_total_minus_sex_sum": 4,
+      "boundary": "Source table arithmetic discrepancy; cause unknown, no automatic correction."
+    },
+    {
+      "type": "within_row_sex_total_mismatch",
+      "table_row": 78,
+      "year": "2024",
+      "zone": "3",
+      "program": "1",
+      "total": 120,
+      "male": 49,
+      "female": 87,
+      "sex_sum": 136,
+      "difference_total_minus_sex_sum": -16,
+      "boundary": "Source table arithmetic discrepancy; cause unknown, no automatic correction."
+    }
+  ],
+  "boundary": "Published program-level table, NOT original underlying operational intake records.",
+  "generated_csv_sha256": "61bdbf86a41b82fa89211b29b60a2788fa8030aedfd14bc2decd79589a4de508"
+}

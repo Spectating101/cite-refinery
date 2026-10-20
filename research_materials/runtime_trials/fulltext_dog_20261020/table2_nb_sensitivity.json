@@ -1,0 +1,252 @@
+{
+  "schema": "cite_refinery.published_t2_nb_sensitivity.v1",
+  "published_t2_program_rows": 80,
+  "positive_day_rows": 68,
+  "source": "T2 DOI 10.14202/vetworld.2026.2816-2849",
+  "comparison_to": "Published Table T3",
+  "models": {
+    "inner_zones_only:annual_aggregates:Total": {
+      "status": "fit",
+      "IRR": 0.97591518048,
+      "p_value": 0.053950931148,
+      "standard_error": 0.012650071534,
+      "coefficient": -0.024379601594,
+      "theta": 2533.1198336966,
+      "residual_df": 3,
+      "observation_count": 5,
+      "region": "inner_zones_only",
+      "grain": "annual_aggregates",
+      "outcome": "Total",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 1.03,
+        "p": 0.55488235
+      },
+      "IRR_difference": -0.054084819522,
+      "p_difference": -0.50093141885
+    },
+    "inner_zones_only:annual_aggregates:Male": {
+      "status": "fit",
+      "IRR": 1.0108871725,
+      "p_value": 0.77489253159,
+      "standard_error": 0.03786379831,
+      "coefficient": 0.01082833394,
+      "theta": 100.0586616555,
+      "residual_df": 3,
+      "observation_count": 5,
+      "region": "inner_zones_only",
+      "grain": "annual_aggregates",
+      "outcome": "Male",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 0.903,
+        "p": 0.03622964
+      },
+      "IRR_difference": 0.10788717253,
+      "p_difference": 0.73866289159
+    },
+    "inner_zones_only:annual_aggregates:Female": {
+      "status": "fit",
+      "IRR": 0.96235595252,
+      "p_value": 0.0025932680127,
+      "standard_error": 0.012738318868,
+      "coefficient": -0.038370883744,
+      "theta": 28780844209.970997,
+      "residual_df": 3,
+      "observation_count": 5,
+      "region": "inner_zones_only",
+      "grain": "annual_aggregates",
+      "outcome": "Female",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 1.08,
+        "p": 0.1489979
+      },
+      "IRR_difference": -0.11764404748,
+      "p_difference": -0.14640463199
+    },
+    "inner_zones_only:program_records:Total": {
+      "status": "fit",
+      "IRR": 1.0021253709,
+      "p_value": 0.9400534984,
+      "standard_error": 0.02823193489,
+      "coefficient": 0.0021231155212,
+      "theta": 12.4771773804,
+      "residual_df": 55,
+      "observation_count": 57,
+      "region": "inner_zones_only",
+      "grain": "program_records",
+      "outcome": "Total",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 1.03,
+        "p": 0.55488235
+      },
+      "IRR_difference": -0.027874629073,
+      "p_difference": 0.3851711484
+    },
+    "inner_zones_only:program_records:Male": {
+      "status": "fit",
+      "IRR": 1.0297829811,
+      "p_value": 0.38846792513,
+      "standard_error": 0.034030742204,
+      "coefficient": 0.0293480821,
+      "theta": 11.701124091,
+      "residual_df": 55,
+      "observation_count": 57,
+      "region": "inner_zones_only",
+      "grain": "program_records",
+      "outcome": "Male",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 0.903,
+        "p": 0.03622964
+      },
+      "IRR_difference": 0.12678298112,
+      "p_difference": 0.35223828513
+    },
+    "inner_zones_only:program_records:Female": {
+      "status": "fit",
+      "IRR": 0.99129358094,
+      "p_value": 0.77805998584,
+      "standard_error": 0.031025723844,
+      "coefficient": -0.0087445413598,
+      "theta": 10.6713364591,
+      "residual_df": 55,
+      "observation_count": 57,
+      "region": "inner_zones_only",
+      "grain": "program_records",
+      "outcome": "Female",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 1.08,
+        "p": 0.1489979
+      },
+      "IRR_difference": -0.08870641906,
+      "p_difference": 0.62906208584
+    },
+    "inner_plus_buffer:annual_aggregates:Total": {
+      "status": "fit",
+      "IRR": 1.0185054623,
+      "p_value": 0.070781459237,
+      "standard_error": 0.010148073036,
+      "coefficient": 0.018336319776,
+      "theta": 9439.505181048,
+      "residual_df": 3,
+      "observation_count": 5,
+      "region": "inner_plus_buffer",
+      "grain": "annual_aggregates",
+      "outcome": "Total",
+      "warnings": "alternation limit reached",
+      "reported_T3": {
+        "IRR": 1.03,
+        "p": 0.55488235
+      },
+      "IRR_difference": -0.011494537677,
+      "p_difference": -0.48410089076
+    },
+    "inner_plus_buffer:annual_aggregates:Male": {
+      "status": "fit",
+      "IRR": 1.0277145044,
+      "p_value": 0.44975126831,
+      "standard_error": 0.036168738372,
+      "coefficient": 0.027337409027,
+      "theta": 102.73241282,
+      "residual_df": 3,
+      "observation_count": 5,
+      "region": "inner_plus_buffer",
+      "grain": "annual_aggregates",
+      "outcome": "Male",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 0.903,
+        "p": 0.03622964
+      },
+      "IRR_difference": 0.12471450442,
+      "p_difference": 0.41352162831
+    },
+    "inner_plus_buffer:annual_aggregates:Female": {
+      "status": "fit",
+      "IRR": 1.0172505291,
+      "p_value": 0.28791257458,
+      "standard_error": 0.016094132669,
+      "coefficient": 0.017103428012,
+      "theta": 790.4961823529,
+      "residual_df": 3,
+      "observation_count": 5,
+      "region": "inner_plus_buffer",
+      "grain": "annual_aggregates",
+      "outcome": "Female",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 1.08,
+        "p": 0.1489979
+      },
+      "IRR_difference": -0.062749470916,
+      "p_difference": 0.13891467458
+    },
+    "inner_plus_buffer:program_records:Total": {
+      "status": "fit",
+      "IRR": 1.0377788199,
+      "p_value": 0.22968565278,
+      "standard_error": 0.030872157984,
+      "coefficient": 0.03708267906,
+      "theta": 8.4626862534,
+      "residual_df": 66,
+      "observation_count": 68,
+      "region": "inner_plus_buffer",
+      "grain": "program_records",
+      "outcome": "Total",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 1.03,
+        "p": 0.55488235
+      },
+      "IRR_difference": 0.0077788198681,
+      "p_difference": -0.32519669722
+    },
+    "inner_plus_buffer:program_records:Male": {
+      "status": "fit",
+      "IRR": 1.0418992747,
+      "p_value": 0.23037920907,
+      "standard_error": 0.034222001566,
+      "coefficient": 0.041045273315,
+      "theta": 8.9433870266,
+      "residual_df": 66,
+      "observation_count": 68,
+      "region": "inner_plus_buffer",
+      "grain": "program_records",
+      "outcome": "Male",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 0.903,
+        "p": 0.03622964
+      },
+      "IRR_difference": 0.13889927471,
+      "p_difference": 0.19414956907
+    },
+    "inner_plus_buffer:program_records:Female": {
+      "status": "fit",
+      "IRR": 1.0356924023,
+      "p_value": 0.28580072706,
+      "standard_error": 0.032856361925,
+      "coefficient": 0.035070190759,
+      "theta": 7.7046467016,
+      "residual_df": 66,
+      "observation_count": 68,
+      "region": "inner_plus_buffer",
+      "grain": "program_records",
+      "outcome": "Female",
+      "warnings": [],
+      "reported_T3": {
+        "IRR": 1.08,
+        "p": 0.1489979
+      },
+      "IRR_difference": -0.044307597716,
+      "p_difference": 0.13680282706
+    }
+  },
+  "scientific_boundary": "Diagnostic refits of PUBLIC program counts, not original operational intake data. Differences from published model can arise from different definitions, excluded records, underlying model specifications, or small sample fitting instability. This alone establishes no paper error or scientific misconduct. Does not replicate buffer intervention effects.",
+  "zero_day_rule": "Zero-day, zero-catch program rows excluded before log(days) effort offset",
+  "anomaly_notice": "Two sex-total count mismatches reported separately; no silent correction."
+}
