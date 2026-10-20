@@ -1,0 +1,217 @@
+{
+  "schema": "cite_refinery.antigravity_research_trial.v1",
+  "investigation_id": "49ecd664b5044b24abfc",
+  "parent_id": "2ca16ed4bdde441cabb1",
+  "focus": "Distinguishing transect detectability and sightability shifts of sterilised dogs from demographic immigration and abandonment in free-roaming dog CNVR evaluation zones",
+  "state": "done",
+  "generator_backend": "antigravity_cli",
+  "generator_model": "gemini-3.8-flash-medium",
+  "critic_backend": "antigravity_cli",
+  "critic_model": "gemini-3.8-flash-high",
+  "same_model_family_critique": true,
+  "sources": [
+    {
+      "id": "EPMC-4d6224f4d563",
+      "url": "https://doi.org/10.3389/fvets.2025.1567807",
+      "origin_type": "scholarly_abstract_lead",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "ed74550b9fa15bf810e24306ba265e1f58e358887f8692731df0c1154c14ec25"
+    },
+    {
+      "id": "EPMC-9bc2603ffd74",
+      "url": "https://doi.org/10.1371/journal.pone.0305154",
+      "origin_type": "scholarly_abstract_lead",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "445474cdc13a9cf1ceffb37e9673402ebf3c962fc810e40258f8596417c84c79"
+    },
+    {
+      "id": "EPMC-7329c77af95d",
+      "url": "https://doi.org/10.1016/j.onehlt.2026.101556",
+      "origin_type": "scholarly_abstract_lead",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "65ba87d740806c07eaa2dce6b4cff635972271d9330a926bccebf83acfe49eb5"
+    },
+    {
+      "id": "OFFICIAL-5e8f7be11774",
+      "url": "https://www.who.int/teams/control-of-neglected-tropical-diseases/rabies/control-and-elimination-strategies/proof-of-concept",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "8a5f36e93fc625afb07dd7a2ebc583a3406ed3a82ed62a6498575a1eb2e54690"
+    },
+    {
+      "id": "OFFICIAL-f3d5243b3adc",
+      "url": "https://www.emro.who.int/emhj-volume-31-2025/volume-31-issue-8/policy-recommendations-for-managing-stray-dogs-in-morocco.html",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "c222b5c4a98f8c9960cee8a0f32f0633fc4955cba937b131f4ab32ee0e119b4c"
+    },
+    {
+      "id": "OFFICIAL-5ef9b31a6753",
+      "url": "https://www.who.int/news/item/07-08-2023-new-book-on-local-experiences-in-dog-mediated-rabies-elimination-in-asia",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "parent_source_url": null,
+      "same_study_as_parent": false,
+      "passage_sha256": "aafcb945a75db31a0eed2309befee435851feee1d9f99a82816101303ee7f50f"
+    },
+    {
+      "id": "JATS-0e3558be2d75",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12363366/fullTextXML",
+      "origin_type": "scholarly_fulltext_excerpt_unverified",
+      "parent_source_url": "https://doi.org/10.3389/fvets.2025.1567807",
+      "same_study_as_parent": true,
+      "passage_sha256": "15b9761e0371fe0c8b69b6b2a77528ea1dde5504c9f9c5d49a110edfec9cb5a8"
+    },
+    {
+      "id": "JATS-78daf818e1c5",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12312879/fullTextXML",
+      "origin_type": "scholarly_fulltext_excerpt_unverified",
+      "parent_source_url": "https://doi.org/10.1371/journal.pone.0305154",
+      "same_study_as_parent": true,
+      "passage_sha256": "5ef874d61f114e2d83c13ca16d1eae68671cfb011b280864dd810361bc877fec"
+    }
+  ],
+  "off_topic_exclusions": [
+    {
+      "source_id": "OFFICIAL-2cbd3ace17c9",
+      "url": "https://www.who.int/europe/news/item/07-10-2021-syrian-law-student-muhammed-paralyzed-by-a-stray-bullet-takes-first-steps-towards-a-brighter-future-in-turkey"
+    }
+  ],
+  "source_attempts": 1,
+  "recovery_plans": 0,
+  "propositions": [
+    {
+      "id": "P1",
+      "statement": "A scoping review following PRISMA guidelines identified 52 publications between 2012 and 2024 on free-roaming dog movement and enumeration, predominantly from India, Brazil, Indonesia, Guatemala, and Chad.",
+      "quoted_source_ids": [
+        "EPMC-4d6224f4d563"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "Capture-recapture methods for free-roaming dog enumeration rely on the closed population assumption, which requires negligible migration, no mark loss, no misclassification, and homogeneous capture probability.",
+      "quoted_source_ids": [
+        "JATS-0e3558be2d75"
+      ]
+    },
+    {
+      "id": "P3",
+      "statement": "Simple transect counts provide indicative abundance but are vulnerable to misclassifying unconfined owned dogs as strays, variable detectability, and double counting.",
+      "quoted_source_ids": [
+        "JATS-0e3558be2d75"
+      ]
+    },
+    {
+      "id": "P4",
+      "statement": "In Arequipa, Peru, dog counts identified via Google Street View imagery showed a strong positive correlation with door-to-door survey counts of owned free-roaming dogs in urban communities (r = 0.85, p < 0.001) but a weak, non-statistically significant correlation in periurban communities (r = 0.36, p = 0.478).",
+      "quoted_source_ids": [
+        "EPMC-9bc2603ffd74"
+      ]
+    },
+    {
+      "id": "P5",
+      "statement": "Google Street View counts include unowned dogs, whereas door-to-door surveys record only owner-reported dogs, and dog ownership status cannot be reliably verified from imagery by presence of collars.",
+      "quoted_source_ids": [
+        "JATS-78daf818e1c5"
+      ]
+    },
+    {
+      "id": "P6",
+      "statement": "Empirical manifestations of the vacuum effect (compensatory replacement through immigration, reproduction, or survival following removal) in free-roaming dog populations are limited, with removal outcomes varying by spatial scale, continuity, recruitment, carrying capacity, and institutional regulation.",
+      "quoted_source_ids": [
+        "EPMC-7329c77af95d"
+      ]
+    },
+    {
+      "id": "P7",
+      "statement": "Official WHO project documentation asserts that massive dog killing is not an effective method of controlling rabies and hypothesizes that mass culling leads to rapid compensation through increased survival of remaining dogs and immigration of new dogs.",
+      "quoted_source_ids": [
+        "OFFICIAL-5e8f7be11774"
+      ]
+    },
+    {
+      "id": "P8",
+      "statement": "In Jamshedpur, India, following a catch-neuter-vaccinate-release program neutering and vaccinating over 20,000 dogs between May 2014 and December 2018, street surveys showed an increased proportion of sterilised dogs, but the overall counts of observed dogs increased.",
+      "quoted_source_ids": [
+        "EPMC-c5c54e414d55"
+      ]
+    },
+    {
+      "id": "P10",
+      "statement": "In Jamshedpur, dogs entering the CNVR clinic had significantly reduced probabilities over time of presenting with mange, transmissible venereal tumours, or pregnancy.",
+      "quoted_source_ids": [
+        "EPMC-c5c54e414d55"
+      ]
+    },
+    {
+      "id": "P12",
+      "statement": "Multivariable logistic regression of shelter data in Abruzzo showed dogs aged 1-2 years and over 2 years had significantly lower odds of adoption compared to younger dogs (OR = 0.53 and OR = 0.31, respectively).",
+      "quoted_source_ids": [
+        "EPMC-69339d4d1242"
+      ]
+    },
+    {
+      "id": "P13",
+      "statement": "A scoping review for Morocco proposed four policy options for canine population management: treat, neuter, vaccinate and tag (TNVT); community awareness and education; canine population management; and private sector partnerships.",
+      "quoted_source_ids": [
+        "OFFICIAL-f3d5243b3adc"
+      ]
+    }
+  ],
+  "bridges": [
+    {
+      "from": "P2",
+      "to": "P1",
+      "relation": "CONTEXT_FOR"
+    },
+    {
+      "from": "P3",
+      "to": "P8",
+      "relation": "QUALIFIES"
+    },
+    {
+      "from": "P5",
+      "to": "P4",
+      "relation": "QUALIFIES"
+    },
+    {
+      "from": "P7",
+      "to": "P6",
+      "relation": "REQUIRES_REVIEW_WITH"
+    },
+    {
+      "from": "P13",
+      "to": "P6",
+      "relation": "RELATED_TO"
+    }
+  ],
+  "proposition_model_review": {
+    "entailed": 9,
+    "partially_supported": 2
+  },
+  "bridge_model_review": {
+    "plausible": 5
+  },
+  "unresolved_questions": [
+    "Why did observed street counts of free-roaming dogs increase over four years of CNVR in Jamshedpur despite the sterilization of over 20,000 dogs and an increase in sterilization percentage from 27% to 50%?",
+    "Under what specific thresholds of sterilization coverage, immigration control, and resource availability does the vacuum effect fail to compensate for free-roaming dog population reductions?",
+    "How accurately does Google Street View enumeration reflect true free-roaming dog abundance in rural and periurban areas with sparse street networks or infrequent imagery updates?",
+    "What is the contribution of owned, free-roaming dogs versus truly unowned stray dogs to rabies transmission dynamics in areas implementing trap-neuter-vaccinate-release?"
+  ],
+  "graph_nodes": 43,
+  "graph_edges": 62,
+  "graph_receipt_id": "sgpacket:19ecd3eb69643637",
+  "accepted_scientific_findings": 0,
+  "boundaries": [
+    "These are new source-backed candidates, not independent replication of the original Sri Lankan intervention.",
+    "Gemini 3.8 Flash medium and high use the same model family; review agreement is not an independent model consensus.",
+    "WHO-hosted regional scholarly material is not automatically an implemented institutional policy or outcome evaluation.",
+    "Off-topic official hits were removed by a scoped lexical safeguard; remaining sources still require semantic appraisal.",
+    "No verified geographically matched human rabies/PEP time series was obtained in this round.",
+    "Do not infer reduced dog abundance or human morbidity from sterilization/clinic counts."
+  ]
+}
