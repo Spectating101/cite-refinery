@@ -1,0 +1,415 @@
+{
+  "schema": "cite_refinery.three_layer_semantic_review_queue.v1",
+  "semantic_review_queue": [
+    {
+      "practical_id": "problem:battery_recycling_economics",
+      "academic_id": "mechanism:battery_recycling_economics",
+      "source_ids": [
+        "OA-2c8a36e510bc7f"
+      ],
+      "inspected_claim_ids": [
+        "B01",
+        "B02",
+        "B03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 2
+      },
+      "disagreements": [
+        {
+          "id": "B02",
+          "model": "overreach",
+          "reference": "contradicted",
+          "reason": "The study uses a techno-economic model rather than experimental physical verification, and notes profitability strongly depends on parameters and can be negative, rather than proving every pack is profitable."
+        }
+      ],
+      "unsupported_claims": [
+        {
+          "id": "B02",
+          "claim": "The authors experimentally verified that every commercially available battery pack can be recycled profitably.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.1016/j.isci.2021.102787"
+        },
+        {
+          "id": "B03",
+          "claim": "The study establishes the actual net profit of a planned recycling operation in Taiwan.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.1016/j.isci.2021.102787"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "partial_support",
+        "supported_context": "Techno-economic modeling indicates battery recycling net profitability varies widely and is sensitive to transport distances, labor wages, pack design, and chosen recycling route.",
+        "unsupported_leap": "Synthesizing qualitative fire and safety hazard reviews with lab-scale hydrothermal cathode restoration to claim an empirically quantified interaction between hazard-control overhead and operational processing margins.",
+        "source_id": "OA-2c8a36e510bc7f",
+        "original_quote": "strongly depends on transport distances, wages, pack design and recycling method.",
+        "next_decisive_check": "Execute an integrated techno-economic assessment incorporating empirical compliance/hazard-control capital and operating expenses alongside pilot-scale LFP cathode regeneration yields and regional cost factors.",
+        "implementation_boundary": "The repository provides a Python TEA/LCA framework based on EverBatt for LFP batteries, but its codebase and uncalibrated default outputs do not validate commercial operational profitability or real facility hazard costs.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    },
+    {
+      "practical_id": "problem:classroom_ventilation_outcomes",
+      "academic_id": "mechanism:classroom_ventilation_outcomes",
+      "source_ids": [
+        "OA-4f0f6d04561a0f"
+      ],
+      "inspected_claim_ids": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 1,
+        "contradicted": 1
+      },
+      "disagreements": [],
+      "unsupported_claims": [
+        {
+          "id": "C02",
+          "claim": "The study proves that installing carbon-dioxide monitors in schools causally reduces asthma prevalence.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.1590/s1806-37132014000300009"
+        },
+        {
+          "id": "C03",
+          "claim": "The study reported statistically significant associations between elevated CO2 and asthma, rhinitis and wheezing.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.1590/s1806-37132014000300009"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "partial_support",
+        "supported_context": "High CO2 in classrooms can associate with specific cognitive symptoms like lack of concentration without associating with respiratory diseases.",
+        "unsupported_leap": "Defining CO2 strictly as an occupancy and ventilation proxy rather than a pathogen or mold metric is an unproven mechanism not established by the abstracts.",
+        "source_id": "OA-4f0f6d04561a0f",
+        "original_quote": "There was a statistically significant association between lack of concentration in the children and exposure to high levels of CO2.",
+        "next_decisive_check": "Deploy simultaneous multi-pollutant monitors measuring CO2, PM2.5, mold spores, and viral pathogens under controlled occupancy to evaluate proxy fidelity.",
+        "implementation_boundary": "The SCD30 ESPHome monitor only measures ambient CO2 concentrations and does not capture airborne pathogens, particulate filtration, or clinical symptoms.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    },
+    {
+      "practical_id": "problem:dog_population_identity_and_movement",
+      "academic_id": "mechanism:dog_population_identity_and_movement",
+      "source_ids": [
+        "OA-d94945c2bf53f3"
+      ],
+      "inspected_claim_ids": [
+        "D01",
+        "D02",
+        "D03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 1,
+        "contradicted": 1
+      },
+      "disagreements": [],
+      "unsupported_claims": [
+        {
+          "id": "D02",
+          "claim": "The study experimentally establishes that sterilization alone permanently reduces free-roaming dog populations in Taiwan.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.1111/1365-2664.12279"
+        },
+        {
+          "id": "D03",
+          "claim": "The study found almost all identified free-roaming dogs were unowned and never fed by people.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.1111/1365-2664.12279"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "partial_support",
+        "supported_context": "Demographic events including human-mediated dog translocation, ownership dynamics, and births/deaths significantly drive variations in free-roaming dog population size and accessibility.",
+        "unsupported_leap": "The abstracts do not empirically test or formulate the mathematical requirement that vaccination coverage and campaign effort necessitate distinct operational denominators.",
+        "source_id": "OA-d94945c2bf53f3",
+        "original_quote": "a substantial fraction of the dogs originated from outside the population, entirely through the translocation of dogs by people,",
+        "next_decisive_check": "Execute demographic simulation or field campaign evaluation comparing coverage estimates derived from total census versus effort-based denominators across varying migration rates.",
+        "implementation_boundary": "The KoBoToolbox KPI README excerpt only displays software build badges and repo boilerplate; it proves general survey infrastructure but does not demonstrate animal re-identification, capture-recapture modeling, or denominator reconciliation.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    },
+    {
+      "practical_id": "problem:ewaste_toxicant_control",
+      "academic_id": "mechanism:ewaste_toxicant_control",
+      "source_ids": [
+        "OA-eb3cd7c2915125"
+      ],
+      "inspected_claim_ids": [
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 1,
+        "contradicted": 1
+      },
+      "disagreements": [],
+      "unsupported_claims": [
+        {
+          "id": "E02",
+          "claim": "The study demonstrates that specific engineering ventilation and PPE interventions completely eliminate lead exposure at recycling plants.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.1016/j.envint.2014.07.006"
+        },
+        {
+          "id": "E03",
+          "claim": "The office workers had approximately ten to thirty times greater airborne exposure to most metals than the recycling workers.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.1016/j.envint.2014.07.006"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "partial_support",
+        "supported_context": "Tasks in e-waste recycling facilities generate airborne metal particulate exposure and elevate biomarkers among recycling workers compared to unexposed workers.",
+        "unsupported_leap": "The abstracts observe elevated exposures in formal and informal settings but do not test or quantify how specific worker protection measures or process conditions alter exposure.",
+        "source_id": "OA-eb3cd7c2915125",
+        "original_quote": "In conclusion, our study of formal e-waste recycling shows that workers performing recycling tasks are exposed to multiple toxic metals.",
+        "next_decisive_check": "Conduct an occupational intervention study measuring personal airborne particulates and biological monitoring before and after deploying specific engineering ventilation and personal protective equipment.",
+        "implementation_boundary": "Brightway2 is a computational framework for life cycle assessment calculations and lacks capabilities for real-time occupational exposure monitoring or active workplace toxicant control.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    },
+    {
+      "practical_id": "problem:flood_warning_to_impact",
+      "academic_id": "mechanism:flood_warning_to_impact",
+      "source_ids": [
+        "EPMC-871d10af9889"
+      ],
+      "inspected_claim_ids": [
+        "FL01",
+        "FL02",
+        "FL03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 1,
+        "contradicted": 1
+      },
+      "disagreements": [],
+      "unsupported_claims": [
+        {
+          "id": "FL02",
+          "claim": "The study demonstrates that a deployed community early-warning system causally prevented deaths in Uganda.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.21203/rs.3.rs-9885849/v1"
+        },
+        {
+          "id": "FL03",
+          "claim": "The abstract describes Kasese as primarily affected by rapid flash/pluvial flooding and GKMA by longer riverine floods.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.21203/rs.3.rs-9885849/v1"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "partial_support",
+        "supported_context": "Community early-warning dissemination can trigger coordinated local agency contingency plans and evacuation actions prior to flood impact.",
+        "unsupported_leap": "Inferring that hydrological station forecasting automatically translates into geographically adequate lead times, reliable community alerting, and verified prevention of health harm or service disruption.",
+        "source_id": "OFFICIAL-f3e30d7ac5a5",
+        "original_quote": "Health care centers, schools, the police, the army and other agencies from the district all had response plans in place.",
+        "next_decisive_check": "Conduct a prospective controlled study measuring alert delivery latency, community compliance, and hospital admission or casualty rates across monitored versus unmonitored flood catchments.",
+        "implementation_boundary": "The WeixuanZ/flood-warning-system repository demonstrates station water-level display and prediction prototypes, but provides no validated alert dissemination mechanisms, lead-time triggers, or health system integration.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    },
+    {
+      "practical_id": "problem:food_redistribution_outcomes",
+      "academic_id": "mechanism:food_redistribution_outcomes",
+      "source_ids": [
+        "EPMC-826342b4eec2"
+      ],
+      "inspected_claim_ids": [
+        "F01",
+        "F02",
+        "F03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 1,
+        "contradicted": 1
+      },
+      "disagreements": [],
+      "unsupported_claims": [
+        {
+          "id": "F02",
+          "claim": "Every food donation program necessarily produces a net reduction in environmental impacts under real-world operations.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.3390/foods15040645"
+        },
+        {
+          "id": "F03",
+          "claim": "The authors found every modeled scenario increased environmental burdens across all five measured categories.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.3390/foods15040645"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "partial_support",
+        "supported_context": "Operational supply-chain routing and donor baseline disposal pathways directly alter modeled net environmental benefits across multiple lifecycle impact categories.",
+        "unsupported_leap": "Inferring that net causal impacts depend on counterfactual beneficiary food purchasing displacement, or that operational routing logs directly correlate with verified beneficiary nutritional outcomes.",
+        "source_id": "EPMC-826342b4eec2",
+        "original_quote": "Rescuing surplus food from donors who landfilled the wasted food tended to yield larger environmental benefits than from donors who composted it.",
+        "next_decisive_check": "Conduct a prospective cohort study pairing logged cold-chain routing and food waste data with household dietary intake and purchasing surveys to measure true market displacement and nutritional delivery.",
+        "implementation_boundary": "The Open Food Network repository provides an e-commerce marketplace for local food producers, demonstrating zero native features for cold-chain sensor logging, automated surplus claiming, or operational LCA accounting.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    },
+    {
+      "practical_id": "problem:gig_worker_algorithmic_harm",
+      "academic_id": "mechanism:gig_worker_algorithmic_harm",
+      "source_ids": [
+        "EPMC-aa4339ee2731"
+      ],
+      "inspected_claim_ids": [
+        "G01",
+        "G02",
+        "G03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 1,
+        "contradicted": 1
+      },
+      "disagreements": [],
+      "unsupported_claims": [
+        {
+          "id": "G02",
+          "claim": "A randomized controlled trial in the review conclusively demonstrated that changing algorithmic dispatch reduces delivery-rider injury rates.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.3389/fpubh.2026.1932962"
+        },
+        {
+          "id": "G03",
+          "claim": "The authors characterize the delivery-rider literature as having extensive longitudinal and intervention evidence, with little reliance on self-reported exposure measures.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.3389/fpubh.2026.1932962"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "partial_support",
+        "supported_context": "Platform work and algorithmic controls correlate with reported physical and mental health risks, but empirical evidence is predominantly cross-sectional and lacks causal demonstration.",
+        "unsupported_leap": "Inferring a validated interactive mechanism between automated assignment, worker autonomy, and health outcomes, while attributing empirical deficiencies specifically to descriptive sentiment data rather than general cross-sectional observational designs.",
+        "source_id": "OA-79031782b475fb",
+        "original_quote": "Platform-mediated gig work may have unique impacts on health, but causal evidence is lacking.",
+        "next_decisive_check": "A prospective longitudinal cohort study or randomized/quasi-experimental dispatch intervention comparing objective telemetry, injury records, and worker health outcomes under differing algorithmic assignment regimes.",
+        "implementation_boundary": "No candidate software implementation was provided in the input (proposed_implementation is null) to evaluate or prove operational risk mitigation.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    },
+    {
+      "practical_id": "problem:heat_warning_to_protective_action",
+      "academic_id": "mechanism:heat_warning_to_protective_action",
+      "source_ids": [
+        "EPMC-0715c73feecf"
+      ],
+      "inspected_claim_ids": [
+        "H01",
+        "H02",
+        "H03"
+      ],
+      "model_verdicts": {
+        "entailed": 1,
+        "overreach": 1,
+        "contradicted": 1
+      },
+      "disagreements": [],
+      "unsupported_claims": [
+        {
+          "id": "H02",
+          "claim": "The study measured that a deployed heat-warning system prevented one million deaths in the past year.",
+          "reference": "overreach",
+          "source_url": "https://doi.org/10.1016/j.ebiom.2026.106419"
+        },
+        {
+          "id": "H03",
+          "claim": "The reported figures for the 2090s are observed historical death counts, without future scenario projections.",
+          "reference": "contradicted",
+          "source_url": "https://doi.org/10.1016/j.ebiom.2026.106419"
+        }
+      ],
+      "false_source_entailment_claims": [],
+      "atomic_entailment_is_mechanism_proof": false,
+      "source_entailment_status": "model_diagnostic_only_not_human_confirmed",
+      "mechanism_entailment_status": "unreviewed_aggregate_cross_source_reasoning",
+      "implementation_fit_status": "not_evaluated_by_this_evidence_reading",
+      "cross_source_mechanism_review": {
+        "assessment": "bounded_support",
+        "supported_context": "Heat hazard impacts and vulnerability differ across populations based on socio-economic status, housing conditions, and access to cooling resources.",
+        "unsupported_leap": "Inferring that publishing or receiving a meteorological weather forecast inherently translates into protective behavioral changes or reduced morbidity among vulnerable households.",
+        "source_id": "OFFICIAL-194f3653ddf1",
+        "original_quote": "Urban and rural poor are often disproportionately exposed to overheating due to low quality housing and lack of access to cooling.",
+        "next_decisive_check": "Empirical evaluation measuring whether alerting vulnerable sub-populations leads to verified cooling access, protective action adoption, or attributable health protection during extreme heat events.",
+        "implementation_boundary": "Open-Meteo provides programmatic access to weather and temperature forecasts but offers no demographic vulnerability stratification, alert dissemination mechanisms, or health outcome tracking.",
+        "authority": "model_review_only_no_scientific_promotion"
+      },
+      "promotion_allowed": false,
+      "next_evidence_gate": "Independent reviewer must check claim/context alignment and the complete proposed mechanism against source methods and contrary studies."
+    }
+  ],
+  "counts": {
+    "covered_practical_academic_pairs": 8,
+    "unreviewed_mechanism_entailments": 8,
+    "model_disagreements": 1,
+    "unsafe_false_source_entailments": 0,
+    "qualified_academic_edges_promoted": 0,
+    "validated_technical_fit": 0,
+    "validated_commercial_value": 0,
+    "cross_source_reviews_attached": 8
+  },
+  "status": "bounded_development_diagnostic_not_authoritative_scientific_review",
+  "boundary": "Three layers are unchanged. Diagnostic gold is investigator-authored, independent human validation absent; atomic abstract entailment does not validate the synthesized mechanism or a source-to-implementation link. No holdout touched or graph promoted."
+}

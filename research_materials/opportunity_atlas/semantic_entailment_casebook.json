@@ -1,0 +1,200 @@
+{
+  "schema": "cite_refinery.entailment_casebook.v1",
+  "as_of": "2026-10-21",
+  "description": "Diagnostic claims authored from retrieved abstracts in frozen development source universe. Human-independent labels NOT available; expected labels are investigator draft and hidden from model.",
+  "cases": [
+    {
+      "id": "B01",
+      "domain": "battery_recycling_economics",
+      "source_id": "OA-2c8a36e510bc7f",
+      "claim": "The study's techno-economic model reports potential recycling cost or profit between negative $21.43 and positive $21.91 per kWh.",
+      "expected": "entailed",
+      "gold_reason": "Model-based cost/profit range; not demonstrated plant economics."
+    },
+    {
+      "id": "B02",
+      "domain": "battery_recycling_economics",
+      "source_id": "OA-2c8a36e510bc7f",
+      "claim": "The authors experimentally verified that every commercially available battery pack can be recycled profitably.",
+      "expected": "contradicted",
+      "gold_reason": "Reported range includes losses and study presents a model rather than universal plant experiment."
+    },
+    {
+      "id": "B03",
+      "domain": "battery_recycling_economics",
+      "source_id": "OA-2c8a36e510bc7f",
+      "claim": "The study establishes the actual net profit of a planned recycling operation in Taiwan.",
+      "expected": "overreach",
+      "gold_reason": "Geographic transfer and plant-specific realized profits are unsupported."
+    },
+    {
+      "id": "F01",
+      "domain": "food_redistribution_outcomes",
+      "source_id": "EPMC-826342b4eec2",
+      "claim": "The comparative lifecycle study found net environmental benefits across all five impact categories in each of its eight modeled donation scenarios.",
+      "expected": "entailed",
+      "gold_reason": "Scope limited to modeled eight scenarios and functional unit."
+    },
+    {
+      "id": "F02",
+      "domain": "food_redistribution_outcomes",
+      "source_id": "EPMC-826342b4eec2",
+      "claim": "Every food donation program necessarily produces a net reduction in environmental impacts under real-world operations.",
+      "expected": "overreach",
+      "gold_reason": "Extrapolates modeled study scenarios to every actual program."
+    },
+    {
+      "id": "F03",
+      "domain": "food_redistribution_outcomes",
+      "source_id": "EPMC-826342b4eec2",
+      "claim": "The authors found every modeled scenario increased environmental burdens across all five measured categories.",
+      "expected": "contradicted",
+      "gold_reason": "Opposite of stated model results."
+    },
+    {
+      "id": "FL01",
+      "domain": "flood_warning_to_impact",
+      "source_id": "EPMC-871d10af9889",
+      "claim": "This mixed-methods Uganda study sampled 939 respondents and characterized GKMA as primarily flash/pluvial exposed and Kasese as riverine flood exposed.",
+      "expected": "entailed",
+      "gold_reason": "Specific two area observational study."
+    },
+    {
+      "id": "FL02",
+      "domain": "flood_warning_to_impact",
+      "source_id": "EPMC-871d10af9889",
+      "claim": "The study demonstrates that a deployed community early-warning system causally prevented deaths in Uganda.",
+      "expected": "overreach",
+      "gold_reason": "Observational flood exposure study did not evaluate alert intervention effects."
+    },
+    {
+      "id": "FL03",
+      "domain": "flood_warning_to_impact",
+      "source_id": "EPMC-871d10af9889",
+      "claim": "The abstract describes Kasese as primarily affected by rapid flash/pluvial flooding and GKMA by longer riverine floods.",
+      "expected": "contradicted",
+      "gold_reason": "Reverses locations and flood regimes in abstract."
+    },
+    {
+      "id": "C01",
+      "domain": "classroom_ventilation_outcomes",
+      "source_id": "OA-4f0f6d04561a0f",
+      "claim": "The Portuguese study assessed 1,019 students at 51 elementary schools and reported an association between elevated CO2 and lack of concentration.",
+      "expected": "entailed",
+      "gold_reason": "Observed association, not randomized intervention."
+    },
+    {
+      "id": "C02",
+      "domain": "classroom_ventilation_outcomes",
+      "source_id": "OA-4f0f6d04561a0f",
+      "claim": "The study proves that installing carbon-dioxide monitors in schools causally reduces asthma prevalence.",
+      "expected": "overreach",
+      "gold_reason": "No monitor intervention; association is concentration not asthma impact."
+    },
+    {
+      "id": "C03",
+      "domain": "classroom_ventilation_outcomes",
+      "source_id": "OA-4f0f6d04561a0f",
+      "claim": "The study reported statistically significant associations between elevated CO2 and asthma, rhinitis and wheezing.",
+      "expected": "contradicted",
+      "gold_reason": "Abstract explicitly states there were no other significant associations beyond lack of concentration."
+    },
+    {
+      "id": "D01",
+      "domain": "dog_population_identity_and_movement",
+      "source_id": "OA-d94945c2bf53f3",
+      "claim": "The three-year cohort study followed identified dogs in four communities across Bali and Johannesburg and found movement of dogs introduced by people.",
+      "expected": "entailed",
+      "gold_reason": "Limited four-community observational cohorts."
+    },
+    {
+      "id": "D02",
+      "domain": "dog_population_identity_and_movement",
+      "source_id": "OA-d94945c2bf53f3",
+      "claim": "The study experimentally establishes that sterilization alone permanently reduces free-roaming dog populations in Taiwan.",
+      "expected": "overreach",
+      "gold_reason": "No intervention, Taiwan study, or causal trial."
+    },
+    {
+      "id": "D03",
+      "domain": "dog_population_identity_and_movement",
+      "source_id": "OA-d94945c2bf53f3",
+      "claim": "The study found almost all identified free-roaming dogs were unowned and never fed by people.",
+      "expected": "contradicted",
+      "gold_reason": "The abstract says almost all were owned and fed regularly."
+    },
+    {
+      "id": "H01",
+      "domain": "heat_warning_to_protective_action",
+      "source_id": "EPMC-0715c73feecf",
+      "claim": "The modeling study projected heatwave-related death burdens for 176 countries using climate and adaptation scenarios across the 2030s, 2050s and 2090s.",
+      "expected": "entailed",
+      "gold_reason": "Future projections, not actual counted future deaths."
+    },
+    {
+      "id": "H02",
+      "domain": "heat_warning_to_protective_action",
+      "source_id": "EPMC-0715c73feecf",
+      "claim": "The study measured that a deployed heat-warning system prevented one million deaths in the past year.",
+      "expected": "overreach",
+      "gold_reason": "Projection framework is not evaluated intervention effect."
+    },
+    {
+      "id": "H03",
+      "domain": "heat_warning_to_protective_action",
+      "source_id": "EPMC-0715c73feecf",
+      "claim": "The reported figures for the 2090s are observed historical death counts, without future scenario projections.",
+      "expected": "contradicted",
+      "gold_reason": "Directly contrary to the global scenario projection method."
+    },
+    {
+      "id": "E01",
+      "domain": "ewaste_toxicant_control",
+      "source_id": "OA-eb3cd7c2915125",
+      "claim": "At three formal Swedish e-waste plants, personal air sampling found recycling workers had around ten to thirty times greater airborne exposure to most metals than office workers.",
+      "expected": "entailed",
+      "gold_reason": "Exposure comparison, not intervention effect."
+    },
+    {
+      "id": "E02",
+      "domain": "ewaste_toxicant_control",
+      "source_id": "OA-eb3cd7c2915125",
+      "claim": "The study demonstrates that specific engineering ventilation and PPE interventions completely eliminate lead exposure at recycling plants.",
+      "expected": "overreach",
+      "gold_reason": "No protective intervention trial or zero-exposure result described."
+    },
+    {
+      "id": "E03",
+      "domain": "ewaste_toxicant_control",
+      "source_id": "OA-eb3cd7c2915125",
+      "claim": "The office workers had approximately ten to thirty times greater airborne exposure to most metals than the recycling workers.",
+      "expected": "contradicted",
+      "gold_reason": "Reverses exposure comparison."
+    },
+    {
+      "id": "G01",
+      "domain": "gig_worker_algorithmic_harm",
+      "source_id": "EPMC-aa4339ee2731",
+      "claim": "The narrative review searched Chinese and English sources through March 2026 and included 47 eligible sources on health and occupational risks of Chinese food-delivery riders.",
+      "expected": "entailed",
+      "gold_reason": "Narrative review, not randomized program trial."
+    },
+    {
+      "id": "G02",
+      "domain": "gig_worker_algorithmic_harm",
+      "source_id": "EPMC-aa4339ee2731",
+      "claim": "A randomized controlled trial in the review conclusively demonstrated that changing algorithmic dispatch reduces delivery-rider injury rates.",
+      "expected": "overreach",
+      "gold_reason": "Review notes limited longitudinal and intervention evidence; no such conclusive randomized trial established."
+    },
+    {
+      "id": "G03",
+      "domain": "gig_worker_algorithmic_harm",
+      "source_id": "EPMC-aa4339ee2731",
+      "claim": "The authors characterize the delivery-rider literature as having extensive longitudinal and intervention evidence, with little reliance on self-reported exposure measures.",
+      "expected": "contradicted",
+      "gold_reason": "Abstract states the opposite limitations."
+    }
+  ],
+  "boundary": "These diagnostic gold labels are investigator-authored, not independent human gold. Each case uses source abstract excerpt. Not scored on sealed holdout."
+}

@@ -61,6 +61,9 @@ cite-refinery-primary-mechanisms = "cite_refinery.opportunity_mechanism_primary:
 cite-refinery-merge-atlas-evidence = "cite_refinery.opportunity_atlas_union:main"
 cite-refinery-three-layer = "cite_refinery.three_layer_projection:main"
 cite-refinery-three-layer-native-packet = "cite_refinery.three_layer_native_ingest:main"
+cite-refinery-entailment-diagnostic = "cite_refinery.semantic_entailment_diagnostic:main"
+cite-refinery-mechanism-critic = "cite_refinery.cross_source_mechanism_critic:main"
+cite-refinery-three-layer-semantic-review = "cite_refinery.three_layer_semantic_review:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
