@@ -30,7 +30,7 @@ class FunctionalityTrialTests(unittest.TestCase):
         self.assertEqual(j["schema"],SCHEMA)
         self.assertEqual(len(j["probes"]),3)
         self.assertEqual(j["test_case_counts"],
-                         {"pass":6,"fail":6,"blocked":1,"not_tested":3})
+                         {"pass":6,"fail":7,"blocked":1,"not_tested":3})
         self.assertFalse(j["graph_status_promotion_allowed"])
         self.assertFalse(j["technical_fit_confirmed"])
         self.assertFalse(j["commercial_eligibility_confirmed"])
@@ -62,6 +62,11 @@ class FunctionalityTrialTests(unittest.TestCase):
         bad=next(x for x in flood["cases"] if x["name"]=="nonfinite_sensor_level_is_excluded")
         self.assertEqual(bad["status"],"fail")
         self.assertTrue(bad["actual"]["nan_in_ranked_stations"])
+        misorder=next(x for x in flood["cases"] if
+                      x["name"]=="nonfinite_station_corrupts_top_one_ordering")
+        self.assertEqual(misorder["status"],"fail")
+        self.assertEqual(misorder["actual"]["top_one"],["low"])
+        self.assertEqual(misorder["expected"]["top_one"],["high2"])
         co2=next(p for p in self.trials["probes"] if "co2_esphome" in p["asset_id"])
         self.assertEqual(next(x for x in co2["cases"] if x["name"]=="esphome_yaml_syntax")["status"],"fail")
         self.assertEqual(next(x for x in co2["cases"] if x["name"]=="display_image_identifiers")["actual"]["undeclared_image_ids"],["face_good"])

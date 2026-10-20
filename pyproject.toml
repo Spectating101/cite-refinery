@@ -68,6 +68,7 @@ cite-refinery-three-layer-semantic-review = "cite_refinery.three_layer_semantic_
 cite-refinery-functional-probes = "cite_refinery.functional_component_probes:main"
 cite-refinery-functional-overlay = "cite_refinery.functional_three_layer_overlay:main"
 cite-refinery-cross-model-review = "cite_refinery.cross_model_evidence_check:main"
+cite-refinery-repair-replace = "cite_refinery.repair_replace_trials:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
