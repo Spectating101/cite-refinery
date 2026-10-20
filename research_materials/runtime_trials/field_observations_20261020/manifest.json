@@ -1,0 +1,23 @@
+{
+  "schema": "cite_refinery.synthetic_field_contract_demo.v1",
+  "synthetic_observations.json": {
+    "status": {
+      "T2": "data_elements_available_requires_external_design_review",
+      "T3": "conditional_data_quality_review_only"
+    },
+    "warnings": [],
+    "synthetic": true
+  },
+  "synthetic_missing_quality.json": {
+    "status": {
+      "T2": "unresolved_data_gap",
+      "T3": "not_ready_for_detection_model"
+    },
+    "warnings": [
+      "missing_corroborated_origin_or_resident_maternity_contrast",
+      "observer_independence_or_blinding_not_verified",
+      "uncertain_or_low_confidence_double_detection_match"
+    ],
+    "synthetic": true
+  }
+}

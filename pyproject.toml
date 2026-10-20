@@ -41,6 +41,8 @@ cite-refinery-investigate = "cite_refinery.investigation_cli:main"
 cite-refinery-adjudicate = "cite_refinery.investigation_adjudication_cli:main"
 cite-refinery-repair = "cite_refinery.evidence_repair_cli:main"
 cite-refinery-discriminate = "cite_refinery.discriminating_tests_cli:main"
+cite-refinery-field-audit = "cite_refinery.field_observation_cli:main"
+cite-refinery-field-repair = "cite_refinery.field_observation_repair:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

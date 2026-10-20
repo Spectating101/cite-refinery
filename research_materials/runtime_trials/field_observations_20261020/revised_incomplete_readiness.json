@@ -1,0 +1,109 @@
+{
+  "schema": "cite_refinery.revised_field_observation_plan.v1",
+  "source_plan_digest": "c2c132a92552e2564458149827dd13259d9cb8e3993d8ef79bec0b9857702800",
+  "observation_dataset_sha256": "dd10fca062b223d83b2ff4831b6b84cc6673703fb77441775f55104b41753552",
+  "synthetic": true,
+  "revised_tests": {
+    "T1": {
+      "prior_verdict": "conditionally_useful",
+      "candidate_revision": "Repeated pseudonymous individual encounters and explicit double-observer match uncertainty; independently validate false-split/false-merge rates and geographic boundaries.",
+      "required_fields": [
+        "visit_id",
+        "animal_code",
+        "matching_confidence",
+        "fixed_route",
+        "actual_effort_km",
+        "observer_independent",
+        "observer_blinding_documented"
+      ],
+      "remaining_methodological_blocker": "Photo-ID audit dataset, mark-resight open-population/SECR assumptions and power simulations need qualified ecological methods review.",
+      "data_format_readiness": "not_assessed_in_format_audit",
+      "expert_signoff": false,
+      "ready_for_field_use": false
+    },
+    "T2": {
+      "prior_verdict": "not_discriminating",
+      "candidate_revision": "Use non-invasive repeat visual identities, observed offspring of resident mothers, coarse zone transition evidence, and explicitly consented deidentified voluntary reports; do not mandate collars, genetics or invasive household tracking.",
+      "required_fields": [
+        "origin_class",
+        "evidence_kind",
+        "corroborated",
+        "age_class",
+        "reproductive_sign",
+        "consent_confirmed"
+      ],
+      "remaining_methodological_blocker": "Origin labels alone do not establish immigration or abandonment; unobserved neonatal loss and co-occurrence remain. Genetic parentage or telemetry requires a separate welfare/ethics feasibility decision.",
+      "data_format_readiness": "unresolved_data_gap",
+      "expert_signoff": false,
+      "ready_for_field_use": false
+    },
+    "T3": {
+      "prior_verdict": "uncertain",
+      "candidate_revision": "Collect independent paired observer encounter histories, match confidence, distance and effort covariates, reproductive-state categories and repeat transect visits; do not assume g(0)=1.",
+      "required_fields": [
+        "observed_a",
+        "observed_b",
+        "match_status",
+        "matching_confidence",
+        "distance_m",
+        "weather_code",
+        "actual_effort_km",
+        "fixed_route",
+        "observer_independent",
+        "observer_blinding_documented",
+        "reproductive_sign"
+      ],
+      "remaining_methodological_blocker": "MRDS model family, conditional detection dependence, responsive movement, g(0), den availability and population closure require qualified simulation/calibration. No fitting or effect inference happens here.",
+      "data_format_readiness": "not_ready_for_detection_model",
+      "expert_signoff": false,
+      "ready_for_field_use": false
+    }
+  },
+  "measurement_quality_report": {
+    "schema": "cite_refinery.field_observation_readiness.v1",
+    "synthetic": true,
+    "visit_count": 4,
+    "site_count": 1,
+    "rounds_per_site": {
+      "district_A": 2
+    },
+    "detection_event_count": 24,
+    "independent_observer_counts": {
+      "a_only": 8,
+      "b_only": 4,
+      "both": 12,
+      "confirmed_pairs": 11,
+      "uncertain_or_low_confidence_pairs": 1
+    },
+    "source_evidence_counts": {},
+    "warnings": [
+      "missing_corroborated_origin_or_resident_maternity_contrast",
+      "observer_independence_or_blinding_not_verified",
+      "uncertain_or_low_confidence_double_detection_match"
+    ],
+    "test_status": {
+      "T2": "unresolved_data_gap",
+      "T3": "not_ready_for_detection_model"
+    },
+    "detection_overlap_fraction_of_recorded_events": 0.5,
+    "human_privacy_fields_present": false,
+    "statistically_identified_mechanism": false,
+    "g_zero_estimated": false,
+    "field_protocol_approved": false,
+    "boundaries": [
+      "Counts are source records only and do not estimate latent abundance.",
+      "Observer overlap is descriptive; its ratio is NOT g(0) or a capture-recapture estimate.",
+      "A double-observer setup alone does not establish observer independence, detection at zero or model validity.",
+      "Both arrivals and local births can co-occur; event labels never estimate contribution to population change.",
+      "Original dog photo/personal owner data and precise GPS are forbidden in this interchange.",
+      "Thresholds are pilot format heuristics, not calibrated power criteria or animal-welfare approval.",
+      "No original dog-level field data are implied when synthetic=true."
+    ]
+  },
+  "status": "data_dictionary_and_pilot_quality_checks_only",
+  "next_evidence_gate": "Independent ecology/animal-welfare and privacy protocol review, pilot double-observer matching and coverage calibration, then real anonymized repeated field data.",
+  "causal_identification": "not_identified",
+  "observed_field_outcome_validated": false,
+  "approved_for_field_deployment": false,
+  "scope": "Demonstration of minimum observable data and quality preconditions only; not the original data, author validation or a statistically tested MRDS model."
+}

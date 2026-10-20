@@ -1,0 +1,41 @@
+{
+  "schema": "cite_refinery.field_observation_readiness.v1",
+  "synthetic": true,
+  "visit_count": 4,
+  "site_count": 1,
+  "rounds_per_site": {
+    "district_A": 2
+  },
+  "detection_event_count": 24,
+  "independent_observer_counts": {
+    "a_only": 8,
+    "b_only": 4,
+    "both": 12,
+    "confirmed_pairs": 11,
+    "uncertain_or_low_confidence_pairs": 1
+  },
+  "source_evidence_counts": {},
+  "warnings": [
+    "missing_corroborated_origin_or_resident_maternity_contrast",
+    "observer_independence_or_blinding_not_verified",
+    "uncertain_or_low_confidence_double_detection_match"
+  ],
+  "test_status": {
+    "T2": "unresolved_data_gap",
+    "T3": "not_ready_for_detection_model"
+  },
+  "detection_overlap_fraction_of_recorded_events": 0.5,
+  "human_privacy_fields_present": false,
+  "statistically_identified_mechanism": false,
+  "g_zero_estimated": false,
+  "field_protocol_approved": false,
+  "boundaries": [
+    "Counts are source records only and do not estimate latent abundance.",
+    "Observer overlap is descriptive; its ratio is NOT g(0) or a capture-recapture estimate.",
+    "A double-observer setup alone does not establish observer independence, detection at zero or model validity.",
+    "Both arrivals and local births can co-occur; event labels never estimate contribution to population change.",
+    "Original dog photo/personal owner data and precise GPS are forbidden in this interchange.",
+    "Thresholds are pilot format heuristics, not calibrated power criteria or animal-welfare approval.",
+    "No original dog-level field data are implied when synthetic=true."
+  ]
+}
