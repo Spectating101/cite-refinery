@@ -1,0 +1,257 @@
+{
+  "schema": "cite_refinery.cross_domain_evidence_roles.v1",
+  "question": "In informal electronic waste recycling, how do documented worker and community exposure problems, academic studies measuring lead or other toxic exposures, and government/institutional collection or safety programs connect—and which interventions have measured outcomes rather than only proposed actions?",
+  "results": [
+    {
+      "source_id": "EPMC-8e85cc61bcc2",
+      "url": "https://doi.org/10.3389/frph.2026.1761778",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "597f1e3a27f6f4efef8a01fd66b77d35c0e81c7b7bab1a06ec19aeccece90a56",
+      "fit": "adjacent",
+      "role": "academic_finding",
+      "module_ids": [
+        "EW-02"
+      ],
+      "quote": "Glazed ceramics, mining activities, improper e-waste management, and water and soil contamination emerged as the main exposure sources.",
+      "why": "This PRISMA-guided review synthesizes empirical biomonitoring evidence across Latin America and the Caribbean, identifying informal e-waste management as one of several sources contributing to elevated pediatric blood lead levels.",
+      "limitations": "Does not disaggregate e-waste recycling from other lead sources (such as mining or ceramics) to establish isolated causal exposure bounds, nor does it evaluate specific intervention programs.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-f98bdfb94484",
+      "url": "https://doi.org/10.4103/ijcm.ijcm_715_25",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "4c0b59e9ec55122cfd85ec2947c14a804eebe65dc5c2fd0bc261158f63d3837f",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "The paper addresses general environmental microplastic pollution and respiratory risks in plastic manufacturing, with no connection to electronic waste streams or informal e-waste workers.",
+      "limitations": "Contains no data or analysis regarding electronic waste, heavy metals, or informal recycling practices.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-64a62b7ee309",
+      "url": "https://doi.org/10.2196/96702",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "e75c5047c15ff92f4099bb7979573c5710bb5673e684ce572e19bf9c4ce4e729",
+      "fit": "direct",
+      "role": "academic_method",
+      "module_ids": [
+        "EW-02"
+      ],
+      "quote": "This protocol provides a framework for evaluating the health status, metabolic indicators, and phthalate exposure among e-waste workers in Vietnam and supports occupational health evaluation.",
+      "why": "The text describes a study protocol detailing recruitment, survey methodology, and biological sampling protocols for phthalate plasticizers among informal e-waste workers in Vietnam.",
+      "limitations": "Reports only a study protocol and baseline recruitment counts; it does not present completed biomonitoring results, dose-response associations, or evaluated protective interventions.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-e68f597056f5",
+      "url": "https://doi.org/10.7717/peerj.21271",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "c62236e6cb15b0450ea68b8b40d0f717f8b4bc527567bf075bc9f44e62e7d912",
+      "fit": "adjacent",
+      "role": "academic_method",
+      "module_ids": [
+        "EW-03"
+      ],
+      "quote": "The instrument provides a structured and context-specific tool for evaluating occupational safety culture, safety practices, and health effects within formal e-waste recovery facilities in Malaysia",
+      "why": "Develops and validates a psychometric survey instrument (E-WISE) for assessing occupational safety and health awareness specifically within formal, licensed e-waste recovery facilities.",
+      "limitations": "Focuses on formal e-waste facilities rather than informal recycling environments, and assesses psychometric survey validity rather than evaluating program outcomes or measuring toxic exposures.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-9fa9631d4529",
+      "url": "https://www.who.int/news/item/21-06-2022-sunsmart-global-uv-app-helps-protect-you-from-the-dangers-of-the-sun-and-promotes-public-health",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "31601d8c9f25d382fcf056463979cb6bbb88cd335fa042f1d05fe248ce63d522",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Announces a mobile phone app for tracking ultraviolet radiation levels and preventing solar skin damage, entirely outside the scope of e-waste recycling.",
+      "limitations": "Provides no information on e-waste, occupational toxic exposures, or recycling interventions.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-dfb712eb5cab",
+      "url": "https://www.who.int/news/item/18-03-2022-un-environment-programme-joins-alliance-to-implement-one-health-approach",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "a73743f20e316baf76c30abbf6a66305e1819e5617926a8f4340a7f355e88626",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Details a high-level institutional partnership agreement (One Health Quadripartite) focusing on cross-sector coordination and antimicrobial resistance, unrelated to e-waste.",
+      "limitations": "Contains no material related to electronic waste, toxic metals, or waste worker safety initiatives.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-87e7e0a1013e",
+      "url": "https://www.who.int/tools/compendium-on-health-and-environment/solid-waste",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "87b12748bdf4508b3c7b10b0e0c7443e14f8deafa3263928c69103f0bd15c8ef",
+      "fit": "adjacent",
+      "role": "background_only",
+      "module_ids": [
+        "EW-01"
+      ],
+      "quote": "In 2019 only 17% of e-waste was documented as being properly collected and recycled. Exposure to improperly managed e-waste and its components can cause multiple adverse health and developmental impacts especially in young children.",
+      "why": "Provides high-level contextual background on global solid and e-waste generation statistics and summarizes general developmental risks of improper waste handling.",
+      "limitations": "Presents macro-level aggregated statistics without empirical primary biomonitoring data, field-level informal site observations, or program evaluations.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-961679ccac7b",
+      "url": "https://www.who.int/news/item/20-08-2026-new-who-online-course-strengthens-safe-and-sustainable-health-care-waste-management",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "e3cb20f41652cff0b2bacd554549fc28fd9d1b5e4ee34c520172c2278878d126",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Describes an online training course dedicated to medical and hospital health-care waste management rather than electronic waste recycling.",
+      "limitations": "Addresses clinical and pharmaceutical health-care waste streams; does not address e-waste or informal electronics dismantling.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-1e4d6dd3841e",
+      "url": "https://www.who.int/europe/news/item/27-10-2025-who-launches-new-online-course-to-support-informal-caregivers-across-europe",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "3691eecac192b6a8eeaa72fa62c7fa339e5249995013f1f1b81902459bedd6fe",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Announces a support course for unpaid family and domestic caregivers aiding older or sick individuals, matching 'informal' purely as a linguistic false positive.",
+      "limitations": "Entirely unrelated to electronic waste, hazardous materials, or occupational environmental exposures.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-ac48369a71d0",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "5e43f4777389040da60bdb9f33eba7b0f64a018f2ad9abf3295b7156715294b2",
+      "fit": "direct",
+      "role": "program_guidance_or_proposal",
+      "module_ids": [
+        "EW-01",
+        "EW-03"
+      ],
+      "quote": "implementing and monitoring interventions that improve informal e-waste recycling activities, protect public health and ensure vital sources of community revenue;",
+      "why": "An institutional fact sheet identifying informal e-waste hazards (lead, mercury, child neurodevelopment) and recommending policy priorities, health worker education, and intervention monitoring.",
+      "limitations": "Recommends proposed programmatic actions and highlights risks without documenting an active, implemented intervention or evaluating empirical exposure reduction outcomes.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-b615fda3bf67",
+      "url": "https://wkc.who.int/resources/news/item/01-10-2024-supporting-informal-long-term-caregivers-for-older-people",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "47bb2b6e7c3d9d0247bfbc5b716827ac431ffc7d980029e1c78b76eb93440d39",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "A research brief analyzing social and economic financing policies for informal long-term elder caregivers, sharing only the word 'informal' with the research question.",
+      "limitations": "Contains no information regarding electronic waste, recycling laborers, or toxic chemical exposures.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-02c902bca5bf",
+      "url": "https://doi.org/10.5271/sjweh.4259",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "f2cf35da5f9438619193cc4b7de404ca3ff2567577e64615f956a47f2362cea0",
+      "fit": "direct",
+      "role": "measured_program_outcome",
+      "module_ids": [
+        "EW-01",
+        "EW-03"
+      ],
+      "quote": "the intervention reduced self-reported injuries over three months [difference-in-differences: -58%, 95% confidence interval (CI) -19- -79%].",
+      "why": "A quasi-randomized trial evaluating a co-designed dismantling tool for informal e-waste recyclers in Thailand, directly measuring and reporting quantitative reductions in occupational injuries.",
+      "limitations": "Evaluates physical injury and near-miss outcomes over a short 3-month window rather than measuring toxic chemical exposures or biological lead levels.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    }
+  ],
+  "coverage": {
+    "EW-01": {
+      "perspective": "practical",
+      "direct_source_ids": [
+        "OFFICIAL-ac48369a71d0",
+        "EPMC-02c902bca5bf"
+      ],
+      "role_matching_source_ids": [],
+      "adjacent_source_ids": [
+        "OFFICIAL-87e7e0a1013e"
+      ],
+      "direct_roles": [
+        "measured_program_outcome",
+        "program_guidance_or_proposal"
+      ],
+      "source_coverage_status": "topic_mentioned_without_perspective_evidence",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    },
+    "EW-02": {
+      "perspective": "academic",
+      "direct_source_ids": [
+        "EPMC-64a62b7ee309"
+      ],
+      "role_matching_source_ids": [
+        "EPMC-64a62b7ee309"
+      ],
+      "adjacent_source_ids": [
+        "EPMC-8e85cc61bcc2"
+      ],
+      "direct_roles": [
+        "academic_method"
+      ],
+      "source_coverage_status": "role_specific_direct_source",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    },
+    "EW-03": {
+      "perspective": "program",
+      "direct_source_ids": [
+        "OFFICIAL-ac48369a71d0",
+        "EPMC-02c902bca5bf"
+      ],
+      "role_matching_source_ids": [
+        "OFFICIAL-ac48369a71d0",
+        "EPMC-02c902bca5bf"
+      ],
+      "adjacent_source_ids": [
+        "EPMC-e68f597056f5"
+      ],
+      "direct_roles": [
+        "measured_program_outcome",
+        "program_guidance_or_proposal"
+      ],
+      "source_coverage_status": "role_specific_direct_source",
+      "implementation_reported_in_source": true,
+      "measured_outcome_reported_in_source": true,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    }
+  },
+  "authority": "candidate_semantic_role_only",
+  "investigation_id": "0e2de03f44254d79b742",
+  "source_count": 12,
+  "model_provenance": "antigravity:gemini-3.8-flash-medium"
+}

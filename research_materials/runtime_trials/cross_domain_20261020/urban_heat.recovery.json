@@ -1,0 +1,72 @@
+{
+  "schema": "cite_refinery.semantic_evidence_recovery.v1",
+  "domain": "urban_heat",
+  "investigation_id": "35a38defab6444de976c",
+  "plan": {
+    "focus": "Field-level evidence of indoor heat exposure and physical access barriers among vulnerable urban residents, alongside audited operational metrics and measured health outcomes from municipal cooling center activations.",
+    "reason": "Prior discovery retrieved generic policy guidance and regional epidemiological models rather than direct documentation of resident-level access constraints or empirical audits of municipal heat action plan operations. Targeted searches must isolate field surveys of vulnerable populations and official operational post-incident reviews.",
+    "hypotheses": [
+      "Practical barriers such as lack of transit, limited operating hours, and security concerns depress cooling center attendance among older adults and low-income residents despite high indoor heat exposure.",
+      "Municipal heat emergency post-incident audits document supply-side outputs like facility openings and water distribution, but rarely measure changes in heat-related morbidity or reach among unhoused and isolated residents.",
+      "Empirical assessments of heat action plans reveal that health improvements depend more on direct residential cooling subsidies and outreach than on passive cooling center activation."
+    ],
+    "queries": [
+      {
+        "lane": "academic",
+        "query": "cooling center barriers resident survey heat vulnerability"
+      },
+      {
+        "lane": "academic",
+        "query": "heat action plan hospitalizations empirical evaluation"
+      },
+      {
+        "lane": "official",
+        "query": "cooling center attendance after action report"
+      },
+      {
+        "lane": "official",
+        "query": "extreme heat emergency response audit report operations"
+      }
+    ]
+  },
+  "new_sources": [
+    {
+      "id": "EPMC-1ed6ebbde1f4",
+      "url": "https://doi.org/10.1111/risa.70315",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "6d70a80a284d7b6533cbcf102f8187d08dafd54550a5d9f4c91e29becf1edd98"
+    },
+    {
+      "id": "EPMC-2a8170f676f9",
+      "url": "https://doi.org/10.1371/journal.pone.0351352",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "a064f1d50126f20745ac81b63bac34e6d757b819524fc2365c0b91314e116a19"
+    },
+    {
+      "id": "EPMC-5e680dc2b324",
+      "url": "https://europepmc.org/article/MED/42812880",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "ba0ae01b6c03ca57e10a34eb7e90bcd7c4b3dc5010ebbfcecdeca0fa54e17371"
+    },
+    {
+      "id": "EPMC-967a0b6611fd",
+      "url": "https://doi.org/10.1186/s44263-026-00275-w",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "25a1643f8814b620dd2e774624b99782965ce82543642d6fb528a4e9d42fe387"
+    },
+    {
+      "id": "OFFICIAL-194f3653ddf1",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "passage_sha256": "a45687fc1572421b9f340ca1ef8de84b21563551d1342ac29979cb0468fd3c6e"
+    },
+    {
+      "id": "OFFICIAL-985090c409ea",
+      "url": "https://www.who.int/initiatives/initiative-against-extreme-heat-and-health-risks-in-workplaces-and-major-events/tips-for-keeping-cool",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "passage_sha256": "8fae423d11e0b3795308ac17b275be6273fe952f1d51fffb221010c2ab1496f2"
+    }
+  ],
+  "search_failures": [],
+  "note": "Publisher text locally retained, not accepted as evidence until semantic role review."
+}

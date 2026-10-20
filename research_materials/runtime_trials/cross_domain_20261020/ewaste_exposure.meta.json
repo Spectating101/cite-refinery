@@ -1,0 +1,10 @@
+{
+  "domain": "ewaste_exposure",
+  "investigation_id": "0e2de03f44254d79b742",
+  "ontology_module_ids": [
+    "EW-01",
+    "EW-02",
+    "EW-03"
+  ],
+  "sources_preselected": false
+}

@@ -1,0 +1,53 @@
+{
+  "schema": "cite_refinery.cross_domain_probe_seeds.v1",
+  "domains": [
+    {
+      "id": "urban_heat",
+      "question": "When cities adopt extreme-heat alerts and heat action plans, what evidence distinguishes the practical heat exposure and access barriers of vulnerable residents, epidemiological heat-health risk estimates, and actual implemented programs or independently measured health improvements?",
+      "modules": [
+        {
+          "id": "HT-01",
+          "title": "Unequal daily heat exposure and cooling access",
+          "summary": "Practical problem: exposure of low-income urban residents, older adults, outdoor workers, and people without effective cooling; distinctions in place, lived experience and access",
+          "perspective": "practical"
+        },
+        {
+          "id": "HT-02",
+          "title": "Attribution and measurement of heat-related health harm",
+          "summary": "Academic evidence: heat exposure, excess morbidity or mortality, vulnerability confounding, urban heat islands and measured health risk",
+          "perspective": "academic"
+        },
+        {
+          "id": "HT-03",
+          "title": "Heat alerts, cooling centers and heat health action plans",
+          "summary": "Program layer: proposed measures, officially documented operations, cooling-center accessibility and whether observed outcomes were actually evaluated",
+          "perspective": "program"
+        }
+      ]
+    },
+    {
+      "id": "ewaste_exposure",
+      "question": "In informal electronic waste recycling, how do documented worker and community exposure problems, academic studies measuring lead or other toxic exposures, and government/institutional collection or safety programs connect—and which interventions have measured outcomes rather than only proposed actions?",
+      "modules": [
+        {
+          "id": "EW-01",
+          "title": "Unsafe informal e-waste processing and community exposure",
+          "summary": "Practical problem: informal burning, dismantling and occupational exposure including communities around informal recycling sites; region-specific source observations",
+          "perspective": "practical"
+        },
+        {
+          "id": "EW-02",
+          "title": "Biomonitoring and scientific assessment of e-waste toxicants",
+          "summary": "Academic evidence: measured lead, other heavy metals or pollutants and health outcomes, exposure routes, study design limitations and causal identification",
+          "perspective": "academic"
+        },
+        {
+          "id": "EW-03",
+          "title": "Formal e-waste collection and worker protection initiatives",
+          "summary": "Program layer: safe collection plans, recycling guidance, documented implementation, occupational protections and independently evaluated exposure reductions",
+          "perspective": "program"
+        }
+      ]
+    }
+  ]
+}

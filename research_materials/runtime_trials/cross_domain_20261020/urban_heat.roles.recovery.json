@@ -1,0 +1,278 @@
+{
+  "schema": "cite_refinery.cross_domain_evidence_roles.v1",
+  "question": "When cities adopt extreme-heat alerts and heat action plans, what evidence distinguishes the practical heat exposure and access barriers of vulnerable residents, epidemiological heat-health risk estimates, and actual implemented programs or independently measured health improvements?",
+  "results": [
+    {
+      "source_id": "EPMC-370b6b99a0eb",
+      "url": "https://doi.org/10.3389/fpubh.2026.1887205",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "e273ce58f7d2b6e0e9429cd1f0f8d5c7570c252bb8f03b1f44f213d1f2d95827",
+      "fit": "adjacent",
+      "role": "academic_finding",
+      "module_ids": [
+        "HT-02"
+      ],
+      "quote": "According to heterogeneity analysis, environmental regulations intensity and green spaces construction have mitigated the health impacts of CR through buffering effects, while green technological innovation has contributed to the manifestation of the inverted U-shaped relationship.",
+      "why": "Reports macro-level statistical modeling of provincial climate risk, moderating socio-economic factors, and public health indicators across 30 Chinese provinces rather than city-level heat alerts or local action plan interventions.",
+      "limitations": "Does not assess municipal heat action plans, cooling centers, alert trigger systems, or individual clinical outcomes.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-29d492c19cd6",
+      "url": "https://doi.org/10.1093/ehjacc/zuae113",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "febd5ef92deaaddb5c7220c09144c4a8facd40f86108ec63ff0414291a464c7b",
+      "fit": "direct",
+      "role": "program_guidance_or_proposal",
+      "module_ids": [
+        "HT-02",
+        "HT-03"
+      ],
+      "quote": "The World Health Organization recommends implementing heat-health action plans, which include early warning systems, public education on recognizing heat-related symptoms, and guidelines for adjusting medications during heatwaves.",
+      "why": "Synthesizes educational literature on cardiovascular vulnerabilities to extreme temperature while citing WHO recommended intervention components for heat-health action plans.",
+      "limitations": "A narrative educational review synthesizing policy recommendations; does not document actual operational deployment or independently measure the health impact of an implemented urban heat plan.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-ecfa9e0ce808",
+      "url": "https://doi.org/10.3389/fpubh.2026.1986768",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "53d6b96f0b29aa0409131eb3248b5634a76526975bfe1130ebd5a731556a0dd8",
+      "fit": "adjacent",
+      "role": "academic_method",
+      "module_ids": [
+        "HT-03"
+      ],
+      "quote": "We develop a three-actor linear-quadratic differential game with gross event heat-risk pressure and accumulated adaptive capacity as state variables.",
+      "why": "Proposes a mathematical differential game simulation to optimize institutional coordination, warning lead times, and cost-sharing for heat risk at sporting events.",
+      "limitations": "Theoretical simulation and optimization modeling only; does not evaluate empirical citywide heat alerts or verify downstream health protection in real-world human populations.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-0d9b494e45df",
+      "url": "https://doi.org/10.1007/s00281-026-01085-w",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "25b85ae8df4cff1354ad9f98df7c8453f63e44b7f5cdd5541fbec6ad8d38cc7e",
+      "fit": "direct",
+      "role": "academic_finding",
+      "module_ids": [
+        "HT-01",
+        "HT-02"
+      ],
+      "quote": "We then summarize the epidemiology of temperature, CVD associations across diverse regions, highlighting U- and J-shaped exposure-response curves and disproportionate impacts in low- and middle-income countries, older adults, and socioeconomically disadvantaged communities.",
+      "why": "Synthesizes epidemiological literature demonstrating non-linear cardiovascular disease burdens from extreme temperatures and disproportionate vulnerability among older and low-income populations.",
+      "limitations": "Narrative review of observational epidemiological risk and biological mechanisms; does not evaluate the administrative implementation or measured effectiveness of municipal cooling interventions.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-87e7e0a1013e",
+      "url": "https://www.who.int/tools/compendium-on-health-and-environment/solid-waste",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "8b262a48d02d46fc9940df7b801a74b5eac331ce62c9ac28dd36733330473bc7",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Presents WHO guidance and global statistics regarding solid waste, improper trash disposal, and e-waste management without addressing extreme heat, thermal exposure, or heat action plans.",
+      "limitations": "Contains no information relevant to urban heat exposure, heat alerts, or heat-health intervention programs.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-711eb59fea89",
+      "url": "https://extranet.who.int/agefriendlyworld/afp/poznan-viva-senior/",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "b8040379a9b2a69b9124fdc869436b9b643e5875cc607e0add701df90ca858ff",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Documents municipal senior welfare programs in Poznań, Poland (such as cemetery transportation, handyman tasks, and pedicures), with no connection to extreme heat adaptation or cooling centers.",
+      "limitations": "Does not address heat exposure, heatwave emergencies, cooling centers, or temperature-related health risks.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-b67462393768",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/urban-health",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "b2f74664bfbae232aa927b64953506e3377719e2732a07a05056220f29b6fd7f",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Discusses high-level WHO urban health priorities spanning sanitation, infectious diseases like COVID-19, violence, and urban mobility without analyzing extreme-heat action plans or thermal risks.",
+      "limitations": "Lacks specific data or guidance on extreme heat alerts, cooling access, or heatwave health outcomes.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-f5a57b7efc4c",
+      "url": "https://www.who.int/news-room/feature-stories/detail/what-are-the-who-air-quality-guidelines",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "1d023e520e3b69e9ef24a3a5ca87b0985af880b028f1ddc1fa87527b8c0523b2",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Focuses exclusively on the WHO Air Quality Guidelines, pollutant limit values, and health consequences of ambient and household air pollution.",
+      "limitations": "Does not examine extreme heat alerts, heat-health action plans, or cooling infrastructure.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-194f3653ddf1",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "a45687fc1572421b9f340ca1ef8de84b21563551d1342ac29979cb0468fd3c6e",
+      "fit": "direct",
+      "role": "program_guidance_or_proposal",
+      "module_ids": [
+        "HT-01",
+        "HT-03"
+      ],
+      "quote": "WHO works with the health sector to strengthen governance, preparedness and response to acute impacts of heatwaves by developing heat action plans, heat early warning systems and advisories, and emergency response plans that map the risks, vulnerable populations, available capacities and resources.",
+      "why": "Outlines institutional WHO recommendations and frameworks for public health heat action plans, early warning advisories, and highlights unequal housing and cooling deficits among poor urban residents.",
+      "limitations": "Provides organizational guidance and advisory tips rather than empirical operational audits or independently measured morbidity/mortality reductions from specific city deployments.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "OFFICIAL-985090c409ea",
+      "url": "https://www.who.int/initiatives/initiative-against-extreme-heat-and-health-risks-in-workplaces-and-major-events/tips-for-keeping-cool",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "8fae423d11e0b3795308ac17b275be6273fe952f1d51fffb221010c2ab1496f2",
+      "fit": "direct",
+      "role": "practical_problem_report",
+      "module_ids": [
+        "HT-01",
+        "HT-02"
+      ],
+      "quote": "Vulnerability to heat is shaped by both physiological factors, such as age and health status, and exposure factors such as occupation and socio-economic conditions.",
+      "why": "Describes practical determinants of individual heat vulnerability, urban heat island factors, and basic household cooling recommendations.",
+      "limitations": "Presents general advisory tips and broad physiological descriptions without auditing city heat action plans or measuring program outcomes.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-1ed6ebbde1f4",
+      "url": "https://doi.org/10.1111/risa.70315",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "6d70a80a284d7b6533cbcf102f8187d08dafd54550a5d9f4c91e29becf1edd98",
+      "fit": "direct",
+      "role": "academic_finding",
+      "module_ids": [
+        "HT-01",
+        "HT-03"
+      ],
+      "quote": "Third, chronic quality-of-life burdens-particularly sleep disruption-are more consistently associated with willingness to pay than are acute health symptoms, while private cooling costs are negatively associated with support for public adaptation, consistent with a crowding-out mechanism that may pose a regressive barrier to equitable financing.",
+      "why": "Empirically assesses how urban residents prioritize and express willingness to pay for heat-health countermeasures, identifying private cooling expenditure as a barrier to supporting public adaptation.",
+      "limitations": "Focuses on stated preferences, contingent valuation, and willingness to pay in Yokohama rather than tracking operational delivery or physical health outcomes of implemented municipal heat plans.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    },
+    {
+      "source_id": "EPMC-2a8170f676f9",
+      "url": "https://doi.org/10.1371/journal.pone.0351352",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "a064f1d50126f20745ac81b63bac34e6d757b819524fc2365c0b91314e116a19",
+      "fit": "adjacent",
+      "role": "academic_finding",
+      "module_ids": [
+        "HT-01",
+        "HT-03"
+      ],
+      "quote": "Library support decreases 4% for every additional mile traveled to a location and is sensitive to extreme heat events.",
+      "why": "Provides empirical evidence on public facility proximity and voting behavior during extreme heat events, relevant to the geographic accessibility of public facilities often designated as cooling centers.",
+      "limitations": "Examines referendum voting patterns and physical access distances for public libraries generally, without directly assessing cooling center operations or heat-health risk reduction.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate"
+    }
+  ],
+  "coverage": {
+    "HT-01": {
+      "perspective": "practical",
+      "direct_source_ids": [
+        "EPMC-0d9b494e45df",
+        "OFFICIAL-194f3653ddf1",
+        "OFFICIAL-985090c409ea",
+        "EPMC-1ed6ebbde1f4"
+      ],
+      "role_matching_source_ids": [
+        "EPMC-0d9b494e45df",
+        "OFFICIAL-985090c409ea",
+        "EPMC-1ed6ebbde1f4"
+      ],
+      "adjacent_source_ids": [
+        "EPMC-2a8170f676f9"
+      ],
+      "direct_roles": [
+        "academic_finding",
+        "practical_problem_report",
+        "program_guidance_or_proposal"
+      ],
+      "source_coverage_status": "role_specific_direct_source",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    },
+    "HT-02": {
+      "perspective": "academic",
+      "direct_source_ids": [
+        "EPMC-29d492c19cd6",
+        "EPMC-0d9b494e45df",
+        "OFFICIAL-985090c409ea"
+      ],
+      "role_matching_source_ids": [
+        "EPMC-0d9b494e45df"
+      ],
+      "adjacent_source_ids": [
+        "EPMC-370b6b99a0eb"
+      ],
+      "direct_roles": [
+        "academic_finding",
+        "practical_problem_report",
+        "program_guidance_or_proposal"
+      ],
+      "source_coverage_status": "role_specific_direct_source",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    },
+    "HT-03": {
+      "perspective": "program",
+      "direct_source_ids": [
+        "EPMC-29d492c19cd6",
+        "OFFICIAL-194f3653ddf1",
+        "EPMC-1ed6ebbde1f4"
+      ],
+      "role_matching_source_ids": [
+        "EPMC-29d492c19cd6",
+        "OFFICIAL-194f3653ddf1"
+      ],
+      "adjacent_source_ids": [
+        "EPMC-ecfa9e0ce808",
+        "EPMC-2a8170f676f9"
+      ],
+      "direct_roles": [
+        "academic_finding",
+        "program_guidance_or_proposal"
+      ],
+      "source_coverage_status": "role_specific_direct_source",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    }
+  },
+  "authority": "candidate_semantic_role_only",
+  "investigation_id": "35a38defab6444de976c",
+  "source_count": 12,
+  "model_provenance": "antigravity:gemini-3.8-flash-medium"
+}

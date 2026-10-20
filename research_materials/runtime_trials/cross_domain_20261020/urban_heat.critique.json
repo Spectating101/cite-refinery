@@ -1,0 +1,215 @@
+{
+  "schema": "cite_refinery.cross_domain_role_critique.v1",
+  "results": [
+    {
+      "source_id": "EPMC-370b6b99a0eb",
+      "url": "https://doi.org/10.3389/fpubh.2026.1887205",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "e273ce58f7d2b6e0e9429cd1f0f8d5c7570c252bb8f03b1f44f213d1f2d95827",
+      "fit": "adjacent",
+      "role": "academic_finding",
+      "module_ids": [
+        "HT-02"
+      ],
+      "quote": "The results show that the response of PH to CR is first actively adapted and then significantly inhibited, showing a significant inverted U-shaped relationship.",
+      "why": "Reports empirical modeling findings on the nonlinear macro relationship between provincial climate risks and public health in China, including moderating factors like green space.",
+      "limitations": "Analyzes macro-provincial climate risk indices rather than urban extreme heat alerts, cooling centers, or direct municipal heat action plan interventions.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "academic_finding",
+      "critic_action": "affirm",
+      "critic_reason": "The text presents empirical modeling results from an academic study analyzing the nonlinear relationship between provincial climate risks and public health."
+    },
+    {
+      "source_id": "EPMC-29d492c19cd6",
+      "url": "https://doi.org/10.1093/ehjacc/zuae113",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "febd5ef92deaaddb5c7220c09144c4a8facd40f86108ec63ff0414291a464c7b",
+      "fit": "direct",
+      "role": "program_guidance_or_proposal",
+      "module_ids": [
+        "HT-02",
+        "HT-03"
+      ],
+      "quote": "The World Health Organization recommends implementing heat-health action plans, which include early warning systems, public education on recognizing heat-related symptoms, and guidelines for adjusting medications during heatwaves.",
+      "why": "Reviews cardiovascular vulnerability to extreme temperatures and cites normative WHO recommendations for implementing heat-health action plans and warning systems.",
+      "limitations": "Synthesizes guidance and recommendations; does not document actual city-level operational deployment or independently evaluate health outcomes.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "program_guidance_or_proposal",
+      "critic_action": "affirm",
+      "critic_reason": "The quote and text specifically report normative recommendations and guidance from the WHO for heat-health action plans and clinical care."
+    },
+    {
+      "source_id": "EPMC-ecfa9e0ce808",
+      "url": "https://doi.org/10.3389/fpubh.2026.1986768",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "53d6b96f0b29aa0409131eb3248b5634a76526975bfe1130ebd5a731556a0dd8",
+      "fit": "adjacent",
+      "role": "academic_method",
+      "module_ids": [
+        "HT-03"
+      ],
+      "quote": "We develop a three-actor linear-quadratic differential game with gross event heat-risk pressure and accumulated adaptive capacity as state variables.",
+      "why": "Presents a theoretical game-theoretic modeling framework and simulation method to explore early warning lead times and cost-sharing coordination for heat adaptation.",
+      "limitations": "Provides a theoretical mathematical model with simulated parameters; does not measure real-world municipal heat action plan implementation or empirical public health impacts.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "academic_method",
+      "critic_action": "affirm",
+      "critic_reason": "The text outlines the development of a theoretical differential game-theoretic method and simulation framework for heat adaptation."
+    },
+    {
+      "source_id": "EPMC-0d9b494e45df",
+      "url": "https://doi.org/10.1007/s00281-026-01085-w",
+      "origin_type": "scholarly_abstract_lead",
+      "source_sha256": "25b85ae8df4cff1354ad9f98df7c8453f63e44b7f5cdd5541fbec6ad8d38cc7e",
+      "fit": "direct",
+      "role": "academic_finding",
+      "module_ids": [
+        "HT-02",
+        "HT-03"
+      ],
+      "quote": "In this narrative review, we synthesize epidemiological, mechanistic, and systems-level evidence linking heat and cold exposure to chronic cardiovascular outcomes, with a focus on ischemic heart disease, stroke, heart failure, and arrhythmias.",
+      "why": "Synthesizes epidemiological risk evidence linking extreme temperature exposure to cardiovascular morbidity and mortality, while discussing the scope of action plans.",
+      "limitations": "Narrative review of existing academic literature; does not report primary empirical evaluation of specific implemented municipal cooling interventions or action plans.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "academic_finding",
+      "critic_action": "affirm",
+      "critic_reason": "The text is an academic review synthesizing epidemiological and mechanistic evidence linking non-optimal temperatures to cardiovascular outcomes."
+    },
+    {
+      "source_id": "OFFICIAL-87e7e0a1013e",
+      "url": "https://www.who.int/tools/compendium-on-health-and-environment/solid-waste",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "8b262a48d02d46fc9940df7b801a74b5eac331ce62c9ac28dd36733330473bc7",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Focuses entirely on solid waste, e-waste, and associated infectious or chemical health hazards, with no discussion of extreme heat, cooling access, or heat action plans.",
+      "limitations": "Contains no information regarding heat exposure, epidemiological heat risks, or extreme-heat response programs.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "off_topic",
+      "critic_action": "affirm",
+      "critic_reason": "The content covers solid waste and electronic waste management, with no discussion of extreme heat or heat-related health interventions."
+    },
+    {
+      "source_id": "OFFICIAL-711eb59fea89",
+      "url": "https://extranet.who.int/agefriendlyworld/afp/poznan-viva-senior/",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "b8040379a9b2a69b9124fdc869436b9b643e5875cc607e0add701df90ca858ff",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Details municipal social services for elderly residents in Poznań (such as grave cleaning, handyman services, and transport), completely unrelated to extreme heat or cooling centers.",
+      "limitations": "Does not address extreme heat, heatwaves, thermal vulnerability, or heat health action plans.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "off_topic",
+      "critic_action": "affirm",
+      "critic_reason": "The source describes municipal elder services such as grave maintenance and senior transport in Poznan, which is unrelated to extreme heat."
+    },
+    {
+      "source_id": "OFFICIAL-b67462393768",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/urban-health",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "b2f74664bfbae232aa927b64953506e3377719e2732a07a05056220f29b6fd7f",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "General WHO urban health fact sheet covering COVID-19, road traffic injuries, sanitation, and governance without addressing heat alerts, cooling centers, or heat action plans.",
+      "limitations": "Does not assess extreme heat exposure, temperature-related mortality, or municipal extreme-heat interventions.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "off_topic",
+      "critic_action": "affirm",
+      "critic_reason": "The document provides high-level WHO guidance on urban health, infectious diseases, and sanitation without addressing heat action plans."
+    },
+    {
+      "source_id": "OFFICIAL-f5a57b7efc4c",
+      "url": "https://www.who.int/news-room/feature-stories/detail/what-are-the-who-air-quality-guidelines",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "source_sha256": "1d023e520e3b69e9ef24a3a5ca87b0985af880b028f1ddc1fa87527b8c0523b2",
+      "fit": "off_topic",
+      "role": "off_topic",
+      "module_ids": [],
+      "quote": "",
+      "why": "Describes WHO Air Quality Guidelines and air pollution limits, with no content addressing extreme heat, cooling access, or heat action plans.",
+      "limitations": "Provides no evidence regarding heat-related health risks, heat alerts, or heat action plan implementation.",
+      "source_identity_boundary": "Publisher website and source citation do not independently establish truth or implementation.",
+      "authority": "neutral_semantic_role_candidate",
+      "pre_critique_role": "off_topic",
+      "critic_action": "affirm",
+      "critic_reason": "The text discusses WHO air quality guidelines and air pollution limits, containing no content related to extreme heat response or cooling."
+    }
+  ],
+  "coverage": {
+    "HT-01": {
+      "perspective": "practical",
+      "direct_source_ids": [],
+      "role_matching_source_ids": [],
+      "adjacent_source_ids": [],
+      "direct_roles": [],
+      "source_coverage_status": "gap_no_direct_source",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    },
+    "HT-02": {
+      "perspective": "academic",
+      "direct_source_ids": [
+        "EPMC-29d492c19cd6",
+        "EPMC-0d9b494e45df"
+      ],
+      "role_matching_source_ids": [
+        "EPMC-0d9b494e45df"
+      ],
+      "adjacent_source_ids": [
+        "EPMC-370b6b99a0eb"
+      ],
+      "direct_roles": [
+        "academic_finding",
+        "program_guidance_or_proposal"
+      ],
+      "source_coverage_status": "role_specific_direct_source",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    },
+    "HT-03": {
+      "perspective": "program",
+      "direct_source_ids": [
+        "EPMC-29d492c19cd6",
+        "EPMC-0d9b494e45df"
+      ],
+      "role_matching_source_ids": [
+        "EPMC-29d492c19cd6"
+      ],
+      "adjacent_source_ids": [
+        "EPMC-ecfa9e0ce808"
+      ],
+      "direct_roles": [
+        "academic_finding",
+        "program_guidance_or_proposal"
+      ],
+      "source_coverage_status": "role_specific_direct_source",
+      "implementation_reported_in_source": false,
+      "measured_outcome_reported_in_source": false,
+      "implementation_independently_verified": false,
+      "independent_field_replication": false
+    }
+  },
+  "critic_independence": "separate_call_same_model_family_not_independent_validation",
+  "authority": "neutral_role_candidates_no_scientific_promotion",
+  "inference_limitation": "Critic-reviewed role is not independent verification of a source statement, actual program implementation, causal attribution or measured intervention benefit.",
+  "investigation_id": "35a38defab6444de976c",
+  "original_model": "antigravity:gemini-3.8-flash-medium",
+  "critic_model": "antigravity:gemini-3.8-flash-high"
+}

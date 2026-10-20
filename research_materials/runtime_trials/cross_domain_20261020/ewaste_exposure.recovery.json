@@ -1,0 +1,77 @@
+{
+  "schema": "cite_refinery.semantic_evidence_recovery.v1",
+  "domain": "ewaste_exposure",
+  "investigation_id": "0e2de03f44254d79b742",
+  "plan": {
+    "focus": "Locating empirical field observations of informal e-waste burning and dismantling practices alongside audited outcome evaluations from implemented formal worker protection and collection programs.",
+    "reason": "Prior discovery yielded broad background guidance and research methodologies rather than concrete field-level evidence of informal recycling site exposures (EW-01) or post-implementation outcome assessments of formalization initiatives (EW-03).",
+    "hypotheses": [
+      "Direct observational field studies in recognized informal hubs document specific open burning practices and adjacent residential contamination metrics that general academic surveys omit.",
+      "Targeted institutional pilot evaluations document quantifiable changes in worker toxicant burdens or dust exposure following the introduction of formal dismantling tools or designated collection centers."
+    ],
+    "queries": [
+      {
+        "lane": "academic",
+        "query": "informal e-waste open burning field assessment community toxicant exposure"
+      },
+      {
+        "lane": "academic",
+        "query": "e-waste informal recyclers safe dismantling intervention measured exposure reduction"
+      },
+      {
+        "lane": "official",
+        "query": "informal e-waste formalization pilot project final evaluation report"
+      },
+      {
+        "lane": "official",
+        "query": "e-waste recycling safe collection initiative worker health outcome assessment"
+      }
+    ]
+  },
+  "new_sources": [
+    {
+      "id": "EPMC-9a76e6e3c6b5",
+      "url": "https://doi.org/10.3390/toxics13121048",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "25f94480555353c4fa1fa631b34dd535a83e1784ca66b809319b073c895f4893"
+    },
+    {
+      "id": "EPMC-1abc78b38e72",
+      "url": "https://doi.org/10.1186/s12982-026-01531-y",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "0cd88e04b6059518a21cc359c20947ccd3d36b0c495cc23e81263dd599ab4265"
+    },
+    {
+      "id": "EPMC-02c902bca5bf",
+      "url": "https://doi.org/10.5271/sjweh.4259",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "f2cf35da5f9438619193cc4b7de404ca3ff2567577e64615f956a47f2362cea0"
+    },
+    {
+      "id": "EPMC-b8135b14aae8",
+      "url": "https://doi.org/10.1039/d5ra05845g",
+      "origin_type": "scholarly_abstract_lead",
+      "passage_sha256": "6a5a0b8f1dfff7ac76c3a4fc929ecb4d8249a058fe54a4e7b384306632f48236"
+    },
+    {
+      "id": "OFFICIAL-1e4d6dd3841e",
+      "url": "https://www.who.int/europe/news/item/27-10-2025-who-launches-new-online-course-to-support-informal-caregivers-across-europe",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "passage_sha256": "3691eecac192b6a8eeaa72fa62c7fa339e5249995013f1f1b81902459bedd6fe"
+    },
+    {
+      "id": "OFFICIAL-b615fda3bf67",
+      "url": "https://wkc.who.int/resources/news/item/01-10-2024-supporting-informal-long-term-caregivers-for-older-people",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "passage_sha256": "47bb2b6e7c3d9d0247bfbc5b716827ac431ffc7d980029e1c78b76eb93440d39"
+    },
+    {
+      "id": "OFFICIAL-ac48369a71d0",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/electronic-waste-(e-waste)",
+      "origin_type": "official_webpage_excerpt_unverified",
+      "passage_sha256": "5e43f4777389040da60bdb9f33eba7b0f64a018f2ad9abf3295b7156715294b2"
+    }
+  ],
+  "search_failures": [],
+  "note": "Publisher text locally retained, not accepted as evidence until semantic role review."
+}

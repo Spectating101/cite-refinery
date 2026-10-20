@@ -1,0 +1,10 @@
+{
+  "schema": "cite_refinery.cross_domain_graph_receipt.v1",
+  "domain": "ewaste_exposure",
+  "investigation_id": "0e2de03f44254d79b742",
+  "graph_receipt_id": "sgpacket:842509edad9e482f",
+  "neutral_nodes": 10,
+  "candidate_or_unresolved_edges": 9,
+  "authoritative_claims_accepted": 0,
+  "same_model_family_review": true
+}

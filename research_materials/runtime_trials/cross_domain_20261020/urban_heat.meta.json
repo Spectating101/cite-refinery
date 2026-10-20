@@ -1,0 +1,10 @@
+{
+  "domain": "urban_heat",
+  "investigation_id": "35a38defab6444de976c",
+  "ontology_module_ids": [
+    "HT-01",
+    "HT-02",
+    "HT-03"
+  ],
+  "sources_preselected": false
+}
