@@ -2,6 +2,7 @@
 from __future__ import annotations
 import json
 import subprocess
+import tempfile
 import unittest
 from unittest.mock import patch
 from cite_refinery.external_llm_runtime import invoke_semantic_llm, LLMUnavailable
@@ -29,7 +30,8 @@ class AntigravityBackendTests(unittest.TestCase):
         self.assertIn("--print-timeout",argv)
         self.assertEqual(argv[argv.index("--print-timeout")+1],"85s")
         self.assertIn("Do not use tools.",argv[-1])
-        self.assertTrue(kw["cwd"].startswith("/tmp/"))
+        self.assertTrue(kw["cwd"].startswith(tempfile.gettempdir()))
+        self.assertIn("cite-refinery-readonly-llm-",kw["cwd"])
         self.assertEqual(kw["input"],"")
         self.assertEqual(result["raw"]["decision"],"inconclusive")
 

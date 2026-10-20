@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import subprocess
+import tempfile
 import unittest
 from unittest.mock import patch
 from cite_refinery.external_llm_runtime import invoke_semantic_llm,LLMUnavailable
@@ -14,7 +15,8 @@ class CodexBackendTests(unittest.TestCase):
         def fake_run(command, **kwargs):
             commands.append(command)
             self.assertEqual(kwargs['input'], '')
-            self.assertTrue(kwargs['cwd'].startswith('/tmp/'))
+            self.assertTrue(kwargs['cwd'].startswith(tempfile.gettempdir()))
+            self.assertIn('cite-refinery-readonly-llm-', kwargs['cwd'])
             destination=Path(command[command.index('--output-last-message')+1])
             destination.write_text(json.dumps({'focus':'An exact bounded investigation of dog population observability',
                 'queries':[{'lane':'academic','query':'dog population census'},

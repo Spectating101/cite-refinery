@@ -75,5 +75,5 @@ where = ["src"]
 cite_refinery = ["private_evolution_assets/*.html", "private_evolution_assets/*.css", "private_evolution_assets/*.js", "vendor/*.js", "vendor/*.txt"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 testpaths = ["tests"]

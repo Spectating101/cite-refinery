@@ -10,7 +10,7 @@ from cite_refinery.external_llm_runtime import (
 )
 from cite_refinery.investigation_controller import InvestigationController
 from test_investigation_controller_v1 import MODULES
-from tempfile import TemporaryDirectory
+from tempfile import TemporaryDirectory, gettempdir
 
 PROMPT="Find distinct scholarly and institutional evidence for the dog population census and give an evidence-bounded JSON research planning response. "*3
 
@@ -41,7 +41,8 @@ class GithubCopilotBackendTests(unittest.TestCase):
         self.assertNotIn('--add-dir',argv)
         self.assertNotIn('--enable-memory',argv)
         self.assertEqual(options['input'],"")
-        self.assertTrue(options['cwd'].startswith("/tmp/"))
+        self.assertTrue(options['cwd'].startswith(gettempdir()))
+        self.assertIn("cite-refinery-readonly-llm-",options['cwd'])
         self.assertEqual(result['raw']['queries'][0]['lane'],'academic')
         self.assertEqual(result['provider'],'copilot')
         self.assertEqual(result['model'],'auto')

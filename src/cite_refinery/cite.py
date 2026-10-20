@@ -32,16 +32,32 @@ class UnavailableCiteAdapter:
         )
 
 
-class CiteAgentCLIAdapter:
-    """Adapter for Cite-Agent's real `tool ground` command.
+_STATUSES = {"completed", "not_run", "error"}
 
-    Set CITE_AGENT_COMMAND to override the executable, e.g.
-    `python -m cite_agent.cli`. The claim is passed as one argv element, never via
-    a shell, so project text cannot become shell syntax.
+
+def _summary(parsed: dict[str, Any]) -> str:
+    claims = parsed.get("claims") or []
+    counts: dict[str, int] = {}
+    for claim in claims:
+        verdict = str(claim.get("verdict") or "unknown")
+        counts[verdict] = counts.get(verdict, 0) + 1
+    detail = ", ".join(f"{n} {verdict}" for verdict, n in sorted(counts.items()))
+    return f"{len(claims)} claim(s): {detail}" if claims else str(parsed.get("error") or "no claims judged")
+
+
+class CiteAgentCLIAdapter:
+    """Adapter for Cite-Agent's JSON literature layer: `cite-agent-research ground <text>`.
+
+    Set CITE_AGENT_RESEARCH_COMMAND to override the executable, e.g.
+    `/path/to/Cite-Agent/.venv/bin/python -m cite_agent.research_cli`. The text is passed as one argv
+    element, never via a shell. The command prints JSON only and exits 0 (completed), 3 (not run) or
+    2 (error); a verdict other than not_found always carries a quote found verbatim in a paper abstract.
     """
 
-    def __init__(self, command: str | None = None, timeout: int = 180) -> None:
-        raw_command = command or os.environ.get("CITE_AGENT_COMMAND", "cite-agent")
+    engine = "cite-agent-research:ground"
+
+    def __init__(self, command: str | None = None, timeout: int = 900) -> None:
+        raw_command = command or os.environ.get("CITE_AGENT_RESEARCH_COMMAND", "cite-agent-research")
         self.command = shlex.split(raw_command)
         self.timeout = timeout
 
@@ -54,32 +70,22 @@ class CiteAgentCLIAdapter:
     def ground(self, text: str) -> CiteAuditResult:
         if not self.available():
             return UnavailableCiteAdapter().ground(text)
-        proc = subprocess.run(
-            [*self.command, "tool", "ground", text],
-            capture_output=True,
-            text=True,
-            timeout=self.timeout,
-            check=False,
-        )
-        raw = (proc.stdout or "").strip()
-        stderr = (proc.stderr or "").strip()
-        if proc.returncode != 0:
-            return CiteAuditResult(
-                engine="cite-agent:ground_claims",
-                status="error",
-                raw=stderr or raw or f"Cite-Agent exited with code {proc.returncode}",
+        try:
+            proc = subprocess.run(
+                [*self.command, "ground", text],
+                capture_output=True, text=True, timeout=self.timeout, check=False,
             )
-        structured: dict[str, Any] | list[Any] | None = None
-        if raw:
-            try:
-                parsed = json.loads(raw)
-                if isinstance(parsed, (dict, list)):
-                    structured = parsed
-            except json.JSONDecodeError:
-                pass
-        return CiteAuditResult(
-            engine="cite-agent:ground_claims",
-            status="completed",
-            raw=raw or "Cite-Agent completed with no textual output.",
-            structured=structured,
-        )
+        except subprocess.TimeoutExpired:
+            return CiteAuditResult(engine=self.engine, status="error", raw=f"Cite-Agent timed out after {self.timeout}s")
+        try:
+            parsed = json.loads(proc.stdout or "")
+        except json.JSONDecodeError:
+            parsed = None
+        if not isinstance(parsed, dict):
+            detail = (proc.stderr or proc.stdout or "").strip()[-500:]
+            return CiteAuditResult(engine=self.engine, status="error",
+                                   raw=f"Cite-Agent returned no JSON (exit {proc.returncode}). {detail}".strip())
+        status = parsed.get("status") if parsed.get("status") in _STATUSES else "error"
+        if status == "completed" and proc.returncode != 0:
+            status = "error"
+        return CiteAuditResult(engine=self.engine, status=status, raw=_summary(parsed), structured=parsed)

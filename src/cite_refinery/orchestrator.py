@@ -92,12 +92,25 @@ class CiteRefinery:
         )
         state = self.store.load()
         state["audits"][audit.id] = dump_model(audit)
+        judged = (result.structured or {}).get("claims") if isinstance(result.structured, dict) else None
+        by_text = {
+            " ".join(str(item.get("claim") or "").split()).lower(): item
+            for item in (judged if isinstance(judged, list) else [])
+            if isinstance(item, dict)
+        }
         for claim in claims:
+            verdict = by_text.get(" ".join(claim["text"].split()).lower())
             stored = state["claims"][claim["id"]]
             stored.setdefault("audit_ids", []).append(audit.id)
             # "audited" means a grounding pass ran. It intentionally does not mean supported.
             if result.status == "completed":
                 stored["status"] = "audited"
+                if isinstance(verdict, dict):
+                    stored["grounding"] = {
+                        "audit_id": audit.id,
+                        "verdict": verdict.get("verdict"),
+                        "evidence_count": len(verdict.get("evidence") or []),
+                    }
         self.store.save(state)
         self._event(project_id, "cite.grounded", {"audit_id": audit.id, "status": audit.status})
         return audit
