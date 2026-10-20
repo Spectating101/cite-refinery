@@ -1,0 +1,118 @@
+{
+  "schema": "cite_refinery.operator_github_snapshot.v1",
+  "collected_at_utc": "2026-10-20T19:57:12.948359+00:00",
+  "repositories": {
+    "lingrany/EverBatt-LFP-Recycling-Analysis": {
+      "full_name": "lingrany/EverBatt-LFP-Recycling-Analysis",
+      "url": "https://github.com/lingrany/EverBatt-LFP-Recycling-Analysis",
+      "default_branch": "master",
+      "current_pushed_at": "2026-10-11T04:26:38Z",
+      "archived": false,
+      "disabled": false,
+      "license_spdx_metadata": "MIT",
+      "license_metadata_is_legal_clearance": false,
+      "source": "public_github_rest_repo",
+      "issues": {},
+      "pull_requests": {}
+    },
+    "WeixuanZ/flood-warning-system": {
+      "full_name": "WeixuanZ/flood-warning-system",
+      "url": "https://github.com/WeixuanZ/flood-warning-system",
+      "default_branch": "master",
+      "current_pushed_at": "2023-03-13T14:40:06Z",
+      "archived": false,
+      "disabled": false,
+      "license_spdx_metadata": "MIT",
+      "license_metadata_is_legal_clearance": false,
+      "source": "public_github_rest_repo",
+      "issues": {},
+      "pull_requests": {}
+    },
+    "ajlongshanks/co2_esphome": {
+      "full_name": "ajlongshanks/co2_esphome",
+      "url": "https://github.com/ajlongshanks/co2_esphome",
+      "default_branch": "main",
+      "current_pushed_at": "2021-08-04T11:06:13Z",
+      "archived": false,
+      "disabled": false,
+      "license_spdx_metadata": null,
+      "license_metadata_is_legal_clearance": false,
+      "source": "public_github_rest_repo",
+      "issues": {},
+      "pull_requests": {
+        "1": {
+          "number": 1,
+          "title": "Create LICENSE",
+          "state": "open",
+          "created_at": "2021-07-31T11:15:13Z",
+          "updated_at": "2021-07-31T11:15:13Z",
+          "url": "https://github.com/ajlongshanks/co2_esphome/pull/1",
+          "unassigned": true,
+          "labels": [],
+          "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "body_not_published_in_report": true,
+          "source": "public_github_rest_issue_or_pr"
+        }
+      }
+    },
+    "openfoodfoundation/openfoodnetwork": {
+      "full_name": "openfoodfoundation/openfoodnetwork",
+      "url": "https://github.com/openfoodfoundation/openfoodnetwork",
+      "default_branch": "master",
+      "current_pushed_at": "2026-10-20T17:56:49Z",
+      "archived": false,
+      "disabled": false,
+      "license_spdx_metadata": "AGPL-3.0",
+      "license_metadata_is_legal_clearance": false,
+      "source": "public_github_rest_repo",
+      "issues": {
+        "14924": {
+          "number": 14924,
+          "title": "Map opens on the wrong area (one mis-geocoded enterprise moves the centre; zoom is hard-coded)",
+          "state": "open",
+          "created_at": "2026-10-20T15:12:53Z",
+          "updated_at": "2026-10-20T15:12:58Z",
+          "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+          "unassigned": true,
+          "labels": [
+            "bug-s3"
+          ],
+          "body_sha256": "857c837509322c80a9e3c4df51c91331dc67716cf309a46e7e80724bc12b0e06",
+          "body_not_published_in_report": true,
+          "source": "public_github_rest_issue_or_pr"
+        }
+      },
+      "pull_requests": {}
+    },
+    "foodcoops/foodsoft": {
+      "full_name": "foodcoops/foodsoft",
+      "url": "https://github.com/foodcoops/foodsoft",
+      "default_branch": "master",
+      "current_pushed_at": "2026-10-17T10:13:29Z",
+      "archived": false,
+      "disabled": false,
+      "license_spdx_metadata": "NOASSERTION",
+      "license_metadata_is_legal_clearance": false,
+      "source": "public_github_rest_repo",
+      "issues": {
+        "1368": {
+          "number": 1368,
+          "title": "rounding inaccuracies in ordered_quantities_different_from_group_orders?",
+          "state": "open",
+          "created_at": "2026-10-18T09:08:21Z",
+          "updated_at": "2026-10-18T16:20:45Z",
+          "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+          "unassigned": true,
+          "labels": [],
+          "body_sha256": "c8e00b006d9562316530f52a6b51313537e19b95e93cfbf502108492304f7d7a",
+          "body_not_published_in_report": true,
+          "source": "public_github_rest_issue_or_pr"
+        }
+      },
+      "pull_requests": {}
+    }
+  },
+  "method": "Read-only authenticated GitHub API; current states are a snapshot, not a promise of future availability.",
+  "no_maintainer_contact": true,
+  "no_payment_or_contract_sourcing": true
+}
