@@ -219,5 +219,55 @@ class NativeGuardAndTraversalTests(unittest.TestCase):
         self.assertTrue(doc["coverage"]["implementation"])
         self.assertEqual(doc["root_id"],one["id"])
 
+    def test_native_packet_attaches_semantic_and_functional_diagnostics_without_promotion(self):
+        sem_review=json.loads((ROOT/"academic_semantic_review_queue.json").read_text(encoding="utf-8"))
+        func_overlay=json.loads((ROOT/"functional_three_layer_overlay.json").read_text(encoding="utf-8"))
+        packet=as_packet(atlas(),self.project.id,semantic_review=sem_review,functional_overlay=func_overlay)
+        self.assertEqual(packet["conversion_metadata"]["semantic_reviews_attached"],8)
+        self.assertEqual(packet["conversion_metadata"]["functional_trials_attached"],3)
+        self.assertEqual(packet["conversion_metadata"]["reproduced_component_defects"],3)
+        self.assertTrue(all(e["status"] in {"candidate","not_established"} for e in packet["edges"]))
+        preview=self.graph.preview_packet(self.project.id,packet)
+        self.graph.ingest_packet(self.project.id,packet,expected_state_digest=preview["state_digest"])
+        state=self.app.store.load()
+        by_key={n["external_key"].split(":",1)[1]:n["id"]
+                for n in state["semantic_nodes"].values()
+                if n["project_id"]==self.project.id and
+                n.get("external_key","").startswith("three_layer_atlas_candidate_import_v1:")}
+        root=by_key["problem:battery_recycling_economics"]
+        inv=self.graph.investigate_three_layers(self.project.id,root,max_depth=2)
+        self.assertEqual(inv["evidence_diagnostics"]["semantic_reviews_in_subgraph"],1)
+        self.assertEqual(inv["evidence_diagnostics"]["functional_trials_in_subgraph"],1)
+        self.assertEqual(inv["evidence_diagnostics"]["reproduced_component_defects_in_subgraph"],1)
+        acad_node=inv["three_layers"]["academic"][0]
+        impl_node=inv["three_layers"]["implementation"][0]
+        self.assertIn("semantic_entailment_review",acad_node)
+        self.assertIn("functional_component_trial",impl_node)
+        self.assertTrue(impl_node["functional_component_trial"]["reproducible_component_defect_detected"])
+
+    def test_three_layer_ingest_cli_previews_and_applies_with_digests(self):
+        atlas_path=ROOT/"three_layer_unified_atlas.json"
+        sem_path=ROOT/"academic_semantic_review_queue.json"
+        func_path=ROOT/"functional_three_layer_overlay.json"
+        preview_out=StringIO()
+        with redirect_stdout(preview_out):
+            rc=main(["three-layer-ingest","--workspace",self.tmp.name,self.project.id,
+                     "--atlas",str(atlas_path),"--semantic-review",str(sem_path),
+                     "--functional-overlay",str(func_path)])
+        self.assertEqual(rc,0)
+        preview=json.loads(preview_out.getvalue())
+        self.assertEqual(preview["action"],"preview_only")
+        apply_out=StringIO()
+        with redirect_stdout(apply_out):
+            rc2=main(["three-layer-ingest","--workspace",self.tmp.name,self.project.id,
+                      "--atlas",str(atlas_path),"--semantic-review",str(sem_path),
+                      "--functional-overlay",str(func_path),"--apply",
+                      "--expected-state-digest",preview["state_digest"],
+                      "--expected-packet-digest",preview["packet_digest"]])
+        self.assertEqual(rc2,0)
+        applied=json.loads(apply_out.getvalue())
+        self.assertEqual(applied["action"],"applied")
+        self.assertEqual(len(applied["receipt"]["node_ids"]),50)
+
 if __name__=="__main__":
     unittest.main()

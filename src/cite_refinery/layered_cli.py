@@ -130,6 +130,28 @@ def _graph_investigate_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _three_layer_ingest_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery three-layer-ingest")
+    parser.add_argument("--workspace", default=".cite-refinery")
+    parser.add_argument("project_id")
+    parser.add_argument("--atlas", required=True, help="Unified three-layer atlas JSON")
+    parser.add_argument("--semantic-review", help="Optional semantic review queue JSON")
+    parser.add_argument("--functional-overlay", help="Optional functional overlay JSON")
+    parser.add_argument("--apply", action="store_true", help="Commit approved packet")
+    parser.add_argument("--expected-state-digest")
+    parser.add_argument("--expected-packet-digest")
+    return parser
+
+
+def _component_probe_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery component-probe")
+    parser.add_argument("--workspace", default=".cite-refinery")
+    parser.add_argument("project_id")
+    parser.add_argument("--scratch-root", required=True, help="Scratch directory with pinned repo clones")
+    parser.add_argument("--probe", action="append", default=None, help="Specific probe(s): battery, flood, co2")
+    return parser
+
+
 def _graph_coverage_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="cite-refinery graph-coverage")
     parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
@@ -248,6 +270,58 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(scorecard, indent=2, ensure_ascii=False, default=str))
             return 0
         except KeyError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+
+    if "three-layer-ingest" in raw:
+        from .three_layer_native_ingest import as_packet
+        args = _three_layer_ingest_parser().parse_args(_special_args(raw, "three-layer-ingest"))
+        try:
+            atlas_doc = json.loads(Path(args.atlas).read_text(encoding="utf-8"))
+            sem_doc = json.loads(Path(args.semantic_review).read_text(encoding="utf-8")) if args.semantic_review else None
+            func_doc = json.loads(Path(args.functional_overlay).read_text(encoding="utf-8")) if args.functional_overlay else None
+            packet = as_packet(
+                atlas_doc,
+                args.project_id,
+                semantic_review=sem_doc,
+                functional_overlay=func_doc,
+            )
+            graph = SemanticGraph(CiteRefinery(args.workspace).store)
+            preview = graph.preview_packet(args.project_id, packet, packet_ref=str(args.atlas))
+            if args.apply:
+                if not args.expected_state_digest or not args.expected_packet_digest:
+                    raise ValueError("--apply requires both --expected-state-digest and --expected-packet-digest")
+                if preview["packet_digest"] != args.expected_packet_digest:
+                    raise ValueError("packet changed after review; preview again")
+                receipt = graph.ingest_packet(
+                    args.project_id,
+                    packet,
+                    packet_ref=str(args.atlas),
+                    expected_state_digest=args.expected_state_digest,
+                )
+                print(json.dumps({"action": "applied", "receipt": receipt}, indent=2, ensure_ascii=False))
+            else:
+                print(json.dumps({"action": "preview_only", **preview}, indent=2, ensure_ascii=False))
+            return 0
+        except (OSError, json.JSONDecodeError, KeyError, ValueError, TypeError) as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+
+    if "component-probe" in raw:
+        from .functional_component_probes import SubprocessProbeRunner
+        args = _component_probe_parser().parse_args(_special_args(raw, "component-probe"))
+        try:
+            app = CiteRefinery(args.workspace)
+            runner = SubprocessProbeRunner()
+            result = runner.run_into_project(
+                app,
+                args.project_id,
+                Path(args.scratch_root),
+                probes=args.probe,
+            )
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+            return 0
+        except (OSError, json.JSONDecodeError, KeyError, ValueError, RuntimeError) as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 2
 

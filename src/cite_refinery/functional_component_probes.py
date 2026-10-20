@@ -20,6 +20,8 @@ import subprocess
 import sys
 from typing import Any
 
+from .execution import SubprocessExecutor
+
 SCHEMA="cite_refinery.functional_component_trials.v1"
 REVISIONS={
     "lingrany__EverBatt-LFP-Recycling-Analysis":"246c4d478f9ceb05c580856720ca56a66064e205",
@@ -263,6 +265,124 @@ def aggregate(probes:list[dict[str,Any]])->dict[str,Any]:
         "execution_safety":"Manual source review before import; research scratch clones and local interpreter on authorized device, NOT OS-level network/isolation sandbox.",
     }
 
+
+PROBE_REGISTRY = {
+    "battery": battery,
+    "flood": flood,
+    "co2": co2,
+}
+
+
+class SubprocessProbeRunner:
+    """Execute functional component probes in an isolated child process and optionally record Cite-Refinery rrun/rexp provenance."""
+
+    def __init__(self, executor: SubprocessExecutor | None = None, timeout_seconds: float = 60.0) -> None:
+        self.executor = executor or SubprocessExecutor()
+        self.timeout_seconds = timeout_seconds
+
+    def invocation_spec(self) -> dict[str, Any]:
+        src_root = str(Path(__file__).resolve().parents[1])
+        return {
+            "argv": [
+                sys.executable,
+                "-c",
+                f"import sys; sys.path.insert(0, {src_root!r}); from cite_refinery.functional_component_probes import main; raise SystemExit(main(['--worker-stdin']))",
+            ],
+            "input_mode": "json_stdin",
+            "timeout_seconds": self.timeout_seconds,
+        }
+
+    def run_probe_isolated(
+        self,
+        scratch_root: Path,
+        probe_name: str,
+        *,
+        revision_overrides: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
+        if probe_name not in PROBE_REGISTRY:
+            raise ValueError(f"unknown functional probe: {probe_name}")
+        res = self.executor.execute(
+            self.invocation_spec(),
+            {
+                "scratch_root": str(scratch_root),
+                "probe": probe_name,
+                "revision_overrides": revision_overrides or {},
+            },
+        )
+        if res.status != "succeeded" or not isinstance(res.output, dict) or "asset_id" not in res.output:
+            detail = (res.stderr or res.stdout or "isolated probe failed").strip()
+            raise RuntimeError(f"isolated subprocess probe {probe_name} failed: {detail}")
+        probe = dict(res.output)
+        probe["isolated_subprocess"] = True
+        probe["duration_ms"] = res.duration_ms
+        return probe
+
+    def run_into_project(
+        self,
+        app: Any,
+        project_id: str,
+        scratch_root: Path,
+        *,
+        probes: list[str] | None = None,
+        revision_overrides: dict[str, str] | None = None,
+    ) -> dict[str, Any]:
+        selected = probes or ["battery", "flood", "co2"]
+        results: list[dict[str, Any]] = []
+        for name in selected:
+            if name not in PROBE_REGISTRY:
+                raise ValueError(f"unknown functional probe: {name}")
+            cap = app.refinery.register_capability(
+                project_id=project_id,
+                name=f"Functional probe: {name}",
+                description=f"Bounded synthetic/static component probe for {name}",
+                tags=["functional_probe", name],
+            )
+            impl = app.refinery.register_implementation(
+                capability_id=cap.id,
+                project_id=project_id,
+                provider="subprocess",
+                invocation=self.invocation_spec(),
+            )
+            run = app.invoke(
+                project_id,
+                impl.id,
+                input_data={
+                    "scratch_root": str(scratch_root),
+                    "probe": name,
+                    "revision_overrides": revision_overrides or {},
+                },
+            )
+            if run.status != "succeeded" or not isinstance(run.output, dict) or "asset_id" not in run.output:
+                raise RuntimeError(f"project subprocess probe {name} failed (run {run.id}): {run.stderr}")
+            probe_data = dict(run.output)
+            counts = Counter(c["status"] for c in probe_data["cases"])
+            has_defect_or_gap = bool(counts["fail"] or counts["blocked"] or counts["not_tested"])
+            verdict = "failed" if has_defect_or_gap else "passed"
+            exp = app.add_experiment(
+                project_id,
+                name=f"Component requirement trial: {probe_data['asset_id']}",
+                method=probe_data["execution"],
+                result=f"counts={dict(counts)}; promotion_allowed=False",
+                verdict=verdict,
+                metrics={
+                    "pass": counts.get("pass", 0),
+                    "fail": counts.get("fail", 0),
+                    "blocked": counts.get("blocked", 0),
+                    "not_tested": counts.get("not_tested", 0),
+                },
+                run_ids=[run.id],
+            )
+            probe_data["refinery_provenance"] = {
+                "project_id": project_id,
+                "capability_id": cap.id,
+                "implementation_id": impl.id,
+                "run_id": run.id,
+                "experiment_id": exp.id,
+                "experiment_verdict": verdict,
+            }
+            results.append(probe_data)
+        return aggregate(results)
+
 def render_md(data:dict[str,Any])->str:
     if data.get("schema")!=SCHEMA:raise ValueError("unrecognized trial product")
     out=["# Functional component verification: executable evidence vs operational promise","",
@@ -296,12 +416,32 @@ def render_md(data:dict[str,Any])->str:
     return "\n".join(out)
 
 def main(argv:list[str]|None=None)->int:
+    if argv is None and "--worker-stdin" in sys.argv[1:] or (argv is not None and "--worker-stdin" in argv):
+        payload = json.loads(sys.stdin.read() or "{}")
+        probe_name = payload.get("probe")
+        scratch_root = Path(payload.get("scratch_root", ""))
+        overrides = payload.get("revision_overrides") or {}
+        if isinstance(overrides, dict):
+            for k, v in overrides.items():
+                if k in REVISIONS and isinstance(v, str) and len(v) == 40:
+                    REVISIONS[k] = v
+        if probe_name not in PROBE_REGISTRY:
+            raise ValueError(f"unknown worker probe: {probe_name}")
+        out = PROBE_REGISTRY[probe_name](scratch_root)
+        print(json.dumps(out, ensure_ascii=False), flush=True)
+        return 0
     p=argparse.ArgumentParser(prog="cite-refinery-functional-probes")
     p.add_argument("--scratch-root",type=Path,required=True)
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--markdown",type=Path,required=True)
+    p.add_argument("--isolated-subprocess",action="store_true",help="Run each probe in an isolated child process")
     args=p.parse_args(argv)
-    result=aggregate([battery(args.scratch_root),flood(args.scratch_root),co2(args.scratch_root)])
+    if args.isolated_subprocess:
+        runner=SubprocessProbeRunner()
+        probes=[runner.run_probe_isolated(args.scratch_root,name) for name in ("battery","flood","co2")]
+    else:
+        probes=[battery(args.scratch_root),flood(args.scratch_root),co2(args.scratch_root)]
+    result=aggregate(probes)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
     args.markdown.write_text(render_md(result),encoding="utf-8")

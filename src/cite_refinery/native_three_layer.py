@@ -98,15 +98,32 @@ def investigate(state:dict[str,Any],project_id:str,node_id:str, *,
                 q.append(other)
         if truncated:break
     rows=[]
+    semantic_reviews_count=0
+    functional_trials_count=0
+    component_defects_count=0
     for key,depth in sorted(seen.items(),key=lambda v:(v[1],v[0])):
         n=own[key]
-        rows.append({
+        receipts=n.get("provenance_receipts",[]) if isinstance(n.get("provenance_receipts"),list) else []
+        sem_review=next((r.get("semantic_entailment_review") for r in reversed(receipts)
+                         if isinstance(r,dict) and isinstance(r.get("semantic_entailment_review"),dict)),None)
+        func_trial=next((r.get("functional_component_trial") for r in reversed(receipts)
+                         if isinstance(r,dict) and isinstance(r.get("functional_component_trial"),dict)),None)
+        row:dict[str,Any]={
             "id":key,"kind":n.get("kind"),"layer":_concept_layer(n),
             "native_layer":n.get("layer"),"statement":n.get("statement"),
             "source_refs":n.get("source_refs",[]),
             "depth":depth,
             "provenance_status":"stored_graph_record_not_independently_verified",
-        })
+        }
+        if sem_review is not None:
+            row["semantic_entailment_review"]=sem_review
+            semantic_reviews_count+=1
+        if func_trial is not None:
+            row["functional_component_trial"]=func_trial
+            functional_trials_count+=1
+            if func_trial.get("reproducible_component_defect_detected"):
+                component_defects_count+=1
+        rows.append(row)
     layer_groups={layer:[n for n in rows if n["layer"]==layer] for layer in LAYERS}
     return {
         "schema":"cite_refinery.native_three_layer_investigation.v1",
@@ -115,6 +132,11 @@ def investigate(state:dict[str,Any],project_id:str,node_id:str, *,
         "three_layers":layer_groups,"edges":selected,
         "blocked_unreviewed_edges":blocked,
         "coverage":{key:bool(v) for key,v in layer_groups.items()},
+        "evidence_diagnostics":{
+            "semantic_reviews_in_subgraph":semantic_reviews_count,
+            "functional_trials_in_subgraph":functional_trials_count,
+            "reproduced_component_defects_in_subgraph":component_defects_count,
+        },
         "truncated":truncated,
         "scope":"single_existing_project_no_cross_project_edges",
         "boundary":"Explicit provenance only; reversed traversal is navigation, NOT inferred causal or commercial equivalence. Candidate and unresolved links stay unverified; neutral documents are not a fourth conceptual layer.",

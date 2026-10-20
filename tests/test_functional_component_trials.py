@@ -7,8 +7,9 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+from cite_refinery.app import CiteRefinery
 from cite_refinery.functional_component_probes import (
-    REVISIONS,SCHEMA,check,aggregate,render_md,_source,
+    REVISIONS,SCHEMA,SubprocessProbeRunner,check,aggregate,render_md,_source,
 )
 from cite_refinery.functional_three_layer_overlay import build,markdown
 
@@ -118,6 +119,79 @@ class FunctionalityTrialTests(unittest.TestCase):
             aggregate(invalid)
         with self.assertRaisesRegex(ValueError,"bounded"):
             aggregate([])
+
+    def test_subprocess_probe_runner_records_refinery_runs_and_blocks_promotion(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            scratch = root / "scratch"
+            scratch.mkdir()
+            co2_dir = scratch / "ajlongshanks__co2_esphome"
+            co2_dir.mkdir()
+            (co2_dir / ".git").mkdir()
+            (co2_dir / "co2sensor.yaml").write_text(
+                "esphome:\n  name: test\nimage:\n  - file: \"a.png\"\n    id: face_bad\ndisplay:\n  - lambda: |-\n      it.image(0, 0, id(face_good));\n",
+                encoding="utf-8",
+            )
+            flood_dir = scratch / "WeixuanZ__flood-warning-system"
+            (flood_dir / "floodsystem").mkdir(parents=True)
+            (flood_dir / ".git").mkdir()
+            (flood_dir / "floodsystem" / "__init__.py").write_text("", encoding="utf-8")
+            (flood_dir / "floodsystem" / "station.py").write_text(
+                "class MonitoringStation:\n"
+                "    def __init__(self, station_id, measure_id, label, coord, typical_range, river, town):\n"
+                "        self.name = label\n"
+                "        self.typical_range = typical_range\n"
+                "        self.latest_level = None\n"
+                "    def relative_water_level(self):\n"
+                "        if self.latest_level is None or self.typical_range[1] <= self.typical_range[0]: return None\n"
+                "        return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])\n",
+                encoding="utf-8",
+            )
+            (flood_dir / "floodsystem" / "flood.py").write_text(
+                "def stations_level_over_threshold(stations, tol):\n"
+                "    out = []\n"
+                "    for s in stations:\n"
+                "        r = s.relative_water_level()\n"
+                "        if r is not None and r > tol: out.append((s, r))\n"
+                "    return out\n"
+                "def stations_highest_rel_level(stations, N):\n"
+                "    valid = [s for s in stations if s.relative_water_level() is not None]\n"
+                "    return valid[:N]\n",
+                encoding="utf-8",
+            )
+            for folder, rev in (
+                (co2_dir, REVISIONS["ajlongshanks__co2_esphome"]),
+                (flood_dir, REVISIONS["WeixuanZ__flood-warning-system"]),
+            ):
+                import subprocess as sp
+                sp.run(["git", "-C", str(folder), "init", "-q"], check=True)
+                sp.run(["git", "-C", str(folder), "config", "user.email", "t@example.com"], check=True)
+                sp.run(["git", "-C", str(folder), "config", "user.name", "t"], check=True)
+                sp.run(["git", "-C", str(folder), "add", "."], check=True)
+                sp.run(["git", "-C", str(folder), "commit", "-q", "-m", "fixture"], check=True)
+            actual_co2_rev = sp.run(["git", "-C", str(co2_dir), "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
+            actual_flood_rev = sp.run(["git", "-C", str(flood_dir), "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
+            app = CiteRefinery(root / "ws")
+            project = app.init_project("Probe provenance", "Record subprocess probe runs and block defective promotion")
+            runner = SubprocessProbeRunner()
+            agg = runner.run_into_project(
+                app,
+                project.id,
+                scratch,
+                probes=["flood", "co2"],
+                revision_overrides={
+                    "ajlongshanks__co2_esphome": actual_co2_rev,
+                    "WeixuanZ__flood-warning-system": actual_flood_rev,
+                },
+            )
+            self.assertEqual(len(agg["probes"]), 2)
+            for p in agg["probes"]:
+                prov = p["refinery_provenance"]
+                self.assertTrue(prov["run_id"].startswith("rrun:"))
+                self.assertTrue(prov["experiment_id"].startswith("rexp:"))
+                self.assertEqual(prov["experiment_verdict"], "failed")
+                with self.assertRaises(ValueError):
+                    app.promote_capability(project.id, prov["capability_id"], experiment_id=prov["experiment_id"])
 
 if __name__=="__main__":
     unittest.main()
