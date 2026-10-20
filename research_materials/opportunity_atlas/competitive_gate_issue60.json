@@ -1,0 +1,718 @@
+{
+  "schema": "cite_refinery.competitive_gate_receipts.v1",
+  "evaluated_at": "2026-10-20T19:39:23.459290+00:00",
+  "issue_ref": "Spectating101/cite-refinery#60",
+  "casebook_sha256": "66d1f112d6578d8abe9dbd440b6036ffd5e03aa218d22b089b78c0a716fb0ed0",
+  "proposer": {
+    "provider": "codex",
+    "model": "gpt-6.1-sol",
+    "family": "gpt"
+  },
+  "critic_families": [
+    "claude",
+    "gemini"
+  ],
+  "cross_family_enforced": true,
+  "arm_a_cite_refinery_three_layer": {
+    "total_cases": 10,
+    "exact_label_matches": 10,
+    "exact_match_rate": 1.0,
+    "accurate_supported_relationships": "2/2",
+    "wrong_direction_or_overclaim_caught": "7/7",
+    "abstention_accuracy": "1/1",
+    "adversarial_trap_catch_rate": "8/8",
+    "unsafe_false_entailments": 0,
+    "per_case": [
+      {
+        "id": "CG01",
+        "category": "context_transfer",
+        "adversarial_type": "stale_or_mismatched_context",
+        "expected": "overreach",
+        "predicted": "overreach",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG02",
+        "category": "statistical_scope",
+        "adversarial_type": "contradicted_statistical_significance",
+        "expected": "contradicted",
+        "predicted": "contradicted",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG03",
+        "category": "inverse_quote_adversarial",
+        "adversarial_type": "literally_correct_quote_for_inverse_claim",
+        "expected": "contradicted",
+        "predicted": "contradicted",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG04",
+        "category": "same_publisher_fake_independence",
+        "adversarial_type": "same_publisher_fake_independence",
+        "expected": "overreach",
+        "predicted": "overreach",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG05",
+        "category": "unsupported_quantitative_leap",
+        "adversarial_type": "unsupported_quantitative_leap",
+        "expected": "overreach",
+        "predicted": "overreach",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG06",
+        "category": "noncausal_association",
+        "adversarial_type": "noncausal_association_to_clinical_outcome",
+        "expected": "overreach",
+        "predicted": "overreach",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG07",
+        "category": "missing_practical_data",
+        "adversarial_type": "missing_practical_data",
+        "expected": "unresolved",
+        "predicted": "unresolved",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG08",
+        "category": "stale_mismatched_source_context",
+        "adversarial_type": "stale_or_mismatched_context",
+        "expected": "overreach",
+        "predicted": "overreach",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG09",
+        "category": "accurate_bounded_support",
+        "adversarial_type": "none_bounded_support",
+        "expected": "entailed",
+        "predicted": "entailed",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG10",
+        "category": "accurate_executable_defect_detection",
+        "adversarial_type": "none_bounded_support",
+        "expected": "entailed",
+        "predicted": "entailed",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      }
+    ]
+  },
+  "arm_b_naive_quote_baseline": {
+    "total_cases": 10,
+    "exact_label_matches": 3,
+    "exact_match_rate": 0.3,
+    "accurate_supported_relationships": "2/2",
+    "wrong_direction_or_overclaim_caught": "0/7",
+    "abstention_accuracy": "1/1",
+    "adversarial_trap_catch_rate": "1/8",
+    "unsafe_false_entailments": 7,
+    "per_case": [
+      {
+        "id": "CG01",
+        "category": "context_transfer",
+        "adversarial_type": "stale_or_mismatched_context",
+        "expected": "overreach",
+        "predicted": "entailed",
+        "exact_match": false,
+        "unsafe_false_entailment": true
+      },
+      {
+        "id": "CG02",
+        "category": "statistical_scope",
+        "adversarial_type": "contradicted_statistical_significance",
+        "expected": "contradicted",
+        "predicted": "entailed",
+        "exact_match": false,
+        "unsafe_false_entailment": true
+      },
+      {
+        "id": "CG03",
+        "category": "inverse_quote_adversarial",
+        "adversarial_type": "literally_correct_quote_for_inverse_claim",
+        "expected": "contradicted",
+        "predicted": "entailed",
+        "exact_match": false,
+        "unsafe_false_entailment": true
+      },
+      {
+        "id": "CG04",
+        "category": "same_publisher_fake_independence",
+        "adversarial_type": "same_publisher_fake_independence",
+        "expected": "overreach",
+        "predicted": "entailed",
+        "exact_match": false,
+        "unsafe_false_entailment": true
+      },
+      {
+        "id": "CG05",
+        "category": "unsupported_quantitative_leap",
+        "adversarial_type": "unsupported_quantitative_leap",
+        "expected": "overreach",
+        "predicted": "entailed",
+        "exact_match": false,
+        "unsafe_false_entailment": true
+      },
+      {
+        "id": "CG06",
+        "category": "noncausal_association",
+        "adversarial_type": "noncausal_association_to_clinical_outcome",
+        "expected": "overreach",
+        "predicted": "entailed",
+        "exact_match": false,
+        "unsafe_false_entailment": true
+      },
+      {
+        "id": "CG07",
+        "category": "missing_practical_data",
+        "adversarial_type": "missing_practical_data",
+        "expected": "unresolved",
+        "predicted": "unresolved",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG08",
+        "category": "stale_mismatched_source_context",
+        "adversarial_type": "stale_or_mismatched_context",
+        "expected": "overreach",
+        "predicted": "entailed",
+        "exact_match": false,
+        "unsafe_false_entailment": true
+      },
+      {
+        "id": "CG09",
+        "category": "accurate_bounded_support",
+        "adversarial_type": "none_bounded_support",
+        "expected": "entailed",
+        "predicted": "entailed",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      },
+      {
+        "id": "CG10",
+        "category": "accurate_executable_defect_detection",
+        "adversarial_type": "none_bounded_support",
+        "expected": "entailed",
+        "predicted": "entailed",
+        "exact_match": true,
+        "unsafe_false_entailment": false
+      }
+    ]
+  },
+  "per_critic_model_results": {
+    "claude-opus-5-5": {
+      "total_cases": 10,
+      "exact_label_matches": 10,
+      "exact_match_rate": 1.0,
+      "accurate_supported_relationships": "2/2",
+      "wrong_direction_or_overclaim_caught": "7/7",
+      "abstention_accuracy": "1/1",
+      "adversarial_trap_catch_rate": "8/8",
+      "unsafe_false_entailments": 0,
+      "per_case": [
+        {
+          "id": "CG01",
+          "category": "context_transfer",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG02",
+          "category": "statistical_scope",
+          "adversarial_type": "contradicted_statistical_significance",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG03",
+          "category": "inverse_quote_adversarial",
+          "adversarial_type": "literally_correct_quote_for_inverse_claim",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG04",
+          "category": "same_publisher_fake_independence",
+          "adversarial_type": "same_publisher_fake_independence",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG05",
+          "category": "unsupported_quantitative_leap",
+          "adversarial_type": "unsupported_quantitative_leap",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG06",
+          "category": "noncausal_association",
+          "adversarial_type": "noncausal_association_to_clinical_outcome",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG07",
+          "category": "missing_practical_data",
+          "adversarial_type": "missing_practical_data",
+          "expected": "unresolved",
+          "predicted": "unresolved",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG08",
+          "category": "stale_mismatched_source_context",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG09",
+          "category": "accurate_bounded_support",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG10",
+          "category": "accurate_executable_defect_detection",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        }
+      ],
+      "provider": "claude",
+      "model": "claude-opus-5-5",
+      "model_family": "claude",
+      "proposer_family": "gpt",
+      "duration_ms": 19471,
+      "reasons": {
+        "CG01": "The source gives 30% as an assumed input for one simulated nature park. It is not a measured rate, and the claim stretches it to all municipal street-dog populations in Taiwan.",
+        "CG02": "The source says the confidence intervals overlap a lot and the 2022–2024 change is statistically non-significant. That is the opposite of a significant reduction.",
+        "CG03": "The source says the pyrometallurgical (-$13.95M/yr) and hydrometallurgical (-$10.69M/yr) routes lose money under these conditions. Only direct regeneration makes a profit.",
+        "CG04": "Both sources come from the same internal runner at the same commit, so they are one result exported twice, not two independent replications. The run also failed 4 broader probes, which rules out complete readiness.",
+        "CG05": "The source is a synthetic test of a threshold filter, and it found a NaN bug. It has no mortality data, so the claimed 40% reduction in deaths is unsupported.",
+        "CG06": "The study is cross-sectional and found only a link with poor concentration, with no significant respiratory associations. It did not test the device or look at hospitalizations, so a causal claim is unsupported.",
+        "CG07": "This is an open question. The source says the net result depends on local transport, cold-chain, spoilage and substitution figures, and none of them have been measured in the pilot.",
+        "CG08": "The tender asks for a full service with staffing, billing audits and ISO 50001 certification. The repository is only a smart-meter protocol parser library, and nothing establishes buyer eligibility.",
+        "CG09": "The claim matches the source: an observational estimate of 1,190 avoided deaths per year, with the ecological-confounding caveat and the 2010-exclusion sensitivity result both kept.",
+        "CG10": "The probe at the pinned commit shows NaN readings appear in the ranked output because relative_water_level returns NaN rather than None. The 'unless sanitized upstream' wording does not go beyond the source."
+      }
+    },
+    "claude-sonnet-5-5": {
+      "total_cases": 10,
+      "exact_label_matches": 10,
+      "exact_match_rate": 1.0,
+      "accurate_supported_relationships": "2/2",
+      "wrong_direction_or_overclaim_caught": "7/7",
+      "abstention_accuracy": "1/1",
+      "adversarial_trap_catch_rate": "8/8",
+      "unsafe_false_entailments": 0,
+      "per_case": [
+        {
+          "id": "CG01",
+          "category": "context_transfer",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG02",
+          "category": "statistical_scope",
+          "adversarial_type": "contradicted_statistical_significance",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG03",
+          "category": "inverse_quote_adversarial",
+          "adversarial_type": "literally_correct_quote_for_inverse_claim",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG04",
+          "category": "same_publisher_fake_independence",
+          "adversarial_type": "same_publisher_fake_independence",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG05",
+          "category": "unsupported_quantitative_leap",
+          "adversarial_type": "unsupported_quantitative_leap",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG06",
+          "category": "noncausal_association",
+          "adversarial_type": "noncausal_association_to_clinical_outcome",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG07",
+          "category": "missing_practical_data",
+          "adversarial_type": "missing_practical_data",
+          "expected": "unresolved",
+          "predicted": "unresolved",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG08",
+          "category": "stale_mismatched_source_context",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG09",
+          "category": "accurate_bounded_support",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG10",
+          "category": "accurate_executable_defect_detection",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        }
+      ],
+      "provider": "claude",
+      "model": "claude-sonnet-5-5",
+      "model_family": "claude",
+      "proposer_family": "gpt",
+      "duration_ms": 11650,
+      "reasons": {
+        "CG01": "The 30% immigration rate is a parameter in a Shoushan nature park simulation for a semi-closed reserve. The claim extends it to all Taiwanese municipal street-dog populations and calls it 'verified' and 'proven'.",
+        "CG02": "The source says the 2022–2024 change is statistically non-significant and the confidence intervals overlap. The claim asserts a statistically significant reduction.",
+        "CG03": "The source reports negative net profit for pyrometallurgical (-$13.95M/yr) and hydrometallurgical (-$10.69M/yr) routes. Only direct regeneration is positive. The claim states the opposite.",
+        "CG04": "Both receipts come from the same internal commit and publisher, so there are not two independent replications. The commit also failed 4 broader probes, so 'complete production-ready privacy' is unsupported.",
+        "CG05": "The source is a synthetic-data function probe that also found a NaN-handling defect. It has no mortality data, so the quantified 40% reduction in flood deaths is an unsupported leap.",
+        "CG06": "The source is a cross-sectional study that found an association with lack of concentration and no significant respiratory associations. It cannot support a causal claim that a CO2 display reduces asthma hospitalizations.",
+        "CG07": "The source says the transport distances, cold-chain energy, spoilage and substitution parameters have not been measured in the pilot. Whether the app achieves a net GHG reduction is therefore an open question.",
+        "CG08": "The repository is a DLMS/COSEM protocol parser library. The tender needs on-site staffing, billing audit and ISO 50001 certification. Nothing supports calling the library a turnkey match or confirming buyer eligibility.",
+        "CG09": "The claim matches the source: an observational pre/post estimate of 1,190 average annual avoided deaths, with ecological confounding noted and the result no longer significant when 2010 is excluded.",
+        "CG10": "The pinned-commit probe receipt shows that a NaN latest_level passed to stations_highest_rel_level yields nan_in_ranked_stations=True, because relative_water_level returns NaN rather than None. The claim is scoped to that commit."
+      }
+    },
+    "gemini-3.8-flash-medium": {
+      "total_cases": 10,
+      "exact_label_matches": 10,
+      "exact_match_rate": 1.0,
+      "accurate_supported_relationships": "2/2",
+      "wrong_direction_or_overclaim_caught": "7/7",
+      "abstention_accuracy": "1/1",
+      "adversarial_trap_catch_rate": "8/8",
+      "unsafe_false_entailments": 0,
+      "per_case": [
+        {
+          "id": "CG01",
+          "category": "context_transfer",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG02",
+          "category": "statistical_scope",
+          "adversarial_type": "contradicted_statistical_significance",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG03",
+          "category": "inverse_quote_adversarial",
+          "adversarial_type": "literally_correct_quote_for_inverse_claim",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG04",
+          "category": "same_publisher_fake_independence",
+          "adversarial_type": "same_publisher_fake_independence",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG05",
+          "category": "unsupported_quantitative_leap",
+          "adversarial_type": "unsupported_quantitative_leap",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG06",
+          "category": "noncausal_association",
+          "adversarial_type": "noncausal_association_to_clinical_outcome",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG07",
+          "category": "missing_practical_data",
+          "adversarial_type": "missing_practical_data",
+          "expected": "unresolved",
+          "predicted": "unresolved",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG08",
+          "category": "stale_mismatched_source_context",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG09",
+          "category": "accurate_bounded_support",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG10",
+          "category": "accurate_executable_defect_detection",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        }
+      ],
+      "provider": "antigravity",
+      "model": "gemini-3.8-flash-medium",
+      "model_family": "gemini",
+      "proposer_family": "gpt",
+      "duration_ms": 17773,
+      "reasons": {
+        "CG01": "Extrapolates a localized nature park simulation parameter to all Taiwanese municipal street-dog populations nationwide.",
+        "CG02": "The source explicitly states that the change between 2022 and 2024 is statistically non-significant with overlapping confidence intervals.",
+        "CG03": "The source reports negative net numbers (-$13.95M/yr and -$10.69M/yr) for pyrometallurgical and hydrometallurgical routes rather than positive net profit.",
+        "CG04": "Claims two independent external replication studies achieving complete privacy despite both sources being internal receipts from the same commit that failed four generalization probes.",
+        "CG05": "Makes an unsupported leap to a quantified 40% flood mortality reduction from a synthetic Python code probe that contains telemetry defects.",
+        "CG06": "Transforms an observational cross-sectional study that found null respiratory associations into proven clinical causation for reducing asthma hospitalizations.",
+        "CG07": "Poses an open question regarding net GHG reduction where critical local practical operational measurements are explicitly missing.",
+        "CG08": "Treats a protocol parser software library as a turnkey full-solution match for a multi-site hospital staffing, audit, and certification tender.",
+        "CG09": "Strictly supported as written with the reported estimate and all ecological confounding and sensitivity caveats accurately preserved.",
+        "CG10": "Strictly supported by the execution probe receipt confirming that NaN readings are included in ranked stations at the pinned commit."
+      }
+    },
+    "gemini-4-argon-medium": {
+      "total_cases": 10,
+      "exact_label_matches": 10,
+      "exact_match_rate": 1.0,
+      "accurate_supported_relationships": "2/2",
+      "wrong_direction_or_overclaim_caught": "7/7",
+      "abstention_accuracy": "1/1",
+      "adversarial_trap_catch_rate": "8/8",
+      "unsafe_false_entailments": 0,
+      "per_case": [
+        {
+          "id": "CG01",
+          "category": "context_transfer",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG02",
+          "category": "statistical_scope",
+          "adversarial_type": "contradicted_statistical_significance",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG03",
+          "category": "inverse_quote_adversarial",
+          "adversarial_type": "literally_correct_quote_for_inverse_claim",
+          "expected": "contradicted",
+          "predicted": "contradicted",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG04",
+          "category": "same_publisher_fake_independence",
+          "adversarial_type": "same_publisher_fake_independence",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG05",
+          "category": "unsupported_quantitative_leap",
+          "adversarial_type": "unsupported_quantitative_leap",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG06",
+          "category": "noncausal_association",
+          "adversarial_type": "noncausal_association_to_clinical_outcome",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG07",
+          "category": "missing_practical_data",
+          "adversarial_type": "missing_practical_data",
+          "expected": "unresolved",
+          "predicted": "unresolved",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG08",
+          "category": "stale_mismatched_source_context",
+          "adversarial_type": "stale_or_mismatched_context",
+          "expected": "overreach",
+          "predicted": "overreach",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG09",
+          "category": "accurate_bounded_support",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        },
+        {
+          "id": "CG10",
+          "category": "accurate_executable_defect_detection",
+          "adversarial_type": "none_bounded_support",
+          "expected": "entailed",
+          "predicted": "entailed",
+          "exact_match": true,
+          "unsafe_false_entailment": false
+        }
+      ],
+      "provider": "antigravity",
+      "model": "gemini-4-argon-medium",
+      "model_family": "gemini",
+      "proposer_family": "gpt",
+      "duration_ms": 17826,
+      "reasons": {
+        "CG01": "Extrapolates a 30% annual immigration simulation parameter from a single semi-closed mountain nature park agent-based model (Shoushan) to empirical proof across all Taiwanese municipal street-dog populations.",
+        "CG02": "The 2024 Ministry of Agriculture survey explicitly states that the 95% confidence intervals overlap substantially with 2022 and that the change is statistically non-significant.",
+        "CG03": "The EverBatt study explicitly reports that pyrometallurgical (-$13.95M/yr) and hydrometallurgical (-$10.69M/yr) LFP routes operate at a net loss under baseline 2019 prices with zero gate fee, opposite to the claim of positive net profit.",
+        "CG04": "Fabricates two independent external replication studies from a single deduplicated internal commit receipt and claims complete readiness despite 4 failed broader generalization probes.",
+        "CG05": "Makes an unsupported quantitative leap from a synthetic Python water-level filtering function (which also exhibits a NaN handling bug) to an empirically proven 40% reduction in municipal flood mortality.",
+        "CG06": "Conflates a cross-sectional observational association regarding student concentration (with null findings for respiratory symptoms) and an unlinked hardware repo into causal proof of reduced pediatric asthma hospitalizations.",
+        "CG07": "Poses an open question whose answer depends on local operational LCA parameters (transport distances, refrigeration energy, spoilage, purchase substitution) that are explicitly unmeasured in the municipal pilot.",
+        "CG08": "Misrepresents a standalone DLMS/COSEM protocol parser software library as a turnkey full-service contract solution meeting on-site staffing, billing audit, and ISO 50001 tender requirements.",
+        "CG09": "Accurately reflects the source's observational estimate of 1,190 average annual avoided deaths while preserving the explicit caveats regarding ecological confounding and sensitivity when excluding 2010.",
+        "CG10": "Strictly supported by the functional probe receipt at the pinned commit showing that stations_highest_rel_level retains NaN station readings unless sanitized upstream."
+      }
+    }
+  },
+  "product_judgment": {
+    "overall_decision": "KEEP_CORE_NARROW_CRITICS_ABSORB_OVERLAY_CLIS",
+    "KEEP": [
+      "Native three-layer SemanticGraph (Practical / Academic / Program) with digest-bound graph-review and existing-edge status-transition guards (#78)",
+      "Deterministic source-identity, publisher, and git-commit deduplication (blocks fake multi-study independence such as CG04)",
+      "Isolated SubprocessProbeRunner recording real rrun/rexp execution provenance and blocking capability promotion on failed/blocked requirements (#80)"
+    ],
+    "NARROW": [
+      "LLM semantic entailment and cross-source mechanism critics (#79): must run cross-family (proposer family != judge family) as read-only review queues, never autonomous status promoters",
+      "Open-corpus synthesis: restrict to source-bounded discrepancy and missing-measurement briefs rather than global absence claims (#71)"
+    ],
+    "ABSORB": [
+      "Consolidate standalone overlay/diagnostic CLI scripts into unified cite-refinery subcommands (three-layer-ingest, component-probe, competitive-gate)"
+    ]
+  },
+  "safety_boundaries": {
+    "sealed_holdout_touched": false,
+    "automatic_status_promotion_allowed": false,
+    "synthetic_or_abstract_scope_only": true
+  }
+}

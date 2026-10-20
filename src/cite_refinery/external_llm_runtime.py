@@ -22,14 +22,49 @@ class LLMUnavailable(RuntimeError):
 
 # Explicitly discovered from the authenticated Optiplex `agy models` catalog
 # on 2026-10-21; arbitrary model strings are still rejected.
-AGY_VERIFIED_MODELS = frozenset(
-    f"{family}-{tier}"
-    for family in (
-        "gemini-3.8-flash", "gemini-4-argon",
-        "claude-opus-5-5", "claude-sonnet-5-5"
-    )
-    for tier in ("low", "medium", "high")
-)
+AGY_VERIFIED_MODELS = frozenset({
+    *(
+        f"{family}-{tier}"
+        for family in (
+            "gemini-3.8-flash", "gemini-4-argon",
+            "claude-opus-5-5", "claude-sonnet-5-5"
+        )
+        for tier in ("low", "medium", "high")
+    ),
+    "gpt-oss-120b-medium",
+})
+
+
+def model_family(provider: str, model: str | None = None) -> str:
+    m = (model or "").strip().lower()
+    if m.startswith("gemini-"):
+        return "gemini"
+    if m.startswith("claude-"):
+        return "claude"
+    if m.startswith("gpt-"):
+        return "gpt"
+    if provider == "claude":
+        return "claude"
+    if provider == "gemini":
+        return "gemini"
+    if provider == "codex":
+        return "gpt"
+    if provider == "antigravity":
+        return "gemini"
+    return provider
+
+
+def require_distinct_family(
+    proposer_provider: str,
+    proposer_model: str | None,
+    critic_provider: str,
+    critic_model: str | None,
+) -> tuple[str, str]:
+    pf = model_family(proposer_provider, proposer_model)
+    cf = model_family(critic_provider, critic_model)
+    if pf == cf:
+        raise ValueError(f"Cross-family critique requires distinct model families (both resolved to {pf!r})")
+    return pf, cf
 
 
 def _parse_response(payload):
@@ -46,7 +81,9 @@ def _parse_response(payload):
         raise LLMUnavailable("Model did not return a bounded JSON string")
     cleaned=payload.strip()
     if cleaned.startswith("```"):
-        cleaned=cleaned.split("\n",1)[1].rsplit("```",1)[0]
+        cleaned=cleaned.split("\n",1)[1].rsplit("```",1)[0].strip()
+    elif "```json" in cleaned and cleaned.count("```") == 2:
+        cleaned=cleaned.split("```json",1)[1].rsplit("```",1)[0].strip()
     try:
         result=json.loads(cleaned)
     except (ValueError,TypeError) as exc:
@@ -147,7 +184,8 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
                  "--print-timeout",f"{max(10,timeout_seconds-5)}s",
                  "--print","Do not use tools. Return one JSON object only. "+prompt]
         elif provider=="claude":
-            cmd=["claude","--print","--tools","","--no-session-persistence",
+            claude_bin=os.environ.get("CITE_REFINERY_CLAUDE_BIN") or "claude"
+            cmd=[claude_bin,"--print","--tools","","--no-session-persistence",
                  "--output-format","json"]
             if model:cmd+=["--model",model]
             cmd.append(prompt)
@@ -155,9 +193,12 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
             cmd=["gemini","--approval-mode","plan","--output-format","json"]
             if model:cmd+=["--model",model]
             cmd+=["-p",prompt]
+        run_kwargs={"cwd":directory,"input":"","capture_output":True,
+                    "text":True,"timeout":timeout_seconds,"check":False}
+        if provider=="claude" and os.environ.get("CITE_REFINERY_CLAUDE_HOME"):
+            run_kwargs["env"]={**os.environ,"HOME":os.environ["CITE_REFINERY_CLAUDE_HOME"]}
         try:
-            proc=subprocess.run(cmd,cwd=directory,input="",capture_output=True,
-                                text=True,timeout=timeout_seconds,check=False)
+            proc=subprocess.run(cmd,**run_kwargs)
         except (OSError,subprocess.TimeoutExpired) as exc:
             raise LLMUnavailable(f"{provider} CLI unavailable: {type(exc).__name__}") from exc
         # Wrappers may swallow the Copilot subprocess exit code, so examine
@@ -186,7 +227,10 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
                     raise ValueError("Missing or oversized Codex response")
                 raw=_parse_response(candidate.read_text(encoding="utf-8"))
             else:
-                raw=_parse_response(json.loads(proc.stdout))
+                envelope=json.loads(proc.stdout)
+                if isinstance(envelope,dict) and envelope.get("is_error") is True:
+                    raise ValueError(f"{provider} reported is_error=True")
+                raw=_parse_response(envelope)
         except (ValueError,TypeError) as exc:
             raise LLMUnavailable(f"{provider} returned invalid structured JSON") from exc
         return {"provider":provider,"model":model or ("auto" if provider=="copilot" else "gemini-3.8-flash-medium" if provider=="antigravity" else "cli-default"),"raw":raw}

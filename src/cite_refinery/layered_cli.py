@@ -152,6 +152,14 @@ def _component_probe_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _competitive_gate_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="cite-refinery competitive-gate")
+    parser.add_argument("--output", required=True, help="JSON receipt output path")
+    parser.add_argument("--markdown", required=True, help="Markdown report output path")
+    parser.add_argument("--model", action="append", dest="models", default=None)
+    return parser
+
+
 def _graph_coverage_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="cite-refinery graph-coverage")
     parser.add_argument("--workspace", default=".cite-refinery", help="State directory")
@@ -324,6 +332,10 @@ def main(argv: list[str] | None = None) -> int:
         except (OSError, json.JSONDecodeError, KeyError, ValueError, RuntimeError) as exc:
             print(f"error: {exc}", file=sys.stderr)
             return 2
+
+    if "competitive-gate" in raw:
+        from .competitive_gate import main as competitive_gate_main
+        return competitive_gate_main(_special_args(raw, "competitive-gate"))
 
     if "graph-review" in raw:
         args = _graph_review_parser().parse_args(_special_args(raw, "graph-review"))
