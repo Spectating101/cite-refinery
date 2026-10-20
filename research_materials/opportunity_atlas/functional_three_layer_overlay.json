@@ -1,0 +1,308 @@
+{
+  "schema": "cite_refinery.functional_three_layer_overlay.v1",
+  "linked_trials": [
+    {
+      "practical_id": "problem:battery_recycling_economics",
+      "academic_id": "mechanism:battery_recycling_economics",
+      "implementation_id": "github:lingrany/EverBatt-LFP-Recycling-Analysis",
+      "checked_commit": "246c4d478f9ceb05c580856720ca56a66064e205",
+      "execution_type": "actual_upstream_python_calculation_synthetic_input",
+      "component_requirement_checks": [
+        {
+          "name": "pyro_positive_fee_accounting",
+          "requirement": "A positive gate fee ($1/kg paid to obtain feedstock) must reduce annual profit by mass in kg times $1.",
+          "status": "fail",
+          "critical": true,
+          "actual": {
+            "profit_usd_fee_zero": -13948123.1,
+            "profit_usd_fee_positive_one": -13948123.1,
+            "actual_profit_reduction_usd": 0.0
+          },
+          "expected": {
+            "profit_reduction_usd": 10000000
+          },
+          "interpretation": "Upstream --battery-fee CLI says negative means recycler is paid. This result checks the reverse paid-fee direction using its own convention.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "pyro_negative_gate_fee_income",
+          "requirement": "Negative gate fee -$2/kg should increase revenue/profit by $2/kg at unchanged throughput.",
+          "status": "pass",
+          "critical": true,
+          "actual": {
+            "profit_increase_usd": 20000000.0
+          },
+          "expected": {
+            "profit_increase_usd": 20000000
+          },
+          "interpretation": "Verifies the supported positive-income side of the gate-fee handling.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "hydro_positive_fee_accounting",
+          "requirement": "A positive gate fee ($1/kg paid to obtain feedstock) must reduce annual profit by mass in kg times $1.",
+          "status": "fail",
+          "critical": true,
+          "actual": {
+            "profit_usd_fee_zero": -10690391.29,
+            "profit_usd_fee_positive_one": -10690391.29,
+            "actual_profit_reduction_usd": 0.0
+          },
+          "expected": {
+            "profit_reduction_usd": 10000000
+          },
+          "interpretation": "Upstream --battery-fee CLI says negative means recycler is paid. This result checks the reverse paid-fee direction using its own convention.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "hydro_negative_gate_fee_income",
+          "requirement": "Negative gate fee -$2/kg should increase revenue/profit by $2/kg at unchanged throughput.",
+          "status": "pass",
+          "critical": true,
+          "actual": {
+            "profit_increase_usd": 20000000.0
+          },
+          "expected": {
+            "profit_increase_usd": 20000000
+          },
+          "interpretation": "Verifies the supported positive-income side of the gate-fee handling.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "direct_positive_fee_accounting",
+          "requirement": "A positive gate fee ($1/kg paid to obtain feedstock) must reduce annual profit by mass in kg times $1.",
+          "status": "fail",
+          "critical": true,
+          "actual": {
+            "profit_usd_fee_zero": 32197581.38,
+            "profit_usd_fee_positive_one": 32197581.38,
+            "actual_profit_reduction_usd": 0.0
+          },
+          "expected": {
+            "profit_reduction_usd": 10000000
+          },
+          "interpretation": "Upstream --battery-fee CLI says negative means recycler is paid. This result checks the reverse paid-fee direction using its own convention.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "direct_negative_gate_fee_income",
+          "requirement": "Negative gate fee -$2/kg should increase revenue/profit by $2/kg at unchanged throughput.",
+          "status": "pass",
+          "critical": true,
+          "actual": {
+            "profit_increase_usd": 20000000.0
+          },
+          "expected": {
+            "profit_increase_usd": 20000000
+          },
+          "interpretation": "Verifies the supported positive-income side of the gate-fee handling.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "localized_hazard_control_and_pilot_yield",
+          "requirement": "Economics must incorporate site-specific safety/compliance costs and pilot recovery yields.",
+          "status": "not_tested",
+          "critical": true,
+          "actual": "Original default parameters only; no field, regulator, or plant records provided.",
+          "expected": "Local project feedstock, compliance CAPEX/OPEX, verified yield and buyer prices.",
+          "interpretation": "The upstream model has parameters but no verified local inputs; a synthetic profit output cannot establish investment economics.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        }
+      ],
+      "check_counts": {
+        "fail": 3,
+        "pass": 3,
+        "not_tested": 1
+      },
+      "reproducible_component_defect_detected": true,
+      "deployment_prerequisites_missing": true,
+      "source_scope": "Upstream code at pinned revision for synthetic tested behavior only",
+      "scientific_mechanism_status": "partial_support",
+      "research_entailment_approved": false,
+      "partial_component_behavior_reproduced": true,
+      "end_to_end_functionality_verified": false,
+      "real_world_outcome_verified": false,
+      "licensed_commercial_use_confirmed": false,
+      "value_capture_verified": false,
+      "operator_action": "Investigate failed checks, clarify rights and compare alternative components before any implementation or business decision.",
+      "graph_transition_authorized": false
+    },
+    {
+      "practical_id": "problem:flood_warning_to_impact",
+      "academic_id": "mechanism:flood_warning_to_impact",
+      "implementation_id": "github:WeixuanZ/flood-warning-system",
+      "checked_commit": "c1c7facf2c5577a155edd93a0b7279ad7630518c",
+      "execution_type": "actual_upstream_python_code_synthetic_station_fixtures",
+      "component_requirement_checks": [
+        {
+          "name": "threshold_selection",
+          "requirement": "Elevated water-level fractions above 0.5 are selected, without normal/missing/invalid stations.",
+          "status": "pass",
+          "critical": true,
+          "actual": [
+            "high"
+          ],
+          "expected": [
+            "high"
+          ],
+          "interpretation": "Synthetic values exercise the upstream station normalization and risk filter; thresholds are not calibrated for real rivers.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "missing_level_handling",
+          "requirement": "Missing station levels return no risk fraction rather than a fabricated warning.",
+          "status": "pass",
+          "critical": true,
+          "actual": null,
+          "expected": null,
+          "interpretation": "",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "invalid_typical_range_handling",
+          "requirement": "Zero-width typical range is rejected.",
+          "status": "pass",
+          "critical": true,
+          "actual": null,
+          "expected": null,
+          "interpretation": "",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "nonfinite_sensor_level_is_excluded",
+          "requirement": "NaN water-level readings must not be returned as candidates for an operational highest-risk list.",
+          "status": "fail",
+          "critical": true,
+          "actual": {
+            "nan_relative_value": "nan",
+            "nan_in_ranked_stations": true
+          },
+          "expected": {
+            "nan_relative_value": null,
+            "nan_in_ranked_stations": false
+          },
+          "interpretation": "Nonfinite measurements are invalid telemetry; passing them into risk sorting can mislead downstream processing.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "local_warning_distribution_and_health_outcomes",
+          "requirement": "A forecast/threshold module must be paired with validated local alert delivery and downstream response.",
+          "status": "not_tested",
+          "critical": true,
+          "actual": "Synthetic UK-style MonitoringStation data only.",
+          "expected": "Site-calibrated telemetry, uncertainty, actual recipient alerts, response timestamps and health outcomes.",
+          "interpretation": "No live station feed, dissemination authority or health endpoint was tested.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        }
+      ],
+      "check_counts": {
+        "pass": 3,
+        "fail": 1,
+        "not_tested": 1
+      },
+      "reproducible_component_defect_detected": true,
+      "deployment_prerequisites_missing": true,
+      "source_scope": "Upstream code at pinned revision for synthetic tested behavior only",
+      "scientific_mechanism_status": "partial_support",
+      "research_entailment_approved": false,
+      "partial_component_behavior_reproduced": true,
+      "end_to_end_functionality_verified": false,
+      "real_world_outcome_verified": false,
+      "licensed_commercial_use_confirmed": false,
+      "value_capture_verified": false,
+      "operator_action": "Investigate failed checks, clarify rights and compare alternative components before any implementation or business decision.",
+      "graph_transition_authorized": false
+    },
+    {
+      "practical_id": "problem:classroom_ventilation_outcomes",
+      "academic_id": "mechanism:classroom_ventilation_outcomes",
+      "implementation_id": "github:ajlongshanks/co2_esphome",
+      "checked_commit": "d1b3c500ae475e3dcfef6e5dbb38279cdc267708",
+      "execution_type": "static_yaml_syntax_and_reference_inspection_only_not_firmware_execution",
+      "component_requirement_checks": [
+        {
+          "name": "esphome_yaml_syntax",
+          "requirement": "Configuration must parse as valid YAML before considering firmware build.",
+          "status": "fail",
+          "critical": true,
+          "actual": {
+            "yaml_valid": false,
+            "parse_error": "while parsing a block mapping\n  in \"<unicode string>\", line 110, column 5:\n      - file: \"image.png\"\n        ^\nexpected <block end>, but found '-'\n  in \"<unicode string>\", line 114, column 5:\n        - file: \"moderate.png\"\n        ^"
+          },
+          "expected": {
+            "yaml_valid": true
+          },
+          "interpretation": "PyYAML syntax parser, NOT ESPHome schema validator or firmware compiler.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "display_image_identifiers",
+          "requirement": "Every face image referenced by the display lambda must be declared as a configuration image.",
+          "status": "fail",
+          "critical": true,
+          "actual": {
+            "undeclared_image_ids": [
+              "face_good"
+            ]
+          },
+          "expected": {
+            "undeclared_image_ids": []
+          },
+          "interpretation": "Static reference check; not an ESPHome C++ lambda compilation.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "licensing_provenance",
+          "requirement": "A verifiable distribution/reuse license must be established before commercial component reuse.",
+          "status": "blocked",
+          "critical": true,
+          "actual": {
+            "license_file_detected": false
+          },
+          "expected": {
+            "license_file_detected": true
+          },
+          "interpretation": "No LICENSE/COPYING file in checked snapshot. This is a documentation gap, not a definitive legal ruling.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        },
+        {
+          "name": "firmware_compile_and_sensor_calibration",
+          "requirement": "Compile the configuration, flash approved hardware, calibrate SCD30 readings against a reference and test sensor faults.",
+          "status": "not_tested",
+          "critical": true,
+          "actual": "No ESPHome compiler, ESP32/T-Display hardware, or physical calibration instrument in this trial.",
+          "expected": "Successful current-version ESPHome compile, hardware test and calibration trace.",
+          "interpretation": "Static syntax failure already blocks firmware testing; hardware/clinical effect cannot be inferred.",
+          "claim_authority": "synthetic_code_or_static_configuration_probe_only"
+        }
+      ],
+      "check_counts": {
+        "fail": 2,
+        "blocked": 1,
+        "not_tested": 1
+      },
+      "reproducible_component_defect_detected": true,
+      "deployment_prerequisites_missing": true,
+      "source_scope": "Upstream code at pinned revision for synthetic tested behavior only",
+      "scientific_mechanism_status": "partial_support",
+      "research_entailment_approved": false,
+      "partial_component_behavior_reproduced": false,
+      "end_to_end_functionality_verified": false,
+      "real_world_outcome_verified": false,
+      "licensed_commercial_use_confirmed": false,
+      "value_capture_verified": false,
+      "operator_action": "Investigate failed checks, clarify rights and compare alternative components before any implementation or business decision.",
+      "graph_transition_authorized": false
+    }
+  ],
+  "counts": {
+    "practical_academic_implementation_paths_tested": 3,
+    "candidate_paths_with_reproduced_component_defects": 3,
+    "candidate_paths_with_full_tech_validation": 0,
+    "academic_edges_qualified": 0,
+    "confirmed_buyers": 0
+  },
+  "authority": "read_only_comparative_functionality_evidence_for_manual_review",
+  "status": "No source or functional trial can automatically qualify an implementation for deployment",
+  "boundary": "Two tested Python component modules, one YAML-only static audit. Operational behavior, hazard controls, actual deployment, software rights, research mechanisms and economic value remain independently unvalidated. No native graph writes or holdout changes."
+}
