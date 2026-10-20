@@ -6,6 +6,8 @@ has a hard request timeout. Never silently falls back to a weaker model.
 """
 from __future__ import annotations
 import json
+import os
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -64,10 +66,20 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
         except (error.URLError,TimeoutError,OSError,ValueError) as exc:
             raise LLMUnavailable(f"Ollama inference unavailable: {type(exc).__name__}") from exc
         return {"provider":"ollama","model":target_model,"raw":raw}
-    if provider not in {"claude","gemini"}:
-        raise ValueError("provider must be ollama, claude or gemini")
+    if provider not in {"claude","gemini","codex"}:
+        raise ValueError("provider must be ollama, claude, gemini or codex")
     with tempfile.TemporaryDirectory(prefix="cite-refinery-readonly-llm-") as directory:
-        if provider=="claude":
+        if provider=="codex":
+            codex=os.environ.get("CITE_REFINERY_CODEX_BIN") or shutil.which("codex")
+            if not codex:
+                raise LLMUnavailable("Codex binary not found; set CITE_REFINERY_CODEX_BIN")
+            result_file=str(Path(directory)/"codex_response.json")
+            cmd=[codex,"exec","--skip-git-repo-check","--sandbox","read-only",
+                 "--ephemeral","-c",'model_reasoning_effort="low"',
+                 "--output-last-message",result_file]
+            if model:cmd.extend(["--model",model])
+            cmd.append("Do not use any tools. Return only one JSON object. " + prompt)
+        elif provider=="claude":
             cmd=["claude","--print","--tools","","--no-session-persistence",
                  "--output-format","json"]
             if model:cmd+=["--model",model]
@@ -85,7 +97,13 @@ def invoke_semantic_llm(prompt, *, provider, model=None, timeout_seconds=105):
             # Avoid emitting CLI stderr that might contain local account metadata.
             raise LLMUnavailable(f"{provider} CLI exited {proc.returncode}; check authentication and permissions locally")
         try:
-            raw=_parse_response(json.loads(proc.stdout))
+            if provider=="codex":
+                candidate=Path(result_file)
+                if not candidate.is_file() or candidate.stat().st_size>250000:
+                    raise ValueError("Missing or oversized Codex response")
+                raw=_parse_response(candidate.read_text(encoding="utf-8"))
+            else:
+                raw=_parse_response(json.loads(proc.stdout))
         except (ValueError,TypeError) as exc:
-            raise LLMUnavailable(f"{provider} returned invalid JSON wrapper") from exc
+            raise LLMUnavailable(f"{provider} returned invalid structured JSON") from exc
         return {"provider":provider,"model":model or "cli-default","raw":raw}

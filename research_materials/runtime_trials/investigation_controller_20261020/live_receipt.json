@@ -1,0 +1,537 @@
+{
+  "schema": "cite_refinery.investigation_receipt.v1",
+  "investigation_id": "2ca16ed4bdde441cabb1",
+  "question": "Why do free-roaming dog population-management programs sometimes fail to achieve intended public-health outcomes, and which measurement and intervention dependencies are missing?",
+  "status": "done",
+  "project_id": "rproject:404ca1c7a445",
+  "authority": "All model-generated nodes are neutral candidates; no empirical or clinical outcome accepted.",
+  "rounds": [
+    {
+      "number": 1,
+      "focus": "Whether dog turnover and movement undermine sustained rabies vaccination coverage in sterilization-led free-roaming dog programs, and whether surveillance and human post-exposure prophylaxis access explain differences in reported public-health outcomes.",
+      "plan_queries": [
+        {
+          "lane": "academic",
+          "query": "longitudinal free roaming dog rabies vaccination coverage population turnover immigration sterilization demographic study"
+        },
+        {
+          "lane": "academic",
+          "query": "comparative evaluation dog sterilization additional benefit mass vaccination rabies incidence confounding"
+        },
+        {
+          "lane": "academic",
+          "query": "dog rabies control evaluation linked bite surveillance post exposure prophylaxis access population denominator underreporting"
+        },
+        {
+          "lane": "official",
+          "query": "WHO WOAH dog rabies control guidance sustained vaccination coverage population turnover sterilization surveillance post exposure prophylaxis"
+        },
+        {
+          "lane": "official",
+          "query": "national dog rabies elimination programme monitoring evaluation report vaccination coverage dog population estimates human exposures post exposure prophylaxis"
+        }
+      ],
+      "hypotheses": [
+        "Births, abandonment and immigration may replenish susceptible dogs, so sterilization and vaccination procedure counts may overstate sustained vaccination coverage.",
+        "Programs with similar sterilization intensity may have different rabies outcomes because vaccination continuity, surveillance and timely human post-exposure prophylaxis differ.",
+        "A counterargument is that population stabilization may add little short-term rabies-control benefit when sustained dog vaccination is adequate; integrated programs are needed to distinguish these contributions.",
+        "Missing repeated population denominators, movement data, vaccination histories and linked exposure-to-treatment records may prevent attribution of apparent program failure."
+      ],
+      "state": "staged_candidates",
+      "source_count": 8,
+      "sources": [
+        {
+          "id": "EPMC-088e66a2f887",
+          "url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+          "title": "Long-term evaluation of a zoned catch-neuter-vaccinate-release program integrating owner engagement and buffer zone strategies for humane dog population management and rabies control in Anuradhapura, Sri Lanka.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "passage_sha256": "182d7293ba8dff9bebf50f23056a4e3245f1081113f233b5ec7a4bfe5f69d898"
+        },
+        {
+          "id": "EPMC-694261c31f78",
+          "url": "https://doi.org/10.1371/journal.pntd.0008497",
+          "title": "Evaluating the role of surgical sterilisation in canine rabies control: A systematic review of impact and outcomes.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "passage_sha256": "f53ed557b87a6b2d0a268fccb42cebb9392e636b1d76059cc50571c08589707c"
+        },
+        {
+          "id": "EPMC-fa7a02c81826",
+          "url": "https://doi.org/10.1371/journal.pntd.0014751",
+          "title": "Nationwide registry-based analysis of rabies exposures in Iran: Epidemiological patterns and post-exposure prophylaxis adherence.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "passage_sha256": "9b6e3c3b96ca49c658d310e2fd84bc65b60a40677f01e763103b12b7698b2cfe"
+        },
+        {
+          "id": "EPMC-13d5dea04449",
+          "url": "https://doi.org/10.1371/journal.pntd.0010494",
+          "title": "Accessibility to rabies centers and human rabies post-exposure prophylaxis rates in Cambodia: A Bayesian spatio-temporal analysis to identify optimal locations for future centers.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "passage_sha256": "a98036ac6b14adab48f457187b9948dd972610ed16ab743809f362e976f6e4aa"
+        },
+        {
+          "id": "OFFICIAL-13d2aa403788",
+          "url": "https://www.who.int/activities/human-rabies-prevention-and-management",
+          "title": "Rabies is preventable through three proven, effective interventions:",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "passage_sha256": "6fc11b4761d2314e2c52c2fc72c30d8d24248a7e4c23b10f19808cf5b132a729"
+        },
+        {
+          "id": "OFFICIAL-6fd871657b41",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/rabies",
+          "title": "Zero by 30: Global Strategic PlanOpen WHO course – One HealthRabies vaccines: WHO position paperWHO Guide to introducing human rabies vaccine into national immunization programmesW",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "passage_sha256": "7f9a8506e48714cb72ddcd68a6817f3f885b43deba39264d6dd2a2618f21c84b"
+        },
+        {
+          "id": "OFFICIAL-ac392b711caa",
+          "url": "https://www.who.int/en/news-room/fact-sheets/detail/rabies",
+          "title": "Zero by 30: Global Strategic PlanOpen WHO course – One HealthRabies vaccines: WHO position paperWHO Guide to introducing human rabies vaccine into national immunization programmesW",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "passage_sha256": "7f9a8506e48714cb72ddcd68a6817f3f885b43deba39264d6dd2a2618f21c84b"
+        },
+        {
+          "id": "OFFICIAL-8f9989afef4c",
+          "url": "https://www.who.int/teams/control-of-neglected-tropical-diseases/rabies/control-and-elimination-strategies",
+          "title": "This strategy would combine the expertise of FAO, OIE and WHO as well as other major stakeholders including the Global Alliance for Rabies Control (GARC), with the aim of gaining s",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Selected official-site HTML paragraphs. Not a current local outcome survey or program implementation audit.",
+          "passage_sha256": "161e672b4aa6f33a2c13658476c4593c833789e8ab1ace2e5f784a86f47ba40d"
+        }
+      ],
+      "source_error_counts": 0,
+      "model_propositions": 36,
+      "model_candidate_bridges": 18,
+      "quote_rejected_count": 0,
+      "critic_proposition_verdicts": {
+        "entailed": 36
+      },
+      "critic_bridge_verdicts": {
+        "plausible": 18
+      },
+      "graph_node_count": 64,
+      "graph_edge_count": 112,
+      "graph_edge_statuses": {
+        "candidate": 112
+      },
+      "neutral_only": true,
+      "review_queue_sample": [
+        "How much of the decline in dogs requiring sterilization reflects conversion to sterilized status, changing detection, movement or a change in total abundance?",
+        "What additional contribution, if any, did sterilization make beyond vaccination to rabies transmission or human rabies outcomes?",
+        "Were the sex- and zone-specific buffer findings robust to multiple testing, baseline differences and concurrent interventions?",
+        "What explains growth in owned dog numbers: births, acquisition, changed ownership classification or participation patterns?",
+        "What were the rates of abandonment, puppy dumping, immigration and owned-dog roaming in Anuradhapura?",
+        "Which adult female population forms the denominator for the reported sterilization coverage above 78%?",
+        "Do geographic differences in dog vaccination coverage reflect service distance, campaign intensity, owner resources, awareness or sampling differences?",
+        "How much of Cambodia's travel-time association reflects access barriers versus exposure patterns, socioeconomic differences, alternative providers or recording practices?",
+        "Would the proposed Cambodian centers provide sufficient staffing, affordable treatment, reliable supplies and appropriate PEP completion?",
+        "How many exposed people in Iran never attended a reporting facility, and how did access differ by geography or social group?"
+      ],
+      "proposition_sample": [
+        {
+          "id": "P1",
+          "type": "method",
+          "statement": "The Anuradhapura study evaluated a zoned CNVR program over five years.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-02",
+            "AW-03"
+          ]
+        },
+        {
+          "id": "P2",
+          "type": "method",
+          "statement": "Free-roaming dogs were sampled through capture of sexually intact dogs along predefined routes with standardized effort.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P3",
+          "type": "method",
+          "statement": "Owned dogs entered the Anuradhapura clinic component through voluntary presentation.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-06"
+          ]
+        },
+        {
+          "id": "P4",
+          "type": "measurement",
+          "statement": "The reported number of free-roaming dogs requiring sterilization decreased from 1,368 to 484.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P5",
+          "type": "research_finding",
+          "statement": "Annual decreases in community dog counts per unit effort were not statistically significant.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P6",
+          "type": "research_finding",
+          "statement": "The abstract reports statistically significant buffer-intervention findings restricted to particular sex and zone combinations.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P7",
+          "type": "measurement",
+          "statement": "The study reports annual growth of 14.7% in owned dog numbers.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-06"
+          ]
+        },
+        {
+          "id": "P8",
+          "type": "measurement",
+          "statement": "More than 78% of adult female dogs were reported sterilized.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P9",
+          "type": "measurement",
+          "statement": "Questionnaire responses indicated higher lifetime receipt of at least one anti-rabies vaccination inside the municipality than outside it.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-03"
+          ]
+        },
+        {
+          "id": "P10",
+          "type": "measurement",
+          "statement": "Questionnaire-reported annual vaccination coverage was 74.2% inside and 68.9% outside the municipality.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-03"
+          ]
+        },
+        {
+          "id": "P11",
+          "type": "research_finding",
+          "statement": "Household analyses attributed most observed variation in vaccination and sterilization coverage to geographic location rather than household dog count.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-02",
+            "AW-03"
+          ]
+        },
+        {
+          "id": "P12",
+          "type": "method",
+          "statement": "The systematic review included eight vaccination-only studies and eight studies of combined vaccination and sterilization.",
+          "source_ids": [
+            "EPMC-694261c31f78"
+          ],
+          "module_ids": [
+            "AW-02",
+            "AW-03"
+          ]
+        }
+      ],
+      "receipt_id": "sgpacket:c091bd7f65cc41f8"
+    },
+    {
+      "number": 2,
+      "focus": "Whether declining counts of dogs requiring sterilization indicate reduced total abundance or instead reflect sterilization status changes, altered detection, or movement across program boundaries.",
+      "plan_queries": [
+        {
+          "lane": "official",
+          "query": "dog population management programme monitoring evaluation street dog population surveys neutering coverage"
+        },
+        {
+          "lane": "official",
+          "query": "municipal animal birth control programme annual report dog census sterilized unsterilized population"
+        },
+        {
+          "lane": "official",
+          "query": "humane dog management programme monitoring immigration abandonment population turnover survey boundaries"
+        },
+        {
+          "lane": "academic",
+          "query": "free roaming dog population neutering repeated street surveys total abundance capture recapture detection"
+        },
+        {
+          "lane": "academic",
+          "query": "dog population management sterilization demographic recruitment movement immigration longitudinal evaluation"
+        }
+      ],
+      "hypotheses": [
+        "Conversion from unsterilized to sterilized status could reduce the number requiring surgery without reducing total abundance.",
+        "Changes in survey effort, catchability, roaming behavior, or classification could change observed counts independently of abundance.",
+        "Births, abandonment, immigration, and emigration could affect counts within program boundaries and offset or resemble demographic effects of sterilization.",
+        "Repeated total-population surveys, individual identification, detection estimates, and consistent geographic and ownership definitions could help distinguish these explanations."
+      ],
+      "state": "staged_candidates",
+      "source_count": 4,
+      "sources": [
+        {
+          "id": "EPMC-088e66a2f887",
+          "url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+          "title": "Long-term evaluation of a zoned catch-neuter-vaccinate-release program integrating owner engagement and buffer zone strategies for humane dog population management and rabies control in Anuradhapura, Sri Lanka.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "passage_sha256": "182d7293ba8dff9bebf50f23056a4e3245f1081113f233b5ec7a4bfe5f69d898"
+        },
+        {
+          "id": "EPMC-801272d33dac",
+          "url": "https://doi.org/10.1371/journal.pone.0266636",
+          "title": "Population dynamics of free-roaming dogs in two European regions and implications for population control.",
+          "origin_type": "scholarly_abstract_lead",
+          "scope": "Europe PMC bibliographic abstract, NOT full-text verification, peer review, or clinical proof",
+          "passage_sha256": "c735ad538b5b26ae19a56becf96ecc7986c700dd1ed74f0b156caaf4f858cef3"
+        },
+        {
+          "id": "OFFICIAL-e5f7fef1e4e1",
+          "url": "https://www.woah.org/en/document/integrating-dog-population-management-for-effective-rabies-control/",
+          "title": "Integrating dog population management for effective rabies control",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Publisher-indexed WOAH program article/guidance, not audited impact evidence.",
+          "passage_sha256": "8bf1e6c45fe5612e9911cdb1532e96dac32fa995b0e0e77b1f18656c5abfa114"
+        },
+        {
+          "id": "OFFICIAL-9bddcf51d278",
+          "url": "https://www.woah.org/en/article/stepping-up-dog-population-management-to-achieve-rabies-elimination/",
+          "title": "Stepping up dog population management to achieve rabies elimination",
+          "origin_type": "official_webpage_excerpt_unverified",
+          "scope": "Publisher-indexed WOAH program article/guidance, not audited impact evidence.",
+          "passage_sha256": "cb298dda80a9c91328eeb29363b2600b583b88eab4f02f0e7aac8f7643d339cb"
+        }
+      ],
+      "source_error_counts": 0,
+      "model_propositions": 51,
+      "model_candidate_bridges": 23,
+      "quote_rejected_count": 0,
+      "critic_proposition_verdicts": {
+        "entailed": 18,
+        "uncertain": 33
+      },
+      "critic_bridge_verdicts": {
+        "plausible": 6,
+        "uncertain": 17
+      },
+      "graph_node_count": 79,
+      "graph_edge_count": 157,
+      "graph_edge_statuses": {
+        "candidate": 140,
+        "unresolved": 17
+      },
+      "neutral_only": true,
+      "review_queue_sample": [
+        "What explains the decline in dogs requiring sterilization: fewer births, accumulated sterilization, movement, abandonment changes, capture selectivity or other processes?",
+        "How representative were voluntary clinic attendees and questionnaire respondents of all owned dogs, and what was coverage among unowned dogs?",
+        "What population and time denominator underlies the greater-than-78% adult-female sterilization estimate and the 24.1% female-ownership increase?",
+        "Did the Anuradhapura program change confirmed dog rabies, human rabies, bite incidence or PEP demand?",
+        "Can the significant sex–zone buffer findings support a causal interpretation after accounting for spatial differences, concurrent interventions and subgroup testing?",
+        "Did increased owned-dog numbers contribute to free-roaming recruitment through roaming, abandonment or uncontrolled reproduction?",
+        "Were European population entries primarily immigration, local births or abandonment, and were few observed juveniles partly explained by detection or survival?",
+        "What additional rabies-control contribution does sterilization provide beyond comparable vaccination alone?",
+        "How should WOAH's favorable expectation for CNVR be evaluated alongside the review's inability to estimate sterilization's added contribution?",
+        "What mechanisms underlie geographic differences in Anuradhapura coverage?"
+      ],
+      "proposition_sample": [
+        {
+          "id": "P1",
+          "type": "method",
+          "statement": "The Anuradhapura study assessed a five-year zoned CNVR program incorporating owner engagement and a peripheral buffer zone.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-02",
+            "AW-03",
+            "AW-06"
+          ]
+        },
+        {
+          "id": "P2",
+          "type": "method",
+          "statement": "Sexually intact free-roaming dogs were captured along predefined routes with standardized effort during 2021–2025.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P3",
+          "type": "method",
+          "statement": "Owned dogs were voluntarily presented to program clinics.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-03",
+            "AW-06"
+          ]
+        },
+        {
+          "id": "P4",
+          "type": "measurement",
+          "statement": "The reported number of free-roaming dogs requiring sterilization declined from 1,368 in 2021 to 484 in 2025.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P5",
+          "type": "research_finding",
+          "statement": "Annual declines in community dog counts per unit effort were not statistically significant.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P6",
+          "type": "research_finding",
+          "statement": "The abstract reports significant buffer-intervention effects on male populations in zone 1.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P7",
+          "type": "research_finding",
+          "statement": "The abstract reports significant buffer-intervention effects on female populations in zone 3.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P8",
+          "type": "measurement",
+          "statement": "Owned dog numbers were reported to increase by 14.7% annually.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-02",
+            "AW-06"
+          ]
+        },
+        {
+          "id": "P9",
+          "type": "measurement",
+          "statement": "Female dog ownership was reported to increase by 24.1%.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-01",
+            "AW-06"
+          ]
+        },
+        {
+          "id": "P10",
+          "type": "measurement",
+          "statement": "More than 78% of adult female dogs were reported sterilized.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-02"
+          ]
+        },
+        {
+          "id": "P11",
+          "type": "measurement",
+          "statement": "Questionnaire responses indicated that 94.2% of owned dogs within the municipality had received at least one anti-rabies vaccination.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-03",
+            "AW-06"
+          ]
+        },
+        {
+          "id": "P12",
+          "type": "measurement",
+          "statement": "Questionnaire responses indicated that 83.1% of owned dogs outside the municipality had received at least one anti-rabies vaccination.",
+          "source_ids": [
+            "EPMC-088e66a2f887"
+          ],
+          "module_ids": [
+            "AW-03",
+            "AW-06"
+          ]
+        }
+      ],
+      "receipt_id": "sgpacket:4f837e6c59e92f0c"
+    }
+  ],
+  "frontier_size": 30,
+  "known_limitations": [
+    "Both generator and critic used the same inference provider/model; not independent corroboration.",
+    "Europe PMC abstract and selected official webpage excerpts are leads, not full-source verification.",
+    "An LLM's entailed verdict does not verify a statistical claim or real-world intervention impact.",
+    "Unreviewed, machine-generated graph coverage must not be conflated with three-family evidentiary completeness.",
+    "The serialized full investigation is stored only in a local working directory, not included in this snapshot."
+  ]
+}
