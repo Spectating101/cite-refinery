@@ -11,6 +11,7 @@ Import fails closed unless:
 - original chain-integrity reports pass and the snapshot contains a chain report;
 - every listed public file matches manifest byte length and SHA-256;
 - the stable Nocturnal snapshot ID matches the original exporter fingerprint (all six hashes + counts + pilot ID);
+- for **nonfictional snapshots**, an out-of-band, independently approved SHA-256 of the exact manifest must be supplied using `--nocturnal-manifest-sha256` (this is an operator trust pin, not a digital signature);
 - module-to-matter, module-to-entity, module-to-source and correction references are internally coherent.
 
 The snapshot's own publication approval is a **necessary input**, not proof of truth, ownership of third-party articles or unrestricted reuse. Real-source publication still requires Nocturnal's original legal/editorial gate. Do not copy unreviewed investigation journals into a public atlas.
@@ -49,6 +50,8 @@ cite-refinery investigate map-foundations \
 ```
 
 The existing 9 practical abstract reports and 48 TED notices remain distinct from **original Nocturnal public ledger observations**. `--nocturnal-terms` navigates case names, source URLs, entity names, titles and stages, not original body text or semantic embeddings.
+
+For a real approved release, obtain the exact `manifest.json` SHA-256 from a trusted Nocturnal approval channel, then add `--nocturnal-manifest-sha256 <approved-64-hex-digest>`. A checksum alone cannot prove lawful publication; it prevents unapproved file substitution after an out-of-band review.
 
 To compare a second **approved public** snapshot, pass `--previous-nocturnal-atlas /tmp/practical.json` and use new output paths. The same immutable module in both releases is not new corroboration. Missing previously public modules are flagged as no longer public; Cite–Refinery makes no deletion/retraction claim about why they disappeared.
 
