@@ -4,8 +4,10 @@ on:
   pull_request:
     paths:
       - "src/cite_refinery/layer_foundations.py"
+      - "src/cite_refinery/original_layer_source_audit.py"
       - "src/cite_refinery/investigation_cli.py"
       - "tests/test_layer_foundations_v1.py"
+      - "tests/test_original_layer_source_audit_v1.py"
       - "research_materials/runtime_trials/open_corpus_20261020/**"
       - "research_materials/opportunity_atlas/**"
       - ".github/workflows/map-foundations.yml"
@@ -18,7 +20,7 @@ jobs:
   source-foundations:
     name: Frozen-source integrity and standalone-map tests
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,9 +33,11 @@ jobs:
       - name: Install project
         run: python -m pip install -e ".[server]"
       - name: Compile source
-        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py
+        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py src/cite_refinery/original_layer_source_audit.py
       - name: Run all map-first source integrity tests
         run: python -m unittest discover -s tests -p 'test_layer_foundations_v1.py' -v
+      - name: Run independent source-audit guardrail tests
+        run: python -m unittest discover -s tests -p 'test_original_layer_source_audit_v1.py' -v
       - name: Build release wheel
         run: |
           python -m pip install build
@@ -46,6 +50,24 @@ jobs:
             --markdown-out "$RUNNER_TEMP/layer-maps/standalone_layer_coverage.md" \
             --review-backlog-out "$RUNNER_TEMP/layer-maps/implementation_review_backlog.json"
           python -c 'import json,os; root=os.environ["RUNNER_TEMP"]+"/layer-maps/"; m=json.load(open(root+"standalone_layer_foundations.json")); b=json.load(open(root+"implementation_review_backlog.json")); assert len(m["layers"])==3 and m["cross_layer_edges_generated"]==0 and m["implementation"]["unique_repositories"]==1287 and b["model_or_human_review_completed"]==0 and b["sampled_pairs"]==88'
+      - name: Original publisher and GitHub source identity audit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m cite_refinery.original_layer_source_audit \
+            --manifest research_materials/runtime_trials/open_corpus_20261020/source_manifest.json \
+            --backlog "$RUNNER_TEMP/layer-maps/implementation_review_backlog.json" \
+            --academic-out "$RUNNER_TEMP/layer-maps/academic_publisher_identity_audit.json" \
+            --implementation-out "$RUNNER_TEMP/layer-maps/implementation_pinned_source_audit.json" \
+            --max-academic 47 --max-repo-pairs 44
+      - name: Publish enriched maps with independently observed source identities
+        run: |
+          python -m cite_refinery.layered_cli investigate map-foundations \
+            --academic-original-audit "$RUNNER_TEMP/layer-maps/academic_publisher_identity_audit.json" \
+            --implementation-original-audit "$RUNNER_TEMP/layer-maps/implementation_pinned_source_audit.json" \
+            --json-out "$RUNNER_TEMP/layer-maps/enriched_standalone_layer_foundations.json" \
+            --markdown-out "$RUNNER_TEMP/layer-maps/enriched_standalone_layer_coverage.md"
+          python -c 'import json,os; root=os.environ["RUNNER_TEMP"]+"/layer-maps/"; m=json.load(open(root+"enriched_standalone_layer_foundations.json")); a=m["within_layer_original_source_audits"]; assert a["publisher_doi_identity_confirmed"]>0 and a["implementation_pinned_revision_and_root_checked"]>0; assert a["new_executable_implementation_assets_qualified"]==0 and a["cross_layer_edges_created"]==0'
       - name: Upload inspectable standalone maps
         uses: actions/upload-artifact@v4
         with:
