@@ -140,6 +140,11 @@ def main(argv=None):
         help="Prior pinned synthetic/static trial records; not independently replayed")
     foundation.add_argument("--implementation-category",help="Exact original repository survey category")
     foundation.add_argument("--implementation-terms",help="Lexical search within Implementation only")
+    foundation.add_argument("--implementation-requirement-terms",
+        help="Find original bounded functional test requirements, e.g. NaN telemetry")
+    foundation.add_argument("--implementation-requirement-status",choices=[
+        "pass","fail","blocked","not_tested"],
+        help="Filter earlier requirement receipt outcomes, not field performance")
     foundation.add_argument("--implementation-stage",choices=[
         "survey","original_commit","source_sample","historical_trial"])
     foundation.add_argument("--implementation-atlas-out",type=Path,
@@ -250,7 +255,9 @@ def main(argv=None):
             raise ValueError("Academic review claims need their own original extracted-text directory")
         if args.implementation_original_code_audit and not args.implementation_original_audit:
             raise ValueError("Original code structure needs a separately pinned source audit")
-        if args.implementation_category or args.implementation_terms or args.implementation_stage:
+        if (args.implementation_category or args.implementation_terms or
+            args.implementation_stage or args.implementation_requirement_terms or
+            args.implementation_requirement_status):
             if not args.implementation_atlas_out:
                 raise ValueError("Implementation browse requires a standalone map output")
         if (args.previous_nocturnal_atlas or args.nocturnal_terms or
@@ -304,7 +311,8 @@ def main(argv=None):
         if (args.implementation_atlas_out or args.implementation_component_trials
             or args.implementation_original_code_audit):
             from .implementation_evidence_atlas import (
-                build_implementation_atlas,browse_implementation)
+                build_implementation_atlas,browse_implementation,
+                browse_implementation_requirements)
             implementation_map = build_implementation_atlas(
                 m,
                 original_audit=(read(args.implementation_original_audit)
@@ -317,6 +325,12 @@ def main(argv=None):
                 implementation_map,category=args.implementation_category,
                 terms=args.implementation_terms,stage=args.implementation_stage,
                 limit=args.limit)
+            implementation_requirements_view = browse_implementation_requirements(
+                implementation_map,
+                terms=args.implementation_requirement_terms,
+                status=args.implementation_requirement_status,
+                limit=args.limit)
+            m["implementation"]["source_scoped_requirement_browse"] = implementation_requirements_view
             m["implementation"]["evidence_depth_atlas"] = implementation_map
             m["implementation"]["evidence_depth_browse"] = implementation_view
             m["implementation"]["source_identity_not_technical_execution"] = True
@@ -446,7 +460,10 @@ def main(argv=None):
             "implementation_prior_trial_assets_outside_survey":(
                 implementation_map["coverage"]["historical_scoped_trial_assets_outside_survey"]
                 if implementation_map else 0),
-            "implementation_depth_browse_matches":(
+            "implementation_prior_requirement_matches": (
+                implementation_requirements_view["matching_count"]
+                if implementation_map else None),
+            "implementation_depth_browse_matches": (
                 implementation_view["matching_count"] if implementation_view else None),
             "academic_original_jats_source_structures_inspected": (
                 academic_map["coverage"].get("original_public_jats_structure_inspected",0)
