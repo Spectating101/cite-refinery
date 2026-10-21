@@ -1,0 +1,511 @@
+{
+  "schema": "cite_refinery.emergent_conversion_atlas.v1",
+  "source_universe": {
+    "repositories_in_original_survey": 605,
+    "repositories_in_this_slice": 35,
+    "repository_macro_coverage": [
+      "energy_environment",
+      "engineering",
+      "investigation_finance",
+      "knowledge_data",
+      "physical_operations",
+      "public_services"
+    ],
+    "emergent_domains": 8,
+    "source_records_in_original_corpus": 63,
+    "stratified_offset": 0,
+    "selection_policy": "stable_hash_stratified_by_original_GitHub_search_macro_not_popularity_or_our_favorite_sector"
+  },
+  "candidate_connections": [
+    {
+      "id": "CV-01",
+      "mode": "asset_to_problem",
+      "asset_ids": [
+        "github:Kovelt/carbon-fr"
+      ],
+      "domain_labels": [
+        "Lithium-Ion Battery Material Regeneration and Techno-Economic Scalability"
+      ],
+      "source_ids": [
+        "EPMC-1d4b60c85f48",
+        "EPMC-5e474470179c",
+        "OA-53d2760b3abab4"
+      ],
+      "connection": "Hourly grid carbon-intensity (gCO2eq/kWh) time series could be used as an exogenous input to the techno-economic and lifecycle models for battery regeneration. Hydrothermal regeneration and recycling flowsheets are energy-intensive. Their per-kWh margin, which the sources report between -$21.43 and +$21.91, and their net emissions may depend on when and where the process runs. A carbon-aware scheduler for batch regeneration is the practical form of this idea.",
+      "why_nonobvious": "The shared mechanism is time-varying marginal electricity attributes acting on a batch process whose start time can be moved. The battery literature treats electricity as a fixed cost, while the carbon API treats loads as software workloads.",
+      "potential_quality_signal": "The repo description says it serves French electricity intensity from RTE/ODRÉ open data. Its topics include carbon-aware and hexagonal-architecture. The atlas states that the techno-economic sensitivities are lab-simulation based. None of this is verified.",
+      "conversion_barrier": "no_demonstrated_need",
+      "barrier_explanation": "Recycling operators may be indifferent to hourly carbon intensity. Electricity may be a small share of the margin variance compared with feedstock and pack heterogeneity. The API covers France only, and the reported regeneration data are benchtop scale.",
+      "recombination_or_use": "Take the published energy-per-kg figures for hydrothermal regeneration. Convolve them with a year of French hourly intensity to estimate the spread in gCO2eq per kWh of cathode between best-case and worst-case scheduling windows. Compare that spread with the model's margin uncertainty.",
+      "value_forms": [
+        "research_knowledge",
+        "technical_capability",
+        "public_benefit"
+      ],
+      "first_falsification": "Desk calculation: if shifting a regeneration batch within a 24-hour window changes the lifecycle emissions or cost by less than 5% of the existing sensitivity range, reject the idea.",
+      "observed_conversion_status": "unknown_not_measured",
+      "technical_quality_status": "not_independently_tested",
+      "relationship_status": "candidate_not_verified",
+      "repository_source_urls": [
+        "https://github.com/Kovelt/carbon-fr"
+      ],
+      "source_evidence": [
+        {
+          "id": "EPMC-1d4b60c85f48",
+          "url": "https://doi.org/10.21203/rs.3.rs-10790610/v1",
+          "sha256": "96c5a64d505e3572abfb8eb4f8617a851ee25e85dbee1927e0c7d2bb357f0a01"
+        },
+        {
+          "id": "EPMC-5e474470179c",
+          "url": "https://doi.org/10.1039/d6ra08243b",
+          "sha256": "a0eb36ac8c57e8c3efe8b9af6e3b5a3a0d34df84557b33b92c4a7a2b8fab9d14"
+        },
+        {
+          "id": "OA-53d2760b3abab4",
+          "url": "https://doi.org/10.1039/d0gc02745f",
+          "sha256": "edaf85f0cb26bd8deca91f907df175f5200412be7eba737e57dd3ff44c4a5593"
+        }
+      ],
+      "review_required": "original_repo_tests_independent_practical_fit_and_concrete_conversion_barrier",
+      "funding_required": false,
+      "confirmed_adoption_or_impact": false,
+      "accepted_graph_relationship": false
+    },
+    {
+      "id": "CV-02",
+      "mode": "asset_to_problem",
+      "asset_ids": [
+        "github:AuvroIslam/Nongor"
+      ],
+      "domain_labels": [
+        "Urban Flood Hydrology, Warning Systems, and Public Health Vulnerability"
+      ],
+      "source_ids": [
+        "EPMC-871d10af9889",
+        "OA-0b799176aa3262",
+        "OFFICIAL-dbee83ba8137"
+      ],
+      "connection": "Nongor is an offline phone-to-phone signed SOS system with flood-avoiding routing. It could act as a last-mile warning and response data channel for flood early warning systems that lack field validation. Signed mesh messages would give timestamped, geolocated records of where and when people were affected. Those records could serve as outcome telemetry. The atlas says no audited reduction in flood-related disease or mortality is documented, and controlled evaluation is missing.",
+      "why_nonobvious": "The flood literature lacks measurement infrastructure for outcomes in connectivity-poor settlements. The mesh app was built for victims rather than evaluators. Signed message logs give an observation mechanism that does not depend on internet or self-reported surveys.",
+      "potential_quality_signal": "The repo reports an offline design, signed SOS, six low-resource languages, and on-device Gemma. It has 173 stars. Its performance and field use are unverified.",
+      "conversion_barrier": "missing_evidence",
+      "barrier_explanation": "No field trials are evident. Mesh range and density needs are unknown. Privacy and consent issues for location logging are unresolved. Integration with an agency warning pipeline such as FFGS is unclear.",
+      "recombination_or_use": "Run a simulated drill with a handful of devices. Replay the timing of a rapid-onset versus slow-onset flood scenario and test message delivery latency and loss. Check whether the aggregated signed logs can reconstruct an exposure timeline without a server.",
+      "value_forms": [
+        "public_benefit",
+        "research_knowledge",
+        "institutional_capacity"
+      ],
+      "first_falsification": "In a controlled multi-device test with realistic obstruction, if message delivery success is below roughly 80% across hops, or if routing and log reconstruction cannot be done without a server, drop the idea as an evaluation channel.",
+      "observed_conversion_status": "unknown_not_measured",
+      "technical_quality_status": "not_independently_tested",
+      "relationship_status": "candidate_not_verified",
+      "repository_source_urls": [
+        "https://github.com/AuvroIslam/Nongor"
+      ],
+      "source_evidence": [
+        {
+          "id": "EPMC-871d10af9889",
+          "url": "https://doi.org/10.21203/rs.3.rs-9885849/v1",
+          "sha256": "999fb59319bcac4f01332b1b5e9afba7d5e2f72d3fbacbee3b2620dc16d00265"
+        },
+        {
+          "id": "OA-0b799176aa3262",
+          "url": "https://doi.org/10.3390/rs17173104",
+          "sha256": "12d06d6bbecabc4f9f195ba2cb1e0246ad7a0f0a5ee14e7e78767a6f35f4565a"
+        },
+        {
+          "id": "OFFICIAL-dbee83ba8137",
+          "url": "https://www.who.int/europe/health-topics/floods",
+          "sha256": "84feac0d6fb561c252f76fb31e866a60f651e34f9e86dcb6796a57dc17404650"
+        }
+      ],
+      "review_required": "original_repo_tests_independent_practical_fit_and_concrete_conversion_barrier",
+      "funding_required": false,
+      "confirmed_adoption_or_impact": false,
+      "accepted_graph_relationship": false
+    },
+    {
+      "id": "CV-03",
+      "mode": "asset_to_asset",
+      "asset_ids": [
+        "github:Krishita17/GridShadow",
+        "github:Bigdaddy1990/jackery_solarvault"
+      ],
+      "domain_labels": [],
+      "source_ids": [],
+      "connection": "GridShadow ranks defensive chokepoints in cyber-physical attack graphs, using pandapower models. The Jackery Home Assistant integration exposes residential solar and battery device state and controls. Together, a distributed behind-the-meter storage fleet could be modeled as a new node class in the attack-graph generator. The question would be which cloud or local control paths from consumer IoT could produce physical grid impact.",
+      "why_nonobvious": "The shared interface is a controllable power injection or withdrawal point reachable through a network. One repo is a threat-modeling formalism, and the other is a consumer device adapter.",
+      "potential_quality_signal": "Both repos state concrete scopes: attack graphs with pandapower, and a HACS integration for specific Jackery models. Neither has been tested.",
+      "conversion_barrier": "integration",
+      "barrier_explanation": "A single household device is probably too small to cause grid impact. The effect would depend on aggregation, which is not shown. Home Assistant integration details may not map to attack primitives.",
+      "recombination_or_use": "Add a node type for aggregated DER with power limits taken from the integration's exposed entities. Sweep fleet penetration in a pandapower toy feeder and see whether any chokepoint ranking changes.",
+      "value_forms": [
+        "research_knowledge",
+        "internal_portfolio"
+      ],
+      "first_falsification": "If chokepoint rankings in the toy feeder are unchanged at up to 20% DER penetration, reject the extension.",
+      "observed_conversion_status": "unknown_not_measured",
+      "technical_quality_status": "not_independently_tested",
+      "relationship_status": "candidate_not_verified",
+      "repository_source_urls": [
+        "https://github.com/Krishita17/GridShadow",
+        "https://github.com/Bigdaddy1990/jackery_solarvault"
+      ],
+      "source_evidence": [],
+      "review_required": "original_repo_tests_independent_practical_fit_and_concrete_conversion_barrier",
+      "funding_required": false,
+      "confirmed_adoption_or_impact": false,
+      "accepted_graph_relationship": false
+    },
+    {
+      "id": "CV-04",
+      "mode": "research_to_asset",
+      "asset_ids": [
+        "github:SOsintOps/Argos"
+      ],
+      "domain_labels": [
+        "Food Surplus Redistribution Logistics, Institutional Charity, and Nutritional Gaps"
+      ],
+      "source_ids": [
+        "EPMC-7deb988ae2ab",
+        "OA-88cafd9405fbed",
+        "OFFICIAL-86c5d4ade74b"
+      ],
+      "connection": "Argos logs commands and hashes artifacts per case folder. The food-redistribution literature notes that evaluations track gross tonnage but not provenance or outcome. A hash-logged chain-of-custody pattern could be borrowed for pilot evaluation records, such as pickup events, sensor readings, and recipient-outcome follow-ups. The aim is audit-grade, tamper-evident evidence.",
+      "why_nonobvious": "The mechanism is append-only, hash-verified evidence handling taken from OSINT casework and applied to program evaluation. It is not about OSINT content.",
+      "potential_quality_signal": "Argos describes per-task case folders with logged commands and SHA-256 hashes. The atlas reports IoT pilots with 847 kg rescued but no outcome measurement.",
+      "conversion_barrier": "no_demonstrated_need",
+      "barrier_explanation": "Food rescue groups may not need tamper-evident logs. Their limiting factor may be dietary outcome data, which hashing does not supply.",
+      "recombination_or_use": "Extract the logging and hashing pattern into a small script. Apply it to a mock pickup dataset and see whether auditors can verify the record without the operators.",
+      "value_forms": [
+        "institutional_capacity",
+        "research_knowledge"
+      ],
+      "first_falsification": "Ask two or three evaluators or operators whether tamper-evident logs would change their evaluation. If none says yes, drop the idea.",
+      "observed_conversion_status": "unknown_not_measured",
+      "technical_quality_status": "not_independently_tested",
+      "relationship_status": "candidate_not_verified",
+      "repository_source_urls": [
+        "https://github.com/SOsintOps/Argos"
+      ],
+      "source_evidence": [
+        {
+          "id": "EPMC-7deb988ae2ab",
+          "url": "https://doi.org/10.1111/nbu.70053",
+          "sha256": "212d02a11dce9fff510b32b2c617967b8c6a49382989c4d049731b9c6ff80737"
+        },
+        {
+          "id": "OA-88cafd9405fbed",
+          "url": "https://doi.org/10.70251/hyjr2348.3593102",
+          "sha256": "708cd56251e341f85b8e0bc64cd2e99d451d862c22244119a595a4cf8144a684"
+        },
+        {
+          "id": "OFFICIAL-86c5d4ade74b",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/malnutrition",
+          "sha256": "a9e676bb8e7e6b2d83a191f4258f6ae83c3687ffa84d7841adc5252c1593d2a1"
+        }
+      ],
+      "review_required": "original_repo_tests_independent_practical_fit_and_concrete_conversion_barrier",
+      "funding_required": false,
+      "confirmed_adoption_or_impact": false,
+      "accepted_graph_relationship": false
+    },
+    {
+      "id": "CV-05",
+      "mode": "domain_to_domain",
+      "asset_ids": [],
+      "domain_labels": [
+        "Free-Roaming Dog Demography and Rabies Herd Immunity Control",
+        "Extreme Heat Mortality Projections and Heat Early Warning System Implementation Gaps"
+      ],
+      "source_ids": [
+        "EPMC-088e66a2f887",
+        "OA-3c3cd5c7fc6491",
+        "EPMC-0715c73feecf",
+        "OA-57bba7412a5fbd"
+      ],
+      "connection": "Both fields have a threshold-style target that is believed to work, with a measurement gap in the delivery step. Rabies uses 70% annual vaccination coverage, but only 56.3% of vaccinated dogs reach protective titers. Heat warning systems are deployed, but no measured outcome shows that they reduce mortality. In both cases the nominal coverage metric, such as vaccines given or warnings issued, is not the effective protective coverage. A shared measurement is effective coverage: nominal coverage multiplied by the fraction with verified protection or action taken.",
+      "why_nonobvious": "Veterinary public health and climate-health warnings use different vocabularies. Both lack a verified step between delivery and protection, and both compute that gap the same way.",
+      "potential_quality_signal": "The atlas reports the 70% threshold and the 56.3% seroconversion figure. It also reports that heat warning outcomes are unmeasured.",
+      "conversion_barrier": "missing_evidence",
+      "barrier_explanation": "The rabies serology cohorts are small, with n=16. Heat warnings lack intervention-control designs. The analogy might not hold because heat warnings are not immunity-like.",
+      "recombination_or_use": "Write the effective-coverage formula for each and run a sensitivity analysis. For rabies, show the herd-immunity margin under 56.3% seroprotection. For heat, define behavioral-response as the analogous multiplier and list which datasets could estimate it.",
+      "value_forms": [
+        "research_knowledge",
+        "public_benefit"
+      ],
+      "first_falsification": "Check whether the rabies transmission threshold remains satisfied at the effective coverage in published models. If it does, the rabies half of the analogy adds no new constraint.",
+      "observed_conversion_status": "unknown_not_measured",
+      "technical_quality_status": "not_independently_tested",
+      "relationship_status": "candidate_not_verified",
+      "repository_source_urls": [],
+      "source_evidence": [
+        {
+          "id": "EPMC-088e66a2f887",
+          "url": "https://doi.org/10.14202/vetworld.2026.2816-2849",
+          "sha256": "182d7293ba8dff9bebf50f23056a4e3245f1081113f233b5ec7a4bfe5f69d898"
+        },
+        {
+          "id": "OA-3c3cd5c7fc6491",
+          "url": "https://doi.org/10.15421/022426",
+          "sha256": "96e7b9844a00439b1a05a58d7ef1b1582af03a63d28cf00daf920e61a2e9454a"
+        },
+        {
+          "id": "EPMC-0715c73feecf",
+          "url": "https://doi.org/10.1016/j.ebiom.2026.106419",
+          "sha256": "9a1c54a7e6c2c080e58d1391380d84ca7bd79655d24ba86404130a2832ba0655"
+        },
+        {
+          "id": "OA-57bba7412a5fbd",
+          "url": "https://doi.org/10.1007/s43621-024-00697-2",
+          "sha256": "5dd58af338654efd6239ca5c05902d2b67e73417e4fbe066609e38bc5a90a4f6"
+        }
+      ],
+      "review_required": "original_repo_tests_independent_practical_fit_and_concrete_conversion_barrier",
+      "funding_required": false,
+      "confirmed_adoption_or_impact": false,
+      "accepted_graph_relationship": false
+    },
+    {
+      "id": "CV-06",
+      "mode": "asset_to_problem",
+      "asset_ids": [
+        "github:transitland/transitland-atlas"
+      ],
+      "domain_labels": [
+        "Algorithmic Management, Delivery Couriers, and Platform Gig Worker Occupational Harm"
+      ],
+      "source_ids": [
+        "EPMC-83a764d60470",
+        "OA-6642b2dc88be44"
+      ],
+      "connection": "Transitland Atlas is a directory of open mobility feeds, including GBFS and MDS. It could provide a standardized, public description of shared micromobility and transit supply. That could be used as a contextual covariate for courier routing and exposure analysis, such as transit-gap zones. The atlas says independent platform telemetry is absent, so public mobility feeds might partly substitute for context.",
+      "why_nonobvious": "Standardized feed registries are used for rider information. Here they would serve as an exposure covariate in occupational-harm research.",
+      "potential_quality_signal": "The repo lists many feed types and operators. The atlas says the courier literature uses discourse and surveys with no telemetry.",
+      "conversion_barrier": "no_demonstrated_need",
+      "barrier_explanation": "Courier harm is likely driven by platform dispatch penalties, which feeds do not capture. Transit availability may be a weak covariate.",
+      "recombination_or_use": "Pick one city with both feed coverage and published courier injury statistics. Test whether transit-gap exposure correlates with injury rates.",
+      "value_forms": [
+        "research_knowledge"
+      ],
+      "first_falsification": "If no correlation or association is found in one city with adequate data, drop it.",
+      "observed_conversion_status": "unknown_not_measured",
+      "technical_quality_status": "not_independently_tested",
+      "relationship_status": "candidate_not_verified",
+      "repository_source_urls": [
+        "https://github.com/transitland/transitland-atlas"
+      ],
+      "source_evidence": [
+        {
+          "id": "EPMC-83a764d60470",
+          "url": "https://doi.org/10.3390/bs16091709",
+          "sha256": "3547142f69aba6540e096fafefaf0e1ac987ea72ae9a6ebe3d428baa86c2c74f"
+        },
+        {
+          "id": "OA-6642b2dc88be44",
+          "url": "https://doi.org/10.1111/1748-8583.12258",
+          "sha256": "36b77b2de1bc9089a63b05e78f90c1cdca7aef1de7568ecb46d522858a247610"
+        }
+      ],
+      "review_required": "original_repo_tests_independent_practical_fit_and_concrete_conversion_barrier",
+      "funding_required": false,
+      "confirmed_adoption_or_impact": false,
+      "accepted_graph_relationship": false
+    }
+  ],
+  "candidate_connection_count": 6,
+  "negative_or_unmatched_space_note": "In this slice, the indoor air quality, e-waste toxicant, and soil-index (Open Bodem Index) areas were not linked to any specific candidate. Several ERP, EDA, robotics, ARPES, painterly-cartography and legal-intelligence repos were left unlinked because no precise shared mechanism was found. Nothing is claimed about areas outside this slice.",
+  "verified_genuinely_high_quality_assets": 0,
+  "verified_underconverted_assets": 0,
+  "new_graph_edges_accepted": 0,
+  "realized_value": 0,
+  "unanticipated_discovery_claim": "unproven_without_blinded_external_evaluation",
+  "monetization_required": false,
+  "source_map_is_not_a_global_absence_claim": true,
+  "model_proposals_are_not_audit_evidence": true,
+  "model_provenance": "replayed_saved_model_JSON_without_new_model_request",
+  "original_repository_metadata_audit": {
+    "schema": "cite_refinery.original_repo_metadata_overlay.v1",
+    "checked_repo_count": 6,
+    "original_metadata": [
+      {
+        "repository": "AuvroIslam/Nongor",
+        "public_metadata_available": true,
+        "publisher_url": "https://github.com/AuvroIslam/Nongor",
+        "observed_at_utc": "2026-10-21T11:16:18.090440+00:00",
+        "archived": false,
+        "license_label_unreviewed": "MIT",
+        "root_test_directory_present_not_executed": false,
+        "github_configuration_present_not_validated": false,
+        "independent_quality_verified": false,
+        "adoption_verified": false,
+        "conversion_failure_verified": false,
+        "next_gate": "Review original functionality, run relevant source tests, inspect license and find independent usage/adoption evidence"
+      },
+      {
+        "repository": "Bigdaddy1990/jackery_solarvault",
+        "public_metadata_available": true,
+        "publisher_url": "https://github.com/Bigdaddy1990/jackery_solarvault",
+        "observed_at_utc": "2026-10-21T11:16:19.130434+00:00",
+        "archived": false,
+        "license_label_unreviewed": "MIT",
+        "root_test_directory_present_not_executed": true,
+        "github_configuration_present_not_validated": true,
+        "independent_quality_verified": false,
+        "adoption_verified": false,
+        "conversion_failure_verified": false,
+        "next_gate": "Review original functionality, run relevant source tests, inspect license and find independent usage/adoption evidence"
+      },
+      {
+        "repository": "Kovelt/carbon-fr",
+        "public_metadata_available": true,
+        "publisher_url": "https://github.com/Kovelt/carbon-fr",
+        "observed_at_utc": "2026-10-21T11:16:21.135011+00:00",
+        "archived": false,
+        "license_label_unreviewed": "Apache-2.0",
+        "root_test_directory_present_not_executed": false,
+        "github_configuration_present_not_validated": true,
+        "independent_quality_verified": false,
+        "adoption_verified": false,
+        "conversion_failure_verified": false,
+        "next_gate": "Review original functionality, run relevant source tests, inspect license and find independent usage/adoption evidence"
+      },
+      {
+        "repository": "Krishita17/GridShadow",
+        "public_metadata_available": true,
+        "publisher_url": "https://github.com/Krishita17/GridShadow",
+        "observed_at_utc": "2026-10-21T11:16:22.102910+00:00",
+        "archived": false,
+        "license_label_unreviewed": "MIT",
+        "root_test_directory_present_not_executed": true,
+        "github_configuration_present_not_validated": false,
+        "independent_quality_verified": false,
+        "adoption_verified": false,
+        "conversion_failure_verified": false,
+        "next_gate": "Review original functionality, run relevant source tests, inspect license and find independent usage/adoption evidence"
+      },
+      {
+        "repository": "SOsintOps/Argos",
+        "public_metadata_available": true,
+        "publisher_url": "https://github.com/SOsintOps/Argos",
+        "observed_at_utc": "2026-10-21T11:16:23.128126+00:00",
+        "archived": false,
+        "license_label_unreviewed": "MIT",
+        "root_test_directory_present_not_executed": true,
+        "github_configuration_present_not_validated": true,
+        "independent_quality_verified": false,
+        "adoption_verified": false,
+        "conversion_failure_verified": false,
+        "next_gate": "Review original functionality, run relevant source tests, inspect license and find independent usage/adoption evidence"
+      },
+      {
+        "repository": "transitland/transitland-atlas",
+        "public_metadata_available": true,
+        "publisher_url": "https://github.com/transitland/transitland-atlas",
+        "observed_at_utc": "2026-10-21T11:16:24.171836+00:00",
+        "archived": false,
+        "license_label_unreviewed": "CC-BY-4.0",
+        "root_test_directory_present_not_executed": false,
+        "github_configuration_present_not_validated": true,
+        "independent_quality_verified": false,
+        "adoption_verified": false,
+        "conversion_failure_verified": false,
+        "next_gate": "Review original functionality, run relevant source tests, inspect license and find independent usage/adoption evidence"
+      }
+    ],
+    "independently_qualified_good_projects": 0,
+    "verified_underconversion_failure_causes": 0,
+    "repo_tests_executed": 0,
+    "boundary": "Repository descriptions, GitHub activity, SPDX API labels, workflows and test directories are not proof of quality or missing adoption."
+  },
+  "funding_enabler_overlay": {
+    "schema": "cite_refinery.funding_enabler_overlay.v1",
+    "observation_date": "2026-10-21",
+    "channels": [
+      {
+        "id": "nlnet_apply",
+        "name": "NLnet open technology grant application channel",
+        "type": "grant_program",
+        "source_url": "https://nlnet.nl/propose/",
+        "dated_status": "Publisher page lists next submission deadline 2026-11-03 12:00 CET; individual fund availability must be reconfirmed.",
+        "eligibility_note": "Open licensing and specific EU program conditions apply; the funder states it is not interested in AI-generated projects or proposals. No user or project eligibility checked.",
+        "recheck_action": "Inspect named active program, applicant geography, open licensing, originality rules, AI-assistance disclosure and deadline before considering application.",
+        "applicant_eligibility_confirmed": false,
+        "open_for_current_application_confirmed": false,
+        "funding_award_or_commitment": false,
+        "automatic_link_to_conversion_candidate": false
+      },
+      {
+        "id": "github_sponsors",
+        "name": "GitHub Sponsors for open-source maintainers",
+        "type": "sponsorship_platform",
+        "source_url": "https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/about-github-sponsors-for-open-source-contributors",
+        "dated_status": "Public documentation describes contributor sponsorship rather than a guaranteed grant or investment.",
+        "eligibility_note": "Maintainer account, supported jurisdiction, identity and payout compliance required; project or user's eligibility not checked.",
+        "recheck_action": "Verify supported jurisdiction, actual contributions, platform account approval and donor interest.",
+        "applicant_eligibility_confirmed": false,
+        "open_for_current_application_confirmed": false,
+        "funding_award_or_commitment": false,
+        "automatic_link_to_conversion_candidate": false
+      },
+      {
+        "id": "open_collective_host",
+        "name": "Open Collective fiscal sponsorship and shared accounting",
+        "type": "fiscal_host",
+        "source_url": "https://opencollective.com/opensource/apply/intro",
+        "dated_status": "Open Source Collective invites qualifying projects to apply and advertises 10 percent fiscal-host fee.",
+        "eligibility_note": "Fiscal hosting enables collection and expenditure administration but is not itself a grant award or committed sponsor.",
+        "recheck_action": "Verify hosting category, existing legal status, country availability, project verification criteria and fee schedule.",
+        "applicant_eligibility_confirmed": false,
+        "open_for_current_application_confirmed": false,
+        "funding_award_or_commitment": false,
+        "automatic_link_to_conversion_candidate": false
+      },
+      {
+        "id": "grants_gov",
+        "name": "Grants.gov official US federal funding opportunity directory",
+        "type": "grant_directory",
+        "source_url": "https://grants.gov/learn-grants/grant-eligibility.html",
+        "dated_status": "Official search and eligibility information for specific notices; no active matching notice selected.",
+        "eligibility_note": "US program notices contain their own applicant-type and geographic conditions; a university or project based in Taiwan has no assumed eligibility.",
+        "recheck_action": "Search specific funding notices and read NOFO applicant, jurisdiction, program and deadline rules before any match.",
+        "applicant_eligibility_confirmed": false,
+        "open_for_current_application_confirmed": false,
+        "funding_award_or_commitment": false,
+        "automatic_link_to_conversion_candidate": false
+      },
+      {
+        "id": "findit_taiwan",
+        "name": "FINDIT Taiwan government-backed startup investment information",
+        "type": "investment_route",
+        "source_url": "https://findit.sme.gov.tw/en/AboutUs",
+        "dated_status": "Public investment and matchmaking information platform, not a promised investor or particular open round.",
+        "eligibility_note": "Taiwanese startup/overseas Taiwanese founder registration and specific matchmaking event rules can apply; personal, student and project eligibility unverified.",
+        "recheck_action": "Verify applicant legal entity, Taiwan founder/registration status, recent relevant events and investor interest; do not infer a financing commitment.",
+        "applicant_eligibility_confirmed": false,
+        "open_for_current_application_confirmed": false,
+        "funding_award_or_commitment": false,
+        "automatic_link_to_conversion_candidate": false
+      },
+      {
+        "id": "csg_unresolved",
+        "name": "CSG (user-named funding source; expansion unverified)",
+        "type": "unresolved_source",
+        "source_url": null,
+        "dated_status": "Name supplied as a possible funding source; no authoritative expansion or official record established.",
+        "eligibility_note": "Unknown source and scheme; eligibility, jurisdiction, deadlines and whether grants or investment are offered are unknown.",
+        "recheck_action": "Recover exact CSG organization/program name and original official URL before creating any opportunity or eligibility edge.",
+        "applicant_eligibility_confirmed": false,
+        "open_for_current_application_confirmed": false,
+        "funding_award_or_commitment": false,
+        "automatic_link_to_conversion_candidate": false
+      }
+    ],
+    "eligible_opportunities_verified": 0,
+    "funded_relationships": 0,
+    "is_foundational_fourth_layer": false,
+    "function": "optional_resource_matching_after_use_case_fit_and_applicant_eligibility",
+    "limits": "Program pages and platform rules are NOT applicant-specific award opportunities, and funding is not required for useful capability conversion."
+  }
+}

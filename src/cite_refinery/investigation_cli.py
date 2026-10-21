@@ -88,6 +88,31 @@ def main(argv=None):
                         help="Optional provider for independent source applicability critique; omitted = structural source preflight only")
     assess.add_argument("--model",default=None)
     assess.add_argument("--timeout",type=int,default=150)
+    conversions=sub.add_parser("discover-conversions",
+        help="Emergent relationship discovery over broad research and implementation samples; funding optional")
+    conversions.add_argument("--atlas",type=Path,required=True,
+        help="Existing 63-source emergent atlas; no input opportunity pairs")
+    conversions.add_argument("--manifest",type=Path,required=True,
+        help="Original source manifest with URLs and SHA-256 hashes")
+    conversions.add_argument("--repository-survey",type=Path,required=True,
+        help="Broad surveyed implementation repository inventory")
+    conversions.add_argument("--funding-catalog",type=Path,
+        help="Optional small grants/sponsorship/investment resource overlay, NOT a fourth layer")
+    conversions.add_argument("--repository-audit",type=Path,
+        help="Optional read-only original GitHub metadata for exact selected candidate projects, NOT proven technical quality")
+    conversions.add_argument("--offset",type=int,default=0,
+        help="Reproducible independent repository sampling slice offset")
+    conversions.add_argument("--per-macro",type=int,default=6)
+    conversions.add_argument("--model-output",type=Path,
+        help="Previously saved unmodified JSON model response; review without re-running a model")
+    conversions.add_argument("--provider",default="antigravity",
+        choices=["copilot","antigravity","codex","claude","gemini","ollama"])
+    conversions.add_argument("--model",default="claude-sonnet-5-5-medium")
+    conversions.add_argument("--timeout",type=int,default=220)
+    conversions.add_argument("--raw-out",type=Path,
+        help="Optional write-once raw model response for independent evaluation")
+    conversions.add_argument("--json-out",type=Path,required=True)
+    conversions.add_argument("--markdown-out",type=Path,required=True)
     brief=sub.add_parser("operator-brief",
         help="Render one source-to-solution delivery brief from verified source receipts and bounded component test artifacts")
     brief.add_argument("--id",required=True)
@@ -128,6 +153,69 @@ def main(argv=None):
         execution=invoke_semantic_llm(prompt,provider=args.provider,model=args.model,
                                       timeout_seconds=args.timeout)
         return execution["raw"]
+    if args.command=="discover-conversions":
+        from .open_corpus_atlas import (
+            prepare_conversion_universe,emergent_conversion_prompt,
+            validate_emergent_conversion,funding_overlay,render_conversion_discovery
+        )
+        files=[args.atlas,args.manifest,args.repository_survey]
+        if args.funding_catalog:files.append(args.funding_catalog)
+        if args.repository_audit:files.append(args.repository_audit)
+        if args.model_output:files.append(args.model_output)
+        for src in files:
+            if src.stat().st_size>12_000_000:
+                raise ValueError("Discovery sources exceed bounded size")
+        def load_json(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+        universe=prepare_conversion_universe(
+            load_json(args.atlas),load_json(args.repository_survey),
+            load_json(args.manifest),per_macro=args.per_macro,offset=args.offset)
+        destinations=(args.json_out,args.markdown_out)
+        if args.raw_out:destinations+= (args.raw_out,)
+        if len({p.resolve() for p in destinations})!=len(destinations) or any(
+            p.exists() for p in destinations
+        ):
+            raise ValueError("Refusing to overwrite outputs or reuse the same file path")
+        if args.model_output:
+            raw=load_json(args.model_output)
+            provenance="replayed_saved_model_JSON_without_new_model_request"
+        else:
+            response=invoke_semantic_llm(
+                emergent_conversion_prompt(universe),provider=args.provider,
+                model=args.model,timeout_seconds=args.timeout)
+            raw=response["raw"]
+            provenance=response["provider"]+":"+response["model"]
+        # Write raw receipts before schema inspection if requested; validator
+        # failure must never convert a malformed model answer into graph truth.
+        if args.raw_out:
+            args.raw_out.parent.mkdir(parents=True,exist_ok=True)
+            args.raw_out.write_text(json.dumps(raw,ensure_ascii=False,indent=2)+"\n")
+        findings=validate_emergent_conversion(raw,universe)
+        findings["model_provenance"]=provenance
+        if args.repository_audit:
+            from .open_corpus_atlas import attach_original_repository_metadata
+            findings=attach_original_repository_metadata(
+                findings,load_json(args.repository_audit))
+        funds=funding_overlay(load_json(args.funding_catalog)) if args.funding_catalog else None
+        if funds:
+            findings["funding_enabler_overlay"]=funds
+        for path,txt in (
+            (args.json_out,json.dumps(findings,indent=2,ensure_ascii=False)+"\n"),
+            (args.markdown_out,render_conversion_discovery(findings,funds))
+        ):
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(txt,encoding="utf-8")
+        print(json.dumps({"schema":findings["schema"],
+            "selected_repositories":len(universe["selected_repositories"]),
+            "source_corpus_total":universe["source_corpus_total"],
+            "new_candidate_connections":findings["candidate_connection_count"],
+            "quality_independently_verified":0,
+            "underconversion_independently_verified":0,
+            "funding_resources":len(funds["channels"]) if funds else 0,
+            "graph_edges_promoted":0,
+            "json_out":str(args.json_out),"markdown_out":str(args.markdown_out)
+        },indent=2))
+        return 0
     if args.command=="arbitrage-map":
         from .internal_arbitrage import build as build_map, markdown as format_map
         for file in (args.atlas,args.operator_routes,

@@ -1,0 +1,60 @@
+{
+  "schema": "cite_refinery.funding_resource_catalog.v1",
+  "observed_on": "2026-10-21",
+  "channels": [
+    {
+      "id": "nlnet_apply",
+      "name": "NLnet open technology grant application channel",
+      "type": "grant_program",
+      "source_url": "https://nlnet.nl/propose/",
+      "dated_status": "Publisher page lists next submission deadline 2026-11-03 12:00 CET; individual fund availability must be reconfirmed.",
+      "eligibility_note": "Open licensing and specific EU program conditions apply; the funder states it is not interested in AI-generated projects or proposals. No user or project eligibility checked.",
+      "recheck_action": "Inspect named active program, applicant geography, open licensing, originality rules, AI-assistance disclosure and deadline before considering application."
+    },
+    {
+      "id": "github_sponsors",
+      "name": "GitHub Sponsors for open-source maintainers",
+      "type": "sponsorship_platform",
+      "source_url": "https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/about-github-sponsors-for-open-source-contributors",
+      "dated_status": "Public documentation describes contributor sponsorship rather than a guaranteed grant or investment.",
+      "eligibility_note": "Maintainer account, supported jurisdiction, identity and payout compliance required; project or user's eligibility not checked.",
+      "recheck_action": "Verify supported jurisdiction, actual contributions, platform account approval and donor interest."
+    },
+    {
+      "id": "open_collective_host",
+      "name": "Open Collective fiscal sponsorship and shared accounting",
+      "type": "fiscal_host",
+      "source_url": "https://opencollective.com/opensource/apply/intro",
+      "dated_status": "Open Source Collective invites qualifying projects to apply and advertises 10 percent fiscal-host fee.",
+      "eligibility_note": "Fiscal hosting enables collection and expenditure administration but is not itself a grant award or committed sponsor.",
+      "recheck_action": "Verify hosting category, existing legal status, country availability, project verification criteria and fee schedule."
+    },
+    {
+      "id": "grants_gov",
+      "name": "Grants.gov official US federal funding opportunity directory",
+      "type": "grant_directory",
+      "source_url": "https://grants.gov/learn-grants/grant-eligibility.html",
+      "dated_status": "Official search and eligibility information for specific notices; no active matching notice selected.",
+      "eligibility_note": "US program notices contain their own applicant-type and geographic conditions; a university or project based in Taiwan has no assumed eligibility.",
+      "recheck_action": "Search specific funding notices and read NOFO applicant, jurisdiction, program and deadline rules before any match."
+    },
+    {
+      "id": "findit_taiwan",
+      "name": "FINDIT Taiwan government-backed startup investment information",
+      "type": "investment_route",
+      "source_url": "https://findit.sme.gov.tw/en/AboutUs",
+      "dated_status": "Public investment and matchmaking information platform, not a promised investor or particular open round.",
+      "eligibility_note": "Taiwanese startup/overseas Taiwanese founder registration and specific matchmaking event rules can apply; personal, student and project eligibility unverified.",
+      "recheck_action": "Verify applicant legal entity, Taiwan founder/registration status, recent relevant events and investor interest; do not infer a financing commitment."
+    },
+    {
+      "id": "csg_unresolved",
+      "name": "CSG (user-named funding source; expansion unverified)",
+      "type": "unresolved_source",
+      "source_url": null,
+      "dated_status": "Name supplied as a possible funding source; no authoritative expansion or official record established.",
+      "eligibility_note": "Unknown source and scheme; eligibility, jurisdiction, deadlines and whether grants or investment are offered are unknown.",
+      "recheck_action": "Recover exact CSG organization/program name and original official URL before creating any opportunity or eligibility edge."
+    }
+  ]
+}
