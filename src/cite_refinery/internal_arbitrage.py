@@ -98,7 +98,7 @@ def scenario_economics(scenario):
         "decision":"RESEARCH_MORE_AND_VERIFY_QUOTES" if net>0 else "DO_NOT_BUY_AT_MODELED_PRICE",
     }
 
-def build(atlas,operator_routes,scenarios=None,owner_targets=None):
+def build(atlas,operator_routes,scenarios=None,owner_targets=None,market_snapshot=None):
     if (not isinstance(atlas,dict) or atlas.get("schema")!=ATLAS_SCHEMA or
         atlas.get("layers")!=["practical","academic","implementation"] or
         not isinstance(operator_routes,dict) or operator_routes.get("schema")!=ROUTES_SCHEMA):
@@ -261,19 +261,22 @@ def build(atlas,operator_routes,scenarios=None,owner_targets=None):
         "input_sha256":{"three_layer_atlas":_canonical_hash(atlas),
                         "technical_operator_gate":_canonical_hash(operator_routes),
                         "financial_scenarios":_canonical_hash(scenarios),
-                        "owner_strategy_hypotheses":_canonical_hash(owner_targets)},
+                        "owner_strategy_hypotheses":_canonical_hash(owner_targets),
+                        "real_market_snapshot":_canonical_hash(market_snapshot) if market_snapshot else None},
         "conceptual_layers":["practical","academic","implementation"],
         "arbitrage_is_an_overlay_not_a_fourth_graph_layer":True,
         "atlas_problem_views":ranked,
         "independent_technical_repair_leads":technical,
         "conditional_asset_spread_scenarios":financial,
         "owner_hypothesis_watchlist":owner,
+        "source_checked_market_screen":screen_market(market_snapshot) if market_snapshot is not None else None,
         "coverage":{
             "atlas_problem_views":len(ranked),
             "full_three_layer_candidate_views":sum(x["complete_three_layer_representation"] for x in ranked),
             "tested_technical_repair_leads":len(technical),
             "modeled_asset_spreads":len(financial),
             "user_strategy_priorities":len(owner),
+            "public_market_observations":len(market_snapshot["records"]) if market_snapshot else 0,
             "verified_profitable_arbitrage":0,
             "verified_buyers_or_customers":0,
             "validated_impactful_field_integrations":0,
@@ -349,6 +352,23 @@ def markdown(result):
     else:
         lines.append("No actual purchase, success probability, resale, loss-path or cost "
                      "inputs have been supplied. The system correctly abstains from forecasting profit.")
+    market=result.get("source_checked_market_screen")
+    if market:
+        lines.extend(["","## Public Taiwan listing sample — NOT an actionable purchase screen","",
+            f"**Asking observations:** {market['listed_observations']}; "
+            f"search-index-only observations: {market['source_only_cached_search_items']}; "
+            f"delisted or unavailable original listings: {len(market['rejected_unavailable_items'])}. "
+            "**Completed sales: 0; available trade pairs: 0.**","",
+            "| Broken item | Lowest matched working ask | Headline ask difference | Trade decision |",
+            "|---|---|---:|---|"])
+        for r in market["candidate_asking_comparisons"]:
+            lines.append("| "+r["candidate_id"]+" | "+r.get("comparison_source_id","NONE")+
+                " | "+str(r["headline_asking_gap_twd"] or "N/A")+" TWD | "+
+                r["decision"]+" |")
+        lines.extend(["","**Do not confuse an asking-price difference with profit.** "
+            "The observed acquisition listings are unavailable or only indexed; "
+            "completed sales, actual repair costs, matched accessories and checkout availability "
+            "were not independently verified.",""])
     lines.extend(["","## First verification gates for our own value capture","",
         "1. **Technical asymmetry:** replicate a neglected defect with source identity and a negative test.",
         "2. **Acquisition / price asymmetry:** obtain contemporaneous, condition-matched buy and *realized* sell prices; include shipping, repair labor, platform fees, tax, defects and failure recovery.",
@@ -359,3 +379,151 @@ def markdown(result):
         "**This is our internal arbitrage atlas, not a fourth conceptual layer, "
         "paid consulting forecast, execution bot or verified financial valuation.**",""])
     return "\n".join(lines)
+
+MARKET_SCHEMA="cite_refinery.taiwan_market_evidence.v1"
+_MARKET_ROLES={"acquire_defective_device","working_device_ask","repair_service_price","parts_asking_price"}
+_MARKET_SOURCE_STATES={"active_listing_page","delisted_on_live_page",
+                       "source_returns_404","cached_search_result_only"}
+_REQUIRED_MARKET_KEYS={"id","model","variant","condition","role","title","url",
+    "displayed_twd","source_state","source_basis","seller_claim",
+    "proof_of_completed_sale","physical_stock_verified","notes"}
+
+def screen_market(snapshot):
+    """Screen manually attributed Taiwan market snapshots, never transact.
+
+    An asking price, seller-reported item condition, public search-result count,
+    or a delisted page is NOT a buyer, deal, or completed-sale comparable.
+    """
+    from datetime import date
+    from urllib.parse import urlsplit
+
+    if not isinstance(snapshot,dict) or set(snapshot)!={
+        "schema","observed_on","currency","source_policy","records",
+        "source_handling","limitations"
+    } or snapshot.get("schema")!=MARKET_SCHEMA or snapshot.get("currency")!="TWD":
+        raise ValueError("Expected exact manual Taiwan market source snapshot")
+    try:
+        sampled=date.fromisoformat(snapshot["observed_on"])
+    except (ValueError,TypeError):
+        raise ValueError("Invalid observation date")
+    if sampled>date.today():
+        raise ValueError("Future market evidence not permitted")
+    policy=snapshot["source_policy"]
+    if not isinstance(policy,dict) or set(policy)!={
+        "url","published_category_transaction_fee_rate","applies_to","independent_check"
+    } or policy["url"]!="https://pub.ruten.com.tw/service_center/000600040029.html":
+        raise ValueError("Fee policy must cite its actual publisher source")
+    rate=_decimal(policy["published_category_transaction_fee_rate"],"transaction fee rate")
+    if rate>=1:raise ValueError("Invalid transaction fee rate")
+    items=snapshot["records"]
+    if not isinstance(items,list) or not 2<=len(items)<=40:
+        raise ValueError("Market snapshot needs bounded cited observations")
+    if not isinstance(snapshot["source_handling"],dict) or (
+        snapshot["source_handling"].get("completed_sale_records")!=0 or
+        snapshot["source_handling"].get("orders_placed") is not False or
+        snapshot["source_handling"].get("inventory_tested") is not False
+    ):
+        raise ValueError("This collector has no authority to assert sales or transactions")
+    ids=set()
+    normal=[]
+    for item in items:
+        if not isinstance(item,dict) or set(item)!=_REQUIRED_MARKET_KEYS:
+            raise ValueError("Every market observation must provide exact provenance fields")
+        if item["id"] in ids:raise ValueError("Repeated marketplace observation identity")
+        ids.add(item["id"])
+        if item["role"] not in _MARKET_ROLES or item["source_state"] not in _MARKET_SOURCE_STATES:
+            raise ValueError("Unknown marketplace source or role")
+        for attr in ("id","model","variant","condition","title","source_basis","seller_claim","notes"):
+            if not isinstance(item[attr],str) or not 4<=len(item[attr].strip())<=650:
+                raise ValueError("Incomplete marketplace observation "+attr)
+        u=urlsplit(item["url"])
+        if (u.scheme!="https" or u.hostname!="www.ruten.com.tw" or
+            u.username or u.password or u.fragment):
+            raise ValueError("A source link must be an unmodified public Ruten URL")
+        detail=u.path.startswith("/item/")
+        search=u.path.startswith("/search/")
+        if item["source_state"]=="cached_search_result_only":
+            if not search:raise ValueError("Indexed-only source must be a real search page")
+        elif not detail:
+            raise ValueError("Direct status evidence must reference a product detail page")
+        price=_decimal(item["displayed_twd"],"listed NT price")
+        if price<=0:raise ValueError("Price must be positive")
+        if item["proof_of_completed_sale"] is not False or (
+            item["physical_stock_verified"] is not False
+        ):
+            raise ValueError("No payment or stock-confirmation records in this source workflow")
+        normal.append({**item,"displayed_twd":_money(price),
+                       "ask_not_realized_price":True,
+                       "listing_availability_authorized":False})
+    out=[]
+    rejected=[]
+    for item in normal:
+        if item["source_state"] in {"delisted_on_live_page","source_returns_404"}:
+            rejected.append({"id":item["id"],"cause":item["source_state"],
+                             "source":item["url"],
+                             "not_an_active_transaction":True})
+        if item["role"]!="acquire_defective_device":continue
+        matches=[other for other in normal
+                 if other["role"]=="working_device_ask" and
+                    other["model"]==item["model"] and
+                    other["variant"]==item["variant"]]
+        if not matches:
+            out.append({"candidate_id":item["id"],
+                        "model":item["model"],"comparison_state":"no_model_matched_asking_reference",
+                        "headline_asking_gap_twd":None,
+                        "live_qualified_arbitrage":False,
+                        "decision":"NO_BUY_MISSING_COMPARABLE"})
+            continue
+        # The lowest quoted functional asking price is a conservative
+        # competing offer, NOT a sale, authorized purchase, or intrinsic value.
+        comparable=min(matches,key=lambda x:Decimal(x["displayed_twd"]))
+        ask_price=Decimal(comparable["displayed_twd"])
+        defect_price=Decimal(item["displayed_twd"])
+        delta=ask_price-defect_price
+        after_base_fee=ask_price*(1-rate)-defect_price
+        out.append({
+            "candidate_id":item["id"],"model":item["model"],
+            "acquisition_source":item["url"],
+            "comparison_source_id":comparable["id"],
+            "comparison_source":comparable["url"],
+            "source_state":item["source_state"],
+            "comparison_state":comparable["source_state"],
+            "acquisition_ask_twd":item["displayed_twd"],
+            "cheapest_observed_working_ask_twd":comparable["displayed_twd"],
+            "headline_asking_gap_twd":_money(delta),
+            "illustrative_after_base_transaction_fee_gap_twd":_money(after_base_fee),
+            "base_fee_rate_assumption":str(rate),
+            "unmodeled_repair_labor_shipping_payment_fees_and_failure_risk":True,
+            "asking_prices_are_not_completed_transactions":True,
+            "comparable_unit_condition_and_accessories_not_confirmed":True,
+            "confirmed_physical_stock":False,
+            "completed_resale_price_verified":False,
+            "live_qualified_arbitrage":False,
+            "decision":"NO_BUY_EVIDENCE_INSUFFICIENT",
+        })
+    return {
+        "schema":"cite_refinery.taiwan_market_screen.v1",
+        "observed_on":snapshot["observed_on"],
+        "input_sha256":_canonical_hash(snapshot),
+        "listed_observations":len(normal),
+        "device_asking_price_observations":sum(x["role"] in {
+            "acquire_defective_device","working_device_ask"} for x in normal),
+        "repair_or_part_price_observations":sum(x["role"] in {
+            "repair_service_price","parts_asking_price"} for x in normal),
+        "rejected_unavailable_items":rejected,
+        "source_only_cached_search_items":sum(x["source_state"]=="cached_search_result_only"
+                                              for x in normal),
+        "candidate_asking_comparisons":out,
+        "observed_market_quotes_available_for_current_checkout":0,
+        "verified_realized_comparable_sales":0,
+        "verified_profitable_arbitrage":0,
+        "authorized_trades":0,
+        "financial_implication":"Prices describe offers/listing snippets, not an available positive spread. Do not acquire inventory.",
+        "missing_decisive_inputs":[
+          "Fresh direct and available acquisition listing with seller-confirmed physical stock",
+          "Independent completed sale for matching console model/condition/accessories",
+          "Fault-specific confirmed repairability, component costs, repair time and failure salvage",
+          "All transaction/payment/return/shipping and tax charges",
+          "Actual buyer, attainable selling time and loss case",
+        ],
+    }
