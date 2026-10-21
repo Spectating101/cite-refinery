@@ -231,3 +231,30 @@ def audit_original_code(original_audit, *, fetcher=_get, token=None,
         "license_rights_verified":0,"end_user_adoption_verified":0,
         "records":records,
     }
+
+
+def main(argv=None):
+    import argparse
+    import os
+    from pathlib import Path
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--original-implementation-audit",required=True,type=Path)
+    parser.add_argument("--max-repositories",default=8,type=int)
+    parser.add_argument("--out",required=True,type=Path)
+    args=parser.parse_args(argv)
+    if args.out.exists():raise ValueError("Will not overwrite original source inspection output")
+    if args.original_implementation_audit.stat().st_size>5_000_000:
+        raise ValueError("Original source receipt exceeds limit")
+    report=audit_original_code(json.loads(args.original_implementation_audit.read_text()),
+                               token=os.environ.get("GITHUB_TOKEN"),
+                               max_repositories=args.max_repositories)
+    args.out.parent.mkdir(parents=True,exist_ok=True)
+    args.out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n")
+    print(json.dumps({k:report[k] for k in
+        ("previously_checked_distinct_source_repositories",
+         "sampled_repositories","source_file_inspection_successes")}))
+    return 0
+
+
+if __name__=="__main__":
+    raise SystemExit(main())
