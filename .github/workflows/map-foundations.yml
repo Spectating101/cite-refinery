@@ -6,12 +6,18 @@ on:
       - "src/cite_refinery/layer_foundations.py"
       - "src/cite_refinery/original_layer_source_audit.py"
       - "src/cite_refinery/nocturnal_public_atlas.py"
+      - "src/cite_refinery/academic_evidence_atlas.py"
+      - "src/cite_refinery/academic_original_depth_audit.py"
       - "src/cite_refinery/investigation_cli.py"
       - "tests/test_layer_foundations_v1.py"
       - "tests/test_original_layer_source_audit_v1.py"
       - "tests/test_nocturnal_public_atlas_v1.py"
+      - "tests/test_academic_evidence_atlas_v1.py"
+      - "tests/test_academic_original_depth_audit_v1.py"
       - "research_materials/runtime_trials/open_corpus_20261020/**"
       - "research_materials/opportunity_atlas/**"
+      - "research_materials/runtime_trials/richer_corpus_20261020/development_source_manifest.json"
+      - "research_materials/runtime_trials/richer_corpus_20261020/frozen_split_receipt.json"
       - ".github/workflows/map-foundations.yml"
   workflow_dispatch:
 
@@ -35,13 +41,17 @@ jobs:
       - name: Install project
         run: python -m pip install -e ".[server]"
       - name: Compile source
-        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py src/cite_refinery/original_layer_source_audit.py src/cite_refinery/nocturnal_public_atlas.py
+        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py src/cite_refinery/original_layer_source_audit.py src/cite_refinery/nocturnal_public_atlas.py src/cite_refinery/academic_evidence_atlas.py src/cite_refinery/academic_original_depth_audit.py
       - name: Run all map-first source integrity tests
         run: python -m unittest discover -s tests -p 'test_layer_foundations_v1.py' -v
       - name: Run independent source-audit guardrail tests
         run: python -m unittest discover -s tests -p 'test_original_layer_source_audit_v1.py' -v
       - name: Test Nocturnal publication-gated Practical map projection
         run: python -m unittest discover -s tests -p 'test_nocturnal_public_atlas_v1.py' -v
+      - name: Test 103-source Academic development map and sealed holdout
+        run: python -m unittest discover -s tests -p 'test_academic_evidence_atlas_v1.py' -v
+      - name: Test original publisher JATS source-structure audit
+        run: python -m unittest discover -s tests -p 'test_academic_original_depth_audit_v1.py' -v
       - name: Build release wheel
         run: |
           python -m pip install build
@@ -54,6 +64,31 @@ jobs:
             --markdown-out "$RUNNER_TEMP/layer-maps/standalone_layer_coverage.md" \
             --review-backlog-out "$RUNNER_TEMP/layer-maps/implementation_review_backlog.json"
           python -c 'import json,os; root=os.environ["RUNNER_TEMP"]+"/layer-maps/"; m=json.load(open(root+"standalone_layer_foundations.json")); b=json.load(open(root+"implementation_review_backlog.json")); assert len(m["layers"])==3 and m["cross_layer_edges_generated"]==0 and m["implementation"]["unique_repositories"]==1287 and b["model_or_human_review_completed"]==0 and b["sampled_pairs"]==88'
+      - name: Index 103 frozen Academic development sources independently
+        run: |
+          python -m cite_refinery.layered_cli investigate map-foundations \
+            --academic-development-manifest research_materials/runtime_trials/richer_corpus_20261020/development_source_manifest.json \
+            --academic-split-receipt research_materials/runtime_trials/richer_corpus_20261020/frozen_split_receipt.json \
+            --academic-atlas-out "$RUNNER_TEMP/layer-maps/academic_development_evidence_atlas.json" \
+            --academic-review-backlog-out "$RUNNER_TEMP/layer-maps/academic_source_review_backlog.json" \
+            --json-out "$RUNNER_TEMP/layer-maps/academic_development_combined_foundations.json" \
+            --markdown-out "$RUNNER_TEMP/layer-maps/academic_development_coverage.md"
+      - name: Inspect original Europe PMC article structure without rehosting XML
+        run: |
+          python -m cite_refinery.academic_original_depth_audit \
+            --academic-atlas "$RUNNER_TEMP/layer-maps/academic_development_evidence_atlas.json" \
+            --max-docs 8 \
+            --out "$RUNNER_TEMP/layer-maps/original_europe_pmc_jats_structure_audit.json"
+      - name: Attach evidence-bound original JATS structure checks
+        run: |
+          python -m cite_refinery.layered_cli investigate map-foundations \
+            --academic-development-manifest research_materials/runtime_trials/richer_corpus_20261020/development_source_manifest.json \
+            --academic-split-receipt research_materials/runtime_trials/richer_corpus_20261020/frozen_split_receipt.json \
+            --academic-original-jats-audit "$RUNNER_TEMP/layer-maps/original_europe_pmc_jats_structure_audit.json" \
+            --academic-atlas-out "$RUNNER_TEMP/layer-maps/academic_original_source_enriched_atlas.json" \
+            --json-out "$RUNNER_TEMP/layer-maps/academic_original_source_enriched_foundations.json" \
+            --markdown-out "$RUNNER_TEMP/layer-maps/academic_original_source_coverage.md"
+          python -c 'import json,os; p=os.environ["RUNNER_TEMP"]+"/layer-maps/"; a=json.load(open(p+"academic_original_source_enriched_atlas.json")); r=json.load(open(p+"original_europe_pmc_jats_structure_audit.json")); assert r["sampled_count"]==8 and a["coverage"]["original_jats_source_ids_sampled"]==8 and a["coverage"]["original_public_jats_structure_inspected"]==r["original_structure_inspected"] and a["coverage"]["independently_validated_scientific_findings"]==0'
       - name: Original publisher and GitHub source identity audit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

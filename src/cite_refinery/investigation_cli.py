@@ -112,6 +112,24 @@ def main(argv=None):
     foundation.add_argument("--markdown-out",type=Path,required=True)
     foundation.add_argument("--review-backlog-out",type=Path,
         help="Optional balanced, unreviewed metadata-pair review queue; no model invoked")
+    foundation.add_argument("--academic-development-manifest",type=Path,
+        help="Frozen 103-record development-only source index, NOT held-out material")
+    foundation.add_argument("--academic-split-receipt",type=Path,
+        help="Frozen public split/count/holdout-seal receipt (no held-out source IDs)")
+    foundation.add_argument("--academic-original-jats-audit",type=Path,
+        help="Optional original Europe PMC JATS structure receipt, not evidence of valid findings")
+    foundation.add_argument("--academic-evidence-reviews",type=Path,
+        help="Optional operator-reviewed exact-span evidence claims, not scientific validation")
+    foundation.add_argument("--academic-review-text-dir",type=Path,
+        help="Local original extracted text named SOURCE_ID.txt; SHA-256 validated")
+    foundation.add_argument("--academic-genre",choices=[
+        "full_text_jats","report_extracted_text","dataset_metadata"])
+    foundation.add_argument("--academic-terms",
+        help="Literal within-Academic source and claim search")
+    foundation.add_argument("--academic-atlas-out",type=Path,
+        help="Optional separate indexed Academic evidence atlas JSON")
+    foundation.add_argument("--academic-review-backlog-out",type=Path,
+        help="Optional balanced, source-genre review queue; no LLM labels")
     foundation.add_argument("--academic-original-audit",type=Path,
         help="Optional exact original source/DOI identity checks, no scientific validation")
     foundation.add_argument("--implementation-original-audit",type=Path,
@@ -211,6 +229,15 @@ def main(argv=None):
         from .layer_foundations import build, browse, review_backlog, summary_markdown
         if (args.facet or args.terms) and not args.layer:
             raise ValueError("Within-layer browse facet/terms require --layer")
+        if (args.academic_development_manifest is None) != (
+            args.academic_split_receipt is None):
+            raise ValueError("Both frozen Academic development manifest and split receipt are required")
+        if (args.academic_original_jats_audit or args.academic_evidence_reviews or args.academic_review_text_dir or
+            args.academic_genre or args.academic_terms or args.academic_atlas_out or
+            args.academic_review_backlog_out) and not args.academic_development_manifest:
+            raise ValueError("Academic depth options require the frozen development manifest")
+        if bool(args.academic_evidence_reviews) != bool(args.academic_review_text_dir):
+            raise ValueError("Academic review claims need their own original extracted-text directory")
         if (args.previous_nocturnal_atlas or args.nocturnal_terms or
             args.nocturnal_matter_id or args.nocturnal_map_out or
             args.nocturnal_manifest_sha256) and not args.nocturnal_public_snapshot:
@@ -224,11 +251,20 @@ def main(argv=None):
             raise ValueError("Both independent source audit layers must be supplied together")
         if args.academic_original_audit:
             files.extend([args.academic_original_audit,args.implementation_original_audit])
+        if args.academic_development_manifest:
+            files.extend([args.academic_development_manifest,args.academic_split_receipt])
+        if args.academic_evidence_reviews:
+            files.append(args.academic_evidence_reviews)
+        if args.academic_original_jats_audit:
+            files.append(args.academic_original_jats_audit)
         if any(file.stat().st_size>12_000_000 for file in files):
             raise ValueError("Source inventory exceeds bounded file size")
         outputs=[args.json_out,args.markdown_out]
         if args.review_backlog_out: outputs.append(args.review_backlog_out)
         if args.nocturnal_map_out: outputs.append(args.nocturnal_map_out)
+        if args.academic_atlas_out: outputs.append(args.academic_atlas_out)
+        if args.academic_review_backlog_out:
+            outputs.append(args.academic_review_backlog_out)
         if (len(set(x.resolve() for x in outputs))!=len(outputs)
             or any(x.exists() for x in outputs)):
             raise ValueError("Refusing to overwrite outputs or use same path")
@@ -243,6 +279,32 @@ def main(argv=None):
             m=attach_independent_source_identity_checks(
                 m,read(args.academic_original_audit),
                 read(args.implementation_original_audit))
+        academic_map = None
+        academic_view = None
+        academic_backlog = None
+        if args.academic_development_manifest:
+            from .academic_evidence_atlas import (
+                build_academic_atlas, browse_academic,
+                balanced_review_queue, load_review_source_texts)
+            reviews = read(args.academic_evidence_reviews) if args.academic_evidence_reviews else None
+            source_ids = [x["source_id"] for x in reviews["claims"]] if reviews else []
+            texts = (load_review_source_texts(args.academic_review_text_dir, source_ids)
+                     if reviews else None)
+            academic_map = build_academic_atlas(
+                read(args.academic_development_manifest),
+                read(args.academic_split_receipt), reviews=reviews, source_texts=texts)
+            if args.academic_original_jats_audit:
+                from .academic_original_depth_audit import attach_original_jats_structure
+                academic_map = attach_original_jats_structure(
+                    academic_map, read(args.academic_original_jats_audit))
+            academic_view = browse_academic(
+                academic_map, terms=args.academic_terms,
+                genre=args.academic_genre, limit=args.limit)
+            academic_backlog = (balanced_review_queue(academic_map)
+                                if args.academic_review_backlog_out else None)
+            m["academic"]["development_evidence_atlas"] = academic_map
+            m["academic"]["development_evidence_browse"] = academic_view
+            m["academic"]["source_abstract_inventory_kept_separate"] = True
         nocturnal_map = None
         nocturnal_view = None
         if args.nocturnal_public_snapshot:
@@ -265,6 +327,23 @@ def main(argv=None):
         for path,contents in [
             (args.json_out,json.dumps(m,ensure_ascii=False,indent=2)+"\n"),
             (args.markdown_out,summary_markdown(m) + (
+                "\n## Academic development-only research evidence\n\n"
+                + str(academic_map["coverage"]["indexed_article_fulltexts"])
+                + " previously retrieved open-access full-text article identities, "
+                + str(academic_map["coverage"]["indexed_institutional_reports"])
+                + " institutional report text identities, and "
+                + str(academic_map["coverage"]["dataset_metadata_records_not_observations"])
+                + " dataset metadata records; "
+                + str(academic_map["coverage"]["sealed_holdout_documents_not_imported"])
+                + " documents remain sealed for held-out evaluation. "
+                + str(academic_map["coverage"]["source_anchored_claims"])
+                + " original-text-anchored analyst claims, "
+                + str(academic_map["coverage"]["operator_checked_source_span_claims"])
+                + " with operator-designated span review, zero independently validated "
+                + "scientific findings and zero adjudicated contradictions. "
+                + "The original 47 abstract/index source leads are not summed "
+                + "with this corpus as proven non-overlapping publications.\n"
+                if academic_map else "") + (
                 "\n## Source-approved Nocturnal Practical evidence\n\n"
                 + "Gated public snapshot `" + nocturnal_map["provenance"]["snapshot_id"]
                 + "`: " + str(nocturnal_map["coverage"]["matter_count"])
@@ -274,6 +353,12 @@ def main(argv=None):
                 + "Case stages, entities and disputes are source assertions; "
                 + "no cross-layer inference or verified-world-coverage claim.\n"
                 if nocturnal_map else "")),
+            *([(args.academic_atlas_out,
+                 json.dumps(academic_map,ensure_ascii=False,indent=2)+"\n")]
+              if args.academic_atlas_out else []),
+            *([(args.academic_review_backlog_out,
+                 json.dumps(academic_backlog,ensure_ascii=False,indent=2)+"\n")]
+              if academic_backlog else []),
             *([(args.nocturnal_map_out,
                  json.dumps(nocturnal_map,ensure_ascii=False,indent=2)+"\n")]
               if args.nocturnal_map_out else []),
@@ -293,6 +378,18 @@ def main(argv=None):
             "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
             "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
             "browse_matches":view["matching_count"] if view else None,
+            "academic_original_jats_source_structures_inspected": (
+                academic_map["coverage"].get("original_public_jats_structure_inspected",0)
+                if academic_map else 0),
+            "academic_development_fulltext_articles":(
+                academic_map["coverage"]["indexed_article_fulltexts"] if academic_map else 0),
+            "academic_source_anchored_claims":(
+                academic_map["coverage"]["source_anchored_claims"] if academic_map else 0),
+            "academic_within_layer_browse_matches":(
+                academic_view["matching_count"] if academic_view else None),
+            "academic_blind_holdout_still_sealed": (
+                academic_map["provenance"]["heldout_source_id_or_text_imported"] is False
+                if academic_map else None),
             "nocturnal_public_snapshot_id":(
                 nocturnal_map["provenance"]["snapshot_id"] if nocturnal_map else None),
             "nocturnal_public_matters":(
