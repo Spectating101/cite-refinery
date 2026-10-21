@@ -116,6 +116,18 @@ def main(argv=None):
         help="Optional exact original source/DOI identity checks, no scientific validation")
     foundation.add_argument("--implementation-original-audit",type=Path,
         help="Optional pinned GitHub revision and root listing receipts, no code execution")
+    foundation.add_argument("--nocturnal-public-snapshot",type=Path,
+        help="Local publication-approved Nocturnal public snapshot directory; no private ledgers")
+    foundation.add_argument("--nocturnal-manifest-sha256",
+        help="Required out-of-band approved manifest digest for real, non-fictional snapshots")
+    foundation.add_argument("--previous-nocturnal-atlas",type=Path,
+        help="Optional prior standalone Nocturnal atlas for immutable incremental synchronization")
+    foundation.add_argument("--nocturnal-terms",
+        help="Literal within-Nocturnal Practical matter search, not verified semantics")
+    foundation.add_argument("--nocturnal-matter-id",
+        help="Browse one public Nocturnal matter, if published")
+    foundation.add_argument("--nocturnal-map-out",type=Path,
+        help="Optional standalone JSON Practical map with Nocturnal evidence pointers")
     qualification=sub.add_parser("qualify-conversions",
         help="Audit candidate conversion discoveries across multiple source slices, public repo metadata and pinned upstream test receipts")
     qualification.add_argument("--discovery",type=Path,action="append",required=True,
@@ -199,6 +211,10 @@ def main(argv=None):
         from .layer_foundations import build, browse, review_backlog, summary_markdown
         if (args.facet or args.terms) and not args.layer:
             raise ValueError("Within-layer browse facet/terms require --layer")
+        if (args.previous_nocturnal_atlas or args.nocturnal_terms or
+            args.nocturnal_matter_id or args.nocturnal_map_out or
+            args.nocturnal_manifest_sha256) and not args.nocturnal_public_snapshot:
+            raise ValueError("Nocturnal options require --nocturnal-public-snapshot")
         shards=sorted(args.reading_dir.glob("shard-*.json"))
         if not 1<=len(shards)<=40:
             raise ValueError("No bounded source-reading shard collection")
@@ -212,6 +228,7 @@ def main(argv=None):
             raise ValueError("Source inventory exceeds bounded file size")
         outputs=[args.json_out,args.markdown_out]
         if args.review_backlog_out: outputs.append(args.review_backlog_out)
+        if args.nocturnal_map_out: outputs.append(args.nocturnal_map_out)
         if (len(set(x.resolve() for x in outputs))!=len(outputs)
             or any(x.exists() for x in outputs)):
             raise ValueError("Refusing to overwrite outputs or use same path")
@@ -226,13 +243,40 @@ def main(argv=None):
             m=attach_independent_source_identity_checks(
                 m,read(args.academic_original_audit),
                 read(args.implementation_original_audit))
+        nocturnal_map = None
+        nocturnal_view = None
+        if args.nocturnal_public_snapshot:
+            from .nocturnal_public_atlas import build_practical_atlas, browse_practical
+            previous = read(args.previous_nocturnal_atlas) if args.previous_nocturnal_atlas else None
+            if previous is not None and previous.get("schema") == m["schema"]:
+                previous = previous["practical"]["nocturnal_public_atlas"]
+            nocturnal_map = build_practical_atlas(
+                args.nocturnal_public_snapshot, previous=previous,
+                expected_manifest_sha256=args.nocturnal_manifest_sha256)
+            m["practical"]["nocturnal_public_atlas"] = nocturnal_map
+            nocturnal_view = browse_practical(
+                nocturnal_map, terms=args.nocturnal_terms,
+                matter_id=args.nocturnal_matter_id, limit=args.limit)
+            m["practical"]["nocturnal_public_browse"] = nocturnal_view
         view=(browse(m,layer=args.layer,facet=args.facet,terms=args.terms,
                      limit=args.limit) if args.layer else None)
         if view: m["within_layer_browse"]=view
         backlog=review_backlog(m) if args.review_backlog_out else None
         for path,contents in [
             (args.json_out,json.dumps(m,ensure_ascii=False,indent=2)+"\n"),
-            (args.markdown_out,summary_markdown(m)),
+            (args.markdown_out,summary_markdown(m) + (
+                "\n## Source-approved Nocturnal Practical evidence\n\n"
+                + "Gated public snapshot `" + nocturnal_map["provenance"]["snapshot_id"]
+                + "`: " + str(nocturnal_map["coverage"]["matter_count"])
+                + " matters, " + str(nocturnal_map["coverage"]["module_count"])
+                + " modules, " + str(nocturnal_map["coverage"]["correction_count"])
+                + " corrections. Source URLs are not independent corroboration. "
+                + "Case stages, entities and disputes are source assertions; "
+                + "no cross-layer inference or verified-world-coverage claim.\n"
+                if nocturnal_map else "")),
+            *([(args.nocturnal_map_out,
+                 json.dumps(nocturnal_map,ensure_ascii=False,indent=2)+"\n")]
+              if args.nocturnal_map_out else []),
             *([(args.review_backlog_out,
                  json.dumps(backlog,ensure_ascii=False,indent=2)+"\n")]
               if backlog else [])
@@ -249,6 +293,12 @@ def main(argv=None):
             "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
             "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
             "browse_matches":view["matching_count"] if view else None,
+            "nocturnal_public_snapshot_id":(
+                nocturnal_map["provenance"]["snapshot_id"] if nocturnal_map else None),
+            "nocturnal_public_matters":(
+                nocturnal_map["coverage"]["matter_count"] if nocturnal_map else 0),
+            "nocturnal_public_browse_matches":(
+                nocturnal_view["matching_count"] if nocturnal_view else None),
             "external_academic_doi_confirmed":m.get(
                 "within_layer_original_source_audits",{}).get(
                     "publisher_doi_identity_confirmed",0),
