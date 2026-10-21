@@ -105,6 +105,8 @@ def main(argv=None):
                      help="Optional user-supplied complete purchase/repair/resale scenarios; conditional, not verified prices")
     arb.add_argument("--owner-targets",type=Path,
                      help="Optional user strategy priorities/data overlay; never automatically creates cross-layer edges")
+    arb.add_argument("--market-evidence",type=Path,
+                     help="Optional public, dated Taiwan marketplace snapshot; asking prices are not realized resale arbitrage")
     arb.add_argument("--json-out",type=Path,required=True)
     arb.add_argument("--markdown-out",type=Path,required=True)
     for name in ("step","run","status"):
@@ -130,14 +132,16 @@ def main(argv=None):
         from .internal_arbitrage import build as build_map, markdown as format_map
         for file in (args.atlas,args.operator_routes,
                      *([args.scenarios] if args.scenarios else []),
-                     *([args.owner_targets] if args.owner_targets else [])):
+                     *([args.owner_targets] if args.owner_targets else []),
+                     *([args.market_evidence] if args.market_evidence else [])):
             if file.stat().st_size>3_000_000:
                 raise ValueError("Arbitrage source evidence file too large")
         def load_json(path):
             return json.loads(path.read_text(encoding="utf-8"))
         report=build_map(load_json(args.atlas),load_json(args.operator_routes),
                          load_json(args.scenarios) if args.scenarios else None,
-                         load_json(args.owner_targets) if args.owner_targets else None)
+                         load_json(args.owner_targets) if args.owner_targets else None,
+                         load_json(args.market_evidence) if args.market_evidence else None)
         outputs=(args.json_out,args.markdown_out)
         if outputs[0].resolve()==outputs[1].resolve() or any(p.exists() for p in outputs):
             raise ValueError("Refusing to overwrite existing/duplicate arbitrage-map output paths")
