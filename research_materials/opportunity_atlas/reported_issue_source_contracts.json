@@ -1,0 +1,56 @@
+{
+  "schema": "cite_refinery.reported_issue_arithmetic_contracts.v1",
+  "cases": [
+    {
+      "id": "ofn_canada_map_bounds",
+      "issue_url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+      "source_url": "https://github.com/openfoodfoundation/openfoodnetwork/blob/1167aa7b7585c1794199e032fc15c0e9c1c74104/app/assets/javascripts/darkswarm/services/map_centre_calculator.js.coffee",
+      "source_commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+      "source_git_blob_sha": "74a669690f56c15f2c15ceffe34c8f02a96d0e27",
+      "source_anchors_present": true,
+      "arithmetic_analog_reproduced": true,
+      "upstream_application_executed": false,
+      "runtime_integration_test_available": false,
+      "full_application_impact_verified": false,
+      "reproduction": {
+        "fixture": "three invented Canada-like latitudes 49/53/51 and a synthetic mis-geocoded latitude -15",
+        "without_outlier_latitude": 51.0,
+        "with_outlier_latitude": 19.0,
+        "latitude_shift_degrees": -32.0,
+        "center_is_robust_to_outlier": false,
+        "regression_contract": "Outlier must not move first-view map outside normal region; use instance-defined override or robust geographic bounds.",
+        "code_execution_mode": "independent numeric analog of exact source min/max arithmetic, not original CoffeeScript execution"
+      },
+      "source_scope": "Exact original source blob and arithmetic only; no Ruby/CoffeeScript app or end-user field simulation"
+    },
+    {
+      "id": "foodsoft_order_quantity_rounding",
+      "issue_url": "https://github.com/foodcoops/foodsoft/issues/1368",
+      "source_url": "https://github.com/foodcoops/foodsoft/blob/f594be8e64f4d3748d0e418df05fbb554ccce71b/app/helpers/orders_helper.rb",
+      "source_commit": "f594be8e64f4d3748d0e418df05fbb554ccce71b",
+      "source_git_blob_sha": "64567d22f2a02cd3d4b0a481ff1f8b581e90420d",
+      "source_anchors_present": true,
+      "arithmetic_analog_reproduced": true,
+      "upstream_application_executed": false,
+      "runtime_integration_test_available": false,
+      "full_application_impact_verified": false,
+      "reproduction": {
+        "fixture": "1.7 kg ordered divided by 1.3 kg per unit",
+        "exact_group_quantity": "1.3076923076923076923076923076923077",
+        "rounded_order_quantity": "1.308",
+        "asymmetric_original_equality": false,
+        "symmetrically_rounded_equality": true,
+        "regression_contract": "Compared quantities must use consistent precision, including a fixture for units 1.7kg/1.3kg.",
+        "code_execution_mode": "independent Decimal analog of source helper, not original Ruby execution"
+      },
+      "source_scope": "Exact original source blob and arithmetic only; no Ruby/CoffeeScript app or end-user field simulation"
+    }
+  ],
+  "source_verification": "Public GitHub blob SHA1 and inspected source tokens verified at exact commit",
+  "original_app_executed": false,
+  "model_output_used_as_proof": false,
+  "source_check_implies_operator_demand": false,
+  "external_contact_made": false,
+  "commercial_revenue_verified": false,
+  "boundary": "Source-derived analogs support bug mechanism and regression design only, not end-to-end fix, deployment or paid maintainer request."
+}

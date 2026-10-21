@@ -22,11 +22,12 @@ The previously unified conceptual graph now has **read-only functional trial evi
 - **Academic mechanism:** mechanism:flood_warning_to_impact (review: partial_support)
 - **Implementation:** github:WeixuanZ/flood-warning-system at pinned revision c1c7facf2c55
 - **Test execution:** actual_upstream_python_code_synthetic_station_fixtures
-- **Reproduced failures:** 1; missing prerequisites: 0.
+- **Reproduced failures:** 2; missing prerequisites: 0.
 
 ### Exact failed or blocked requirements
 
 - **nonfinite_sensor_level_is_excluded (fail)**: NaN water-level readings must not be returned as candidates for an operational highest-risk list. Evidence: {"nan_relative_value": "nan", "nan_in_ranked_stations": true}
+- **nonfinite_station_corrupts_top_one_ordering (fail)**: At input [low=0.2, invalid=NaN, high=1.6], top-one must select the high station, irrespective of telemetry insertion order. Evidence: {"input_order": ["low", "nan", "high2"], "top_one": ["low"]}
 
 **Conversion gate:** FAIL/UNVERIFIED. No full technical fit, license clearance, scientific efficacy, or buyer.
 

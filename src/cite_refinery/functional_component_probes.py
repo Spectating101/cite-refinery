@@ -165,6 +165,19 @@ def flood(repo_root:Path)->dict[str,Any]:
             expected={"nan_relative_value":None,"nan_in_ranked_stations":False},
             note="Nonfinite measurements are invalid telemetry; passing them into risk sorting can mislead downstream processing.",
         ))
+        low=station("low",value=0.2)
+        high2=station("high2",value=1.6)
+        unsafe_order=[low,nan,high2]
+        actual_top=stations_highest_rel_level(unsafe_order,1)
+        actual_names=[x.name for x in actual_top]
+        cases.append(check(
+            "nonfinite_station_corrupts_top_one_ordering",
+            "At input [low=0.2, invalid=NaN, high=1.6], top-one must select the high station, irrespective of telemetry insertion order.",
+            "pass" if actual_names==["high2"] else "fail",
+            actual={"input_order":["low","nan","high2"],"top_one":actual_names},
+            expected={"top_one":["high2"]},
+            note="Upstream Python float NaN breaks total ordering and can suppress a truly higher station. Synthetic fixture is a direct module test; it does not establish actual public-warning failures.",
+        ))
         cases.append(check(
             "local_warning_distribution_and_health_outcomes",
             "A forecast/threshold module must be paired with validated local alert delivery and downstream response.",

@@ -1,0 +1,322 @@
+{
+  "schema": "cite_refinery.pinned_original_component_trials.v1",
+  "original_source_pins": {
+    "openfoodnetwork": {
+      "git_commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+      "path": "app/assets/javascripts/darkswarm/services/map_centre_calculator.js.coffee",
+      "blob": "74a669690f56c15f2c15ceffe34c8f02a96d0e27",
+      "issue_url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924"
+    },
+    "foodsoft": {
+      "git_commit": "337489007f863d64abf2fae7b20f440f1651ab00",
+      "path": "app/helpers/orders_helper.rb",
+      "blob": "64567d22f2a02cd3d4b0a481ff1f8b581e90420d",
+      "issue_url": "https://github.com/foodcoops/foodsoft/issues/1368"
+    }
+  },
+  "runtimes": {
+    "ofn": "node+coffee-script@1.12.7 (original project pin)",
+    "foodsoft": "ruby 3.3-alpine digest-pinned network-disabled container"
+  },
+  "cases": [
+    {
+      "id": "ofn_canada_map_bounds",
+      "issue_url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+      "source_kind": "exact_original_coffeescript_factory",
+      "original_execution": {
+        "schema": "cite_refinery.pinned_ofn_component_execution.v1",
+        "original_coffeescript_runtime": "coffee-script@1.12.7",
+        "upstream_source_compiled_and_executed": true,
+        "full_angular_app_executed": false,
+        "original_application_test_suite_executed": false,
+        "source_kind": "pinned_upstream",
+        "validations": [
+          {
+            "name": "no_enterprises_configured_latitude",
+            "actual": 76.26,
+            "expected": 76.26,
+            "pass": true
+          },
+          {
+            "name": "no_enterprises_configured_longitude",
+            "actual": -42.66,
+            "expected": -42.66,
+            "pass": true
+          },
+          {
+            "name": "existing_two_coordinate_latitude_case",
+            "actual": 53.5,
+            "expected": 53.5,
+            "pass": true
+          },
+          {
+            "name": "existing_two_coordinate_longitude_case",
+            "actual": -6.5,
+            "expected": -6.5,
+            "pass": true
+          },
+          {
+            "name": "three_good_location_midpoint",
+            "actual": 51,
+            "expected": 51,
+            "pass": true
+          },
+          {
+            "name": "four_points_with_bad_geocode_actual_center",
+            "actual": 19,
+            "expected": 19,
+            "pass": true
+          },
+          {
+            "name": "four_points_outlier_preserves_canada_region",
+            "actual": 19,
+            "expected": 50,
+            "pass": false
+          },
+          {
+            "name": "ordinary_two_point_midpoint_positive_and_negative",
+            "actual": 1.5,
+            "expected": 1.5,
+            "pass": true
+          },
+          {
+            "name": "three_misgeocodes_must_still_center_in_expected_country_region",
+            "actual": false,
+            "expected": true,
+            "pass": false
+          }
+        ],
+        "all_standard_regressions_pass": true,
+        "outlier_regression_pass": false,
+        "multiple_outliers_regression_pass": false,
+        "zoom_and_geographic_bounds_integration_verified": false,
+        "bound": "Synthetic geocoordinates only. Map zoom, actual user records, map layer integration not exercised."
+      },
+      "temporary_candidate_execution": {
+        "schema": "cite_refinery.pinned_ofn_component_execution.v1",
+        "original_coffeescript_runtime": "coffee-script@1.12.7",
+        "upstream_source_compiled_and_executed": true,
+        "full_angular_app_executed": false,
+        "original_application_test_suite_executed": false,
+        "source_kind": "local_candidate_patch",
+        "validations": [
+          {
+            "name": "no_enterprises_configured_latitude",
+            "actual": 76.26,
+            "expected": 76.26,
+            "pass": true
+          },
+          {
+            "name": "no_enterprises_configured_longitude",
+            "actual": -42.66,
+            "expected": -42.66,
+            "pass": true
+          },
+          {
+            "name": "existing_two_coordinate_latitude_case",
+            "actual": 53.5,
+            "expected": 53.5,
+            "pass": true
+          },
+          {
+            "name": "existing_two_coordinate_longitude_case",
+            "actual": -6.5,
+            "expected": -6.5,
+            "pass": true
+          },
+          {
+            "name": "three_good_location_midpoint",
+            "actual": 51,
+            "expected": 51,
+            "pass": true
+          },
+          {
+            "name": "four_points_with_bad_geocode_actual_center",
+            "actual": 50,
+            "expected": 50,
+            "pass": true
+          },
+          {
+            "name": "four_points_outlier_preserves_canada_region",
+            "actual": 50,
+            "expected": 50,
+            "pass": true
+          },
+          {
+            "name": "ordinary_two_point_midpoint_positive_and_negative",
+            "actual": 1.5,
+            "expected": 1.5,
+            "pass": true
+          },
+          {
+            "name": "three_misgeocodes_must_still_center_in_expected_country_region",
+            "actual": false,
+            "expected": true,
+            "pass": false
+          }
+        ],
+        "all_standard_regressions_pass": true,
+        "outlier_regression_pass": true,
+        "multiple_outliers_regression_pass": false,
+        "zoom_and_geographic_bounds_integration_verified": false,
+        "bound": "Synthetic geocoordinates only. Map zoom, actual user records, map layer integration not exercised."
+      },
+      "original_defect_reproduced": true,
+      "candidate_one_outlier_passes": true,
+      "candidate_multiple_outliers_passes": false,
+      "candidate_zoom_and_geographic_bounds_verified": false,
+      "next_gate": "Full Angular component/Jasmine tests, outlier strategy across multiple countries, configurable zoom/bounds and maintainer approval."
+    },
+    {
+      "id": "foodsoft_order_quantity_rounding",
+      "issue_url": "https://github.com/foodcoops/foodsoft/issues/1368",
+      "source_kind": "exact_original_Ruby_OrdersHelper_in_container",
+      "original_execution": {
+        "schema": "cite_refinery.pinned_foodsoft_helper_execution.v1",
+        "ruby_version": "3.3.12",
+        "upstream_ruby_helper_loaded_and_executed": true,
+        "rails_app_executed": false,
+        "rails_test_suite_executed": false,
+        "source_kind": "pinned_upstream",
+        "source": "/inputs/foodsoft/app/helpers/orders_helper.rb",
+        "case_count": 7,
+        "validations": [
+          {
+            "name": "equal_value_precision_ordered",
+            "branch": "ordered",
+            "actual": "!",
+            "expected": false,
+            "pass": false
+          },
+          {
+            "name": "equal_value_precision_received",
+            "branch": "received",
+            "actual": "?",
+            "expected": false,
+            "pass": false
+          },
+          {
+            "name": "equal_value_precision_billed",
+            "branch": "billed",
+            "actual": false,
+            "expected": false,
+            "pass": true
+          },
+          {
+            "name": "genuine_difference_ordered",
+            "branch": "ordered",
+            "actual": "!",
+            "expected": "!",
+            "pass": true
+          },
+          {
+            "name": "genuine_difference_received",
+            "branch": "received",
+            "actual": "?",
+            "expected": "?",
+            "pass": true
+          },
+          {
+            "name": "genuine_difference_billed",
+            "branch": "billed",
+            "actual": "?",
+            "expected": "?",
+            "pass": true
+          },
+          {
+            "name": "absent_quantities_nil",
+            "branch": "none",
+            "actual": null,
+            "expected": null,
+            "pass": true
+          }
+        ],
+        "equal_ordered_and_received_precision_regressions_pass": false,
+        "genuine_difference_regressions_pass": true,
+        "scope": "Original helper invoked with exact BigDecimal conversion stub; Rails models, database, app integration and UI not run."
+      },
+      "temporary_candidate_execution": {
+        "schema": "cite_refinery.pinned_foodsoft_helper_execution.v1",
+        "ruby_version": "3.3.12",
+        "upstream_ruby_helper_loaded_and_executed": true,
+        "rails_app_executed": false,
+        "rails_test_suite_executed": false,
+        "source_kind": "local_candidate_patch",
+        "source": "/inputs/candidate_trials_e5xblxq5/orders_helper.rb",
+        "case_count": 7,
+        "validations": [
+          {
+            "name": "equal_value_precision_ordered",
+            "branch": "ordered",
+            "actual": false,
+            "expected": false,
+            "pass": true
+          },
+          {
+            "name": "equal_value_precision_received",
+            "branch": "received",
+            "actual": false,
+            "expected": false,
+            "pass": true
+          },
+          {
+            "name": "equal_value_precision_billed",
+            "branch": "billed",
+            "actual": false,
+            "expected": false,
+            "pass": true
+          },
+          {
+            "name": "genuine_difference_ordered",
+            "branch": "ordered",
+            "actual": "!",
+            "expected": "!",
+            "pass": true
+          },
+          {
+            "name": "genuine_difference_received",
+            "branch": "received",
+            "actual": "?",
+            "expected": "?",
+            "pass": true
+          },
+          {
+            "name": "genuine_difference_billed",
+            "branch": "billed",
+            "actual": "?",
+            "expected": "?",
+            "pass": true
+          },
+          {
+            "name": "absent_quantities_nil",
+            "branch": "none",
+            "actual": null,
+            "expected": null,
+            "pass": true
+          }
+        ],
+        "equal_ordered_and_received_precision_regressions_pass": true,
+        "genuine_difference_regressions_pass": true,
+        "scope": "Original helper invoked with exact BigDecimal conversion stub; Rails models, database, app integration and UI not run."
+      },
+      "original_defect_reproduced": true,
+      "candidate_ordered_received_pass": true,
+      "candidate_genuine_discrepancies_preserved": true,
+      "rails_application_integration_verified": false,
+      "next_gate": "Execute original Foodsoft Rails helper/integration suite, check rounding policy at decimal boundaries, get maintainer feedback."
+    }
+  ],
+  "limitations": {
+    "actual_original_functions_executed": true,
+    "full_angular_app_or_browser_tested": false,
+    "rails_database_or_complete_suite_tested": false,
+    "all_proposed_repair_requirements_passed": false,
+    "third_party_repository_modified": false,
+    "published_external_patches": false,
+    "paid_operator_demand_verified": false,
+    "commercial_conversion_achieved": false,
+    "native_graph_status_promoted": false,
+    "research_holdout_touched": false
+  },
+  "scope": "Component-level original runtime execution on synthetic fixtures; the simple map median candidate still fails multiple outliers and leaves configurable zoom unaddressed."
+}
