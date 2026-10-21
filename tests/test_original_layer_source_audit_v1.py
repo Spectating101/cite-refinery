@@ -128,6 +128,89 @@ class OriginalEvidenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             implementation_source_audit({"schema":"other","entries":[]})
 
+    def test_audit_overlay_cannot_be_confused_with_quality_or_impact(self):
+        from cite_refinery.layer_foundations import attach_independent_source_identity_checks, SCHEMA
+        m={
+            "schema":SCHEMA,
+            "academic":{"source_abstracts":[{
+                "id":"EPMC-1","title":"Methods of water measurement",
+                "url":"https://doi.org/10.1000/water",
+                "retrieved_text_sha256":"a"*64,
+                "publication_year":None,
+                "independent_entailment_or_outcome_verification":False
+            }]},
+            "implementation":{"repository_leads":[{
+                "id":"github:owner/project","url":"https://github.com/owner/project",
+                "categories":[{"category":"water","metadata_semantic_review":"not_reviewed",
+                               "independent_code_category_review":False}],
+                "underconversion_established":False
+            }]},
+        }
+        academic={
+            "schema":"cite_refinery.academic_bibliographic_identity_audit.v1",
+            "doi_confirmed":1,"records":[{
+                "source_id":"EPMC-1","original_url":"https://doi.org/10.1000/water",
+                "original_title":"Methods of water measurement","original_text_sha256":"a"*64,
+                "metadata_status":"crossref_doi_identity_confirmed",
+                "publisher_metadata_checked":True,
+                "publisher_doi":"10.1000/water","doi":"10.1000/water",
+                "crossref_publication_year":2025,
+                "title_similarity":1.0,
+                "claims_or_methods_verified":False,
+                "original_paper_fulltext_checked":False,
+                "independent_peer_review_proven":False
+            }]
+        }
+        tech={
+            "schema":"cite_refinery.implementation_original_source_audit.v1",
+            "original_repo_revision_and_root_checked_pairs":1,
+            "records":[{
+                "repository_id":"github:owner/project","category":"water",
+                "source_original_url":"https://github.com/owner/project",
+                "original_code_executed":False,
+                "independent_capability_demonstrated":False,
+                "observed_adoption_or_conversion_gap":False,
+                "original_source_snapshot":{
+                    "status":"original_source_metadata_checked",
+                    "source_commit":"a"*40,
+                    "public_repository_url":"https://github.com/owner/project",
+                    "original_test_commands_executed":0,
+                    "functional_quality_or_adoption_verified":False,
+                    "license_entitlement_verified":False,
+                    "root_test_directory_visible_not_executed":True,
+                    "api_license_spdx_not_reuse_permission":"MIT"
+                }
+            }]
+        }
+        output=attach_independent_source_identity_checks(m,academic,tech)
+        counts=output["within_layer_original_source_audits"]
+        self.assertEqual(counts["publisher_doi_identity_confirmed"],1)
+        self.assertEqual(counts["implementation_pinned_revision_and_root_checked"],1)
+        self.assertEqual(counts["publication_year_metadata_recovered"],1)
+        self.assertEqual(counts["new_executable_implementation_assets_qualified"],0)
+        self.assertEqual(counts["practical_field_observations_independently_verified"],0)
+        self.assertFalse(output["academic"]["source_abstracts"][0]["independent_entailment_or_outcome_verification"])
+        self.assertFalse(output["implementation"]["repository_leads"][0]["underconversion_established"])
+        bad=deepcopy(academic)
+        bad["records"][0]["claims_or_methods_verified"]=True
+        with self.assertRaises(ValueError):
+            attach_independent_source_identity_checks(m,bad,tech)
+        bad=deepcopy(tech)
+        bad["records"][0]["original_source_snapshot"]["source_commit"]="f"*40
+        # Another valid pin remains accepted; a source-identity audit is NOT
+        # cryptographic publisher attestation, only an observation receipt.
+        pinned=attach_independent_source_identity_checks(m,academic,bad)
+        self.assertEqual(pinned["within_layer_original_source_audits"]["implementation_pinned_revision_and_root_checked"],1)
+        bad=deepcopy(tech)
+        bad["records"][0]["original_source_snapshot"]["functional_quality_or_adoption_verified"]=True
+        with self.assertRaises(ValueError):
+            attach_independent_source_identity_checks(m,academic,bad)
+        bad=deepcopy(tech)
+        bad["records"][0]["source_original_url"]="https://github.com/owner/other"
+        with self.assertRaises(ValueError):
+            attach_independent_source_identity_checks(m,academic,bad)
+
+
 
 if __name__=="__main__":
     unittest.main()
