@@ -88,6 +88,13 @@ def main(argv=None):
                         help="Optional provider for independent source applicability critique; omitted = structural source preflight only")
     assess.add_argument("--model",default=None)
     assess.add_argument("--timeout",type=int,default=150)
+    brief=sub.add_parser("operator-brief",
+        help="Render one source-to-solution delivery brief from verified source receipts and bounded component test artifacts")
+    brief.add_argument("--id",required=True)
+    brief.add_argument("--markdown-out",type=Path,required=True)
+    brief.add_argument("--json-out",type=Path,required=True)
+    brief.add_argument("--framework-artifact",type=Path,
+                       help="Optional previously verified committed framework_scoped_integration.json; exact SHA-256 required (useful with wheel installs)")
     for name in ("step","run","status"):
         action=sub.add_parser(name)
         action.add_argument("--id",required=True)
@@ -127,6 +134,29 @@ def main(argv=None):
                          evidence_document=read_evidence(args.evidence) if args.evidence else None)
     elif args.command=="attach-evidence":
         state=ctrl.attach_supplied_evidence(args.id,read_evidence(args.evidence))
+    elif args.command=="operator-brief":
+        from .operator_delivery import build,render_markdown
+        source=ctrl.load(args.id)
+        report=build(source,framework_artifact=args.framework_artifact)
+        md=render_markdown(report)
+        destination=(args.markdown_out,args.json_out)
+        if destination[0].resolve()==destination[1].resolve() or any(
+            path.exists() for path in destination
+        ):
+            raise ValueError("Refusing to overwrite existing or duplicate operator brief paths")
+        for path,data in ((args.markdown_out,md),
+                          (args.json_out,json.dumps(report,indent=2,ensure_ascii=False)+"\n")):
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(data,encoding="utf-8")
+        print(json.dumps({"schema":report["schema"],"id":report["investigation_id"],
+            "markdown_out":str(args.markdown_out),
+            "json_out":str(args.json_out),
+            "cases":len(report["case_decisions"]),
+            "attached_scoped_runtime_receipts":sum(bool(x["bounded_component_executable_receipt"])
+                    for x in report["case_decisions"]),
+            "buyer_interest_verified":False,
+            "full_application_approvals":0},ensure_ascii=False,indent=2))
+        return 0
     elif args.command=="assess-links":
         from .cross_layer_review import SCHEMA
         file=Path(args.proposals)
