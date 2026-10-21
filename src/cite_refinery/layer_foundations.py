@@ -205,6 +205,20 @@ def build(manifest, shards, atlas, primary, frontier, network, ted):
             "original_code_or_deployment_qualified_by_this_map": False,
             "underconversion_established": False,
         })
+    category_counts = {}
+    for cat, descriptor in sorted(categories.items()):
+        decisions = [reviews[key]["semantic_review"]
+                     for key in reviews if key[0] == cat]
+        counts = Counter(decisions)
+        category_counts[cat] = {
+            "category": cat, "macro": descriptor["macro"],
+            "repository_memberships_in_sample": len(decisions),
+            "metadata_reviewed": len(decisions) - counts["not_reviewed"],
+            "unreviewed": counts["not_reviewed"],
+            "different_meaning": counts["different_meaning"],
+            "independent_capability_test_coverage": 0,
+            "representative_category_census_established": False,
+        }
     label_counts = Counter(row["semantic_review"]
                            for row in reviews.values())
     inspected = len(reviews) - label_counts["not_reviewed"]
@@ -225,6 +239,8 @@ def build(manifest, shards, atlas, primary, frontier, network, ted):
             "reported_case_count": len(practical),
             "firsthand_field_records_verified": 0,
             "program_effects_independently_verified": 0,
+            "model_report_roles": dict(Counter(x["provisional_model_role"] for x in practical)),
+            "reported_source_genres": dict(Counter(x["reporting_channel"] for x in practical)),
             "limitation": "Abstracts and institutional excerpts are not firsthand operations data.",
         },
         "academic": {
@@ -237,6 +253,15 @@ def build(manifest, shards, atlas, primary, frontier, network, ted):
             "source_count": len(academic),
             "full_text_claims_verified": 0,
             "missing_publication_year": sum(r["publication_year"] is None for r in academic),
+            "bibliographic_source_genres": dict(Counter(x["origin_type"] for x in academic)),
+            "provisional_theme_source_counts": [
+                {"theme": a["label"], "cited_sources": len(a["source_ids"]),
+                 "academic_abstract_sources": sum(sources[sid]["origin_type"] in ACADEMIC_ORIGINS
+                                                  for sid in a["source_ids"]),
+                 "institutional_excerpt_sources": sum(sources[sid]["origin_type"] not in ACADEMIC_ORIGINS
+                                                      for sid in a["source_ids"]),
+                 "independently_validated": False}
+                for a in atlas["domains"]],
             "limitation": "Original eight query quotas, partial abstracts, no independent review.",
         },
         "implementation": {
@@ -250,6 +275,7 @@ def build(manifest, shards, atlas, primary, frontier, network, ted):
             "metadata_reviewed_memberships": inspected,
             "unreviewed_memberships": label_counts["not_reviewed"],
             "metadata_review_labels": dict(label_counts),
+            "within_layer_source_categories": list(category_counts.values()),
             "independently_qualified_technical_projects": 0,
             "confirmed_underconverted_assets": 0,
             "limitation": "GitHub topic and popularity data cannot prove functioning capability.",
@@ -354,6 +380,12 @@ def summary_markdown(m):
         f"- Repository/category pairs: {i['repository_category_memberships']}.",
         f"- Model-reviewed metadata pairs: {i['metadata_reviewed_memberships']}.",
         f"- Still unreviewed: {i['unreviewed_memberships']}.",
+        "",
+        "| Original category | Macro area | Repo memberships | Metadata reviews | Unreviewed |",
+        "|---|---|---:|---:|---:|",
+        *[f"| {x['category']} | {x['macro']} | {x['repository_memberships_in_sample']} | "
+          f"{x['metadata_reviewed']} | {x['unreviewed']} |"
+          for x in i["within_layer_source_categories"]],
         "",
         "No GitHub stars, SPDX labels or model category judgments have been "
         "promoted into claims of technical quality, adoption or usage rights.", "",
