@@ -1,0 +1,716 @@
+{
+  "schema": "cite_refinery.internal_arbitrage_map.v1",
+  "generated_at_utc": "2026-10-21T09:48:34.919903+00:00",
+  "input_sha256": {
+    "three_layer_atlas": "15061504249a5f70a10a5f6bc6d0a91e8b314b7b81417be77912da1d5a8d2bb2",
+    "technical_operator_gate": "03abc1c82c197e44475ea3ac76d144fb4a50b518e0b2b0034023d3b8fd179338",
+    "financial_scenarios": "6835f48c697f510ac20c90230b1a602f561cc506aed52737477fa9fb80e8ee7f",
+    "owner_strategy_hypotheses": "ce1176584dd584ad91567ad81a052b78d463843e6ec36a7d91d445b9c110cfc6"
+  },
+  "conceptual_layers": [
+    "practical",
+    "academic",
+    "implementation"
+  ],
+  "arbitrage_is_an_overlay_not_a_fourth_graph_layer": true,
+  "atlas_problem_views": [
+    {
+      "id": "problem:battery_recycling_economics",
+      "practical_summary": "Battery recycling profitability varies with pack design, logistics, labor and recovery process; a technically feasible regeneration method is not a validated profitable operation.",
+      "academic_refs": [
+        "mechanism:battery_recycling_economics"
+      ],
+      "implementation_refs": [
+        "github:lingrany/EverBatt-LFP-Recycling-Analysis"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis",
+        "readme_supported_untested"
+      ],
+      "complete_three_layer_representation": true,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "tri_layer_candidate_needs_falsification",
+      "next_evidence_test": "Verify problem prevalence and actual buyer/beneficiary constraints, then test the exact component against a field-derived acceptance case"
+    },
+    {
+      "id": "problem:classroom_ventilation_outcomes",
+      "practical_summary": "Schools can show high indoor CO₂ and respiratory burden without evidence that a given sensing or ventilation intervention improves clinical outcomes in those classrooms.",
+      "academic_refs": [
+        "mechanism:classroom_ventilation_outcomes"
+      ],
+      "implementation_refs": [
+        "github:ajlongshanks/co2_esphome"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis",
+        "readme_supported_untested"
+      ],
+      "complete_three_layer_representation": true,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "tri_layer_candidate_needs_falsification",
+      "next_evidence_test": "Verify problem prevalence and actual buyer/beneficiary constraints, then test the exact component against a field-derived acceptance case"
+    },
+    {
+      "id": "problem:dog_population_identity_and_movement",
+      "practical_summary": "Free-roaming dog counts and vaccination campaigns need individual/temporal reconciliation and movement understanding, while program outputs do not alone establish sustained population or rabies effects.",
+      "academic_refs": [
+        "mechanism:dog_population_identity_and_movement"
+      ],
+      "implementation_refs": [
+        "github:kobotoolbox/kpi"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis",
+        "readme_supported_untested"
+      ],
+      "complete_three_layer_representation": true,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "tri_layer_candidate_needs_falsification",
+      "next_evidence_test": "Verify problem prevalence and actual buyer/beneficiary constraints, then test the exact component against a field-derived acceptance case"
+    },
+    {
+      "id": "problem:ewaste_toxicant_control",
+      "practical_summary": "Informal and formal electronic recycling expose workers and communities to metals and flame retardants, while an environmental modeling toolkit cannot replace occupational monitoring or hazard controls.",
+      "academic_refs": [
+        "mechanism:ewaste_toxicant_control"
+      ],
+      "implementation_refs": [
+        "github:brightway-lca/brightway2"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis",
+        "readme_supported_untested"
+      ],
+      "complete_three_layer_representation": true,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "tri_layer_candidate_needs_falsification",
+      "next_evidence_test": "Verify problem prevalence and actual buyer/beneficiary constraints, then test the exact component against a field-derived acceptance case"
+    },
+    {
+      "id": "problem:flood_warning_to_impact",
+      "practical_summary": "Flood vulnerability and community early-warning deployments can be documented separately without knowing whether warnings prevented injury, drowning, displacement or service disruption.",
+      "academic_refs": [
+        "mechanism:flood_warning_to_impact"
+      ],
+      "implementation_refs": [
+        "github:WeixuanZ/flood-warning-system"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis",
+        "readme_supported_untested"
+      ],
+      "complete_three_layer_representation": true,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "tri_layer_candidate_needs_falsification",
+      "next_evidence_test": "Verify problem prevalence and actual buyer/beneficiary constraints, then test the exact component against a field-derived acceptance case"
+    },
+    {
+      "id": "problem:food_redistribution_outcomes",
+      "practical_summary": "Food redistribution programs often measure recovered kilograms or pickup performance while actual beneficiary nutritional and net lifecycle benefits remain insufficiently linked to real operations.",
+      "academic_refs": [
+        "mechanism:food_redistribution_outcomes"
+      ],
+      "implementation_refs": [
+        "github:openfoodfoundation/openfoodnetwork"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis",
+        "readme_supported_untested"
+      ],
+      "complete_three_layer_representation": true,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "tri_layer_candidate_needs_falsification",
+      "next_evidence_test": "Verify problem prevalence and actual buyer/beneficiary constraints, then test the exact component against a field-derived acceptance case"
+    },
+    {
+      "id": "problem:heat_warning_to_protective_action",
+      "practical_summary": "Heat mortality projections and early-warning plans are widespread sources of concern, but a meteorological warning is not itself evidence that vulnerable households received or acted on protection.",
+      "academic_refs": [
+        "mechanism:heat_warning_to_protective_action"
+      ],
+      "implementation_refs": [
+        "github:open-meteo/open-meteo"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis",
+        "readme_supported_untested"
+      ],
+      "complete_three_layer_representation": true,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "tri_layer_candidate_needs_falsification",
+      "next_evidence_test": "Verify problem prevalence and actual buyer/beneficiary constraints, then test the exact component against a field-derived acceptance case"
+    },
+    {
+      "id": "ted:404621-2026",
+      "practical_summary": "Luxembourg – Compliance software development services – Operational Risk Management Software",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:koala73/worldmonitor"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:434418-2026",
+      "practical_summary": "Ireland – Software package and information systems – UCC-2025-02 Provision of an Enterprise Risk Management Software System",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:openbq-org/OpenBB"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:606356-2026",
+      "practical_summary": "Malta – Analytical or scientific software development services – MAFA/CIO 3/2026 - Negotiated Procedure for the Procurement of Phase 3 Of The Ai Crop Identification System for MAFF",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:microsoft/farmvibes-ai",
+        "github:Fields2Cover/Fields2Cover"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis",
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:635530-2026",
+      "practical_summary": "Ireland – IT services: consulting, software development, Internet and support – HSE 28439 - Restricted Procedure to procure a HSE Enterprise Integration Platform as a Service ( EiPaaS)",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:apache/airflow",
+        "github:biopython/biopython"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis",
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:646960-2026",
+      "practical_summary": "Ireland – Records management – Invitation to Tender (ITT) for the provision of an Integrated Board Governance and Risk Management Software Solution [641]",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:apache/airflow"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:683922-2026",
+      "practical_summary": "Norway – Food, beverages, tobacco and related products – Food for commerical kitchens",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:dadaloop82/EverShelf"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:707304-2026",
+      "practical_summary": "Ireland – Building and facilities management services – M700.CN.1025 - Soft Facilities Management Services for MetroLink (TII)",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:apache/airflow"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:714960-2026",
+      "practical_summary": "Germany – Architectural, construction, engineering and inspection services – Klinikum Bayreuth_TMon IBM",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:FreeCAD/FreeCAD"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:718613-2026",
+      "practical_summary": "Sweden – IT services: consulting, software development, Internet and support – Asset data platform- ADP",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:opendataloader-project/opendataloader-pdf",
+        "github:ckan/ckan",
+        "github:Graphify-Labs/graphify"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis",
+        "source_anchored_model_hypothesis",
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:723344-2026",
+      "practical_summary": "Finland – Repair, maintenance and associated services related to marine and other equipment – VENESATAMIEN HOITO",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:DOI-USGS/EGRET"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:723891-2026",
+      "practical_summary": "Sweden – Architectural, construction, engineering and inspection services – Tekniska konsulttjänster VVS",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:raghudeepika/urban-resource-cadastre-repository"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:725724-2026",
+      "practical_summary": "Italy – Energy-management services – Procedura aperta per la Gestione dei Vettori Energetici delle Aziende Sanitarie della Regione del Veneto parte 2 (a favore delle Aziende ULSS nn. 1, 2, 3, 4, 5 e dell’ Ospedale Riabilitativo di Alta Specializzazio",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:u9n/dlms-cosem"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "ted:726035-2026",
+      "practical_summary": "Germany – Environmental monitoring for construction – A8 Albaufstieg - Bodenbaubegleitung (BBB)",
+      "academic_refs": [],
+      "implementation_refs": [
+        "github:DOI-USGS/EGRET"
+      ],
+      "source_edge_statuses": [
+        "source_anchored_model_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "institutional_requirement_unmatched_or_partial",
+      "next_evidence_test": "Recheck tender lifecycle, scope, bidder qualification and practical requirements; never assume funding is accessible or a component fits"
+    },
+    {
+      "id": "problem:gig_worker_algorithmic_harm",
+      "practical_summary": "Food-delivery platforms face reported accident and health risks associated with workload and algorithmic management; no listed software implementation here is independently shown to reduce worker injury.",
+      "academic_refs": [
+        "mechanism:gig_worker_algorithmic_harm"
+      ],
+      "implementation_refs": [],
+      "source_edge_statuses": [
+        "source_anchored_investigator_hypothesis"
+      ],
+      "complete_three_layer_representation": false,
+      "confirmed_problem_impact": false,
+      "scientific_entailment_accepted": false,
+      "verified_solution_fit": false,
+      "confirmed_price_cost_spread": false,
+      "route": "research_or_self_execution_hypothesis_not_commercial_conversion",
+      "investigation_queue": "problem_with_missing_source_family",
+      "next_evidence_test": "Acquire the missing independent mechanism or implementation source without inventing a lexical/semantic link"
+    }
+  ],
+  "independent_technical_repair_leads": [
+    {
+      "id": "foodsoft_order_quantity_rounding",
+      "repository": "foodcoops/foodsoft",
+      "practical_claim": "Group order balancing shows an erroneous discrepancy marker for apparently equal quantities.",
+      "academic_hypothesis": "Comparisons at different decimal precision can misclassify equivalent converted quantities.",
+      "implementation_claim": "OrdersHelper quantity comparison rounds only one of the two operands at three decimals.",
+      "technical_status": "original_scoped_framework_tests_executed_full_app_blocked",
+      "source_commit": "f594be8e64f4d3748d0e418df05fbb554ccce71b",
+      "recommended_route": "run_full_Rails_model_and_precision_policy_tests",
+      "limitation": "Original pinned CoffeeScript factory / Ruby helper executed on synthetic inputs, not original application suite.",
+      "rights_status": "third_party_license_and_use_require_separate_review",
+      "evidence_critical_advantage": "Source-scoped defect reproduction",
+      "economic_spread_verified": false,
+      "market_or_operator_demand_confirmed": false,
+      "owner_capture_hypotheses": [
+        "Use knowledge internally to avoid a wrong engineering/bid decision",
+        "Build an independently authorized integration or functional improvement",
+        "Package reusable testing/reliability expertise if actual operator demand is measured"
+      ],
+      "next_evidence_test": "Original Ruby helper regression already reproduced. Next run full Rails/ActiveRecord model and real invoice/quantity conversion tests under original project dependencies.",
+      "do_not_join_to_atlas_by_repo_name_alone": true
+    },
+    {
+      "id": "ofn_canada_map_bounds",
+      "repository": "openfoodfoundation/openfoodnetwork",
+      "practical_claim": "Canadian platform shoppers were shown an incorrect starting map location.",
+      "academic_hypothesis": "Coordinate outliers can distort extreme-value midpoint centers; map bounds/zoom need robust geographic selection.",
+      "implementation_claim": "Open Food Network MapCentreCalculator and instance-map configuration require an independently reproduced fix.",
+      "technical_status": "original_scoped_framework_tests_executed_full_app_blocked",
+      "source_commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+      "recommended_route": "wire_region_and_zoom_settings_then_test_full_map",
+      "limitation": "Original pinned CoffeeScript factory / Ruby helper executed on synthetic inputs, not original application suite.",
+      "rights_status": "third_party_license_and_use_require_separate_review",
+      "evidence_critical_advantage": "Source-scoped defect reproduction",
+      "economic_spread_verified": false,
+      "market_or_operator_demand_confirmed": false,
+      "owner_capture_hypotheses": [
+        "Use knowledge internally to avoid a wrong engineering/bid decision",
+        "Build an independently authorized integration or functional improvement",
+        "Package reusable testing/reliability expertise if actual operator demand is measured"
+      ],
+      "next_evidence_test": "Original CoffeeScript/Karma regression already reproduced. Next wire admin/instance region bounds and verify whole UI map viewport, dateline, country zoom and real records.",
+      "do_not_join_to_atlas_by_repo_name_alone": true
+    },
+    {
+      "id": "flood_nan_priority",
+      "repository": "WeixuanZ/flood-warning-system",
+      "practical_claim": "Nonfinite telemetry can corrupt highest-risk station ordering.",
+      "academic_hypothesis": "NaN violates ordinary numeric ordering and should not enter valid normalized water-level comparisons.",
+      "implementation_claim": "MonitoringStation ratio and sorting with scratch-only finite-value repair.",
+      "technical_status": "scratch_only_synthetic_repair_verified",
+      "source_commit": "c1c7facf2c5577a155edd93a0b7279ad7630518c",
+      "recommended_route": "propose_opt_in_upstream_contribution",
+      "limitation": "Batched deterministic synthetic tests only; no operator production deployment.",
+      "rights_status": "third_party_license_and_use_require_separate_review",
+      "evidence_critical_advantage": "Source-scoped defect reproduction",
+      "economic_spread_verified": false,
+      "market_or_operator_demand_confirmed": false,
+      "owner_capture_hypotheses": [
+        "Use knowledge internally to avoid a wrong engineering/bid decision",
+        "Build an independently authorized integration or functional improvement",
+        "Package reusable testing/reliability expertise if actual operator demand is measured"
+      ],
+      "next_evidence_test": "Validate with repo maintainer, obtain operational station schemas, expand fault injection and downstream alert contract.",
+      "do_not_join_to_atlas_by_repo_name_alone": true
+    },
+    {
+      "id": "lfp_positive_gate_fee",
+      "repository": "lingrany/EverBatt-LFP-Recycling-Analysis",
+      "practical_claim": "Unreliable process economics when feedstock is purchased for a positive gate fee.",
+      "academic_hypothesis": "Cash-flow sensitivity to feedstock purchase fees and process assumptions.",
+      "implementation_claim": "Three-route LFP model with scratch-only accounting repair.",
+      "technical_status": "scratch_only_synthetic_repair_verified",
+      "source_commit": "246c4d478f9ceb05c580856720ca56a66064e205",
+      "recommended_route": "propose_opt_in_upstream_contribution",
+      "limitation": "Batched deterministic synthetic tests only; no operator production deployment.",
+      "rights_status": "third_party_license_and_use_require_separate_review",
+      "evidence_critical_advantage": "Source-scoped defect reproduction",
+      "economic_spread_verified": false,
+      "market_or_operator_demand_confirmed": false,
+      "owner_capture_hypotheses": [
+        "Use knowledge internally to avoid a wrong engineering/bid decision",
+        "Build an independently authorized integration or functional improvement",
+        "Package reusable testing/reliability expertise if actual operator demand is measured"
+      ],
+      "next_evidence_test": "Propose a minimal maintainer-approved fee-cost regression; obtain actual operating inputs before economic claims.",
+      "do_not_join_to_atlas_by_repo_name_alone": true
+    },
+    {
+      "id": "co2_yaml_and_license",
+      "repository": "ajlongshanks/co2_esphome",
+      "practical_claim": "A CO2 device configuration cannot be deployed from an invalid YAML file and unresolved assets.",
+      "academic_hypothesis": "Sensor hardware IDs, configuration syntax and calibration are separate prerequisites to any exposure outcome.",
+      "implementation_claim": "ESPHome SCD30 configuration fails YAML syntax; license creation PR is still pending.",
+      "technical_status": "invalid_config_reproduced_deployment_blocked",
+      "source_commit": "d1b3c500ae475e3dcfef6e5dbb38279cdc267708",
+      "recommended_route": "license_and_deployment_blocked",
+      "limitation": "Batched deterministic synthetic tests only; no operator production deployment.",
+      "rights_status": "blocked_for_reuse_pending_license_review",
+      "evidence_critical_advantage": "Source-scoped defect reproduction",
+      "economic_spread_verified": false,
+      "market_or_operator_demand_confirmed": false,
+      "owner_capture_hypotheses": [
+        "Use knowledge internally to avoid a wrong engineering/bid decision",
+        "Build an independently authorized integration or functional improvement",
+        "Package reusable testing/reliability expertise if actual operator demand is measured"
+      ],
+      "next_evidence_test": "Clarify license, repair YAML and missing references on a permitted fork or with consent, compile and test actual hardware.",
+      "do_not_join_to_atlas_by_repo_name_alone": true
+    }
+  ],
+  "conditional_asset_spread_scenarios": [
+    {
+      "id": "illustrative_switch_like_repair_not_a_market_quote",
+      "type": "used_electronics_repair_resale",
+      "currency": "TWD",
+      "basis": "hypothetical",
+      "upstream_reference": "NOT A QUOTE: example input to be replaced with original listing/date and actual available unit",
+      "downstream_reference": "NOT A SOLD COMPARABLE: example input to be replaced with realized after-fee buyer evidence",
+      "quoted_or_assumed_inputs_not_verified": true,
+      "success_probability": "0.75",
+      "success_branch_before_common_costs": "5380.00",
+      "failure_branch_before_common_costs": "300.00",
+      "shared_costs_including_labor_and_contingency": "1380.00",
+      "expected_realization_before_purchase_and_common_costs": "4110.00",
+      "conditional_expected_net_after_all_modelled_costs": "730.00",
+      "conditional_break_even_purchase_price": "2730.00",
+      "positive_expected_net_under_assumptions": true,
+      "positive_realized_spread_verified": false,
+      "available_inventory_verified": false,
+      "actual_buyer_verified": false,
+      "risk_of_model_misspecification": "Unmodeled returns, condition selection, currency changes, buyer defaults, unsold holding risk and opportunity costs can eliminate the modeled spread.",
+      "decision": "RESEARCH_MORE_AND_VERIFY_QUOTES"
+    }
+  ],
+  "owner_hypothesis_watchlist": [
+    {
+      "id": "taiwan_repair_resale",
+      "strategy": "Taiwan secondhand electronics repair, test, part-out and resale",
+      "geography": "Taiwan, starting with accessible Taoyuan and Taiwan-wide listing channels",
+      "capture_method": "Acquire underpriced defective devices only after a reproducible test, then repair, part out or resell with recorded after-fee sale receipts",
+      "owner_thesis": "Hardware Splicer diagnostic/electrical/mechanical layers may help identify repairable failures more cheaply, but actual yield, supply and resale demand are unverified",
+      "linked_practical_ids": [],
+      "linked_test_case_ids": [],
+      "first_falsification": "Collect ten condition-matched buy/sold quotes, actual repair components and shipping fees, test five nonhazardous units and require positive failure-adjusted after-labor spread",
+      "evidence_status": "user_strategy_hypothesis_not_market_verified",
+      "links_are_references_not_new_cross_layer_edges": true,
+      "inventory_or_demand_verified": false,
+      "profitable_spread_verified": false,
+      "permission_and_execution_unverified": true
+    },
+    {
+      "id": "battery_cost_model",
+      "strategy": "Battery and e-waste process economic modeling and acquisition-price errors",
+      "geography": "Taiwan-first research relevance, with global academic and repository benchmarks",
+      "capture_method": "Use original source checks to avoid erroneous gate-fee calculations in sourcing or investment decisions, and validate against operator feedstock transactions",
+      "owner_thesis": "The reproduced model sign error could cause misvaluation or wrong acquisition bids, but a source defect is not necessarily a tradeable price discrepancy",
+      "linked_practical_ids": [
+        "problem:battery_recycling_economics"
+      ],
+      "linked_test_case_ids": [
+        "lfp_positive_gate_fee"
+      ],
+      "first_falsification": "Obtain licensed verified throughput, gate fees, yields, disposal liabilities and local regulatory limits; calculate spread in both success and adverse scenarios",
+      "evidence_status": "user_strategy_hypothesis_not_market_verified",
+      "links_are_references_not_new_cross_layer_edges": true,
+      "inventory_or_demand_verified": false,
+      "profitable_spread_verified": false,
+      "permission_and_execution_unverified": true
+    },
+    {
+      "id": "flood_sensor_systems",
+      "strategy": "Sensor data quality and flood early-warning implementation gaps",
+      "geography": "Potential Taiwanese civil/industrial deployments only with local permission and demand",
+      "capture_method": "Integrate and validate resilient alert algorithms for an owner-operated non-critical testbed before investigating procurement or service capture",
+      "owner_thesis": "A bounded NaN bug and testable patch offer technical knowledge asymmetry, not proof of public-safety effectiveness or a funded buyer",
+      "linked_practical_ids": [
+        "problem:flood_warning_to_impact"
+      ],
+      "linked_test_case_ids": [
+        "flood_nan_priority"
+      ],
+      "first_falsification": "Test real sensor latency and missing-data behavior with qualified operators; confirm alert delivery and false-alarm outcomes before proposing procurement",
+      "evidence_status": "user_strategy_hypothesis_not_market_verified",
+      "links_are_references_not_new_cross_layer_edges": true,
+      "inventory_or_demand_verified": false,
+      "profitable_spread_verified": false,
+      "permission_and_execution_unverified": true
+    },
+    {
+      "id": "classroom_co2_integration",
+      "strategy": "Low-cost sensor deployment and practical classroom ventilation measurement",
+      "geography": "Taiwan campus and schools, subject to device ownership and institutional approval",
+      "capture_method": "Validate measurement, calibration and low-cost integration alternatives rather than sell unlicensed configuration examples",
+      "owner_thesis": "The existing sensor component has a static configuration problem and unresolved code rights; educational relevance alone does not prove a deployable service",
+      "linked_practical_ids": [
+        "problem:classroom_ventilation_outcomes"
+      ],
+      "linked_test_case_ids": [
+        "co2_yaml_and_license"
+      ],
+      "first_falsification": "Establish component license and device availability, calibrate with a reference sensor, and collect permitted observational data before estimating any benefit",
+      "evidence_status": "user_strategy_hypothesis_not_market_verified",
+      "links_are_references_not_new_cross_layer_edges": true,
+      "inventory_or_demand_verified": false,
+      "profitable_spread_verified": false,
+      "permission_and_execution_unverified": true
+    },
+    {
+      "id": "energy_procurement_telemetry",
+      "strategy": "Energy-management tender requirements versus reusable telemetry components",
+      "geography": "Public international procurement evidence, with Taiwan adaptation requiring separate market checks",
+      "capture_method": "Look for legally usable interface components satisfying narrow telemetry subrequirements; capture avoided build cost in our own systems before bidding",
+      "owner_thesis": "A public requirement and DLMS/COSEM parsing repository appear adjacent in the atlas, but tenders may be closed and the component may not address operations or qualification",
+      "linked_practical_ids": [
+        "ted:725724-2026"
+      ],
+      "linked_test_case_ids": [],
+      "first_falsification": "Check notice lifecycle and eligibility, then validate the exact data protocol and physical meter compatibility; do not assume a funded award is accessible",
+      "evidence_status": "user_strategy_hypothesis_not_market_verified",
+      "links_are_references_not_new_cross_layer_edges": true,
+      "inventory_or_demand_verified": false,
+      "profitable_spread_verified": false,
+      "permission_and_execution_unverified": true
+    },
+    {
+      "id": "food_platform_repair",
+      "strategy": "Food redistribution and cooperative software reliability improvements",
+      "geography": "Open-source international deployments; self-use only with authorized rights and operational users",
+      "capture_method": "Reuse validated source-level failure knowledge to improve a permitted local implementation or avoid wasted integration effort",
+      "owner_thesis": "Map-centering and order-rounding bugs are reproducible bounded repairs but are not automatically solutions to food redistribution outcomes or commercial demand",
+      "linked_practical_ids": [
+        "problem:food_redistribution_outcomes"
+      ],
+      "linked_test_case_ids": [
+        "ofn_canada_map_bounds",
+        "foodsoft_order_quantity_rounding"
+      ],
+      "first_falsification": "Verify separate concrete user problems, full Rails or Angular integration and maintainer rights before linking any operational impact to technical fixes",
+      "evidence_status": "user_strategy_hypothesis_not_market_verified",
+      "links_are_references_not_new_cross_layer_edges": true,
+      "inventory_or_demand_verified": false,
+      "profitable_spread_verified": false,
+      "permission_and_execution_unverified": true
+    }
+  ],
+  "coverage": {
+    "atlas_problem_views": 21,
+    "full_three_layer_candidate_views": 7,
+    "tested_technical_repair_leads": 5,
+    "modeled_asset_spreads": 1,
+    "user_strategy_priorities": 6,
+    "verified_profitable_arbitrage": 0,
+    "verified_buyers_or_customers": 0,
+    "validated_impactful_field_integrations": 0
+  },
+  "owner_priority": "Map broadly, then test source-verifiable executable advantages and fill missing price/cost/capture evidence before committing capital.",
+  "anti_claims": [
+    "A matched graph path is not market inefficiency or a profitable spread",
+    "A public procurement listing is not a contract awarded to us or evidence of bidder eligibility",
+    "A repaired synthetic component is not a ready commercial product",
+    "No third-party code exploitation, license clearance or deployment permission implied",
+    "Financial scenarios require real condition-matched buy/sell quotes and complete failure costs",
+    "Do not claim buyer demand or commercialization merely from OSS issue existence"
+  ],
+  "research_holdout_touched": false,
+  "graph_authority_promoted": false,
+  "executed_trade_or_order": false,
+  "limitation": "Read-only internal lead map from existing non-exhaustive source atlas, operator repairs and optional self-supplied economic assumptions. No live price search, independent buyer verification or trade execution."
+}

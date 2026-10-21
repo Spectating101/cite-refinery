@@ -1,0 +1,29 @@
+{
+  "schema": "cite_refinery.internal_arbitrage_scenarios.v1",
+  "items": [
+    {
+      "id": "illustrative_switch_like_repair_not_a_market_quote",
+      "type": "used_electronics_repair_resale",
+      "currency": "TWD",
+      "basis": "hypothetical",
+      "upstream_reference": "NOT A QUOTE: example input to be replaced with original listing/date and actual available unit",
+      "downstream_reference": "NOT A SOLD COMPARABLE: example input to be replaced with realized after-fee buyer evidence",
+      "assumptions": {
+        "purchase_price": 2000,
+        "success_sale_price": 6000,
+        "success_probability": "0.75",
+        "success_sale_fees": 500,
+        "failure_recovery_value": 500,
+        "failure_disposal_cost": 200,
+        "inbound_shipping": 100,
+        "materials": 400,
+        "labor_hours": 2,
+        "labor_hourly_cost": 300,
+        "outbound_shipping": 120,
+        "storage": 80,
+        "tax_and_compliance": 0,
+        "contingency": 200
+      }
+    }
+  ]
+}
