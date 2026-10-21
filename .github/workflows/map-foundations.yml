@@ -42,6 +42,39 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_original_layer_source_audit_v1.py' -v
       - name: Test Nocturnal publication-gated Practical map projection
         run: python -m unittest discover -s tests -p 'test_nocturnal_public_atlas_v1.py' -v
+      - name: Checkout pinned public Nocturnal exporter (no private datasets)
+        uses: actions/checkout@v4
+        with:
+          repository: Spectating101/nocturnal-oversight
+          ref: 0db9beec7557d2444d6b519012f6d45b65d4d1de
+          path: nocturnal-upstream
+          persist-credentials: false
+      - name: Contract smoke — real Nocturnal fictional export into Practical map
+        run: |
+          export PYTHONPATH="$GITHUB_WORKSPACE/nocturnal-upstream"
+          python nocturnal-upstream/scripts/ops/build_public_demo_fixture.py \
+            --ledger-root "$RUNNER_TEMP/fictional-nocturnal-ledger"
+          python nocturnal-upstream/scripts/ops/export_public_snapshot.py \
+            --ledger-root "$RUNNER_TEMP/fictional-nocturnal-ledger" \
+            --output-dir "$RUNNER_TEMP/fictional-nocturnal-snapshot" \
+            --pilot-manifest nocturnal-upstream/examples/pilot_manifest.fictional.json \
+            --dataset-license CC-BY-4.0 --source-rights-reviewed \
+            --commit-sha 0db9beec7557d2444d6b519012f6d45b65d4d1de
+          mkdir -p "$RUNNER_TEMP/nocturnal-practical-contract"
+          PYTHONPATH="$GITHUB_WORKSPACE/src" python -m cite_refinery.layered_cli investigate map-foundations \
+            --nocturnal-public-snapshot "$RUNNER_TEMP/fictional-nocturnal-snapshot" \
+            --nocturnal-terms Meridian \
+            --nocturnal-map-out "$RUNNER_TEMP/nocturnal-practical-contract/public_practical_atlas.json" \
+            --json-out "$RUNNER_TEMP/nocturnal-practical-contract/combined_map.json" \
+            --markdown-out "$RUNNER_TEMP/nocturnal-practical-contract/map.md"
+          python -c 'import json,os; m=json.load(open(os.environ["RUNNER_TEMP"]+"/nocturnal-practical-contract/public_practical_atlas.json")); assert m["provenance"]["fictional"] is True and m["coverage"]["correction_count"]>=1 and m["interpretation"]["cross_layer_edges_created"]==0 and m["coverage"]["matter_count"]>=2'
+      - name: Upload inspected fictional Practical contract artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cite-refinery-nocturnal-public-contract
+          path: ${{ runner.temp }}/nocturnal-practical-contract/
+          if-no-files-found: error
+          retention-days: 7
       - name: Build release wheel
         run: |
           python -m pip install build
