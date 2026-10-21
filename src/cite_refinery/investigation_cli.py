@@ -140,6 +140,8 @@ def main(argv=None):
         help="Prior pinned synthetic/static trial records; not independently replayed")
     foundation.add_argument("--implementation-original-function-replay",type=Path,
         help="Optional freshly executed SHA-pinned original function fixture receipt")
+    foundation.add_argument("--implementation-original-lef-def-replay",type=Path,
+        help="Optional original EDA LEF/DEF parser fixture receipt (can contain real failures)")
     foundation.add_argument("--implementation-category",help="Exact original repository survey category")
     foundation.add_argument("--implementation-terms",help="Lexical search within Implementation only")
     foundation.add_argument("--implementation-requirement-terms",
@@ -259,7 +261,8 @@ def main(argv=None):
             raise ValueError("Academic review claims need their own original extracted-text directory")
         if args.implementation_original_code_audit and not args.implementation_original_audit:
             raise ValueError("Original code structure needs a separately pinned source audit")
-        if args.implementation_original_function_replay and not (
+        if (args.implementation_original_function_replay or
+            args.implementation_original_lef_def_replay) and not (
             args.implementation_original_code_audit and args.implementation_atlas_out
         ):
             raise ValueError("Original function replay requires a pinned code inspection and standalone map output")
@@ -293,6 +296,8 @@ def main(argv=None):
             files.append(args.implementation_original_code_audit)
         if args.implementation_original_function_replay:
             files.append(args.implementation_original_function_replay)
+        if args.implementation_original_lef_def_replay:
+            files.append(args.implementation_original_lef_def_replay)
         if any(file.stat().st_size>12_000_000 for file in files):
             raise ValueError("Source inventory exceeds bounded file size")
         outputs=[args.json_out,args.markdown_out]
@@ -340,6 +345,10 @@ def main(argv=None):
                 from .implementation_evidence_atlas import attach_original_function_replay
                 implementation_map = attach_original_function_replay(
                     implementation_map,read(args.implementation_original_function_replay))
+            if args.implementation_original_lef_def_replay:
+                from .implementation_evidence_atlas import attach_original_lef_def_replay
+                implementation_map = attach_original_lef_def_replay(
+                    implementation_map,read(args.implementation_original_lef_def_replay))
             implementation_view = browse_implementation(
                 implementation_map,category=args.implementation_category,
                 terms=args.implementation_terms,stage=args.implementation_stage,
@@ -481,6 +490,9 @@ def main(argv=None):
             "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
             "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
             "browse_matches":view["matching_count"] if view else None,
+            "implementation_original_function_fixtures_failing":(
+                implementation_map["coverage"].get("actual_original_function_fixtures_failing",0)
+                if implementation_map else 0),
             "implementation_original_function_fixtures_passing": (
                 implementation_map["coverage"].get("actual_original_function_fixtures_passing",0)
                 if implementation_map else 0),
