@@ -1,0 +1,39 @@
+{
+  "schema": "cite_refinery.pinned_original_source_test_receipts.v1",
+  "observed_at_utc": "2026-10-21T11:36:13.606497+00:00",
+  "test_runs": [
+    {
+      "repository": "Krishita17/GridShadow",
+      "source_url": "https://github.com/Krishita17/GridShadow",
+      "source_commit": "bbeaa5d1d1b617025c2e7c3acd4c1f4c629bd4a4",
+      "source_git_worktree": "isolated_checkout_in_noncommitted_ResearchDumps",
+      "execution_environment": "uv_venv_python_3_12_isolated_from_system; upstream declared python dependencies installed",
+      "command": "PYTHONPATH=. PYTHONDONTWRITEBYTECODE=1 python -m pytest -q tests --disable-warnings --maxfail=1",
+      "original_tests_passed": 15,
+      "original_tests_failed": 0,
+      "test_collection_completed": true,
+      "source_code_modified_for_test": false,
+      "simulation_and_toy_original_suite_only": true,
+      "independent_capability_quality_review_complete": false,
+      "full_integration_to_any_partner_tested": false,
+      "real_hardware_or_energy_grid_accessed": false,
+      "actual_user_demand_verified": false,
+      "underconversion_verified": false,
+      "scope_note": "Upstream tests cover toy graph, pandapower toy cases and chokepoint search. No real Jackery device, Home Assistant bridge, DER aggregation, utility network or production testing."
+    }
+  ],
+  "setup_blockers": [
+    {
+      "repository": "soypat/lneto",
+      "source_url": "https://github.com/soypat/lneto",
+      "original_source_checked_out": true,
+      "requires_toolchain": "Go >= 1.24",
+      "toolchain_available": false,
+      "tests_executed": false,
+      "status": "not_tested_missing_local_go_compiler",
+      "does_not_indicate_defective_implementation": true
+    }
+  ],
+  "any_quality_certifications_issued": false,
+  "all_recombination_hypotheses_verified": false
+}
