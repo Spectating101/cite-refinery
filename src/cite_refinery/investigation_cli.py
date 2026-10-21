@@ -31,6 +31,13 @@ def _summary(s):
         } for r in s["rounds"]],
         "last_error":s.get("last_error"),
         "authority":s["authority"],
+        "module_origins":sorted({str(m.get("origin","provided_ontology"))
+                                 for m in s["modules"]}),
+        "known_missing_evidence_families":[
+            "independent_practical_field_observations",
+            "verified_implementation_execution_and_operator_outcomes",
+        ],
+        "end_to_end_three_layer_validation_complete":False,
     }
 
 
@@ -40,7 +47,10 @@ def main(argv=None):
     sub=p.add_subparsers(dest="command",required=True)
     init=sub.add_parser("init",help="Create persistent project and seed question; no bibliography")
     init.add_argument("--question",required=True)
-    init.add_argument("--modules",required=True,help="Existing problem-ontology JSON list, not sources")
+    init.add_argument(
+        "--modules",
+        help="Optional reviewed problem-ontology JSON list. Without it, start with a single explicitly unverified user-question module.",
+    )
     init.add_argument("--max-rounds",type=int,default=2)
     init.add_argument("--fulltext-enrichment",action="store_true",
                       help="Fetch bounded methods/results JATS extracts for public PMC papers")
@@ -59,7 +69,19 @@ def main(argv=None):
         return execution["raw"]
     ctrl=InvestigationController(args.workspace,reasoner=reasoner if args.command in {"run","step"} else None)
     if args.command=="init":
-        modules=json.loads(Path(args.modules).read_text(encoding="utf-8"))
+        if args.modules:
+            modules=json.loads(Path(args.modules).read_text(encoding="utf-8"))
+        else:
+            # Entry framing is NOT a measurement, a source or an established
+            # practical problem. The controller still searches and stages only
+            # neutral candidates; it must never treat this as corroboration.
+            modules=[{
+                "id":"RQ-01",
+                "title":args.question.strip()[:120],
+                "summary":"Unverified user-supplied research question; no measured practical need, academic finding, or deployed implementation established.",
+                "origin":"user_question_provisional",
+                "status":"unreviewed",
+            }]
         state=ctrl.start(args.question,modules,max_rounds=args.max_rounds,
                          fulltext_enrichment=args.fulltext_enrichment)
     elif args.command=="status":
