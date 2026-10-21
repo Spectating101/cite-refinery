@@ -14,7 +14,8 @@ import unittest
 
 from cite_refinery.layer_foundations import build,review_backlog
 from cite_refinery.implementation_evidence_atlas import (
-    build_implementation_atlas,browse_implementation,browse_implementation_requirements)
+    build_implementation_atlas,browse_implementation,browse_implementation_requirements,
+    original_capability_execution_backlog)
 from cite_refinery.implementation_original_code_audit import (
     _blob_matches,audit_original_code)
 from cite_refinery.layered_cli import main as cli
@@ -186,6 +187,14 @@ class ImplementationAtlasTests(unittest.TestCase):
         self.assertEqual(browse_implementation(report,stage="source_sample")[
             "matching_count"],1)
         self.assertTrue(report["interpretation"]["source_file_sha_is_not_test_pass"])
+        frontier=original_capability_execution_backlog(report)
+        self.assertEqual(frontier["selected_repositories"],1)
+        self.assertEqual(frontier["original_code_structures_previously_sha_verified"],1)
+        self.assertEqual(frontier["execution_approved"],0)
+        self.assertEqual(frontier["testable_functional_claims_proven"],0)
+        self.assertEqual(frontier["entries"][0]["original_code_paths_sha_checked"][0]["path"],
+                         "src/engine.py")
+        self.assertFalse(frontier["entries"][0]["ready_for_automated_safe_execution"])
         self.assertFalse(report["surveyed_repositories"][audit["records"][0][
             "repository_id"]]["scoped_capability_confirmed_in_live_deployment"])
 
@@ -230,6 +239,7 @@ class ImplementationAtlasTests(unittest.TestCase):
                     "--implementation-requirement-terms","NaN",
                     "--implementation-requirement-status","fail",
                     "--implementation-atlas-out",str(root/"implementation.json"),
+                    "--implementation-execution-frontier-out",str(root/"frontier.json"),
                     "--json-out",str(root/"combined.json"),
                     "--markdown-out",str(root/"coverage.md"),
                 ])
@@ -244,6 +254,7 @@ class ImplementationAtlasTests(unittest.TestCase):
                 "live_operational_implementations_verified"],0)
             self.assertIn("Independent Implementation source",(
                 root/"coverage.md").read_text())
+            self.assertEqual(load(root/"frontier.json")["execution_approved"],0)
 
 
 if __name__=="__main__":
