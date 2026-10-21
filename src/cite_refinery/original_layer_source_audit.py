@@ -22,6 +22,7 @@ from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 CROSSREF = "https://api.crossref.org/works/"
+OPENALEX = "https://api.openalex.org/works/"
 GITHUB = "https://api.github.com/repos/"
 SCHEMA = "cite_refinery.original_source_layer_audit.v1"
 DOI = re.compile(r"^10\.\d{4,9}/\S+$", re.IGNORECASE)
@@ -36,7 +37,7 @@ class FetchError(Exception):
 
 
 def _bounded_get(url, *, token=None, timeout=16):
-    if not url.startswith((CROSSREF, GITHUB)):
+    if not url.startswith((CROSSREF, GITHUB, OPENALEX)):
         raise ValueError("Audit accepts only explicit Crossref/GitHub API routes")
     headers = {"Accept":"application/vnd.github+json" if url.startswith(GITHUB)
                else "application/json", "User-Agent":"CiteRefinery-MapFoundations/1.0"}
@@ -47,7 +48,7 @@ def _bounded_get(url, *, token=None, timeout=16):
     try:
         with urlopen(req,timeout=timeout) as response:
             final=response.geturl()
-            if not final.startswith((CROSSREF,GITHUB)):
+            if not final.startswith((CROSSREF,GITHUB,OPENALEX)):
                 raise FetchError("unexpected_redirect")
             data=response.read(MAX_BYTES+1)
     except HTTPError as exc:
@@ -150,6 +151,92 @@ def academic_source_audit(manifest, *, fetcher=_bounded_get, max_records=47,
         "crossref_metadata_is_not_full_text_verification":True,
         "records":rows,
     }
+
+
+def recover_openalex_bibliography(manifest, first_pass, *, fetcher=_bounded_get,
+                                  pause_seconds=0):
+    """Use a separate public index for records left unconfirmed by Crossref.
+
+    Work-id / DOI identity is not article content verification. Never merge
+    conflicting publication years into a single silently corrected date.
+    """
+    if (first_pass.get("schema")!="cite_refinery.academic_bibliographic_identity_audit.v1"
+        or manifest.get("schema")!="cite_refinery.open_corpus_manifest.v1"
+        or pause_seconds<0):
+        raise ValueError("Original research manifest and Crossref audit required")
+    indexed={x["id"]:x for x in manifest["source_records"]}
+    if len(indexed)!=len(manifest["source_records"]):
+        raise ValueError("Duplicate original research source")
+    visited=set()
+    added=0
+    years=0
+    for row in first_pass["records"]:
+        sid=row["source_id"]
+        if sid in visited or sid not in indexed:
+            raise ValueError("Unknown/duplicate source in academic recovery")
+        visited.add(sid)
+        if row.get("publisher_metadata_checked"):
+            row["openalex_second_index_needed"]=False
+            continue
+        source=indexed[sid]
+        doi=_checked_doi(source)
+        external_id=source.get("url","")
+        if (isinstance(external_id,str)
+            and re.fullmatch(r"https://openalex.org/W[0-9]+",external_id)):
+            endpoint=OPENALEX+external_id.rsplit("/",1)[-1]
+            identity_type="openalex_work_id"
+        elif doi is not None:
+            endpoint=OPENALEX+"https://doi.org/"+doi
+            identity_type="doi"
+        else:
+            row["openalex_lookup_status"]="no_supported_identity"
+            continue
+        try:
+            work=fetcher(endpoint)
+            work_id=work["id"]
+            if (not isinstance(work_id,str)
+                or not re.fullmatch(r"https://openalex.org/W[0-9]+",work_id)):
+                raise FetchError("bad_openalex_work_id")
+            if identity_type=="openalex_work_id":
+                if work_id!=external_id:
+                    raise FetchError("openalex_original_identity_mismatch")
+            else:
+                found=work.get("doi","")
+                if not isinstance(found,str) or _canonical_doistr(
+                        found.removeprefix("https://doi.org/"))!=_canonical_doistr(doi):
+                    raise FetchError("openalex_doi_identity_mismatch")
+            title=work.get("display_name") or work.get("title") or ""
+            similarity=round(SequenceMatcher(None,
+                _clean_title(source["title"]),_clean_title(title)).ratio(),4)
+            year=work.get("publication_year")
+            if not isinstance(year,int) or not 1800<=year<=2100:
+                year=None
+            row.update(
+                metadata_status="openalex_work_identity_confirmed",
+                openalex_index_identity_checked=True,
+                openalex_work_id=work_id,
+                openalex_index_title=title,
+                openalex_title_similarity=similarity,
+                openalex_publication_year=year,
+                openalex_metadata_not_peer_review_or_fulltext=True,
+                bibliographic_disagreement_flag=similarity<0.75 or (
+                    year is not None and row.get("snapshot_year") is not None
+                    and int(row["snapshot_year"])!=year),
+            )
+            added+=1
+            years+=int(year is not None and row.get("snapshot_year") is None)
+        except (FetchError,KeyError,ValueError,TypeError) as exc:
+            row["openalex_lookup_status"]="not_confirmed"
+            row["openalex_lookup_issue"]=(exc.reason if isinstance(exc,FetchError)
+                                         else "unexpected_index_schema")
+        if pause_seconds:
+            time.sleep(pause_seconds)
+    first_pass["openalex_identity_confirmed"]=added
+    first_pass["publication_year_added_from_openalex"]=years
+    first_pass["bibliographic_disagreements"]=sum(
+        bool(x.get("bibliographic_disagreement_flag")) for x in first_pass["records"])
+    first_pass["crossref_and_openalex_are_different_metadata_providers"]=True
+    return first_pass
 
 
 def _verify_repo_slug(slug):
@@ -284,7 +371,9 @@ def run_cli():
         if file.stat().st_size>12_000_000:
             raise ValueError("Audit input too large")
         return json.loads(file.read_text(encoding="utf-8"))
-    academic=academic_source_audit(load(args.manifest),max_records=args.max_academic)
+    original_manifest=load(args.manifest)
+    academic=academic_source_audit(original_manifest,max_records=args.max_academic)
+    academic=recover_openalex_bibliography(original_manifest,academic)
     technical=implementation_source_audit(load(args.backlog),max_pairs=args.max_repo_pairs,
                                           token=os.environ.get("GITHUB_TOKEN"))
     for path,record in ((args.academic_out,academic),
@@ -293,7 +382,9 @@ def run_cli():
         path.write_text(json.dumps(record,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({
         "academic_original_doi_confirmed":academic["doi_confirmed"],
-        "academic_years_recovered":academic["publication_year_added_from_crossref"],
+        "academic_years_recovered":academic["publication_year_added_from_crossref"]+
+                                   academic["publication_year_added_from_openalex"],
+        "openalex_identity_confirmed":academic["openalex_identity_confirmed"],
         "implementation_categories_sampled":technical["distinct_source_categories_sampled"],
         "original_repo_revision_checks":technical["original_repo_revision_and_root_checked_pairs"],
         "actual_field_or_source_code_quality_verified":0},indent=2))
