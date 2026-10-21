@@ -76,6 +76,28 @@ Review packet example (fictional only):
 
 Offsets and source hashes are validated; this example is illustrative and must be recalculated against its exact fictional source body before use. The emitted atlas retains the **quote SHA-256 and offsets**, not the original quoted passage. Reviewer-designated `analyst_source_span_checked` additionally requires an operator/reviewer identifier and date; it **does not** elevate the claim to scientifically valid.
 
+## Original publisher XML structure checks (bounded optional qualification)
+
+The new `academic_original_depth_audit.py` can inspect a reproducible source-ID sample of the 43 previously indexed open-access article identities using Cite–Refinery's existing Europe PMC JATS retriever and full-text parser. It checks the fixed PMCID URL, original XML SHA-256, publisher's article title/DOI, section headings and table/supplement counts. It **does not** copy publisher text into a published artifact, validate the study's methods or scientific effects, or claim to have rechecked the 2026-10-20 frozen extracted-text digest. Failed matches and unavailable sources remain visible failures.
+
+```bash
+# On a machine with access to Europe PMC; no model or private source access needed:
+python -m cite_refinery.academic_original_depth_audit \
+  --academic-atlas /tmp/academic.json --max-docs 8 \
+  --out /tmp/original_jats_structure_audit.json
+
+# Attach source-structure receipt to the Academic map, using NEW output paths:
+cite-refinery investigate map-foundations \
+  --academic-development-manifest research_materials/runtime_trials/richer_corpus_20261020/development_source_manifest.json \
+  --academic-split-receipt research_materials/runtime_trials/richer_corpus_20261020/frozen_split_receipt.json \
+  --academic-original-jats-audit /tmp/original_jats_structure_audit.json \
+  --academic-atlas-out /tmp/academic_with_xml_receipts.json \
+  --json-out /tmp/layers_with_xml_receipts.json \
+  --markdown-out /tmp/layers_with_xml_receipts.md
+```
+
+The source-index inventory is not a scientifically valid methods map until substantive evidence is reviewed. XML method-heading candidates are structural search aids only.
+
 ## Acceptance gate
 
 The automated test suite uses the repository's **actual frozen 103-record development manifest and public 66-record holdout seal**. Negative fixtures test altered content hashes, invented quotation spans, duplicate source identities, illegal dataset-to-finding promotion, forged authoritative roles, and source comparisons masquerading as independent contradictions.
