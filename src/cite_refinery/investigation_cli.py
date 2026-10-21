@@ -149,6 +149,8 @@ def main(argv=None):
         "survey","original_commit","source_sample","historical_trial"])
     foundation.add_argument("--implementation-atlas-out",type=Path,
         help="Optional separate Implementation evidence-depth atlas JSON")
+    foundation.add_argument("--implementation-execution-frontier-out",type=Path,
+        help="Read-only source-pinned trial-planning queue; no untrusted execution")
     foundation.add_argument("--nocturnal-public-snapshot",type=Path,
         help="Local publication-approved Nocturnal public snapshot directory; no private ledgers")
     foundation.add_argument("--nocturnal-manifest-sha256",
@@ -290,6 +292,8 @@ def main(argv=None):
         if args.nocturnal_map_out: outputs.append(args.nocturnal_map_out)
         if args.academic_atlas_out: outputs.append(args.academic_atlas_out)
         if args.implementation_atlas_out: outputs.append(args.implementation_atlas_out)
+        if args.implementation_execution_frontier_out:
+            outputs.append(args.implementation_execution_frontier_out)
         if args.academic_review_backlog_out:
             outputs.append(args.academic_review_backlog_out)
         if (len(set(x.resolve() for x in outputs))!=len(outputs)
@@ -308,11 +312,14 @@ def main(argv=None):
                 read(args.implementation_original_audit))
         implementation_map = None
         implementation_view = None
+        implementation_frontier = None
         if (args.implementation_atlas_out or args.implementation_component_trials
-            or args.implementation_original_code_audit):
+            or args.implementation_original_code_audit or
+            args.implementation_execution_frontier_out):
             from .implementation_evidence_atlas import (
                 build_implementation_atlas,browse_implementation,
-                browse_implementation_requirements)
+                browse_implementation_requirements,
+                original_capability_execution_backlog)
             implementation_map = build_implementation_atlas(
                 m,
                 original_audit=(read(args.implementation_original_audit)
@@ -331,6 +338,14 @@ def main(argv=None):
                 status=args.implementation_requirement_status,
                 limit=args.limit)
             m["implementation"]["source_scoped_requirement_browse"] = implementation_requirements_view
+            implementation_frontier=(original_capability_execution_backlog(implementation_map)
+                                     if args.implementation_execution_frontier_out else None)
+            if implementation_frontier is not None:
+                m["implementation"]["execution_frontier_summary"]={
+                    key:implementation_frontier[key] for key in (
+                        "source_pinned_repository_population","selected_repositories",
+                        "original_code_structures_previously_sha_verified",
+                        "execution_approved","testable_functional_claims_proven")}
             m["implementation"]["evidence_depth_atlas"] = implementation_map
             m["implementation"]["evidence_depth_browse"] = implementation_view
             m["implementation"]["source_identity_not_technical_execution"] = True
@@ -423,6 +438,9 @@ def main(argv=None):
                 + "Case stages, entities and disputes are source assertions; "
                 + "no cross-layer inference or verified-world-coverage claim.\n"
                 if nocturnal_map else "")),
+            *([(args.implementation_execution_frontier_out,
+                 json.dumps(implementation_frontier,ensure_ascii=False,indent=2)+"\n")]
+              if implementation_frontier else []),
             *([(args.implementation_atlas_out,
                  json.dumps(implementation_map,ensure_ascii=False,indent=2)+"\n")]
               if args.implementation_atlas_out else []),
@@ -460,6 +478,9 @@ def main(argv=None):
             "implementation_prior_trial_assets_outside_survey":(
                 implementation_map["coverage"]["historical_scoped_trial_assets_outside_survey"]
                 if implementation_map else 0),
+            "implementation_execution_frontier_size": (
+                implementation_frontier["selected_repositories"]
+                if implementation_frontier else 0),
             "implementation_prior_requirement_matches": (
                 implementation_requirements_view["matching_count"]
                 if implementation_map else None),
