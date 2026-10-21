@@ -138,6 +138,8 @@ def main(argv=None):
         help="Original source tree/blob hashes and Python AST inspection, no execution")
     foundation.add_argument("--implementation-component-trials",type=Path,
         help="Prior pinned synthetic/static trial records; not independently replayed")
+    foundation.add_argument("--implementation-original-function-replay",type=Path,
+        help="Optional freshly executed SHA-pinned original function fixture receipt")
     foundation.add_argument("--implementation-category",help="Exact original repository survey category")
     foundation.add_argument("--implementation-terms",help="Lexical search within Implementation only")
     foundation.add_argument("--implementation-requirement-terms",
@@ -257,6 +259,10 @@ def main(argv=None):
             raise ValueError("Academic review claims need their own original extracted-text directory")
         if args.implementation_original_code_audit and not args.implementation_original_audit:
             raise ValueError("Original code structure needs a separately pinned source audit")
+        if args.implementation_original_function_replay and not (
+            args.implementation_original_code_audit and args.implementation_atlas_out
+        ):
+            raise ValueError("Original function replay requires a pinned code inspection and standalone map output")
         if (args.implementation_category or args.implementation_terms or
             args.implementation_stage or args.implementation_requirement_terms or
             args.implementation_requirement_status):
@@ -285,6 +291,8 @@ def main(argv=None):
             files.append(args.implementation_component_trials)
         if args.implementation_original_code_audit:
             files.append(args.implementation_original_code_audit)
+        if args.implementation_original_function_replay:
+            files.append(args.implementation_original_function_replay)
         if any(file.stat().st_size>12_000_000 for file in files):
             raise ValueError("Source inventory exceeds bounded file size")
         outputs=[args.json_out,args.markdown_out]
@@ -328,6 +336,10 @@ def main(argv=None):
                                    if args.implementation_component_trials else None),
                 code_audit=(read(args.implementation_original_code_audit)
                             if args.implementation_original_code_audit else None))
+            if args.implementation_original_function_replay:
+                from .implementation_evidence_atlas import attach_original_function_replay
+                implementation_map = attach_original_function_replay(
+                    implementation_map,read(args.implementation_original_function_replay))
             implementation_view = browse_implementation(
                 implementation_map,category=args.implementation_category,
                 terms=args.implementation_terms,stage=args.implementation_stage,
@@ -469,6 +481,12 @@ def main(argv=None):
             "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
             "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
             "browse_matches":view["matching_count"] if view else None,
+            "implementation_original_function_fixtures_passing": (
+                implementation_map["coverage"].get("actual_original_function_fixtures_passing",0)
+                if implementation_map else 0),
+            "implementation_original_modules_executed": (
+                implementation_map["coverage"].get("original_pinned_modules_with_executed_fixture_receipts",0)
+                if implementation_map else 0),
             "implementation_code_source_samples_sha_checked": (
                 implementation_map["coverage"]["original_source_file_samples_sha_checked"]
                 if implementation_map else 0),
