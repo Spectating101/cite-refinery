@@ -94,10 +94,11 @@ def _check_materials(manifest, receipt):
             "date": doc.get("document_date"),
             "origin_genre": kind, "genre_authority": GENRES[kind],
             "source_scope": str(doc.get("source_scope") or ""),
-            "substantive_study_claims_reviewed": 0,
+            "source_anchored_claim_count": 0,
+            "operator_checked_anchor_count": 0,
             "source_excerpt_available_in_this_map": False,
             "scientific_accuracy_independently_established": False,
-            "study_design_unclassified_until_source_review": True,
+            "study_design_independently_verified": False,
         }
     actual = dict(Counter(x["origin_genre"] for x in out.values()))
     if actual != manifest["material_by_type"]:
@@ -207,8 +208,9 @@ def build_academic_atlas(manifest, split_receipt, *, reviews=None, source_texts=
             "scope_and_design_comparability_independently_verified": False,
         }
     for sid, ids in by_source.items():
-        entries[sid]["substantive_study_claims_reviewed"] = len(ids)
-        entries[sid]["study_design_unclassified_until_source_review"] = False
+        entries[sid]["source_anchored_claim_count"] = len(ids)
+        entries[sid]["operator_checked_anchor_count"] = sum(
+            claims[cid]["review_state"] == "analyst_source_span_checked" for cid in ids)
     groups = {
         kind: [sid for sid in sorted(entries) if entries[sid]["origin_genre"] == kind]
         for kind in GENRES
@@ -231,6 +233,9 @@ def build_academic_atlas(manifest, split_receipt, *, reviews=None, source_texts=
             "sealed_holdout_documents_not_imported": split_receipt["holdout_count"],
             "source_anchored_claims": len(claims),
             "sources_with_anchored_claims": len(by_source),
+            "operator_checked_source_span_claims": sum(
+                c["review_state"] == "analyst_source_span_checked"
+                for c in claims.values()),
             "source_anchored_claim_roles": dict(role_counts),
             "candidate_scope_tensions": len(tensions),
             "independently_validated_scientific_findings": 0,
@@ -285,7 +290,7 @@ def balanced_review_queue(atlas, *, per_genre=10):
     selected = []
     for kind, ids in sorted(atlas["groups"].items()):
         candidates = [sid for sid in ids
-                      if atlas["sources"][sid]["substantive_study_claims_reviewed"] == 0]
+                      if atlas["sources"][sid]["source_anchored_claim_count"] == 0]
         ordered = sorted(candidates, key=lambda sid: _hash(kind+"|"+sid))
         for sid in ordered[:per_genre]:
             selected.append({
