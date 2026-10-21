@@ -486,3 +486,97 @@ def original_capability_execution_backlog(atlas, *, max_repositories=60):
         "representative_original_repository_coverage_proven":False,
         "entries":output,
     }
+
+
+def attach_original_function_replay(atlas, receipt):
+    """Attach an original-source/fixture-pinned executable receipt conservatively.
+
+    Source integrity is checked against BOTH the original 44-repository audit
+    and this profile's frozen blob hash. This receipt is runner-reported, not
+    cryptographically independently signed and not a generalized test suite.
+    """
+    from .implementation_original_function_trial import (
+        SCHEMA as REPLAY_SCHEMA, SOURCE_REPO, PINNED_COMMIT,
+        SOURCE_BLOB, SOURCE_SHA256, SOURCE_PATH, FIXTURES,
+        _fixture_hash)
+    _require(atlas.get("schema")==SCHEMA and receipt.get("schema")==REPLAY_SCHEMA,
+             "Original function replay requires independent Implementation Atlas")
+    repo=atlas["surveyed_repositories"].get(SOURCE_REPO)
+    if repo is None or not repo["source_code_structure_audits"]:
+        raise ValueError("Original replay subject must belong to pinned 1,287-lead sample")
+    matches=[x for x in repo["source_code_structure_audits"]
+             if x["status"]=="source_files_sha_verified" and
+             x["pinned_commit"]==PINNED_COMMIT and
+             any(s.get("path")==SOURCE_PATH and
+                 s.get("blob_sha")==SOURCE_BLOB and
+                 s.get("body_sha256")==SOURCE_SHA256
+                 for s in x["source_file_samples"])]
+    if len(matches)!=1:
+        raise ValueError("Original replay revision/blob does not match source-tree inspection")
+    _require(receipt.get("trial_subject")==SOURCE_REPO and
+             receipt.get("upstream_revision")==PINNED_COMMIT and
+             receipt.get("source_path")==SOURCE_PATH and
+             receipt.get("original_git_blob_sha1")==SOURCE_BLOB and
+             receipt.get("source_bytes_sha256")==SOURCE_SHA256 and
+             receipt.get("predeclared_fixture_sha256")==_fixture_hash() and
+             receipt.get("source_checked_at_full_file_and_git_blob") is True and
+             receipt.get("original_upstream_python_executed") is True and
+             receipt.get("independent_inputs_and_expected_outputs") is True and
+             receipt.get("approved_general_reuse_or_promotion") is False and
+             receipt.get("upstream_software_is_secure_or_safe") is False and
+             receipt.get("demonstrated_field_effect_or_real_user_benefit") is False and
+             receipt.get("license_reuse_rights_cleared") is False and
+             receipt.get("broad_repository_quality_or_adoption_verified") is False and
+             receipt.get("network_sandbox_isolation_proven") is False,
+             "Original execution receipt does not meet pinned bounded authority")
+    cases=receipt.get("cases")
+    if not isinstance(cases,list) or len(cases)!=len(FIXTURES):
+        raise ValueError("Executed source fixture inventory incomplete")
+    for seen,expected in zip(cases,FIXTURES):
+        _require(seen.get("id")==expected["id"] and
+                 seen.get("expected")==expected["expected"] and
+                 seen.get("status") in {"pass","fail","error"},
+                 "Original source test receipt replaced preregistered requirements")
+        if seen["status"]=="pass":
+            _require(seen.get("actual")==expected["expected"],
+                     "Recorded pass does not match a preregistered output")
+        elif seen["status"]=="fail":
+            _require(seen.get("actual")!=expected["expected"],
+                     "Claimed failure has a matching expected output")
+    counts=dict(Counter(x["status"] for x in cases))
+    _require(receipt.get("case_count")==len(FIXTURES) and
+             receipt.get("case_status_counts")==counts and
+             receipt.get("all_preregistered_fixtures_pass") is (
+                 counts.get("pass",0)==len(FIXTURES)),
+             "Original executed-case accounting contradicts fixture results")
+    result=deepcopy(atlas)
+    subject=result["surveyed_repositories"][SOURCE_REPO]
+    subject["bounded_independent_original_module_replay"]={
+        "source_commit":PINNED_COMMIT,
+        "original_blob_sha1":SOURCE_BLOB,
+        "source_path":SOURCE_PATH,
+        "execution_observed_in_current_receipt":True,
+        "successful_preregistered_synthetic_cases":counts.get("pass",0),
+        "failing_or_error_cases":len(FIXTURES)-counts.get("pass",0),
+        "general_upstream_project_correctness_proven":False,
+        "live_domain_effectiveness_proven":False,
+        "no_OS_or_network_isolation_claim":True,
+    }
+    result["original_source_function_replay_receipts"]={
+        SOURCE_REPO:{
+            "upstream_revision":PINNED_COMMIT,
+            "source_blob_sha1":SOURCE_BLOB,
+            "fixture_sha256":_fixture_hash(),
+            "cases":cases,"case_status_counts":counts,
+            "source_test_surface":"lexical_label_classifier_only",
+            "general_quality_or_reuse_rights_verified":False,
+        }
+    }
+    result["coverage"]["original_pinned_modules_with_executed_fixture_receipts"]=1
+    result["coverage"]["actual_original_function_fixtures_recorded"]=len(FIXTURES)
+    result["coverage"]["actual_original_function_fixtures_passing"]=counts.get("pass",0)
+    result["coverage"]["original_modules_tested_as_fraction_of_all_1287"]=None
+    result["coverage"]["live_operational_implementations_verified"]=0
+    result["coverage"]["underconverted_assets_proven"]=0
+    result["cross_layer_edges_generated"]=0
+    return result
