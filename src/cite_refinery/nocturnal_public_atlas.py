@@ -58,7 +58,7 @@ def _https(url):
     return url
 
 
-def load_public_snapshot(directory):
+def load_public_snapshot(directory, *, expected_manifest_sha256=None):
     """Check release authority, manifest fingerprint, byte hashes and references."""
     root = Path(directory)
     if root.is_symlink() or not root.is_dir():
@@ -66,8 +66,18 @@ def load_public_snapshot(directory):
     manifest_path = root / "manifest.json"
     if manifest_path.is_symlink() or not manifest_path.is_file() or manifest_path.stat().st_size > 1_000_000:
         raise ValueError("Missing or oversized Nocturnal manifest")
-    manifest = _load_json(manifest_path)
+    manifest_bytes = manifest_path.read_bytes()
+    manifest = json.loads(manifest_bytes)
     pilot = manifest.get("pilot_gate") or {}
+    if pilot.get("fictional") is not True:
+        if expected_manifest_sha256 is None:
+            raise ValueError("Real Nocturnal public snapshot requires an out-of-band approved manifest SHA-256")
+    if expected_manifest_sha256 is not None:
+        actual = sha256(manifest_bytes).hexdigest()
+        if (not isinstance(expected_manifest_sha256, str) or len(expected_manifest_sha256) != 64
+            or any(ch not in "0123456789abcdef" for ch in expected_manifest_sha256)
+            or expected_manifest_sha256 != actual):
+            raise ValueError("Trusted Nocturnal manifest SHA-256 pin mismatch")
     integrity = manifest.get("integrity") or {}
     if (manifest.get("schema") != UPSTREAM or
         manifest.get("publishable") is not True or
@@ -109,8 +119,9 @@ def load_public_snapshot(directory):
     return manifest, payloads, hashes
 
 
-def build_practical_atlas(directory, *, previous=None):
-    manifest, rows, hashes = load_public_snapshot(directory)
+def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=None):
+    manifest, rows, hashes = load_public_snapshot(
+        directory, expected_manifest_sha256=expected_manifest_sha256)
     modules = _unique(rows["modules"], "module_id")
     matters = _unique(rows["matters"], "matter_id")
     entities = _unique(rows["entities"], "entity_id")
@@ -240,6 +251,7 @@ def build_practical_atlas(directory, *, previous=None):
             "pilot_id": (manifest["pilot_gate"] or {})["pilot_id"],
             "fictional": manifest["pilot_gate"].get("fictional") is True,
             "approved_public_release_only": True,
+            "trusted_manifest_sha256_pinned": expected_manifest_sha256 is not None,
             "file_sha256": hashes,
         },
         "coverage": {
