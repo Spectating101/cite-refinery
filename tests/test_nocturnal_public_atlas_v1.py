@@ -166,6 +166,22 @@ class NocturnalPublicAtlasTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "publication gate"):
                 build_practical_atlas(root)
 
+    def test_nonfictional_release_needs_independently_approved_manifest_digest(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            manifest = fixture(root)
+            manifest["pilot_gate"]["fictional"] = False
+            raw = json.dumps(manifest, indent=2) + "\\n"
+            (root / "manifest.json").write_text(raw, encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "out-of-band"):
+                build_practical_atlas(root)
+            with self.assertRaisesRegex(ValueError, "pin mismatch"):
+                build_practical_atlas(root, expected_manifest_sha256="0"*64)
+            trusted_digest = sha256(raw.encode("utf-8")).hexdigest()
+            result = build_practical_atlas(root, expected_manifest_sha256=trusted_digest)
+            self.assertTrue(result["provenance"]["trusted_manifest_sha256_pinned"])
+            self.assertFalse(result["provenance"]["fictional"])
+
     def test_file_manifest_fingerprint_and_symlink_guard(self):
         with TemporaryDirectory() as td:
             root = Path(td) / "actual"
