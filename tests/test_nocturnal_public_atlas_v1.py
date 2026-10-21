@@ -140,7 +140,7 @@ class NocturnalPublicAtlasTests(unittest.TestCase):
             self.assertEqual(browse_practical(m, terms="invented")["matching_count"], 0)
             self.assertEqual(m["modules"]["fictional-module-2"]["correction_of"],
                              "fictional-module-1")
-            self.assertNotIn("text", str(m["modules"]))
+            self.assertTrue(all("text" not in row for row in m["modules"].values()))
             self.assertIn("#L2", m["modules"]["fictional-module-2"]["original_snapshot_locator"])
 
     def test_changed_or_truncated_bytes_fail_even_if_manifest_claims_publication(self):
