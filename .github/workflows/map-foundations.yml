@@ -120,9 +120,10 @@ jobs:
             --implementation-original-code-audit "$RUNNER_TEMP/layer-maps/implementation_original_code_structure_audit.json" \
             --implementation-component-trials research_materials/opportunity_atlas/functional_component_trials.json \
             --implementation-atlas-out "$RUNNER_TEMP/layer-maps/implementation_capability_evidence_atlas.json" \
+            --implementation-execution-frontier-out "$RUNNER_TEMP/layer-maps/implementation_original_execution_frontier.json" \
             --json-out "$RUNNER_TEMP/layer-maps/implementation_deep_foundations.json" \
             --markdown-out "$RUNNER_TEMP/layer-maps/implementation_capability_coverage.md"
-          python -c 'import os,json; p=os.environ["RUNNER_TEMP"]+"/layer-maps/"; a=json.load(open(p+"implementation_capability_evidence_atlas.json")); c=a["coverage"]; assert c["survey_repository_leads"]==1287 and c["historical_scoped_trial_assets"]==3 and c["historical_scoped_trial_assets_outside_survey"]==3 and c["historic_synthetic_or_static_case_status_counts"]=={"pass":6,"fail":7,"blocked":1,"not_tested":3} and c["live_operational_implementations_verified"]==0 and c["underconverted_assets_proven"]==0 and a["cross_layer_edges_generated"]==0'
+          python -c 'import os,json; p=os.environ["RUNNER_TEMP"]+"/layer-maps/"; a=json.load(open(p+"implementation_capability_evidence_atlas.json")); c=a["coverage"]; assert c["survey_repository_leads"]==1287 and c["individual_source_anchored_requirement_receipts"]==17 and c["historical_scoped_trial_assets"]==3 and c["historical_scoped_trial_assets_outside_survey"]==3 and c["historic_synthetic_or_static_case_status_counts"]=={"pass":6,"fail":7,"blocked":1,"not_tested":3} and c["live_operational_implementations_verified"]==0 and c["underconverted_assets_proven"]==0 and a["cross_layer_edges_generated"]==0 and json.load(open(p+"implementation_original_execution_frontier.json"))["execution_approved"]==0'
       - name: Publish enriched maps with independently observed source identities
         run: |
           python -m cite_refinery.layered_cli investigate map-foundations \
