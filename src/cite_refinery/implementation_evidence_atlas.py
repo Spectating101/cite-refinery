@@ -411,3 +411,76 @@ def browse_implementation_requirements(atlas, *, terms=None, status=None, limit=
         "not_a_field_capability_catalog_census":True,
         "no_cross_layer_join":True,
     }
+
+
+def original_capability_execution_backlog(atlas, *, max_repositories=60):
+    """Next *unexecuted* source-specific engineering work, not capability proof.
+
+    A repo's language and source path are verified source evidence, but no
+    function behavior or expected output can be inferred from a definition.
+    """
+    _require(atlas.get("schema")==SCHEMA and type(max_repositories) is int
+             and 1<=max_repositories<=60,
+             "Invalid original Implementation execution review batch")
+    selections=[]
+    for rid, row in atlas["surveyed_repositories"].items():
+        if not row["pinned_source_checks"]:
+            continue
+        inspected=row["source_code_structure_audits"]
+        current=(inspected[0] if inspected else None)
+        is_source_bound=(current is not None and
+                         current["status"]=="source_files_sha_verified")
+        if is_source_bound:
+            next_tasks=[
+                "Human review of selected original source and full transitive dependency chain",
+                "Pre-register one narrow input/output contract and at least one adverse boundary fixture",
+                "Isolated offline sandbox replay with no credential access, immutable source tree and resource limits",
+                "Capture input/output, stdout/stderr, environment, file digests and reproducibility receipt",
+                "Separately validate license/third-party rights and real-world fit before any admission",
+            ]
+        else:
+            next_tasks=[
+                "Recover an independently pinned source revision, complete tree and relevant original source blob",
+                "Human review of source/dependency safety and license scope before any execution",
+                "Only then pre-register negative and positive functional fixtures",
+            ]
+        source_files=(current.get("source_file_samples",[]) if is_source_bound else [])
+        selections.append({
+            "repository_id":rid,"original_source_url":row["url"],
+            "original_category_memberships":[c["category"] for c in row["categories"]],
+            "pinned_source_commits":sorted({p["original_commit"] for p in
+                row["pinned_source_checks"] if "original_commit" in p}),
+            "original_code_structure_status":current["status"] if current else "not_inspected",
+            "original_code_paths_sha_checked":[{
+                "path":f["path"],"blob_sha":f["blob_sha"],
+                "language":f["source_language"],
+                "python_ast_symbols_unverified":f.get(
+                    "structural_function_names_not_a_behavioral_test",[]),
+            } for f in source_files],
+            "ready_for_automated_safe_execution":False,
+            "reviewed_capability_contract_defined":False,
+            "execution_source_isolation_confirmed":False,
+            "expected_outputs_pre_registered":False,
+            "original_code_executed_for_this_queue":False,
+            "reproducible_result_receipt_available":False,
+            "license_and_dependency_rights_cleared":False,
+            "next_evidence_actions":next_tasks,
+            "intended_next_authority":"source_contract_review_then_bounded_execution_no_field_claim",
+        })
+    selections.sort(key=lambda x:(
+        x["original_code_structure_status"]!="source_files_sha_verified",
+        sha256(x["repository_id"].encode()).hexdigest()))
+    output=selections[:max_repositories]
+    return {
+        "schema":"cite_refinery.implementation_execution_frontier.v1",
+        "source_pinned_repository_population":len(selections),
+        "selected_repositories":len(output),
+        "original_code_structures_previously_sha_verified":sum(
+            x["original_code_structure_status"]=="source_files_sha_verified" for x in output),
+        "unexecuted_or_inconclusive_original_code":sum(
+            x["original_code_structure_status"]!="source_files_sha_verified" for x in output),
+        "execution_approved":0,
+        "testable_functional_claims_proven":0,
+        "representative_original_repository_coverage_proven":False,
+        "entries":output,
+    }
