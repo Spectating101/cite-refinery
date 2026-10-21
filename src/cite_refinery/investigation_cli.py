@@ -134,6 +134,23 @@ def main(argv=None):
         help="Optional exact original source/DOI identity checks, no scientific validation")
     foundation.add_argument("--implementation-original-audit",type=Path,
         help="Optional pinned GitHub revision and root listing receipts, no code execution")
+    foundation.add_argument("--implementation-original-code-audit",type=Path,
+        help="Original source tree/blob hashes and Python AST inspection, no execution")
+    foundation.add_argument("--implementation-component-trials",type=Path,
+        help="Prior pinned synthetic/static trial records; not independently replayed")
+    foundation.add_argument("--implementation-category",help="Exact original repository survey category")
+    foundation.add_argument("--implementation-terms",help="Lexical search within Implementation only")
+    foundation.add_argument("--implementation-requirement-terms",
+        help="Find original bounded functional test requirements, e.g. NaN telemetry")
+    foundation.add_argument("--implementation-requirement-status",choices=[
+        "pass","fail","blocked","not_tested"],
+        help="Filter earlier requirement receipt outcomes, not field performance")
+    foundation.add_argument("--implementation-stage",choices=[
+        "survey","original_commit","source_sample","historical_trial"])
+    foundation.add_argument("--implementation-atlas-out",type=Path,
+        help="Optional separate Implementation evidence-depth atlas JSON")
+    foundation.add_argument("--implementation-execution-frontier-out",type=Path,
+        help="Read-only source-pinned trial-planning queue; no untrusted execution")
     foundation.add_argument("--nocturnal-public-snapshot",type=Path,
         help="Local publication-approved Nocturnal public snapshot directory; no private ledgers")
     foundation.add_argument("--nocturnal-manifest-sha256",
@@ -238,6 +255,13 @@ def main(argv=None):
             raise ValueError("Academic depth options require the frozen development manifest")
         if bool(args.academic_evidence_reviews) != bool(args.academic_review_text_dir):
             raise ValueError("Academic review claims need their own original extracted-text directory")
+        if args.implementation_original_code_audit and not args.implementation_original_audit:
+            raise ValueError("Original code structure needs a separately pinned source audit")
+        if (args.implementation_category or args.implementation_terms or
+            args.implementation_stage or args.implementation_requirement_terms or
+            args.implementation_requirement_status):
+            if not args.implementation_atlas_out:
+                raise ValueError("Implementation browse requires a standalone map output")
         if (args.previous_nocturnal_atlas or args.nocturnal_terms or
             args.nocturnal_matter_id or args.nocturnal_map_out or
             args.nocturnal_manifest_sha256) and not args.nocturnal_public_snapshot:
@@ -257,12 +281,19 @@ def main(argv=None):
             files.append(args.academic_evidence_reviews)
         if args.academic_original_jats_audit:
             files.append(args.academic_original_jats_audit)
+        if args.implementation_component_trials:
+            files.append(args.implementation_component_trials)
+        if args.implementation_original_code_audit:
+            files.append(args.implementation_original_code_audit)
         if any(file.stat().st_size>12_000_000 for file in files):
             raise ValueError("Source inventory exceeds bounded file size")
         outputs=[args.json_out,args.markdown_out]
         if args.review_backlog_out: outputs.append(args.review_backlog_out)
         if args.nocturnal_map_out: outputs.append(args.nocturnal_map_out)
         if args.academic_atlas_out: outputs.append(args.academic_atlas_out)
+        if args.implementation_atlas_out: outputs.append(args.implementation_atlas_out)
+        if args.implementation_execution_frontier_out:
+            outputs.append(args.implementation_execution_frontier_out)
         if args.academic_review_backlog_out:
             outputs.append(args.academic_review_backlog_out)
         if (len(set(x.resolve() for x in outputs))!=len(outputs)
@@ -279,6 +310,45 @@ def main(argv=None):
             m=attach_independent_source_identity_checks(
                 m,read(args.academic_original_audit),
                 read(args.implementation_original_audit))
+        implementation_map = None
+        implementation_view = None
+        implementation_frontier = None
+        if (args.implementation_atlas_out or args.implementation_component_trials
+            or args.implementation_original_code_audit or
+            args.implementation_execution_frontier_out):
+            from .implementation_evidence_atlas import (
+                build_implementation_atlas,browse_implementation,
+                browse_implementation_requirements,
+                original_capability_execution_backlog)
+            implementation_map = build_implementation_atlas(
+                m,
+                original_audit=(read(args.implementation_original_audit)
+                                if args.implementation_original_audit else None),
+                functional_trials=(read(args.implementation_component_trials)
+                                   if args.implementation_component_trials else None),
+                code_audit=(read(args.implementation_original_code_audit)
+                            if args.implementation_original_code_audit else None))
+            implementation_view = browse_implementation(
+                implementation_map,category=args.implementation_category,
+                terms=args.implementation_terms,stage=args.implementation_stage,
+                limit=args.limit)
+            implementation_requirements_view = browse_implementation_requirements(
+                implementation_map,
+                terms=args.implementation_requirement_terms,
+                status=args.implementation_requirement_status,
+                limit=args.limit)
+            m["implementation"]["source_scoped_requirement_browse"] = implementation_requirements_view
+            implementation_frontier=(original_capability_execution_backlog(implementation_map)
+                                     if args.implementation_execution_frontier_out else None)
+            if implementation_frontier is not None:
+                m["implementation"]["execution_frontier_summary"]={
+                    key:implementation_frontier[key] for key in (
+                        "source_pinned_repository_population","selected_repositories",
+                        "original_code_structures_previously_sha_verified",
+                        "execution_approved","testable_functional_claims_proven")}
+            m["implementation"]["evidence_depth_atlas"] = implementation_map
+            m["implementation"]["evidence_depth_browse"] = implementation_view
+            m["implementation"]["source_identity_not_technical_execution"] = True
         academic_map = None
         academic_view = None
         academic_backlog = None
@@ -327,6 +397,21 @@ def main(argv=None):
         for path,contents in [
             (args.json_out,json.dumps(m,ensure_ascii=False,indent=2)+"\n"),
             (args.markdown_out,summary_markdown(m) + (
+                "\n## Independent Implementation source and capability evidence\n\n"
+                + str(implementation_map["coverage"]["survey_repository_leads"])
+                + " surveyed original repository leads; "
+                + str(implementation_map["coverage"]["distinct_repositories_original_commit_root_checked"])
+                + " distinct repositories with GitHub pinned revision and root; "
+                + str(implementation_map["coverage"]["original_source_file_samples_sha_checked"])
+                + " with Git-blob-matched source samples; "
+                + str(implementation_map["coverage"]["historical_scoped_trial_assets"])
+                + " historically probed synthetic/static assets ("
+                + str(implementation_map["coverage"]["historical_scoped_trial_assets_outside_survey"])
+                + " outside the survey). Prior recorded case outcomes: "
+                + str(implementation_map["coverage"]["historic_synthetic_or_static_case_status_counts"])
+                + ". This map replayed zero executable tests; field deployment, "
+                + "licensing clearance and economic underconversion remain unverified.\n"
+                if implementation_map else "") + (
                 "\n## Academic development-only research evidence\n\n"
                 + str(academic_map["coverage"]["indexed_article_fulltexts"])
                 + " previously retrieved open-access full-text article identities, "
@@ -353,6 +438,12 @@ def main(argv=None):
                 + "Case stages, entities and disputes are source assertions; "
                 + "no cross-layer inference or verified-world-coverage claim.\n"
                 if nocturnal_map else "")),
+            *([(args.implementation_execution_frontier_out,
+                 json.dumps(implementation_frontier,ensure_ascii=False,indent=2)+"\n")]
+              if implementation_frontier else []),
+            *([(args.implementation_atlas_out,
+                 json.dumps(implementation_map,ensure_ascii=False,indent=2)+"\n")]
+              if args.implementation_atlas_out else []),
             *([(args.academic_atlas_out,
                  json.dumps(academic_map,ensure_ascii=False,indent=2)+"\n")]
               if args.academic_atlas_out else []),
@@ -378,6 +469,23 @@ def main(argv=None):
             "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
             "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
             "browse_matches":view["matching_count"] if view else None,
+            "implementation_code_source_samples_sha_checked": (
+                implementation_map["coverage"]["original_source_file_samples_sha_checked"]
+                if implementation_map else 0),
+            "implementation_prior_component_trial_assets":(
+                implementation_map["coverage"]["historical_scoped_trial_assets"]
+                if implementation_map else 0),
+            "implementation_prior_trial_assets_outside_survey":(
+                implementation_map["coverage"]["historical_scoped_trial_assets_outside_survey"]
+                if implementation_map else 0),
+            "implementation_execution_frontier_size": (
+                implementation_frontier["selected_repositories"]
+                if implementation_frontier else 0),
+            "implementation_prior_requirement_matches": (
+                implementation_requirements_view["matching_count"]
+                if implementation_map else None),
+            "implementation_depth_browse_matches": (
+                implementation_view["matching_count"] if implementation_view else None),
             "academic_original_jats_source_structures_inspected": (
                 academic_map["coverage"].get("original_public_jats_structure_inspected",0)
                 if academic_map else 0),
