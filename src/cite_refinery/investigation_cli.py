@@ -319,6 +319,23 @@ def main(argv=None):
         for path,contents in [
             (args.json_out,json.dumps(m,ensure_ascii=False,indent=2)+"\n"),
             (args.markdown_out,summary_markdown(m) + (
+                "\n## Academic development-only research evidence\n\n"
+                + str(academic_map["coverage"]["indexed_article_fulltexts"])
+                + " previously retrieved open-access full-text article identities, "
+                + str(academic_map["coverage"]["indexed_institutional_reports"])
+                + " institutional report text identities, and "
+                + str(academic_map["coverage"]["dataset_metadata_records_not_observations"])
+                + " dataset metadata records; "
+                + str(academic_map["coverage"]["sealed_holdout_documents_not_imported"])
+                + " documents remain sealed for held-out evaluation. "
+                + str(academic_map["coverage"]["source_anchored_claims"])
+                + " original-text-anchored analyst claims, "
+                + str(academic_map["coverage"]["operator_checked_source_span_claims"])
+                + " with operator-designated span review, zero independently validated "
+                + "scientific findings and zero adjudicated contradictions. "
+                + "The original 47 abstract/index source leads are not summed "
+                + "with this corpus as proven non-overlapping publications.\n"
+                if academic_map else "") + (
                 "\n## Source-approved Nocturnal Practical evidence\n\n"
                 + "Gated public snapshot `" + nocturnal_map["provenance"]["snapshot_id"]
                 + "`: " + str(nocturnal_map["coverage"]["matter_count"])
