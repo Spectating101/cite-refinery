@@ -12,7 +12,7 @@ The existing functional component trials concerned **three entirely different re
 - `WeixuanZ/flood-warning-system`, pinned `c1c7fac…`: synthetic flood-station threshold/ranking probes (nonfinite NaN telemetry failure), not operational forecasting or public warning effectiveness.
 - `ajlongshanks/co2_esphome`, pinned `d1b3c50…`: static YAML/configuration trial, not deployed firmware or calibration.
 
-The original frozen trial JSON contains **6 pass, 7 fail, 1 blocked, 3 not-tested** requirement cases. A positive case proves only that the original investigator reported the tested bounded synthetic behavior; this new map does **not** independently rerun those untrusted upstream programs or verify external signed authorship. We do **not** claim 3/1,287 sampled implementations work, since overlap is exactly zero.
+The original frozen trial JSON contains **6 pass, 7 fail, 1 blocked, 3 not-tested** requirement cases. The atlas keeps **17 individual testable requirement receipts**, including **11 recorded failures, blocked checks or untested gaps**; it supports exact within-Implementation queries such as `--implementation-requirement-terms NaN --implementation-requirement-status fail`. A positive case proves only that the original investigator reported the tested bounded synthetic behavior; this new map does **not** independently rerun those untrusted upstream programs or verify external signed authorship. We do **not** claim 3/1,287 sampled implementations work, since overlap is exactly zero.
 
 ## What this branch adds
 
@@ -58,7 +58,7 @@ cite-refinery investigate map-foundations \
   --markdown-out /tmp/implementation_coverage.md
 ```
 
-Original-source and component evidence can be navigated by `--implementation-category`, `--implementation-terms`, and `--implementation-stage` (survey / original_commit / source_sample / historical_trial). Browsing is literal, **not semantic truth discovery**, with no cross-layer edges or quality ranking.
+Original-source and component evidence can be navigated by `--implementation-category`, `--implementation-terms`, and `--implementation-stage` (survey / original_commit / source_sample / historical_trial). Browsing is literal, **not semantic truth discovery**, with no cross-layer edges or quality ranking. Scoped requirement search returns recorded case status and pinned original upstream revision; it cannot extrapolate successful tests to untested safety requirements or a different code revision.
 
 ## Executable/operational test maturity ladder
 
