@@ -112,6 +112,10 @@ def main(argv=None):
     foundation.add_argument("--markdown-out",type=Path,required=True)
     foundation.add_argument("--review-backlog-out",type=Path,
         help="Optional balanced, unreviewed metadata-pair review queue; no model invoked")
+    foundation.add_argument("--academic-original-audit",type=Path,
+        help="Optional exact original source/DOI identity checks, no scientific validation")
+    foundation.add_argument("--implementation-original-audit",type=Path,
+        help="Optional pinned GitHub revision and root listing receipts, no code execution")
     qualification=sub.add_parser("qualify-conversions",
         help="Audit candidate conversion discoveries across multiple source slices, public repo metadata and pinned upstream test receipts")
     qualification.add_argument("--discovery",type=Path,action="append",required=True,
@@ -200,6 +204,10 @@ def main(argv=None):
             raise ValueError("No bounded source-reading shard collection")
         files=[args.manifest,args.emergent_atlas,args.github_primary,
                args.github_frontier,args.repository_network,args.ted_context,*shards]
+        if bool(args.academic_original_audit) != bool(args.implementation_original_audit):
+            raise ValueError("Both independent source audit layers must be supplied together")
+        if args.academic_original_audit:
+            files.extend([args.academic_original_audit,args.implementation_original_audit])
         if any(file.stat().st_size>12_000_000 for file in files):
             raise ValueError("Source inventory exceeds bounded file size")
         outputs=[args.json_out,args.markdown_out]
@@ -213,6 +221,11 @@ def main(argv=None):
                 read(args.emergent_atlas),read(args.github_primary),
                 read(args.github_frontier),read(args.repository_network),
                 read(args.ted_context))
+        if args.academic_original_audit:
+            from .layer_foundations import attach_independent_source_identity_checks
+            m=attach_independent_source_identity_checks(
+                m,read(args.academic_original_audit),
+                read(args.implementation_original_audit))
         view=(browse(m,layer=args.layer,facet=args.facet,terms=args.terms,
                      limit=args.limit) if args.layer else None)
         if view: m["within_layer_browse"]=view
@@ -236,6 +249,12 @@ def main(argv=None):
             "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
             "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
             "browse_matches":view["matching_count"] if view else None,
+            "external_academic_doi_confirmed":m.get(
+                "within_layer_original_source_audits",{}).get(
+                    "publisher_doi_identity_confirmed",0),
+            "original_pinned_repo_revision_checked":m.get(
+                "within_layer_original_source_audits",{}).get(
+                    "implementation_pinned_revision_and_root_checked",0),
             "cross_layer_edges_created":0,"world_coverage_complete":False,
         },indent=2))
         return 0
