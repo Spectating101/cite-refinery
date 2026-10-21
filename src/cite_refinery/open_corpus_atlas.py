@@ -720,6 +720,31 @@ def render_qualification_queue(report):
             ("; ".join(parts) or "source-cited research only").replace("|","/")+
             " | "+tech.replace("|","/")+" | "+
             row["suggested_conversion_barrier"]+" (UNVERIFIED) |")
+    for item in report["rows"]:
+        if "direct_bridge_trial" not in item:
+            continue
+        t=item["direct_bridge_trial"]
+        lines.extend([
+            "",
+            "## Reproduced source-interface restriction: "+item["candidate_id"],
+            "",
+            "**Specific unsupported direct mapping:** "+t["reason"],
+            "",
+            "**Pinned source revisions:** "+", ".join(
+                r["name"]+" @ "+r["source_commit"][:12]
+                for r in t["original_source_commits"]),
+            "",
+            "**Original values rejected as grid-element actuation:** "+
+                ", ".join(t["rejected_fields"])+".",
+            "",
+            "**Next verification:** "+t["next_step"],
+            "",
+            "This disproves only the *raw field-to-grid-actuation shortcut*, "
+            "not all future integration. There is NO live device test, "
+            "confirmed underconversion barrier, whole-project quality "
+            "certification, or demonstrated external value.",
+            ""
+        ])
     lines.extend(["","## What can be claimed now?","",
         "- Real source repository metadata was inspected, but README promises and release activity are not independent deployment evidence.",
         "- Only separately pinned original-source test suites can establish narrow functional behavior; the user-generated new cross-project combination remains untested.",
@@ -730,3 +755,76 @@ def render_qualification_queue(report):
         "**Next path:** inspect licenses and code rights, independently run original components, investigate actual users/alternatives, then test a small integration or within-layer analogy against field data. A funding resource may help later but is never a prerequisite.",
         ""])
     return "\n".join(lines)
+
+def attach_source_bridge_trials(queue,trial_records):
+    """Preserve real counterevidence for nominated candidate connections.
+
+    A validated limited negative test is not generalized into proof that all
+    integrations are impossible, nor an opportunity/quality/adoption approval.
+    """
+    if (queue.get("schema")!="cite_refinery.conversion_qualification_queue.v1"
+        or not isinstance(trial_records,list) or not 1<=len(trial_records)<=10):
+        raise ValueError("Typed qualification queue and bounded trial receipts required")
+    import copy
+    result=copy.deepcopy(queue)
+    rows={x["candidate_id"]:x for x in result["rows"]}
+    seen=set()
+    for trial in trial_records:
+        if (trial.get("schema")!="cite_refinery.source_interface_compatibility_trial.v1"
+            or trial.get("candidate_id") not in rows):
+            raise ValueError("Bridge receipt must target an actual mapped candidate")
+        key=trial["candidate_id"]
+        if key in seen:raise ValueError("Duplicate bridge receipt")
+        seen.add(key)
+        row=rows[key]
+        sources=trial.get("repositories")
+        if not isinstance(sources,list) or len(sources)<2:
+            raise ValueError("Both original source commits needed for cross-project comparison")
+        names=["github:"+x["name"] for x in sources]
+        if sorted(names)!=sorted(row["asset_ids"]) or len(set(names))!=len(names):
+            raise ValueError("Bridge candidate references different GitHub assets")
+        for original in sources:
+            if not re.fullmatch(r"[a-f0-9]{40}",original.get("source_commit","")):
+                raise ValueError("Unpinned original GitHub source")
+            checked=next(x for x in row["asset_provenance"]
+                         if x["asset_id"]=="github:"+original["name"])
+            if not checked["source_verified"]:
+                raise ValueError("Cannot match a bridge test to unverified publisher source")
+            if (checked["test_source_commit"] is not None and
+                original["source_commit"]!=checked["test_source_commit"]):
+                raise ValueError("Bridge source does not match upstream source test baseline")
+        if (trial.get("live_device_or_grid_access") is not False
+            or trial.get("jackery_original_runtime_executed") is not False
+            or trial.get("cross_project_adapter_completed") is not False
+            or trial.get("technical_quality_established_for_both") is not False
+            or trial.get("underconversion_proven") is not False):
+            raise ValueError("Source interface test cannot claim real application approval")
+        rejects=trial.get("raw_telemetry_to_grid_actuation_rejected")
+        if not isinstance(rejects,list) or len(rejects)!=3 or len(set(rejects))!=3:
+            raise ValueError("Expected original three-field direct-mapping negative control")
+        if not isinstance(trial.get("jackery_constants_sha256"),str) or not re.fullmatch(
+            r"[a-f0-9]{64}",trial["jackery_constants_sha256"]
+        ):
+            raise ValueError("Unpinned source field manifest")
+        row["direct_bridge_trial"]={
+            "status":"direct_unmediated_source_contract_rejected",
+            "tested_field_count":len(rejects),
+            "rejected_fields":rejects,
+            "original_source_commits":sources,
+            "source_fields_digest":trial["jackery_constants_sha256"],
+            "reason":trial["why_blocked"],
+            "tested_absence_of_direct_mapping_only":True,
+            "full_integration_impossibility_proven":False,
+            "completed_recombination":False,
+            "quality_or_underconversion_verified":False,
+            "next_step":trial["next_test"],
+        }
+        row["next_evidence_gate"]=trial["next_test"]
+        row["status"]="direct_mapping_blocked_requires_external_verified_interface"
+        row["conversion_barrier_confirmed"]=False
+    result["bridge_trials_attached"]=len(seen)
+    result["direct_source_interface_mismatches_reproduced"]=len(seen)
+    result["independently_qualified_high_quality_assets"]=0
+    result["accepted_new_recombinations"]=0
+    result["confirmed_underconverted_assets"]=0
+    return result

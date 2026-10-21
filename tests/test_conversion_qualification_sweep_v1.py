@@ -13,6 +13,7 @@ import unittest
 
 from cite_refinery.open_corpus_atlas import (
     conversion_qualification_queue,render_qualification_queue,
+    attach_source_bridge_trials,
     screen_emergent_batch,prepare_conversion_universe,
 )
 from cite_refinery.layered_cli import main as cli
@@ -101,6 +102,70 @@ class QualificationSweepTests(unittest.TestCase):
         fake[1]["source_universe"]["stratified_offset"]=0
         with self.assertRaisesRegex(ValueError,"same source slice"):
             conversion_qualification_queue(fake,self.audits,self.tests)
+
+    def test_pinned_cross_repo_negative_trial_marks_specific_direct_bridge_only(self):
+        original=conversion_qualification_queue(self.slices,self.audits,self.tests)
+        source=load(DATA/"gridshadow_jackery_interface_trial_v1.json")
+        updated=attach_source_bridge_trials(original,[source])
+        self.assertEqual(updated["bridge_trials_attached"],1)
+        self.assertEqual(updated["direct_source_interface_mismatches_reproduced"],1)
+        x=next(item for item in updated["rows"] if item["candidate_id"]=="slice-0:CV-03")
+        self.assertEqual(x["status"],"direct_mapping_blocked_requires_external_verified_interface")
+        self.assertEqual(x["direct_bridge_trial"]["tested_field_count"],3)
+        self.assertTrue(x["direct_bridge_trial"]["tested_absence_of_direct_mapping_only"])
+        self.assertFalse(x["direct_bridge_trial"]["full_integration_impossibility_proven"])
+        self.assertFalse(x["proposed_recombination_tested"])
+        self.assertFalse(x["conversion_barrier_confirmed"])
+        self.assertFalse(x["new_value_realized"])
+        self.assertEqual(updated["independently_qualified_high_quality_assets"],0)
+        self.assertEqual(updated["accepted_new_recombinations"],0)
+        self.assertNotIn("direct_bridge_trial",next(item for item in updated["rows"]
+                         if item["candidate_id"]=="slice-0:CV-02"))
+
+    def test_bridge_trial_bad_source_and_fabricated_promotion_fail_closed(self):
+        original=conversion_qualification_queue(self.slices,self.audits,self.tests)
+        base=load(DATA/"gridshadow_jackery_interface_trial_v1.json")
+        cases=[
+            lambda x:x["repositories"][0].update(source_commit="f"*40),
+            lambda x:x["repositories"][1].update(name="completely/other_project"),
+            lambda x:x.update(cross_project_adapter_completed=True),
+            lambda x:x.update(underconversion_proven=True),
+            lambda x:x.update(technical_quality_established_for_both=True),
+            lambda x:x.update(candidate_id="slice-0:unknown"),
+            lambda x:x.update(jackery_constants_sha256="unknown"),
+            lambda x:x.update(raw_telemetry_to_grid_actuation_rejected=[]),
+        ]
+        for mutate in cases:
+            x=deepcopy(base)
+            mutate(x)
+            with self.assertRaises(ValueError):
+                attach_source_bridge_trials(original,[x])
+        with self.assertRaisesRegex(ValueError,"Duplicate bridge"):
+            attach_source_bridge_trials(original,[base,base])
+
+    def test_canonical_qualifier_accepts_original_bridge_receipt_without_new_script(self):
+        with TemporaryDirectory() as td:
+            root=Path(td)
+            args=["investigate","--workspace",str(root/"phantom"),
+                  "qualify-conversions"]
+            for i in range(4):
+                args.extend(["--discovery",str(DATA/f"emergent_conversion_slice_{i}_v1.json")])
+            for filename in ("original_repo_conversion_audit_first_14_v1.json",
+                             "original_repo_conversion_audit_additional_11_v1.json"):
+                args.extend(["--repository-audit",str(DATA/filename)])
+            args.extend([
+                "--component-tests",str(DATA/"original_source_component_test_receipts_v1.json"),
+                "--bridge-trial",str(DATA/"gridshadow_jackery_interface_trial_v1.json"),
+                "--json-out",str(root/"result.json"),
+                "--markdown-out",str(root/"result.md")])
+            stdout=StringIO()
+            with redirect_stdout(stdout):cli(args)
+            receipt=json.loads(stdout.getvalue())
+            self.assertEqual(receipt["direct_source_interface_mismatches_reproduced"],1)
+            j=load(root/"result.json")
+            self.assertEqual(j["bridge_trials_attached"],1)
+            self.assertEqual(j["confirmed_underconverted_assets"],0)
+            self.assertFalse((root/"phantom").exists())
 
     def test_cli_replay_and_no_new_installed_script_or_state_directory(self):
         with TemporaryDirectory() as td:
