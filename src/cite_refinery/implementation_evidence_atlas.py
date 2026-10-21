@@ -388,7 +388,8 @@ def browse_implementation_requirements(atlas, *, terms=None, status=None, limit=
              "Unknown historical functional case status")
     _require(terms is None or isinstance(terms,str) and len(terms)<=160,
              "Invalid capability requirement search")
-    needles=(terms or "").casefold().split()
+    # Token boundaries avoid a false "NaN" sensor match in "provenance".
+    needles=re.findall(r"[a-z0-9]+",(terms or "").casefold())
     selected=[]
     for case in atlas["historic_requirement_catalog"].values():
         if status is not None and case["reported_synthetic_or_static_outcome"]!=status:
@@ -399,7 +400,8 @@ def browse_implementation_requirements(atlas, *, terms=None, status=None, limit=
             case["source_entry_point_operator_supplied"] or "",
             case["interpretation_operator_supplied"] or "",
         ])).casefold()
-        if all(x in haystack for x in needles):
+        vocabulary=set(re.findall(r"[a-z0-9]+",haystack))
+        if all(x in vocabulary for x in needles):
             selected.append(case)
     selected.sort(key=lambda row:(row["asset_id"],row["case_name"]))
     return {
