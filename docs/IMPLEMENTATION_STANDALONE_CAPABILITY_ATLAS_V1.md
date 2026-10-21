@@ -60,6 +60,12 @@ cite-refinery investigate map-foundations \
 
 Original-source and component evidence can be navigated by `--implementation-category`, `--implementation-terms`, and `--implementation-stage` (survey / original_commit / source_sample / historical_trial). Browsing is literal, **not semantic truth discovery**, with no cross-layer edges or quality ranking. Scoped requirement search returns recorded case status and pinned original upstream revision; it cannot extrapolate successful tests to untested safety requirements or a different code revision.
 
+## Generated source-specific engineering frontier
+
+Use `--implementation-execution-frontier-out /tmp/implementation_frontier.json` when producing the enriched map. It produces one record for each previously pinned repository sample (up to 60) with the exact pinned revision, observed original-code paths and hashes, any source-inspection gaps, and explicit next evidence requirements. The queue **does not authorize automatic execution**: each item still needs a reviewer-defined input/output contract, dependency safety review, negative fixture and constrained offline execution environment. Successful Python AST parses are only a starting point.
+
+In the focused CI configuration, the earlier 44 original pinned source identities are all attempted for source-blob inspection, and the resulting execution-frontier JSON is retained with the other seven-day source artifacts. This does not mean all 44 successfully yielded parseable code; absent or oversized sources remain unsuccessful.
+
 ## Executable/operational test maturity ladder
 
 | Evidence tier | What is supported | What is *not* supported |
