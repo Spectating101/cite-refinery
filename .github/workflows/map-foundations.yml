@@ -1,0 +1,55 @@
+name: Three-layer map foundations
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/layer_foundations.py"
+      - "src/cite_refinery/investigation_cli.py"
+      - "tests/test_layer_foundations_v1.py"
+      - "research_materials/runtime_trials/open_corpus_20261020/**"
+      - "research_materials/opportunity_atlas/**"
+      - ".github/workflows/map-foundations.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-foundations:
+    name: Frozen-source integrity and standalone-map tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project
+        run: python -m pip install -e ".[server]"
+      - name: Compile source
+        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py
+      - name: Run all map-first source integrity tests
+        run: python -m unittest discover -s tests -p 'test_layer_foundations_v1.py' -v
+      - name: Build release wheel
+        run: |
+          python -m pip install build
+          python -m build --wheel --outdir /tmp/cite-refinery-layer-foundations-wheel
+      - name: Generate consolidated layer-map artifacts
+        run: |
+          mkdir -p "$RUNNER_TEMP/layer-maps"
+          python -m cite_refinery.layered_cli investigate map-foundations \
+            --json-out "$RUNNER_TEMP/layer-maps/standalone_layer_foundations.json" \
+            --markdown-out "$RUNNER_TEMP/layer-maps/standalone_layer_coverage.md" \
+            --review-backlog-out "$RUNNER_TEMP/layer-maps/implementation_review_backlog.json"
+          python -c 'import json,os; root=os.environ["RUNNER_TEMP"]+"/layer-maps/"; m=json.load(open(root+"standalone_layer_foundations.json")); b=json.load(open(root+"implementation_review_backlog.json")); assert len(m["layers"])==3 and m["cross_layer_edges_generated"]==0 and m["implementation"]["unique_repositories"]==1287 and b["model_or_human_review_completed"]==0 and b["sampled_pairs"]==88'
+      - name: Upload inspectable standalone maps
+        uses: actions/upload-artifact@v4
+        with:
+          name: cite-refinery-three-layer-foundations
+          path: ${{ runner.temp }}/layer-maps/
+          if-no-files-found: error
+          retention-days: 7

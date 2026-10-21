@@ -88,6 +88,30 @@ def main(argv=None):
                         help="Optional provider for independent source applicability critique; omitted = structural source preflight only")
     assess.add_argument("--model",default=None)
     assess.add_argument("--timeout",type=int,default=150)
+    foundation=sub.add_parser("map-foundations",
+        help="Three independent source-grounded maps and within-layer search; no cross-layer inference")
+    foundation.add_argument("--manifest",type=Path,
+        default=Path("research_materials/runtime_trials/open_corpus_20261020/source_manifest.json"))
+    foundation.add_argument("--reading-dir",type=Path,
+        default=Path("research_materials/runtime_trials/open_corpus_20261020/source_readings"))
+    foundation.add_argument("--emergent-atlas",type=Path,
+        default=Path("research_materials/runtime_trials/open_corpus_20261020/global_atlas.json"))
+    foundation.add_argument("--github-primary",type=Path,
+        default=Path("research_materials/opportunity_atlas/github_repository_survey.json"))
+    foundation.add_argument("--github-frontier",type=Path,
+        default=Path("research_materials/opportunity_atlas/github_frontier_repository_survey.json"))
+    foundation.add_argument("--repository-network",type=Path,
+        default=Path("research_materials/opportunity_atlas/atlas_network.json"))
+    foundation.add_argument("--ted-context",type=Path,
+        default=Path("research_materials/opportunity_atlas/ted_published_notice_context.json"))
+    foundation.add_argument("--layer",choices=["practical","academic","implementation"])
+    foundation.add_argument("--facet",help="Existing research theme or implementation source category")
+    foundation.add_argument("--terms",help="Literal within-layer search terms, NOT semantic scoring")
+    foundation.add_argument("--limit",type=int,default=25)
+    foundation.add_argument("--json-out",type=Path,required=True)
+    foundation.add_argument("--markdown-out",type=Path,required=True)
+    foundation.add_argument("--review-backlog-out",type=Path,
+        help="Optional balanced, unreviewed metadata-pair review queue; no model invoked")
     qualification=sub.add_parser("qualify-conversions",
         help="Audit candidate conversion discoveries across multiple source slices, public repo metadata and pinned upstream test receipts")
     qualification.add_argument("--discovery",type=Path,action="append",required=True,
@@ -167,6 +191,54 @@ def main(argv=None):
         execution=invoke_semantic_llm(prompt,provider=args.provider,model=args.model,
                                       timeout_seconds=args.timeout)
         return execution["raw"]
+    if args.command=="map-foundations":
+        from .layer_foundations import build, browse, review_backlog, summary_markdown
+        if (args.facet or args.terms) and not args.layer:
+            raise ValueError("Within-layer browse facet/terms require --layer")
+        shards=sorted(args.reading_dir.glob("shard-*.json"))
+        if not 1<=len(shards)<=40:
+            raise ValueError("No bounded source-reading shard collection")
+        files=[args.manifest,args.emergent_atlas,args.github_primary,
+               args.github_frontier,args.repository_network,args.ted_context,*shards]
+        if any(file.stat().st_size>12_000_000 for file in files):
+            raise ValueError("Source inventory exceeds bounded file size")
+        outputs=[args.json_out,args.markdown_out]
+        if args.review_backlog_out: outputs.append(args.review_backlog_out)
+        if (len(set(x.resolve() for x in outputs))!=len(outputs)
+            or any(x.exists() for x in outputs)):
+            raise ValueError("Refusing to overwrite outputs or use same path")
+        def read(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+        m=build(read(args.manifest),[read(x) for x in shards],
+                read(args.emergent_atlas),read(args.github_primary),
+                read(args.github_frontier),read(args.repository_network),
+                read(args.ted_context))
+        view=(browse(m,layer=args.layer,facet=args.facet,terms=args.terms,
+                     limit=args.limit) if args.layer else None)
+        if view: m["within_layer_browse"]=view
+        backlog=review_backlog(m) if args.review_backlog_out else None
+        for path,contents in [
+            (args.json_out,json.dumps(m,ensure_ascii=False,indent=2)+"\n"),
+            (args.markdown_out,summary_markdown(m)),
+            *([(args.review_backlog_out,
+                 json.dumps(backlog,ensure_ascii=False,indent=2)+"\n")]
+              if backlog else [])
+        ]:
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(contents,encoding="utf-8")
+        print(json.dumps({
+            "schema":m["schema"],
+            "practical_reported_cases":m["practical"]["reported_case_count"],
+            "separate_procurement_notices":len(
+                m["practical"]["published_procurement_notices_as_separate_context"]),
+            "academic_source_abstracts":m["academic"]["source_count"],
+            "implementation_repositories":m["implementation"]["unique_repositories"],
+            "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
+            "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
+            "browse_matches":view["matching_count"] if view else None,
+            "cross_layer_edges_created":0,"world_coverage_complete":False,
+        },indent=2))
+        return 0
     if args.command=="qualify-conversions":
         from .open_corpus_atlas import (
             conversion_qualification_queue,render_qualification_queue)
