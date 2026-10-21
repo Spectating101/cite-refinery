@@ -14,7 +14,7 @@ import unittest
 
 from cite_refinery.layer_foundations import build,review_backlog
 from cite_refinery.implementation_evidence_atlas import (
-    build_implementation_atlas,browse_implementation)
+    build_implementation_atlas,browse_implementation,browse_implementation_requirements)
 from cite_refinery.implementation_original_code_audit import (
     _blob_matches,audit_original_code)
 from cite_refinery.layered_cli import main as cli
@@ -112,6 +112,18 @@ class ImplementationAtlasTests(unittest.TestCase):
         self.assertEqual(c["historical_scoped_trial_assets_outside_survey"],3)
         self.assertEqual(c["historic_synthetic_or_static_case_status_counts"],
                          {"pass":6,"fail":7,"blocked":1,"not_tested":3})
+        self.assertEqual(c["individual_source_anchored_requirement_receipts"],17)
+        self.assertEqual(c["prior_failed_or_unresolved_requirements"],11)
+        self.assertEqual(browse_implementation_requirements(
+            report,terms="NaN")["matching_count"],2)
+        self.assertEqual(browse_implementation_requirements(
+            report,status="fail")["matching_count"],7)
+        self.assertEqual(browse_implementation_requirements(
+            report,terms="gate fee",status="fail")["matching_count"],3)
+        self.assertEqual(browse_implementation_requirements(
+            report,status="blocked")["matching_count"],1)
+        self.assertTrue(all(x["not_replayed_or_field_verified"] for x in
+                            report["historic_requirement_catalog"].values()))
         self.assertEqual(c["technical_capabilities_independently_replayed_in_this_map"],0)
         self.assertEqual(c["live_operational_implementations_verified"],0)
         self.assertEqual(c["reuse_rights_independently_cleared"],0)
@@ -215,6 +227,8 @@ class ImplementationAtlasTests(unittest.TestCase):
                     "--implementation-component-trials",
                     str(ATLAS/"functional_component_trials.json"),
                     "--implementation-stage","historical_trial",
+                    "--implementation-requirement-terms","NaN",
+                    "--implementation-requirement-status","fail",
                     "--implementation-atlas-out",str(root/"implementation.json"),
                     "--json-out",str(root/"combined.json"),
                     "--markdown-out",str(root/"coverage.md"),
@@ -224,6 +238,8 @@ class ImplementationAtlasTests(unittest.TestCase):
             b=load(root/"combined.json")
             self.assertEqual(a["coverage"]["historical_scoped_trial_assets_outside_survey"],3)
             self.assertEqual(b["implementation"]["evidence_depth_browse"]["matching_count"],3)
+            self.assertEqual(b["implementation"]["source_scoped_requirement_browse"][
+                "matching_count"],2)
             self.assertEqual(b["implementation"]["evidence_depth_atlas"]["coverage"][
                 "live_operational_implementations_verified"],0)
             self.assertIn("Independent Implementation source",(
