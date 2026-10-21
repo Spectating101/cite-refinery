@@ -73,6 +73,7 @@ cite-refinery-repair-replace = "cite_refinery.repair_replace_trials:main"
 cite-refinery-operator-conversion-gate = "cite_refinery.operator_conversion_gate:main"
 cite-refinery-reported-issue-contracts = "cite_refinery.reported_issue_contracts:main"
 cite-refinery-original-component-trials = "cite_refinery.pinned_original_component_trials:main"
+cite-refinery-framework-suite-evidence = "cite_refinery.framework_suite_evidence:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
