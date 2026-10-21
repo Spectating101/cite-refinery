@@ -15,6 +15,7 @@ import tempfile
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from .app import CiteRefinery
 from .semantic import SemanticGraph
@@ -76,7 +77,13 @@ def planning_prompt(state):
         +json.dumps({"original_question":state["question"],"current_focus":focused,
                       "modules":state["modules"],"previous_rounds":history,
                       "remaining_frontier":state["frontier"][:8],
-                      "evidence_repair_lineage":state.get("lineage")},
+                      "evidence_repair_lineage":state.get("lineage"),
+                      "user_supplied_materials_unverified":[
+                          {"id":x["id"],"family":x["source_family"],
+                           "text_excerpt":x["text"][:360],
+                           "source_scope":x["source_scope"]}
+                          for x in state.get("supplied_sources",[])],
+                      "user_supplied_is_independent_corroboration":False},
                      ensure_ascii=False,separators=(",",":"))
     )
 
@@ -125,6 +132,80 @@ def validate_plan(value):
             "hypotheses":hypotheses,"queries":queries}
 
 
+SUPPLIED_EVIDENCE_SCHEMA = "cite_refinery.supplied_evidence.v1"
+_SOURCE_FAMILIES = {
+    "practical": "P",
+    "academic": "A",
+    "implementation": "I",
+}
+_MAX_SUPPLIED = 6
+
+
+def validate_supplied_evidence(document):
+    """Locally supplied TEXT only; never fetch URL, trust title, or promote it.
+
+    A source URL is a user-provided locator, not retrieval verification.
+    A source hash identifies exact submitted bytes, not semantic truth.
+    """
+    if not isinstance(document, dict) or set(document) != {"schema", "sources"} or (
+        document["schema"] != SUPPLIED_EVIDENCE_SCHEMA
+    ):
+        raise ValueError("Expected exact cite_refinery.supplied_evidence.v1 document")
+    items = document["sources"]
+    if not isinstance(items, list) or not 1 <= len(items) <= _MAX_SUPPLIED:
+        raise ValueError("Evidence intake accepts 1-6 supplied passages per session")
+    normalized = []
+    ids, urls = set(), set()
+    for source in items:
+        if not isinstance(source, dict) or set(source) != {
+            "id", "family", "url", "title", "text", "scope"
+        }:
+            raise ValueError("Supplied passage needs id, family, url, title, text, scope exactly")
+        family = source["family"]
+        sid = source["id"]
+        if family not in _SOURCE_FAMILIES or not isinstance(sid, str) or (
+            not re.fullmatch(r"USR-[PAI]-[0-9]{2,3}", sid)
+        ) or not sid.startswith("USR-" + _SOURCE_FAMILIES[family] + "-"):
+            raise ValueError("Supplied source ID must match its declared family")
+        if sid in ids:
+            raise ValueError("Duplicate supplied source ID")
+        ids.add(sid)
+        url = source["url"]
+        if not isinstance(url, str) or not 12 <= len(url) <= 500:
+            raise ValueError("Every passage needs bounded HTTPS provenance URL")
+        parsed = urlsplit(url)
+        if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password or (
+            parsed.port not in (None, 443)
+        ) or any(ord(c) < 33 for c in url):
+            raise ValueError("Supplied source locator must be a clean HTTPS URL")
+        if url in urls:
+            raise ValueError("Repeated supplied source URL cannot be counted as another independent record")
+        urls.add(url)
+        title, text, scope = source["title"], source["text"], source["scope"]
+        if not isinstance(title, str) or not 5 <= len(title.strip()) <= 160:
+            raise ValueError("Passage title must be 5-160 characters")
+        if not isinstance(text, str) or not 40 <= len(text.strip()) <= 5000:
+            raise ValueError("Passage text must be 40-5000 characters")
+        if not isinstance(scope, str) or not 12 <= len(scope.strip()) <= 400:
+            raise ValueError("Scope must explicitly explain origin or measurement limitations")
+        normalized.append({
+            "id": sid,
+            "url": url,
+            "title": title.strip(),
+            "text": text,
+            "text_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            "source_family": family,
+            "origin_type": "user_supplied_" + family + "_unverified",
+            "source_scope": (
+                "User-submitted material, independently UNVERIFIED; URL has NOT "
+                "been fetched or authenticated. Supplied scope: " + scope.strip()
+            ),
+            "provenance_status": "user_supplied_url_not_retrieved",
+            "evidence_authority": "NONE_ACCEPTED",
+        })
+    return normalized
+
+
 class InvestigationController:
     STAGES={"plan","collect","needs_sources","reason","critique","stage","ready_next","blocked","done"}
     def __init__(self,workspace,*,reasoner,academic_search=None,official_search=None):
@@ -136,7 +217,8 @@ class InvestigationController:
         self.academic_search=academic_search
         self.official_search=official_search
 
-    def start(self,question,modules,*,max_rounds=2,fulltext_enrichment=False):
+    def start(self,question,modules,*,max_rounds=2,fulltext_enrichment=False,
+              evidence_document=None):
         if not isinstance(question,str) or not 15<=len(question)<=1200:
             raise ValueError("Investigation question must be 15-1200 characters")
         if not 1<=max_rounds<=8:raise ValueError("max_rounds must be 1-8")
@@ -148,6 +230,8 @@ class InvestigationController:
             if not isinstance(m,dict) or not re.fullmatch(r"[A-Z]{2,5}-[0-9]{2,3}",str(m.get("id") or "")) or m["id"] in ids or not m.get("title") or not m.get("summary"):
                 raise ValueError("Each problem module needs unique ID, title, summary")
             ids.add(m["id"])
+        supplied = (validate_supplied_evidence(evidence_document)
+                    if evidence_document is not None else [])
         project=self.app.init_project("Investigation: "+question[:65],question)
         ident=uuid.uuid4().hex[:20]
         session={
@@ -156,6 +240,8 @@ class InvestigationController:
             "modules":modules,"max_rounds":max_rounds,"stage":"plan",
             "fulltext_enrichment":bool(fulltext_enrichment),
             "rounds":[],"frontier":[],"visited_questions":[],
+            "supplied_sources":supplied,
+            "source_authority":"user_supplied_not_independently_verified",
             "created_at":_utc(),"updated_at":_utc(),
             "last_error":None,"authority":"candidate_neutral_only",
         }
@@ -177,6 +263,35 @@ class InvestigationController:
         if state["stage"] not in self.STAGES:raise ValueError("Invalid stage")
         state["updated_at"]=_utc()
         _atomic(self.path(state["id"]),state)
+
+    def attach_supplied_evidence(self, ident, document):
+        """Attach to an unreviewed stage, atomically, without silently replacing.
+
+        A different text or URL under an existing source ID is an explicit
+        conflict, never a silently updated citation. A retry is idempotent.
+        """
+        incoming = validate_supplied_evidence(document)
+        s = self.load(ident)
+        if s["stage"] not in {"plan", "collect", "needs_sources", "reason"}:
+            raise ValueError("Source intake closed after reasoning/critique begins; start new session")
+        previous = list(s.get("supplied_sources", []))
+        existing = {x["id"]: x for x in previous}
+        for item in incoming:
+            if any(old["id"] != item["id"] and old["url"] == item["url"]
+                   for old in previous):
+                raise ValueError("Repeated provenance URL must not masquerade as independent evidence")
+            old = existing.get(item["id"])
+            if old is not None and old != item:
+                raise ValueError("Supplied source ID changed source content or provenance")
+            if old is None:
+                previous.append(item)
+                existing[item["id"]] = item
+        if len(previous) > _MAX_SUPPLIED:
+            raise ValueError("Total supplied source quota exceeded")
+        if previous != s.get("supplied_sources", []):
+            s["supplied_sources"] = previous
+            self.save(s)
+        return s
 
     def step(self,ident):
         s=self.load(ident)
@@ -238,14 +353,30 @@ class InvestigationController:
                 rnd["source_attempts"]=rnd.get("source_attempts",0)+1
                 rnd["source_count"]=len(rnd["sources"])
                 origins={x["origin_type"] for x in rnd["sources"]}
-                if (rnd["source_count"]<2 or
-                    not any("scholarly_" in x for x in origins) or
-                    not any("official_" in x for x in origins)):
-                    rnd["state"]="incomplete_source_families"
-                    s["stage"]="needs_sources" if rnd["source_attempts"]<3 else "blocked"
-                else:
+                scholarly=any(x.startswith("scholarly_") for x in origins)
+                official=any(x.startswith("official_") for x in origins)
+                rnd["independently_retrieved_scholarly_material"]=scholarly
+                rnd["independently_retrieved_official_material"]=official
+                rnd["supplied_source_count"]=len(s.get("supplied_sources",[]))
+                rnd["independent_source_family_coverage_complete"]=scholarly and official
+                if scholarly and official:
                     rnd["state"]="sources_retrieved"
                     s["stage"]="reason"
+                elif len(s.get("supplied_sources",[]))>=2 and len({
+                    x["source_family"] for x in s["supplied_sources"]
+                })>=2:
+                    # Offline/user-material-only mode: permitted for *neutral
+                    # review*, NOT for independent source validation. The
+                    # missing source families remain explicit and unverified.
+                    rnd["state"]="supplied_materials_ready_unverified"
+                    rnd["missing_independent_families"]=[
+                        x for x,found in (("scholarly",scholarly),("official",official))
+                        if not found
+                    ]
+                    s["stage"]="reason"
+                else:
+                    rnd["state"]="incomplete_source_families"
+                    s["stage"]="needs_sources" if rnd["source_attempts"]<3 else "blocked"
 
             elif s["stage"]=="needs_sources":
                 rnd=s["rounds"][-1]
@@ -292,6 +423,28 @@ class InvestigationController:
                     for old in previous.get("sources",[])[:4]:
                         if old["id"] not in ids and len(combined)<12:
                             combined.append(old);ids.add(old["id"])
+                supplied=s.get("supplied_sources", [])
+                if supplied:
+                    # Allocate the original academic and official evidence at
+                    # least one slot each. User text does NOT satisfy either
+                    # independent source discovery requirement.
+                    limit=12-len(supplied)
+                    mandatory=[]
+                    for prefix in ("scholarly_", "official_"):
+                        for item in combined:
+                            if item["origin_type"].startswith(prefix):
+                                if item["id"] not in {x["id"] for x in mandatory}:
+                                    mandatory.append(item)
+                                break
+                    kept=list(mandatory)
+                    for item in combined:
+                        if len(kept)>=limit:break
+                        if item["id"] not in {x["id"] for x in kept}:
+                            kept.append(item)
+                    # A supplied ID must never masquerade as a found citation.
+                    if set(x["id"] for x in kept) & set(x["id"] for x in supplied):
+                        raise ValueError("Supplied source identity conflicts with discovered source")
+                    combined=kept+supplied
                 review_input=make_input(combined,s["modules"])
                 provisional=[{
                     "statement":p["statement"],

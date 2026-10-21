@@ -33,6 +33,10 @@ def _summary(s):
         "authority":s["authority"],
         "module_origins":sorted({str(m.get("origin","provided_ontology"))
                                  for m in s["modules"]}),
+        "supplied_source_count":len(s.get("supplied_sources",[])),
+        "supplied_source_families":sorted({x["source_family"] for x in s.get("supplied_sources",[])}),
+        "supplied_provenance_status":"user_supplied_url_not_retrieved",
+        "supplied_source_ids":[x["id"] for x in s.get("supplied_sources",[])],
         "known_missing_evidence_families":[
             "independent_practical_field_observations",
             "verified_implementation_execution_and_operator_outcomes",
@@ -51,9 +55,15 @@ def main(argv=None):
         "--modules",
         help="Optional reviewed problem-ontology JSON list. Without it, start with a single explicitly unverified user-question module.",
     )
+    init.add_argument(
+        "--evidence",help="Optional local supplied_evidence.v1 JSON (Practical/Academic/Implementation); never fetched or auto-approved"
+    )
     init.add_argument("--max-rounds",type=int,default=2)
     init.add_argument("--fulltext-enrichment",action="store_true",
                       help="Fetch bounded methods/results JATS extracts for public PMC papers")
+    attach=sub.add_parser("attach-evidence",help="Attach bounded user-provided evidence before reasoning; no external fetch or graph write")
+    attach.add_argument("--id",required=True)
+    attach.add_argument("--evidence",required=True)
     for name in ("step","run","status"):
         action=sub.add_parser(name)
         action.add_argument("--id",required=True)
@@ -63,6 +73,12 @@ def main(argv=None):
             action.add_argument("--timeout",type=int,default=180)
         if name=="run":action.add_argument("--steps",type=int,default=5)
     args=p.parse_args(argv)
+    def read_evidence(path):
+        # Fail before allocating huge or non-text data; never open URL.
+        file=Path(path)
+        if file.stat().st_size>42_000:
+            raise ValueError("Local supplied evidence JSON exceeds 42 KB")
+        return json.loads(file.read_text(encoding="utf-8"))
     def reasoner(prompt):
         execution=invoke_semantic_llm(prompt,provider=args.provider,model=args.model,
                                       timeout_seconds=args.timeout)
@@ -83,7 +99,10 @@ def main(argv=None):
                 "status":"unreviewed",
             }]
         state=ctrl.start(args.question,modules,max_rounds=args.max_rounds,
-                         fulltext_enrichment=args.fulltext_enrichment)
+                         fulltext_enrichment=args.fulltext_enrichment,
+                         evidence_document=read_evidence(args.evidence) if args.evidence else None)
+    elif args.command=="attach-evidence":
+        state=ctrl.attach_supplied_evidence(args.id,read_evidence(args.evidence))
     elif args.command=="status":
         state=ctrl.load(args.id)
     elif args.command=="step":
