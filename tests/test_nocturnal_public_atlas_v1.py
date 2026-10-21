@@ -171,7 +171,7 @@ class NocturnalPublicAtlasTests(unittest.TestCase):
             root = Path(td)
             manifest = fixture(root)
             manifest["pilot_gate"]["fictional"] = False
-            raw = json.dumps(manifest, indent=2) + "\\n"
+            raw = json.dumps(manifest, indent=2) + "\n"
             (root / "manifest.json").write_text(raw, encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "out-of-band"):
                 build_practical_atlas(root)
