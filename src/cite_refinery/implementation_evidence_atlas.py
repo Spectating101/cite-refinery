@@ -580,3 +580,86 @@ def attach_original_function_replay(atlas, receipt):
     result["coverage"]["underconverted_assets_proven"]=0
     result["cross_layer_edges_generated"]=0
     return result
+
+
+def attach_original_lef_def_replay(atlas,receipt):
+    """Add a second, independent real original-code test without hiding defects."""
+    from .implementation_original_lef_def_trial import (
+        SCHEMA as SCHEMA_EDA,REPO,REVISION,PATH,BLOB,DIGEST,
+        FIXTURES,fixture_sha256)
+    _require(atlas.get("schema")==SCHEMA and receipt.get("schema")==SCHEMA_EDA,
+             "Original EDA source report cannot replace Implementation map authority")
+    repo=atlas["surveyed_repositories"].get(REPO)
+    if repo is None:
+        raise ValueError("EDA original source not in original Implementation survey")
+    evidence=[r for r in repo["source_code_structure_audits"]
+              if r.get("pinned_commit")==REVISION and
+              r.get("status")=="source_files_sha_verified" and
+              any(s.get("path")==PATH and s.get("blob_sha")==BLOB and
+                  s.get("body_sha256")==DIGEST
+                  for s in r.get("source_file_samples",[]))]
+    _require(len(evidence)==1,"EDA original source tree and file fingerprint not validated")
+    _require(receipt.get("original_repository")==REPO and
+             receipt.get("original_commit")==REVISION and
+             receipt.get("original_path")==PATH and
+             receipt.get("original_blob_sha1")==BLOB and
+             receipt.get("original_full_source_sha256")==DIGEST and
+             receipt.get("preregistered_fixture_sha256")==fixture_sha256() and
+             receipt.get("original_program_functions_executed") is True and
+             receipt.get("no_field_chip_design_verified") is True and
+             receipt.get("no_real_foundry_or_PDK_validation") is True and
+             receipt.get("real_automation_safety_not_established") is True and
+             receipt.get("license_reuse_rights_not_cleared") is True and
+             receipt.get("cross_layer_effectiveness_not_established") is True and
+             receipt.get("operational_reuse_approved") is False,
+             "EDA source replay falsely claims general validated implementation")
+    results=receipt.get("cases")
+    _require(isinstance(results,list) and len(results)==len(FIXTURES),
+             "Executed EDA source requirements absent or incomplete")
+    for expected,case in zip(FIXTURES,results):
+        _require(case.get("id")==expected["id"] and
+                 case.get("expected")==expected["expected"] and
+                 case.get("status") in {"pass","fail","error"},
+                 "Original EDA test fixture identity or expected outputs changed")
+        if case["status"]=="pass":
+            _require(case.get("actual")==expected["expected"],
+                     "Falsely reported LEF/DEF parser fixture pass")
+        elif case["status"]=="fail":
+            _require(case.get("actual")!=expected["expected"],
+                     "Falsely reported LEF/DEF parser fixture failure")
+    counts=dict(Counter(c["status"] for c in results))
+    _require(receipt.get("case_count")==len(FIXTURES) and
+             receipt.get("case_status_counts")==counts,
+             "LEF/DEF parsing test totals inconsistent")
+    output=deepcopy(atlas)
+    output["surveyed_repositories"][REPO]["bounded_independent_original_module_replay"]={
+        "source_commit":REVISION,"original_blob_sha1":BLOB,"source_path":PATH,
+        "execution_observed_in_current_receipt":True,
+        "successful_preregistered_synthetic_cases":counts.get("pass",0),
+        "failing_or_error_cases":len(FIXTURES)-counts.get("pass",0),
+        "general_upstream_project_correctness_proven":False,
+        "live_domain_effectiveness_proven":False,
+        "no_OS_or_network_isolation_claim":True,
+    }
+    # Keep the first original lexical case and the EDA case as separate assets.
+    receipts=output.setdefault("original_source_function_replay_receipts",{})
+    if REPO in receipts:raise ValueError("Duplicate upstream EDA executable asset")
+    receipts[REPO]={
+        "upstream_revision":REVISION,
+        "source_blob_sha1":BLOB,"fixture_sha256":fixture_sha256(),
+        "cases":results,"case_status_counts":counts,
+        "source_test_surface":"LEF_DEF_layer_name_compatibility_synthetic_only",
+        "general_quality_or_reuse_rights_verified":False,
+    }
+    counted=sum(len(x["cases"]) for x in receipts.values())
+    positive=sum(x["case_status_counts"].get("pass",0) for x in receipts.values())
+    output["coverage"]["original_pinned_modules_with_executed_fixture_receipts"]=len(receipts)
+    output["coverage"]["actual_original_function_fixtures_recorded"]=counted
+    output["coverage"]["actual_original_function_fixtures_passing"]=positive
+    output["coverage"]["actual_original_function_fixtures_failing"]=sum(
+        x["case_status_counts"].get("fail",0) for x in receipts.values())
+    output["coverage"]["original_modules_tested_as_fraction_of_all_1287"]=None
+    output["coverage"]["live_operational_implementations_verified"]=0
+    output["coverage"]["underconverted_assets_proven"]=0
+    output["cross_layer_edges_generated"]=0
+    return output
