@@ -134,7 +134,7 @@ def audit_original_code(original_audit, *, fetcher=_get, token=None,
                         max_repositories=8):
     if (original_audit.get("schema")!=ORIGINAL or
         not isinstance(max_repositories,int) or
-        not 1<=max_repositories<=30 or
+        not 1<=max_repositories<=60 or
         not isinstance(original_audit.get("records"),list) or
         original_audit.get("selected_category_pairs")!=len(original_audit["records"])):
         raise ValueError("Expected bounded original source-pinned review receipt")
