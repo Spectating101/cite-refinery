@@ -6,7 +6,7 @@ from copy import deepcopy
 import unittest
 
 from cite_refinery.original_layer_source_audit import (
-    academic_source_audit, implementation_source_audit, FetchError, _repo_api_snapshot,
+    academic_source_audit, recover_openalex_bibliography, implementation_source_audit, FetchError, _repo_api_snapshot,
     SCHEMA, CROSSREF, GITHUB
 )
 
@@ -59,6 +59,56 @@ class OriginalEvidenceTests(unittest.TestCase):
         result=academic_source_audit(manifest,fetcher=error)
         self.assertEqual(result["records"][0]["metadata_status"],"not_confirmed")
         self.assertEqual(result["records"][0]["check_issue"],"http_404")
+
+    def test_openalex_second_index_recovers_doi_and_id_without_peer_review(self):
+        source=[
+            {"id":"OA-1","source_record":"10.1000/limited",
+             "url":"https://doi.org/10.1000/limited",
+             "origin_type":"openalex_bibliographic_abstract_lead",
+             "title":"A controlled observation","year":None,"sha256":"b"*64},
+            {"id":"OA-2","source_record":"W12345",
+             "url":"https://openalex.org/W12345",
+             "origin_type":"openalex_bibliographic_abstract_lead",
+             "title":"Public facility assessment","year":None,"sha256":"c"*64},
+        ]
+        manifest={"schema":"cite_refinery.open_corpus_manifest.v1","source_records":source}
+        def no_crossref(url):
+            raise FetchError("http_429")
+        previous=academic_source_audit(manifest,fetcher=no_crossref)
+        def indexed(url):
+            self.assertIn("api.openalex.org/works/",url)
+            return ({"id":"https://openalex.org/W99999",
+                     "doi":"https://doi.org/10.1000/limited",
+                     "display_name":"A controlled observation","publication_year":2024}
+                    if "10.1000" in url else
+                    {"id":"https://openalex.org/W12345",
+                     "doi":None,"display_name":"Public facility assessment",
+                     "publication_year":2020})
+        result=recover_openalex_bibliography(manifest,previous,fetcher=indexed)
+        self.assertEqual(result["openalex_identity_confirmed"],2)
+        self.assertEqual(result["publication_year_added_from_openalex"],2)
+        self.assertEqual(result["doi_confirmed"],0)
+        self.assertTrue(all(x["metadata_status"]=="openalex_work_identity_confirmed"
+                            for x in result["records"]))
+        self.assertTrue(all(not x["publisher_metadata_checked"] and
+                            not x["claims_or_methods_verified"] for x in result["records"]))
+
+    def test_openalex_wrong_work_id_does_not_become_a_paper(self):
+        manifest={"schema":"cite_refinery.open_corpus_manifest.v1",
+                  "source_records":[{
+                      "id":"OA-2","source_record":"W12345",
+                      "url":"https://openalex.org/W12345",
+                      "origin_type":"openalex_bibliographic_abstract_lead",
+                      "title":"Public facility assessment","year":None,"sha256":"c"*64}]}
+        previous=academic_source_audit(manifest,fetcher=lambda url: {})
+        result=recover_openalex_bibliography(manifest,previous,
+            fetcher=lambda url:{
+                "id":"https://openalex.org/W99999",
+                "display_name":"Another document","publication_year":2020})
+        self.assertEqual(result["openalex_identity_confirmed"],0)
+        self.assertEqual(result["records"][0]["openalex_lookup_issue"],
+                         "openalex_original_identity_mismatch")
+        self.assertEqual(result["records"][0]["metadata_status"],"no_valid_doi_in_source")
 
     def test_repository_exact_source_commit_and_root_scope(self):
         backlog={"schema":"cite_refinery.standalone_metadata_review_backlog.v1",
