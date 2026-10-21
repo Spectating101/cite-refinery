@@ -11,6 +11,7 @@ on:
       - "src/cite_refinery/implementation_evidence_atlas.py"
       - "src/cite_refinery/implementation_original_code_audit.py"
       - "src/cite_refinery/implementation_original_function_trial.py"
+      - "src/cite_refinery/implementation_original_lef_def_trial.py"
       - "src/cite_refinery/investigation_cli.py"
       - "tests/test_layer_foundations_v1.py"
       - "tests/test_original_layer_source_audit_v1.py"
@@ -19,6 +20,7 @@ on:
       - "tests/test_academic_original_depth_audit_v1.py"
       - "tests/test_implementation_evidence_atlas_v1.py"
       - "tests/test_implementation_original_function_trial_v1.py"
+      - "tests/test_implementation_original_lef_def_trial_v1.py"
       - "research_materials/runtime_trials/open_corpus_20261020/**"
       - "research_materials/opportunity_atlas/**"
       - "research_materials/runtime_trials/richer_corpus_20261020/development_source_manifest.json"
@@ -46,7 +48,7 @@ jobs:
       - name: Install project
         run: python -m pip install -e ".[server]"
       - name: Compile source
-        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py src/cite_refinery/original_layer_source_audit.py src/cite_refinery/nocturnal_public_atlas.py src/cite_refinery/academic_evidence_atlas.py src/cite_refinery/academic_original_depth_audit.py src/cite_refinery/implementation_evidence_atlas.py src/cite_refinery/implementation_original_code_audit.py src/cite_refinery/implementation_original_function_trial.py
+        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py src/cite_refinery/original_layer_source_audit.py src/cite_refinery/nocturnal_public_atlas.py src/cite_refinery/academic_evidence_atlas.py src/cite_refinery/academic_original_depth_audit.py src/cite_refinery/implementation_evidence_atlas.py src/cite_refinery/implementation_original_code_audit.py src/cite_refinery/implementation_original_function_trial.py src/cite_refinery/implementation_original_lef_def_trial.py
       - name: Run all map-first source integrity tests
         run: python -m unittest discover -s tests -p 'test_layer_foundations_v1.py' -v
       - name: Run independent source-audit guardrail tests
@@ -61,6 +63,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_implementation_evidence_atlas_v1.py' -v
       - name: Test original-function source and prerecorded fixture integrity
         run: python -m unittest discover -s tests -p 'test_implementation_original_function_trial_v1.py' -v
+      - name: Test separate original EDA LEF/DEF source-and-fixture receipts
+        run: python -m unittest discover -s tests -p 'test_implementation_original_lef_def_trial_v1.py' -v
       - name: Build release wheel
         run: |
           python -m pip install build
@@ -129,6 +133,19 @@ jobs:
             --source-dir "$RUNNER_TEMP/original-reviewed-lexical" \
             --out "$RUNNER_TEMP/layer-maps/implementation_original_function_replay.json"
           python -c 'import json,os; p=os.environ["RUNNER_TEMP"]+"/layer-maps/implementation_original_function_replay.json"; r=json.load(open(p)); assert r["case_count"]==16 and r["source_checked_at_full_file_and_git_blob"] and r["original_upstream_python_executed"] and r["case_status_counts"].get("pass",0)==16 and not r["demonstrated_field_effect_or_real_user_benefit"] and not r["network_sandbox_isolation_proven"]'
+      - name: Fetch pinned original LEF/DEF checker source without executing it
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m cite_refinery.implementation_original_lef_def_trial fetch \
+            --original-code-audit "$RUNNER_TEMP/layer-maps/implementation_original_code_structure_audit.json" \
+            --out-dir "$RUNNER_TEMP/original-reviewed-lef"
+      - name: Replay EDA parser against preregistered good and adverse LEF/DEF fixtures
+        run: |
+          python -m cite_refinery.implementation_original_lef_def_trial replay \
+            --source-dir "$RUNNER_TEMP/original-reviewed-lef" \
+            --out "$RUNNER_TEMP/layer-maps/implementation_original_lef_def_replay.json"
+          python -c 'import json,os; p=os.environ["RUNNER_TEMP"]+"/layer-maps/implementation_original_lef_def_replay.json"; r=json.load(open(p)); fail=[x for x in r["cases"] if x["status"]=="fail"]; assert r["case_count"]==16 and r["original_program_functions_executed"] and len(fail)==1 and fail[0]["id"]=="design_comment_is_not_real_layer" and r["case_status_counts"].get("pass")==15 and not r["operational_reuse_approved"]'
       - name: Build standalone Implementation Atlas with real recorded probe defects
         run: |
           python -m cite_refinery.layered_cli investigate map-foundations \
@@ -137,11 +154,12 @@ jobs:
             --implementation-original-code-audit "$RUNNER_TEMP/layer-maps/implementation_original_code_structure_audit.json" \
             --implementation-component-trials research_materials/opportunity_atlas/functional_component_trials.json \
             --implementation-original-function-replay "$RUNNER_TEMP/layer-maps/implementation_original_function_replay.json" \
+            --implementation-original-lef-def-replay "$RUNNER_TEMP/layer-maps/implementation_original_lef_def_replay.json" \
             --implementation-atlas-out "$RUNNER_TEMP/layer-maps/implementation_capability_evidence_atlas.json" \
             --implementation-execution-frontier-out "$RUNNER_TEMP/layer-maps/implementation_original_execution_frontier.json" \
             --json-out "$RUNNER_TEMP/layer-maps/implementation_deep_foundations.json" \
             --markdown-out "$RUNNER_TEMP/layer-maps/implementation_capability_coverage.md"
-          python -c 'import os,json; p=os.environ["RUNNER_TEMP"]+"/layer-maps/"; a=json.load(open(p+"implementation_capability_evidence_atlas.json")); c=a["coverage"]; assert c["survey_repository_leads"]==1287 and c["original_pinned_modules_with_executed_fixture_receipts"]==1 and c["actual_original_function_fixtures_passing"]==16 and c["individual_source_anchored_requirement_receipts"]==17 and c["historical_scoped_trial_assets"]==3 and c["historical_scoped_trial_assets_outside_survey"]==3 and c["historic_synthetic_or_static_case_status_counts"]=={"pass":6,"fail":7,"blocked":1,"not_tested":3} and c["live_operational_implementations_verified"]==0 and c["underconverted_assets_proven"]==0 and a["cross_layer_edges_generated"]==0 and json.load(open(p+"implementation_original_execution_frontier.json"))["execution_approved"]==0'
+          python -c 'import os,json; p=os.environ["RUNNER_TEMP"]+"/layer-maps/"; a=json.load(open(p+"implementation_capability_evidence_atlas.json")); c=a["coverage"]; assert c["survey_repository_leads"]==1287 and c["original_pinned_modules_with_executed_fixture_receipts"]==2 and c["actual_original_function_fixtures_recorded"]==32 and c["actual_original_function_fixtures_passing"]==31 and c["actual_original_function_fixtures_failing"]==1 and c["individual_source_anchored_requirement_receipts"]==17 and c["historical_scoped_trial_assets"]==3 and c["historical_scoped_trial_assets_outside_survey"]==3 and c["historic_synthetic_or_static_case_status_counts"]=={"pass":6,"fail":7,"blocked":1,"not_tested":3} and c["live_operational_implementations_verified"]==0 and c["underconverted_assets_proven"]==0 and a["cross_layer_edges_generated"]==0 and json.load(open(p+"implementation_original_execution_frontier.json"))["execution_approved"]==0'
       - name: Publish enriched maps with independently observed source identities
         run: |
           python -m cite_refinery.layered_cli investigate map-foundations \
