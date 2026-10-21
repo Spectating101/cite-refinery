@@ -118,7 +118,7 @@
       "implementation": "Open Food Network MapCentreCalculator and instance-map configuration require an independently reproduced fix.",
       "asset_id": "github:openfoodfoundation/openfoodnetwork",
       "technical": {
-        "status": "original_upstream_component_executed_candidate_needs_integration",
+        "status": "original_scoped_framework_tests_executed_full_app_blocked",
         "scope": "Original pinned CoffeeScript factory / Ruby helper executed on synthetic inputs, not original application suite.",
         "checked_source_sha": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
         "source_blob_sha": "74a669690f56c15f2c15ceffe34c8f02a96d0e27",
@@ -129,7 +129,12 @@
         "source_app_component_runtime_verified": true,
         "full_original_application_test_suite_executed": false,
         "temporary_candidate_partial": true,
-        "buyer_demand_evidence_unchanged": true
+        "buyer_demand_evidence_unchanged": true,
+        "original_scoped_framework_tests": 14,
+        "original_scoped_framework_failures": 4,
+        "scratch_candidate_scoped_framework_failures": 0,
+        "full_application_test_suite_executed": false,
+        "candidate_applicability_verified": false
       },
       "public_maintainer_issue_open": true,
       "source_snapshot_stale": false,
@@ -146,8 +151,8 @@
       "buyer_verified": false,
       "commercial_unit_economics_verified": false,
       "economic_capture_realized": false,
-      "route": "complete_viewport_solution_then_integration_test",
-      "route_reason": "Original CoffeeScript factory failure reproduced, but median candidate still fails multiple outliers and zoom is unaddressed; no budget.",
+      "route": "wire_region_and_zoom_settings_then_test_full_map",
+      "route_reason": "Original Jasmine browser suite plus geographic regressions pass on an experimental bounds/circular-angle candidate; real server settings and map viewport/zoom remain untested.",
       "next_evidence_test": "Read production MapCentreCalculator and tests; add geographic outlier and nationwide bounds fixtures, then offer maintainer PR if appropriate.",
       "right_to_offer_contribution": "no contact or submission performed",
       "source_snapshot_utc": "2026-10-20T19:57:12.948359+00:00"
@@ -161,7 +166,7 @@
       "implementation": "OrdersHelper quantity comparison rounds only one of the two operands at three decimals.",
       "asset_id": "github:foodcoops/foodsoft",
       "technical": {
-        "status": "original_upstream_component_executed_candidate_needs_integration",
+        "status": "original_scoped_framework_tests_executed_full_app_blocked",
         "scope": "Original pinned CoffeeScript factory / Ruby helper executed on synthetic inputs, not original application suite.",
         "checked_source_sha": "f594be8e64f4d3748d0e418df05fbb554ccce71b",
         "source_blob_sha": "64567d22f2a02cd3d4b0a481ff1f8b581e90420d",
@@ -172,7 +177,12 @@
         "source_app_component_runtime_verified": true,
         "full_original_application_test_suite_executed": false,
         "temporary_candidate_partial": true,
-        "buyer_demand_evidence_unchanged": true
+        "buyer_demand_evidence_unchanged": true,
+        "original_scoped_framework_tests": 9,
+        "original_scoped_framework_failures": 3,
+        "scratch_candidate_scoped_framework_failures": 0,
+        "full_application_test_suite_executed": false,
+        "candidate_applicability_verified": false
       },
       "public_maintainer_issue_open": true,
       "source_snapshot_stale": false,
@@ -189,8 +199,8 @@
       "buyer_verified": false,
       "commercial_unit_economics_verified": false,
       "economic_capture_realized": false,
-      "route": "run_original_app_integration_before_contribution",
-      "route_reason": "Original Ruby helper bug and scratch correction reproduced; Rails integration and maintainer consent still absent.",
+      "route": "run_full_Rails_model_and_precision_policy_tests",
+      "route_reason": "Original Ruby helper with RSpec regressions passes with a scratch precision fix; real Rails models/database and maintainers' precision policy are not validated.",
       "next_evidence_test": "Run the original Ruby helper test at pinned revision; reproduce converted 1.7kg / 1.3kg/unit and add a symmetric precision regression.",
       "right_to_offer_contribution": "no contact or submission performed",
       "source_snapshot_utc": "2026-10-20T19:57:12.948359+00:00"
