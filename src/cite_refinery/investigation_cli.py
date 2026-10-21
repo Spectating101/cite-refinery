@@ -118,6 +118,8 @@ def main(argv=None):
         help="Optional pinned GitHub revision and root listing receipts, no code execution")
     foundation.add_argument("--nocturnal-public-snapshot",type=Path,
         help="Local publication-approved Nocturnal public snapshot directory; no private ledgers")
+    foundation.add_argument("--nocturnal-manifest-sha256",
+        help="Required out-of-band approved manifest digest for real, non-fictional snapshots")
     foundation.add_argument("--previous-nocturnal-atlas",type=Path,
         help="Optional prior standalone Nocturnal atlas for immutable incremental synchronization")
     foundation.add_argument("--nocturnal-terms",
@@ -210,7 +212,8 @@ def main(argv=None):
         if (args.facet or args.terms) and not args.layer:
             raise ValueError("Within-layer browse facet/terms require --layer")
         if (args.previous_nocturnal_atlas or args.nocturnal_terms or
-            args.nocturnal_matter_id or args.nocturnal_map_out) and not args.nocturnal_public_snapshot:
+            args.nocturnal_matter_id or args.nocturnal_map_out or
+            args.nocturnal_manifest_sha256) and not args.nocturnal_public_snapshot:
             raise ValueError("Nocturnal options require --nocturnal-public-snapshot")
         shards=sorted(args.reading_dir.glob("shard-*.json"))
         if not 1<=len(shards)<=40:
@@ -248,7 +251,8 @@ def main(argv=None):
             if previous is not None and previous.get("schema") == m["schema"]:
                 previous = previous["practical"]["nocturnal_public_atlas"]
             nocturnal_map = build_practical_atlas(
-                args.nocturnal_public_snapshot, previous=previous)
+                args.nocturnal_public_snapshot, previous=previous,
+                expected_manifest_sha256=args.nocturnal_manifest_sha256)
             m["practical"]["nocturnal_public_atlas"] = nocturnal_map
             nocturnal_view = browse_practical(
                 nocturnal_map, terms=args.nocturnal_terms,
