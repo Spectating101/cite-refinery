@@ -1,0 +1,77 @@
+{
+  "schema": "cite_refinery.framework_scoped_integration.v1",
+  "recorded_at_utc": "2026-10-21T07:09:08.904738+00:00",
+  "source_checks": {
+    "openfoodnetwork": {
+      "commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+      "blob": "74a669690f56c15f2c15ceffe34c8f02a96d0e27",
+      "verified_against_local_checkout": true
+    },
+    "foodsoft": {
+      "commit": "337489007f863d64abf2fae7b20f440f1651ab00",
+      "blob": "64567d22f2a02cd3d4b0a481ff1f8b581e90420d",
+      "verified_against_local_checkout": true
+    }
+  },
+  "patch_sha256": {
+    "map_bounds_circular_longitude.experimental.patch": "733ee01e22c5c7d420336d67705bfabcda6dc015d0feb7a9ca6a5d8f865b41cf",
+    "orders_helper_consistent_precision.experimental.patch": "ffc49f9a684dcd9cd6cb51d1699ffce2c433959c4922addfc560d8287cecdfd5"
+  },
+  "open_food_network": {
+    "reporter_issue": 14924,
+    "original": {
+      "tests": 14,
+      "failed": 4,
+      "original_jasmine_spec_included": true,
+      "headless_browser_executed": true,
+      "full_frontend_app_tested": false
+    },
+    "local_candidate": {
+      "tests": 14,
+      "failed": 0,
+      "original_jasmine_spec_included": true,
+      "headless_browser_executed": true,
+      "full_frontend_app_tested": false
+    },
+    "original_repo_jasmine_examples": 9,
+    "new_geographic_jasmine_examples": 5,
+    "bounded_Canada_fixture_only": true,
+    "proposed_geographic_bounds_implemented_in_product_config": false,
+    "production_zoom_and_viewport_verified": false,
+    "mixed_global_geography_verified": false,
+    "candidate_complete_application_fix": false
+  },
+  "foodsoft": {
+    "reporter_issue": 1368,
+    "original": {
+      "tests": 9,
+      "failed": 3,
+      "real_original_helper_executed": true,
+      "ruby_rspec_isolated_with_fake_article_models": true,
+      "full_Rails_database_suite_executed": false
+    },
+    "local_candidate": {
+      "tests": 9,
+      "failed": 0,
+      "real_original_helper_executed": true,
+      "ruby_rspec_isolated_with_fake_article_models": true,
+      "full_Rails_database_suite_executed": false
+    },
+    "BigDecimal_realistic_conversion_1_7_over_1_3": true,
+    "real_Rails_OrderArticle_models_used": false,
+    "upstream_Rails_RSpec_suite_completed": false,
+    "candidate_complete_application_fix": false
+  },
+  "evidence": {
+    "scoped_framework_examples_executed": 46,
+    "original_source_expected_failures": 7,
+    "local_candidate_failures": 0,
+    "complete_Rails_or_Angular_application_suite_run": false,
+    "maintainer_review_obtained": false,
+    "third_party_repo_modified": false,
+    "commercial_contract_or_revenue_verified": false,
+    "native_graph_status_promoted": false,
+    "research_holdout_touched": false
+  },
+  "limitations": "Karma ran the real repo Jasmine spec plus 5 authored geographic tests in a minimal Angular stub; Foodsoft RSpec ran 9 authored cases on its original helper with BigDecimal fake model, not its full Rails suite. Fourteen passing map cases do not validate zoom or production instance bounds."
+}

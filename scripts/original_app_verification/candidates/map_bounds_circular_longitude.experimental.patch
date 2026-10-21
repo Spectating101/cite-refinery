@@ -1,0 +1,44 @@
+--- a/map_centre_calculator.js.coffee
++++ b/map_centre_calculator.js.coffee
+@@ -16,0 +17,21 @@
++      validNumber = (value) -> typeof value == "number" && isFinite(value)
++      candidateCoordinates = coordinates.filter (coordinate) ->
++        validNumber(coordinate.latitude) && validNumber(coordinate.longitude)
++
++      # Experimental per-instance bounds; these options are not currently
++      # declared in the real OFN config and need application integration.
++      bounds =
++        latMin: openStreetMapConfig.open_street_map_latitude_min
++        latMax: openStreetMapConfig.open_street_map_latitude_max
++        lngMin: openStreetMapConfig.open_street_map_longitude_min
++        lngMax: openStreetMapConfig.open_street_map_longitude_max
++
++      boundsConfigured = validNumber(bounds.latMin) && validNumber(bounds.latMax) && validNumber(bounds.lngMin) && validNumber(bounds.lngMax)
++      if boundsConfigured
++        candidateCoordinates = candidateCoordinates.filter (coordinate) ->
++          coordinate.latitude >= bounds.latMin && coordinate.latitude <= bounds.latMax &&
++          coordinate.longitude >= bounds.lngMin && coordinate.longitude <= bounds.lngMax
++
++      if candidateCoordinates.length == 0
++        return if angleName == "latitude" then openStreetMapConfig.open_street_map_default_latitude else openStreetMapConfig.open_street_map_default_longitude
++
+@@ -19 +40 @@
+-      for coordinate in coordinates
++      for coordinate in candidateCoordinates
+@@ -20,0 +42,16 @@
++
++      if angleName == "longitude" && angles.length > 1
++        # Circular minimal covering arc; prototype, not a complete map viewport.
++        wrapped = angles.map (angle) -> (angle + 360) % 360
++        wrapped.sort (a, b) -> a - b
++        biggestGap = -1
++        startIndex = 0
++        for i in [0...wrapped.length]
++          nextIndex = (i + 1) % wrapped.length
++          nextAngle = if nextIndex == 0 then wrapped[0] + 360 else wrapped[nextIndex]
++          gap = nextAngle - wrapped[i]
++          if gap > biggestGap
++            biggestGap = gap
++            startIndex = nextIndex
++        center = (wrapped[startIndex] + (360 - biggestGap)/2) % 360
++        return if center > 180 then center - 360 else center

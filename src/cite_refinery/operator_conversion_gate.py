@@ -227,7 +227,8 @@ def _technical(case:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any])
 
 def decide(snapshot:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any],
            issue_contracts:dict[str,Any],*,now:datetime|None=None,
-           original_runtime:dict[str,Any]|None=None)->dict[str,Any]:
+           original_runtime:dict[str,Any]|None=None,
+           framework_evidence:dict[str,Any]|None=None)->dict[str,Any]:
     if snapshot.get("schema")!=SNAPSHOT or snapshot.get("no_maintainer_contact") is not True or \
        snapshot.get("no_payment_or_contract_sourcing") is not True:
         raise ValueError("untrusted external observation")
@@ -263,6 +264,33 @@ def decide(snapshot:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any],
         if set(runtime_by_id)!={"ofn_canada_map_bounds","foodsoft_order_quantity_rounding"} or (
             len(original_runtime["cases"])!=2):
             raise ValueError("must present exactly both inspected original runtime cases")
+    framework_by_case={}
+    if framework_evidence is not None:
+        if (framework_evidence.get("schema")!="cite_refinery.framework_scoped_integration.v1" or
+            framework_evidence.get("evidence",{}).get("complete_Rails_or_Angular_application_suite_run") is not False or
+            framework_evidence.get("evidence",{}).get("commercial_contract_or_revenue_verified") is not False or
+            framework_evidence.get("evidence",{}).get("native_graph_status_promoted") is not False):
+            raise ValueError("scoped framework results cannot be elevated to full application or commerce")
+        checks=framework_evidence.get("source_checks",{})
+        if (checks.get("openfoodnetwork",{}).get("blob")!="74a669690f56c15f2c15ceffe34c8f02a96d0e27" or
+            checks.get("openfoodnetwork",{}).get("commit")!="1167aa7b7585c1794199e032fc15c0e9c1c74104" or
+            checks.get("foodsoft",{}).get("blob")!="64567d22f2a02cd3d4b0a481ff1f8b581e90420d" or
+            not all(x.get("verified_against_local_checkout") is True for x in checks.values())):
+            raise ValueError("framework suite source identity mismatches actual Git originals")
+        framework_by_case={
+            "ofn_canada_map_bounds":framework_evidence.get("open_food_network"),
+            "foodsoft_order_quantity_rounding":framework_evidence.get("foodsoft"),
+        }
+        for key,obj in framework_by_case.items():
+            if not isinstance(obj,dict) or obj.get("candidate_complete_application_fix") is not False or (
+                obj.get("original",{}).get("tests")!=obj.get("local_candidate",{}).get("tests")) or (
+                obj.get("local_candidate",{}).get("failed")!=0):
+                raise ValueError("incomplete, altered or promoted framework candidate")
+        if (framework_by_case["ofn_canada_map_bounds"].get("original",{}).get("failed")!=4 or
+            framework_by_case["ofn_canada_map_bounds"].get("local_candidate",{}).get("tests")!=14 or
+            framework_by_case["foodsoft_order_quantity_rounding"].get("original",{}).get("failed")!=3 or
+            framework_by_case["foodsoft_order_quantity_rounding"].get("local_candidate",{}).get("tests")!=9):
+            raise ValueError("framework source failure/repair counts not reproducible")
     observations=[]
     for case in CASES:
         repo=found.get(case["repo"])
@@ -342,12 +370,31 @@ def decide(snapshot:dict[str,Any],functional:dict[str,Any],repair:dict[str,Any],
                 "temporary_candidate_partial":True,
                 "buyer_demand_evidence_unchanged":True,
             }
+        if case["id"] in framework_by_case:
+            framework=framework_by_case[case["id"]]
+            if tech.get("source_app_component_runtime_verified") is not True:
+                raise ValueError("framework-level test requires earlier real upstream component source proof")
+            tech={
+                **tech,
+                "status":"original_scoped_framework_tests_executed_full_app_blocked",
+                "original_scoped_framework_tests":framework["original"]["tests"],
+                "original_scoped_framework_failures":framework["original"]["failed"],
+                "scratch_candidate_scoped_framework_failures":framework["local_candidate"]["failed"],
+                "full_application_test_suite_executed":False,
+                "candidate_applicability_verified":False,
+            }
         if stale:
             lane="refresh_public_source_before_contact"
             reason="GitHub evidence snapshot is over 14 days old; no current issue or maintainer state may be claimed."
         elif repo.get("archived") or repo.get("disabled"):
             lane="inactive_repository_requires_owner_review"
             reason="Repository is archived/disabled; do not route work as an ordinary active maintainer request."
+        elif reported and case["id"] in framework_by_case and case["id"]=="ofn_canada_map_bounds":
+            lane="wire_region_and_zoom_settings_then_test_full_map"
+            reason="Original Jasmine browser suite plus geographic regressions pass on an experimental bounds/circular-angle candidate; real server settings and map viewport/zoom remain untested."
+        elif reported and case["id"] in framework_by_case and case["id"]=="foodsoft_order_quantity_rounding":
+            lane="run_full_Rails_model_and_precision_policy_tests"
+            reason="Original Ruby helper with RSpec regressions passes with a scratch precision fix; real Rails models/database and maintainers' precision policy are not validated."
         elif reported and original_runtime is not None and case["id"]=="ofn_canada_map_bounds":
             lane="complete_viewport_solution_then_integration_test"
             reason="Original CoffeeScript factory failure reproduced, but median candidate still fails multiple outliers and zoom is unaddressed; no budget."
@@ -443,6 +490,8 @@ def main(argv:list[str]|None=None)->int:
     p.add_argument("--issue-contracts",type=Path,required=True)
     p.add_argument("--original-runtime",type=Path,
                    help="Optional executed original-component evidence, never a substitute for full app integration")
+    p.add_argument("--framework-evidence",type=Path,
+                   help="Optional source-pinned Karma Jasmine and RSpec evidence, NOT full application approval")
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--markdown",type=Path,required=True)
     p.add_argument("--collect",action="store_true",
@@ -455,7 +504,8 @@ def main(argv:list[str]|None=None)->int:
     def read(path):return json.loads(path.read_text(encoding="utf-8"))
     result=decide(read(args.snapshot),read(args.functional),
                   read(args.repair),read(args.issue_contracts),
-                  original_runtime=read(args.original_runtime) if args.original_runtime else None)
+                  original_runtime=read(args.original_runtime) if args.original_runtime else None,
+                  framework_evidence=read(args.framework_evidence) if args.framework_evidence else None)
     args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
     args.markdown.write_text(markdown(result),encoding="utf-8")
     print("Source-backed issue signals",result["checks"]["source_backed_open_public_issues"],
