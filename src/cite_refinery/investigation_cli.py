@@ -37,6 +37,11 @@ def _summary(s):
         "supplied_source_families":sorted({x["source_family"] for x in s.get("supplied_sources",[])}),
         "supplied_provenance_status":"user_supplied_url_not_retrieved",
         "supplied_source_ids":[x["id"] for x in s.get("supplied_sources",[])],
+        "cross_layer_review_count":len(s.get("cross_layer_assessments",[])),
+        "cross_layer_latest_outcomes":[
+            {"id":x["id"],"status":x["status"],"graph_authority":"CANDIDATE_ONLY"}
+            for x in s.get("cross_layer_assessments",[])[-1].get("rows",[])
+        ] if s.get("cross_layer_assessments") else [],
         "publisher_checked_source_count":len(s.get("source_authentication",[])),
         "publisher_text_matches":sum(x.get("status")=="publisher_passage_matched_claim_unreviewed"
                                       for x in s.get("source_authentication",[])),
@@ -76,6 +81,13 @@ def main(argv=None):
     verify=sub.add_parser("verify-evidence",
         help="Explicit, read-only original publisher text matching; GitHub or Europe PMC allowlisted routes only")
     verify.add_argument("--id",required=True)
+    assess=sub.add_parser("assess-links",help="Preflight authenticated three-layer links, optionally obtain bounded LLM critique; NEVER promote")
+    assess.add_argument("--id",required=True)
+    assess.add_argument("--proposals",required=True)
+    assess.add_argument("--provider",choices=["copilot","antigravity","codex","claude","gemini","ollama"],
+                        help="Optional provider for independent source applicability critique; omitted = structural source preflight only")
+    assess.add_argument("--model",default=None)
+    assess.add_argument("--timeout",type=int,default=150)
     for name in ("step","run","status"):
         action=sub.add_parser(name)
         action.add_argument("--id",required=True)
@@ -115,6 +127,27 @@ def main(argv=None):
                          evidence_document=read_evidence(args.evidence) if args.evidence else None)
     elif args.command=="attach-evidence":
         state=ctrl.attach_supplied_evidence(args.id,read_evidence(args.evidence))
+    elif args.command=="assess-links":
+        from .cross_layer_review import SCHEMA
+        file=Path(args.proposals)
+        if file.stat().st_size>36_000:
+            raise ValueError("Cross-layer proposals exceed 36 KB")
+        proposals=json.loads(file.read_text(encoding="utf-8"))
+        if not isinstance(proposals,dict) or proposals.get("schema")!=SCHEMA:
+            raise ValueError("Cross-layer proposal schema mismatch")
+        if args.model and not args.provider:
+            raise ValueError("A named model requires an explicit provider")
+        def critic(prompt):
+            return invoke_semantic_llm(prompt,provider=args.provider,
+                                       model=args.model,
+                                       timeout_seconds=args.timeout)["raw"]
+        result=ctrl.assess_cross_layer_links(
+            args.id,proposals,critic=critic if args.provider else None,
+            model_metadata={"provider":args.provider,
+                            "model":args.model or "provider_default"} if args.provider else None
+        )
+        print(json.dumps(result,indent=2,ensure_ascii=False))
+        return 0
     elif args.command=="verify-evidence":
         state=ctrl.authenticate_supplied_evidence(args.id)
     elif args.command=="status":
