@@ -38,3 +38,18 @@ jobs:
         run: |
           python -m pip install build
           python -m build --wheel --outdir /tmp/cite-refinery-layer-foundations-wheel
+      - name: Generate consolidated layer-map artifacts
+        run: |
+          mkdir -p "$RUNNER_TEMP/layer-maps"
+          python -m cite_refinery.layered_cli investigate map-foundations \
+            --json-out "$RUNNER_TEMP/layer-maps/standalone_layer_foundations.json" \
+            --markdown-out "$RUNNER_TEMP/layer-maps/standalone_layer_coverage.md" \
+            --review-backlog-out "$RUNNER_TEMP/layer-maps/implementation_review_backlog.json"
+          python -c 'import json,os; root=os.environ["RUNNER_TEMP"]+"/layer-maps/"; m=json.load(open(root+"standalone_layer_foundations.json")); b=json.load(open(root+"implementation_review_backlog.json")); assert len(m["layers"])==3 and m["cross_layer_edges_generated"]==0 and m["implementation"]["unique_repositories"]==1287 and b["model_or_human_review_completed"]==0 and b["sampled_pairs"]==88'
+      - name: Upload inspectable standalone maps
+        uses: actions/upload-artifact@v4
+        with:
+          name: cite-refinery-three-layer-foundations
+          path: ${{ runner.temp }}/layer-maps/
+          if-no-files-found: error
+          retention-days: 7
