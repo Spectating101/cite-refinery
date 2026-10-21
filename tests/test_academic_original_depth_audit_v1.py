@@ -65,7 +65,7 @@ class AcademicOriginalJatsAuditTests(unittest.TestCase):
         self.assertEqual(enriched["coverage"]["independently_validated_scientific_findings"],0)
         self.assertIsNone(enriched["sources"][next(iter(enriched["groups"]["dataset_metadata"]))].get(
             "source_xml_structure_receipt"))
-        self.assertNotIn("xml",str(enriched["sources"][source["id"]].keys()))
+        self.assertNotIn("raw_xml",enriched["sources"][source["id"]])
 
     def test_mismatched_publication_does_not_raise_scientific_qualification(self):
         a=atlas()
