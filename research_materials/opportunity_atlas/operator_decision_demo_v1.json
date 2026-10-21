@@ -1,0 +1,161 @@
+{
+  "schema": "cite_refinery.operator_decision_packet.v1",
+  "generated_at_utc": "2026-10-21T09:27:12.913979+00:00",
+  "investigation_id": "52d77ac4d5c1464f96d4",
+  "research_question": "Which practical academic implementation links pass independent semantic review without domain-specific answer cues?",
+  "scope": "One bounded evidence-to-decision pilot; source authenticity, semantic review, source-scoped execution and business demand are separate proof classes.",
+  "publisher_checks": 6,
+  "publisher_matching_passages": 6,
+  "case_decisions": [
+    {
+      "id": "BR-01",
+      "cross_layer_status": "semantic_fit_uncertain",
+      "proposed_link_authority": "CANDIDATE_ONLY",
+      "source_ids": {
+        "practical": "USR-P-01",
+        "academic": "USR-A-02",
+        "implementation": "USR-I-01"
+      },
+      "source_publisher_matching": {
+        "practical": true,
+        "academic": true,
+        "implementation": true
+      },
+      "semantic_critic_relation": "mechanistically_relevant",
+      "academic_fit": "partially_supported",
+      "bounded_component_executable_receipt": {
+        "project": "openfoodfoundation/openfoodnetwork",
+        "source_id": "USR-I-01",
+        "publisher_blob_sha": "74a669690f56c15f2c15ceffe34c8f02a96d0e27",
+        "curated_original_source_commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+        "publisher_source_commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+        "same_source_bytes_proven": true,
+        "source_test_artifact_sha256": "ebcfde5247668f2aeb105cfc814069ed10d7a3893128d8e39de73b71788d88b4",
+        "scope": "Original CoffeeScript service and original Jasmine tests run in headless Chrome with bounded synthetic geographic cases",
+        "original_tests": 14,
+        "original_failures": 4,
+        "experimental_candidate_tests": 14,
+        "experimental_candidate_failures": 0,
+        "full_original_application_integration_passed": false,
+        "experimental_patch_merged_upstream": false,
+        "real_field_impact_verified": false,
+        "proposed_next_validation": "Connect configured instance bounds, verify valid remote locations and actual zoom in full OFN frontend tests",
+        "classification": "bounded_original_source_framework_regression_not_product_approval"
+      },
+      "full_application_fitness_verified": false,
+      "operator_field_success_verified": false,
+      "customer_commitment_verified": false,
+      "delivery_action": "VALIDATE next with real application integration and an operator-defined acceptance test; a bounded repair exists, but neither mechanism-to-product nor outcome is proven.",
+      "required_next_tests": [
+        "Run the existing Jasmine specs for MapCentreCalculator and add cases with one outlier coordinate, such as Guatemala among Canadian enterprises, to reproduce the shift.",
+        "Implement and test a robust alternative (median, trimmed bounds, or an outlier filter) and check the resulting centre and zoom against the expected country bounds.",
+        "Check the full file, the zoom logic and the admin default lat/long handling, which the excerpt omits.",
+        "Measure the first-view location on a real or seeded dataset with realistic geocode error rates before and after the change."
+      ]
+    },
+    {
+      "id": "BR-02",
+      "cross_layer_status": "reviewer_reports_mismatch_or_contradiction",
+      "proposed_link_authority": "CANDIDATE_ONLY",
+      "source_ids": {
+        "practical": "USR-P-01",
+        "academic": "USR-A-01",
+        "implementation": "USR-I-01"
+      },
+      "source_publisher_matching": {
+        "practical": true,
+        "academic": true,
+        "implementation": true
+      },
+      "semantic_critic_relation": "mismatched",
+      "academic_fit": "unsupported",
+      "bounded_component_executable_receipt": {
+        "project": "openfoodfoundation/openfoodnetwork",
+        "source_id": "USR-I-01",
+        "publisher_blob_sha": "74a669690f56c15f2c15ceffe34c8f02a96d0e27",
+        "curated_original_source_commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+        "publisher_source_commit": "1167aa7b7585c1794199e032fc15c0e9c1c74104",
+        "same_source_bytes_proven": true,
+        "source_test_artifact_sha256": "ebcfde5247668f2aeb105cfc814069ed10d7a3893128d8e39de73b71788d88b4",
+        "scope": "Original CoffeeScript service and original Jasmine tests run in headless Chrome with bounded synthetic geographic cases",
+        "original_tests": 14,
+        "original_failures": 4,
+        "experimental_candidate_tests": 14,
+        "experimental_candidate_failures": 0,
+        "full_original_application_integration_passed": false,
+        "experimental_patch_merged_upstream": false,
+        "real_field_impact_verified": false,
+        "proposed_next_validation": "Connect configured instance bounds, verify valid remote locations and actual zoom in full OFN frontend tests",
+        "classification": "bounded_original_source_framework_regression_not_product_approval"
+      },
+      "full_application_fitness_verified": false,
+      "operator_field_success_verified": false,
+      "customer_commitment_verified": false,
+      "delivery_action": "REJECT this proposed cross-layer explanation; separate component-level test evidence does not repair the academic applicability mismatch.",
+      "required_next_tests": [
+        "Check whether the heat-warning study includes any geocoding, mapping or viewport variable. The title suggests it does not.",
+        "Run a map-centre unit test with outlier coordinates to confirm only the viewport behaviour, not any health outcome.",
+        "Provide independent evidence, which does not exist in the supplied sources, linking map-centre correction to heat exposure behaviour or hospital outcomes."
+      ]
+    },
+    {
+      "id": "BR-03",
+      "cross_layer_status": "reviewer_reports_mismatch_or_contradiction",
+      "proposed_link_authority": "CANDIDATE_ONLY",
+      "source_ids": {
+        "practical": "USR-P-02",
+        "academic": "USR-A-02",
+        "implementation": "USR-I-02"
+      },
+      "source_publisher_matching": {
+        "practical": true,
+        "academic": true,
+        "implementation": true
+      },
+      "semantic_critic_relation": "mismatched",
+      "academic_fit": "unsupported",
+      "bounded_component_executable_receipt": {
+        "project": "foodcoops/foodsoft",
+        "source_id": "USR-I-02",
+        "publisher_blob_sha": "64567d22f2a02cd3d4b0a481ff1f8b581e90420d",
+        "curated_original_source_commit": "337489007f863d64abf2fae7b20f440f1651ab00",
+        "publisher_source_commit": "f594be8e64f4d3748d0e418df05fbb554ccce71b",
+        "same_source_bytes_proven": true,
+        "source_test_artifact_sha256": "ebcfde5247668f2aeb105cfc814069ed10d7a3893128d8e39de73b71788d88b4",
+        "scope": "Original Ruby helper loaded in network-disabled Ruby RSpec with realistic BigDecimal doubles, not real Rails order models",
+        "original_tests": 9,
+        "original_failures": 3,
+        "experimental_candidate_tests": 9,
+        "experimental_candidate_failures": 0,
+        "full_original_application_integration_passed": false,
+        "experimental_patch_merged_upstream": false,
+        "real_field_impact_verified": false,
+        "proposed_next_validation": "Run complete Foodsoft Rails/RSpec and ActiveRecord precision/units tests, then obtain maintainer agreement",
+        "classification": "bounded_original_source_framework_regression_not_product_approval"
+      },
+      "full_application_fitness_verified": false,
+      "operator_field_success_verified": false,
+      "customer_commitment_verified": false,
+      "delivery_action": "REJECT this proposed cross-layer explanation; separate component-level test evidence does not repair the academic applicability mismatch.",
+      "required_next_tests": [
+        "Read the full Foodsoft issue text to see whether it describes a rounding or unit-conversion cause.",
+        "Inspect the full `orders_helper.rb` and the actual code that computes the ordered-quantity comparison, since the excerpt shows only a link helper.",
+        "Reproduce the balance-view mismatch with decimal quantities and check whether any precision change resolves it.",
+        "Show that the geocoding paper's findings have any relation to quantity accounting. None is apparent."
+      ]
+    }
+  ],
+  "proposed_commercial_service": "Source-to-Solution Verification Sprint",
+  "service_deliverable": "Source provenance and entailment matrix, executable fault reproduction where permitted, scoped candidate comparison, risk/rights limitations, and an operator-directed next-test plan.",
+  "delivery_suitability": "external_demo_requires_human_review_and_client_permission",
+  "pilot_pricing_status": "HYPOTHESIS_NOT_TESTED_WITH_BUYERS",
+  "pilot_sales_and_revenue": 0,
+  "buyer_interest_verified": false,
+  "source_claims_independently_true": false,
+  "graph_or_scientific_claims_promoted": false,
+  "total_full_application_approvals": 0,
+  "upstream_changes_submitted": false,
+  "legal_and_licensing_cleared": false,
+  "research_holdout_touched": false,
+  "runtime_evidence_scope": "A frozen, digest-pinned, previously executed original-source framework result only. Not a new real execution and not generalized to unknown software."
+}
