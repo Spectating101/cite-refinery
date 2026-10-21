@@ -428,10 +428,17 @@ def attach_independent_source_identity_checks(map_data, academic_audit, implemen
             or item["original_title"] != original["title"]
             or item["original_text_sha256"] != original["retrieved_text_sha256"]):
             raise ValueError("Academic metadata is not anchored to original source")
-        good = item["metadata_status"] == "crossref_doi_identity_confirmed"
-        if good and (item.get("publisher_metadata_checked") is not True
+        crossref_good = item["metadata_status"] == "crossref_doi_identity_confirmed"
+        openalex_good = item["metadata_status"] == "openalex_work_identity_confirmed"
+        good = crossref_good or openalex_good
+        if crossref_good and (item.get("publisher_metadata_checked") is not True
                      or item["publisher_doi"].casefold() != item["doi"].casefold()):
             raise ValueError("Falsely affirmed external academic identity")
+        if openalex_good and (item.get("openalex_index_identity_checked") is not True
+            or not re.fullmatch(r"https://openalex.org/W[0-9]+",
+                                item.get("openalex_work_id",""))
+            or item.get("publisher_metadata_checked") is not False):
+            raise ValueError("Unreliable independent OpenAlex identity")
         if (item.get("claims_or_methods_verified") is not False
             or item.get("independent_peer_review_proven") is not False
             or item.get("original_paper_fulltext_checked") is not False):
@@ -439,13 +446,19 @@ def attach_independent_source_identity_checks(map_data, academic_audit, implemen
         original["external_bibliographic_identity_checked"] = good
         original["external_bibliographic_check_status"] = item["metadata_status"]
         original["crossref_publication_year_not_fulltext_proof"] = (
-            item.get("crossref_publication_year") if good else None)
+            item.get("crossref_publication_year") if crossref_good else None)
+        original["openalex_publication_year_not_fulltext_proof"] = (
+            item.get("openalex_publication_year") if openalex_good else None)
         original["publisher_title_similarity_not_claim_evidence"] = (
-            item.get("title_similarity") if good else None)
+            item.get("title_similarity") if crossref_good else None)
+        original["openalex_title_similarity_not_claim_evidence"] = (
+            item.get("openalex_title_similarity") if openalex_good else None)
         original["bibliographic_review_needed"] = bool(item.get("bibliographic_disagreement_flag",False))
-        positive_academic += int(good)
-        years_resolved += int(good and item.get("crossref_publication_year") is not None
-                              and original.get("publication_year") is None)
+        positive_academic += int(crossref_good)
+        years_resolved += int(good and (
+             item.get("crossref_publication_year") is not None or
+             item.get("openalex_publication_year") is not None)
+             and original.get("publication_year") is None)
     for item in implementation_audit["records"]:
         key = (item["repository_id"], item["category"])
         if key in repo_pairs_checked or key[0] not in implementations:
@@ -480,11 +493,18 @@ def attach_independent_source_identity_checks(map_data, academic_audit, implemen
         matches[0]["original_source_check_status"] = snapshot["status"]
         positive_implementation += int(good)
     if (positive_academic != academic_audit["doi_confirmed"]
+        or (academic_audit.get("openalex_identity_confirmed") is not None and
+            sum(x["metadata_status"]=="openalex_work_identity_confirmed"
+                for x in academic_audit["records"]) !=
+            academic_audit["openalex_identity_confirmed"])
         or positive_implementation != implementation_audit["original_repo_revision_and_root_checked_pairs"]):
         raise ValueError("Audit summary disagrees with source-identity receipts")
     updated["within_layer_original_source_audits"] = {
         "independent_academic_identity_checks": len(academic_checked),
         "publisher_doi_identity_confirmed": positive_academic,
+        "openalex_index_identity_confirmed": sum(
+            x["metadata_status"]=="openalex_work_identity_confirmed"
+            for x in academic_audit["records"]),
         "publication_year_metadata_recovered": years_resolved,
         "implementation_repo_category_pairs_checked": len(repo_pairs_checked),
         "implementation_pinned_revision_and_root_checked": positive_implementation,
