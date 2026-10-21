@@ -13,7 +13,7 @@ from cite_refinery.open_corpus_atlas import (
     CONVERSION_SCHEMA, DISCOVERY_SCHEMA, FUNDING_SCHEMA,
     prepare_conversion_universe,emergent_conversion_prompt,
     validate_emergent_conversion,funding_overlay,render_conversion_discovery,
-    attach_original_repository_metadata
+    attach_original_repository_metadata,screen_emergent_batch
 )
 from cite_refinery.layered_cli import main as cli
 
@@ -97,6 +97,18 @@ class ConversionAtlasTests(unittest.TestCase):
         self.assertEqual(record["new_graph_edges_accepted"],0)
         self.assertFalse(record["monetization_required"])
         self.assertIn("Potential non-obvious connections",render_conversion_discovery(record))
+
+    def test_batch_salvages_valid_cross_domain_discovery_but_fails_closed_on_fake_repo(self):
+        raw=self.fake_model()
+        raw["hypotheses"][1]["asset_ids"][1]="github:imaginary/does-not-exist"
+        out=screen_emergent_batch(raw,self.universe)
+        self.assertEqual(out["candidate_connection_count"],1)
+        self.assertEqual(out["submitted_candidate_count"],2)
+        self.assertEqual(out["rejected_candidate_count"],1)
+        reject=out["rejected_model_candidates"][0]
+        self.assertIn("Unrecognized asset",reject["reason"])
+        self.assertEqual(len(reject["candidate_payload_sha256"]),64)
+        self.assertEqual(out["new_graph_edges_accepted"],0)
 
     def test_zero_discoveries_is_valid_not_auto_generated_nonsense(self):
         empty={"schema":DISCOVERY_SCHEMA,"hypotheses":[],

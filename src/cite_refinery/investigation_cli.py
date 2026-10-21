@@ -88,6 +88,16 @@ def main(argv=None):
                         help="Optional provider for independent source applicability critique; omitted = structural source preflight only")
     assess.add_argument("--model",default=None)
     assess.add_argument("--timeout",type=int,default=150)
+    qualification=sub.add_parser("qualify-conversions",
+        help="Audit candidate conversion discoveries across multiple source slices, public repo metadata and pinned upstream test receipts")
+    qualification.add_argument("--discovery",type=Path,action="append",required=True,
+                               help="Repeat to include independent candidate discovery slices")
+    qualification.add_argument("--repository-audit",type=Path,action="append",required=True,
+                               help="Repeat for original GitHub metadata audit snapshots")
+    qualification.add_argument("--component-tests",type=Path,required=True,
+                               help="Explicit original upstream test receipt (scope-limited)")
+    qualification.add_argument("--json-out",type=Path,required=True)
+    qualification.add_argument("--markdown-out",type=Path,required=True)
     conversions=sub.add_parser("discover-conversions",
         help="Emergent relationship discovery over broad research and implementation samples; funding optional")
     conversions.add_argument("--atlas",type=Path,required=True,
@@ -153,10 +163,43 @@ def main(argv=None):
         execution=invoke_semantic_llm(prompt,provider=args.provider,model=args.model,
                                       timeout_seconds=args.timeout)
         return execution["raw"]
+    if args.command=="qualify-conversions":
+        from .open_corpus_atlas import (
+            conversion_qualification_queue,render_qualification_queue)
+        files=[*args.discovery,*args.repository_audit,args.component_tests]
+        for file in files:
+            if file.stat().st_size>12_000_000:
+                raise ValueError("Source scope exceeds bounded qualification file size")
+        output=(args.json_out,args.markdown_out)
+        if output[0].resolve()==output[1].resolve() or any(p.exists() for p in output):
+            raise ValueError("Refusing to overwrite or reuse qualification output paths")
+        def read(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+        result=conversion_qualification_queue(
+            [read(p) for p in args.discovery],
+            [read(p) for p in args.repository_audit],
+            read(args.component_tests))
+        for path,contents in (
+            (args.json_out,json.dumps(result,indent=2,ensure_ascii=False)+"\n"),
+            (args.markdown_out,render_qualification_queue(result))
+        ):
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(contents,encoding="utf-8")
+        print(json.dumps({
+            "schema":result["schema"],
+            "candidate_links_for_review":result["candidate_links_accepted_for_review"],
+            "invalid_model_links_rejected":result["candidate_links_rejected_for_invalid_source_or_schema"],
+            "original_repo_metadata_checked":result["original_repo_metadata_checked"],
+            "original_upstream_test_passes":result["scoped_original_test_passes_total"],
+            "confirmed_high_quality_underconverted_assets":0,
+            "realized_new_recombinations":0,
+        },indent=2))
+        return 0
     if args.command=="discover-conversions":
         from .open_corpus_atlas import (
             prepare_conversion_universe,emergent_conversion_prompt,
-            validate_emergent_conversion,funding_overlay,render_conversion_discovery
+            validate_emergent_conversion,screen_emergent_batch,
+            funding_overlay,render_conversion_discovery
         )
         files=[args.atlas,args.manifest,args.repository_survey]
         if args.funding_catalog:files.append(args.funding_catalog)
@@ -190,7 +233,7 @@ def main(argv=None):
         if args.raw_out:
             args.raw_out.parent.mkdir(parents=True,exist_ok=True)
             args.raw_out.write_text(json.dumps(raw,ensure_ascii=False,indent=2)+"\n")
-        findings=validate_emergent_conversion(raw,universe)
+        findings=screen_emergent_batch(raw,universe)
         findings["model_provenance"]=provenance
         if args.repository_audit:
             from .open_corpus_atlas import attach_original_repository_metadata
@@ -209,6 +252,7 @@ def main(argv=None):
             "selected_repositories":len(universe["selected_repositories"]),
             "source_corpus_total":universe["source_corpus_total"],
             "new_candidate_connections":findings["candidate_connection_count"],
+            "rejected_model_candidates":findings["rejected_candidate_count"],
             "quality_independently_verified":0,
             "underconversion_independently_verified":0,
             "funding_resources":len(funds["channels"]) if funds else 0,

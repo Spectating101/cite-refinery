@@ -1,0 +1,100 @@
+{
+  "schema": "cite_refinery.emergent_conversion_atlas.v1",
+  "source_universe": {
+    "repositories_in_original_survey": 605,
+    "repositories_in_this_slice": 35,
+    "repository_macro_coverage": [
+      "energy_environment",
+      "engineering",
+      "investigation_finance",
+      "knowledge_data",
+      "physical_operations",
+      "public_services"
+    ],
+    "emergent_domains": 8,
+    "source_records_in_original_corpus": 63,
+    "stratified_offset": 2,
+    "selection_policy": "stable_hash_stratified_by_original_GitHub_search_macro_not_popularity_or_our_favorite_sector"
+  },
+  "candidate_connections": [
+    {
+      "id": "CV-01",
+      "mode": "asset_to_problem",
+      "asset_ids": [
+        "github:j4ggr/DaSPi",
+        "github:Syracuse3DPrintingOrg/PantryRaider"
+      ],
+      "domain_labels": [
+        "Food Surplus Redistribution Logistics, Institutional Charity, and Nutritional Gaps"
+      ],
+      "source_ids": [
+        "EPMC-7deb988ae2ab",
+        "OA-88cafd9405fbed",
+        "OA-8e75d5d1b1f35b"
+      ],
+      "connection": "DaSPi provides measurement-systems analysis (gage R&R), process capability and SPC control charts. These could be applied to food-rescue data, such as IoT pickup weights, expiry-date readings and dispatch times. The aim is to separate measurement noise from real process variation before reporting outcomes like 'kg rescued'. PantryRaider's expiry tracking could supply household-level event data.",
+      "why_nonobvious": "Food-charity evaluation and Six Sigma use different vocabulary, but both depend on the same mechanism: whether the instrument (sensor, date label, manual log) is repeatable and reproducible enough for a rate or capability index to mean anything. The atlas notes that metrics track gross tonnage and not outcomes, and that date labeling is ambiguous. A gage R&R-style study on date-label and weight readings tests that directly.",
+      "potential_quality_signal": "DaSPi's topics list measurement-systems-analysis, process-capability and gage-r-and-r-study. PantryRaider's description says it tracks expiry and runs on a Raspberry Pi. Neither has been tested.",
+      "conversion_barrier": "no_demonstrated_need",
+      "barrier_explanation": "Food-rescue operators may not frame their problem as a measurement-variance problem, and the two repos serve different audiences (manufacturing analysts and home users). Nothing shows that anyone has tried to use them together.",
+      "recombination_or_use": "Take a public or synthetic food-rescue log, or PantryRaider export data. Run a gage R&R-style analysis on repeated weight or expiry-date readings, and build control charts for pickup time. Report the share of variance that is measurement error.",
+      "value_forms": [
+        "research_knowledge",
+        "operational_efficiency",
+        "internal_portfolio"
+      ],
+      "first_falsification": "Use any available repeated-measure dataset, for example the same items weighed or dated twice by different operators. If measurement variance is negligible compared with batch-to-batch variance, or no such repeated data can be obtained, the mechanism adds nothing and the hypothesis is refuted.",
+      "observed_conversion_status": "unknown_not_measured",
+      "technical_quality_status": "not_independently_tested",
+      "relationship_status": "candidate_not_verified",
+      "repository_source_urls": [
+        "https://github.com/j4ggr/DaSPi",
+        "https://github.com/Syracuse3DPrintingOrg/PantryRaider"
+      ],
+      "source_evidence": [
+        {
+          "id": "EPMC-7deb988ae2ab",
+          "url": "https://doi.org/10.1111/nbu.70053",
+          "sha256": "212d02a11dce9fff510b32b2c617967b8c6a49382989c4d049731b9c6ff80737"
+        },
+        {
+          "id": "OA-88cafd9405fbed",
+          "url": "https://doi.org/10.70251/hyjr2348.3593102",
+          "sha256": "708cd56251e341f85b8e0bc64cd2e99d451d862c22244119a595a4cf8144a684"
+        },
+        {
+          "id": "OA-8e75d5d1b1f35b",
+          "url": "https://doi.org/10.1093/nutrit/nuac012",
+          "sha256": "8a8e586199f18e8c82fcd5bb66e90d6971213e0fb82821bae60298f489429b8b"
+        }
+      ],
+      "review_required": "original_repo_tests_independent_practical_fit_and_concrete_conversion_barrier",
+      "funding_required": false,
+      "confirmed_adoption_or_impact": false,
+      "accepted_graph_relationship": false
+    }
+  ],
+  "candidate_connection_count": 1,
+  "negative_or_unmatched_space_note": "CV-02 is invalid and should be discarded. I included it by mistake, and it cites a nonexistent asset ID. Only CV-01 is a real candidate. Most of the slice stays unlinked, including the heat-mortality, indoor-air-quality, rabies, battery-regeneration and e-waste toxicant domains. The identity, legislative-tracking, LMS and game-script repositories are also unlinked. I could not explain a shared mechanism for any of them precisely enough.",
+  "verified_genuinely_high_quality_assets": 0,
+  "verified_underconverted_assets": 0,
+  "new_graph_edges_accepted": 0,
+  "realized_value": 0,
+  "unanticipated_discovery_claim": "unproven_without_blinded_external_evaluation",
+  "monetization_required": false,
+  "source_map_is_not_a_global_absence_claim": true,
+  "model_proposals_are_not_audit_evidence": true,
+  "rejected_model_candidates": [
+    {
+      "index": 2,
+      "id": "CV-02",
+      "reason": "Unrecognized asset/domain evidence source",
+      "candidate_payload_sha256": "ed89f3528970a5f148a448678455586bb4e9edb556dd2f53ff2712032e442c32",
+      "no_graph_edge_created": true,
+      "fabricated_or_invalid_source_not_substituted": true
+    }
+  ],
+  "submitted_candidate_count": 2,
+  "rejected_candidate_count": 1,
+  "model_provenance": "replayed_saved_model_JSON_without_new_model_request"
+}

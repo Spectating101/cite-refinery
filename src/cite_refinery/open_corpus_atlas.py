@@ -511,3 +511,222 @@ def attach_original_repository_metadata(atlas, audit):
         "boundary":"Repository descriptions, GitHub activity, SPDX API labels, workflows and test directories are not proof of quality or missing adoption.",
     }
     return atlas
+
+def screen_emergent_batch(raw,universe):
+    """Keep genuinely malformed model links as rejected receipts.
+
+    The strict candidate validator still controls all identities and evidence.
+    A model's invented repo, wrong scope or unearned scientific claim can never
+    be repaired via guessed source substitutions or promoted to the atlas.
+    """
+    if (not isinstance(raw,dict) or set(raw)!={"schema","hypotheses","unmatched_note"} or
+        raw.get("schema")!=DISCOVERY_SCHEMA or
+        not isinstance(raw["hypotheses"],list) or len(raw["hypotheses"])>8):
+        raise ValueError("Invalid cross-domain batch container")
+    accepted=[];rejected=[];seen=set()
+    for index,item in enumerate(raw["hypotheses"],start=1):
+        if not isinstance(item,dict):
+            rejected.append({"index":index,"id":None,"reason":"Model did not return an object"})
+            continue
+        candidate_id=item.get("id")
+        if candidate_id in seen:
+            rejected.append({"index":index,"id":str(candidate_id)[:100],
+                             "reason":"Duplicate candidate within generated batch"})
+            continue
+        seen.add(candidate_id)
+        try:
+            one=validate_emergent_conversion({
+                "schema":DISCOVERY_SCHEMA,
+                "hypotheses":[item],
+                "unmatched_note":raw["unmatched_note"]
+            },universe)
+            accepted.extend(one["candidate_connections"])
+        except (ValueError,KeyError,TypeError) as exc:
+            rejected.append({
+                "index":index,"id":str(candidate_id)[:100],
+                "reason":str(exc)[:220],
+                "candidate_payload_sha256":hashlib.sha256(
+                    json.dumps(item,sort_keys=True,default=str).encode()).hexdigest(),
+                "no_graph_edge_created":True,
+                "fabricated_or_invalid_source_not_substituted":True
+            })
+    summary=validate_emergent_conversion({
+        "schema":DISCOVERY_SCHEMA,"hypotheses":[],
+        "unmatched_note":raw["unmatched_note"]
+    },universe)
+    summary["candidate_connections"]=accepted
+    summary["candidate_connection_count"]=len(accepted)
+    summary["rejected_model_candidates"]=rejected
+    summary["submitted_candidate_count"]=len(raw["hypotheses"])
+    summary["rejected_candidate_count"]=len(rejected)
+    return summary
+
+def conversion_qualification_queue(slices, repository_audits, component_test_receipts):
+    """Evidence gap coverage across broad source-first discovery.
+
+    The output ranks NOTHING by stars, price or advertised quality. It merely
+    documents each claim's current evidence level and cheapest next test. New
+    applications are not established by missing adoption metrics or unit tests.
+    """
+    if (not isinstance(slices,list) or not 1<=len(slices)<=12 or
+        not isinstance(repository_audits,list) or not 1<=len(repository_audits)<=12 or
+        not isinstance(component_test_receipts,dict) or
+        component_test_receipts.get("schema")!="cite_refinery.pinned_original_source_test_receipts.v1"):
+        raise ValueError("Typed conversion discovery, original repo audits and original test receipts required")
+    metadata={}
+    for audit in repository_audits:
+        if audit.get("schema") not in {"cite_refinery.conversion_candidate_repo_survey.v1",
+                                     "cite_refinery.additional_candidate_metadata_audit.v1"}:
+            raise ValueError("Unknown original-repo audit schema")
+        for entry in audit["repositories"]:
+            rid="github:"+entry["repository"]
+            if rid in metadata:raise ValueError("Duplicated repo metadata")
+            metadata[rid]=entry
+    original_trials={}
+    for entry in component_test_receipts["test_runs"]:
+        rid="github:"+entry["repository"]
+        if (rid in original_trials or not isinstance(entry["source_commit"],str)
+            or not re.fullmatch("[0-9a-f]{40}",entry["source_commit"])
+            or entry["original_tests_passed"]<1 or entry["original_tests_failed"]!=0
+            or entry["source_code_modified_for_test"] is not False or
+            entry["full_integration_to_any_partner_tested"] is not False or
+            entry["underconversion_verified"] is not False):
+            raise ValueError("Cannot treat modified/failed/integrated original code as test-only proof")
+        original_trials[rid]=entry
+    rows=[];seen=set();rejected=[]
+    unique_repos=set();offsets=set();all_dom=set();count_survey=0
+    for source in slices:
+        if source.get("schema")!=CONVERSION_SCHEMA or source.get("new_graph_edges_accepted")!=0:
+            raise ValueError("Expected an unpromoted source-first discovery slice")
+        u=source["source_universe"]
+        if u["stratified_offset"] in offsets:
+            raise ValueError("Cannot count the same source slice twice")
+        offsets.add(u["stratified_offset"])
+        count_survey+=u["repositories_in_this_slice"]
+        all_dom.update(u["repository_macro_coverage"])
+        rejected.extend({"slice_offset":u["stratified_offset"],**r}
+                         for r in source.get("rejected_model_candidates",[]))
+        for link in source["candidate_connections"]:
+            key=(u["stratified_offset"],link["id"])
+            if key in seen:raise ValueError("Duplicate discovery within source batch")
+            seen.add(key)
+            audits=[]
+            for rid in link["asset_ids"]:
+                unique_repos.add(rid)
+                a=metadata.get(rid)
+                if a is None:
+                    audits.append({"asset_id":rid,"source_verified":False,
+                                   "quality_status":"needs_original_repository_metadata",
+                                   "reuse_license_review_required":True,
+                                   "original_component_test_passes":0})
+                    continue
+                valid_source=(a.get("original_api_checked") is True and
+                              a.get("full_name")==rid.split(":",1)[1] and
+                              a.get("url")=="https://github.com/"+a["full_name"])
+                is_executed=rid in original_trials and valid_source
+                trial=original_trials.get(rid) if is_executed else None
+                license_api=a.get("license_api_label")
+                license_uncertain=(license_api is None or
+                    license_api in {"NOASSERTION","not_detected","OTHER","CC-BY-4.0"})
+                audits.append({
+                    "asset_id":rid,"source_verified":valid_source,
+                    "source_url":a.get("url"),
+                    "repository_last_push":a.get("last_push"),
+                    "source_license_label":license_api,
+                    "reuse_license_review_required":license_uncertain,
+                    "readme_original_checked":a.get("original_readme_checked") is True,
+                    "root_test_directory_present_not_a_test_pass":bool(
+                        a.get("root_tests_present_not_executed",
+                              a.get("root_test_directory_present_not_run",False))),
+                    "quality_status":(
+                        "scoped_upstream_simulation_tests_passed_not_real_world_qualification" if
+                        trial else "unverified_original_functionality"),
+                    "original_component_test_passes":trial["original_tests_passed"] if trial else 0,
+                    "test_source_commit":trial["source_commit"] if trial else None,
+                    "partner_integration_passed":False,
+                    "commercial_or_social_impact_measured":False,
+                    "adoption_missing_is_not_proven_underconversion":True,
+                })
+            rows.append({
+                "candidate_id":f"slice-{u['stratified_offset']}:{link['id']}",
+                "mode":link["mode"],
+                "asset_ids":link["asset_ids"],
+                "domain_labels":link["domain_labels"],
+                "source_refs":link["source_evidence"],
+                "suggested_conversion_barrier":link["conversion_barrier"],
+                "conversion_barrier_confirmed":False,
+                "possible_use":link["recombination_or_use"],
+                "original_model_falsification":link["first_falsification"],
+                "asset_provenance":audits,
+                "technical_quality_complete_for_all_required_assets":False,
+                "proposed_recombination_tested":False,
+                "actual_usage_underconversion_verified":False,
+                "new_value_realized":False,
+                "priority_criteria":"source_authenticity_then_functionality_then_transfer_fit_then_real_adoption_barrier",
+                "next_evidence_gate":(
+                    "Original source/README/rights audit" if
+                    any(not x["source_verified"] for x in audits)
+                    else "Verify original code functionality and actual use/adoption independently; test combined interface with target-domain data"
+                ) if audits else "Investigate the source-specific research analogy and its independently measurable transfer mechanism",
+                "status":"candidate_only_until_quality_and_conversion_failure_are_established",
+            })
+    if not rows:raise ValueError("No accepted candidates to qualify")
+    return {
+        "schema":"cite_refinery.conversion_qualification_queue.v1",
+        "source_slices_inspected":len(slices),
+        "implementation_listings_sampled_across_slices":count_survey,
+        "research_domain_count_max":max(x["source_universe"]["emergent_domains"] for x in slices),
+        "implementation_macro_coverage":sorted(all_dom),
+        "candidate_links_accepted_for_review":len(rows),
+        "candidate_links_rejected_for_invalid_source_or_schema":len(rejected),
+        "rejected_model_candidates":rejected,
+        "unique_referenced_asset_repositories":len(unique_repos),
+        "original_repo_metadata_checked":sum(
+            metadata.get(x,{}).get("original_api_checked") is True for x in unique_repos),
+        "scoped_original_test_runs":len(original_trials),
+        "scoped_original_test_passes_total":sum(x["original_tests_passed"] for x in original_trials.values()),
+        "independently_qualified_high_quality_assets":0,
+        "confirmed_underconverted_assets":0,
+        "accepted_new_recombinations":0,
+        "realized_value":0,
+        "funding_or_customers_required_to_enter_atlas":False,
+        "rows":rows,
+        "limits":"Source-aligned proposal mapping and a limited original test suite are not independent technical maturity, proof of actual underconversion, measured utility, field adoption or novelty against other AI systems.",
+    }
+
+def render_qualification_queue(report):
+    if report.get("schema")!="cite_refinery.conversion_qualification_queue.v1":
+        raise ValueError("Expected qualification queue")
+    lines=["# Conversion-discovery qualification sweep","",
+      f"**Coverage:** {report['source_slices_inspected']} source slices; "
+      f"{report['implementation_listings_sampled_across_slices']} implementation observations; "
+      f"{report['candidate_links_accepted_for_review']} proposed connections; "
+      f"{report['candidate_links_rejected_for_invalid_source_or_schema']} rejected fabricated/invalid candidates; "
+      f"{report['unique_referenced_asset_repositories']} referenced repository identities.","",
+      f"**Original source:** {report['original_repo_metadata_checked']} referenced repositories checked at the public GitHub API. "
+      f"**Original code execution:** {report['scoped_original_test_passes_total']} passing tests in "
+      f"{report['scoped_original_test_runs']} scoped suite(s). "
+      "**Globally validated high-quality projects, verified underconversion and realized new capabilities: ZERO.**","",
+      "## Candidate-by-candidate evidence and missing qualification tests","",
+      "| Proposed connection | Repository source evidence | Technical source status | Bottleneck to investigate |",
+      "|---|---|---|---|"]
+    for row in report["rows"]:
+        parts=[]
+        for audit in row["asset_provenance"]:
+            parts.append(audit["asset_id"]+(
+                " (source-checked)" if audit["source_verified"] else " (source not inspected)"))
+        tech=", ".join(x["quality_status"] for x in row["asset_provenance"]) or "academic analogy, no technical repo"
+        lines.append("| "+row["candidate_id"]+" — "+row["mode"]+" | "+
+            ("; ".join(parts) or "source-cited research only").replace("|","/")+
+            " | "+tech.replace("|","/")+" | "+
+            row["suggested_conversion_barrier"]+" (UNVERIFIED) |")
+    lines.extend(["","## What can be claimed now?","",
+        "- Real source repository metadata was inspected, but README promises and release activity are not independent deployment evidence.",
+        "- Only separately pinned original-source test suites can establish narrow functional behavior; the user-generated new cross-project combination remains untested.",
+        "- No negative adoption survey or usage baseline exists yet, so **underconversion is still a hypothesis**.",
+        "- Missing or unclear license declarations block reuse assumptions, not all future study.",
+        "- Models may propose a novel mechanism, but source support, novelty and usefulness require external or experimental checks.",
+        "",
+        "**Next path:** inspect licenses and code rights, independently run original components, investigate actual users/alternatives, then test a small integration or within-layer analogy against field data. A funding resource may help later but is never a prerequisite.",
+        ""])
+    return "\n".join(lines)
