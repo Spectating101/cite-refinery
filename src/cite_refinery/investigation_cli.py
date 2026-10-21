@@ -95,6 +95,18 @@ def main(argv=None):
     brief.add_argument("--json-out",type=Path,required=True)
     brief.add_argument("--framework-artifact",type=Path,
                        help="Optional previously verified committed framework_scoped_integration.json; exact SHA-256 required (useful with wheel installs)")
+    arb=sub.add_parser("arbitrage-map",
+        help="Create a read-only internal self-arbitrage reconnaissance atlas and conditional asset spreads; not a fourth layer")
+    arb.add_argument("--atlas",type=Path,
+                     default=Path("research_materials/opportunity_atlas/three_layer_unified_atlas.json"))
+    arb.add_argument("--operator-routes",type=Path,
+                     default=Path("research_materials/opportunity_atlas/operator_conversion_routes.json"))
+    arb.add_argument("--scenarios",type=Path,
+                     help="Optional user-supplied complete purchase/repair/resale scenarios; conditional, not verified prices")
+    arb.add_argument("--owner-targets",type=Path,
+                     help="Optional user strategy priorities/data overlay; never automatically creates cross-layer edges")
+    arb.add_argument("--json-out",type=Path,required=True)
+    arb.add_argument("--markdown-out",type=Path,required=True)
     for name in ("step","run","status"):
         action=sub.add_parser(name)
         action.add_argument("--id",required=True)
@@ -114,6 +126,36 @@ def main(argv=None):
         execution=invoke_semantic_llm(prompt,provider=args.provider,model=args.model,
                                       timeout_seconds=args.timeout)
         return execution["raw"]
+    if args.command=="arbitrage-map":
+        from .internal_arbitrage import build as build_map, markdown as format_map
+        for file in (args.atlas,args.operator_routes,
+                     *([args.scenarios] if args.scenarios else []),
+                     *([args.owner_targets] if args.owner_targets else [])):
+            if file.stat().st_size>3_000_000:
+                raise ValueError("Arbitrage source evidence file too large")
+        def load_json(path):
+            return json.loads(path.read_text(encoding="utf-8"))
+        report=build_map(load_json(args.atlas),load_json(args.operator_routes),
+                         load_json(args.scenarios) if args.scenarios else None,
+                         load_json(args.owner_targets) if args.owner_targets else None)
+        outputs=(args.json_out,args.markdown_out)
+        if outputs[0].resolve()==outputs[1].resolve() or any(p.exists() for p in outputs):
+            raise ValueError("Refusing to overwrite existing/duplicate arbitrage-map output paths")
+        for path,blob in (
+            (args.json_out,json.dumps(report,indent=2,ensure_ascii=False)+"\n"),
+            (args.markdown_out,format_map(report))
+        ):
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(blob,encoding="utf-8")
+        print(json.dumps({
+            "schema":report["schema"],"coverage":report["coverage"],
+            "json_out":str(args.json_out),
+            "markdown_out":str(args.markdown_out),
+            "graph_authority_promoted":False,
+            "executed_trade_or_order":False,
+        },indent=2))
+        return 0
+    # Map creation must not create an investigation workspace as a side effect.
     ctrl=InvestigationController(args.workspace,reasoner=reasoner if args.command in {"run","step"} else None)
     if args.command=="init":
         if args.modules:
