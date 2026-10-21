@@ -243,6 +243,7 @@ class InvestigationController:
             "supplied_sources":supplied,
             "source_authority":"user_supplied_not_independently_verified",
             "source_authentication":[],
+            "cross_layer_assessments":[],
             "created_at":_utc(),"updated_at":_utc(),
             "last_error":None,"authority":"candidate_neutral_only",
         }
@@ -318,6 +319,26 @@ class InvestigationController:
         state["authority"]="candidate_neutral_only"
         self.save(state)
         return state
+
+    def assess_cross_layer_links(self, ident, proposals, *, critic=None, model_metadata=None):
+        """Read-only three-layer source fit review in the existing investigation.
+
+        Store a separate audit receipt. Never grant graph authority, including
+        when the model says mechanism and source excerpts are aligned.
+        """
+        from .cross_layer_review import assess
+        state=self.load(ident)
+        if not state.get("supplied_sources"):
+            raise ValueError("No user-supplied sources for cross-layer comparison")
+        result=assess(state,proposals,critic=critic,model_metadata=model_metadata)
+        prior=list(state.get("cross_layer_assessments",[]))
+        if len(prior)>=12:
+            raise ValueError("Cross-layer investigation review receipt limit reached")
+        prior.append(result)
+        state["cross_layer_assessments"]=prior
+        state["authority"]="candidate_neutral_only"
+        self.save(state)
+        return result
 
     def step(self,ident):
         s=self.load(ident)

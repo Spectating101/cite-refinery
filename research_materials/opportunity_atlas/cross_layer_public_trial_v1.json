@@ -1,0 +1,177 @@
+{
+  "schema": "cite_refinery.cross_layer_public_trial.v1",
+  "real_publisher_sources": {
+    "matched": 6,
+    "total": 6,
+    "mismatches": 0,
+    "source_records": [
+      {
+        "id": "USR-P-01",
+        "publisher_url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+        "status": "publisher_passage_matched_claim_unreviewed"
+      },
+      {
+        "id": "USR-P-02",
+        "publisher_url": "https://github.com/foodcoops/foodsoft/issues/1368",
+        "status": "publisher_passage_matched_claim_unreviewed"
+      },
+      {
+        "id": "USR-I-01",
+        "publisher_url": "https://github.com/openfoodfoundation/openfoodnetwork/blob/1167aa7b7585c1794199e032fc15c0e9c1c74104/app/assets/javascripts/darkswarm/services/map_centre_calculator.js.coffee",
+        "status": "publisher_passage_matched_claim_unreviewed"
+      },
+      {
+        "id": "USR-I-02",
+        "publisher_url": "https://github.com/foodcoops/foodsoft/blob/f594be8e64f4d3748d0e418df05fbb554ccce71b/app/helpers/orders_helper.rb",
+        "status": "publisher_passage_matched_claim_unreviewed"
+      },
+      {
+        "id": "USR-A-01",
+        "publisher_url": "https://europepmc.org/article/MED/41622278",
+        "status": "publisher_passage_matched_claim_unreviewed"
+      },
+      {
+        "id": "USR-A-02",
+        "publisher_url": "https://europepmc.org/article/MED/22469492",
+        "status": "publisher_passage_matched_claim_unreviewed"
+      }
+    ]
+  },
+  "proposed_links": 3,
+  "foundational_layers": [
+    "practical",
+    "academic",
+    "implementation"
+  ],
+  "initial_argon_review": {
+    "model": "gemini-4-argon-medium",
+    "provider": "antigravity",
+    "context": "Original source excerpts were abbreviated and the critic prompt contained named mismatch hints; not a blind benchmark.",
+    "results": [
+      {
+        "id": "BR-01",
+        "decision": "semantic_fit_uncertain",
+        "critic_relation": "mechanistically_relevant",
+        "academic_fit": "partially_supported",
+        "outcome_supported": false,
+        "reason": "The supplied practical excerpt (USR-P-01) confirms an OFN Canada switch from Google Maps to OpenStreetMap, though the truncated snippet does not show the viewport shift claim directly. The academic excerpt (USR-A-02) discusses street geocoding positional error across urban-rural gradients, which is mechanistically relevant to erroneous enterprise coordinates, but does not evaluate OFN's specific map-center algorithm. The implementation excerpt (USR-I-01) shows only the declaration of MapCentreCalculator and a truncated initialLatitude method without demonstrating extreme-coordinate math or verified robust viewport outcomes.",
+        "missing_tests": [
+          "Full text of GitHub issue #14924 verifying that mis-geocoded enterprises shift the starting viewport.",
+          "Complete source code of MapCentreCalculator showing how initialLatitude and initialLongitude compute map centers from enterprise coordinates.",
+          "Automated unit test execution (e.g., Jasmine specs) with outlier/malformed enterprise coordinates demonstrating whether the viewport center is skewed or preserved.",
+          "Independent operational verification of map bounds and zoom behavior in production OFN Canada."
+        ],
+        "authority": "CANDIDATE_ONLY"
+      },
+      {
+        "id": "BR-02",
+        "decision": "reviewer_reports_mismatch_or_contradiction",
+        "critic_relation": "mismatched",
+        "academic_fit": "unsupported",
+        "outcome_supported": false,
+        "reason": "This link suffers from a severe cross-domain scope mismatch. While USR-P-01 relates to OFN Canada map switching and USR-I-01 shows the existence of a MapCentreCalculator service stub, the academic source (USR-A-01) evaluates epidemiological heat warning thresholds and cumulative health impacts. Heat-warning research has no causal, mechanistic, or methodological connection to web map viewport centering or geocoding repair, and cannot support conclusions about preventing heatstroke via software map centering.",
+        "missing_tests": [
+          "Evidence of any mechanistic or causal link between OFN map viewport calculation and epidemiological heat-warning thresholds.",
+          "Full reporter text and implementation code confirming the actual map centering logic and problem scope.",
+          "Independent empirical study measuring health outcomes from map software changes (none exists in supplied sources)."
+        ],
+        "authority": "CANDIDATE_ONLY"
+      },
+      {
+        "id": "BR-03",
+        "decision": "reviewer_reports_mismatch_or_contradiction",
+        "critic_relation": "mismatched",
+        "academic_fit": "unsupported",
+        "outcome_supported": false,
+        "reason": "This link pairs unrelated domains. The practical excerpt (USR-P-02) describes a Foodsoft balance order view comparison between total ordered quantity and the sum of group_orders (truncated before detailing rounding). The implementation excerpt (USR-I-02) shows only a UI link helper (update_articles_link) in OrdersHelper rather than quantity accounting or rounding logic. Crucially, the academic excerpt (USR-A-02) addresses spatial street geocoding positional errors, which is completely mismatched and irrelevant to decimal rounding or unit conversion in food co-op order accounting.",
+        "missing_tests": [
+          "Complete source code of Foodsoft order quantity comparison and rounding logic in OrdersHelper or relevant model classes.",
+          "Full text of Foodsoft issue #1368 confirming whether the discrepancy stems from decimal rounding or unit conversion.",
+          "Relevant numerical analysis or software accounting literature instead of unrelated spatial geocoding research.",
+          "Unit test results reproducing the group_orders sum discrepancy and verifying an accounting fix."
+        ],
+        "authority": "CANDIDATE_ONLY"
+      }
+    ]
+  },
+  "refined_sonnet_review": {
+    "model": "claude-sonnet-5-5-medium",
+    "provider": "antigravity",
+    "context": "Refined matching issue/code/academic excerpts. Revalidated the unchanged model JSON after lifting an unnecessarily strict 1100-character rationale bound.",
+    "response_sha256": "016f1812ff92dd3f4f1083415b7ecc9aa58c48880465b3c6f7f70cd01bf899e7",
+    "results": [
+      {
+        "id": "BR-01",
+        "decision": "semantic_fit_uncertain",
+        "critic_relation": "mechanistically_relevant",
+        "academic_fit": "partially_supported",
+        "outcome_supported": false,
+        "reason": "The practical excerpt is a reporter's own account. It says one far-away enterprise moves the map centre (Canada opened on Guatemala), that zoom is always 6, and that the admin default lat/long is ignored. The proposed problem (a viewport shifted by mis-geocoded enterprises) is a fair summary of that, but the report is unverified and its harm is unestablished. The academic excerpt says geocoding errors are non-normal, highly skewed, with many very large values, and spatially autocorrelated. This is plausibly relevant to why a few gross outliers can occur, and it concerns positional error in spatial analysis. It is not about map-centre computat",
+        "missing_tests": [
+          "Run the existing Jasmine specs for MapCentreCalculator and add cases with one outlier coordinate, such as Guatemala among Canadian enterprises, to reproduce the shift.",
+          "Implement and test a robust alternative (median, trimmed bounds, or an outlier filter) and check the resulting centre and zoom against the expected country bounds.",
+          "Check the full file, the zoom logic and the admin default lat/long handling, which the excerpt omits.",
+          "Measure the first-view location on a real or seeded dataset with realistic geocode error rates before and after the change."
+        ],
+        "authority": "CANDIDATE_ONLY"
+      },
+      {
+        "id": "BR-02",
+        "decision": "reviewer_reports_mismatch_or_contradiction",
+        "critic_relation": "mismatched",
+        "academic_fit": "unsupported",
+        "outcome_supported": false,
+        "reason": "The practical report is a fair match for the map-viewport problem, though unverified. The academic source is only a title about heat-warning thresholds and lagged or cumulative health impacts in a 20-year population database. It concerns a different phenomenon, population and intervention. It has no geocoding, map-client or viewport content, so it cannot validate map-centre repair, and the proposed mechanism is a pure terminology-free mismatch. The implementation file is relevant to centre computation, but the excerpt only shows the min/max midpoint code. It shows no heat-related or health function. The desired outcome that geocoding correcti",
+        "missing_tests": [
+          "Check whether the heat-warning study includes any geocoding, mapping or viewport variable. The title suggests it does not.",
+          "Run a map-centre unit test with outlier coordinates to confirm only the viewport behaviour, not any health outcome.",
+          "Provide independent evidence, which does not exist in the supplied sources, linking map-centre correction to heat exposure behaviour or hospital outcomes."
+        ],
+        "authority": "CANDIDATE_ONLY"
+      },
+      {
+        "id": "BR-03",
+        "decision": "reviewer_reports_mismatch_or_contradiction",
+        "critic_relation": "mismatched",
+        "academic_fit": "unsupported",
+        "outcome_supported": false,
+        "reason": "The Foodsoft report is about the balance order view showing a red ? when the total ordered quantity of an article differs from the sum of the group_orders. The excerpt cuts off before any mention of rounding. The 'rounding discrepancy' label is therefore an inference from a truncated quote, and it is only partly supported. The academic paper is on geocoding positional error. It has no bearing on unit conversion, decimals or order quantity accounting, so the claimed mechanism does not apply. The implementation excerpt shows only the start of `update_articles_link` in `OrdersHelper`, which builds link options. It shows no quantity computation o",
+        "missing_tests": [
+          "Read the full Foodsoft issue text to see whether it describes a rounding or unit-conversion cause.",
+          "Inspect the full `orders_helper.rb` and the actual code that computes the ordered-quantity comparison, since the excerpt shows only a link helper.",
+          "Reproduce the balance-view mismatch with decimal quantities and check whether any precision change resolves it.",
+          "Show that the geocoding paper's findings have any relation to quantity accounting. None is apparent."
+        ],
+        "authority": "CANDIDATE_ONLY"
+      }
+    ]
+  },
+  "failed_model_attempts": [
+    {
+      "model": "gemini-4-argon-medium",
+      "case": "refined",
+      "state": "provider_cli_exited_3",
+      "verdict_obtained": false
+    },
+    {
+      "model": "claude-sonnet-5-5-medium",
+      "case": "refined_first_validation",
+      "state": "review_rationale_exceeded_unadvertised_1100_character_limit",
+      "verdict_initially_rejected": true,
+      "subsequent_revalidation_of_unmodified_model_output": true
+    }
+  ],
+  "summary": {
+    "refined_publisher_matches": 6,
+    "semantic_proposals_reviewed": 3,
+    "mechanistically_relevant_but_unproven": 1,
+    "reviewer_reported_mismatch": 2,
+    "graph_qualified_relations": 0,
+    "field_outcomes_verified": 0,
+    "original_code_executed_by_this_gate": 0,
+    "commercial_conversion_validated": 0
+  },
+  "limits": "The academic geocoding study examines spatial data error, not the OFN app. Cross-domain mismatches were deliberately constructed, not a blind or statistically representative benchmark. Models only critique, never establish field facts. Local JSON investigation state is not tamper-proof; verified publisher existence is not semantic entailment or execution.",
+  "sealed_holdout_touched": false,
+  "external_maintainer_contacted": false
+}
