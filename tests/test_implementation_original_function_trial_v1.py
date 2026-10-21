@@ -24,6 +24,8 @@ def original_inspection():
             "tree_sha":"a"*40,
             "source_code_executed":False,
             "functionality_demonstrated":False,
+            "license_reuse_rights_cleared":False,
+            "observed_end_user_adoption":False,
             "source_file_samples":[{
                 "path":SOURCE_PATH,"blob_sha":SOURCE_BLOB,
                 "body_sha256":SOURCE_SHA256,"code_executed":False
