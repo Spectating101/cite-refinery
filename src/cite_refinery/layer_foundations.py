@@ -395,3 +395,103 @@ def summary_markdown(m):
     lines += ["", "The snapshot is not a census or a complete world map. "
               "Original quotes are not republished, and SHA-256 alone does not establish entailment.", ""]
     return "\n".join(lines)
+
+
+
+def attach_independent_source_identity_checks(map_data, academic_audit, implementation_audit):
+    """Attach publisher and pinned GitHub source-identity checks without approval.
+
+    Identity checks are independent of the original retrieval snapshot but do
+    not establish substantive validity, executable quality, or actual adoption.
+    """
+    from copy import deepcopy
+    import re
+    if (map_data.get("schema") != SCHEMA
+        or academic_audit.get("schema") != "cite_refinery.academic_bibliographic_identity_audit.v1"
+        or implementation_audit.get("schema") != "cite_refinery.implementation_original_source_audit.v1"):
+        raise ValueError("Expected typed foundation and independent source audit receipts")
+    updated = deepcopy(map_data)
+    academic = {r["id"]: r for r in updated["academic"]["source_abstracts"]}
+    implementations = {r["id"]: r for r in updated["implementation"]["repository_leads"]}
+    academic_checked = set()
+    repo_pairs_checked = set()
+    positive_academic = 0
+    years_resolved = 0
+    positive_implementation = 0
+    for item in academic_audit["records"]:
+        key = item["source_id"]
+        if key in academic_checked or key not in academic:
+            raise ValueError("Unrecognized/duplicate academic source identity")
+        academic_checked.add(key)
+        original = academic[key]
+        if (item["original_url"] != original["url"]
+            or item["original_title"] != original["title"]
+            or item["original_text_sha256"] != original["retrieved_text_sha256"]):
+            raise ValueError("Academic metadata is not anchored to original source")
+        good = item["metadata_status"] == "crossref_doi_identity_confirmed"
+        if good and (item.get("publisher_metadata_checked") is not True
+                     or item["publisher_doi"].casefold() != item["doi"].casefold()):
+            raise ValueError("Falsely affirmed external academic identity")
+        if (item.get("claims_or_methods_verified") is not False
+            or item.get("independent_peer_review_proven") is not False
+            or item.get("original_paper_fulltext_checked") is not False):
+            raise ValueError("Bibliographic identity cannot become scientific quality approval")
+        original["external_bibliographic_identity_checked"] = good
+        original["external_bibliographic_check_status"] = item["metadata_status"]
+        original["crossref_publication_year_not_fulltext_proof"] = (
+            item.get("crossref_publication_year") if good else None)
+        original["publisher_title_similarity_not_claim_evidence"] = (
+            item.get("title_similarity") if good else None)
+        original["bibliographic_review_needed"] = bool(item.get("bibliographic_disagreement_flag",False))
+        positive_academic += int(good)
+        years_resolved += int(good and item.get("crossref_publication_year") is not None
+                              and original.get("publication_year") is None)
+    for item in implementation_audit["records"]:
+        key = (item["repository_id"], item["category"])
+        if key in repo_pairs_checked or key[0] not in implementations:
+            raise ValueError("Unrecognized/duplicate implementation audit pair")
+        repo_pairs_checked.add(key)
+        repo = implementations[key[0]]
+        if item["source_original_url"] != repo["url"]:
+            raise ValueError("Original repository URL changed since selection")
+        matches = [x for x in repo["categories"] if x["category"] == key[1]]
+        if len(matches) != 1 or matches[0]["metadata_semantic_review"] != "not_reviewed":
+            raise ValueError("Source audit is not tied to an unreviewed category membership")
+        if (item.get("original_code_executed") is not False
+            or item.get("independent_capability_demonstrated") is not False
+            or item.get("observed_adoption_or_conversion_gap") is not False):
+            raise ValueError("Source snapshot cannot assert executed original capability")
+        snapshot = item["original_source_snapshot"]
+        good = snapshot["status"] == "original_source_metadata_checked"
+        if good and (not re.fullmatch("[a-f0-9]{40}",snapshot.get("source_commit",""))
+                     or snapshot.get("public_repository_url") != repo["url"]
+                     or snapshot.get("original_test_commands_executed") != 0
+                     or snapshot.get("functional_quality_or_adoption_verified") is not False
+                     or snapshot.get("license_entitlement_verified") is not False):
+            raise ValueError("Original Git source metadata falsely asserted technical maturity")
+        if not good and snapshot.get("source_commit") is not None:
+            raise ValueError("Unconfirmed original source must not have trusted revision")
+        matches[0]["source_identity_independently_checked"] = good
+        matches[0]["original_revision_not_test_pass"] = snapshot.get("source_commit") if good else None
+        matches[0]["source_root_tests_visible_not_executed"] = (
+            snapshot.get("root_test_directory_visible_not_executed") if good else None)
+        matches[0]["source_license_api_label_not_license_clearance"] = (
+            snapshot.get("api_license_spdx_not_reuse_permission") if good else None)
+        matches[0]["original_source_check_status"] = snapshot["status"]
+        positive_implementation += int(good)
+    if (positive_academic != academic_audit["doi_confirmed"]
+        or positive_implementation != implementation_audit["original_repo_revision_and_root_checked_pairs"]):
+        raise ValueError("Audit summary disagrees with source-identity receipts")
+    updated["within_layer_original_source_audits"] = {
+        "independent_academic_identity_checks": len(academic_checked),
+        "publisher_doi_identity_confirmed": positive_academic,
+        "publication_year_metadata_recovered": years_resolved,
+        "implementation_repo_category_pairs_checked": len(repo_pairs_checked),
+        "implementation_pinned_revision_and_root_checked": positive_implementation,
+        "fulltext_academic_claims_verified": 0,
+        "new_executable_implementation_assets_qualified": 0,
+        "practical_field_observations_independently_verified": 0,
+        "cross_layer_edges_created": 0,
+        "source_quality_not_derived_from_identity": True,
+    }
+    return updated
