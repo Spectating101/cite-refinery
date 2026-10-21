@@ -21,6 +21,7 @@ def original_inspection():
             "repository_id":SOURCE_REPO,
             "status":"source_files_sha_verified",
             "pinned_commit":PINNED_COMMIT,
+            "tree_sha":"a"*40,
             "source_code_executed":False,
             "functionality_demonstrated":False,
             "source_file_samples":[{
