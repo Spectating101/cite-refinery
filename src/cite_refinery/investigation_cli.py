@@ -98,6 +98,8 @@ def main(argv=None):
                                help="Explicit original upstream test receipt (scope-limited)")
     qualification.add_argument("--bridge-trial",type=Path,action="append",
                                help="Optional isolated source-interface compatibility receipts; never automatic promotion")
+    qualification.add_argument("--functional-trial",type=Path,action="append",
+                               help="Optional source-pinned cross-domain synthetic capability-transfer trial receipts")
     qualification.add_argument("--json-out",type=Path,required=True)
     qualification.add_argument("--markdown-out",type=Path,required=True)
     conversions=sub.add_parser("discover-conversions",
@@ -169,7 +171,7 @@ def main(argv=None):
         from .open_corpus_atlas import (
             conversion_qualification_queue,render_qualification_queue)
         files=[*args.discovery,*args.repository_audit,args.component_tests,
-               *(args.bridge_trial or [])]
+               *(args.bridge_trial or []),*(args.functional_trial or [])]
         for file in files:
             if file.stat().st_size>12_000_000:
                 raise ValueError("Source scope exceeds bounded qualification file size")
@@ -186,6 +188,10 @@ def main(argv=None):
             from .open_corpus_atlas import attach_source_bridge_trials
             result=attach_source_bridge_trials(
                 result,[read(path) for path in args.bridge_trial])
+        if args.functional_trial:
+            from .open_corpus_atlas import attach_functional_conversion_trials
+            result=attach_functional_conversion_trials(
+                result,[read(path) for path in args.functional_trial])
         for path,contents in (
             (args.json_out,json.dumps(result,indent=2,ensure_ascii=False)+"\n"),
             (args.markdown_out,render_qualification_queue(result))
@@ -200,6 +206,8 @@ def main(argv=None):
             "original_upstream_test_passes":result["scoped_original_test_passes_total"],
             "direct_source_interface_mismatches_reproduced":result.get(
                 "direct_source_interface_mismatches_reproduced",0),
+            "positive_synthetic_functional_trials":result.get(
+                "positive_synthetic_functional_trials",0),
             "confirmed_high_quality_underconverted_assets":0,
             "realized_new_recombinations":0,
         },indent=2))

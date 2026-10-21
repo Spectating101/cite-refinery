@@ -13,7 +13,7 @@ import unittest
 
 from cite_refinery.open_corpus_atlas import (
     conversion_qualification_queue,render_qualification_queue,
-    attach_source_bridge_trials,
+    attach_source_bridge_trials,attach_functional_conversion_trials,
     screen_emergent_batch,prepare_conversion_universe,
 )
 from cite_refinery.layered_cli import main as cli
@@ -166,6 +166,76 @@ class QualificationSweepTests(unittest.TestCase):
             self.assertEqual(j["bridge_trials_attached"],1)
             self.assertEqual(j["confirmed_underconverted_assets"],0)
             self.assertFalse((root/"phantom").exists())
+
+    def test_positive_synthetic_reuse_does_not_promote_full_pair(self):
+        queue=conversion_qualification_queue(self.slices,self.audits,self.tests)
+        trial=load(DATA/"daspi_food_weight_conversion_trial_v1.json")
+        output=attach_functional_conversion_trials(queue,[trial])
+        row=next(x for x in output["rows"] if x["candidate_id"]=="slice-2:CV-01")
+        functional=row["functional_reuse_trial"]
+        self.assertTrue(functional["demonstrated_synthetic_analytical_transfer"])
+        self.assertEqual(functional["asset_id"],"github:j4ggr/DaSPi")
+        self.assertEqual(functional["environment"]["statsmodels"],"0.14.6")
+        self.assertLess(functional["operator_effect_with_injected_bias_p"],0.01)
+        self.assertGreater(functional["operator_effect_negative_control_p"],0.05)
+        self.assertEqual(functional["naive_baseline_parcel_errors"],0)
+        self.assertEqual(functional["individual_operator_parcel_errors"],2)
+        self.assertFalse(functional["full_pair_integration_verified"])
+        self.assertFalse(row["technical_quality_complete_for_all_required_assets"])
+        self.assertFalse(row["new_value_realized"])
+        self.assertEqual(output["confirmed_underconverted_assets"],0)
+        self.assertEqual(output["accepted_new_recombinations"],0)
+
+    def test_positive_trial_fails_closed_on_unverified_adoption_or_bad_control(self):
+        queue=conversion_qualification_queue(self.slices,self.audits,self.tests)
+        trial=load(DATA/"daspi_food_weight_conversion_trial_v1.json")
+        cases=[
+            lambda x:x.update(source_repository="invented/repository"),
+            lambda x:x.update(source_commit="no_source"),
+            lambda x:x.update(dataset_is_real=True),
+            lambda x:x.update(original_repo_modified=True),
+            lambda x:x.update(adoption_or_underconversion_proven=True),
+            lambda x:x.update(practical_value_realized=True),
+            lambda x:x.update(new_field_deployment_verified=True),
+            lambda x:x["negative_control"].update(detected_operator_effect_p_below_001=True),
+            lambda x:x["biased_fixture"].update(single_operator_parcel_classification_errors=0),
+            lambda x:x.update(original_license_sha256="fake"),
+        ]
+        for edit in cases:
+            bad=deepcopy(trial)
+            edit(bad)
+            with self.assertRaises(ValueError):
+                attach_functional_conversion_trials(queue,[bad])
+        with self.assertRaisesRegex(ValueError,"one exact"):
+            attach_functional_conversion_trials(queue,[trial,trial])
+
+    def test_canonical_qualifier_attaches_positive_and_negative_evidence(self):
+        with TemporaryDirectory() as td:
+            folder=Path(td)
+            arguments=["investigate","--workspace",str(folder/"absent"),
+                       "qualify-conversions"]
+            for i in range(4):
+                arguments.extend(["--discovery",str(DATA/f"emergent_conversion_slice_{i}_v1.json")])
+            for name in ("original_repo_conversion_audit_first_14_v1.json",
+                         "original_repo_conversion_audit_additional_11_v1.json"):
+                arguments.extend(["--repository-audit",str(DATA/name)])
+            arguments.extend([
+                "--component-tests",str(DATA/"original_source_component_test_receipts_v1.json"),
+                "--bridge-trial",str(DATA/"gridshadow_jackery_interface_trial_v1.json"),
+                "--functional-trial",str(DATA/"daspi_food_weight_conversion_trial_v1.json"),
+                "--json-out",str(folder/"report.json"),
+                "--markdown-out",str(folder/"report.md")])
+            with redirect_stdout(StringIO()) as output:
+                cli(arguments)
+            stdout=json.loads(output.getvalue())
+            self.assertEqual(stdout["positive_synthetic_functional_trials"],1)
+            self.assertEqual(stdout["direct_source_interface_mismatches_reproduced"],1)
+            report=load(folder/"report.json")
+            self.assertEqual(len(report["rows"]),21)
+            self.assertEqual(report["confirmed_underconverted_assets"],0)
+            self.assertEqual(report["realized_value"],0)
+            self.assertIn("Scoped positive method transfer",(folder/"report.md").read_text())
+            self.assertFalse((folder/"absent").exists())
 
     def test_cli_replay_and_no_new_installed_script_or_state_directory(self):
         with TemporaryDirectory() as td:

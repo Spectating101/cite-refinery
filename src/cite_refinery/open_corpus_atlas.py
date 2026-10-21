@@ -745,6 +745,36 @@ def render_qualification_queue(report):
             "certification, or demonstrated external value.",
             ""
         ])
+    for item in report["rows"]:
+        if "functional_reuse_trial" not in item:
+            continue
+        trial=item["functional_reuse_trial"]
+        lines.extend([
+            "",
+            "## Scoped positive method transfer: "+item["candidate_id"],
+            "",
+            "**Original implementation:** "+trial["asset_id"]+" @ "+trial["source_commit"][:12],
+            "",
+            "**Synthetic new use:** "+trial["synthetic_case"],
+            "",
+            "**Simple baseline:** "+trial["baseline"],
+            "",
+            "**Observed controlled improvement:** ANOVA operator p="+
+                str(trial["operator_effect_with_injected_bias_p"])+
+                "; no-bias control p="+str(trial["operator_effect_negative_control_p"])+
+                ". Simple pooled parcel averages miss "+
+                str(trial["individual_operator_parcel_errors"])+
+                " operator-level classification errors despite "+
+                str(trial["naive_baseline_parcel_errors"])+
+                " pooled parcel classification errors.",
+            "",
+            "**Next test:** "+trial["next_evidence_gate"],
+            "",
+            "**Scope:** synthetic proof of reusing an existing statistical method, "
+            "NOT real-world adoption, full multi-asset integration, verified "
+            "underconversion, original method novelty or actual social impact.",
+            ""
+        ])
     lines.extend(["","## What can be claimed now?","",
         "- Real source repository metadata was inspected, but README promises and release activity are not independent deployment evidence.",
         "- Only separately pinned original-source test suites can establish narrow functional behavior; the user-generated new cross-project combination remains untested.",
@@ -827,4 +857,81 @@ def attach_source_bridge_trials(queue,trial_records):
     result["independently_qualified_high_quality_assets"]=0
     result["accepted_new_recombinations"]=0
     result["confirmed_underconverted_assets"]=0
+    return result
+
+def attach_functional_conversion_trials(queue,trials):
+    """Attach measured *synthetic* method reuse without inventing deployment.
+
+    A one-asset experiment does not approve a two-asset candidate, establish
+    novelty against other methods, or diagnose actual unmet demand/adoption.
+    """
+    import copy
+    if (queue.get("schema")!="cite_refinery.conversion_qualification_queue.v1"
+        or not isinstance(trials,list) or not 1<=len(trials)<=10):
+        raise ValueError("Typed qualification queue and bounded functional trials required")
+    result=copy.deepcopy(queue)
+    by_id={x["candidate_id"]:x for x in result["rows"]}
+    observed=set()
+    for trial in trials:
+        if trial.get("schema")!="cite_refinery.cross_domain_conversion_functional_trial.v1":
+            raise ValueError("Unexpected functional experiment schema")
+        key=trial.get("candidate_id")
+        if key not in by_id or key in observed:
+            raise ValueError("Trial not attached to one exact discovered candidate")
+        observed.add(key)
+        row=by_id[key]
+        asset_id="github:"+str(trial.get("source_repository",""))
+        if asset_id not in row["asset_ids"]:
+            raise ValueError("Functional source not cited by original candidate")
+        source=next(x for x in row["asset_provenance"] if x["asset_id"]==asset_id)
+        sha=trial.get("source_commit")
+        if (not source["source_verified"] or not isinstance(sha,str)
+            or not re.fullmatch("[0-9a-f]{40}",sha) or
+            trial.get("original_repo_modified") is not False or
+            trial.get("dataset_is_real") is not False or
+            trial.get("adoption_or_underconversion_proven") is not False or
+            trial.get("practical_value_realized") is not False or
+            trial.get("new_field_deployment_verified") is not False or
+            trial.get("synthetic_operator_problem_detected_and_control_passed") is not True):
+            raise ValueError("Unverified source/runtime or fabricated real-world conversion claim")
+        effect=trial.get("biased_fixture",{})
+        ctrl=trial.get("negative_control",{})
+        if (effect.get("synthetic_only") is not True or
+            ctrl.get("synthetic_only") is not True or
+            effect.get("detected_operator_effect_p_below_001") is not True or
+            ctrl.get("detected_operator_effect_p_below_001") is not False or
+            effect.get("single_operator_parcel_classification_errors")!=2 or
+            ctrl.get("single_operator_parcel_classification_errors")!=0 or
+            effect.get("naive_pooled_mean_wrong_parcel_classifications")!=0 or
+            not isinstance(trial.get("original_license_sha256"),str) or
+            not re.fullmatch("[0-9a-f]{64}",trial["original_license_sha256"])):
+            raise ValueError("Positive and negative control results are not the recorded synthetic experiment")
+        row["functional_reuse_trial"]={
+            "asset_id":asset_id,"source_commit":sha,
+            "original_model":trial["original_model_used"],
+            "environment":trial["dependency_versions"],
+            "synthetic_case":trial["synthetic_food_workflow"],
+            "baseline":trial["baseline_policy"],
+            "operator_effect_with_injected_bias_p":effect["upstream_daspi_worker_anova_p"],
+            "operator_effect_negative_control_p":ctrl["upstream_daspi_worker_anova_p"],
+            "naive_baseline_parcel_errors":effect["naive_pooled_mean_wrong_parcel_classifications"],
+            "individual_operator_parcel_errors":effect["single_operator_parcel_classification_errors"],
+            "demonstrated_synthetic_analytical_transfer":True,
+            "full_pair_integration_verified":False,
+            "independently_confirmed_unmet_field_need":False,
+            "underconversion_verified":False,
+            "actual_field_impact_or_social_value_verified":False,
+            "next_evidence_gate":trial["falsification_next"]
+        }
+        row["status"]="scoped_positive_synthetic_method_transfer_real_world_conversion_unverified"
+        row["next_evidence_gate"]=trial["falsification_next"]
+        # Do not flip whole-pair or global qualification flags.
+        row["technical_quality_complete_for_all_required_assets"]=False
+        row["proposed_recombination_tested"]=False
+        row["new_value_realized"]=False
+    result["positive_synthetic_functional_trials"]=len(observed)
+    result["independently_qualified_high_quality_assets"]=0
+    result["confirmed_underconverted_assets"]=0
+    result["accepted_new_recombinations"]=0
+    result["realized_value"]=0
     return result

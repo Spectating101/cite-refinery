@@ -1,0 +1,22 @@
+{
+  "schema": "cite_refinery.upstream_scoped_test_receipt.v1",
+  "observed_on": "2026-10-21",
+  "repository": "j4ggr/DaSPi",
+  "commit": "5b6234be9ac78cdea1318944ac854fcfd09c3fbd",
+  "command": "python -m pytest -q tests/anova_model_test.py -k GageStudyModel_or_GageRnRModel --disable-warnings --maxfail=1",
+  "actual_pytest_expression": "GageStudyModel or GageRnRModel",
+  "environment": "isolated Python 3.13, numpy 2.5.4, pandas 3.0.6, scipy 1.18.1, statsmodels 0.14.6",
+  "targeted_upstream_tests_passed": 12,
+  "targeted_upstream_tests_failed": 0,
+  "other_upstream_tests_deselected": 52,
+  "initial_incompatible_dependency_probe": {
+    "statsmodels_version": "0.15.0",
+    "passed_before_first_failure": 7,
+    "first_failure": "missing PandasData.design_info"
+  },
+  "source_modified": false,
+  "whole_project_qualification": false,
+  "synthetic_cross_domain_reuse_verified_separately": true,
+  "practical_deployment_verified": false,
+  "underconversion_verified": false
+}
