@@ -104,13 +104,13 @@ jobs:
             --academic-out "$RUNNER_TEMP/layer-maps/academic_publisher_identity_audit.json" \
             --implementation-out "$RUNNER_TEMP/layer-maps/implementation_pinned_source_audit.json" \
             --max-academic 47 --max-repo-pairs 44
-      - name: Inspect 8 original GitHub source trees and code fingerprints, no execution
+      - name: Inspect all 44 pinned original GitHub source trees and code fingerprints, no execution
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python -m cite_refinery.implementation_original_code_audit \
             --original-implementation-audit "$RUNNER_TEMP/layer-maps/implementation_pinned_source_audit.json" \
-            --max-repositories 8 \
+            --max-repositories 44 \
             --out "$RUNNER_TEMP/layer-maps/implementation_original_code_structure_audit.json"
       - name: Build standalone Implementation Atlas with real recorded probe defects
         run: |
