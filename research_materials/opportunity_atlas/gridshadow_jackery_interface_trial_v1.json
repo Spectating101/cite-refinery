@@ -1,0 +1,35 @@
+{
+  "schema": "cite_refinery.source_interface_compatibility_trial.v1",
+  "candidate_id": "slice-0:CV-03",
+  "repositories": [
+    {
+      "name": "Krishita17/GridShadow",
+      "source_commit": "bbeaa5d1d1b617025c2e7c3acd4c1f4c629bd4a4"
+    },
+    {
+      "name": "Bigdaddy1990/jackery_solarvault",
+      "source_commit": "36a89d127663f02b68c68a1c3b1c8dbaa1965773"
+    }
+  ],
+  "jackery_constants_sha256": "fe0ae00758ec2f687f4b355508852543a546d908fe808c86ad9b0265f3dd771d",
+  "jackery_source_telemetry_fields": {
+    "FIELD_SOC": "soc",
+    "FIELD_GRID_IN_PW": "gridInPw",
+    "FIELD_GRID_OUT_PW": "gridOutPw"
+  },
+  "jackery_declared_python_range": ">=3.14.2,<3.15",
+  "raw_telemetry_to_grid_actuation_rejected": [
+    "FIELD_SOC",
+    "FIELD_GRID_IN_PW",
+    "FIELD_GRID_OUT_PW"
+  ],
+  "valid_original_grid_actuation_control": "line",
+  "gridshadow_upstream_suite_passed_separately": 15,
+  "live_device_or_grid_access": false,
+  "jackery_original_runtime_executed": false,
+  "cross_project_adapter_completed": false,
+  "technical_quality_established_for_both": false,
+  "underconversion_proven": false,
+  "why_blocked": "Jackery measures battery/AC telemetry. GridShadow requires source-specific line/transformer/generator topology indices and control semantics. The sources do not supply an approved physical mapping.",
+  "next_test": "Obtain consented, topology-validated source schemas and real requirements before building a simulation adapter; do not infer such topology from names."
+}

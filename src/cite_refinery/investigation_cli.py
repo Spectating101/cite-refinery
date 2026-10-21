@@ -96,6 +96,8 @@ def main(argv=None):
                                help="Repeat for original GitHub metadata audit snapshots")
     qualification.add_argument("--component-tests",type=Path,required=True,
                                help="Explicit original upstream test receipt (scope-limited)")
+    qualification.add_argument("--bridge-trial",type=Path,action="append",
+                               help="Optional isolated source-interface compatibility receipts; never automatic promotion")
     qualification.add_argument("--json-out",type=Path,required=True)
     qualification.add_argument("--markdown-out",type=Path,required=True)
     conversions=sub.add_parser("discover-conversions",
@@ -166,7 +168,8 @@ def main(argv=None):
     if args.command=="qualify-conversions":
         from .open_corpus_atlas import (
             conversion_qualification_queue,render_qualification_queue)
-        files=[*args.discovery,*args.repository_audit,args.component_tests]
+        files=[*args.discovery,*args.repository_audit,args.component_tests,
+               *(args.bridge_trial or [])]
         for file in files:
             if file.stat().st_size>12_000_000:
                 raise ValueError("Source scope exceeds bounded qualification file size")
@@ -179,6 +182,10 @@ def main(argv=None):
             [read(p) for p in args.discovery],
             [read(p) for p in args.repository_audit],
             read(args.component_tests))
+        if args.bridge_trial:
+            from .open_corpus_atlas import attach_source_bridge_trials
+            result=attach_source_bridge_trials(
+                result,[read(path) for path in args.bridge_trial])
         for path,contents in (
             (args.json_out,json.dumps(result,indent=2,ensure_ascii=False)+"\n"),
             (args.markdown_out,render_qualification_queue(result))
@@ -191,6 +198,8 @@ def main(argv=None):
             "invalid_model_links_rejected":result["candidate_links_rejected_for_invalid_source_or_schema"],
             "original_repo_metadata_checked":result["original_repo_metadata_checked"],
             "original_upstream_test_passes":result["scoped_original_test_passes_total"],
+            "direct_source_interface_mismatches_reproduced":result.get(
+                "direct_source_interface_mismatches_reproduced",0),
             "confirmed_high_quality_underconverted_assets":0,
             "realized_new_recombinations":0,
         },indent=2))
