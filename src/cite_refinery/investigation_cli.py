@@ -261,17 +261,17 @@ def main(argv=None):
         for path,contents in [
             (args.json_out,json.dumps(m,ensure_ascii=False,indent=2)+"\n"),
             (args.markdown_out,summary_markdown(m) + (
-                "\\n## Source-approved Nocturnal Practical evidence\\n\\n"
-                + "Gated public snapshot \`" + nocturnal_map["provenance"]["snapshot_id"]
-                + "\`: " + str(nocturnal_map["coverage"]["matter_count"])
+                "\n## Source-approved Nocturnal Practical evidence\n\n"
+                + "Gated public snapshot `" + nocturnal_map["provenance"]["snapshot_id"]
+                + "`: " + str(nocturnal_map["coverage"]["matter_count"])
                 + " matters, " + str(nocturnal_map["coverage"]["module_count"])
                 + " modules, " + str(nocturnal_map["coverage"]["correction_count"])
                 + " corrections. Source URLs are not independent corroboration. "
                 + "Case stages, entities and disputes are source assertions; "
-                + "no cross-layer inference or verified-world-coverage claim.\\n"
+                + "no cross-layer inference or verified-world-coverage claim.\n"
                 if nocturnal_map else "")),
             *([(args.nocturnal_map_out,
-                 json.dumps(nocturnal_map,ensure_ascii=False,indent=2)+"\\n")]
+                 json.dumps(nocturnal_map,ensure_ascii=False,indent=2)+"\n")]
               if args.nocturnal_map_out else []),
             *([(args.review_backlog_out,
                  json.dumps(backlog,ensure_ascii=False,indent=2)+"\n")]
