@@ -1,0 +1,78 @@
+{
+  "schema": "cite_refinery.cross_domain_conversion_functional_trial.v1",
+  "candidate_id": "slice-2:CV-01",
+  "source_repository": "j4ggr/DaSPi",
+  "source_commit": "5b6234be9ac78cdea1318944ac854fcfd09c3fbd",
+  "source_import_path": "daspi/__init__.py",
+  "source_license_from_original_file": "BSD-3-Clause",
+  "original_license_sha256": "ccea41443115f646473317fe0fc121a5bbe2b3d334860a6e4c0379145ff571d1",
+  "original_model_used": "DaSPi.GageStudyModel + DaSPi.GageRnRModel + original ANOVA",
+  "dependency_versions": {
+    "pandas": "3.0.6",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "statsmodels": "0.14.6"
+  },
+  "synthetic_food_workflow": "food redistribution intake parcel weights, three fictional workers, repeated scale readings",
+  "baseline_policy": "pooled averages per parcel without explicitly estimating worker/operator variation",
+  "upstream_scoped_test_suite": "tests/anova_model_test.py -k GageStudyModel or GageRnRModel",
+  "upstream_scoped_test_outcome": "run separately and attach verified test receipt",
+  "biased_fixture": {
+    "case": "injected_worker_bias",
+    "synthetic_only": true,
+    "parcels": 8,
+    "operators": 3,
+    "readings": 72,
+    "injected_operator_offsets_kg": [
+      -0.55,
+      0.0,
+      0.55
+    ],
+    "threshold_kg": 10.0,
+    "naive_pooled_mean_wrong_parcel_classifications": 0,
+    "naive_max_parcel_pooled_mean_error_kg": 0.012222,
+    "single_operator_parcel_classification_errors": 2,
+    "single_operator_parcel_comparisons": 24,
+    "operator_specific_threshold_disagreement_lots": [
+      "batch_03",
+      "batch_04"
+    ],
+    "upstream_daspi_worker_anova_p": 1.2160650796659668e-38,
+    "upstream_daspi_worker_sum_of_squares": 14.401352777777893,
+    "upstream_daspi_residual_sum_of_squares": 0.3892166666666629,
+    "detected_operator_effect_p_below_001": true,
+    "decision": "audit_operator_and_scale_calibration_before_using_individual_weight_entries"
+  },
+  "negative_control": {
+    "case": "negative_control_no_worker_bias",
+    "synthetic_only": true,
+    "parcels": 8,
+    "operators": 3,
+    "readings": 72,
+    "injected_operator_offsets_kg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "threshold_kg": 10.0,
+    "naive_pooled_mean_wrong_parcel_classifications": 0,
+    "naive_max_parcel_pooled_mean_error_kg": 0.012222,
+    "single_operator_parcel_classification_errors": 0,
+    "single_operator_parcel_comparisons": 24,
+    "operator_specific_threshold_disagreement_lots": [],
+    "upstream_daspi_worker_anova_p": 0.8653329015508192,
+    "upstream_daspi_worker_sum_of_squares": 0.002352777777777645,
+    "upstream_daspi_residual_sum_of_squares": 0.3892166666666627,
+    "detected_operator_effect_p_below_001": false,
+    "decision": "no_operator_effect_detected_on_this_synthetic_fixture"
+  },
+  "synthetic_operator_problem_detected_and_control_passed": true,
+  "improvement_over_naive_pooling": "DaSPi detects an injected operator effect even when pooled parcel means classify all parcels correctly and conceal operator-specific threshold errors",
+  "new_algorithm_created": false,
+  "new_field_deployment_verified": false,
+  "original_repo_modified": false,
+  "dataset_is_real": false,
+  "adoption_or_underconversion_proven": false,
+  "practical_value_realized": false,
+  "falsification_next": "Test against independently collected consented multi-worker repeated weighings; compare actual interventions and decision errors. Check whether this analysis is already routine in recipient organizations."
+}
