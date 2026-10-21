@@ -37,6 +37,15 @@ def _summary(s):
         "supplied_source_families":sorted({x["source_family"] for x in s.get("supplied_sources",[])}),
         "supplied_provenance_status":"user_supplied_url_not_retrieved",
         "supplied_source_ids":[x["id"] for x in s.get("supplied_sources",[])],
+        "publisher_checked_source_count":len(s.get("source_authentication",[])),
+        "publisher_text_matches":sum(x.get("status")=="publisher_passage_matched_claim_unreviewed"
+                                      for x in s.get("source_authentication",[])),
+        "publisher_text_mismatches":sum(x.get("status")=="submitted_text_does_not_match_publisher"
+                                         for x in s.get("source_authentication",[])),
+        "publisher_checks":[{"id":x["id"],"status":x["status"],
+                            "publisher_url":x.get("publisher_url"),
+                            "source_claim_verified":False}
+                           for x in s.get("source_authentication",[])],
         "known_missing_evidence_families":[
             "independent_practical_field_observations",
             "verified_implementation_execution_and_operator_outcomes",
@@ -64,6 +73,9 @@ def main(argv=None):
     attach=sub.add_parser("attach-evidence",help="Attach bounded user-provided evidence before reasoning; no external fetch or graph write")
     attach.add_argument("--id",required=True)
     attach.add_argument("--evidence",required=True)
+    verify=sub.add_parser("verify-evidence",
+        help="Explicit, read-only original publisher text matching; GitHub or Europe PMC allowlisted routes only")
+    verify.add_argument("--id",required=True)
     for name in ("step","run","status"):
         action=sub.add_parser(name)
         action.add_argument("--id",required=True)
@@ -103,6 +115,8 @@ def main(argv=None):
                          evidence_document=read_evidence(args.evidence) if args.evidence else None)
     elif args.command=="attach-evidence":
         state=ctrl.attach_supplied_evidence(args.id,read_evidence(args.evidence))
+    elif args.command=="verify-evidence":
+        state=ctrl.authenticate_supplied_evidence(args.id)
     elif args.command=="status":
         state=ctrl.load(args.id)
     elif args.command=="step":

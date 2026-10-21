@@ -242,6 +242,7 @@ class InvestigationController:
             "rounds":[],"frontier":[],"visited_questions":[],
             "supplied_sources":supplied,
             "source_authority":"user_supplied_not_independently_verified",
+            "source_authentication":[],
             "created_at":_utc(),"updated_at":_utc(),
             "last_error":None,"authority":"candidate_neutral_only",
         }
@@ -292,6 +293,31 @@ class InvestigationController:
             s["supplied_sources"] = previous
             self.save(s)
         return s
+
+    def authenticate_supplied_evidence(self, ident, *, github_fetch=None, epmc_fetch=None):
+        """Read-only verification of submitted text at supported publishers.
+
+        Checkpoint every receipt and preserve authority NONE_ACCEPTED even for
+        matched texts. User-submitted URLs remain untrusted until comparison.
+        """
+        from .source_authentication import audit_sources, _gh_api, _epmc
+        state=self.load(ident)
+        if state["stage"] not in {"plan", "collect", "needs_sources", "reason"}:
+            raise ValueError("Publisher checks require a pre-critique investigation state")
+        supplied=state.get("supplied_sources",[])
+        if not supplied:raise ValueError("No supplied evidence to authenticate")
+        receipts=audit_sources(supplied,github_fetch=github_fetch or _gh_api,
+                               epmc_fetch=epmc_fetch or _epmc)
+        existing=state.get("source_authentication",[])
+        old_by_id={x["id"]:x for x in existing}
+        for result in receipts:
+            previous=old_by_id.get(result["id"])
+            if previous and previous["text_sha256"]!=result["text_sha256"]:
+                raise ValueError("Publisher receipt disagrees with stored source text digest")
+        state["source_authentication"]=receipts
+        state["authority"]="candidate_neutral_only"
+        self.save(state)
+        return state
 
     def step(self,ident):
         s=self.load(ident)
@@ -424,7 +450,18 @@ class InvestigationController:
                         if old["id"] not in ids and len(combined)<12:
                             combined.append(old);ids.add(old["id"])
                 supplied=s.get("supplied_sources", [])
+                receipts={x["id"]:x for x in s.get("source_authentication",[])}
                 if supplied:
+                    # The user passage itself is the text supplied to the model.
+                    # A publisher match is recorded as provenance only, not
+                    # independent truth, field measurement or effect.
+                    supplied=[{
+                        **item,
+                        "source_scope":item["source_scope"]+
+                            " Publisher text match: "+
+                            receipts.get(item["id"],{}).get("status","not_checked")+
+                            "; source semantic claim UNREVIEWED."
+                    } for item in supplied]
                     # Allocate the original academic and official evidence at
                     # least one slot each. User text does NOT satisfy either
                     # independent source discovery requirement.
