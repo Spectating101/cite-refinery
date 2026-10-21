@@ -527,3 +527,7 @@ The [source-pinned repair evaluation](research_materials/opportunity_atlas/REPAI
 ### Canonical investigator access (integration staging)
 
 Start a provisional investigation through the existing controller using cite-refinery investigate --workspace /tmp/investigations init --question "Your research question"; inspect it using investigate --workspace /tmp/investigations status --id SESSION_ID. The legacy standalone command and explicit --modules are preserved. This does not validate full three-layer source coverage; see docs/CANONICAL_INVESTIGATION_ENTRY_V1.md.
+
+### Generic supplied-evidence intake (integration staging)
+
+The existing cite-refinery investigate command now accepts --evidence /path/to/local.json on init and attach-evidence --id ID --evidence /path/to/local.json for provisional source passages across Practical, Academic and Implementation. Supplied source URLs are never fetched automatically; contents remain unverified and never qualify graph nodes or constitute confirmed economic value. A bounded offline candidate-only review can proceed with at least two distinct supplied families even if academic/official discovery fails, while recording missing independent corroboration. Full contract, tests and limitations: docs/GENERIC_EVIDENCE_INTAKE_V1.md.
