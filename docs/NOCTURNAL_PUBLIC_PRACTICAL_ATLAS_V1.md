@@ -1,0 +1,69 @@
+# Nocturnal → Practical Atlas: publication-gated integration v1
+
+**Scope:** Cite–Refinery's existing three standalone maps. This importer does not create a fourth engine, another installed console script, a private data replica, a cross-layer link or a market ranker.
+
+## Exact source contract
+
+Read the **public snapshot directory** produced by Nocturnal's `src/nocturnal_product/public_snapshot.py`, schema `nocturnal.public_snapshot.v1`. The bridge accepts exactly `manifest.json`, the five public JSONL indexes and `stewardship.json` as its read set. It does not read Nocturnal's `chains/`, source vault, operator journal, case state, local credentials or live API.
+
+Import fails closed unless:
+- `publishable=true`, explicit dataset license, source-rights review, approved bounded pilot manifest, zero publication blockers;
+- original chain-integrity reports pass and the snapshot contains a chain report;
+- every listed public file matches manifest byte length and SHA-256;
+- the stable Nocturnal snapshot ID matches the original exporter fingerprint (all six hashes + counts + pilot ID);
+- module-to-matter, module-to-entity, module-to-source and correction references are internally coherent.
+
+The snapshot's own publication approval is a **necessary input**, not proof of truth, ownership of third-party articles or unrestricted reuse. Real-source publication still requires Nocturnal's original legal/editorial gate. Do not copy unreviewed investigation journals into a public atlas.
+
+## What Cite–Refinery adds
+
+- An independent **matter index** with public chronology, institutional stage, actors, literal search and original public source links.
+- Immutable module identifiers, correction/supersession links, and a source-file locator `modules.jsonl#L<n>`. Module body is NOT copied into the derived atlas; a text SHA-256 binds its reference to the authorized original snapshot.
+- Explicit per-snapshot coverage of matters, source URLs/domains, entities, corrections, missing source links and open dispute flags.
+- Incremental comparison with a previously generated Practical map: added modules, unchanged modules and opaque IDs no longer present in the current approved release. **Removed/withheld source text is never carried forward** by Cite–Refinery. A reused module ID with modified original text/content fails closed.
+- Clear evidence boundaries: source URL count is not independent corroboration; dispute flags are not adjudicated contradictions; named actors are not guilt findings; the pilot scope is not a world taxonomy; field-level completeness is not claimed.
+
+No new unreviewed classification, LLM conclusion, monetization overlay or Academic/Implementation promotion is created.
+
+## Real two-repository fictional contract run
+
+Use the exact public Nocturnal release generator with its deterministic fictional dataset. **Every subject and .invalid source is invented.**
+
+```bash
+# Run inside a checkout of nocturnal-oversight:
+PYTHONPATH=. python scripts/ops/build_public_demo_fixture.py \
+  --ledger-root /tmp/nocturnal-fictional-ledger
+PYTHONPATH=. python scripts/ops/export_public_snapshot.py \
+  --ledger-root /tmp/nocturnal-fictional-ledger \
+  --output-dir /tmp/nocturnal-fictional-snapshot \
+  --pilot-manifest examples/pilot_manifest.fictional.json \
+  --dataset-license CC-BY-4.0 --source-rights-reviewed
+
+# Run inside a checkout of cite-refinery:
+cite-refinery investigate map-foundations \
+  --nocturnal-public-snapshot /tmp/nocturnal-fictional-snapshot \
+  --nocturnal-terms Meridian \
+  --nocturnal-map-out /tmp/practical.json \
+  --json-out /tmp/three_layer.json \
+  --markdown-out /tmp/three_layer.md
+```
+
+The existing 9 practical abstract reports and 48 TED notices remain distinct from **original Nocturnal public ledger observations**. `--nocturnal-terms` navigates case names, source URLs, entity names, titles and stages, not original body text or semantic embeddings.
+
+To compare a second **approved public** snapshot, pass `--previous-nocturnal-atlas /tmp/practical.json` and use new output paths. The same immutable module in both releases is not new corroboration. Missing previously public modules are flagged as no longer public; Cite–Refinery makes no deletion/retraction claim about why they disappeared.
+
+## Evaluation — independent Practical map first
+
+1. **Source recoverability:** every mapped module has a snapshot ID, module ID, public JSONL locator, immutable body-text digest and source URLs where present.
+2. **Institutional process reconstruction:** inspectors can follow a public matter's time-ordered event IDs, status stages, corrections and publication review labels.
+3. **Disagreement discipline:** a dispute is a flagged unresolved state; competing external sources have not been compared or semantically adjudicated by the importer.
+4. **Coverage humility:** counts describe the *approved snapshot*, not population coverage. The pilot-domain tag is not yet an independently validated field classification.
+5. **Safety and synchronization:** unsigned, unapproved, tampered, altered, overwritten or withdrawn material must not be promoted into an apparently current public map.
+
+The CI gate runs self-contained fictional integrity/sync fixtures **and** checks out a pinned public Nocturnal commit to generate an authentic fictional ledger and snapshot with Nocturnal's own exporter before invoking the canonical Cite–Refinery CLI. It never needs access to real ledgers.
+
+## Follow-on work after this PR
+
+Keep the three-map priority: widen Practical across reviewed non-investigation source classes, deepen Academic claims/methods/contradictions, and run representative original Implementation capability tests. Then assess each map on unfamiliar domains before resuming relations and underconversion discovery.
+
+**Not yet supplied by this PR:** real-world snapshot coverage, independent scientific claim validation, semantic body search, reviewed domain taxonomy, original operator outcomes, independent deployment tests, corroboration analysis, or jurisdictional approval for any particular real-world case.
