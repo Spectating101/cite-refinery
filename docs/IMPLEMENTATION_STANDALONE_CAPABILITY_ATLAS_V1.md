@@ -22,7 +22,7 @@ The Implementation evidence atlas (`src/cite_refinery/implementation_evidence_at
 2. **Pinned original-source layer**: original GitHub API commit/root receipts and optional new tree/blob SHA-verification receipts. A code sample may confirm the exact existence of a parsed function or test source at a revision, not whether that code works or is safe.
 3. **Previous bounded functional trials**: 3 separate upstream assets, 17 explicit probe requirements with original recorded statuses, expected/actual snapshots, failure names, limitations, scopes and pinned upstream revisions. This is a historical evidence trail, not newly executed tests or certified results.
 
-The original-code auditor (`src/cite_refinery/implementation_original_code_audit.py`) samples up to 30 independently pinned public GitHub revisions. It follows the GitHub commit → tree → git blob SHA-1 identity chain; samples an eligible original source file plus an eligible test file when present, validates Git blob hashes, and optionally parses Python AST to identify structural public functions. It **never imports code, installs dependencies, executes tests, downloads entire repositories, runs arbitrary script instructions, or republishes original source contents**. Inconclusive, truncated and unavailable upstream data remain explicit failures. GitHub API records are not cryptographic signatures from an independent authority.
+The original-code auditor (`src/cite_refinery/implementation_original_code_audit.py`) samples up to 60 independently pinned public GitHub revisions. It follows the GitHub commit → tree → git blob SHA-1 identity chain; samples an eligible original source file plus an eligible test file when present, validates Git blob hashes, and optionally parses Python AST to identify structural public functions. It **never imports code, installs dependencies, executes tests, downloads entire repositories, runs arbitrary script instructions, or republishes original source contents**. Inconclusive, truncated and unavailable upstream data remain explicit failures. GitHub API records are not cryptographic signatures from an independent authority.
 
 ### Canonical commands
 
@@ -36,12 +36,12 @@ cite-refinery investigate map-foundations \
   --json-out /tmp/maps.json --markdown-out /tmp/coverage.md
 ```
 
-Given the two read-only original-source metadata audits already produced by the existing `original_layer_source_audit` step, inspect up to eight pinned code repositories using **public GitHub API only**:
+Given the two read-only original-source metadata audits already produced by the existing `original_layer_source_audit` step, inspect up to 44 previously pinned code repositories using **public GitHub API only**:
 
 ```bash
 python -m cite_refinery.implementation_original_code_audit \
   --original-implementation-audit /tmp/implementation_pinned_source_audit.json \
-  --max-repositories 8 \
+  --max-repositories 44 \
   --out /tmp/implementation_original_code_structure_audit.json
 ```
 
