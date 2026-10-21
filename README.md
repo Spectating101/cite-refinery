@@ -523,3 +523,7 @@ The [source-pinned repair evaluation](research_materials/opportunity_atlas/REPAI
 ### Source-pinned browser Jasmine and Ruby RSpec (2026-10-21)
 
 [Framework-scoped integration results](research_materials/opportunity_atlas/FRAMEWORK_SCOPED_INTEGRATION.md) and [reproduction/limitations](docs/FRAMEWORK_SCOPED_INTEGRATION_V1.md): Open Food Network original map CoffeeScript plus its 9 upstream Jasmine tests and 5 geographic regressions ran under headless Chrome, original source 10/14 vs experimental local candidate 14/14. Foodsoft actual Ruby helper ran under 9 isolated RSpec cases, original source 6/9 vs experimental precision patch 9/9. Both candidate source diffs are preserved, as are strict no-promotion controls in the [conversion routes](research_materials/opportunity_atlas/OPERATOR_CONVERSION_ROUTES.md). Full Rails and frontend application integration, regional bounds configuration wiring and map zoom/viewport behavior remain unverified.
+
+### Canonical investigator access (integration staging)
+
+Start a provisional investigation through the existing controller using cite-refinery investigate --workspace /tmp/investigations init --question "Your research question"; inspect it using investigate --workspace /tmp/investigations status --id SESSION_ID. The legacy standalone command and explicit --modules are preserved. This does not validate full three-layer source coverage; see docs/CANONICAL_INVESTIGATION_ENTRY_V1.md.

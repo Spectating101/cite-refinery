@@ -214,6 +214,14 @@ def _special_args(raw: list[str], command: str) -> list[str]:
 def main(argv: list[str] | None = None) -> int:
     raw = list(argv) if argv is not None else list(sys.argv[1:])
 
+    if raw and raw[0] == "investigate":
+        # Reuse the existing resumable investigator, not another orchestration
+        # engine or console script. The original cite-refinery-investigate
+        # entrypoint remains supported for backward compatibility.
+        from .investigation_cli import main as investigation_main
+        value = investigation_main(raw[1:])
+        return 0 if value is None else value
+
     if "preflight" in raw:
         args = _preflight_parser().parse_args(_special_args(raw, "preflight"))
         report = build_preflight(args.workspace)
