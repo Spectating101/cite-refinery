@@ -1,0 +1,147 @@
+{
+  "schema": "cite_refinery.public_publisher_source_trial.v1",
+  "experiment_note": "Live read-only public publisher retrieval; actual source transcripts remain in local research scratch, no unlicensed source content copied.",
+  "positive": {
+    "sample_count": 5,
+    "match_count": 5,
+    "mismatch_count": 0,
+    "records": [
+      {
+        "id": "USR-P-01",
+        "family": "practical",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+        "text_sha256": "00ea0d91ee000201e9c06b31045319c5ab0c07820278e4b0356df2f31ce81fde",
+        "publisher_content_sha256": "857c837509322c80a9e3c4df51c91331dc67716cf309a46e7e80724bc12b0e06",
+        "publisher_git_blob_sha": null,
+        "checked_at_utc": "2026-10-21T08:46:50.845699+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      },
+      {
+        "id": "USR-P-02",
+        "family": "practical",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://github.com/foodcoops/foodsoft/issues/1368",
+        "text_sha256": "cf799e1e37751ed3f1a6e1e6a2fbfebc2f78da995397b518ce6afed63fa0ee6d",
+        "publisher_content_sha256": "c8e00b006d9562316530f52a6b51313537e19b95e93cfbf502108492304f7d7a",
+        "publisher_git_blob_sha": null,
+        "checked_at_utc": "2026-10-21T08:46:51.368399+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      },
+      {
+        "id": "USR-I-01",
+        "family": "implementation",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://github.com/openfoodfoundation/openfoodnetwork/blob/1167aa7b7585c1794199e032fc15c0e9c1c74104/app/assets/javascripts/darkswarm/services/map_centre_calculator.js.coffee",
+        "text_sha256": "409fa7ae1185fa81bc28e82b11472bd5afa24128941a340dd3a4d2852acd820c",
+        "publisher_content_sha256": "e5e93a45d56b10e1cc3a873c66f126f5db27f056809a8a909b2eee6ffed34a39",
+        "publisher_git_blob_sha": "74a669690f56c15f2c15ceffe34c8f02a96d0e27",
+        "checked_at_utc": "2026-10-21T08:46:51.854283+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      },
+      {
+        "id": "USR-I-02",
+        "family": "implementation",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://github.com/foodcoops/foodsoft/blob/f594be8e64f4d3748d0e418df05fbb554ccce71b/app/helpers/orders_helper.rb",
+        "text_sha256": "36cb3826ec17575cc85fcb03c60e9e957a51e1adaf4d7a94e423d0db397d016b",
+        "publisher_content_sha256": "6c5141d6feff282fde5ac93b1e8b62cdf7d83763a7ec4349322817c0e4774e61",
+        "publisher_git_blob_sha": "64567d22f2a02cd3d4b0a481ff1f8b581e90420d",
+        "checked_at_utc": "2026-10-21T08:46:52.249847+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      },
+      {
+        "id": "USR-A-01",
+        "family": "academic",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://europepmc.org/article/MED/41622278",
+        "text_sha256": "600c0d3f4b6cda5fb1e2dc50cf01fc9bd233256b731b76dd4a64f58286a587bd",
+        "publisher_content_sha256": "d757c90559d24a1722f134e77c48098a09e9987759e1445e94f19db77a21069a",
+        "publisher_git_blob_sha": null,
+        "checked_at_utc": "2026-10-21T08:46:52.689869+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      }
+    ]
+  },
+  "negative": {
+    "sample_count": 1,
+    "match_count": 0,
+    "mismatch_count": 1,
+    "record": {
+      "id": "USR-I-02",
+      "url": "https://github.com/foodcoops/foodsoft/blob/f594be8e64f4d3748d0e418df05fbb554ccce71b/app/helpers/orders_helper.rb",
+      "status": "submitted_text_does_not_match_publisher",
+      "publisher_content_sha256": "6c5141d6feff282fde5ac93b1e8b62cdf7d83763a7ec4349322817c0e4774e61",
+      "checked_at_utc": "2026-10-21T08:48:05.753217+00:00",
+      "authority": "NONE_ACCEPTED"
+    }
+  },
+  "external_field_outcome_verified": false,
+  "implementation_executed_in_this_trial": false,
+  "academic_entailment_reviewed": false,
+  "scientific_result_verified": false,
+  "end_to_end_three_layer_graph_qualified": false,
+  "commercial_value_verified": false,
+  "limitation": "Two bounded case groups: food-platform issue/code pairs plus heat-warning bibliographic abstract, and weather API issue/code pair plus the SAME heat-warning abstract. Eight checks represent seven unique public source URLs. No random sample, no causal or functional verification, no full user/outcome evidence. Source statements may change, particularly mutable GitHub issue bodies.",
+  "secondary_weather_and_heat_case": {
+    "purpose": "Cross-field publisher match comparison: weather API user issue, commit-pinned project documentation and abstract.",
+    "sample_count": 3,
+    "match_count": 3,
+    "mismatch_count": 0,
+    "records": [
+      {
+        "id": "USR-P-01",
+        "family": "practical",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://github.com/open-meteo/open-meteo/issues/2229",
+        "text_sha256": "5dcaa1e3333f2454725ec18f9a2ae7489cfc794bcdc0060d54fcfa570a9cd1d9",
+        "publisher_content_sha256": "76c5debd9384c16da2f9269075784d502ff900f49ace96b06855344f9fd90a9d",
+        "publisher_git_blob_sha": null,
+        "checked_at_utc": "2026-10-21T08:50:55.952157+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      },
+      {
+        "id": "USR-I-01",
+        "family": "implementation",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://github.com/open-meteo/open-meteo/blob/5f11eafbf0e4917618870f562bd35f3a40fa240e/README.md",
+        "text_sha256": "01ed2d10537100c385d3cd9056c6cc48d00cf4431848c44489067443f0b312c2",
+        "publisher_content_sha256": "0b38431b80f01bc3c482369943e834743b44f0f20bf48a2327da95622ec9bcd4",
+        "publisher_git_blob_sha": "5cca45c596f1b87e5850f3f8dbf0ded08abb72af",
+        "checked_at_utc": "2026-10-21T08:50:57.539113+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      },
+      {
+        "id": "USR-A-01",
+        "family": "academic",
+        "status": "publisher_passage_matched_claim_unreviewed",
+        "publisher_url": "https://europepmc.org/article/MED/41622278",
+        "text_sha256": "600c0d3f4b6cda5fb1e2dc50cf01fc9bd233256b731b76dd4a64f58286a587bd",
+        "publisher_content_sha256": "d757c90559d24a1722f134e77c48098a09e9987759e1445e94f19db77a21069a",
+        "publisher_git_blob_sha": null,
+        "checked_at_utc": "2026-10-21T08:50:57.984770+00:00",
+        "source_claim_verified": false,
+        "authority": "NONE_ACCEPTED"
+      }
+    ]
+  },
+  "overall": {
+    "actual_publisher_source_checks": 8,
+    "matched_passages": 8,
+    "distinct_publisher_urls": 7,
+    "deliberately_tampered_source_checks": 1,
+    "tampered_passage_rejections": 1,
+    "all_source_claims_remain_unverified": true,
+    "independent_field_outcomes_verified": 0,
+    "implementation_function_tests_in_this_trial": 0,
+    "scientific_effect_validation_count": 0,
+    "buyer_commitments_verified": 0
+  }
+}
