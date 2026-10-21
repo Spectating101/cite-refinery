@@ -186,6 +186,30 @@ def build_implementation_atlas(foundations, *, original_audit=None,
         _require({k:v for k,v in trial_counts.items()}==
                  functional_trials.get("test_case_counts"),
                  "Functional trial case-count integrity mismatch")
+    # Requirement granularity is mandatory for questions such as "which
+    # NaN/invalid-telemetry behavior failed?" A repository is not a capability.
+    requirement_catalog={}
+    for rid, probe in scoped.items():
+        for case_name,case in probe["cases"].items():
+            key="scoped-requirement:"+sha256(
+                (rid+"|"+probe["upstream_commit"]+"|"+case_name).encode("utf-8")
+            ).hexdigest()[:24]
+            _require(key not in requirement_catalog,
+                     "Duplicate source-anchored requirement identity")
+            requirement_catalog[key]={
+                "id":key,"asset_id":rid,
+                "source_pinned_revision":probe["upstream_commit"],
+                "source_entry_point_operator_supplied":probe["source_entry_point_operator_supplied"],
+                "requirement_from_prior_record":case["requirement"],
+                "case_name":case_name,
+                "reported_synthetic_or_static_outcome":case["status"],
+                "critical_for_recorded_trial":case["critical"],
+                "recorded_actual":case["actual_from_prior_record_not_independently_replayed"],
+                "recorded_expected":case["expected_from_prior_record"],
+                "interpretation_operator_supplied":case["interpretation_operator_supplied"],
+                "not_replayed_or_field_verified":True,
+                "upstream_fitness_for_purpose_independently_proven":False,
+            }
     source_depth={}
     if code_audit is not None:
         _require(code_audit.get("schema")==DEPTH and
@@ -277,6 +301,10 @@ def build_implementation_atlas(foundations, *, original_audit=None,
             "historical_scoped_trial_assets_also_in_survey":len(scoped)-len(external),
             "historical_scoped_trial_assets_outside_survey":len(external),
             "historic_synthetic_or_static_case_status_counts":dict(trial_counts),
+            "individual_source_anchored_requirement_receipts":len(requirement_catalog),
+            "prior_failed_or_unresolved_requirements":sum(
+                r["reported_synthetic_or_static_outcome"]!="pass"
+                for r in requirement_catalog.values()),
             "technical_capabilities_independently_replayed_in_this_map":0,
             "live_operational_implementations_verified":0,
             "reuse_rights_independently_cleared":0,
@@ -286,6 +314,7 @@ def build_implementation_atlas(foundations, *, original_audit=None,
         "source_stages":staged,
         "surveyed_repositories":identities,
         "historical_scoped_component_trials":scoped,
+        "historic_requirement_catalog":dict(sorted(requirement_catalog.items())),
         "external_tested_assets_not_in_survey":external,
         "original_code_structure_receipts":source_depth,
         "category_coverage":category_coverage(),
@@ -347,4 +376,38 @@ def browse_implementation(atlas, *, category=None, terms=None, stage=None, limit
         "lexical_only":True,"not_quality_ranked":True,
         "source_evidence_is_not_functionality_proof":True,
         "cross_layer_join_performed":False,
+    }
+
+
+
+def browse_implementation_requirements(atlas, *, terms=None, status=None, limit=40):
+    """Within-layer questions over individual originally recorded probe cases."""
+    _require(atlas.get("schema")==SCHEMA and type(limit) is int and
+             1<=limit<=100,"Invalid Implementation Atlas requirement browse")
+    _require(status in STATUSES or status is None,
+             "Unknown historical functional case status")
+    _require(terms is None or isinstance(terms,str) and len(terms)<=160,
+             "Invalid capability requirement search")
+    needles=(terms or "").casefold().split()
+    selected=[]
+    for case in atlas["historic_requirement_catalog"].values():
+        if status is not None and case["reported_synthetic_or_static_outcome"]!=status:
+            continue
+        haystack=(" ".join([
+            case["asset_id"],case["case_name"],
+            case["requirement_from_prior_record"],
+            case["source_entry_point_operator_supplied"] or "",
+            case["interpretation_operator_supplied"] or "",
+        ])).casefold()
+        if all(x in haystack for x in needles):
+            selected.append(case)
+    selected.sort(key=lambda row:(row["asset_id"],row["case_name"]))
+    return {
+        "schema":"cite_refinery.implementation_requirement_browse.v1",
+        "terms":terms,"case_status":status,
+        "matching_count":len(selected),"results":selected[:limit],
+        "prior_test_receipt_only_not_replayed":True,
+        "not_a_probability_or_success_rate":True,
+        "not_a_field_capability_catalog_census":True,
+        "no_cross_layer_join":True,
     }
