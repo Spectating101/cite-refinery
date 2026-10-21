@@ -60,7 +60,7 @@ To compare a second **approved public** snapshot, pass `--previous-nocturnal-atl
 4. **Coverage humility:** counts describe the *approved snapshot*, not population coverage. The pilot-domain tag is not yet an independently validated field classification.
 5. **Safety and synchronization:** unsigned, unapproved, tampered, altered, overwritten or withdrawn material must not be promoted into an apparently current public map.
 
-The CI gate runs self-contained fictional integrity/sync fixtures **and** checks out a pinned public Nocturnal commit to generate an authentic fictional ledger and snapshot with Nocturnal's own exporter before invoking the canonical Cite–Refinery CLI. It never needs access to real ledgers.
+The Cite–Refinery CI gate runs self-contained fictional integrity/sync fixtures against the documented Nocturnal snapshot contract. **The upstream Nocturnal repository is private**: public Cite–Refinery Actions cannot check it out with their default token. Run the authentic fictional fixture/export through Nocturnal's own authorized checkout (as shown above), then import its publication-approved snapshot in a local authorized environment. This two-repository smoke test has not yet been executed by this PR; do not claim otherwise. No secrets or broader repository permissions are added.
 
 ## Follow-on work after this PR
 
