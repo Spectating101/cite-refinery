@@ -116,6 +116,8 @@ def main(argv=None):
         help="Frozen 103-record development-only source index, NOT held-out material")
     foundation.add_argument("--academic-split-receipt",type=Path,
         help="Frozen public split/count/holdout-seal receipt (no held-out source IDs)")
+    foundation.add_argument("--academic-original-jats-audit",type=Path,
+        help="Optional original Europe PMC JATS structure receipt, not evidence of valid findings")
     foundation.add_argument("--academic-evidence-reviews",type=Path,
         help="Optional operator-reviewed exact-span evidence claims, not scientific validation")
     foundation.add_argument("--academic-review-text-dir",type=Path,
@@ -230,7 +232,7 @@ def main(argv=None):
         if (args.academic_development_manifest is None) != (
             args.academic_split_receipt is None):
             raise ValueError("Both frozen Academic development manifest and split receipt are required")
-        if (args.academic_evidence_reviews or args.academic_review_text_dir or
+        if (args.academic_original_jats_audit or args.academic_evidence_reviews or args.academic_review_text_dir or
             args.academic_genre or args.academic_terms or args.academic_atlas_out or
             args.academic_review_backlog_out) and not args.academic_development_manifest:
             raise ValueError("Academic depth options require the frozen development manifest")
@@ -253,6 +255,8 @@ def main(argv=None):
             files.extend([args.academic_development_manifest,args.academic_split_receipt])
         if args.academic_evidence_reviews:
             files.append(args.academic_evidence_reviews)
+        if args.academic_original_jats_audit:
+            files.append(args.academic_original_jats_audit)
         if any(file.stat().st_size>12_000_000 for file in files):
             raise ValueError("Source inventory exceeds bounded file size")
         outputs=[args.json_out,args.markdown_out]
@@ -289,6 +293,10 @@ def main(argv=None):
             academic_map = build_academic_atlas(
                 read(args.academic_development_manifest),
                 read(args.academic_split_receipt), reviews=reviews, source_texts=texts)
+            if args.academic_original_jats_audit:
+                from .academic_original_depth_audit import attach_original_jats_structure
+                academic_map = attach_original_jats_structure(
+                    academic_map, read(args.academic_original_jats_audit))
             academic_view = browse_academic(
                 academic_map, terms=args.academic_terms,
                 genre=args.academic_genre, limit=args.limit)
@@ -370,6 +378,9 @@ def main(argv=None):
             "implementation_unreviewed_category_memberships":m["implementation"]["unreviewed_memberships"],
             "balanced_backlog_pairs":backlog["sampled_pairs"] if backlog else 0,
             "browse_matches":view["matching_count"] if view else None,
+            "academic_original_jats_source_structures_inspected": (
+                academic_map["coverage"].get("original_public_jats_structure_inspected",0)
+                if academic_map else 0),
             "academic_development_fulltext_articles":(
                 academic_map["coverage"]["indexed_article_fulltexts"] if academic_map else 0),
             "academic_source_anchored_claims":(
