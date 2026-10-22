@@ -37,8 +37,18 @@ jobs:
         env:
           PYTHONDONTWRITEBYTECODE: "1"
         run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from cite_refinery.academic_evidence_atlas import build_academic_atlas
+          base=Path("research_materials/runtime_trials/richer_corpus_20261020")
+          manifest=json.loads((base/"development_source_manifest.json").read_text())
+          split=json.loads((base/"frozen_split_receipt.json").read_text())
+          atlas=build_academic_atlas(manifest,split)
+          (Path(os.environ["RUNNER_TEMP"])/"frozen-development-academic-atlas.json").write_text(json.dumps(atlas))
+          PY
           python -m cite_refinery.academic_public_text_recovery \
-            --academic-atlas research_materials/runtime_trials/richer_corpus_20261020/development_source_manifest.json \
+            --academic-atlas "$RUNNER_TEMP/frozen-development-academic-atlas.json" \
             --private-out-dir "$RUNNER_TEMP/frozen-publisher-text-checked" \
             --report-out "$RUNNER_TEMP/publisher-recovery-report.json" \
             --max-sources 3
