@@ -1,0 +1,101 @@
+name: Flood historical official gauge integrity (no alerts)
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/flood_historical_gauge_audit.py"
+      - "tests/test_flood_historical_gauge_audit_v1.py"
+      - "research_materials/runtime_trials/flood_20261023/**"
+      - "docs/FLOOD_HISTORICAL_GAUGE_QUALITY_GATE_V1.md"
+      - ".github/workflows/flood-historical-gauge.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archived-original-mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Cite–Refinery
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout archived public EA reading mirror pinned to exact commit
+        uses: actions/checkout@v4
+        with:
+          repository: zenith600/PlymHack-Cybernuts
+          ref: 93728ebdfdda41e629091f9e3550ccf8f2f4c58b
+          path: archived-ea-reading-mirror
+          persist-credentials: false
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project
+        run: python -m pip install -e .
+      - name: Run original-reading integrity and negative regression tests
+        run: python -m unittest discover -s tests -p 'test_flood_historical_gauge_audit_v1.py' -v
+      - name: Verify exact original mirror bytes and produce non-operational audit
+        run: |
+          python -m cite_refinery.flood_historical_gauge_audit \
+            --archived-mirror research_materials/runtime_trials/flood_20261023/sandford_archived_ea_sample.json \
+            --mirror-source-root archived-ea-reading-mirror \
+            --out "$RUNNER_TEMP/flood-historical-archived-mirror-audit.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          data=json.loads((Path(os.environ["RUNNER_TEMP"])/"flood-historical-archived-mirror-audit.json").read_text())
+          assert len(data["verified_original_mirror_git_blobs"]) == 3
+          assert data["selected_stage_unique_finite_readings"] == 3
+          assert data["sample_coverage_ratio_not_sensor_uptime"] == 0.75
+          assert data["real_flood_false_alarm_rate"] is None
+          assert data["public_warning_lead_time_minutes"] is None
+          assert data["no_automatic_warning_output"] is True
+          PY
+      - name: Upload bounded archived-source audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: archived-EA-gauge-original-blob-verified-audit
+          path: ${{ runner.temp }}/flood-historical-archived-mirror-audit.json
+          retention-days: 7
+          if-no-files-found: error
+
+  two-day-original-EA-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project
+        run: python -m pip install -e .
+      - name: Fetch fixed historical stage-only sample from official Environment Agency service
+        run: |
+          python -m cite_refinery.flood_historical_gauge_audit \
+            --official-window 2026-10-20 2026-10-21 \
+            --out "$RUNNER_TEMP/flood-original-EA-history-audit.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          data=json.loads((Path(os.environ["RUNNER_TEMP"])/"flood-original-EA-history-audit.json").read_text())
+          assert data["source_provenance"] == "original_EA_live_endpoint"
+          assert data["selected_stage_unique_finite_readings"] >= 1
+          assert data["operational_risk_threshold_available"] is False
+          assert data["real_flood_missed_event_rate"] is None
+          assert data["public_warning_lead_time_minutes"] is None
+          assert data["no_automatic_warning_output"] is True
+          PY
+      - name: Upload source-response digest and data-quality report (not alerts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-EA-two-day-stage-data-quality-audit
+          path: ${{ runner.temp }}/flood-original-EA-history-audit.json
+          retention-days: 7
+          if-no-files-found: error
