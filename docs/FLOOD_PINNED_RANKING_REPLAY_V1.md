@@ -38,7 +38,7 @@ This is a deterministic synthetic defect on the pinned source, **not an operatio
 
 The adapter also rejects NaN, positive/negative infinity, missing, text, boolean, complex and overflowing levels; invalid or reversed ranges; and invalid ranking parameters. It refuses duplicate station identities and sorts finite-score ties deterministically. It returns rejected-station diagnostics and a degraded-input flag. This is a bounded offline component; it never issues real warnings and cannot guarantee the remaining stations cover the missing hazard.
 
-Nine Python test methods passed locally using the byte-for-byte original sources. These contain six NaN input permutations, 24 tie/ordering permutations and numerous adversarial subcases. Independent GitHub Actions results must be checked separately.
+Nine Python test methods passed locally using the byte-for-byte original sources. GitHub Actions subsequently established that the exact original misranking count is not portable as a hard-coded assertion: the new acceptance gate requires at least one original misranking among all six permutations and reports the actual runtime-specific count, while still requiring 6/6 correct adapter results. These contain six NaN input permutations, 24 tie/ordering permutations and numerous adversarial subcases. Independent GitHub Actions results must be checked separately.
 
 ## Reproduce against verified original source
 
