@@ -137,7 +137,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
                 title=(modules[0].get("title") or mid) if modules else mid,
                 summary="Publication-approved Nocturnal matter; original-source assertions are not independently adjudicated.",
                 urls=row["source_urls"],
-                tags=["nocturnal_matter",*("fictional_pilot",) if is_fictional else ("public_release",)],
+                tags=["nocturnal_matter",*(("fictional_pilot",) if is_fictional else ("public_release",))],
                 facts=[("Matter ID",mid),
                        ("Reported current stage",row["current_stage_reported_by_nocturnal"]),
                        ("Source domains",", ".join(row["source_domains_not_independent_witnesses"])),
