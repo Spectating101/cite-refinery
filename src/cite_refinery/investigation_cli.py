@@ -165,6 +165,19 @@ def main(argv=None):
         help="Literal within-Nocturnal Practical matter search, not verified semantics")
     foundation.add_argument("--nocturnal-matter-id",
         help="Browse one public Nocturnal matter, if published")
+    foundation.add_argument("--nocturnal-stage",
+        help="Exact published Nocturnal event status stage (not independent truth)")
+    foundation.add_argument("--nocturnal-source-domain",
+        help="Exact published source hostname; not independent corroboration")
+    foundation.add_argument("--nocturnal-evidence-grade",
+        help="Exact upstream-reported evidence grade, not atlas validation")
+    foundation.add_argument("--nocturnal-open-dispute", action="store_const",
+        const=True, default=None,
+        help="Show matters whose upstream dispute flag appears unresolved")
+    foundation.add_argument("--nocturnal-after",
+        help="Browse published events from YYYY-MM-DD (inclusive)")
+    foundation.add_argument("--nocturnal-before",
+        help="Browse published events through YYYY-MM-DD (inclusive)")
     foundation.add_argument("--nocturnal-map-out",type=Path,
         help="Optional standalone JSON Practical map with Nocturnal evidence pointers")
     qualification=sub.add_parser("qualify-conversions",
@@ -273,7 +286,10 @@ def main(argv=None):
                 raise ValueError("Implementation browse requires a standalone map output")
         if (args.previous_nocturnal_atlas or args.nocturnal_terms or
             args.nocturnal_matter_id or args.nocturnal_map_out or
-            args.nocturnal_manifest_sha256) and not args.nocturnal_public_snapshot:
+            args.nocturnal_manifest_sha256 or args.nocturnal_stage or
+            args.nocturnal_source_domain or args.nocturnal_evidence_grade or
+            args.nocturnal_open_dispute is True or
+            args.nocturnal_after or args.nocturnal_before) and not args.nocturnal_public_snapshot:
             raise ValueError("Nocturnal options require --nocturnal-public-snapshot")
         shards=sorted(args.reading_dir.glob("shard-*.json"))
         if not 1<=len(shards)<=40:
@@ -409,7 +425,12 @@ def main(argv=None):
             m["practical"]["nocturnal_public_atlas"] = nocturnal_map
             nocturnal_view = browse_practical(
                 nocturnal_map, terms=args.nocturnal_terms,
-                matter_id=args.nocturnal_matter_id, limit=args.limit)
+                matter_id=args.nocturnal_matter_id, limit=args.limit,
+                stage=args.nocturnal_stage,
+                source_domain=args.nocturnal_source_domain,
+                evidence_grade=args.nocturnal_evidence_grade,
+                unresolved_dispute=args.nocturnal_open_dispute,
+                after=args.nocturnal_after, before=args.nocturnal_before)
             m["practical"]["nocturnal_public_browse"] = nocturnal_view
         view=(browse(m,layer=args.layer,facet=args.facet,terms=args.terms,
                      limit=args.limit) if args.layer else None)
