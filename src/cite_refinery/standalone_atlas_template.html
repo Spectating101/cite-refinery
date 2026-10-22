@@ -20,7 +20,7 @@ main{max-width:1500px;margin:0 auto;padding:22px;display:flex;flex-direction:col
 .work{display:grid;grid-template-columns:minmax(300px,1fr) minmax(400px,1.22fr);gap:16px;min-height:540px}
 .panel{background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:12px;min-width:0;overflow:hidden}
 .toolbar{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;gap:10px;flex-direction:column}.toolbar h2,.detail h2{margin:0;font-size:18px;letter-spacing:-.25px}
-.filters{display:grid;grid-template-columns:1fr minmax(140px,170px);gap:9px}.control{padding:10px 11px;border:1px solid #bcc9dd;border-radius:8px;background:#fff;min-width:0;width:100%;color:var(--ink)}.control:focus,.tab:focus-visible,.record:focus-visible,.action:focus-visible{outline:3px solid #acc6ff;outline-offset:2px}
+.filters{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(120px,.65fr) minmax(120px,.8fr);gap:9px}.control{padding:10px 11px;border:1px solid #bcc9dd;border-radius:8px;background:#fff;min-width:0;width:100%;color:var(--ink)}.control:focus,.tab:focus-visible,.record:focus-visible,.action:focus-visible{outline:3px solid #acc6ff;outline-offset:2px}
 .statusline{font-size:12px;color:var(--muted)}
 .records{overflow:auto;max-height:660px}.record{display:block;text-align:left;width:100%;border:0;border-left:4px solid transparent;background:#fff;border-bottom:1px solid #edf1f7;padding:14px 16px}.record:hover{background:#f6f9ff}.record.active{background:#eef4ff;border-left-color:#3154ad}
 .record strong{font-size:14px;font-weight:680;display:block;overflow-wrap:anywhere;line-height:1.35}.record p{font-size:12px;color:#67748a;margin:5px 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -67,8 +67,11 @@ main{max-width:1500px;margin:0 auto;padding:22px;display:flex;flex-direction:col
     <div class="filters">
       <label><span class="extra">Search titles, metadata and evidence categories</span><input class="control" id="search" type="search" maxlength="160" placeholder="Search within this map..." autocomplete="off"></label>
       <label><span class="extra">Evidence class</span><select class="control" id="facet"><option value="">All evidence classes</option></select></label>
+      <label><span class="extra">Field / source category</span><select class="control" id="subject"><option value="">All source categories</option></select></label>
     </div>
     <div class="statusline" id="status" aria-live="polite"></div>
+    <div class="statusline" id="coverage" aria-live="polite"></div>
+    <div class="actions" style="margin:0"><button id="export-cohort" type="button" class="action">Export filtered research packet</button></div>
   </div>
   <div class="records" id="records" role="list" aria-label="Source evidence records"></div>
   <div class="paging"><button id="previous" type="button">← Previous</button><span class="extra" id="page"></span><button id="next" type="button">Next →</button></div>
@@ -83,7 +86,7 @@ main{max-width:1500px;margin:0 auto;padding:22px;display:flex;flex-direction:col
 <script type="application/json" id="atlas-data"><!-- ATLAS_JSON_SLOT --></script>
 <script>
 "use strict";
-const state={layer:"practical",facet:"",query:"",page:0,selected:null};
+const state={layer:"practical",facet:"",subject:"",query:"",page:0,selected:null};
 const PAGE_SIZE=22;
 const raw=document.getElementById("atlas-data").textContent;
 const data=JSON.parse(raw);
@@ -113,12 +116,28 @@ const names={
 function current(){
  const term=state.query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
  return cards.filter(r=>{
-  if(r.layer!==state.layer || (state.facet && r.group!==state.facet))return false;
+  if(r.layer!==state.layer || (state.facet && r.group!==state.facet) ||
+      (state.subject && !r.subjects.includes(state.subject)))return false;
   if(!term.length)return true;
   const searchable=[r.id,r.title,r.summary,r.group,r.authority,
       ...r.tags,...r.flags,...r.facts.map(f=>f.name+" "+f.value)].join(" ").toLocaleLowerCase();
   return term.every(t=>searchable.includes(t));
  });
+}
+function rebuildSubjects(){
+ const select=el("subject");select.replaceChildren();
+ const all=make("option","All fields / source categories");all.value="";
+ select.append(all);
+ const counts=new Map();
+ for(const r of cards.filter(x=>x.layer===state.layer)){
+  for(const term of r.subjects){counts.set(term,(counts.get(term)||0)+1)}
+ }
+ const sorted=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
+ for(const [name,count] of sorted){
+  const opt=make("option",name.replaceAll("_"," ")+" ("+count+")");
+  opt.value=name;select.append(opt);
+ }
+ select.value=state.subject;
 }
 function rebuildFacets(){
  const select=el("facet");select.replaceChildren();
@@ -192,6 +211,17 @@ function renderResults(autoSelect=true){
  const maxPage=Math.max(0,Math.ceil(all.length/PAGE_SIZE)-1);
  state.page=Math.min(state.page,maxPage);
  el("status").textContent=all.length.toLocaleString()+" matching sources · Literal search only · Not quality ranked";
+ const groups={};
+ for(const item of all)groups[item.group]=(groups[item.group]||0)+1;
+ const parts=Object.entries(groups).sort((a,b)=>b[1]-a[1])
+   .map(([key,count])=>key.replaceAll("_"," ")+": "+count);
+ const scope=(state.layer==="academic"?
+   "66 sealed holdouts excluded · No validated scientific findings":
+   state.layer==="practical"?
+   "Notices are not confirmed demand · Reports are not firsthand field proof":
+   "Source identities are not working products · Only 2 original modules tested");
+ el("coverage").textContent=(parts.join(" · ")||"No matching source types")+
+   " | "+scope;
  el("page").textContent="Page "+(state.page+1)+" of "+(maxPage+1);
  el("previous").disabled=state.page===0;
  el("next").disabled=state.page===maxPage;
@@ -215,13 +245,13 @@ function renderResults(autoSelect=true){
 }
 function changeLayer(next){
  if(!["practical","academic","implementation"].includes(next))return;
- state.layer=next;state.page=0;state.selected=null;state.facet="";state.query="";
+ state.layer=next;state.page=0;state.selected=null;state.facet="";state.subject="";state.query="";
  el("search").value="";
  el("layer-heading").textContent=names[next];
  for(const tab of document.querySelectorAll(".tab")){
   tab.setAttribute("aria-selected",String(tab.dataset.layer===next));
  }
- rebuildFacets();renderResults(true);
+ rebuildFacets();rebuildSubjects();renderResults(true);
 }
 for(const tab of document.querySelectorAll(".tab")){
  tab.addEventListener("click",()=>changeLayer(tab.dataset.layer));
@@ -231,6 +261,26 @@ el("search").addEventListener("input",ev=>{
 });
 el("facet").addEventListener("change",ev=>{
  state.facet=ev.target.value;state.page=0;renderResults();
+});
+el("subject").addEventListener("change",ev=>{
+ state.subject=ev.target.value;state.page=0;renderResults();
+});
+el("export-cohort").addEventListener("click",()=>{
+ const selected=current();
+ const payload=JSON.stringify({
+   schema:"cite_refinery.readonly_source_cohort.v1",
+   layer:state.layer,query:state.query,
+   source_type:state.facet,original_category:state.subject,
+   total_matching_records:selected.length,
+   results:selected,
+   limits:data.limitations,
+   source_scope:"Metadata and scoped receipts; no automatic scientific or field validation."
+ },null,2);
+ const blob=new Blob([payload],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;a.download="cite-refinery-"+state.layer+"-source-cohort.json";a.click();
+ URL.revokeObjectURL(url);
 });
 el("next").addEventListener("click",()=>{state.page++;renderResults()});
 el("previous").addEventListener("click",()=>{state.page--;renderResults()});
