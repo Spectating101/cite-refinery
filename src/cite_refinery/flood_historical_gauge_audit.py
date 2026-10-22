@@ -6,7 +6,7 @@ Use a fixed-source offline audit; optional short live read is advisory only.
 from __future__ import annotations
 from collections import Counter
 from datetime import datetime, timedelta, timezone
-from hashlib import sha256
+from hashlib import sha256, sha1
 from math import isfinite
 from pathlib import Path
 from statistics import median
@@ -181,6 +181,42 @@ def from_mirror(fixture):
     return result
 
 
+def verify_archived_mirror_sources(fixture, root: Path):
+    """Reopen original third-party mirror bytes and match exact Git blob IDs.
+
+    This verifies the stored mirror's content, NOT the EA provider's historical
+    server response; independent upstream-origin verification is unavailable.
+    """
+    _require(isinstance(fixture, dict) and fixture.get("schema") == MIRROR,
+             "Invalid fixed EA mirror fixture")
+    observations = fixture.get("observations", [])
+    _require(len(observations) == 3, "Expected three fixed archived source files")
+    reviewed = []
+    for item in observations:
+        path = item.get("mirror_path")
+        blob = item.get("mirror_blob")
+        _require(isinstance(path, str) and path.startswith(
+                 "owl_engine/owl_data/2026-02-07/river_levels/")
+                 and ".." not in path and path.endswith(".json")
+                 and isinstance(blob, str) and len(blob) == 40,
+                 "Invalid mirror file locator")
+        p = root / path
+        _require(p.is_file() and not p.is_symlink() and p.stat().st_size <= 4096,
+                 "Original mirror file unavailable")
+        raw = p.read_bytes()
+        actual_sha = sha1(("blob %d\0" % len(raw)).encode() + raw).hexdigest()
+        _require(actual_sha == blob, "Original mirror Git blob mismatch")
+        row = json.loads(raw).get("raw_data", {})
+        _require(row.get("measure") == MEASURE
+                 and row.get("stationReference") == STATION
+                 and row.get("dateTime") == item.get("dateTime")
+                 and type(row.get("value")) in (int, float)
+                 and row["value"] == item.get("value"),
+                 "Mirrored original river-level observation disagrees with fixture")
+        reviewed.append({"path": path, "verified_git_blob_sha1": actual_sha})
+    return reviewed
+
+
 def retrieve_official_window(start_date, end_date):
     """Fetch a narrow, FIXED official measure; no arbitrary URL or alert commands."""
     from datetime import date
@@ -219,11 +255,18 @@ def main(argv=None):
     inp.add_argument("--archived-mirror", type=Path)
     inp.add_argument("--official-window", nargs=2, metavar=("START_DATE", "END_DATE"))
     p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--mirror-source-root", type=Path,
+                   help="Exact pinned external Git checkout used to verify mirror bytes")
     args = p.parse_args(argv)
     _require(not args.out.exists(), "Refusing to overwrite prior gauge audit")
     report = (from_mirror(_read_json(args.archived_mirror))
               if args.archived_mirror else
               retrieve_official_window(*args.official_window))
+    if args.mirror_source_root is not None:
+        _require(args.archived_mirror is not None,
+                 "External mirror verification requires --archived-mirror")
+        report["verified_original_mirror_git_blobs"] = verify_archived_mirror_sources(
+            _read_json(args.archived_mirror), args.mirror_source_root)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", "utf-8")
     print(json.dumps({
