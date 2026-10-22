@@ -36,6 +36,20 @@ For an externally supplied handoff, use `--responses /path/to/rank_passages_answ
 
 **Important:** `--original-text-dir` expects exact full original extracted text corresponding to the 103-index manifest's digest. Replacing it with snippets, fabricated abstracts, or files reconstructed independently will not pass the SHA check. The files are not published in GitHub; the authorized machine that collected them or another legitimately sourced extraction must supply them. No real production data is fetched by this module.
 
+## Recover permitted original public JATS text (without private corpus access)
+
+The repository includes the original `richer_public_sources._jats_excerpt` extraction routine that created the 103-source development map. `cite-refinery-academic-text-recover` now retrieves **only allowlisted Europe PMC original JATS articles** from the 43 JATS sources in that frozen 103-source inventory, repeats the exact original extraction, and checks the *full extracted-text SHA-256* against the release's source fingerprint. It writes only exact matches to a new **private local source-ID text directory**, without overwriting mismatches. It records unavailable sources and publisher-version drift separately. It never touches the 66 heldout documents.
+
+```bash
+cite-refinery-academic-text-recover \
+  --academic-atlas /path/to/academic_original_source_enriched_atlas.json \
+  --private-out-dir /private/academic-verified-original-texts \
+  --report-out /private/original-recovery-evidence.json \
+  --max-sources 8
+```
+
+An intentionally bounded real-network GitHub Actions probe (three published PMC articles) is present in CI. It prints counts/digests **without publishing the article text**. A successful source-recovery fingerprint provides an actual original text input for the model runner, not scientific peer-validation or verified semantic accuracy. If publisher versions drift and no digest matches, this route abstains rather than rewriting the frozen history. World Bank and Zenodo text recovery remain outside this first JATS-only tool.
+
 ## Actual tests and honest limits
 
 The unit tests assemble an authentic 103-source index shape from the frozen public development manifest and then replace two example text fingerprints **in test memory only**, clearly marking the associated passages as *synthetic*. A simulated model responds to stage prompts. The tests demonstrate the orchestration and authenticity gate: paraphrased question can select its source when the model selects it, exact quote offsets are verified, unknown source/holdout, wrong SHA and invented quotation are rejected, overreaching interpretations are blocked by critic, no evidence abstains, and unavailable authenticated model abstains.
