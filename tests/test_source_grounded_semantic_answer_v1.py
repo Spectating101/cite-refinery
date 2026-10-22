@@ -268,6 +268,20 @@ class SemanticVerticalSliceTests(unittest.TestCase):
             self.assertEqual(saved["provenance"]["model_execution_mode"],
                 "operator_supplied_model_responses_unverified")
             self.assertFalse(saved["provenance"]["independently_human_approved"])
+            with self.assertRaisesRegex(ValueError,"independent critic|Independent critic"):
+                main(["--academic-atlas",str(atlas),
+                      "--original-text-dir",str(originals),
+                      "--question",self.question,
+                      "--provider","antigravity","--model","gemini-3.8-flash-medium",
+                      "--critic-provider","copilot","--critic-model","auto",
+                      "--output",str(root/"unsafe-critic.json")])
+            with self.assertRaisesRegex(ValueError,"distinct model families"):
+                main(["--academic-atlas",str(atlas),
+                      "--original-text-dir",str(originals),
+                      "--question",self.question,
+                      "--provider","antigravity","--model","gemini-3.8-flash-medium",
+                      "--critic-provider","copilot","--critic-model","gemini-4-argon-medium",
+                      "--output",str(root/"same-family.json")])
             with self.assertRaisesRegex(ValueError,"overwrite"):
                 main(["--academic-atlas",str(atlas),
                     "--original-text-dir",str(originals),
