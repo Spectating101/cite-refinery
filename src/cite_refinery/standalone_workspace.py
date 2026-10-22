@@ -229,9 +229,9 @@ def build_pilot(foundation, academic, implementation, public_practical=None,
            authority=("Externally supplied model responses; NOT authenticated or scientifically approved"
                       if prov["model_execution_mode"]==
                          "operator_supplied_model_responses_unverified" else
-                      "Authenticated model candidate; exact quote verified, meaning NOT independently approved"),
+                      "Receipt labels model as authenticated; browser cannot attest execution. Source quote independently rechecked, interpretation NOT approved"),
            flags=["not_accepted_scientific_evidence","do_not_use_as_independent_source",
-                  "review_gate_not_approved"],
+                  "review_gate_not_approved","model_execution_not_cryptographically_attested"],
            facts=[("Candidate source evidence count",len(cited)),
                   ("Provider label",prov.get("provider_label") or "unavailable"),
                   ("Review status",sr["review_gate"]),
