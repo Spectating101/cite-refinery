@@ -68,7 +68,7 @@ def _item(layer, group, key, *, title, summary="", urls=(), tags=(),
 
 
 def build_pilot(foundation, academic, implementation, public_practical=None,
-                semantic_receipt=None):
+                semantic_receipt=None, semantic_source_texts=None):
     """Assemble independent browse records; optional verified semantic review packet."""
     _require(foundation.get("schema")==FOUNDATION and
              foundation.get("cross_layer_edges_generated")==0,
@@ -174,6 +174,13 @@ def build_pilot(foundation, academic, implementation, public_practical=None,
                       "operator_supplied_model_responses_unverified"},
                  "Semantic source review packet has false authority or unknown provenance")
         cited=sr.get("claims")
+        _require(isinstance(semantic_source_texts,dict) and
+                 all(sid in academic["sources"] and isinstance(text,str) and
+                     len(text.encode("utf-8"))<=2_000_000 and
+                     sha256(text.encode("utf-8")).hexdigest()==
+                         academic["sources"][sid]["text_sha256"]
+                     for sid,text in semantic_source_texts.items()),
+                 "Semantic import requires verified frozen original Academic texts")
         _require(isinstance(cited,list) and len(cited)<=12 and
                  bool(cited)==(sr["result"]=="candidate_answer_review_only"),
                  "Semantic review evidence or abstention is contradictory")
@@ -197,6 +204,9 @@ def build_pilot(foundation, academic, implementation, public_practical=None,
                      type(span[0]) is int and type(span[1]) is int and
                      0<=span[0]<span[1] and span[1]-span[0]==len(quote),
                      "Semantic quote or original published text digest did not match source map")
+            original=semantic_source_texts.get(x["source_id"])
+            _require(isinstance(original,str) and original[span[0]:span[1]]==quote,
+                     "Semantic original quoted span not independently reverified against full SHA-pinned text")
             urls.append(source["url"])
             details.append(("Source quote from "+x["source_id"]+" (model interpretation unreviewed)",
                             x["statement_model_supplied"]+"\nOriginal quote: "+quote))
@@ -413,6 +423,8 @@ def main(argv=None):
     p.add_argument("--out-dir",required=True,type=Path)
     p.add_argument("--academic-semantic-receipt",type=Path,
                    help="Optional produced candidate semantic answer receipt, never verified science")
+    p.add_argument("--academic-semantic-source-dir",type=Path,
+                   help="Mandatory when importing receipt: private SHA-verified original development extract directory")
     args=p.parse_args(argv)
     sources=[args.foundation,args.academic,args.implementation]
     if args.approved_practical:sources.append(args.approved_practical)
@@ -421,14 +433,20 @@ def main(argv=None):
             raise ValueError("Source map missing, symlinked or unbounded")
     inputs=[json.loads(x.read_text("utf-8")) for x in sources]
     semantic=None
+    original_texts=None
+    if bool(args.academic_semantic_receipt)!=bool(args.academic_semantic_source_dir):
+        raise ValueError("Semantic review publication requires receipt AND private verified original text directory")
     if args.academic_semantic_receipt:
         file=args.academic_semantic_receipt
         if not file.is_file() or file.is_symlink() or file.stat().st_size>200_000:
             raise ValueError("Semantic source-review packet unavailable or oversized")
         semantic=json.loads(file.read_text("utf-8"))
+        from .source_grounded_semantic_answer import verified_available_sources
+        original_texts=verified_available_sources(inputs[1],args.academic_semantic_source_dir)
     result=write_pilot(build_pilot(*inputs[:3],
                                  public_practical=inputs[3] if len(inputs)==4 else None,
-                                 semantic_receipt=semantic),args.out_dir)
+                                 semantic_receipt=semantic,
+                                 semantic_source_texts=original_texts),args.out_dir)
     print(json.dumps(result,sort_keys=True))
     return 0
 
