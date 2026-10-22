@@ -237,8 +237,8 @@ def build_pilot(foundation, academic, implementation, public_practical=None,
                       "Receipt labels model as authenticated; browser cannot attest execution. Source quote independently rechecked, interpretation NOT approved"),
            flags=["not_accepted_scientific_evidence","do_not_use_as_independent_source",
                   "review_gate_not_approved","model_execution_not_cryptographically_attested",
-                  *("rejected_claim_quotes_not_answer_evidence",) if
-                      sr["result"]=="abstained" and cited else ()],
+                  *(("rejected_claim_quotes_not_answer_evidence",) if
+                      sr["result"]=="abstained" and cited else ())],
            facts=[("Candidate source evidence count",len(cited)),
                   ("Provider label",prov.get("provider_label") or "unavailable"),
                   ("Review status",sr["review_gate"]),
