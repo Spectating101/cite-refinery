@@ -19,6 +19,8 @@ The snapshot's own publication approval is a **necessary input**, not proof of t
 ## What Cite–Refinery adds
 
 - An independent **matter index** with public chronology, institutional stage, actors, literal search and original public source links.
+- **Correction reference resolution without adjudication:** the import checks whether a `correction_of` or `supersedes` reference identifies exactly one *approved-public* module (by module ID or event ID) in the same matter. Resolution is annotated as `resolved_same_matter`; missing/withheld, ambiguous, malformed or cross-matter targets remain explicitly unresolved. A resolved pointer means only that a public identifier matched, **not** that the original claim is false, that a dispute was decided, or that an absent reference was deleted. Coverage counts distinguish linked from unresolved correction targets, and timelines expose the resolution. No source body is copied.
+- **Literal within-Practical facets:** `--nocturnal-stage`, `--nocturnal-source-domain`, `--nocturnal-evidence-grade`, `--nocturnal-open-dispute`, `--nocturnal-after` and `--nocturnal-before` can be combined with term/matter browsing. Dates match individual published event dates, not inferred case activity intervals; reported grade/dispute/stage are not independently adjudicated. Source hostname grouping is not corroboration.
 - Immutable module identifiers, correction/supersession links, and a source-file locator `modules.jsonl#L<n>`. Module body is NOT copied into the derived atlas; a text SHA-256 binds its reference to the authorized original snapshot.
 - Explicit per-snapshot coverage of matters, source URLs/domains, entities, corrections, missing source links and open dispute flags.
 - Incremental comparison with a previously generated Practical map: added modules, unchanged modules and opaque IDs no longer present in the current approved release. **Removed/withheld source text is never carried forward** by Cite–Refinery. A reused module ID with modified original text/content fails closed.
@@ -50,6 +52,17 @@ cite-refinery investigate map-foundations \
 ```
 
 The existing 9 practical abstract reports and 48 TED notices remain distinct from **original Nocturnal public ledger observations**. `--nocturnal-terms` navigates case names, source URLs, entity names, titles and stages, not original body text or semantic embeddings.
+
+
+# Explore specific evidence dimensions of the *same approved public snapshot*:
+cite-refinery investigate map-foundations \\
+  --nocturnal-public-snapshot /tmp/nocturnal-fictional-snapshot \\
+  --nocturnal-stage corrected \\
+  --nocturnal-source-domain local-watch.invalid \\
+  --nocturnal-after 2025-01-01 \\
+  --nocturnal-map-out /tmp/practical_filtered.json \\
+  --json-out /tmp/three_layer_filtered.json \\
+  --markdown-out /tmp/three_layer_filtered.md
 
 For a real approved release, obtain the exact `manifest.json` SHA-256 from a trusted Nocturnal approval channel, then add `--nocturnal-manifest-sha256 <approved-64-hex-digest>`. A checksum alone cannot prove lawful publication; it prevents unapproved file substitution after an out-of-band review.
 
