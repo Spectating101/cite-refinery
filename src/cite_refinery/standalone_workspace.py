@@ -49,7 +49,7 @@ def _safe_urls(values):
 
 
 def _item(layer, group, key, *, title, summary="", urls=(), tags=(),
-          facts=(), authority="", flags=(), details=None):
+          subjects=(), facts=(), authority="", flags=(), details=None):
     label=layer+":"+group+":"+str(key)
     _require(0<len(label)<=500 and len(title or "")>0,"Invalid source record title or ID")
     return {
@@ -57,6 +57,7 @@ def _item(layer, group, key, *, title, summary="", urls=(), tags=(),
         "title":_text(title,1200),"summary":_text(summary,2300),
         "urls":_safe_urls(urls),
         "tags":sorted({_text(x,130) for x in tags if x is not None}),
+        "subjects":sorted({_text(x,140) for x in subjects if x is not None}),
         "authority":_text(authority,350),
         "flags":sorted({_text(x,180) for x in flags}),
         "facts":[{"name":_text(k,170),"value":_text(v,1200)}
@@ -108,6 +109,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
             title=row["title"],summary=row["provisional_model_statement"],
             urls=[row["url"]],
             tags=[row["provisional_model_role"],row["reporting_channel"]],
+            subjects=row["provisional_research_areas"],
             facts=[("Recorded source type",row["origin_type"]),
                    ("Original text SHA-256",row["retrieved_text_sha256"]),
                    ("Scope",row["provisional_model_scope"])],
@@ -119,6 +121,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
             "practical","published_notice",row["id"],
             title=row["title"],summary="Published procurement notice metadata, not validated actual demand.",
             urls=[row["url"]],tags=["procurement_notice"],
+            subjects=["procurement_notice"],
             facts=[("Buyer",row["buyer"]),("Publication date",row["published"])],
             authority="Published notice metadata only; eligibility/current status unknown",
             flags=["eligibility_unverified","demand_unconfirmed"]))
@@ -138,6 +141,8 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
                 summary="Publication-approved Nocturnal matter; original-source assertions are not independently adjudicated.",
                 urls=row["source_urls"],
                 tags=["nocturnal_matter",*(("fictional_pilot",) if is_fictional else ("public_release",))],
+                subjects=[public_practical["coverage"].get("scope_domain_from_pilot") or
+                          "published_matter"],
                 facts=[("Matter ID",mid),
                        ("Reported current stage",row["current_stage_reported_by_nocturnal"]),
                        ("Source domains",", ".join(row["source_domains_not_independent_witnesses"])),
@@ -153,6 +158,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
             "academic","legacy_abstract",row["id"],title=row["title"],
             summary=row["provisional_model_statement"],urls=[row["url"]],
             tags=[row["origin_type"],*row["provisional_research_areas"]],
+            subjects=row["provisional_research_areas"],
             authority="Earlier abstract/bibliographic lead; not a validated full-text finding",
             flags=["bibliographic_not_scientific_finding"],
             facts=[("Original excerpt SHA-256",row["retrieved_text_sha256"]),
@@ -167,6 +173,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
             "academic","development_source",sid,
             title=row["title"],summary="Frozen Academic development source index; extracted original text is not redistributed in this workspace.",
             urls=[row["url"]],tags=[row["origin_genre"]],
+            subjects=[row["origin_genre"]],
             authority="Indexed source identity; scientific claims are NOT independently validated",
             flags=["development_only","dataset_metadata_not_observations" if
                    row["origin_genre"]=="dataset_metadata" else
@@ -209,6 +216,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
             summary=row["publisher_description_not_capability_proof"] or
                     "No descriptive publisher metadata available.",
             urls=[row["url"]],tags=[*cats,stage],
+            subjects=cats,
             authority=("Bounded synthetic original-source functions tested; NOT full product"
                        if historical else "Original source inspection only; no tested capability"),
             flags=[stage,"adoption_unverified","reuse_rights_unverified"],
@@ -229,6 +237,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
             summary=_text(row.get("relevant_scope_operator_supplied")),
             urls=[row["upstream_source_url"]],tags=["prior_historical_probe",row.get(
                 "technology_type_operator_supplied","")],
+            subjects=[row.get("technology_type_operator_supplied") or "historical_probe"],
             authority="Prior recorded synthetic/static test outside 1,287 GitHub survey; NOT replayed here",
             flags=["outside_survey","historical_receipt","operational_fit_unverified"],
             facts=[("Original upstream pinned commit",row["upstream_commit"]),
