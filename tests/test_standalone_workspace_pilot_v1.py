@@ -52,6 +52,7 @@ class OfflineStandalonePilotTests(unittest.TestCase):
         self.assertEqual(m["original_data"]["independently_validated_scientific_findings"],0)
         self.assertEqual(m["original_data"]["implementation_original_modules_tested"],0)
         self.assertEqual(m["original_data"]["implementation_live_field_outcomes"],0)
+        self.assertGreaterEqual(sum(bool(x["subjects"]) for x in m["cards"]),1400)
         self.assertFalse(m["original_data"]["practical_public_nocturnal_attached"])
         self.assertFalse(m["original_data"]["world_coverage_complete"])
 
@@ -82,6 +83,8 @@ class OfflineStandalonePilotTests(unittest.TestCase):
         prior=[x for x in impl if x["group"]=="external_historical_trial"]
         self.assertEqual(len(prior),3)
         self.assertTrue(all("outside_survey" in x["flags"] for x in prior))
+        self.assertTrue(all(x["subjects"] for x in prior))
+        self.assertTrue(all(x["subjects"] for x in impl if x["group"]=="surveyed_repository"))
         self.assertTrue(all("historical_receipt" in x["flags"] for x in prior))
 
     def test_refuses_fake_validation_unsealed_holdout_or_injected_source(self):
@@ -113,6 +116,9 @@ class OfflineStandalonePilotTests(unittest.TestCase):
             self.assertIn("Independent Evidence Atlases",page)
             self.assertIn('id="atlas-data"',page)
             self.assertIn("Download dossier JSON",page)
+            self.assertIn("Export filtered research packet",page)
+            self.assertIn('id="subject"',page)
+            self.assertIn('id="coverage"',page)
             self.assertIn("changeLayer",page)
             self.assertNotIn("<!-- ATLAS_JSON_SLOT -->",page)
             self.assertNotIn("fetch(",page)
