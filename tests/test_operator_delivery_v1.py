@@ -183,7 +183,7 @@ class OperatorDeliveryTests(unittest.TestCase):
                 canonical_main(args)
             with (ROOT/"pyproject.toml").open("rb") as handle:
                 scripts=tomllib.load(handle)["project"]["scripts"]
-            self.assertEqual(len(scripts),50)
+            self.assertEqual(len(scripts),51)
             self.assertNotIn("cite-refinery-operator-brief",scripts)
 
 if __name__=="__main__":

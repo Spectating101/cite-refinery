@@ -267,7 +267,7 @@ class QualificationSweepTests(unittest.TestCase):
             with (ROOT/"pyproject.toml").open("rb") as f:
                 scripts=tomllib.load(f)["project"]["scripts"]
             self.assertNotIn("cite-refinery-qualify-conversions",scripts)
-            self.assertEqual(len(scripts),50)
+            self.assertEqual(len(scripts),51)
 
 if __name__=="__main__":
     unittest.main()

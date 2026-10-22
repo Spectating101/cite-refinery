@@ -1,0 +1,67 @@
+name: Pinned flood source falsification and finite telemetry ranking
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/flood_ranking_adapter.py"
+      - "src/cite_refinery/flood_ranking_replay.py"
+      - "tests/test_flood_ranking_replay_v1.py"
+      - "docs/FLOOD_PINNED_RANKING_REPLAY_V1.md"
+      - ".github/workflows/flood-pinned-replay.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-falsification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Cite–Refinery feature branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout upstream at audited exact SHA (public, read-only)
+        uses: actions/checkout@v4
+        with:
+          repository: WeixuanZ/flood-warning-system
+          ref: c1c7facf2c5577a155edd93a0b7279ad7630518c
+          path: upstream-flood-warning
+          persist-credentials: false
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install local project, no external model or live telemetry
+        run: python -m pip install -e .
+      - name: Compile safety-bounded original-code comparison
+        run: python -m compileall -q src/cite_refinery/flood_ranking_adapter.py src/cite_refinery/flood_ranking_replay.py
+      - name: Run all isolated adapter and exact-original tests
+        run: |
+          FLOOD_UPSTREAM_ROOT="$GITHUB_WORKSPACE/upstream-flood-warning" \
+            python -m unittest discover -s tests -p 'test_flood_ranking_replay_v1.py' -v
+      - name: Produce review-only original-code and repaired ranking receipt
+        run: |
+          python -m cite_refinery.flood_ranking_replay \
+            --upstream-root "$GITHUB_WORKSPACE/upstream-flood-warning" \
+            --out "$GITHUB_WORKSPACE/flood-pinned-replay.json"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path("flood-pinned-replay.json").read_text())
+          assert result["original_incorrect_top_one"]==2
+          assert result["adapter_correct_top_one"]==6
+          assert result["adapter_nan_rejections"]==6
+          assert result["finite_only_ranking_preserved"] is True
+          assert result["field_or_safety_authority_proven"] is False
+          assert result["no_real_warning_generated"] is True
+          assert len(result["original_verified_git_blobs"])==3
+          PY
+      - name: Upload reproducible negative-control receipts only
+        uses: actions/upload-artifact@v4
+        with:
+          name: flood-pinned-synthetic-ranking-original-versus-adapter
+          path: flood-pinned-replay.json
+          if-no-files-found: error
+          retention-days: 7
