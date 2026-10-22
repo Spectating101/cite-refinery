@@ -73,7 +73,8 @@ def source_bound_map(*,functional_trials=None):
         "sampled_repositories":2,"source_file_inspection_successes":2,
         "records":two
     }
-    atlas=build_implementation_atlas(base,original_audit=original,code_audit=depth,\n                                     functional_trials=functional_trials)
+    atlas=build_implementation_atlas(base,original_audit=original,code_audit=depth,
+                                     functional_trials=functional_trials)
     return attach_original_function_replay(atlas,simulated_receipt())
 
 
