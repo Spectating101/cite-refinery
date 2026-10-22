@@ -285,6 +285,25 @@ class SemanticVerticalSliceTests(unittest.TestCase):
                         semantic_receipt=tampered,
                         semantic_source_texts=self.texts)
 
+    def test_critic_rejected_proposal_is_inspectable_not_promoted(self):
+        from cite_refinery.standalone_workspace import build_pilot
+        from test_standalone_workspace_pilot_v1 import OfflineStandalonePilotTests
+        OfflineStandalonePilotTests.setUpClass()
+        critic={"assessment":"overreach","unsafe_claim_indices":[0],
+                "reason":"The cited observational statement does not prove sensor-caused reductions in asthma."}
+        rejected=self.execute(critic=critic)
+        self.assertEqual(rejected["result"],"abstained")
+        self.assertEqual(len(rejected["claims"]),1)
+        pilot=build_pilot(OfflineStandalonePilotTests.foundation,self.atlas,
+                          OfflineStandalonePilotTests.impl,
+                          semantic_receipt=rejected,
+                          semantic_source_texts=self.texts)
+        rows=[c for c in pilot["cards"] if c["group"]=="semantic_review_packet"]
+        self.assertEqual(len(rows),1)
+        self.assertIn("rejected_claim_quotes_not_answer_evidence",rows[0]["flags"])
+        self.assertIn("NOT answer support",rows[0]["details"][1]["heading"])
+        self.assertEqual(pilot["original_data"]["independently_validated_scientific_findings"],0)
+
     def test_manual_cli_requires_truthful_execution_mode_and_writes_receipt(self):
         with TemporaryDirectory() as td:
             root=Path(td)
