@@ -75,6 +75,8 @@ cite-refinery-operator-conversion-gate = "cite_refinery.operator_conversion_gate
 cite-refinery-reported-issue-contracts = "cite_refinery.reported_issue_contracts:main"
 cite-refinery-original-component-trials = "cite_refinery.pinned_original_component_trials:main"
 cite-refinery-framework-suite-evidence = "cite_refinery.framework_suite_evidence:main"
+cite-refinery-semantic-answer = "cite_refinery.source_grounded_semantic_answer:main"
+cite-refinery-academic-text-recover = "cite_refinery.academic_public_text_recovery:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

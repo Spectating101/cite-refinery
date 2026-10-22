@@ -68,7 +68,19 @@ def require_distinct_family(
 
 
 def _parse_response(payload):
-    if isinstance(payload, dict) and all(k in payload for k in ("propositions","bridges","open_questions")):
+    # Also permit bounded *staged Academic semantics* replies. Previously
+    # only proposition packets passed directly, so authenticated providers
+    # rejected otherwise valid source-rank, passage-rank and critic JSON.
+    stage_shapes=(
+        ("candidates","abstain"),
+        ("passages","abstain"),
+        ("status","answer","claims","limitations"),
+        ("assessment","reason","unsafe_claim_indices"),
+    )
+    if isinstance(payload,dict) and (
+        all(k in payload for k in ("propositions","bridges","open_questions")) or
+        any(all(k in payload for k in shape) for shape in stage_shapes)
+    ):
         return payload
     if isinstance(payload, dict):
         result = payload.get("structured_output") or payload.get("result") or payload.get("response")
