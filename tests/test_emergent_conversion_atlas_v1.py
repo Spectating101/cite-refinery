@@ -230,7 +230,7 @@ class ConversionAtlasTests(unittest.TestCase):
                 cli(args)
             with (ROOT/"pyproject.toml").open("rb") as f:
                 scripts=tomllib.load(f)["project"]["scripts"]
-            self.assertEqual(len(scripts),50)
+            self.assertEqual(len(scripts),51)
             self.assertNotIn("cite-refinery-discover-conversions",scripts)
 
 if __name__=="__main__":
