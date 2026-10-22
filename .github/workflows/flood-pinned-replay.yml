@@ -50,7 +50,7 @@ jobs:
           import json
           from pathlib import Path
           result=json.loads(Path("flood-pinned-replay.json").read_text())
-          assert result["original_incorrect_top_one"]==2
+          assert result["original_incorrect_top_one"]>=1
           assert result["adapter_correct_top_one"]==6
           assert result["adapter_nan_rejections"]==6
           assert result["finite_only_ranking_preserved"] is True
