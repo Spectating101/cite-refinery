@@ -346,6 +346,38 @@ class NocturnalPublicAtlasTests(unittest.TestCase):
             self.assertIsNone(
                 b["modules"]["fictional-module-2"]["correction_target"]["module_id"])
 
+
+    def test_upstream_pending_dispute_vs_final_correction_is_not_guilt_score(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            fixture(root)
+            self.assertEqual(
+                browse_practical(build_practical_atlas(root), unresolved_dispute=True)["matching_count"],
+                0, "Nocturnal's 'corrected' is a final, not pending, dispute state")
+            reseal_fictional_snapshot(
+                root, change_modules=lambda rows: rows[1].update(dispute_state="submitted"))
+            pending = build_practical_atlas(root)
+            self.assertTrue(
+                pending["matters"]["fictional-matter"]["unresolved_dispute_reported"])
+            self.assertEqual(
+                browse_practical(pending, unresolved_dispute=True)["matching_count"], 1)
+            self.assertFalse(
+                pending["matters"]["fictional-matter"]["substantive_outcome_independently_verified"])
+
+    def test_self_referential_correction_never_resolves_as_external_evidence(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            fixture(root)
+            reseal_fictional_snapshot(
+                root, change_modules=lambda rows: rows[1].update(
+                    correction_of="event-correction"))
+            a = build_practical_atlas(root)
+            self.assertEqual(
+                a["modules"]["fictional-module-2"]["correction_target"]["state"],
+                "self_reference")
+            self.assertIsNone(
+                a["modules"]["fictional-module-2"]["correction_target"]["module_id"])
+
     def test_literal_facets_and_bounded_event_chronology(self):
         with TemporaryDirectory() as td:
             fixture(Path(td))
@@ -355,13 +387,14 @@ class NocturnalPublicAtlasTests(unittest.TestCase):
                 {"source_domain": "harbor-record.invalid"},
                 {"evidence_grade": "sourced"},
                 {"after": "2026-02-01", "before": "2026-02-01"},
-                {"unresolved_dispute": True},
+                {"unresolved_dispute": False},
             ):
                 self.assertEqual(browse_practical(a, **kwargs)["matching_count"], 1, kwargs)
             for kwargs in (
                 {"stage": "convicted"}, {"evidence_grade": "confirmed_by_atlas"},
                 {"source_domain": "unknown.invalid"},
                 {"after": "2026-03-01"},
+                {"unresolved_dispute": True},
             ):
                 self.assertEqual(browse_practical(a, **kwargs)["matching_count"], 0, kwargs)
             with self.assertRaisesRegex(ValueError, "reversed"):
