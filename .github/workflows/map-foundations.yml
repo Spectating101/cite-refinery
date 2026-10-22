@@ -14,6 +14,8 @@ on:
       - "src/cite_refinery/implementation_original_lef_def_trial.py"
       - "src/cite_refinery/standalone_workspace.py"
       - "src/cite_refinery/semantic_integration_reality_audit.py"
+      - "src/cite_refinery/three_map_capability_packet.py"
+      - "tests/test_three_map_capability_packet_v1.py"
       - "src/cite_refinery/standalone_atlas_template.html"
       - "src/cite_refinery/investigation_cli.py"
       - "tests/test_layer_foundations_v1.py"
@@ -53,7 +55,7 @@ jobs:
       - name: Install project
         run: python -m pip install -e ".[server]"
       - name: Compile source
-        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py src/cite_refinery/original_layer_source_audit.py src/cite_refinery/nocturnal_public_atlas.py src/cite_refinery/academic_evidence_atlas.py src/cite_refinery/academic_original_depth_audit.py src/cite_refinery/implementation_evidence_atlas.py src/cite_refinery/implementation_original_code_audit.py src/cite_refinery/implementation_original_function_trial.py src/cite_refinery/implementation_original_lef_def_trial.py src/cite_refinery/standalone_workspace.py src/cite_refinery/semantic_integration_reality_audit.py
+        run: python -m compileall -q src/cite_refinery/layer_foundations.py src/cite_refinery/investigation_cli.py src/cite_refinery/original_layer_source_audit.py src/cite_refinery/nocturnal_public_atlas.py src/cite_refinery/academic_evidence_atlas.py src/cite_refinery/academic_original_depth_audit.py src/cite_refinery/implementation_evidence_atlas.py src/cite_refinery/implementation_original_code_audit.py src/cite_refinery/implementation_original_function_trial.py src/cite_refinery/implementation_original_lef_def_trial.py src/cite_refinery/standalone_workspace.py src/cite_refinery/semantic_integration_reality_audit.py src/cite_refinery/three_map_capability_packet.py
       - name: Run all map-first source integrity tests
         run: python -m unittest discover -s tests -p 'test_layer_foundations_v1.py' -v
       - name: Run independent source-audit guardrail tests
@@ -74,6 +76,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_standalone_workspace_pilot_v1.py' -v
       - name: Reality-check literal vs meaning-level retrieval and separate archived LLM claims
         run: python -m unittest discover -s tests -p 'test_semantic_integration_reality_audit_v1.py' -v
+      - name: Test source-balanced three-map evaluation packets without inventing gold
+        run: python -m unittest discover -s tests -p 'test_three_map_capability_packet_v1.py' -v
       - name: Build release wheel
         run: |
           python -m pip install build
@@ -195,6 +199,25 @@ jobs:
             --workspace-source src/cite_refinery/standalone_workspace.py \
             --report-out "$RUNNER_TEMP/layer-maps/semantic_integration_reality_audit.json"
           python -c 'import os,json; p=os.environ["RUNNER_TEMP"]+"/layer-maps/semantic_integration_reality_audit.json"; r=json.load(open(p)); assert r["search"]["n_pairs"]==10 and r["search"]["literal_target_recall"]==10 and r["search"]["meaning_preserving_paraphrase_target_recall"]==0 and r["historic_model_diagnostic"]["archived_agreement_with_investigator_labels"]==23 and r["source_integrity"]["exact_same_original_urls_occurring_across_layers"]==6 and not r["readiness_gate_passed"]'
+      - name: Freeze source-balanced three-map benchmark review queue
+        run: |
+          python -m cite_refinery.three_map_capability_packet \
+            --pilot "$RUNNER_TEMP/layer-maps/standalone-research-pilot/atlas.json" \
+            --out-dir "$RUNNER_TEMP/layer-maps/three-map-capability-packet"
+          python - <<'PY'
+          from pathlib import Path
+          import json, os
+          root=Path(os.environ["RUNNER_TEMP"])/"layer-maps"/"three-map-capability-packet"
+          questions=json.loads((root/"questions.json").read_text())
+          refs=json.loads((root/"reviewer-reference.json").read_text())
+          assert len(questions["questions"])==120
+          assert len(refs["anchors"])==120
+          assert len({a["selected_source_card_id"] for a in refs["anchors"]})==60
+          assert sum(x["literal_hit"] for x in refs["historical_development_pairs"])==10
+          assert sum(x["paraphrase_hit"] for x in refs["historical_development_pairs"])==0
+          assert refs["independent_answer_quality_gold_available"] is False
+          assert refs["no_sealed_holdout_or_private_nocturnal_material_used"] is True
+          PY
       - name: Upload inspectable standalone maps
         uses: actions/upload-artifact@v4
         with:
