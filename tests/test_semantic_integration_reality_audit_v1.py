@@ -27,7 +27,9 @@ class SemanticReadinessRealityTests(unittest.TestCase):
     def setUpClass(cls):
         OfflineStandalonePilotTests.setUpClass()
         OriginalLefDefTests.setUpClass()
-        impl=attach_original_lef_def_replay(source_bound_map(),synthetic_eda_receipt())
+        impl=attach_original_lef_def_replay(source_bound_map(
+            functional_trials=load(ATLAS/"functional_component_trials.json")),
+            synthetic_eda_receipt())
         cls.pilot=build_pilot(OfflineStandalonePilotTests.foundation,
                               OfflineStandalonePilotTests.academic,impl)
         cls.archive=load(ATLAS/"semantic_entailment_diagnostic_results.json")
