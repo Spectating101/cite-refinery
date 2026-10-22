@@ -67,4 +67,4 @@ The next gate requires legitimately obtained, locally relevant gauge histories, 
 
 ## Separate baseline test issue
 
-The first dossier's focused CI succeeded. Its full-project CI failed five tests that expect 50 installed console entry points while the project currently declares 51. That is a packaging/interface contract issue separate from this flood station replay. This pass does not silently alter other command interfaces or weaken those tests.
+The first dossier's focused CI succeeded. Its full-project CI failed five stale tests that expected **50** installed console entry points, while the current feature stack intentionally declares **51**, including the prior Academic source-grounded semantic CLI (cite-refinery-semantic-answer). This branch updates exactly those five test counts and asserts the new CLI's canonical entrypoint target explicitly; it does **not** add or remove any actual CLI command. The complete suite requires a fresh successful CI run before being called green. This packaging-contract repair is separate from the flood source replay.
