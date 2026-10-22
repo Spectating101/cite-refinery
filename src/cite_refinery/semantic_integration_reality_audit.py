@@ -138,6 +138,28 @@ def audit(pilot, entailment, review, *, template=None, compiler_source=None):
              "Original pilot sources or scientific authority mutated")
     archived=check_recorded_semantic_diagnostic(entailment,review)
     ids={x["id"]:x for x in pilot["cards"]}
+    archived_source_ids={x["source_id"] for x in entailment["cases"]}
+    archived_legacy_overlap=0
+    archived_new_academic_overlap=0
+    for sid in sorted(archived_source_ids):
+        source_url={x["source_url"] for x in entailment["cases"]
+                    if x["source_id"]==sid}
+        _require(len(source_url)==1,"Archived original source ID has multiple URLs")
+        legacy=ids.get("academic:legacy_abstract:"+sid)
+        if legacy is not None:
+            _require(legacy["urls"]==list(source_url),
+                     "Archived semantic source record doesn't match original published URL")
+            archived_legacy_overlap+=1
+        modern=ids.get("academic:development_source:"+sid)
+        if modern is not None:
+            _require(modern["urls"]==list(source_url),
+                     "Archived semantic record not grounded in new frozen Academic identity")
+            archived_new_academic_overlap+=1
+    archived["archived_unique_original_source_count"]=len(archived_source_ids)
+    archived["archived_source_ids_aligning_with_legacy_abstract_cards"]=archived_legacy_overlap
+    archived["archived_source_ids_aligning_with_new_103_development_cards"]=archived_new_academic_overlap
+    archived["archived_result_cards_actually_attached_to_workspace"]=0
+    archived["source_id_possible_join_does_not_mean_semantic_model_connected"]=True
     _require(len(ids)==len(pilot["cards"]),"Repeated source index card")
     sample=[]
     for i,(target,direct,paraphrase) in enumerate(PAIRS,1):
