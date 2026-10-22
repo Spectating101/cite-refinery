@@ -6,6 +6,7 @@ private ledger, local operator API, or investigation journal is read.
 from __future__ import annotations
 
 from collections import Counter, defaultdict
+from datetime import date
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -57,6 +58,47 @@ def _https(url):
         raise ValueError("Nocturnal snapshot contains invalid public HTTPS source URL")
     return url
 
+
+
+def _resolve_public_reference(reference, modules, by_event, *, matter_id):
+    """Resolve an upstream pointer only against this approved public release.
+
+    A missing or ambiguous pointer remains *unresolved*, never a verified
+    correction of an inaccessible or differently scoped original.
+    """
+    if not isinstance(reference, str) or not reference:
+        return {"reference": reference, "state": "invalid", "module_id": None,
+                "matched_by": None}
+    candidates = set(by_event.get(reference, ()))
+    if reference in modules:
+        candidates.add(reference)
+    if not candidates:
+        return {"reference": reference, "state": "not_in_public_snapshot",
+                "module_id": None, "matched_by": None}
+    if len(candidates) != 1:
+        return {"reference": reference, "state": "ambiguous",
+                "module_id": None, "matched_by": None}
+    target_id = next(iter(candidates))
+    if modules[target_id].get("matter_id") != matter_id:
+        return {"reference": reference, "state": "different_matter",
+                "module_id": None, "matched_by": None}
+    return {
+        "reference": reference,
+        "state": "resolved_same_matter",
+        "module_id": target_id,
+        "matched_by": "module_id" if reference == target_id else "event_id",
+    }
+
+
+def _bounded_iso_day(day):
+    if day is None:
+        return None
+    if not isinstance(day, str) or len(day) != 10:
+        raise ValueError("Practical chronology filter requires YYYY-MM-DD")
+    try:
+        return date.fromisoformat(day).isoformat()
+    except ValueError as exc:
+        raise ValueError("Invalid Practical chronology filter") from exc
 
 def load_public_snapshot(directory, *, expected_manifest_sha256=None):
     """Check release authority, manifest fingerprint, byte hashes and references."""
@@ -173,6 +215,13 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
     for mid, row in corrections.items():
         if row.get("correction_of") != modules[mid].get("correction_of"):
             raise ValueError("Nocturnal correction link mismatch")
+    # Event identifiers can differ from module identifiers in native Nocturnal
+    # releases. Collisions deliberately remain unresolved rather than guessing.
+    event_ids = defaultdict(set)
+    for module_id, module in modules.items():
+        event_id = module.get("event_id")
+        if isinstance(event_id, str) and event_id:
+            event_ids[event_id].add(module_id)
     projected_modules = {}
     for idx, original in enumerate(rows["modules"], 1):
         mid = original["module_id"]
@@ -187,7 +236,20 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
             "editorial_review_state": original.get("editorial_review_state"),
             "dispute_state": original.get("dispute_state"),
             "correction_of": original.get("correction_of"),
+            "correction_target": (
+                _resolve_public_reference(
+                    original["correction_of"], modules, event_ids,
+                    matter_id=original.get("matter_id"))
+                if original.get("correction_of") else None),
             "supersedes": original.get("supersedes") or [],
+            "supersession_targets": [
+                _resolve_public_reference(
+                    ref, modules, event_ids, matter_id=original.get("matter_id"))
+                for ref in (original.get("supersedes") or [])
+            ] if isinstance(original.get("supersedes") or [], list) else [
+                {"reference": None, "state": "invalid", "module_id": None,
+                 "matched_by": None}
+            ],
             "source_urls": original["source_urls"],
             "canonical_url": original.get("canonical_url"),
             "entity_ids": [e["entity_id"] for e in original.get("entities") or []],
@@ -206,6 +268,7 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
                 "event_id": modules[key].get("event_id"),
                 "stage": modules[key].get("status_stage"),
                 "correction_of": modules[key].get("correction_of"),
+                "correction_target": projected_modules[key]["correction_target"],
                 "dispute_state": modules[key].get("dispute_state"),
             } for key in ordered],
             "source_urls": sorted({url for key in event_ids
@@ -260,6 +323,12 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
             "source_url_count": len(sources), "source_domain_count": len({
                 urlsplit(url).hostname for url in sources}),
             "entity_count": len(entities), "correction_count": len(corrections),
+            "correction_targets_resolved_in_public_snapshot": sum(
+                p["correction_target"]["state"] == "resolved_same_matter"
+                for p in projected_modules.values() if p["correction_target"]),
+            "correction_targets_unresolved_in_public_snapshot": sum(
+                p["correction_target"]["state"] != "resolved_same_matter"
+                for p in projected_modules.values() if p["correction_target"]),
             "matters_without_original_source_links": sum(
                 not case["source_urls"] for case in projected_matters.values()),
             "matters_with_open_dispute_flags": sum(
@@ -288,6 +357,8 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
         "interpretation": {
             "source_url_count_is_not_independent_corroboration": True,
             "dispute_flag_is_not_adjudicated_source_contradiction": True,
+            "resolved_public_correction_pointer_is_not_adjudicated_truth": True,
+            "unresolved_correction_pointer_does_not_prove_original_deleted": True,
             "case_or_actor_listing_is_not_a_guilt_or_risk_score": True,
             "snapshot_does_not_supply_reviewed_field_taxonomy": True,
             "cross_layer_edges_created": 0,
@@ -295,25 +366,61 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
     }
 
 
-def browse_practical(atlas, *, terms=None, matter_id=None, limit=25):
+def browse_practical(atlas, *, terms=None, matter_id=None, limit=25,
+                     stage=None, source_domain=None, evidence_grade=None,
+                     unresolved_dispute=None, after=None, before=None):
+    """Literal, within-Practical exploration of published source attributes.
+
+    Temporal filters match individual event dates, not inferred case duration.
+    Nothing in these filters upgrades original claims into verified outcomes.
+    """
     if atlas.get("schema") != SCHEMA or not 1 <= limit <= 100:
         raise ValueError("Invalid Practical Atlas or browse limit")
     if terms is not None and (not isinstance(terms, str) or len(terms) > 160):
         raise ValueError("Malformed search")
     if matter_id is not None and matter_id not in atlas["matters"]:
         raise ValueError("Unknown matter")
+    for value in (stage, source_domain, evidence_grade):
+        if value is not None and (not isinstance(value, str) or
+                                  not value.strip() or len(value) > 160):
+            raise ValueError("Invalid Practical source facet")
+    if unresolved_dispute is not None and not isinstance(unresolved_dispute, bool):
+        raise ValueError("Invalid unresolved-dispute filter")
+    after, before = _bounded_iso_day(after), _bounded_iso_day(before)
+    if after and before and after > before:
+        raise ValueError("Practical chronology range is reversed")
     needles = (terms or "").casefold().split()
     hits = []
     for mid, matter in sorted(atlas["matters"].items()):
         if matter_id and mid != matter_id:
             continue
+        evidence = [atlas["modules"][rid] for rid in matter["module_ids"]]
+        if stage is not None and not any(
+            (row.get("status_stage") or "").casefold() == stage.casefold()
+            for row in evidence):
+            continue
+        if source_domain is not None and not any(
+            domain.casefold() == source_domain.casefold()
+            for domain in matter["source_domains_not_independent_witnesses"]):
+            continue
+        if evidence_grade is not None and not any(
+            str(row.get("evidence_grade_reported") or "").casefold()
+            == evidence_grade.casefold() for row in evidence):
+            continue
+        if unresolved_dispute is not None and (
+            bool(matter["unresolved_dispute_reported"]) != unresolved_dispute):
+            continue
+        if after is not None or before is not None:
+            days = [str(row.get("observed_at") or "")[:10] for row in evidence]
+            if not any(len(d) == 10 and (after is None or d >= after) and
+                       (before is None or d <= before) for d in days):
+                continue
         indexed = [mid, str(matter.get("current_stage_reported_by_nocturnal") or "")]
         indexed += matter["source_urls"]
         indexed += [str(atlas["entities"][eid].get("name") or "")
                     for eid in matter["entity_ids"]]
-        indexed += [str(atlas["modules"][rid].get("title") or "") for rid in matter["module_ids"]]
-        indexed += [str(atlas["modules"][rid].get("status_stage") or "")
-                    for rid in matter["module_ids"]]
+        indexed += [str(row.get("title") or "") for row in evidence]
+        indexed += [str(row.get("status_stage") or "") for row in evidence]
         haystack = " ".join(indexed).casefold()
         if all(needle in haystack for needle in needles):
             hits.append(matter)
@@ -321,6 +428,12 @@ def browse_practical(atlas, *, terms=None, matter_id=None, limit=25):
         "schema": "cite_refinery.nocturnal_practical_browse.v1",
         "snapshot_id": atlas["provenance"]["snapshot_id"],
         "matching_count": len(hits), "results": hits[:limit],
+        "filters": {
+            "stage": stage, "source_domain": source_domain,
+            "evidence_grade": evidence_grade,
+            "unresolved_dispute": unresolved_dispute,
+            "after": after, "before": before,
+        },
         "lexical_only": True, "searches_original_body_text": False,
         "source_url_count_is_not_independent_corroboration": True,
         "cross_layer_join_performed": False,
