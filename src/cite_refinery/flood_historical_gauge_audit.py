@@ -163,7 +163,15 @@ def from_mirror(fixture):
              and fixture.get("typical_range_from_official_station_metadata_present") is False
              and fixture.get("mirror_commit") == "93728ebdfdda41e629091f9e3550ccf8f2f4c58b",
              "Expected source-located unqualified EA mirror sample")
+    expected = (
+        ("2026-02-07T13:30:00Z", 0.065, "aaf8ebce8ed0b7989889086bf2aafe8584f81fca"),
+        ("2026-02-07T13:45:00Z", 0.062, "af4c08bd913a09b77a7829205c36d857de8a83dd"),
+        ("2026-02-07T14:15:00Z", 0.068, "92924e0c7cee515684dee5560d7a83a28b3defc4"),
+    )
     _require(len(fixture.get("observations", [])) == 3, "Archived gauge mirror sample changed")
+    _require(tuple((x.get("dateTime"), x.get("value"), x.get("mirror_blob"))
+                   for x in fixture["observations"]) == expected,
+             "Archived source-bound EA readings altered")
     data = []
     for x in fixture["observations"]:
         blob = x.get("mirror_blob")
