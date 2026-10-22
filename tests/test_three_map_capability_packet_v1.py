@@ -34,6 +34,8 @@ class ThreeMapCapabilityPacketTests(unittest.TestCase):
         self.assertEqual(sum(references["selection_by_layer_and_group"]["implementation"].values()), 20)
         self.assertEqual(len({r["selected_source_card_id"]
                               for r in references["anchors"]}), 60)
+        self.assertGreaterEqual(
+            len(references["implementation_selected_source_stages"]), 2)
         self.assertEqual(len({q["task_id"] for q in tasks["questions"]}), 120)
         self.assertTrue(references["no_sealed_holdout_or_private_nocturnal_material_used"])
         self.assertFalse(references["independent_answer_quality_gold_available"])
