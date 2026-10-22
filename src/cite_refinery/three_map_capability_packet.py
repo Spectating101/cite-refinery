@@ -121,7 +121,7 @@ def build_packet(pilot, *, per_layer=20, seed=SEED):
     sampled = _sample(pilot, per_layer=per_layer, seed=seed)
     baseline = {
         "schema": PILOT, "records": 1497, "by_layer": LAYERS,
-        "source_identity_fingerprint": _hash(sorted(known)),
+        "source_identity_fingerprint": _hash(pilot["cards"]),
         "seed": seed, "sample_per_layer": per_layer,
     }
     fingerprint = _hash(baseline)
@@ -160,6 +160,10 @@ def build_packet(pilot, *, per_layer=20, seed=SEED):
     private_reference = {
         "schema": SCHEMA, "baseline_sha256": fingerprint, "baseline": baseline,
         "anchors": anchors, "historical_development_pairs": development,
+        "allowed_card_ids_by_layer": {
+            layer: sorted(c["id"] for c in pilot["cards"] if c["layer"] == layer)
+            for layer in LAYERS
+        },
         "selection_by_layer_and_group": {
             layer: dict(sorted(Counter(c["group"] for c in sampled[layer]).items()))
             for layer in LAYERS
@@ -202,8 +206,9 @@ def score(question_set, private_reference, predictions):
                  and isinstance(response.get("abstained"), bool),
                  "Malformed or duplicated source retrieval response")
         layer = ids[response["task_id"]]["layer"]
-        _require(all(x.startswith(layer + ":") for x in retrieved),
-                 "Wrong-layer source identity in standalone-map benchmark")
+        _require(all(x in private_reference["allowed_card_ids_by_layer"][layer]
+                     for x in retrieved),
+                 "Unknown or wrong-layer source identity in standalone-map benchmark")
         result = by_layer[layer]
         result["submitted"] += 1
         result["abstained"] += int(response["abstained"])
