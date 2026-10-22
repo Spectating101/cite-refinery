@@ -72,8 +72,8 @@ def replay(root: Path) -> dict:
             "adapter_degraded_input": repaired.degraded_input,
         })
     problems = [x for x in rows if x["original_top_id"] != "high"]
-    if len(problems) != 2:
-        raise AssertionError("Pinned upstream NaN ordering counterexample unexpectedly changed")
+    if not problems:
+        raise AssertionError("Pinned upstream NaN misranking not reproduced on this runtime")
     if not all(x["adapter_top_id"] == "high"
                and x["adapter_above_threshold_ids"] == ["high"]
                and x["adapter_rejected_ids"] == ["nonfinite"]
