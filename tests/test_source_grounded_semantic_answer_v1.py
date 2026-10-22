@@ -245,7 +245,8 @@ class SemanticVerticalSliceTests(unittest.TestCase):
         implementation=OfflineStandalonePilotTests.impl
         packet=self.execute()
         result=build_pilot(foundation,self.atlas,implementation,
-                           semantic_receipt=packet)
+                           semantic_receipt=packet,
+                           semantic_source_texts=self.texts)
         self.assertEqual(result["record_count"],1498)
         self.assertEqual(result["by_layer"]["academic"],151)
         self.assertEqual(result["original_data"]["semantic_review_packets_attached_unapproved"],1)
@@ -260,12 +261,29 @@ class SemanticVerticalSliceTests(unittest.TestCase):
         tampered["claims"][0]["original_text_sha256"]="f"*64
         with self.assertRaisesRegex(ValueError,"digest"):
             build_pilot(foundation,self.atlas,implementation,
-                        semantic_receipt=tampered)
+                        semantic_receipt=tampered,
+                        semantic_source_texts=self.texts)
+        # Two SHA fields and a plausible offset are NOT proof the text
+        # contains the cited bytes. A forged statement and invented quote
+        # must be checked against original source text.
+        tampered=deepcopy(packet)
+        forged="Invented laboratory experiment proves every child is cured."
+        tampered["claims"][0]["quote"]=forged
+        tampered["claims"][0]["source_quote_sha256"]=sha256(forged.encode()).hexdigest()
+        tampered["claims"][0]["exact_char_offsets"]=[0,len(forged)]
+        with self.assertRaisesRegex(ValueError,"independently reverified"):
+            build_pilot(foundation,self.atlas,implementation,
+                        semantic_receipt=tampered,
+                        semantic_source_texts=self.texts)
+        with self.assertRaisesRegex(ValueError,"requires verified"):
+            build_pilot(foundation,self.atlas,implementation,
+                        semantic_receipt=packet)
         tampered=deepcopy(packet)
         tampered["provenance"]["independently_human_approved"]=True
         with self.assertRaisesRegex(ValueError,"authority"):
             build_pilot(foundation,self.atlas,implementation,
-                        semantic_receipt=tampered)
+                        semantic_receipt=tampered,
+                        semantic_source_texts=self.texts)
 
     def test_manual_cli_requires_truthful_execution_mode_and_writes_receipt(self):
         with TemporaryDirectory() as td:
