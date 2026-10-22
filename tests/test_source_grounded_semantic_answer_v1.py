@@ -219,6 +219,37 @@ class SemanticVerticalSliceTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"never saw"):
             self.execute(stages)
 
+    def test_bounded_semantic_receipt_is_visible_in_academic_browser_without_promotion(self):
+        from cite_refinery.standalone_workspace import build_pilot
+        from test_standalone_workspace_pilot_v1 import OfflineStandalonePilotTests
+        from cite_refinery.implementation_evidence_atlas import build_implementation_atlas
+        OfflineStandalonePilotTests.setUpClass()
+        foundation=OfflineStandalonePilotTests.foundation
+        implementation=OfflineStandalonePilotTests.impl
+        packet=self.execute()
+        result=build_pilot(foundation,self.atlas,implementation,
+                           semantic_receipt=packet)
+        self.assertEqual(result["record_count"],1498)
+        self.assertEqual(result["by_layer"]["academic"],151)
+        self.assertEqual(result["original_data"]["semantic_review_packets_attached_unapproved"],1)
+        rows=[x for x in result["cards"] if x["group"]=="semantic_review_packet"]
+        self.assertEqual(len(rows),1)
+        self.assertIn("not_accepted_scientific_evidence",rows[0]["flags"])
+        self.assertIn("Externally supplied model responses",rows[0]["authority"])
+        self.assertEqual(rows[0]["urls"],[self.atlas["sources"][self.sid]["url"]])
+        self.assertIn(self.quote,rows[0]["details"][1]["text"])
+        self.assertEqual(result["original_data"]["independently_validated_scientific_findings"],0)
+        tampered=deepcopy(packet)
+        tampered["claims"][0]["original_text_sha256"]="f"*64
+        with self.assertRaisesRegex(ValueError,"digest"):
+            build_pilot(foundation,self.atlas,implementation,
+                        semantic_receipt=tampered)
+        tampered=deepcopy(packet)
+        tampered["provenance"]["independently_human_approved"]=True
+        with self.assertRaisesRegex(ValueError,"authority"):
+            build_pilot(foundation,self.atlas,implementation,
+                        semantic_receipt=tampered)
+
     def test_manual_cli_requires_truthful_execution_mode_and_writes_receipt(self):
         with TemporaryDirectory() as td:
             root=Path(td)
