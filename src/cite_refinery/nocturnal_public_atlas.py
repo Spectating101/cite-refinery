@@ -60,7 +60,8 @@ def _https(url):
 
 
 
-def _resolve_public_reference(reference, modules, by_event, *, matter_id):
+def _resolve_public_reference(reference, modules, by_event, *, matter_id,
+                              origin_module_id=None):
     """Resolve an upstream pointer only against this approved public release.
 
     A missing or ambiguous pointer remains *unresolved*, never a verified
@@ -79,6 +80,9 @@ def _resolve_public_reference(reference, modules, by_event, *, matter_id):
         return {"reference": reference, "state": "ambiguous",
                 "module_id": None, "matched_by": None}
     target_id = next(iter(candidates))
+    if target_id == origin_module_id:
+        return {"reference": reference, "state": "self_reference",
+                "module_id": None, "matched_by": None}
     if modules[target_id].get("matter_id") != matter_id:
         return {"reference": reference, "state": "different_matter",
                 "module_id": None, "matched_by": None}
@@ -239,12 +243,14 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
             "correction_target": (
                 _resolve_public_reference(
                     original["correction_of"], modules, event_ids,
-                    matter_id=original.get("matter_id"))
+                    matter_id=original.get("matter_id"),
+                    origin_module_id=mid)
                 if original.get("correction_of") else None),
             "supersedes": original.get("supersedes") or [],
             "supersession_targets": [
                 _resolve_public_reference(
-                    ref, modules, event_ids, matter_id=original.get("matter_id"))
+                    ref, modules, event_ids, matter_id=original.get("matter_id"),
+                    origin_module_id=mid)
                 for ref in (original.get("supersedes") or [])
             ] if isinstance(original.get("supersedes") or [], list) else [
                 {"reference": None, "state": "invalid", "module_id": None,
@@ -280,7 +286,8 @@ def build_practical_atlas(directory, *, previous=None, expected_manifest_sha256=
                                   for e in modules[key].get("entities") or []}),
             "current_stage_reported_by_nocturnal": item.get("current_stage"),
             "unresolved_dispute_reported": any(
-                modules[key].get("dispute_state") not in ("none", None, "", "resolved")
+                modules[key].get("dispute_state") in (
+                    "submitted", "under_review", "active")
                 for key in event_ids),
             "substantive_outcome_independently_verified": False,
         }
