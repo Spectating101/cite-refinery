@@ -34,7 +34,7 @@ def fake_eda_audit():
     }
 
 
-def source_bound_map():
+def source_bound_map(*,functional_trials=None):
     base=ImplementationAtlasTests.base
     rlex=next(x for x in base["implementation"]["repository_leads"]
               if x["id"]=="github:blisspixel/recon")
@@ -73,7 +73,7 @@ def source_bound_map():
         "sampled_repositories":2,"source_file_inspection_successes":2,
         "records":two
     }
-    atlas=build_implementation_atlas(base,original_audit=original,code_audit=depth)
+    atlas=build_implementation_atlas(base,original_audit=original,code_audit=depth,\n                                     functional_trials=functional_trials)
     return attach_original_function_replay(atlas,simulated_receipt())
 
 
