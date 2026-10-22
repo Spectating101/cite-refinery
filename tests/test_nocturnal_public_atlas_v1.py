@@ -133,7 +133,7 @@ def reseal_fictional_snapshot(root: Path, *, change_modules):
         row["correction_of"] = matching.get("correction_of")
         row["event_id"] = matching.get("event_id")
     for name, rows in (("modules", modules), ("corrections", corrections)):
-        data = "".join(canonical(row) + "\\n" for row in rows).encode("utf-8")
+        data = "".join(canonical(row) + "\n" for row in rows).encode("utf-8")
         (root / (name + ".jsonl")).write_bytes(data)
         manifest["files"][name + ".jsonl"] = {
             "bytes": len(data), "sha256": sha256(data).hexdigest()}
@@ -146,7 +146,7 @@ def reseal_fictional_snapshot(root: Path, *, change_modules):
         "pilot_id": manifest["pilot_gate"]["pilot_id"],
     }).encode("utf-8")).hexdigest()
     manifest["snapshot_id"] = "nocturnal-" + digest[:20]
-    (root / "manifest.json").write_text(json.dumps(manifest) + "\\n")
+    (root / "manifest.json").write_text(json.dumps(manifest) + "\n")
 
 
 class NocturnalPublicAtlasTests(unittest.TestCase):
@@ -317,9 +317,8 @@ class NocturnalPublicAtlasTests(unittest.TestCase):
             self.assertEqual(
                 imported["matters"]["fictional-matter"]["timeline"][1]["correction_target"],
                 inferred)
-            self.assertFalse(
-                imported["interpretation"]["resolved_public_correction_pointer_is_not_adjudicated_truth"]
-                is False)
+            self.assertTrue(
+                imported["interpretation"]["resolved_public_correction_pointer_is_not_adjudicated_truth"])
 
     def test_unreleased_or_colliding_correction_target_stays_unresolved(self):
         with TemporaryDirectory() as td:
