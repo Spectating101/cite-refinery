@@ -1,0 +1,39 @@
+{
+  "schema": "cite_refinery.official_gauge_mirror_three_readings.v1",
+  "source_publisher": "Environment Agency, England",
+  "source_service": "EA real-time flood-monitoring data API (Beta)",
+  "source_collection": "third-party committed mirror, NOT original EA endpoint response verified live in this turn",
+  "official_source_documentation": "https://environment.data.gov.uk/flood-monitoring/doc/reference",
+  "attribution": "This uses Environment Agency flood and river level data from the real-time data API (Beta)",
+  "mirror_repository": "zenith600/PlymHack-Cybernuts",
+  "mirror_commit": "93728ebdfdda41e629091f9e3550ccf8f2f4c58b",
+  "station": "1502TH",
+  "station_name": "Sandford-on-Thames",
+  "measure": "http://environment.data.gov.uk/flood-monitoring/id/measures/1502TH-level-stage-i-15_min-mASD",
+  "unit": "mASD",
+  "cadence_minutes": 15,
+  "observations": [
+    {
+      "dateTime": "2026-02-07T13:30:00Z",
+      "value": 0.065,
+      "mirror_blob": "aaf8ebce8ed0b7989889086bf2aafe8584f81fca",
+      "mirror_path": "owl_engine/owl_data/2026-02-07/river_levels/19-24-22-841421_bbb7a56c.json"
+    },
+    {
+      "dateTime": "2026-02-07T13:45:00Z",
+      "value": 0.062,
+      "mirror_blob": "af4c08bd913a09b77a7829205c36d857de8a83dd",
+      "mirror_path": "owl_engine/owl_data/2026-02-07/river_levels/19-38-43-074824_b97e0466.json"
+    },
+    {
+      "dateTime": "2026-02-07T14:15:00Z",
+      "value": 0.068,
+      "mirror_blob": "92924e0c7cee515684dee5560d7a83a28b3defc4",
+      "mirror_path": "owl_engine/owl_data/2026-02-07/river_levels/20-16-29-040897_0fd444b1.json"
+    }
+  ],
+  "flood_event_labels_present": false,
+  "warning_issue_or_delivery_records_present": false,
+  "typical_range_from_official_station_metadata_present": false,
+  "boundary": "Small sampled third-party mirror: absent 14:00 reading in samples does not establish an EA monitoring outage."
+}
