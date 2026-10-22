@@ -54,3 +54,5 @@ The unit tests assemble an authentic 103-source index shape from the frozen publ
 ## Security/epistemic caveats
 
 Model prompts include untrusted source text, which remains *data*, not executable instructions. Local model binaries are launched only under their respective existing, explicitly opt-in provider contracts. The answer is a non-authoritative research proposal. A real quotation can be **semantically irrelevant, misleading or misread**; exact-span verification does not establish entailment or scientific truth. The result includes that limitation explicitly and never promotes a Commons graph status.
+
+**Browser-level execution identity limit:** A JSON receipt can claim it came from `authenticated_live_model`, but the offline importer has no signed runtime attestation to prove it. The browser explicitly says model-execution identity is unverified even after it independently reopens the original source and checks exact quote offsets. This distinction prevents a forged model-run label from becoming evidence of authenticated inference.
