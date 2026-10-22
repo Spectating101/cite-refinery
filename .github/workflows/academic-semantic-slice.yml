@@ -3,9 +3,11 @@ on:
   pull_request:
     paths:
       - "src/cite_refinery/source_grounded_semantic_answer.py"
+      - "src/cite_refinery/academic_public_text_recovery.py"
       - "src/cite_refinery/standalone_workspace.py"
       - "src/cite_refinery/standalone_atlas_template.html"
       - "tests/test_source_grounded_semantic_answer_v1.py"
+      - "tests/test_academic_public_text_recovery_v1.py"
       - "docs/ACADEMIC_SOURCE_GROUNDED_SEMANTICS_V1.md"
       - "pyproject.toml"
       - ".github/workflows/academic-semantic-slice.yml"
@@ -26,9 +28,32 @@ jobs:
       - name: Install test extras without an inference provider
         run: python -m pip install -e ".[server,test]"
       - name: Compile semantic source and its real-index tests
-        run: python -m compileall -q src/cite_refinery/source_grounded_semantic_answer.py tests/test_source_grounded_semantic_answer_v1.py
+        run: python -m compileall -q src/cite_refinery/source_grounded_semantic_answer.py src/cite_refinery/academic_public_text_recovery.py tests/test_source_grounded_semantic_answer_v1.py tests/test_academic_public_text_recovery_v1.py
       - name: Exercise source ranking, passage evidence, quote integrity and abstention
         run: python -m unittest discover -s tests -p 'test_source_grounded_semantic_answer_v1.py' -v
+      - name: Test exact publisher recovery digest and heldout isolation
+        run: python -m unittest discover -s tests -p 'test_academic_public_text_recovery_v1.py' -v
+      - name: Attempt bounded live Europe PMC exact frozen-extraction recovery
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python -m cite_refinery.academic_public_text_recovery \
+            --academic-atlas research_materials/runtime_trials/richer_corpus_20261020/development_source_manifest.json \
+            --private-out-dir "$RUNNER_TEMP/frozen-publisher-text-checked" \
+            --report-out "$RUNNER_TEMP/publisher-recovery-report.json" \
+            --max-sources 3
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          receipt=json.loads((Path(os.environ["RUNNER_TEMP"])/"publisher-recovery-report.json").read_text())
+          assert receipt["requested"]==3 and not receipt["heldout_document_text_accessed"]
+          assert not receipt["original_extracted_source_fulltext_published"]
+          assert receipt["recovered"]+receipt["digest_mismatches"]+receipt["unavailable_or_unparseable"]==3
+          print("Observed exact original development recoveries:",receipt["recovered"])
+          print("Publisher/extraction SHA mismatch:",receipt["digest_mismatches"])
+          print("Retrieval unavailable:",receipt["unavailable_or_unparseable"])
+          print("No recovered source body is uploaded or published.")
+          PY
       - name: Provider reality contract
         run: |
           python - <<'PY'
