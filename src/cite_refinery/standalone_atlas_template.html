@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cite–Refinery | Independent Evidence Atlases</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light;--ink:#19243b;--muted:#65718a;--line:#dbe3ef;--paper:#f5f7fb;--white:#fff;--primary:#3154ad;--accent:#dbe8ff;--warn:#855900;--shadow:0 9px 30px rgba(25,35,65,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;line-height:1.55}
+button,input,select{font:inherit}button{cursor:pointer}a{color:var(--primary);overflow-wrap:anywhere}
+header{background:#192746;color:white;border-bottom:3px solid #6693ef;padding:20px max(22px,calc((100vw - 1480px)/2))}
+header h1{margin:0;font-size:23px;letter-spacing:-.65px;font-weight:710}header p{margin:4px 0 0;color:#c8d5ec}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:18px}.eyebrow{font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:#a9bddf;font-weight:700}
+.mode{border:1px solid #47618e;padding:7px 11px;border-radius:8px;color:#e1eaff;font-size:12px}
+main{max-width:1500px;margin:0 auto;padding:22px;display:flex;flex-direction:column;gap:15px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+.metric .amount{font-size:27px;line-height:1.1;letter-spacing:-1px;font-weight:730}.metric .label{font-size:12px;color:var(--muted);margin-top:6px}
+.tabs{display:flex;gap:9px;flex-wrap:wrap}.tab{border:1px solid #d7deea;background:white;border-radius:9px;padding:10px 14px;color:#44546c;font-weight:650;min-height:43px}.tab[aria-selected=true]{background:#284784;color:white;border-color:#284784}
+.work{display:grid;grid-template-columns:minmax(300px,1fr) minmax(400px,1.22fr);gap:16px;min-height:540px}
+.panel{background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:12px;min-width:0;overflow:hidden}
+.toolbar{padding:17px 18px;border-bottom:1px solid var(--line);display:flex;gap:10px;flex-direction:column}.toolbar h2,.detail h2{margin:0;font-size:18px;letter-spacing:-.25px}
+.filters{display:grid;grid-template-columns:1fr minmax(140px,170px);gap:9px}.control{padding:10px 11px;border:1px solid #bcc9dd;border-radius:8px;background:#fff;min-width:0;width:100%;color:var(--ink)}.control:focus,.tab:focus-visible,.record:focus-visible,.action:focus-visible{outline:3px solid #acc6ff;outline-offset:2px}
+.statusline{font-size:12px;color:var(--muted)}
+.records{overflow:auto;max-height:660px}.record{display:block;text-align:left;width:100%;border:0;border-left:4px solid transparent;background:#fff;border-bottom:1px solid #edf1f7;padding:14px 16px}.record:hover{background:#f6f9ff}.record.active{background:#eef4ff;border-left-color:#3154ad}
+.record strong{font-size:14px;font-weight:680;display:block;overflow-wrap:anywhere;line-height:1.35}.record p{font-size:12px;color:#67748a;margin:5px 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.record .minor{font-size:11px;color:#71809b}
+.paging{display:flex;justify-content:space-between;align-items:center;padding:10px 15px;border-top:1px solid var(--line)}.paging button{border:1px solid #b7c7e0;background:#fff;border-radius:7px;padding:7px 12px}.paging button:disabled{opacity:.4;cursor:default}
+.detail{padding:22px 24px;overflow:auto;max-height:825px}.detail .prelude{font-size:11px;color:#607399;text-transform:uppercase;letter-spacing:1px;font-weight:800}.detail h2{font-size:22px;margin:5px 0 8px;overflow-wrap:anywhere;line-height:1.3}.detail .summary{color:#53647e;font-size:13px;line-height:1.65;margin-bottom:15px}
+.authority{background:#f4f7fc;border:1px solid #dce4f1;padding:12px 14px;border-radius:8px;color:#405474;font-weight:620;font-size:13px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 18px}.chip{font-size:11px;color:#4d658a;border:1px solid #dae3f4;border-radius:30px;padding:3px 8px}
+.section-title{font-size:12px;color:#3d4d6b;font-weight:780;text-transform:uppercase;letter-spacing:.65px;margin:20px 0 8px}
+.facts{border-top:1px solid var(--line)}.fact{display:grid;grid-template-columns:minmax(128px,35%) 1fr;gap:10px;padding:9px 0;border-bottom:1px solid #e7ecf5;font-size:12px}.fact .key{color:#6b778e}.fact .value{overflow-wrap:anywhere;color:#20314b}
+.detail-text{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.8;background:#f8fafd;padding:13px;border-radius:8px;border:1px solid #e8edf6;max-height:260px;overflow:auto}
+.links a{display:block;margin:7px 0;font-size:12px}.actions{margin:14px 0;display:flex;flex-wrap:wrap;gap:8px}.action{border:1px solid #a7bbdf;border-radius:8px;background:white;color:#244879;font-weight:650;padding:9px 12px}.action.primary{background:#e6eeff;border-color:#b9caf3}
+.footnote{font-size:12px;color:#596b82;border-left:3px solid #aabddd;padding:9px 12px;background:#fff;margin:0}
+.notes{padding:12px 17px}.notes summary{cursor:pointer;font-weight:680}.notes ul{margin-bottom:2px;padding-left:20px;color:#617088}
+.empty{padding:40px 20px;text-align:center;color:var(--muted)}.extra{font-size:11px;color:var(--muted)}
+@media(max-width:860px){.metrics{grid-template-columns:repeat(2,1fr)}.work{grid-template-columns:1fr}.records{max-height:420px}.detail{max-height:none}}
+@media(max-width:460px){header{padding:19px}main{padding:11px}.metrics{gap:8px}.metric{padding:12px}.metric .amount{font-size:22px}.filters{grid-template-columns:1fr}.detail{padding:16px}}
+@media print{header{background:white;color:black}.mode,.toolbar,.records,.tabs,.paging,.actions,.notes{display:none}.work{display:block}.panel{box-shadow:none}.detail{max-height:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="topline">
+  <div><div class="eyebrow">Cite–Refinery · Research workspace pilot</div><h1>Independent Evidence Atlases</h1></div>
+  <div class="mode">LOCAL · READ-ONLY</div>
+</div>
+<p>Trace original evidence, inspect bounded engineering tests and identify what remains unknown. No automatic cross-layer inference.</p>
+</header>
+<main>
+<section class="metrics" aria-label="Indexed evidence totals">
+  <div class="metric"><div class="amount" id="metric-practical">–</div><div class="label">Practical records &amp; notice context</div></div>
+  <div class="metric"><div class="amount" id="metric-academic">–</div><div class="label">Academic source identities</div></div>
+  <div class="metric"><div class="amount" id="metric-implementation">–</div><div class="label">Implementation leads &amp; separate probes</div></div>
+  <div class="metric"><div class="amount" id="metric-tested">–</div><div class="label">Original modules tested with bounded fixtures</div></div>
+</section>
+<nav class="tabs" aria-label="Independent evidence maps">
+<button class="tab" data-layer="practical" aria-selected="true">01 · Practical / Nocturnal</button>
+<button class="tab" data-layer="academic" aria-selected="false">02 · Academic / Cite</button>
+<button class="tab" data-layer="implementation" aria-selected="false">03 · Implementation / Refinery</button>
+</nav>
+<div class="work">
+ <section class="panel" aria-label="Source browser">
+  <div class="toolbar">
+    <h2 id="layer-heading">Practical source index</h2>
+    <div class="filters">
+      <label><span class="extra">Search titles, metadata and evidence categories</span><input class="control" id="search" type="search" maxlength="160" placeholder="Search within this map..." autocomplete="off"></label>
+      <label><span class="extra">Evidence class</span><select class="control" id="facet"><option value="">All evidence classes</option></select></label>
+    </div>
+    <div class="statusline" id="status" aria-live="polite"></div>
+  </div>
+  <div class="records" id="records" role="list" aria-label="Source evidence records"></div>
+  <div class="paging"><button id="previous" type="button">← Previous</button><span class="extra" id="page"></span><button id="next" type="button">Next →</button></div>
+ </section>
+ <section class="panel detail" aria-label="Evidence dossier" id="detail" aria-live="polite">
+   <div class="empty">Select a source to inspect its provenance, limitations and evidence requirements.</div>
+ </section>
+</div>
+<details class="panel notes"><summary>Research limits and source-integrity disclosures</summary><ul id="limitations"></ul></details>
+<p class="footnote">Counts are indexing counts, not independent discoveries or quality scores. Some records are overlapping abstractions from different corpora. Original bodies, private Nocturnal ledgers and sealed evaluation documents are intentionally absent.</p>
+</main>
+<script type="application/json" id="atlas-data"><!-- ATLAS_JSON_SLOT --></script>
+<script>
+"use strict";
+const state={layer:"practical",facet:"",query:"",page:0,selected:null};
+const PAGE_SIZE=22;
+const raw=document.getElementById("atlas-data").textContent;
+const data=JSON.parse(raw);
+const cards=data.cards;
+const byId=new Map(cards.map(r=>[r.id,r]));
+const el=id=>document.getElementById(id);
+const make=(tag,txt,cls)=>{
+  const node=document.createElement(tag);
+  if(txt!==undefined&&txt!==null)node.textContent=String(txt);
+  if(cls)node.className=cls;
+  return node;
+};
+function sourceLink(url){
+  try{const u=new URL(url);if(u.protocol!=="https:"||!u.hostname||u.username||u.password)return null;
+  const a=make("a",url);
+  a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a}
+  catch{return null}
+}
+for(const layer of ["practical","academic","implementation"]){
+ el("metric-"+layer).textContent=Number(data.by_layer[layer]||0).toLocaleString();
+}
+el("metric-tested").textContent=Number(data.original_data.implementation_original_modules_tested||0).toLocaleString();
+for(const limit of data.limitations){el("limitations").append(make("li",limit))}
+const names={
+ practical:"Practical source index",academic:"Academic source index",
+ implementation:"Implementation capability index"};
+function current(){
+ const term=state.query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+ return cards.filter(r=>{
+  if(r.layer!==state.layer || (state.facet && r.group!==state.facet))return false;
+  if(!term.length)return true;
+  const searchable=[r.id,r.title,r.summary,r.group,r.authority,
+      ...r.tags,...r.flags,...r.facts.map(f=>f.name+" "+f.value)].join(" ").toLocaleLowerCase();
+  return term.every(t=>searchable.includes(t));
+ });
+}
+function rebuildFacets(){
+ const select=el("facet");select.replaceChildren();
+ const all=make("option","All evidence classes");all.value="";
+ select.append(all);
+ const kinds=[...new Set(cards.filter(r=>r.layer===state.layer).map(r=>r.group))].sort();
+ for(const kind of kinds){
+  const opt=make("option",kind.replaceAll("_"," "));opt.value=kind;select.append(opt);
+ }
+ select.value=state.facet;
+}
+function openDossier(id){
+ const r=byId.get(id);if(!r)return;
+ state.selected=r.id;
+ const target=el("detail");target.replaceChildren();
+ target.append(make("div",r.layer+" / "+r.group.replaceAll("_"," "), "prelude"));
+ target.append(make("h2",r.title));
+ target.append(make("p",r.summary,"summary"));
+ target.append(make("div",r.authority,"authority"));
+ const tags=make("div",undefined,"chips");
+ for(const tag of [...r.flags,...r.tags].slice(0,20))tags.append(make("span",tag.replaceAll("_"," "),"chip"));
+ target.append(tags);
+ const actions=make("div",undefined,"actions");
+ const copy=make("button","Copy evidence dossier","action primary");
+ copy.type="button";
+ copy.addEventListener("click",()=>{
+  const text=JSON.stringify({source_id:r.id,layer:r.layer,group:r.group,
+    title:r.title,authority:r.authority,source_urls:r.urls,flags:r.flags,
+    provenance:r.facts,scoped_evidence:r.details,
+    scope_notice:"Source-index record only; no verified scientific or field benefit."},null,2);
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>{
+       copy.textContent="Copied dossier";
+    }).catch(()=>{copy.textContent="Clipboard unavailable; use JSON download";});
+  }else{copy.textContent="Clipboard unavailable; use JSON download";}
+ });
+ const download=make("button","Download dossier JSON","action");
+ download.type="button";
+ download.addEventListener("click",()=>{
+  const payload=JSON.stringify({schema:"cite_refinery.readonly_evidence_dossier.v1",
+    record:r,disclaimer:data.limitations},null,2);
+  const blob=new Blob([payload],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download="cite-refinery-dossier.json";a.click();
+  URL.revokeObjectURL(url);
+ });
+ actions.append(copy,download);target.append(actions);
+ if(r.facts.length){
+  target.append(make("div","Source provenance & qualified scope","section-title"));
+  const facts=make("div",undefined,"facts");
+  for(const f of r.facts){
+    const row=make("div",undefined,"fact");
+    row.append(make("div",f.name,"key"),make("div",f.value,"value"));
+    facts.append(row);
+  }target.append(facts)
+ }
+ for(const entry of r.details){
+  target.append(make("div",entry.heading,"section-title"));
+  target.append(make("div",entry.text,"detail-text"));
+ }
+ target.append(make("div","Original source links","section-title"));
+ const links=make("div",undefined,"links");
+ if(!r.urls.length){links.append(make("div","No source URL included in this record."))}
+ for(const u of r.urls){const a=sourceLink(u);if(a)links.append(a)}
+ target.append(links);
+ renderResults(false);
+}
+function renderResults(autoSelect=true){
+ const all=current();
+ const maxPage=Math.max(0,Math.ceil(all.length/PAGE_SIZE)-1);
+ state.page=Math.min(state.page,maxPage);
+ el("status").textContent=all.length.toLocaleString()+" matching sources · Literal search only · Not quality ranked";
+ el("page").textContent="Page "+(state.page+1)+" of "+(maxPage+1);
+ el("previous").disabled=state.page===0;
+ el("next").disabled=state.page===maxPage;
+ const root=el("records");root.replaceChildren();
+ const visible=all.slice(state.page*PAGE_SIZE,(state.page+1)*PAGE_SIZE);
+ if(!visible.length)root.append(make("div","No source records match your filters.","empty"));
+ for(const r of visible){
+  const button=make("button",undefined,"record");
+  button.type="button";
+  button.setAttribute("role","listitem");
+  if(r.id===state.selected)button.classList.add("active");
+  button.append(make("strong",r.title));
+  button.append(make("div",r.group.replaceAll("_"," ")+" · "+r.authority,"minor"));
+  button.append(make("p",r.summary));
+  button.addEventListener("click",()=>openDossier(r.id));root.append(button);
+ }
+ if(autoSelect){
+  if(visible.length)openDossier(visible[0].id);
+  else{state.selected=null;el("detail").replaceChildren(make("div","No matching evidence dossier.","empty"))}
+ }
+}
+function changeLayer(next){
+ if(!["practical","academic","implementation"].includes(next))return;
+ state.layer=next;state.page=0;state.selected=null;state.facet="";state.query="";
+ el("search").value="";
+ el("layer-heading").textContent=names[next];
+ for(const tab of document.querySelectorAll(".tab")){
+  tab.setAttribute("aria-selected",String(tab.dataset.layer===next));
+ }
+ rebuildFacets();renderResults(true);
+}
+for(const tab of document.querySelectorAll(".tab")){
+ tab.addEventListener("click",()=>changeLayer(tab.dataset.layer));
+}
+el("search").addEventListener("input",ev=>{
+ state.query=ev.target.value;state.page=0;renderResults();
+});
+el("facet").addEventListener("change",ev=>{
+ state.facet=ev.target.value;state.page=0;renderResults();
+});
+el("next").addEventListener("click",()=>{state.page++;renderResults()});
+el("previous").addEventListener("click",()=>{state.page--;renderResults()});
+changeLayer("practical");
+</script>
+</body>
+</html>
