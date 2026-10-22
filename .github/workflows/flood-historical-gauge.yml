@@ -91,6 +91,18 @@ jobs:
           assert data["real_flood_missed_event_rate"] is None
           assert data["public_warning_lead_time_minutes"] is None
           assert data["no_automatic_warning_output"] is True
+          print("OFFICIAL_EA_GAUGE_AUDIT", json.dumps({
+            key: data[key] for key in (
+              "selected_stage_unique_finite_readings",
+              "nominal_grid_positions_between_first_and_last",
+              "unseen_slots_in_this_sample_not_verified_operational_outages",
+              "sample_coverage_ratio_not_sensor_uptime",
+              "sample_min_mASD", "sample_max_mASD", "sample_median_mASD",
+              "sample_max_absolute_successive_change_mASD",
+              "source_provider_payload_sha256",
+              "observed_sample_gap_intervals",
+            )
+          }, sort_keys=True))
           PY
       - name: Upload source-response digest and data-quality report (not alerts)
         uses: actions/upload-artifact@v4
