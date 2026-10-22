@@ -6,7 +6,7 @@
 
 A single portable `index.html` with embedded public-safe metadata, plus an `atlas.json` evidence packet and `README.txt`. Open HTML locally: no hosted service, API key, database, model dependency, browser network fetch or original-source corpus download is needed.
 
-The page provides three separate Practical / Academic / Implementation tabs, literal phrase filtering inside a selected map, evidence-class filters, paginated records, record-level source URLs and source provenance, defensible authority statements, original test-case details where available, and copyable/downloadable source-specific JSON dossiers. No separate monolithic research ontology and **zero automated cross-layer edges**. Original author wording is displayed as *metadata or unverified reports*, not automatically promoted to established truth.
+The page provides three separate Practical / Academic / Implementation tabs, literal phrase filtering inside a selected map, **source-evidenced field/category filters with occurrence counts**, evidence-class filters, inline source-class/coverage gaps, paginated records, record-level source URLs and source provenance, defensible authority statements, original test-case details where available, and copyable/downloadable source-specific JSON dossiers **plus filtered original-source cohort exports**. Category labels describe the original collection taxonomy or reported genre, not a validated scientific classification. No separate monolithic research ontology and **zero automated cross-layer edges**. Original author wording is displayed as *metadata or unverified reports*, not automatically promoted to established truth.
 
 Expected release artefact when building with the frozen existing sources:
 
