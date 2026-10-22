@@ -48,6 +48,11 @@ class SemanticReadinessRealityTests(unittest.TestCase):
         self.assertTrue(all(not row["source_answer_entailment_evaluated"]
                             for row in r["search"]["cases"]))
         self.assertFalse(r["readiness_gate_passed"])
+        older=r["historic_model_diagnostic"]
+        self.assertEqual(older["archived_unique_original_source_count"],8)
+        self.assertEqual(older["archived_source_ids_aligning_with_legacy_abstract_cards"],8)
+        self.assertEqual(older["archived_source_ids_aligning_with_new_103_development_cards"],0)
+        self.assertEqual(older["archived_result_cards_actually_attached_to_workspace"],0)
 
     def test_earlier_separate_semantic_model_receipts_not_a_live_browser(self):
         r=check_recorded_semantic_diagnostic(self.archive,self.review)
