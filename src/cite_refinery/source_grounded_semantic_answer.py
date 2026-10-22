@@ -392,6 +392,15 @@ def main(argv=None):
         label=args.provider+":"+(args.model or "default")
         critic=None
         if args.critic_provider:
+            # A provider name or auto-selected Copilot model does not prove
+            # the actual underlying model family. Demand explicit, recognizable
+            # catalog IDs rather than silently claiming an independent judge.
+            prefixes=("gemini-","claude-","gpt-")
+            if not (isinstance(args.model,str) and
+                    isinstance(args.critic_model,str) and
+                    args.model.startswith(prefixes) and
+                    args.critic_model.startswith(prefixes)):
+                raise ValueError("Independent critic requires two explicit Gemini/Claude/GPT model IDs; no auto model routing")
             require_distinct_family(args.provider,args.model,
                                     args.critic_provider,args.critic_model)
             def critic(prompt,phase):
