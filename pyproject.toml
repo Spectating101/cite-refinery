@@ -80,7 +80,7 @@ cite-refinery-framework-suite-evidence = "cite_refinery.framework_suite_evidence
 where = ["src"]
 
 [tool.setuptools.package-data]
-cite_refinery = ["private_evolution_assets/*.html", "private_evolution_assets/*.css", "private_evolution_assets/*.js", "vendor/*.js", "vendor/*.txt"]
+cite_refinery = ["standalone_atlas_template.html", "private_evolution_assets/*.html", "private_evolution_assets/*.css", "private_evolution_assets/*.js", "vendor/*.js", "vendor/*.txt"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src", "."]
