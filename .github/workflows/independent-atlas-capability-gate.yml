@@ -1,0 +1,79 @@
+name: Independent three-map capability gate
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/three_map_capability_packet.py"
+      - "tests/test_three_map_capability_packet_v1.py"
+      - "src/cite_refinery/semantic_integration_reality_audit.py"
+      - "src/cite_refinery/standalone_workspace.py"
+      - "docs/THREE_MAP_CAPABILITY_GATE_FROZEN_CORPUS_V1.md"
+      - ".github/workflows/independent-atlas-capability-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout read-only
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Use Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install local pure-Python project
+        run: python -m pip install -e .
+      - name: Compile evidence-safe evaluation contract
+        run: python -m compileall -q src/cite_refinery/three_map_capability_packet.py
+      - name: Run focused actual-corpus tests without authenticated models
+        run: python -m unittest discover -s tests -p 'test_three_map_capability_packet_v1.py' -v
+      - name: Build frozen browser pilot entirely from local development artifacts
+        run: |
+          mkdir -p "$RUNNER_TEMP/capability-baseline"
+          PYTHONPATH=tests python - <<'PY'
+          import json, os
+          from pathlib import Path
+          from test_standalone_workspace_pilot_v1 import OfflineStandalonePilotTests
+          OfflineStandalonePilotTests.setUpClass()
+          p=Path(os.environ["RUNNER_TEMP"])/"capability-baseline"/"frozen-pilot.json"
+          p.write_text(json.dumps(OfflineStandalonePilotTests.pilot, sort_keys=True)+"\n")
+          assert OfflineStandalonePilotTests.pilot["record_count"]==1497
+          PY
+      - name: Produce reproducible question-only and reviewer-reference packets
+        run: |
+          python -m cite_refinery.three_map_capability_packet \
+            --pilot "$RUNNER_TEMP/capability-baseline/frozen-pilot.json" \
+            --out-dir "$RUNNER_TEMP/capability-baseline/packet"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"capability-baseline"/"packet"
+          q=json.loads((root/"questions.json").read_text())
+          r=json.loads((root/"reviewer-reference.json").read_text())
+          assert len(q["questions"])==120
+          assert len({x["selected_source_card_id"] for x in r["anchors"]})==60
+          assert sum(x["literal_hit"] for x in r["historical_development_pairs"])==10
+          assert sum(x["paraphrase_hit"] for x in r["historical_development_pairs"])==0
+          assert r["independent_answer_quality_gold_available"] is False
+          assert r["no_sealed_holdout_or_private_nocturnal_material_used"] is True
+          PY
+      - name: Upload only question prompts for model/operator evaluation
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-three-atlas-questions
+          path: ${{ runner.temp }}/capability-baseline/packet/questions.json
+          retention-days: 7
+          if-no-files-found: error
+      - name: Upload original anchors separately for reviewers
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-three-atlas-reviewer-reference
+          path: ${{ runner.temp }}/capability-baseline/packet/reviewer-reference.json
+          retention-days: 7
+          if-no-files-found: error
