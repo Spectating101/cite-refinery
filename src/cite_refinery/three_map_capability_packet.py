@@ -84,6 +84,17 @@ def _check_pilot(pilot):
     return known
 
 
+def _sampling_group(card):
+    """Split Implementation leads by *evidence stage*, not topic metadata alone."""
+    if card["layer"] != "implementation":
+        return card["group"]
+    for stage in ("bounded_original_function_test", "original_code_sample_checked",
+                  "original_commit_checked", "survey_metadata_only"):
+        if stage in card.get("tags", []):
+            return card["group"] + "::" + stage
+    return card["group"] + "::historical_or_unknown"
+
+
 def _sample(pilot, *, per_layer, seed):
     _require(isinstance(per_layer, int) and 2 <= per_layer <= 40,
              "Per-layer source review count must be 2-40")
@@ -94,7 +105,7 @@ def _sample(pilot, *, per_layer, seed):
         groups = defaultdict(list)
         for c in pilot["cards"]:
             if c["layer"] == layer:
-                groups[c["group"]].append(c)
+                groups[_sampling_group(c)].append(c)
         for group, items in groups.items():
             items.sort(key=lambda c: (sha256(
                 (seed + "|" + layer + "|" + group + "|" + c["id"]).encode()
@@ -168,6 +179,9 @@ def build_packet(pilot, *, per_layer=20, seed=SEED):
             layer: dict(sorted(Counter(c["group"] for c in sampled[layer]).items()))
             for layer in LAYERS
         },
+        "implementation_selected_source_stages": dict(sorted(Counter(
+            _sampling_group(c) for c in sampled["implementation"]
+        ).items())),
         "independent_answer_quality_gold_available": False,
         "source_hit_does_not_establish_answer_entailment": True,
         "no_sealed_holdout_or_private_nocturnal_material_used": True,
