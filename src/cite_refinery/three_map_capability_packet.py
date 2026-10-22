@@ -182,6 +182,9 @@ def build_packet(pilot, *, per_layer=20, seed=SEED):
         "implementation_selected_source_stages": dict(sorted(Counter(
             _sampling_group(c) for c in sampled["implementation"]
         ).items())),
+        "implementation_full_corpus_source_stages": dict(sorted(Counter(
+            _sampling_group(c) for c in pilot["cards"] if c["layer"] == "implementation"
+        ).items())),
         "independent_answer_quality_gold_available": False,
         "source_hit_does_not_establish_answer_entailment": True,
         "no_sealed_holdout_or_private_nocturnal_material_used": True,
