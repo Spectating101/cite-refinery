@@ -213,7 +213,7 @@ class InternalArbitrageMapTest(unittest.TestCase):
                      "--json-out",str(j),"--markdown-out",str(m)])
             with (Path(__file__).resolve().parents[1]/"pyproject.toml").open("rb") as f:
                 scripts=tomllib.load(f)["project"]["scripts"]
-            self.assertEqual(len(scripts),50)
+            self.assertEqual(len(scripts),51)
             self.assertNotIn("cite-refinery-arbitrage-map",scripts)
 
 if __name__=="__main__":
