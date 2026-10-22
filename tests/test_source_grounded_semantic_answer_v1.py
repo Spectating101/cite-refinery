@@ -80,6 +80,23 @@ class SemanticVerticalSliceTests(unittest.TestCase):
                    critic_call=(lambda prompt,phase:critic) if critic is not None else None,
                    critic_provider_label="mock_other_family" if critic else None)
 
+    def test_authenticated_provider_runtime_json_parser_accepts_each_stage(self):
+        # This catches a historical integration bug: the shared model parser
+        # accepted only proposition-graph replies as direct dictionaries.
+        from cite_refinery.external_llm_runtime import _parse_response
+        stages=self.base_stages()
+        shapes=[stages["rank_sources"],stages["select_passages"],
+                stages["interpret_answer"],
+                {"assessment":"grounded",
+                 "reason":"The observational statement and limitations are correctly scoped.",
+                 "unsafe_claim_indices":[]}]
+        for response in shapes:
+            with self.subTest(keys=sorted(response)):
+                self.assertEqual(_parse_response(response),response)
+                self.assertEqual(_parse_response({"response":response}),response)
+                self.assertEqual(_parse_response({"result":json.dumps(response)}),response)
+                self.assertEqual(_parse_response(json.dumps(response)),response)
+
     def test_complete_query_to_semantic_ranking_original_quote_chain(self):
         report=self.execute()
         self.assertEqual(report["schema"],SCHEMA)
