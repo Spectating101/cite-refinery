@@ -219,7 +219,7 @@ function renderResults(autoSelect=true){
    "66 sealed holdouts excluded · No validated scientific findings":
    state.layer==="practical"?
    "Notices are not confirmed demand · Reports are not firsthand field proof":
-   "Source identities are not working products · Only 2 original modules tested");
+   "Source identities are not working products · "+Number(data.original_data.implementation_original_modules_tested||0)+" original modules tested");
  el("coverage").textContent=(parts.join(" · ")||"No matching source types")+
    " | "+scope;
  el("page").textContent="Page "+(state.page+1)+" of "+(maxPage+1);
