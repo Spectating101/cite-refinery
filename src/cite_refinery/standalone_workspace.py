@@ -182,7 +182,9 @@ def build_pilot(foundation, academic, implementation, public_practical=None,
                      for sid,text in semantic_source_texts.items()),
                  "Semantic import requires verified frozen original Academic texts")
         _require(isinstance(cited,list) and len(cited)<=12 and
-                 bool(cited)==(sr["result"]=="candidate_answer_review_only"),
+                 (sr["result"]!="candidate_answer_review_only" or bool(cited)) and
+                 (sr["result"]!="abstained" or not cited or
+                  sr.get("reason")=="insufficient_passages_or_critic_detected_scope_risk"),
                  "Semantic review evidence or abstention is contradictory")
         urls=[]
         details=[]
@@ -208,7 +210,10 @@ def build_pilot(foundation, academic, implementation, public_practical=None,
             _require(isinstance(original,str) and original[span[0]:span[1]]==quote,
                      "Semantic original quoted span not independently reverified against full SHA-pinned text")
             urls.append(source["url"])
-            details.append(("Source quote from "+x["source_id"]+" (model interpretation unreviewed)",
+            details.append(("Source quote from "+x["source_id"]+
+                            (" (rejected source-grounded hypothesis, NOT answer support)"
+                             if sr["result"]=="abstained" else
+                             " (model interpretation unreviewed)"),
                             x["statement_model_supplied"]+"\nOriginal quote: "+quote))
         _require(set(urls)==set(sr.get("source_citations",[])),
                  "Semantic answer source list differs from quoted evidence")
@@ -231,7 +236,9 @@ def build_pilot(foundation, academic, implementation, public_practical=None,
                          "operator_supplied_model_responses_unverified" else
                       "Receipt labels model as authenticated; browser cannot attest execution. Source quote independently rechecked, interpretation NOT approved"),
            flags=["not_accepted_scientific_evidence","do_not_use_as_independent_source",
-                  "review_gate_not_approved","model_execution_not_cryptographically_attested"],
+                  "review_gate_not_approved","model_execution_not_cryptographically_attested",
+                  *("rejected_claim_quotes_not_answer_evidence",) if
+                      sr["result"]=="abstained" and cited else ()],
            facts=[("Candidate source evidence count",len(cited)),
                   ("Provider label",prov.get("provider_label") or "unavailable"),
                   ("Review status",sr["review_gate"]),
