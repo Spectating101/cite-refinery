@@ -104,12 +104,12 @@ class HistoricalGaugeAuditTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "sample changed"):
             from_mirror(changed)
         changed = deepcopy(self.original)
-        changed = deepcopy(self.original)
         changed["observations"][0]["value"] = 99.0
         with self.assertRaisesRegex(ValueError, "source-bound EA readings altered"):
             from_mirror(changed)
+        changed = deepcopy(self.original)
         changed["observations"][0]["mirror_blob"] = "BAD"
-        with self.assertRaisesRegex(ValueError, "mirror reading identity"):
+        with self.assertRaisesRegex(ValueError, "source-bound EA readings altered"):
             from_mirror(changed)
 
     def test_live_endpoint_limits_bad_ranges_before_network(self):
