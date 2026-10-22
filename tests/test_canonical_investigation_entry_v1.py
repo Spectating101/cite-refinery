@@ -79,8 +79,10 @@ class CanonicalInvestigationEntryTests(unittest.TestCase):
         path=Path(__file__).resolve().parents[1]/"pyproject.toml"
         with path.open("rb") as f:
             entry=tomllib.load(f)["project"]["scripts"]
-        self.assertEqual(len(entry),50)
+        self.assertEqual(len(entry),51)
         self.assertEqual(entry["cite-refinery"],"cite_refinery.layered_cli:main")
+        self.assertEqual(entry["cite-refinery-semantic-answer"],
+                         "cite_refinery.source_grounded_semantic_answer:main")
         self.assertEqual(entry["cite-refinery-investigate"],"cite_refinery.investigation_cli:main")
         self.assertNotIn("cite-refinery-investigate-topic",entry)
         self.assertNotIn("cite-refinery-investigate-general",entry)
