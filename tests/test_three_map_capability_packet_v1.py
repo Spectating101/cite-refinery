@@ -99,7 +99,7 @@ class ThreeMapCapabilityPacketTests(unittest.TestCase):
             score(tasks, refs, duplicate)
         invalid = deepcopy(good)
         invalid["responses"][0]["retrieved_card_ids"] = ["practical:reported_case:fake"]
-        with self.assertRaisesRegex(ValueError, "Wrong-layer"):
+        with self.assertRaisesRegex(ValueError, "Unknown or wrong-layer"):
             score(tasks, refs, invalid)
 
     def test_offline_cli_writes_original_packet_without_overwrite(self):
