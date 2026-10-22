@@ -46,7 +46,8 @@ The unit tests assemble an authentic 103-source index shape from the frozen publ
 
 - Run the explicitly authenticated semantic provider on original text for a selected legal/public development subset; record provider/model version, answer receipt, latency and failure/abstention.
 - Introduce independent source-level questions with paraphrases, negations, false premises and transfer claims; score retrieval, answer evidence alignment, abstention and false entailment separately.
-- Link a reviewed candidate answer back into the user-facing Academic dossier only after matching original source identity, rather than importing old 24-case verdicts indiscriminately.
+- The first **optional Academic browser handoff is implemented**: `cite_refinery.standalone_workspace --academic-semantic-receipt /path/to/review-only-academic-semantic-answer.json` attaches the candidate as a **separate, conspicuously unapproved** Academic source-review dossier. Its source URLs, original text SHA-256, quote SHA-256, offsets and authority denials are checked against the actual Academic development map. The default public offline bundle attaches **zero** such receipts and preserves the base 1,497 index count; when one is supplied the Academic source count increases by one as an explicitly unapproved *review packet*, not an independent publication.
+- Run a real operator review of source text and meaning before accepting a semantic conclusion. The existence of a UI card is not evidence that its model claim is true; imported simulated/manual replies are explicitly labeled unauthenticated.
 - Validate real passage extraction for representative reports and full-text JATS articles; never treat DOI/title matches as source-text entailment.
 - Expand the same evidence contract to Practical and Implementation independently, before any cross-layer meaning inference.
 
