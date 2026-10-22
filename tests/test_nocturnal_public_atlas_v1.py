@@ -118,6 +118,37 @@ def fixture(root: Path, *, second=True):
     return manifest
 
 
+
+
+def reseal_fictional_snapshot(root: Path, *, change_modules):
+    """Rebuild synthetic hashes so structural tests bypass byte-tamper checks."""
+    manifest = json.loads((root / "manifest.json").read_text())
+    modules = [json.loads(line) for line in
+               (root / "modules.jsonl").read_text().splitlines() if line]
+    corrections = [json.loads(line) for line in
+                   (root / "corrections.jsonl").read_text().splitlines() if line]
+    change_modules(modules)
+    for row in corrections:
+        matching = next(m for m in modules if m["module_id"] == row["module_id"])
+        row["correction_of"] = matching.get("correction_of")
+        row["event_id"] = matching.get("event_id")
+    for name, rows in (("modules", modules), ("corrections", corrections)):
+        data = "".join(canonical(row) + "\\n" for row in rows).encode("utf-8")
+        (root / (name + ".jsonl")).write_bytes(data)
+        manifest["files"][name + ".jsonl"] = {
+            "bytes": len(data), "sha256": sha256(data).hexdigest()}
+    hashes = {name: entry["sha256"] for name, entry in manifest["files"].items()}
+    counts = {name: manifest["counts"][name]
+              for name in ("modules", "matters", "entities", "sources", "corrections")}
+    digest = sha256(canonical({
+        "schema": "nocturnal.public_snapshot.v1",
+        "files": hashes, "counts": counts,
+        "pilot_id": manifest["pilot_gate"]["pilot_id"],
+    }).encode("utf-8")).hexdigest()
+    manifest["snapshot_id"] = "nocturnal-" + digest[:20]
+    (root / "manifest.json").write_text(json.dumps(manifest) + "\\n")
+
+
 class NocturnalPublicAtlasTests(unittest.TestCase):
     def test_fictional_snapshot_map_is_independently_navigable(self):
         with TemporaryDirectory() as td:
@@ -256,6 +287,90 @@ class NocturnalPublicAtlasTests(unittest.TestCase):
                 browse_practical(m,matter_id="unpublished-person")
             with self.assertRaises(ValueError):
                 browse_practical(m,limit=10000)
+
+
+
+    def test_correction_targets_distinguish_module_and_upstream_event_ids(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            fixture(root)
+            initial = build_practical_atlas(root)
+            direct = initial["modules"]["fictional-module-2"]["correction_target"]
+            self.assertEqual(direct["state"], "resolved_same_matter")
+            self.assertEqual(direct["matched_by"], "module_id")
+            self.assertEqual(direct["module_id"], "fictional-module-1")
+            self.assertEqual(
+                initial["coverage"]["correction_targets_resolved_in_public_snapshot"], 1)
+
+            def use_event_id(records):
+                records[1]["correction_of"] = "event-original"
+                records[1]["supersedes"] = ["event-original"]
+            reseal_fictional_snapshot(root, change_modules=use_event_id)
+            imported = build_practical_atlas(root)
+            inferred = imported["modules"]["fictional-module-2"]["correction_target"]
+            self.assertEqual(inferred["state"], "resolved_same_matter")
+            self.assertEqual(inferred["matched_by"], "event_id")
+            self.assertEqual(inferred["module_id"], "fictional-module-1")
+            self.assertEqual(
+                imported["modules"]["fictional-module-2"]["supersession_targets"][0]["state"],
+                "resolved_same_matter")
+            self.assertEqual(
+                imported["matters"]["fictional-matter"]["timeline"][1]["correction_target"],
+                inferred)
+            self.assertFalse(
+                imported["interpretation"]["resolved_public_correction_pointer_is_not_adjudicated_truth"]
+                is False)
+
+    def test_unreleased_or_colliding_correction_target_stays_unresolved(self):
+        with TemporaryDirectory() as td:
+            root = Path(td)
+            fixture(root)
+            def unpublished(records):
+                records[1]["correction_of"] = "not-in-public-snapshot"
+            reseal_fictional_snapshot(root, change_modules=unpublished)
+            a = build_practical_atlas(root)
+            target = a["modules"]["fictional-module-2"]["correction_target"]
+            self.assertEqual(target["state"], "not_in_public_snapshot")
+            self.assertIsNone(target["module_id"])
+            self.assertEqual(
+                a["coverage"]["correction_targets_unresolved_in_public_snapshot"], 1)
+
+            def ambiguous(records):
+                records[0]["event_id"] = "colliding-event"
+                records[1]["event_id"] = "colliding-event"
+                records[1]["correction_of"] = "colliding-event"
+            reseal_fictional_snapshot(root, change_modules=ambiguous)
+            b = build_practical_atlas(root)
+            self.assertEqual(
+                b["modules"]["fictional-module-2"]["correction_target"]["state"],
+                "ambiguous")
+            self.assertIsNone(
+                b["modules"]["fictional-module-2"]["correction_target"]["module_id"])
+
+    def test_literal_facets_and_bounded_event_chronology(self):
+        with TemporaryDirectory() as td:
+            fixture(Path(td))
+            a = build_practical_atlas(td)
+            for kwargs in (
+                {"stage": "announced"}, {"stage": "corrected"},
+                {"source_domain": "harbor-record.invalid"},
+                {"evidence_grade": "sourced"},
+                {"after": "2026-02-01", "before": "2026-02-01"},
+                {"unresolved_dispute": True},
+            ):
+                self.assertEqual(browse_practical(a, **kwargs)["matching_count"], 1, kwargs)
+            for kwargs in (
+                {"stage": "convicted"}, {"evidence_grade": "confirmed_by_atlas"},
+                {"source_domain": "unknown.invalid"},
+                {"after": "2026-03-01"},
+            ):
+                self.assertEqual(browse_practical(a, **kwargs)["matching_count"], 0, kwargs)
+            with self.assertRaisesRegex(ValueError, "reversed"):
+                browse_practical(a, after="2026-03-01", before="2026-02-01")
+            with self.assertRaisesRegex(ValueError, "chronology"):
+                browse_practical(a, after="tomorrow")
+            with self.assertRaisesRegex(ValueError, "unresolved-dispute"):
+                browse_practical(a, unresolved_dispute="true")
 
 
 if __name__ == "__main__":
