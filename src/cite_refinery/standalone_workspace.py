@@ -67,8 +67,9 @@ def _item(layer, group, key, *, title, summary="", urls=(), tags=(),
     }
 
 
-def build_pilot(foundation, academic, implementation, public_practical=None):
-    """Assemble independent browse records; no inferred matches or ranking."""
+def build_pilot(foundation, academic, implementation, public_practical=None,
+                semantic_receipt=None):
+    """Assemble independent browse records; optional verified semantic review packet."""
     _require(foundation.get("schema")==FOUNDATION and
              foundation.get("cross_layer_edges_generated")==0,
              "Original three-layer foundation required, no joins allowed")
@@ -153,6 +154,82 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
                 flags=["published_snapshot","unresolved_dispute_reported" if
                        row["unresolved_dispute_reported"] else "dispute_not_flagged"],
                 details=[("Public module timeline","\n".join(timelines)[:2600])]))
+    if semantic_receipt is not None:
+        # Attached semantic packets are only model proposals, NOT an independent
+        # scientific result. Validate every cited source identity against this
+        # exact development index before exposing anything in the offline UI.
+        from .source_grounded_semantic_answer import SCHEMA as SEMANTIC
+        sr=semantic_receipt
+        prov=sr.get("provenance",{})
+        _require(sr.get("schema")==SEMANTIC and sr.get("layer")=="academic"
+                 and sr.get("result") in {"candidate_answer_review_only","abstained"}
+                 and sr.get("review_gate")=="NOT_APPROVED" and
+                 prov.get("development_only") is True and
+                 prov.get("sealed_66_heldout_sources_not_accessed") is True and
+                 prov.get("graph_mutated") is False and
+                 prov.get("independently_human_approved") is False and
+                 prov.get("cross_layer_edges_created")==0 and
+                 prov.get("model_execution_mode") in {
+                      "authenticated_live_model",
+                      "operator_supplied_model_responses_unverified"},
+                 "Semantic source review packet has false authority or unknown provenance")
+        cited=sr.get("claims")
+        _require(isinstance(cited,list) and len(cited)<=12 and
+                 bool(cited)==(sr["result"]=="candidate_answer_review_only"),
+                 "Semantic review evidence or abstention is contradictory")
+        urls=[]
+        details=[]
+        for x in cited:
+            _require(isinstance(x,dict) and x.get("source_id") in academic["sources"],
+                     "Semantic packet cited unknown or heldout Academic source")
+            source=academic["sources"][x["source_id"]]
+            quote=x.get("quote")
+            digest=x.get("source_quote_sha256")
+            span=x.get("exact_char_offsets")
+            _require(x.get("source_url")==source["url"] and
+                     x.get("original_text_sha256")==source["text_sha256"] and
+                     x.get("verbatim_original_text_verified") is True and
+                     x.get("semantic_entailment_independently_verified") is False and
+                     x.get("scientific_result_independently_validated") is False and
+                     isinstance(quote,str) and 15<=len(quote)<=500 and
+                     sha256(quote.encode("utf-8")).hexdigest()==digest and
+                     isinstance(span,list) and len(span)==2 and
+                     type(span[0]) is int and type(span[1]) is int and
+                     0<=span[0]<span[1] and span[1]-span[0]==len(quote),
+                     "Semantic quote or original published text digest did not match source map")
+            urls.append(source["url"])
+            details.append(("Source quote from "+x["source_id"]+" (model interpretation unreviewed)",
+                            x["statement_model_supplied"]+"\nOriginal quote: "+quote))
+        _require(set(urls)==set(sr.get("source_citations",[])),
+                 "Semantic answer source list differs from quoted evidence")
+        _require(isinstance(sr.get("question"),str) and
+                 1<=len(sr["question"])<=800 and
+                 isinstance(sr.get("answer"),str) and
+                 1<=len(sr["answer"])<=1800,
+                 "Semantic review packet missing bounded question or answer")
+        key=sha256((sr["question"]+"|"+prov["model_execution_mode"]).encode()).hexdigest()[:18]
+        cards.append(_item(
+           "academic","semantic_review_packet",key,
+           title="Source-grounded model candidate: "+sr["question"],
+           summary=sr["answer"],
+           urls=urls,
+           tags=["semantic_source_review_unapproved",sr["result"],
+                 prov["model_execution_mode"]],
+           subjects=["semantic_review_candidate"],
+           authority=("Externally supplied model responses; NOT authenticated or scientifically approved"
+                      if prov["model_execution_mode"]==
+                         "operator_supplied_model_responses_unverified" else
+                      "Authenticated model candidate; exact quote verified, meaning NOT independently approved"),
+           flags=["not_accepted_scientific_evidence","do_not_use_as_independent_source",
+                  "review_gate_not_approved"],
+           facts=[("Candidate source evidence count",len(cited)),
+                  ("Provider label",prov.get("provider_label") or "unavailable"),
+                  ("Review status",sr["review_gate"]),
+                  ("Abstention or source-scope reason",sr.get("reason")),
+                  ("Model execution mode",prov["model_execution_mode"])],
+           details=[("Unresolved evidence limitations",sr.get("limitations") or ""),
+                    *details]))
+
     for row in foundation["academic"]["source_abstracts"]:
         cards.append(_item(
             "academic","legacy_abstract",row["id"],title=row["title"],
@@ -248,7 +325,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
     ids=[x["id"] for x in cards]
     _require(len(ids)==len(set(ids)),"Source record names collide after namespacing")
     counts=dict(Counter(x["layer"] for x in cards))
-    _require(counts.get("academic")==150 and
+    _require(counts.get("academic")==150+(1 if semantic_receipt is not None else 0) and
              counts.get("implementation")==1287+len(
                  implementation.get("external_tested_assets_not_in_survey",{})),
              "Standalone map counts changed unexpectedly")
@@ -266,6 +343,7 @@ def build_pilot(foundation, academic, implementation, public_practical=None):
             "academic_development_source_count":103,
             "academic_legacy_bibliographic_leads":47,
             "academic_sealed_holdout_not_imported":66,
+            "semantic_review_packets_attached_unapproved":1 if semantic_receipt else 0,
             "independently_validated_scientific_findings":academic["coverage"][
                 "independently_validated_scientific_findings"],
             "implementation_survey_count":1287,
@@ -333,6 +411,8 @@ def main(argv=None):
     p.add_argument("--approved-practical",type=Path,
                    help="Optional, already release-approved Nocturnal Practical Atlas JSON")
     p.add_argument("--out-dir",required=True,type=Path)
+    p.add_argument("--academic-semantic-receipt",type=Path,
+                   help="Optional produced candidate semantic answer receipt, never verified science")
     args=p.parse_args(argv)
     sources=[args.foundation,args.academic,args.implementation]
     if args.approved_practical:sources.append(args.approved_practical)
@@ -340,7 +420,15 @@ def main(argv=None):
         if not file.is_file() or file.is_symlink() or file.stat().st_size>14_000_000:
             raise ValueError("Source map missing, symlinked or unbounded")
     inputs=[json.loads(x.read_text("utf-8")) for x in sources]
-    result=write_pilot(build_pilot(*inputs),args.out_dir)
+    semantic=None
+    if args.academic_semantic_receipt:
+        file=args.academic_semantic_receipt
+        if not file.is_file() or file.is_symlink() or file.stat().st_size>200_000:
+            raise ValueError("Semantic source-review packet unavailable or oversized")
+        semantic=json.loads(file.read_text("utf-8"))
+    result=write_pilot(build_pilot(*inputs[:3],
+                                 public_practical=inputs[3] if len(inputs)==4 else None,
+                                 semantic_receipt=semantic),args.out_dir)
     print(json.dumps(result,sort_keys=True))
     return 0
 
