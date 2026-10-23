@@ -36,7 +36,7 @@ def sample():
         "never_publish_private_files":True,
         "independent_gold_available":False,
         "repositories":repos,
-        "disallowed_private_sources":["cite-agent","nocturnal-oversight","solarpunk-coin"],
+        "private_repositories_excluded_by_allowlist":True,
     }
     return manifest,docs
 
@@ -65,7 +65,7 @@ class PortfolioPublicSourceDogfoodTests(unittest.TestCase):
         self.assertEqual(len(QUESTION_SET),8)
         self.assertEqual(len(NEGATIVE_QUESTIONS),3)
         bad=deepcopy(self.manifest)
-        bad["repositories"][0]["repo"]="nocturnal-oversight"
+        bad["repositories"][0]["repo"]="unlisted-private-project"
         with self.assertRaisesRegex(ValueError,"private"):
             validate_manifest(bad)
         bad=deepcopy(self.manifest)
