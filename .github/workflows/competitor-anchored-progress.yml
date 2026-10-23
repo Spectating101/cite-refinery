@@ -1,0 +1,44 @@
+name: Competitor-anchored Atlas release honesty gate
+
+on:
+  pull_request:
+    paths:
+      - "research_materials/competitive_reference/competitor_relative_progress_v1.json"
+      - "docs/COMPETITOR_ANCHORED_INTELLIGENCE_SCORECARD_2026_10_23.md"
+      - ".github/pull_request_template.md"
+      - "tests/test_competitor_anchored_progress_gate_v1.py"
+      - ".github/workflows/competitor-anchored-progress.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no-unsupported-comparative-claim:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify competitor coverage, limitations and honest release status
+        run: |
+          python -m unittest discover -s tests -p 'test_competitor_anchored_progress_gate_v1.py' -v
+      - name: Current read-only competitive status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("research_materials/competitive_reference/competitor_relative_progress_v1.json").read_text())
+          gate=r["competitive_release_gate"]
+          assert gate["status"]=="NOT_RUN" and not gate["measured_intelligence_advantage_claim"]
+          print("COMPETITOR_PROGRESS_GAP",json.dumps({
+              "reference_systems":len(r["alternatives"]),
+              "direct_task_head_to_head_total":gate["real_task_level_head_to_head_total"],
+              "release_claim":gate["measured_intelligence_advantage_claim"],
+              "benchmark_status":gate["status"],
+          },sort_keys=True))
+          PY
