@@ -5,8 +5,10 @@ on:
     paths:
       - "src/cite_refinery/portfolio_decision_eval.py"
       - "src/cite_refinery/portfolio_autonomous_dossier.py"
+      - "src/cite_refinery/portfolio_cross_project.py"
       - "tests/test_portfolio_decision_eval_v2.py"
       - "tests/test_portfolio_autonomous_dossier_v3.py"
+      - "tests/test_portfolio_cross_project_v3.py"
       - ".github/workflows/portfolio-dossier-quality.yml"
   workflow_dispatch:
 
@@ -28,9 +30,10 @@ jobs:
         run: python -m pip install -e .
       - name: Compile and execute both suites
         run: |
-          python -m compileall -q src/cite_refinery/portfolio_decision_eval.py src/cite_refinery/portfolio_autonomous_dossier.py
+          python -m compileall -q src/cite_refinery/portfolio_decision_eval.py src/cite_refinery/portfolio_autonomous_dossier.py src/cite_refinery/portfolio_cross_project.py
           python -m unittest discover -s tests -p 'test_portfolio_decision_eval_v2.py' -v
           python -m unittest discover -s tests -p 'test_portfolio_autonomous_dossier_v3.py' -v
+          python -m unittest discover -s tests -p 'test_portfolio_cross_project_v3.py' -v
       - name: Assert model API keys not needed for deterministic suite
         run: |
           python - <<'PY'
