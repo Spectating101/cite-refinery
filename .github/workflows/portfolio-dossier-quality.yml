@@ -11,6 +11,7 @@ on:
       - "tests/test_portfolio_dossier_diagnostics.py"
       - "src/cite_refinery/portfolio_atomic_tasks.py"
       - "tests/test_portfolio_atomic_tasks.py"
+      - "scripts/portfolio_atomic_model.py"
       - "tests/test_portfolio_decision_eval_v2.py"
       - "tests/test_portfolio_autonomous_dossier_v3.py"
       - "tests/test_portfolio_cross_project_v3.py"
@@ -83,6 +84,14 @@ jobs:
         run: |
           python -m cite_refinery.portfolio_public_dogfood --manifest research_materials/portfolio_dogfood/public_source_manifest_2026_10_23.json --out "$RUNNER_TEMP/atomic-source-receipt.json"
           python -m cite_refinery.portfolio_atomic_tasks --receipt "$RUNNER_TEMP/atomic-source-receipt.json" --out "$RUNNER_TEMP/atomic-tasks.json"
+      - name: Execute all 32 atomic prompts with real CPU model
+        env:
+          ATOMIC_TASKS_PATH: ${{ runner.temp }}/atomic-tasks.json
+          ATOMIC_ANSWERS_PATH: ${{ runner.temp }}/atomic-model-results.json
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          OMP_NUM_THREADS: "2"
+        run: |
+          python scripts/portfolio_atomic_model.py
       - name: Upload reproducible model output and validation errors
         if: always()
         uses: actions/upload-artifact@v4
@@ -91,5 +100,6 @@ jobs:
           path: |
             ${{ runner.temp }}/portfolio-cpu-smoke.json
             ${{ runner.temp }}/atomic-tasks.json
+            ${{ runner.temp }}/atomic-model-results.json
           if-no-files-found: warn
           retention-days: 7
