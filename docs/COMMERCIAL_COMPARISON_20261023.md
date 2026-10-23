@@ -49,7 +49,7 @@ This is **not** proof the PV opportunity is worthless. It shows competitive subs
 ## Real decision
 
 - **Do not invest in broad SaaS development based on this result.**
-- **OFN** has the strongest recorded immediate service channel but still needs confirmation of availability and compensation.
+- **OFN** has a tangible open engineering issue and paid-contributor pathway, but its [handbook onboarding process](https://ofn-user-guide.gitbook.io/ofn-handbook/working-on-the-ofn-governance/team-organization/onboarding-process) describes a volunteer-to-certified progression. That materially weakens any assumption of immediate monetization. Availability, payment and current terms remain unconfirmed.
 - **PV** could become an auditable second-opinion service but needs a measurable advantage against cheap incumbent offerings and a real buyer first.
 - **Kobo** should remain a component-level trial until real field data and an operator requirement exist.
 - These ranks are a provisional *research judgment*, not inferred causal or expected-profit estimates.
