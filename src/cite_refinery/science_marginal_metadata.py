@@ -22,6 +22,7 @@ SCHEMA="cite_refinery.science_marginal_metadata_utility.v1"
 SAMPLE="cite_refinery.science_marginal_context_preregistered_sample.v1"
 SEED="refinery-science-incremental-context-v1"
 SOURCE_SHA="b8bb8c733801c04e8c6f07f0c9a99f4016edd8e677343c93ffe13612aea450d2"
+CENSUS_REPORT_SHA="f770f1e2c81c3289ec71db71163710b8baaa6c051d5ba2bb50e5ed5d8d891f9d"
 SCIENCE="https://science.ecosyste.ms/api/v1/projects/"
 MAX_BYTES=350_000
 
@@ -56,9 +57,16 @@ def validate_sample(fixture, census, primary, frontier):
     match=census["exact_matches"]
     absent=census["reported_nonmatches"]
     _require(len(match)==398 and len(absent)==889 and
+             census.get("exact_single_project_matches")==398 and
+             census.get("reported_no_matching_project")==889 and
+             census.get("ambiguous_multiple_project_matches")==0 and
+             census.get("unaccounted_response_rows")==0 and
+             census.get("not_evaluated_due_to_provider_failure")==0 and
              not census["ambiguous_matches"] and
              not census["unaccounted"] and
              not census["failed_batches"],"Expected original complete identity census")
+    _require(_digest(census)==CENSUS_REPORT_SHA,
+             "Original frozen Science census report digest changed")
     expected_match=sorted(match,key=lambda x:(_hash_order(x["repository"]),x["repository"]))[:20]
     expected_absent=sorted(absent,key=lambda x:(_hash_order(x),x))[:20]
     from_fixture=fixture.get("matched")
