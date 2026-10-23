@@ -21,6 +21,7 @@ SCHEMA = "cite_refinery.commercial_comparison.v1"
 
 _ACTIONS = {
     "check whether the paid contributor application": "verify_paid_contributor",
+    "verify volunteer onboarding": "verify_paid_contributor",
     "interview an identifiable buyer/operator": "interview_buyer",
     "compare the existing substitutes": "verify_competitive_advantage",
     "run a minimal capability-to-requirement test": "test_component_fit",
