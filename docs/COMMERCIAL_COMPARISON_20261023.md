@@ -40,6 +40,12 @@ A deliberate tampering fixture takes the genuine OFN issue URL and falsely label
 
 The red-team test preserves the observed weakness as a negative-case receipt. It does **not** endorse the forged metadata. An actual repair should attach source review artifacts/verified contract evidence from distinct authorities, audit them independently and reject unverifiable demand promotions. Merely requiring a URL or the word 'reviewed' is insufficient.
 
+## Competitor substitution: another missed commercial signal
+
+The public [Solargis PV Performance Assessment](https://www.solargis.com/services/pv-performance-assessment) already sells the same general kind of independent PV performance evaluation, including actual-vs-modeled output and updated long-term yields. A separate negative-case test injects this direct competitor into the PV case under `competitive_alternatives`; the current evaluator produces the **same readiness and next action** as without the competitor, because the field is not included in its commercial decisions. The input digest changes, showing the input was changed, but no suitability judgment changes.
+
+This is **not** proof the PV opportunity is worthless. It shows competitive substitution and customer-specific differentiation are not currently a binding conversion gate. No observed price, selling channel or incremental buyer value has been established. Repair tracked in [issue #124](https://github.com/Spectating101/cite-refinery/issues/124).
+
 ## Real decision
 
 - **Do not invest in broad SaaS development based on this result.**
