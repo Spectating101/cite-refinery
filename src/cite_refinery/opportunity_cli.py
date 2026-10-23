@@ -53,7 +53,7 @@ def render(report: dict) -> str:
     ]
     for competitor in report.get("competitive_review", {}).get("alternatives", []):
         lines.append("- Competing offering: " + competitor["name"] + " (" + competitor["scope"] + ") — " + competitor["url"])
-    for entry in [*report["problem"]["sources"], *buyer["signals"], *report["upstream"]["signals"]]:
+    for entry in [*report["problem"]["sources"], *buyer["signals"], *report["upstream"]["signals"], *report["upstream"].get("paid_onboarding_requirements", [])]:
         lines.append("- " + entry["claim"] + " — " + entry["url"] + " [" + entry["status"] + "]")
     lines.extend(["", "No outreach or deployment has been initiated.", ""])
     return "\n".join(lines)
