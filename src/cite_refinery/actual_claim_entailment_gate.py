@@ -23,6 +23,9 @@ DOI="10.14202/vetworld.2026.2816-2849"
 FROZEN_PAPER_SHA="4210e7ebc871f3db31dee6cb761f09d82e4f29f49aceed6a860c268e74176b7e"
 MODEL="cross-encoder/nli-MiniLM2-L6-H768"
 REVISION="f3b1e8aac2451320dfe2ce56673b3f2ec63e6f03"
+COMPARATOR_MODEL="cross-encoder/nli-deberta-v3-small"
+COMPARATOR_REVISION="e9890682d9e4279b7ae6d0fcfb435a43206280ec"
+MODEL_REVISIONS={MODEL:REVISION,COMPARATOR_MODEL:COMPARATOR_REVISION}
 LABELS=("contradiction","entailment","neutral")
 EXPECTED={"entailed":8,"contradicted":8,"overreach":3,"unresolved":2}
 # Precommitted; changing this after viewing predictions would invalidate the
@@ -98,11 +101,13 @@ def _blind_pairs(data):
     return standard,by_id
 
 
-def real_model(pairs):
+def real_model(pairs, *, model_name=MODEL):
     """Actual CPU CrossEncoder: exact pinned HF revision, no fake scorer fallback."""
     from sentence_transformers import CrossEncoder
     import numpy as np
-    model=CrossEncoder(MODEL,device="cpu",max_length=512,revision=REVISION)
+    _require(model_name in MODEL_REVISIONS, "Unknown or unpinned pretrained NLI model")
+    model=CrossEncoder(model_name,device="cpu",max_length=512,
+                       revision=MODEL_REVISIONS[model_name])
     # HF model's own published config is the only authority for class order.
     mapping={int(i):str(x).lower() for i,x in model.model.config.id2label.items()}
     _require([mapping.get(i) for i in range(3)]==list(LABELS),
@@ -147,7 +152,9 @@ def evaluate(data, *, infer: Callable=real_model, model_name=MODEL):
     # A future injected mock/model backend must be clearly distinguished.
     _require(isinstance(model_name,str) and 5<len(model_name)<160,
              "Model label required")
-    logits=infer(pairs)
+    _require(infer is not real_model or model_name in MODEL_REVISIONS,
+             "Actual pretrained model identity not authorized")
+    logits=real_model(pairs,model_name=model_name) if infer is real_model else infer(pairs)
     _require(isinstance(logits,(list,tuple)) and len(logits)==25,
              "NLI prediction array missing or incomplete")
     results=[]
@@ -185,7 +192,7 @@ def evaluate(data, *, infer: Callable=real_model, model_name=MODEL):
         "schema":SCHEMA,
         "source_casebook_sha256":_sha(data),
         "source_doi":DOI, "reported_original_article_text_sha256":FROZEN_PAPER_SHA,
-        "model":model_name,"model_revision":REVISION if infer is real_model else "injected_test_only",
+        "model":model_name,"model_revision":MODEL_REVISIONS[model_name] if infer is real_model else "injected_test_only",
         "inference_mode":"real_pretrained_cpu_cross_encoder" if infer is real_model else "injected_test_only",
         "model_labels":list(LABELS),
         "predeclared_policy":{"candidate_min_softmax":CONFIDENCE_THRESHOLD,
@@ -214,12 +221,13 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cases",type=Path,required=True)
     parser.add_argument("--out",type=Path,required=True)
+    parser.add_argument("--model",choices=sorted(MODEL_REVISIONS),default=MODEL)
     args=parser.parse_args(argv)
     _require(args.cases.is_file() and not args.cases.is_symlink()
              and args.cases.stat().st_size<100_000,
              "Missing/oversized historical source casebook")
     _require(not args.out.exists(),"Never overwrite original inference result")
-    result=evaluate(json.loads(args.cases.read_text("utf-8")))
+    result=evaluate(json.loads(args.cases.read_text("utf-8")),model_name=args.model)
     args.out.parent.mkdir(parents=True,exist_ok=True)
     args.out.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n","utf-8")
     print("REAL_SOURCE_NLI_GATE",json.dumps({
