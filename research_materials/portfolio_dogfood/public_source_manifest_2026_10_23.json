@@ -1,0 +1,68 @@
+{
+  "schema": "cite_refinery.public_portfolio_dogfood_sources.v1",
+  "date": "2026-10-23",
+  "owner": "Spectating101",
+  "public_only": true,
+  "description": "Eight public original GitHub README snapshots pinned to exact default-branch commit and Git blob identity. Project category is operator-supplied, not AI-inferred.",
+  "repositories": [
+    {
+      "repo": "hardware-splicer",
+      "head_sha": "1545ae806f9dd1e260e5da64c2b4475e49496276",
+      "readme_blob_sha": "e5d3910c202685c778a39ac9b383ec421b8adaf0",
+      "operator_declared_category": "hardware_engineering"
+    },
+    {
+      "repo": "yzu-cluster",
+      "head_sha": "6dc745cdd838bf61daead116d919a4cf0a4e97cc",
+      "readme_blob_sha": "2f89df13899f26b5e8fe34f7c7be8a1ba44f61ed",
+      "operator_declared_category": "university_data_workflow"
+    },
+    {
+      "repo": "gauntlet-blowback",
+      "head_sha": "a5efdb42cecdd5f68cea593833422a7d50f6e339",
+      "readme_blob_sha": "728747e4851a58a45ea96618592daf070831b424",
+      "operator_declared_category": "portfolio_conversion"
+    },
+    {
+      "repo": "animal-charity",
+      "head_sha": "b728666307149dacf64d5859ec99e6e23190baab",
+      "readme_blob_sha": "3807425a8e3132cc532b7dba634cc93a56df05ec",
+      "operator_declared_category": "public_good_governance"
+    },
+    {
+      "repo": "live-presenter",
+      "head_sha": "532c76c3a9fc2db9061aea66f1a852d9882a9b5b",
+      "readme_blob_sha": "c7efdbf7902ce6f1651a469fb9674551bd85a114",
+      "operator_declared_category": "live_visual_explanation"
+    },
+    {
+      "repo": "cite-refinery",
+      "head_sha": "b9a37c67a33975b6e24ba871df17a9691dc13cf8",
+      "readme_blob_sha": "c608443a11352e5c000a1cf73096797df31a46bb",
+      "operator_declared_category": "cross_layer_research_atlas"
+    },
+    {
+      "repo": "Invisible-ledger",
+      "head_sha": "0d937a01035c9be9e28d390661ec25527f999621",
+      "readme_blob_sha": "348b9c72314188834728f8f68811a181fd83267c",
+      "operator_declared_category": "academic_empirical_research"
+    },
+    {
+      "repo": "citation-engine",
+      "head_sha": "2de452b8ea1e6b54c93d2ada009f2d3b76c9bcab",
+      "readme_blob_sha": "bce05c14d3bd8ec2e7ddbb2198ab993e26001ce9",
+      "operator_declared_category": "provenance_kernel"
+    }
+  ],
+  "disallowed_private_sources": [
+    "nocturnal-oversight",
+    "solarpunk-coin",
+    "cite-agent",
+    "refinery",
+    "sharpe-terminus",
+    "research-drive-private"
+  ],
+  "never_publish_private_files": true,
+  "independent_gold_available": false,
+  "decision_authority": "candidate_only_human_review"
+}
