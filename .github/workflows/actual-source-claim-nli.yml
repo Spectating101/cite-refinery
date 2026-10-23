@@ -35,6 +35,26 @@ jobs:
         run: |
           python -m compileall -q src/cite_refinery/actual_claim_entailment_gate.py
           python -m unittest discover -s tests -p 'test_actual_claim_entailment_gate_v1.py' -v
+      - name: Verify article original XML exactly matches the immutable archived casebook source SHA
+        run: |
+          mkdir -p "$RUNNER_TEMP/source-claim-triage"
+          python -m cite_refinery.original_article_claim_source_audit \
+            --out "$RUNNER_TEMP/source-claim-triage/original-published-source.json"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          base=Path(os.environ["RUNNER_TEMP"])/"source-claim-triage"
+          original=json.loads((base/"original-published-source.json").read_text())
+          historical=json.loads(Path("research_materials/runtime_trials/fulltext_dog_20261020/benchmark_cases.json").read_text())
+          assert original["original_xml_sha256"]==historical["source_sha256"], \
+              "Historical benchmark source SHA does not match independently fetched original article"
+          assert original["verified_doi"]==historical["source_doi"]
+          assert original["archived_curated_excerpt_offsets_verified_against_this_xml"] is False
+          print("LIVE_ARCHIVED_ORIGINAL_SOURCE_SHA_MATCH",json.dumps({
+              "sha256":original["original_xml_sha256"],"doi":original["verified_doi"],
+              "curator_excerpt_offsets_verified":False,
+          },sort_keys=True))
+          PY
       - name: Execute actual HF-revision-pinned MiniLM NLI model with predeclared no-auto-promotion policy
         env:
           HF_HUB_DISABLE_TELEMETRY: "1"
