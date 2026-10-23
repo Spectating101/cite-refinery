@@ -163,10 +163,24 @@ def validate_event(event: Any, known_ids: set[str], currency: str) -> dict[str, 
     return normalized
 
 
+def case_snapshot_hashes(plan: dict[str, Any]) -> dict[str, str]:
+    """Pin the evaluated source case AND source-linked competitors in the ledger."""
+    validate_plan(plan)
+    hashes: dict[str, str] = {}
+    for spec in plan["opportunities"]:
+        cid = spec["case_id"]
+        source = json.loads((SOURCE_DIR / (cid + ".json")).read_text(encoding="utf-8"))
+        if spec.get("competitive_alternatives"):
+            source["competitive_alternatives"] = spec["competitive_alternatives"]
+        hashes[cid] = evaluate(source)["input_sha256"]
+    return hashes
+
+
 def new_ledger(plan: dict[str, Any]) -> dict[str, Any]:
     validate_plan(plan)
     return {
         "schema": LEDGER_SCHEMA, "plan_sha256": digest(plan),
+        "case_snapshot_sha256": case_snapshot_hashes(plan),
         "currency": plan["currency"], "entries": [], "head_sha256": GENESIS,
         "accounting_boundary": "All events are operator reported, not independent financial verification.",
     }
@@ -178,6 +192,8 @@ def validate_ledger(plan: dict[str, Any], ledger: Any) -> dict[str, Any]:
             or ledger.get("plan_sha256") != digest(plan)
             or ledger.get("currency") != plan["currency"]):
         raise ValueError("Activity ledger does not belong to this pinned plan")
+    if ledger.get("case_snapshot_sha256") != case_snapshot_hashes(plan):
+        raise ValueError("Source case evidence changed; open a reviewed ledger migration rather than silently rewriting history")
     entries = ledger.get("entries")
     if not isinstance(entries, list) or len(entries) > 5000:
         raise ValueError("Activity ledger outside bounds")
