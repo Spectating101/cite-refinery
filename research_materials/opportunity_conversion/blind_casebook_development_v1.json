@@ -1,0 +1,98 @@
+{
+  "schema": "cite_refinery.commercial_blind_casebook.v1",
+  "created_date": "2026-10-23",
+  "split": "development_replay_only_not_held_out",
+  "source_policy": "Operator-curated, attribution-preserving public excerpts; refs may be stale; all arms see identical bounded source text; no ground-truth willingness to pay.",
+  "cases": [
+    {
+      "case_id": "ofn-paid-contributor-route",
+      "question": "Should we prioritize a paid services engagement fixing the Open Food Network Canada map opening-view defect? What is the commercially rational next action?",
+      "evidence": [
+        {
+          "id": "ofn_issue_14924",
+          "url": "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924",
+          "authority": "first_party_project_issue",
+          "excerpt": "Canada's map was reported to center over Guatemala when a producer location was mis-geocoded to Brazil; fixed zoom also excludes parts of Canada. The issue proposes robust map bounds or configurable center/zoom; the issue was open on 2026-10-23."
+        },
+        {
+          "id": "ofn_contributor",
+          "url": "https://openfoodfoundation.org/become-a-contributor/",
+          "authority": "official_provider",
+          "excerpt": "Open Food Foundation publishes pathways for developers or system administrators interested in potentially paid contributions; it does not promise compensation for this map issue."
+        },
+        {
+          "id": "ofn_onboarding",
+          "url": "https://ofn-user-guide.gitbook.io/ofn-handbook/working-on-the-ofn-governance/team-organization/onboarding-process",
+          "authority": "official_handbook",
+          "excerpt": "Published contribution onboarding describes an initial volunteer stage and certification criteria for subsequent paid participation; present-day applicability and duration need confirmation."
+        }
+      ]
+    },
+    {
+      "case_id": "foodsoft-food-coop-deployment",
+      "question": "Is fixing Foodsoft's order-balancing mismatch a worthwhile immediate revenue opportunity or only an engineering contribution? What should we do first?",
+      "evidence": [
+        {
+          "id": "foodsoft_1368",
+          "url": "https://github.com/foodcoops/foodsoft/issues/1368",
+          "authority": "first_party_project_issue",
+          "excerpt": "A report demonstrates quantities displayed to three decimal places yet compared to an unrounded sum (e.g. 1.308 versus 1.307692), yielding an incorrect mismatch indicator. An adjustment and regression test are possible."
+        },
+        {
+          "id": "foodsoft_repo",
+          "url": "https://github.com/foodcoops/foodsoft",
+          "authority": "repository_readme",
+          "excerpt": "Foodsoft is open software for cooperative ordering, shared accounting, and jobs. Availability of code or community issue does not establish payment for a specific repair."
+        }
+      ]
+    },
+    {
+      "case_id": "pv-independent-rooftop-performance-audit",
+      "question": "Should we build a paid independent rooftop-solar performance assessment service using pvlib? Identify the most defensible first commercial experiment.",
+      "evidence": [
+        {
+          "id": "doe_pv_monitor",
+          "url": "https://www.energy.gov/cmei/femp/monitoring-platforms-solar-photovoltaic-systems",
+          "authority": "government_guidance",
+          "excerpt": "US Department of Energy describes already available PV monitoring platforms, performance indicators and independent third-party monitoring. Routine monitoring is an established service category."
+        },
+        {
+          "id": "solargis_assessment",
+          "url": "https://www.solargis.com/services/pv-performance-assessment",
+          "authority": "incumbent_official_offer",
+          "excerpt": "Solargis advertises independent PV performance assessment combining measured generation with modeled production cases and underperformance analysis. This offering substantially overlaps a proposed audit."
+        },
+        {
+          "id": "pvlib_repo",
+          "url": "https://github.com/pvlib/pvlib-python",
+          "authority": "repository_readme",
+          "excerpt": "pvlib-python supplies open-source photovoltaic simulation and performance modeling functions. The software is a useful model component, not a finished site-specific certified audit or evidence of a local buyer."
+        }
+      ]
+    },
+    {
+      "case_id": "kobo-dog-sighting-integration",
+      "question": "Should we productize KoboToolbox as a Taiwan free-roaming dog population survey service? Which technical and buyer evidence is still missing?",
+      "evidence": [
+        {
+          "id": "dog_mark_recap",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4684217/",
+          "authority": "academic_publication",
+          "excerpt": "Free-roaming dog abundance studies using repeated sightings/capture-recapture rely on suitably identifying individuals and defensible estimation assumptions."
+        },
+        {
+          "id": "moa_taiwan_dog",
+          "url": "https://animal.moa.gov.tw/Frontend/News/Detail/N0000000001599",
+          "authority": "government_population_survey",
+          "excerpt": "Taiwan periodically estimates free-roaming dog populations; periodic aggregate surveys are not a live system of individual dog re-identification. No agency's purchase decision is established by this survey."
+        },
+        {
+          "id": "kobo_repo",
+          "url": "https://github.com/kobotoolbox/kpi",
+          "authority": "repository_readme",
+          "excerpt": "KoboToolbox provides offline data collection, survey forms, exports, and attachments. It is not a proven turnkey photographic dog re-identification and population-estimation application."
+        }
+      ]
+    }
+  ]
+}
