@@ -129,7 +129,36 @@ def science_software(query: str, *, limit: int = 8, after_id: int = 0,
     }
 
 
-def orkg_papers(title: str, *, limit: int = 8, fetch_json: Callable[[str], Any] = _fetch_json) -> dict:
+def _fetch_orkg_v2(url: str) -> Any:
+    """ORKG papers V2 explicitly requires its media type, not generic JSON.
+
+    Generic Accept: application/json selects the separate LegacyPaperController,
+    where only linked_to/linkedTo GET parameters are accepted. The v2
+    controller produces application/vnd.orkg.paper.v2+json.
+    """
+    from urllib.parse import urlsplit
+    from urllib.request import Request, HTTPRedirectHandler, build_opener
+    parsed = urlsplit(url)
+    if (parsed.scheme != "https" or parsed.hostname != "orkg.org"
+            or parsed.port is not None or parsed.username or parsed.password
+            or parsed.path != "/api/papers" or parsed.fragment):
+        raise ValueError("Only original ORKG v2 paper-search URL is permitted")
+    class NoRedirect(HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            raise ValueError("ORKG source redirected")
+    req = Request(url, headers={
+        "Accept": "application/vnd.orkg.paper.v2+json",
+        "User-Agent": "CiteRefineryDiscovery/0.1"})
+    with build_opener(NoRedirect()).open(req, timeout=9) as response:
+        if response.status != 200 or "json" not in response.headers.get("Content-Type", "").lower():
+            raise ValueError("ORKG v2 response is not JSON HTTP 200")
+        data = response.read(1_048_577)
+        if len(data) > 1_048_576:
+            raise ValueError("ORKG response exceeds bound")
+    return json.loads(data)
+
+
+def orkg_papers(title: str, *, limit: int = 8, fetch_json: Callable[[str], Any] = _fetch_orkg_v2) -> dict:
     """Read-only scholarly paper metadata from ORKG; not verified findings."""
     q = _query(title)
     _limit(limit)
@@ -224,7 +253,7 @@ def ftm_preview(path: str | Path, *, dataset_id: str, max_entities: int = 100) -
 
 def consolidate_discovery(query: str, sources: tuple[str, ...] = ("science", "orkg"),
                           *, limit: int = 6,
-                          fetch_json: Callable[[str], Any] = _fetch_json,
+                          fetch_json: Callable[[str], Any] | None = None,
                           module_id: str | None = None, module_title: str | None = None) -> dict:
     """One read-only review queue; retains every provider's independent claims."""
     q = _query(query)
@@ -237,9 +266,16 @@ def consolidate_discovery(query: str, sources: tuple[str, ...] = ("science", "or
     records, errors, receipts = [], {}, []
     for provider in sources:
         try:
-            packet = (science_software(q, limit=limit, fetch_json=fetch_json)
+            # A caller-supplied fetcher is a test/source override. The real
+            # providers require DIFFERENT Accept headers: Science uses JSON,
+            # ORKG papers require its v2 vendor media type. Never force
+            # Science's generic fetcher onto ORKG by default.
+            source_fetch = (fetch_json if fetch_json is not None
+                            else (_fetch_json if provider == "science"
+                                  else _fetch_orkg_v2))
+            packet = (science_software(q, limit=limit, fetch_json=source_fetch)
                       if provider == "science" else
-                      orkg_papers(q, limit=limit, fetch_json=fetch_json))
+                      orkg_papers(q, limit=limit, fetch_json=source_fetch))
             records.extend(packet["records"])
             receipts.append({"provider": packet["provider"],
                              "query_url": packet["provider_url"],
