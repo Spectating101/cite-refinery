@@ -46,6 +46,7 @@ def attest(purpose, case, *, url, subject, buyer="buyer-example", extra=None):
 def synthetic_case():
     c = fixture()
     c["fit"]["verification"] = "executed_local"  # synthetic fixture, not real execution
+    c["fit"]["execution_evidence"] = [{"url": "https://example.org/synthetic-ci-execution-receipt", "claim": "Test-only invented execution receipt for verifying signed review custody.", "status": "reviewed"}]
     c["market"]["demand_status"] = "signed_commitment"
     c["market"]["signals"] = [{
         "url": "https://procurement.example.org/synthetic-private-agreement",
@@ -62,6 +63,11 @@ def synthetic_case():
 
 
 def add_attestations(c):
+    c["fit"]["execution_attestation"] = attest(
+        "technical_execution", c,
+        url=c["fit"]["execution_evidence"][0]["url"],
+        subject={k: v for k, v in c["fit"].items() if k != "execution_attestation"},
+    )
     c["market"]["demand_attestation"] = attest(
         "buyer_demand", c, url=c["market"]["signals"][0]["url"],
         subject=c["market"]["signals"], extra={"demand_status": c["market"]["demand_status"]},
@@ -114,8 +120,19 @@ class CommercialEvidenceGuardTests(unittest.TestCase):
         self.assertEqual(result["readiness"], "candidate_for_paid_pilot_subject_to_contract_and_rights")
         self.assertTrue(result["buyer"]["demand_attestation_valid"])
         self.assertTrue(result["competitive_review"]["attestation_valid"])
+        self.assertTrue(result["cross_layer_fit"]["execution_attestation_valid"])
         self.assertNotEqual(result["readiness"], "revenue_verified")
         self.assertFalse(c["compliance"]["deployment_authorized"])
+
+    def test_unverified_execution_prevents_paid_pilot_even_with_verified_buyer(self):
+        c = add_attestations(synthetic_case())
+        del c["fit"]["execution_attestation"]
+        with patch.dict(os.environ, {KEY_ENV: KEY}):
+            report = evaluate(c)
+        self.assertTrue(report["buyer"]["demand_attestation_valid"])
+        self.assertTrue(report["competitive_review"]["attestation_valid"])
+        self.assertFalse(report["cross_layer_fit"]["execution_attestation_valid"])
+        self.assertEqual(report["readiness"], "evidence_lead_only")
 
     def test_missing_key_mismatched_evidence_and_tampering_fail_closed(self):
         c = add_attestations(synthetic_case())
