@@ -66,6 +66,8 @@ jobs:
             "layers":j["layers"],
             "edge_states":j["edges_by_status"],
             "same_commit_ci":j["same_commit_ci_observed"],
+            "bm25_rank_top1":j["neural_retrieval"]["same_corpus_BM25_baseline"]["selected_target_top1_hits"],
+            "bm25_rank_top3":j["neural_retrieval"]["same_corpus_BM25_baseline"]["selected_target_top3_hits"],
             "model_rank_top1":j["neural_retrieval"]["selected_target_top1_hits"],
             "model_rank_top3":j["neural_retrieval"]["selected_target_top3_hits"],
             "verified_autonomous_portfolio_judgments":0
