@@ -317,6 +317,34 @@ def run_public_portfolio(manifest, *, fetch_json=_fetch_json, token=None):
     }
 
 
+def lexical_bm25_baseline(names, docs, queries):
+    """Plain README BM25 baseline (no external model or prior repo labels)."""
+    from collections import Counter
+    from math import log
+    def tokens(x):
+        return re.findall(r"[a-z][a-z0-9]+",x.casefold())
+    series=[tokens(doc) for doc in docs]
+    _require(bool(series) and all(series),"Empty source descriptions")
+    N=len(series)
+    df=Counter(t for x in series for t in set(x))
+    average=sum(map(len,series))/N
+    results=[]
+    for query in queries:
+        qs=set(tokens(query))
+        values=[]
+        for doc in series:
+            c=Counter(doc)
+            k1,b=1.5,0.75
+            length_factor=k1*(1-b+b*len(doc)/average)
+            score=sum(log(1+(N-df[t]+0.5)/(df[t]+0.5))
+                      * c[t]*(k1+1)/(c[t]+length_factor)
+                      for t in qs if t in c)
+            values.append(score)
+        ranking=sorted(range(N),key=lambda i:(-values[i],names[i]))
+        results.append([names[i] for i in ranking])
+    return results
+
+
 def run_queries(report):
     # A real pretrained *retrieval* test. No answer-synthesis or truth status
     # inferred from cosine similarities.
@@ -333,6 +361,7 @@ def run_queries(report):
         text=source_nodes[key]
         texts.append(text.split(": ",1)[-1])
     prompts=[q for _,q in QUESTION_SET]+list(NEGATIVE_QUESTIONS)
+    bm25_ranks=lexical_bm25_baseline(names,texts,prompts)
     model=TextEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2",threads=2)
     vectors=np.asarray(list(model.embed(texts+prompts,batch_size=16)),dtype=np.float32)
     if vectors.shape[0]!=len(texts)+len(prompts) or not np.isfinite(vectors).all():
@@ -356,6 +385,13 @@ def run_queries(report):
             "source_grounded_answer_generated":False,
             "reference_gold_independent":False,
         })
+    lexical_comparison=[
+        {"developer_selected_repository":x[0],
+         "bm25_target_rank":bm25_ranks[i].index(x[0])+1,
+         "bm25_top3":bm25_ranks[i][:3],
+         "minilm_target_rank":records[i]["target_rank"]}
+        for i,x in enumerate(QUESTION_SET)
+    ]
     negatives=[]
     for i,question in enumerate(NEGATIVE_QUESTIONS):
         sim=docs@normalized[len(texts)+len(QUESTION_SET)+i]
@@ -374,6 +410,13 @@ def run_queries(report):
         "selected_target_top1_hits":sum(x["target_rank"]==1 for x in records),
         "selected_target_top3_hits":sum(x["target_rank"]<=3 for x in records),
         "selected_target_ranks":records,
+        "same_corpus_BM25_baseline":{
+            "selected_target_top1_hits":sum(x["bm25_target_rank"]==1 for x in lexical_comparison),
+            "selected_target_top3_hits":sum(x["bm25_target_rank"]<=3 for x in lexical_comparison),
+            "same_source_texts":True,
+            "queries_with_correct_source":lexical_comparison,
+            "note":"Standard local BM25 retrieval, not a commercial competitor or independently validated answer-quality control.",
+        },
         "deliberately_unanswerable_questions":negatives,
         "independent_gold_available":False,
         "source_verification_or_cross_layer_reasoning_generated":False,
