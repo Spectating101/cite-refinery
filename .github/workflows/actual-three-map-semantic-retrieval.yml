@@ -1,0 +1,89 @@
+name: Actual frozen three-map semantic retrieval (pretrained CPU model)
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/actual_semantic_retrieval_replay.py"
+      - "tests/test_actual_semantic_retrieval_replay_v1.py"
+      - "docs/ACTUAL_THREE_MAP_INTELLIGENCE_RETRIEVAL_V1.md"
+      - ".github/workflows/actual-three-map-semantic-retrieval.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  neural-metadata-retrieval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout original frozen three-map development files
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project and actual CPU ONNX embedder
+        run: python -m pip install -e . "fastembed==0.9.0"
+      - name: Compile benchmark and run adversarial source-scope tests
+        run: |
+          python -m compileall -q src/cite_refinery/actual_semantic_retrieval_replay.py
+          python -m unittest discover -s tests -p 'test_actual_semantic_retrieval_replay_v1.py' -v
+      - name: Build original offline Atlas 1497-card pilot with sealed Academic holdout excluded
+        run: |
+          mkdir -p "$RUNNER_TEMP/atlas-semantic"
+          PYTHONPATH=tests python - <<'PY'
+          from pathlib import Path
+          import json,os
+          from test_standalone_workspace_pilot_v1 import OfflineStandalonePilotTests
+          OfflineStandalonePilotTests.setUpClass()
+          pilot=OfflineStandalonePilotTests.pilot
+          assert pilot["record_count"]==1497
+          assert pilot["by_layer"]=={"practical":57,"academic":150,"implementation":1290}
+          assert pilot["original_data"]["academic_sealed_holdout_not_imported"]==66
+          assert pilot["original_data"]["practical_public_nocturnal_attached"] is False
+          Path(os.environ["RUNNER_TEMP"],"atlas-semantic","original-pilot.json").write_text(
+              json.dumps(pilot,ensure_ascii=False,sort_keys=True)+"\n",encoding="utf-8")
+          PY
+      - name: Run REAL pretrained CPU embedding model; compare 10 curated paraphrases against existing browser
+        env:
+          FASTEMBED_CACHE_PATH: ${{ runner.temp }}/fastembed-cache
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          TOKENIZERS_PARALLELISM: "false"
+          OMP_NUM_THREADS: "2"
+        run: |
+          python -m cite_refinery.actual_semantic_retrieval_replay \
+            --pilot "$RUNNER_TEMP/atlas-semantic/original-pilot.json" \
+            --out "$RUNNER_TEMP/atlas-semantic/actual-neural-retrieval.json"
+          python - <<'PY'
+          from pathlib import Path
+          import os,json
+          r=json.loads(Path(os.environ["RUNNER_TEMP"],"atlas-semantic",
+                       "actual-neural-retrieval.json").read_text())
+          assert r["embedding_model"]=="BAAI/bge-small-en-v1.5"
+          assert r["embedding_package_version"]=="0.9.0"
+          assert r["total_records"]==1497
+          assert r["development_probe_stats"]["literal"]["browser_selected_target_retrieved"]==10
+          assert r["development_probe_stats"]["paraphrase"]["browser_selected_target_retrieved"]==0
+          assert r["safety_abstention_probes"]==3
+          assert r["validated_cross_layer_semantic_claims"]==0
+          assert r["actual_semantic_answers_generated"]==0
+          assert r["can_claim_intelligence_product_ready"] is False
+          print("REAL_NEURAL_RETRIEVAL_RESULT",json.dumps({
+            "by_variant":r["development_probe_stats"],
+            "embedding_model":r["embedding_model"],
+            "embedding_package_version":r["embedding_package_version"],
+            "source_cards_sha256":r["source_cards_sha256"],
+            "safe_abstentions_generated":r["automatic_safe_abstentions"],
+            "semantic_answers_generated":r["actual_semantic_answers_generated"]
+          },sort_keys=True))
+          PY
+      - name: Upload transparent unpromoted model ranks and diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-1497-atlas-neural-retrieval-review-only
+          path: ${{ runner.temp }}/atlas-semantic/actual-neural-retrieval.json
+          retention-days: 7
+          if-no-files-found: error
