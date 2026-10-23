@@ -80,7 +80,7 @@ class BlindCommercialTrialTests(unittest.TestCase):
                                      "next_action_difference": "none"}],
                     "bridges": [], "open_questions": [],
                 }}
-            source_ids = re.findall(r"\\[([a-z][a-z0-9_]+)\\]", prompt)
+            source_ids = re.findall(r"\[([a-z][a-z0-9_]+)\]", prompt)
             return {"raw": {
                 "propositions": [{
                     "case_id": case_id, "priority": "investigate", "buyer_status": "problem_signal",
