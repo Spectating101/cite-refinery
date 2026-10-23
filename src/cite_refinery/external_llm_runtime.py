@@ -76,6 +76,12 @@ def _parse_response(payload):
         ("passages","abstain"),
         ("status","answer","claims","limitations"),
         ("assessment","reason","unsafe_claim_indices"),
+        # Portfolio dossier and cross-project candidate shapes. These remain
+        # proposals only; downstream citation/entailment validation is mandatory.
+        ("capabilities","limitations","integration_candidates",
+         "competitor_substitutions","decision","decision_rationale",
+         "unanswered_questions"),
+        ("opportunities",),
     )
     if isinstance(payload,dict) and (
         all(k in payload for k in ("propositions","bridges","open_questions")) or
