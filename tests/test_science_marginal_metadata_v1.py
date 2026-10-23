@@ -47,6 +47,18 @@ class MarginalMetadataTests(unittest.TestCase):
         report=benchmark(self.sample,self.census,self.primary,self.frontier,
                          fetch=self.mock_context)
         self.assertEqual(report["schema"],SCHEMA)
+        self.assertEqual(report["source_categories_count"],44)
+        self.assertEqual(report["original_category_memberships_with_overlap"],1360)
+        cats=report["source_category_coverage"]
+        self.assertEqual(len(cats),44)
+        self.assertEqual(sum(c["source_repository_memberships"] for c in cats),1360)
+        self.assertEqual(sum(c["science_exact_identity_memberships"] for c in cats),
+                         sum(len(x["categories"]) for x in
+                             __import__("cite_refinery.science_reuse_census",fromlist=["frozen_repositories"])
+                             .frozen_repositories(self.primary,self.frontier)
+                             if x["url"].casefold() in {
+                                 a["repository"].casefold() for a in self.census["exact_matches"]}))
+        self.assertTrue(all(c["does_not_measure_true_domain_relevance"] for c in cats)
         self.assertEqual(report["science_context_read_successes"],20)
         self.assertEqual(report["science_with_package_metadata"],20)
         self.assertEqual(report["science_with_indexed_direct_dependencies"],20)
