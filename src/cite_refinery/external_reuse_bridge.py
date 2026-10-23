@@ -12,6 +12,7 @@ import json
 import re
 from typing import Any, Callable
 from urllib.parse import urlencode
+from urllib.error import HTTPError
 
 from .external_solution_sources import _candidate, _fetch_json, stage_landscape_packet
 
@@ -245,7 +246,8 @@ def consolidate_discovery(query: str, sources: tuple[str, ...] = ("science", "or
                              "candidate_count": len(packet["records"])})
         except (OSError, TimeoutError, ValueError, TypeError, KeyError, json.JSONDecodeError) as e:
             # API 404, outage, malformed payload: unknown, NOT an empty graph.
-            errors[provider] = type(e).__name__
+            errors[provider] = ("HTTP_" + str(e.code) if isinstance(e, HTTPError)
+                                else type(e).__name__)
     review = {
         "schema": "cite_refinery.external_oss_consolidation.v1",
         "query": q, "providers_requested": list(sources),
