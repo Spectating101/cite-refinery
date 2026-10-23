@@ -6,6 +6,7 @@ on:
       - "src/cite_refinery/portfolio_decision_eval.py"
       - "src/cite_refinery/portfolio_autonomous_dossier.py"
       - "src/cite_refinery/portfolio_cross_project.py"
+      - "scripts/portfolio_local_cpu_smoke.py"
       - "tests/test_portfolio_decision_eval_v2.py"
       - "tests/test_portfolio_autonomous_dossier_v3.py"
       - "tests/test_portfolio_cross_project_v3.py"
@@ -14,7 +15,6 @@ on:
 
 permissions:
   contents: read
-  models: read
 
 jobs:
   source-boundary-unit-tests:
@@ -48,9 +48,9 @@ jobs:
           print('SOURCE_SCOPE_TESTS_ONLY: no autonomous inference or model quality results')
           PY
 
-  live-public-dossiers:
+  local-cpu-model-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
@@ -58,18 +58,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install
-        run: python -m pip install -e .
-      - name: Fetch actual eight source snapshots and run model-generated dossiers
+      - name: Install public Atlas and local inference engine
+        run: |
+          python -m pip install -e .
+          python -m pip install 'torch==2.6.0' 'transformers==4.49.0' sentencepiece
+      - name: Actual open-weight local model inference on eight pinned public projects
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          PORTFOLIO_MODEL_API_KEY: ${{ github.token }}
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          OMP_NUM_THREADS: "2"
+          MKL_NUM_THREADS: "2"
         run: |
-          python -m cite_refinery.portfolio_public_dogfood --manifest research_materials/portfolio_dogfood/public_source_manifest_2026_10_23.json --out "$RUNNER_TEMP/portfolio-actual-atlas.json"
-          python -m cite_refinery.portfolio_autonomous_dossier --atlas-receipt "$RUNNER_TEMP/portfolio-actual-atlas.json" --output "$RUNNER_TEMP/public-dossiers.json" --model openai/gpt-4o-mini --endpoint https://models.github.ai/inference/chat/completions --allow-remote-inference
-      - uses: actions/upload-artifact@v4
-        if: success()
+          python scripts/portfolio_local_cpu_smoke.py
+      - name: Upload reproducible model output and validation errors
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: phase3-public-model-generated-dossiers
-          path: ${{ runner.temp }}/public-dossiers.json
+          name: phase3-local-cpu-inference-smoke
+          path: ${{ runner.temp }}/portfolio-cpu-smoke.json
+          if-no-files-found: warn
           retention-days: 7
