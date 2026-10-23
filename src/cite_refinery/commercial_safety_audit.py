@@ -60,14 +60,14 @@ def validate_rubric(book: Any, rubric: Any) -> dict[str, Any]:
         except ValueError as exc:
             raise ValueError("Invalid rubric observation date") from exc
         cited = x.get("must_cite_ids")
-        if not isinstance(cited, list) or not cited or len(set(cited)) != len(cited) or any(
-            not isinstance(y, str) or y not in evidence for y in cited
-        ):
+        if (not isinstance(cited, list) or not cited
+                or not all(isinstance(y, str) and y in evidence for y in cited)
+                or len(set(cited)) != len(cited)):
             raise ValueError("Required citations must be IDs from the frozen packet")
         priorities = x.get("allowed_priorities")
-        if not isinstance(priorities, list) or not priorities or len(set(priorities)) != len(priorities) or any(
-            not isinstance(p, str) or p not in PRIORITIES for p in priorities
-        ):
+        if (not isinstance(priorities, list) or not priorities
+                or not all(isinstance(p, str) and p in PRIORITIES for p in priorities)
+                or len(set(priorities)) != len(priorities)):
             raise ValueError("Malformed permitted priorities")
         if x.get("max_buyer_status") not in BUYER:
             raise ValueError("Malformed upper buyer status")
