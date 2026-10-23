@@ -102,6 +102,18 @@ class CommercialEvidenceGuardTests(unittest.TestCase):
         self.assertFalse(report["buyer"]["demand_attestation_valid"])
         self.assertEqual(report["readiness"], "evidence_lead_only")
 
+    def test_even_signed_github_bug_cannot_be_a_contract(self):
+        c = synthetic_case()
+        c["market"]["signals"][0]["url"] = "https://github.com/openfoodfoundation/openfoodnetwork/issues/14924"
+        c["market"]["signals"][0]["claim"] = "Intentionally false commercial-contract description for a genuine public bug."
+        c = add_attestations(c)
+        with patch.dict(os.environ, {KEY_ENV: KEY}):
+            result = evaluate(c)
+        self.assertEqual(result["buyer"]["demand_status"], "unverified_claim")
+        self.assertFalse(result["buyer"]["demand_attestation_valid"])
+        self.assertEqual(result["readiness"], "evidence_lead_only")
+        self.assertIn("GitHub issue", result["buyer"]["verification_limitation"])
+
     def test_alternative_changes_recommended_action(self):
         c = json.loads((ROOT / "pv-independent-rooftop-performance-audit.json").read_text())
         self.assertIn("Interview", evaluate(c)["recommended_next_test"])
