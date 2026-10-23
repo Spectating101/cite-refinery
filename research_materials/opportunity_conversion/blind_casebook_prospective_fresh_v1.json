@@ -1,0 +1,62 @@
+{
+  "schema": "cite_refinery.commercial_blind_casebook.v1",
+  "split": "prospective_fresh_not_independently_sealed",
+  "created_date": "2026-10-24",
+  "source_policy": "Source-linked original GitHub issue snapshots checked 2026-10-24; selected before any model inference on these three cases. Not a sealed evaluation, independent truth assessment, buyer interview or sample of general market; retrospective excerpt curation is possible.",
+  "cases": [
+    {
+      "case_id": "fresh-homelab-integration-bounty",
+      "question": "Would it be commercially rational to claim the source's integration-testing bounty without first clarifying contradictory award amounts, acceptance costs, and available testing environments?",
+      "evidence": [
+        {
+          "id": "homelab_issue14",
+          "url": "https://github.com/illbnm/homelab-stack/issues/14",
+          "authority": "original_maintainer_issue",
+          "excerpt": "As checked on 2026-10-24, the open maintainer issue seeks broad Docker integration tests for container health, HTTP endpoints, service-to-service communications, SSO and backups. Its issue title advertises $200 while the main description lists 280 USDT. The posting does not establish an engagement or authenticated payout to this investigator."
+        },
+        {
+          "id": "homelab_readme",
+          "url": "https://github.com/illbnm/homelab-stack/blob/main/README.md",
+          "authority": "first_party_repository_readme",
+          "excerpt": "The readme describes a Docker-based self-hosted stack with dozens of services, SSO, monitoring, backups and configuration scripts. Its project publicity offers multiple bounties but cannot establish the cost of running a representative deployment or a funded payment rail."
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-rtx-5060-recipe-bounty",
+      "question": "A mirror may still advertise this $50 GPU recipe bounty. Should an engineer treat it as available paid work when the original issue status and benchmark requirements are considered?",
+      "evidence": [
+        {
+          "id": "sybil_issue222",
+          "url": "https://github.com/sybil-solutions/local-ai-registry/issues/222",
+          "authority": "original_issue_state",
+          "excerpt": "The original $50 bounty issue #222 for RTX 5060 Ti 16GB was CLOSED as checked October 24, 2026. The task requires a measured inference recipe with 128K context, six acceptance checks, at least 15 tokens/second, a claim-first process, and sponsor-arranged payment after successful merge."
+        },
+        {
+          "id": "sybil_readme",
+          "url": "https://github.com/sybil-solutions/local-ai-registry/blob/main/README.md",
+          "authority": "publisher_repository_readme",
+          "excerpt": "Local AI Registry publishes exact, hardware-tested AI inference recipes including model weights, engines, context lengths and performance. A generic software installation does not establish access to the required GPU or acceptance of a closed issue."
+        }
+      ]
+    },
+    {
+      "case_id": "fresh-tenstorrent-typecast-bounty",
+      "question": "Should a solo operator pursue the open $1,000 Tenstorrent uint16 typecast bounty without confirmed assignment rights and specialized hardware access?",
+      "evidence": [
+        {
+          "id": "tt_issue51655",
+          "url": "https://github.com/tenstorrent/tt-metal/issues/51655",
+          "authority": "first_party_issue_and_assignee",
+          "excerpt": "Original issue #51655 remains OPEN and advertises a $1,000 hardware typecast correctness bounty. The reported uint16 conversion rounds half values while host and other integer routes truncate. On October 24 the issue was already assigned to kinginu. The issue supplies device-level reproductions, not an invitation to a second claimant."
+        },
+        {
+          "id": "tt_readme",
+          "url": "https://github.com/tenstorrent/tt-metal/blob/main/README.md",
+          "authority": "first_party_repository_readme",
+          "excerpt": "The project is a Tenstorrent neural-network operator and low-level hardware runtime with kernel tests and device-specific requirements. The public bounty directory does not establish local hardware, ownership of an already-assigned task, or a guaranteed award."
+        }
+      ]
+    }
+  ]
+}
