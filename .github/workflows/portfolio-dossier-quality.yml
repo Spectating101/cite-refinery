@@ -1,0 +1,45 @@
+name: Portfolio evidence decision and AI dossier gates
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/portfolio_decision_eval.py"
+      - "src/cite_refinery/portfolio_autonomous_dossier.py"
+      - "tests/test_portfolio_decision_eval_v2.py"
+      - "tests/test_portfolio_autonomous_dossier_v3.py"
+      - ".github/workflows/portfolio-dossier-quality.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-boundary-unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project
+        run: python -m pip install -e .
+      - name: Compile and execute both suites
+        run: |
+          python -m compileall -q src/cite_refinery/portfolio_decision_eval.py src/cite_refinery/portfolio_autonomous_dossier.py
+          python -m unittest discover -s tests -p 'test_portfolio_decision_eval_v2.py' -v
+          python -m unittest discover -s tests -p 'test_portfolio_autonomous_dossier_v3.py' -v
+      - name: Assert model API keys not needed for deterministic suite
+        run: |
+          python - <<'PY'
+          from cite_refinery.portfolio_autonomous_dossier import DossierError, remote_openai_compatible
+          try:
+              remote_openai_compatible('test-model','http://insecure.example/v1/chat/completions')
+          except DossierError as exc:
+              assert 'HTTPS' in str(exc)
+          else:
+              raise AssertionError('Insecure endpoint accepted')
+          print('SOURCE_SCOPE_TESTS_ONLY: no autonomous inference or model quality results')
+          PY
