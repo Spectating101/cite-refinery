@@ -253,7 +253,7 @@ def ftm_preview(path: str | Path, *, dataset_id: str, max_entities: int = 100) -
 
 def consolidate_discovery(query: str, sources: tuple[str, ...] = ("science", "orkg"),
                           *, limit: int = 6,
-                          fetch_json: Callable[[str], Any] = _fetch_json,
+                          fetch_json: Callable[[str], Any] | None = None,
                           module_id: str | None = None, module_title: str | None = None) -> dict:
     """One read-only review queue; retains every provider's independent claims."""
     q = _query(query)
@@ -266,9 +266,16 @@ def consolidate_discovery(query: str, sources: tuple[str, ...] = ("science", "or
     records, errors, receipts = [], {}, []
     for provider in sources:
         try:
-            packet = (science_software(q, limit=limit, fetch_json=fetch_json)
+            # A caller-supplied fetcher is a test/source override. The real
+            # providers require DIFFERENT Accept headers: Science uses JSON,
+            # ORKG papers require its v2 vendor media type. Never force
+            # Science's generic fetcher onto ORKG by default.
+            source_fetch = (fetch_json if fetch_json is not None
+                            else (_fetch_json if provider == "science"
+                                  else _fetch_orkg_v2))
+            packet = (science_software(q, limit=limit, fetch_json=source_fetch)
                       if provider == "science" else
-                      orkg_papers(q, limit=limit, fetch_json=fetch_json))
+                      orkg_papers(q, limit=limit, fetch_json=source_fetch))
             records.extend(packet["records"])
             receipts.append({"provider": packet["provider"],
                              "query_url": packet["provider_url"],
