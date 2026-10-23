@@ -21,7 +21,9 @@ SCHEMA = "cite_refinery.commercial_comparison.v1"
 
 _ACTIONS = {
     "check whether the paid contributor application": "verify_paid_contributor",
+    "verify volunteer onboarding": "verify_paid_contributor",
     "interview an identifiable buyer/operator": "interview_buyer",
+    "compare the existing substitutes": "verify_competitive_advantage",
     "run a minimal capability-to-requirement test": "test_component_fit",
 }
 
@@ -39,7 +41,7 @@ def atlas_decision(case: dict[str, Any]) -> dict[str, Any]:
     return {
         "documented_problem_evidence": bool(report["problem"]["sources"]),
         "end_to_end_technical_fit_verified": report["cross_layer_fit"]["fit_status"] == "independently_replicated",
-        "funded_or_signed_buyer": report["buyer"]["demand_status"] in {"funded_request", "signed_commitment"},
+        "funded_or_signed_buyer": report["buyer"]["verified_demand_status"] in {"funded_request", "signed_commitment"},
         "authorized_for_deployment": bool(case["compliance"]["rights_reviewed"] and case["compliance"]["deployment_authorized"]),
         "realized_revenue_established": False,
         "next_test": _action(report["recommended_next_test"]),
@@ -132,8 +134,9 @@ def render(result: dict[str, Any]) -> str:
         "",
         "## Adversarial evidence promotion", "",
         f"Atlas readiness after forged caller labels: `{result['adversarial']['atlas_readiness']}`.",
-        "This is a **source-verification vulnerability** in trusting caller-assigned reviewed/contract labels;",
-        "the public GitHub issue does NOT become signed procurement evidence.",
+        "The forged reviewed/contract labels alone no longer qualify as a verified contract;",
+        "the public GitHub issue does NOT become signed procurement evidence. A properly secured",
+        "independent review-signing process would still be needed for any positive promotion.",
         "",
         "## Limitations",
     ])

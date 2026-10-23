@@ -15,6 +15,8 @@ from decimal import Decimal, InvalidOperation
 from typing import Any
 from urllib.parse import urlsplit
 
+from .commercial_guardrails import assess as assess_commercial_evidence
+
 SCHEMA = "cite_refinery.opportunity_case.v1"
 REPORT = "cite_refinery.opportunity_decision.v1"
 SLUG = re.compile(r"^[A-Za-z0-9-]{1,39}/[A-Za-z0-9_.-]{1,100}$")
@@ -178,10 +180,13 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
         needed_kind = "funded_procurement" if demand_level == "funded_request" else "signed_contract"
         if not any(s.get("kind") == needed_kind and s["status"] == "reviewed" for s in market_signals):
             raise ValueError("funded demand requires reviewed procurement/contract evidence, not market commentary")
+    commercial = assess_commercial_evidence(case, case_id=case_id, market_signals=market_signals)
+    verified_demand = commercial["effective_demand_status"]
     upstream = case.get("upstream")
     if not isinstance(upstream, dict) or upstream.get("engagement") not in ENGAGEMENT:
         raise ValueError("upstream engagement missing")
     upstream_signal = _signals(upstream.get("signals", []), "upstream.signals")
+    onboarding = _signals(upstream.get("paid_onboarding_requirements", []), "upstream.paid_onboarding_requirements")
     if upstream["engagement"] != "none" and not upstream_signal:
         raise ValueError("upstream invitation or permission must have a source")
     if upstream["engagement"] == "direct_permission" and not any(
@@ -204,7 +209,7 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
         self_route = "conditional_on_license_compliance_review"
     elif not compliance["deployment_authorized"]:
         self_route = "conditional_on_deployment_authorization"
-    elif demand_level not in {"funded_request", "signed_commitment"}:
+    elif verified_demand not in {"funded_request", "signed_commitment"}:
         self_route = "technical_pilot_possible_buyer_unconfirmed"
     else:
         self_route = "evaluate_specific_pilot_economics"
@@ -218,7 +223,8 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
     if upstream["engagement"] == "direct_permission":
         partner_route = "permission_reported_validate_scope_and_terms"
     elif upstream["engagement"] == "public_invitation" and paid_invitation:
-        partner_route = "apply_for_published_paid_contributor_process_no_contract"
+        partner_route = ("paid_contributor_requires_onboarding_and_certification_no_contract"
+                         if onboarding else "apply_for_published_paid_contributor_process_no_contract")
     elif upstream["engagement"] == "public_invitation":
         partner_route = "community_contribution_invitation_not_a_paid_service"
     else:
@@ -226,6 +232,10 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
 
     if rights_missing:
         next_action = "Ask maintainer about license/permission; do not copy, deploy or sell the code yet."
+    elif commercial["competitors"] and not commercial["competitive_attestation_valid"]:
+        next_action = "Compare the existing substitutes with an actual buyer; verify differentiated value and switching costs before commercialization."
+    elif paid_invitation and onboarding:
+        next_action = "Verify volunteer onboarding and contributor-certification requirements before proposing compensated work; payment for this issue is unconfirmed."
     elif paid_invitation:
         next_action = "Check whether the paid contributor application remains open and propose one bounded deliverable."
     elif upstream["engagement"] == "public_invitation":
@@ -244,7 +254,8 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
     # A "conversion opportunity" can only be confirmed by execution and
     # customer/maintainer commitments, never stars, README features, or a graph.
     state = "evidence_lead_only"
-    if fit_level in {"executed_local", "independently_replicated"} and demand_level in {"funded_request", "signed_commitment"}:
+    if (fit_level in {"executed_local", "independently_replicated"}
+            and commercial["eligible_for_paid_pilot_candidate"]):
         state = "candidate_for_paid_pilot_subject_to_contract_and_rights"
     snapshot = {
         "slug": slug, "repository_url": repo_url,
@@ -262,12 +273,27 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
         "cross_layer_fit": {
             "documented_capability": capability, "required_mechanism": requirement,
             "unverified_gap": gap, "fit_status": fit_level,
+            "execution_attestation_valid": commercial["technical_attestation_valid"],
+            "execution_verification_limitation": commercial["technical_verification_limitation"],
             "limitation": "A semantic match is not proof of operational implementation, stakeholder fit or economic value.",
         },
-        "buyer": {"segment": buyer_segment, "demand_status": demand_level, "signals": market_signals,
+        "buyer": {"segment": buyer_segment, "demand_status": verified_demand,
+                  "claimed_demand_status": demand_level,
+                  "verified_demand_status": verified_demand,
+                  "demand_attestation_valid": commercial["demand_attestation_valid"],
+                  "verification_limitation": commercial["demand_verification_limitation"],
+                  "signals": market_signals,
                   "limitation": "The business willingness-to-pay is not inferred from a research problem or popularity counts."},
+        "competitive_review": {
+            "alternatives": commercial["competitors"],
+            "assessment": commercial["competitor_assessment"],
+            "attestation_valid": commercial["competitive_attestation_valid"],
+            "limitation": commercial["competitive_limitation"],
+        },
         "upstream": {"engagement": upstream["engagement"], "signals": upstream_signal,
-                     "paid_contribution_invitation": paid_invitation},
+                     "paid_contribution_invitation": paid_invitation,
+                     "paid_onboarding_requirements": onboarding,
+                     "limitation": "A published paid-contributor pathway is not a funded assignment. Onboarding terms require current verification."},
         "conversion_routes": {
             "self_execution": self_route, "maintainer_service": partner_route,
             "reuse_as_component": ("blocked_until_rights_resolved" if rights_missing
