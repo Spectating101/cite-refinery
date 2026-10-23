@@ -47,6 +47,6 @@ The full GitHub Actions suite may still surface unrelated pre-existing missing o
 
 ## First commercial decision after this patch
 
-Open Food Network remains a *possible paid contribution route*, not a confirmed paid fix. PV remains a potential service hypothesis that faces Solargis and other monitoring substitutes. Kobo remains a technical component hypothesis. **None is a validated source of current revenue.**
+Open Food Network remains a *possible paid contribution route*, not a confirmed paid fix; its [published onboarding process](https://ofn-user-guide.gitbook.io/ofn-handbook/working-on-the-ofn-governance/team-organization/onboarding-process) describes initial volunteer contributions and certification prior to compensated work. The conditions may have changed and need confirmation. This is **not immediate contract revenue**. PV remains a potential service hypothesis that faces Solargis and other monitoring substitutes. Kobo remains a technical component hypothesis. **None is a validated source of current revenue.**
 
 Next critical experiment is an independently blinded and cost-matched Atlas versus general-agent comparison, followed by actual buyer interviews / paid contracts, not more unranked opportunity counts.
