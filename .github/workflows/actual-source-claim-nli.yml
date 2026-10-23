@@ -30,7 +30,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
-          python -m pip install -e . 'sentence-transformers==5.1.2'
+          python -m pip install -e . 'sentence-transformers==5.1.2' 'sentencepiece==0.2.1' 'protobuf>=4,<7'
       - name: Run source-bound integrity and adversarial nonpromotion tests
         run: |
           python -m compileall -q src/cite_refinery/actual_claim_entailment_gate.py
@@ -73,10 +73,41 @@ jobs:
                                  for x in r["source_mismatch_cases"]]
           },sort_keys=True))
           PY
+      - name: Crosscheck real DeBERTa NLI with the SAME 21+4 cases and predeclared thresholds
+        env:
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          TOKENIZERS_PARALLELISM: "false"
+          OMP_NUM_THREADS: "2"
+          MKL_NUM_THREADS: "2"
+        run: |
+          python -m cite_refinery.actual_claim_entailment_gate \
+            --cases research_materials/runtime_trials/fulltext_dog_20261020/benchmark_cases.json \
+            --model cross-encoder/nli-deberta-v3-small \
+            --out "$RUNNER_TEMP/source-claim-triage/actual-deberta-claim-nli.json"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"source-claim-triage"
+          a=json.loads((p/"actual-source-claim-nli.json").read_text("utf-8"))
+          b=json.loads((p/"actual-deberta-claim-nli.json").read_text("utf-8"))
+          assert a["source_casebook_sha256"]==b["source_casebook_sha256"]
+          assert a["predeclared_policy"]==b["predeclared_policy"]
+          assert b["model_revision"]=="e9890682d9e4279b7ae6d0fcfb435a43206280ec"
+          assert len(a["case_results"])==len(b["case_results"])==25
+          assert a["support_or_contradiction_automatically_promoted"] is False
+          assert b["support_or_contradiction_automatically_promoted"] is False
+          print("ACTUAL_TWO_MODEL_NLI_COMPARISON",json.dumps({
+            "minilm":a["counts"],"deberta":b["counts"],
+            "false_supported_minilm":a["false_supported_cases"],
+            "false_supported_deberta":b["false_supported_cases"],
+            "source_casebook_sha256":a["source_casebook_sha256"],
+            "independent_gold_available":False
+          },sort_keys=True))
+          PY
       - name: Upload actual neural logits and provenance as review-only artifact
         uses: actions/upload-artifact@v4
         with:
           name: actual-source-nli-21-plus-4-review-only
-          path: ${{ runner.temp }}/source-claim-triage/actual-source-claim-nli.json
+          path: ${{ runner.temp }}/source-claim-triage/*.json
           retention-days: 7
           if-no-files-found: error
