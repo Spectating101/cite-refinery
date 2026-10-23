@@ -194,7 +194,7 @@ def main(argv: list[str] | None = None) -> int:
         "arms": report["arms_audited"],
         "counts": report["counts"],
         "receipt_sha256": report["receipt_sha256"],
-        "no_real_inference_performed": True,
+        "audit_performs_no_inference": True,
     }, sort_keys=True))
     return 0
 
