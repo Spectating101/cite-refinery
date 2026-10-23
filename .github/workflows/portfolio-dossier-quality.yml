@@ -12,6 +12,8 @@ on:
       - "src/cite_refinery/portfolio_atomic_tasks.py"
       - "tests/test_portfolio_atomic_tasks.py"
       - "scripts/portfolio_atomic_model.py"
+      - "src/cite_refinery/portfolio_atomic_benchmark.py"
+      - "tests/test_portfolio_atomic_benchmark.py"
       - "tests/test_portfolio_decision_eval_v2.py"
       - "tests/test_portfolio_autonomous_dossier_v3.py"
       - "tests/test_portfolio_cross_project_v3.py"
@@ -42,6 +44,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_portfolio_cross_project_v3.py' -v
           python -m unittest discover -s tests -p 'test_portfolio_dossier_diagnostics.py' -v
           python -m unittest discover -s tests -p 'test_portfolio_atomic_tasks.py' -v
+          python -m unittest discover -s tests -p 'test_portfolio_atomic_benchmark.py' -v
       - name: Assert model API keys not needed for deterministic suite
         run: |
           python - <<'PY'
@@ -92,6 +95,9 @@ jobs:
           OMP_NUM_THREADS: "2"
         run: |
           python scripts/portfolio_atomic_model.py
+      - name: Evaluate model versus trivial no-AI baseline
+        run: |
+          python -m cite_refinery.portfolio_atomic_benchmark --tasks "$RUNNER_TEMP/atomic-tasks.json" --results "$RUNNER_TEMP/atomic-model-results.json" --out "$RUNNER_TEMP/atomic-baseline-audit.json"
       - name: Upload reproducible model output and validation errors
         if: always()
         uses: actions/upload-artifact@v4
@@ -101,5 +107,6 @@ jobs:
             ${{ runner.temp }}/portfolio-cpu-smoke.json
             ${{ runner.temp }}/atomic-tasks.json
             ${{ runner.temp }}/atomic-model-results.json
+            ${{ runner.temp }}/atomic-baseline-audit.json
           if-no-files-found: warn
           retention-days: 7
