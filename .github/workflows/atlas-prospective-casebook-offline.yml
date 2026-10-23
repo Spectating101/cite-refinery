@@ -1,0 +1,30 @@
+name: atlas-prospective-casebook-offline
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/commercial_blind_trial.py"
+      - "tests/test_commercial_fresh_casebook_v1.py"
+      - "research_materials/opportunity_conversion/fresh-*.json"
+      - "research_materials/opportunity_conversion/blind_casebook_prospective_fresh_v1.json"
+      - ".github/workflows/atlas-prospective-casebook-offline.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prospect-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Source disjointness, evidence parity and planned prompts (no calls)
+        run: python -m unittest tests.test_commercial_blind_trial_v1 tests.test_commercial_fresh_casebook_v1 -v
+      - name: Plan prospective test without invoking any provider
+        run: |
+          python -m cite_refinery.commercial_blind_trial plan --casebook research_materials/opportunity_conversion/blind_casebook_prospective_fresh_v1.json > /tmp/atlas_prospective_plan.json
+          python -c "import json; r=json.load(open('/tmp/atlas_prospective_plan.json')); assert r['split']=='prospective_fresh_not_independently_sealed'; assert len(r['cases'])==3; assert r['status']=='ready_for_authenticated_opt_in_not_executed'; print('PROSPECTIVE ZERO-MODEL PLAN:', len(r['cases']), 'cases, source:',r['source_casebook_sha256'])"
