@@ -32,7 +32,7 @@ def render(report: dict) -> str:
         "**Fit stage:** " + fit["fit_status"], "",
         "## Buyer and conversion",
         "Prospective buyer: " + buyer["segment"],
-        "Claimed buyer evidence stage: " + buyer["demand_status"],
+        "Claimed buyer evidence stage: " + buyer.get("claimed_demand_status", buyer["demand_status"]),
         "Verified buyer evidence stage: " + buyer.get("verified_demand_status", "unverified"),
         "Verification limitation: " + buyer.get("verification_limitation", "Not verified"),
         "",
