@@ -111,6 +111,29 @@ def benchmark(sample, census, primary, frontier, *,
               fetch: Callable[[int],dict]=fetch_science_context,
               workers: int=4):
     matched,absent,original=validate_sample(sample,census,primary,frontier)
+    # Grouped coverage measures overlapping memberships, not 44 disjoint
+    # samples. Source metadata counts are not technical-quality scores.
+    full=frozen_repositories(primary,frontier)
+    known={x["repository"].casefold() for x in census["exact_matches"]}
+    by_category={}
+    for r in full:
+        for cat in r["categories"]:
+            row=by_category.setdefault(cat,{"category":cat,
+                "source_repository_memberships":0,
+                "science_exact_identity_memberships":0})
+            row["source_repository_memberships"]+=1
+            row["science_exact_identity_memberships"]+=int(r["url"].casefold() in known)
+    _require(len(by_category)==44
+             and sum(x["source_repository_memberships"] for x in by_category.values())==1360,
+             "44 original source categories or 1,360 memberships not intact")
+    category_review=[]
+    for name,row in sorted(by_category.items()):
+        category_review.append({
+            **row,
+            "metadata_identity_coverage_fraction":round(
+                row["science_exact_identity_memberships"]/row["source_repository_memberships"],4),
+            "does_not_measure_true_domain_relevance":True,
+        })
     _require(type(workers) is int and 1 <= workers <= 6,
              "Science concurrent source fetch must be limited")
     fetched={}
@@ -188,6 +211,9 @@ def benchmark(sample, census, primary, frontier, *,
             bool(r.get("description")) for r in all_original),
         "original_github_matched_snapshot_description_present":sum(
             bool(original[x["repository"].casefold()].get("description")) for x in matched),
+        "source_categories_count":44,
+        "original_category_memberships_with_overlap":1360,
+        "source_category_coverage":category_review,
         "science_context_read_successes":counts["contexts_read"],
         "science_context_errors":dict(sorted(errors.items())),
         "science_with_package_metadata":counts["with_package_relationships"],
