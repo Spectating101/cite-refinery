@@ -4,6 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest import TestCase
+from unittest.mock import patch
 from urllib.parse import parse_qs, urlsplit
 from copy import deepcopy
 import json
@@ -140,6 +141,25 @@ class ReuseBridgeTests(TestCase):
                          "DISCOVERY_ONLY_NOT_ACCEPTED")
         self.assertFalse(out["promotion_authorized"])
         self.assertTrue(out["no_frozen_holdout_access_or_graph_mutation"])
+
+    def test_default_provider_fetchers_respect_orkg_vendor_v2(self):
+        # The production orchestrator must NOT force Science's generic-JSON
+        # transport onto the versioned ORKG paper controller.
+        calls = []
+        def science_fetch(url):
+            calls.append(("science", url))
+            return SCIENCE_ROW
+        def paper_v2_fetch(url):
+            calls.append(("orkg_v2", url))
+            return ORKG_ROW
+        with patch("cite_refinery.external_reuse_bridge._fetch_json", science_fetch):
+            with patch("cite_refinery.external_reuse_bridge._fetch_orkg_v2", paper_v2_fetch):
+                result = consolidate_discovery("flood", limit=3)
+        self.assertEqual(result["status"], "retrieval_complete_not_verified")
+        self.assertEqual(len(result["records"]), 3)
+        self.assertEqual([name for name, _ in calls], ["science", "orkg_v2"])
+        self.assertEqual(result["provider_errors"], {})
+        self.assertEqual(result["accepted_claim_edges"], 0)
 
     def test_ftm_local_preview_never_exports_names_or_properties(self):
         with TemporaryDirectory() as d:
