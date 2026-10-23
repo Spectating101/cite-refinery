@@ -54,7 +54,7 @@ def _document(card):
 
 def _vectors(texts, embed: Callable[[list[str]], object]):
     import numpy as np
-    _require(texts and len(texts) <= 1500 and all(
+    _require(texts and len(texts) <= 1600 and all(
         isinstance(x, str) and x.strip() for x in texts), "Invalid source or query texts")
     array = np.asarray(embed(texts), dtype=np.float32)
     _require(array.ndim == 2 and array.shape[0] == len(texts)
