@@ -61,6 +61,8 @@ jobs:
              "provider_errors": result["provider_errors"],
              "candidate_count": len(result["records"]),
              "candidate_ids": [r["external_id"] for r in result["records"]],
+             "candidate_labels": [r["label"] for r in result["records"]],
+             "candidate_repository_urls": [r["metadata"].get("candidate_repository_url") for r in result["records"]],
              "candidate_node_count": len(result["candidate_packet"]["nodes"]),
              "accepted_claim_edges": result["accepted_claim_edges"],
              "promotion_authorized": result["promotion_authorized"],
