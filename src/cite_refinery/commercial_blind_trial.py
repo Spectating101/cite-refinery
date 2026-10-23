@@ -179,7 +179,7 @@ def validate_candidate(raw: Any, case: dict[str, Any]) -> dict[str, Any]:
         "action": p["recommended_next_action"], "rationale": p["rationale"],
         "risk_flags": p["risk_flags"], "questions": raw["open_questions"],
     }, ensure_ascii=False).lower()
-    if re.search(r"\\batlas\\b|cite[- _]?refinery|\\bgeneral ai\\b|\\bplatform output\\b", public_text):
+    if re.search(r"\batlas\b|cite[- _]?refinery|\bgeneral ai\b|\bplatform output\b", public_text):
         raise ValueError("Response disclosed its benchmark arm; cannot blind judge")
     return {"propositions": claims, "bridges": [], "open_questions": raw["open_questions"]}
 
