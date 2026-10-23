@@ -20,6 +20,29 @@ class CommercialComparisonTests(unittest.TestCase):
         self.assertIn("not blinded or independent", report)
         self.assertIn("no matched tokens", report)
 
+    def test_direct_competitor_does_not_currently_change_conversion_verdict(self):
+        # Negative capability receipt: the conversion evaluator does not
+        # consume an independently documented, equivalent existing service.
+        import copy
+        import json
+        from cite_refinery.commercial_comparison import CASE_ROOT, atlas_decision
+        source = json.loads(
+            (CASE_ROOT / "pv-independent-rooftop-performance-audit.json").read_text(encoding="utf-8")
+        )
+        with_alternative = copy.deepcopy(source)
+        with_alternative["competitive_alternatives"] = [{
+            "name": "Solargis PV Performance Assessment",
+            "url": "https://www.solargis.com/services/pv-performance-assessment",
+            "documented_overlap": "Third-party PV output assessment, P50/P90 model comparison, loss analysis",
+            "status": "official_provider_description",
+        }]
+        plain = atlas_decision(source)
+        with_competitor = atlas_decision(with_alternative)
+        # The record hash changes, but commercial verdict does not.
+        self.assertNotEqual(plain["input_sha256"], with_competitor["input_sha256"])
+        for key in ("readiness", "next_test", "funded_or_signed_buyer"):
+            self.assertEqual(plain[key], with_competitor[key])
+
     def test_caller_supplied_fake_reviewed_contract_currently_passes_status_gate(self):
         # Negative capability receipt: public issue URL mislabeled as signed deal.
         # A future strict source verifier should cause this test to be changed
