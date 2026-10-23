@@ -1,0 +1,71 @@
+{
+  "schema": "cite_refinery.commercial_comparison.v1",
+  "created_date": "2026-10-23",
+  "methodology": "Researcher-authored unblinded GPT-6 plain-source notes versus Atlas deterministic conversion evaluator. Both reference the same recorded case files. NOT an independently randomized or matched-cost general-agent trial; NOT an independent gold standard.",
+  "cases": [
+    {
+      "id": "ofn-paid-contributor-route",
+      "case_filename": "ofn-paid-contributor-route.json",
+      "reference_checks": {
+        "documented_problem_evidence": true,
+        "end_to_end_technical_fit_verified": false,
+        "funded_or_signed_buyer": false,
+        "authorized_for_deployment": false,
+        "realized_revenue_established": false,
+        "next_test": "verify_paid_contributor"
+      },
+      "generic_gpt6_unblinded": {
+        "documented_problem_evidence": true,
+        "end_to_end_technical_fit_verified": false,
+        "funded_or_signed_buyer": false,
+        "authorized_for_deployment": false,
+        "realized_revenue_established": false,
+        "next_test": "verify_paid_contributor",
+        "reason": "Public issue identifies specific viewport defect; a paid-contributor invitation is not a contract. Verify issue ownership, regression reproduction and whether any paid scope exists."
+      }
+    },
+    {
+      "id": "pv-independent-rooftop-performance-audit",
+      "case_filename": "pv-independent-rooftop-performance-audit.json",
+      "reference_checks": {
+        "documented_problem_evidence": true,
+        "end_to_end_technical_fit_verified": false,
+        "funded_or_signed_buyer": false,
+        "authorized_for_deployment": false,
+        "realized_revenue_established": false,
+        "next_test": "interview_buyer"
+      },
+      "generic_gpt6_unblinded": {
+        "documented_problem_evidence": true,
+        "end_to_end_technical_fit_verified": false,
+        "funded_or_signed_buyer": false,
+        "authorized_for_deployment": false,
+        "realized_revenue_established": false,
+        "next_test": "interview_buyer",
+        "reason": "Technical PV modeling exists but complete audit fit, buyer demand and differentiation versus incumbent monitoring providers remain untested. Obtain buyer/site-data permission before product work."
+      }
+    },
+    {
+      "id": "kobo-dog-sighting-integration",
+      "case_filename": "kobo-dog-sighting-integration.json",
+      "reference_checks": {
+        "documented_problem_evidence": true,
+        "end_to_end_technical_fit_verified": false,
+        "funded_or_signed_buyer": false,
+        "authorized_for_deployment": false,
+        "realized_revenue_established": false,
+        "next_test": "test_component_fit"
+      },
+      "generic_gpt6_unblinded": {
+        "documented_problem_evidence": true,
+        "end_to_end_technical_fit_verified": false,
+        "funded_or_signed_buyer": false,
+        "authorized_for_deployment": false,
+        "realized_revenue_established": false,
+        "next_test": "test_component_fit",
+        "reason": "Kobo offline photo forms may provide collection infrastructure but individual identification and population inference are separate and unverified; test a narrow workflow before approaching institutions."
+      }
+    }
+  ],
+  "adversarial_case_filename": "ofn-paid-contributor-route.json"
+}
