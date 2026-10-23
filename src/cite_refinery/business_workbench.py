@@ -16,6 +16,7 @@ import json
 from pathlib import Path
 import re
 from typing import Any
+from urllib.parse import urlsplit
 
 from .opportunity_conversion import evaluate
 
@@ -123,7 +124,7 @@ def validate_event(event: Any, known_ids: set[str], currency: str) -> dict[str, 
     eid, cid, kind = event.get("event_id"), event.get("case_id"), event.get("kind")
     if not isinstance(eid, str) or not EVENT_ID.fullmatch(eid):
         raise ValueError("Invalid event_id")
-    if cid not in known_ids or kind not in KINDS:
+    if not isinstance(cid, str) or not isinstance(kind, str) or cid not in known_ids or kind not in KINDS:
         raise ValueError("Unknown opportunity or event type")
     when = event.get("on")
     if not isinstance(when, str) or not re.fullmatch(r"20\d\d-\d\d-\d\d", when):
@@ -137,9 +138,19 @@ def validate_event(event: Any, known_ids: set[str], currency: str) -> dict[str, 
     if not isinstance(note, str) or not 12 <= len(note.strip()) <= 1000:
         raise ValueError("Event requires bounded explanatory note")
     url = event.get("evidence_url")
-    if url is not None and (not isinstance(url, str) or not url.startswith("https://")
-                            or len(url) > 2048):
-        raise ValueError("Optional evidence_url must be HTTPS")
+    if url is not None:
+        if not isinstance(url, str) or len(url) > 2048:
+            raise ValueError("Optional evidence_url must be an external HTTPS reference")
+        try:
+            parsed = urlsplit(url)
+            valid = (parsed.scheme == "https" and bool(parsed.hostname)
+                     and parsed.username is None and parsed.password is None
+                     and not parsed.fragment and parsed.hostname not in
+                     {"localhost", "127.0.0.1", "::1"})
+        except ValueError:
+            valid = False
+        if not valid:
+            raise ValueError("Optional evidence_url must be an external HTTPS reference")
     sha = event.get("artifact_sha256")
     if sha is not None and (not isinstance(sha, str) or not SHA256.fullmatch(sha)):
         raise ValueError("Invalid local evidence artifact fingerprint")
@@ -253,7 +264,7 @@ def build_board(plan: dict[str, Any], ledger: dict[str, Any] | None = None) -> d
         if human == "kill":
             state = "kill_by_operator"
             next_step = "Stop new work; preserve receipts and document lessons."
-        elif expenses > cap or (expenses >= cap and cap > 0):
+        elif expenses >= cap:
             state = "stop_validation_budget"
             next_step = "Stop spending; seek explicit reviewed budget amendment before further work."
         elif human == "hold":

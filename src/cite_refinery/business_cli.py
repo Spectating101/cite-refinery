@@ -13,6 +13,8 @@ from pathlib import Path
 import tempfile
 from contextlib import contextmanager
 
+from .market_demand_screen import screen as screen_public_demand, render as render_public_demand
+from .paid_work_preflight import evaluate as screen_paid_work, render as render_paid_work
 from .business_workbench import (
     ROOT, append_event, build_board, new_ledger, render_board,
     validate_ledger, validate_plan,
@@ -76,6 +78,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--ledger", help="absolute local private ledger path, outside checkout")
     parser.add_argument("--event", type=Path, help="JSON event file, record command only")
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
+    parser.add_argument("--demand-scan", type=Path, help="optional separately sourced public demand lead register")
+    parser.add_argument("--paid-work-scan", type=Path, help="optional original GitHub issue/payment verification register")
+    parser.add_argument("--as-of", help="ISO screen date, explicit for reproducible public listing deadlines")
     args = parser.parse_args(argv)
     plan = validate_plan(_read_json(args.plan))
     if args.command == "board":
@@ -85,10 +90,23 @@ def main(argv: list[str] | None = None) -> int:
             with _exclusive_lock(target):
                 ledger = validate_ledger(plan, _read_json(target))
         board = build_board(plan, ledger)
+        public = None
+        if args.demand_scan:
+            from datetime import date
+            public = screen_public_demand(_read_json(args.demand_scan),
+                                          as_of=args.as_of or date.today().isoformat())
+        paid = None
+        if args.paid_work_scan:
+            from datetime import date
+            paid = screen_paid_work(_read_json(args.paid_work_scan),
+                                    as_of=args.as_of or date.today().isoformat())
         if args.format == "json":
-            print(json.dumps(board, indent=2, ensure_ascii=False))
+            print(json.dumps({**board, **({"public_demand_screen": public} if public else {}),
+                              **({"public_paid_work_preflight": paid} if paid else {})},
+                             indent=2, ensure_ascii=False))
         else:
-            print(render_board(board))
+            print(render_board(board) + ("\n" + render_public_demand(public) if public else "")
+                  + ("\n" + render_paid_work(paid) if paid else ""))
         return 0
 
     if not args.ledger:
