@@ -147,6 +147,9 @@ def evaluate(data: dict[str, Any], *, as_of: str) -> dict[str, Any]:
         elif x["payment_claim_disputed"]:
             gate = "reject_payment_discrepancy"
             risk.append("offer_and_payment_provider_conflict")
+        elif x["known_active_submission"]:
+            gate = "hold_active_competing_submission"
+            risk.append("another_submitted_solution_must_be_reviewed")
         elif x["issue_comment_count"] > 100:
             gate = "reject_crowded_unverified_rail"
             risk.append("crowded_issue_and_nonexclusive_work")
@@ -175,8 +178,13 @@ def evaluate(data: dict[str, Any], *, as_of: str) -> dict[str, Any]:
             "nominal_bounty": ({"currency": "USD", "amount": _amount(x["advertised_amount"]),
                                 "value_type": "contingent_advertised_bounty_not_earned"}
                                if x["reward_status"] == "advertised" else None),
-            "payment_verified": x["payment_state"] == "independently_confirmed",
-            "claim_eligibility_confirmed": x["claimed_status"] in {"unclaimed", "assigned_to_operator"},
+            # These input labels are supplied by a research case author, not independently
+            # authenticated evidence. Do not export "verified" as a literal fact.
+            "payment_state_claimed": x["payment_state"],
+            "payment_verified": False,
+            "claim_status_claimed": x["claimed_status"],
+            "claim_eligibility_confirmed": False,
+            "original_issue_authenticated": False,
             "competition_proxy_issue_comments": x["issue_comment_count"],
             "competition_proxy_limitation": "Comments are not a count of competing PRs or verified submissions.",
             "payout_mechanics_limitation": x["payment_limitation"],
@@ -196,6 +204,7 @@ def evaluate(data: dict[str, Any], *, as_of: str) -> dict[str, Any]:
         "limitations": [
             "The original issue and provider terms must be rechecked before acting.",
             "A bounty label is not escrow, assignment, guarantee or recognized earned revenue.",
+            "Inputs labeled independently_confirmed or original_issue_checked are still operator-supplied; this screen does not authenticate signatures or issuer responses.",
             "Even manual claim review never auto-authorizes submission, coding, payment, public comments or customer contact.",
             "Provider payment terms may contradict sponsor assertions; contradictions block work.",
             "No legal, work-permit or cross-border payout eligibility established by this screen.",
