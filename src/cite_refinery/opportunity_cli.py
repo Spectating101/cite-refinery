@@ -32,7 +32,14 @@ def render(report: dict) -> str:
         "**Fit stage:** " + fit["fit_status"], "",
         "## Buyer and conversion",
         "Prospective buyer: " + buyer["segment"],
-        "Buyer evidence stage: " + buyer["demand_status"],
+        "Claimed buyer evidence stage: " + buyer["demand_status"],
+        "Verified buyer evidence stage: " + buyer.get("verified_demand_status", "unverified"),
+        "Verification limitation: " + buyer.get("verification_limitation", "Not verified"),
+        "",
+        "## Competition and substitutes",
+        "Assessment: " + report.get("competitive_review", {}).get("assessment", "not_assessed"),
+        "Attested buyer-specific differentiation: " + str(report.get("competitive_review", {}).get("attestation_valid", False)),
+        "Limit: " + report.get("competitive_review", {}).get("limitation", "Not assessed"),
         "- Self-execution: " + routes["self_execution"],
         "- Maintainer/partner service: " + routes["maintainer_service"],
         "- Component reuse: " + routes["reuse_as_component"], "",
@@ -44,6 +51,8 @@ def render(report: dict) -> str:
         "Unit economics: " + report["unit_economics"]["status"] + " (" + report["unit_economics"]["limitation"] + ")", "",
         "## Inspect original signals",
     ]
+    for competitor in report.get("competitive_review", {}).get("alternatives", []):
+        lines.append("- Competing offering: " + competitor["name"] + " (" + competitor["scope"] + ") — " + competitor["url"])
     for entry in [*report["problem"]["sources"], *buyer["signals"], *report["upstream"]["signals"]]:
         lines.append("- " + entry["claim"] + " — " + entry["url"] + " [" + entry["status"] + "]")
     lines.extend(["", "No outreach or deployment has been initiated.", ""])
