@@ -54,15 +54,8 @@
       "operator_declared_category": "provenance_kernel"
     }
   ],
-  "disallowed_private_sources": [
-    "nocturnal-oversight",
-    "solarpunk-coin",
-    "cite-agent",
-    "refinery",
-    "sharpe-terminus",
-    "research-drive-private"
-  ],
   "never_publish_private_files": true,
   "independent_gold_available": false,
-  "decision_authority": "candidate_only_human_review"
+  "decision_authority": "candidate_only_human_review",
+  "private_repositories_excluded_by_allowlist": true
 }
