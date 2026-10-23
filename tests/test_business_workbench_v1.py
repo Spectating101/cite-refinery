@@ -138,6 +138,15 @@ class AtlasBusinessWorkbenchTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "pinned plan"):
             validate_ledger(wrong_plan, log)
 
+    def test_source_evidence_fingerprint_pinned_to_business_ledger(self):
+        p = plan()
+        log = new_ledger(p)
+        self.assertEqual(len(log["case_snapshot_sha256"]), 4)
+        changed = copy.deepcopy(log)
+        changed["case_snapshot_sha256"]["pv-independent-rooftop-performance-audit"] = "f" * 64
+        with self.assertRaisesRegex(ValueError, "Source case evidence changed"):
+            validate_ledger(p, changed)
+
     def test_plan_rejects_unreviewed_cases_and_bad_competitive_evidence(self):
         p = plan()
         p["opportunities"][1]["case_id"] = "unknown-phantom-project"
