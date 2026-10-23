@@ -5,6 +5,9 @@ on:
     paths:
       - "src/cite_refinery/commercial_blind_trial.py"
       - "tests/test_commercial_fresh_casebook_v1.py"
+      - "src/cite_refinery/commercial_safety_audit.py"
+      - "tests/test_commercial_safety_audit_v1.py"
+      - "research_materials/opportunity_conversion/fresh_safety_rubric_v1.json"
       - "research_materials/opportunity_conversion/fresh-*.json"
       - "research_materials/opportunity_conversion/blind_casebook_prospective_fresh_v1.json"
       - ".github/workflows/atlas-prospective-casebook-offline.yml"
@@ -23,7 +26,7 @@ jobs:
           python-version: "3.11"
       - run: python -m pip install -e .
       - name: Source disjointness, evidence parity and planned prompts (no calls)
-        run: python -m unittest tests.test_commercial_blind_trial_v1 tests.test_commercial_fresh_casebook_v1 -v
+        run: python -m unittest tests.test_commercial_blind_trial_v1 tests.test_commercial_fresh_casebook_v1 tests.test_commercial_safety_audit_v1 -v
       - name: Plan prospective test without invoking any provider
         run: |
           python -m cite_refinery.commercial_blind_trial plan --casebook research_materials/opportunity_conversion/blind_casebook_prospective_fresh_v1.json > /tmp/atlas_prospective_plan.json
