@@ -10,6 +10,7 @@ from cite_refinery.portfolio_autonomous_dossier import (
     evidence_index, project_evidence, make_prompt, validate_dossier
 )
 from cite_refinery.portfolio_public_dogfood import run_public_portfolio
+from cite_refinery.portfolio_dossier_diagnostics import aggregate, diagnose
 
 def main():
     import torch
@@ -45,7 +46,8 @@ def main():
                                        pad_token_id=tokenizer.eos_token_id)
         raw = tokenizer.decode(generated[0][input_ids.shape[1]:], skip_special_tokens=True)
         result = {"repo":repo, "model_executed":True, "raw":raw,
-                  "output_sha256":sha256(raw.encode()).hexdigest()}
+                  "output_sha256":sha256(raw.encode()).hexdigest(),
+                  "output_diagnostics":diagnose(raw)}
         try:
             draft = json.loads(raw)
             result["dossier"] = validate_dossier(repo, draft, local)
@@ -58,7 +60,8 @@ def main():
     out = {"schema":"cite_refinery.local_cpu_portfolio_smoke.v1",
            "model":model_id, "real_model_execution":True,
            "full_autonomous_analysis_proven":False,
-           "independent_gold_graded":False, "projects":results}
+           "independent_gold_graded":False,
+           "failure_diagnostics":aggregate(results), "projects":results}
     (receipt_dir/"portfolio-cpu-smoke.json").write_text(json.dumps(out,indent=2))
     print("MODEL_EXECUTION",json.dumps({"count":len(results),
                                        "schema_valid":sum(x["schema_valid"] for x in results)}))
