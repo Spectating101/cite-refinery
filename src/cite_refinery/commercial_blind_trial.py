@@ -173,6 +173,14 @@ def validate_candidate(raw: Any, case: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("Candidate must cite the available source IDs")
     if not isinstance(raw.get("bridges"), list) or not isinstance(raw.get("open_questions"), list):
         raise ValueError("Model must follow shared response contract")
+    # The judge must not be able to infer the origin from an analyst's
+    # self-identification ("Atlas says..." / "general agent...").
+    public_text = json.dumps({
+        "action": p["recommended_next_action"], "rationale": p["rationale"],
+        "risk_flags": p["risk_flags"], "questions": raw["open_questions"],
+    }, ensure_ascii=False).lower()
+    if re.search(r"\\batlas\\b|cite[- _]?refinery|\\bgeneral ai\\b|\\bplatform output\\b", public_text):
+        raise ValueError("Response disclosed its benchmark arm; cannot blind judge")
     return {"propositions": claims, "bridges": [], "open_questions": raw["open_questions"]}
 
 
