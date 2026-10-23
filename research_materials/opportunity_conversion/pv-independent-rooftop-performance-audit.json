@@ -1,0 +1,58 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "pv-independent-rooftop-performance-audit",
+  "problem": {
+    "statement": "Owners and operators of commercial rooftop photovoltaic systems need to distinguish expected yield variation, data-quality problems, faults, and longer-term degradation using defensible measurement and models. This is a general engineering need, not an identified Taiwan customer's purchase request.",
+    "sources": [
+      {
+        "url": "https://www.energy.gov/cmei/femp/monitoring-platforms-solar-photovoltaic-systems",
+        "claim": "The U.S. DOE describes PV monitoring, modeled benchmarks, performance-ratio reports, alarms, and independent third-party monitoring as established practices; this does not prove unmet buyer demand.",
+        "status": "reviewed"
+      },
+      {
+        "url": "https://doi.org/10.1016/j.rser.2025.116417",
+        "claim": "A 2026 literature review identifies cost, uncertainty, testing and lifecycle-analysis limitations in published low-cost photovoltaic monitoring studies.",
+        "status": "reviewed"
+      },
+      {
+        "url": "https://doi.org/10.1016/j.apenergy.2025.126636",
+        "claim": "A 2025 review identifies practical constraints for cost-effective distributed-PV fault diagnosis, including data availability and gaps in real-world validation.",
+        "status": "reviewed"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "pvlib/pvlib-python",
+    "url": "https://github.com/pvlib/pvlib-python",
+    "description": "Community-maintained Python library of photovoltaic system simulation and performance-modeling functions, suitable as a technical component but not a complete monitoring or audit service.",
+    "capability_source": "https://github.com/pvlib/pvlib-python/blob/main/README.md",
+    "license_status": "recognized_permissive",
+    "license_url": "https://github.com/pvlib/pvlib-python/blob/main/LICENSE"
+  },
+  "fit": {
+    "documented_capability": "pvlib-python supplies open photovoltaic modeling functions that can help establish modeled expected generation when configured with relevant system and weather data.",
+    "problem_requirement": "An independent performance-assessment service would need validated site and inverter data, uncertainty analysis, weather inputs, detection of data gaps and curtailment, independently checked energy-accounting logic, and an actionable human-reviewed report.",
+    "unverified_gap": "No paid buyer, site data rights, field-calibrated audit implementation, uncertainty-budget validation, site-specific financial savings, or competitive advantage over Raptor Maps and Solargis is established. pvlib alone does not supply this complete service.",
+    "verification": "source_reviewed"
+  },
+  "market": {
+    "buyer_segment": "Small commercial rooftop PV owners, O&M contractors, and installers who might commission an independent second opinion (unverified segment)",
+    "demand_status": "none",
+    "signals": []
+  },
+  "upstream": {
+    "engagement": "none",
+    "signals": [],
+    "paid_contribution_invitation": false
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": {
+    "basis": "hypothetical",
+    "currency": "TWD",
+    "price_per_unit": "25000",
+    "cost_per_unit": "16000"
+  }
+}
