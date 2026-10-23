@@ -20,7 +20,7 @@ import tempfile
 
 from .app import CiteRefinery
 from .semantic import SemanticGraph, SEMANTIC_PACKET_SCHEMA
-from .product_workspace import ProductWorkspace
+from .workspace import ProductWorkspace
 
 SCHEMA="cite_refinery.real_portfolio_dogfood.v1"
 ALLOWLIST={
