@@ -57,7 +57,15 @@
         "status": "reported"
       }
     ],
-    "paid_contribution_invitation": true
+    "paid_contribution_invitation": true,
+    "paid_onboarding_requirements": [
+      {
+        "url": "https://ofn-user-guide.gitbook.io/ofn-handbook/working-on-the-ofn-governance/team-organization/onboarding-process",
+        "claim": "Published Open Food Network handbook describes initial volunteer contributions and certification before invoiced paid participation; the current terms must still be confirmed.",
+        "status": "reviewed",
+        "kind": "context"
+      }
+    ]
   },
   "compliance": {
     "rights_reviewed": false,
