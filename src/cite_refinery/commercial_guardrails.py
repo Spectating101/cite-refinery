@@ -151,7 +151,26 @@ def assess(case: dict[str, Any], *, case_id: str, market_signals: list[dict[str,
         else:
             competitor_reason = "Substitutes still need buyer-specific differentiation assessment."
 
+    fit = case["fit"]
+    technical_valid = False
+    technical_reason = "Execution requires an independently signed run/source review."
+    if fit.get("verification") in {"executed_local", "independently_replicated"} and buyer_id:
+        execution_sources = fit.get("execution_evidence", [])
+        if isinstance(execution_sources, list) and execution_sources and len(execution_sources) <= 8:
+            citations = {item["url"] for item in execution_sources
+                         if isinstance(item, dict) and isinstance(item.get("url"), str)
+                         and item.get("status") == "reviewed"}
+            subject = {k: v for k, v in fit.items() if k != "execution_attestation"}
+            if citations:
+                technical_valid, why = _review_valid(
+                    fit.get("execution_attestation"), purpose="technical_execution",
+                    case_id=case_id, subject_sha256=digest(subject),
+                    urls=citations, buyer_id=buyer_id,
+                )
+                technical_reason = why or "Attested run custody, not proof of accuracy or field performance."
     return {
+        "technical_attestation_valid": technical_valid,
+        "technical_verification_limitation": technical_reason,
         "claimed_demand_status": claimed,
         "effective_demand_status": effective,
         "demand_attestation_valid": demand_valid,
@@ -163,6 +182,6 @@ def assess(case: dict[str, Any], *, case_id: str, market_signals: list[dict[str,
         "competitive_attestation_valid": valid_competition,
         "competitive_limitation": competitor_reason,
         "eligible_for_paid_pilot_candidate": (
-            effective in {"funded_request", "signed_commitment"} and valid_competition
+            effective in {"funded_request", "signed_commitment"} and valid_competition and technical_valid
         ),
     }
