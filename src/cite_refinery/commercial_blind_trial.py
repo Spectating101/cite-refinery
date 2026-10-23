@@ -25,6 +25,7 @@ from .external_llm_runtime import invoke_semantic_llm, require_distinct_family, 
 from .opportunity_conversion import evaluate
 
 SCHEMA = "cite_refinery.commercial_blind_casebook.v1"
+SPLITS = {"development_replay_only_not_held_out", "prospective_fresh_not_independently_sealed"}
 RESULT = "cite_refinery.commercial_blind_result.v1"
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_BOOK = ROOT / "research_materials/opportunity_conversion/blind_casebook_development_v1.json"
@@ -45,7 +46,7 @@ def source_packet(case: dict[str, Any]) -> str:
 
 
 def validate_casebook(book: dict[str, Any]) -> dict[str, Any]:
-    if book.get("schema") != SCHEMA or book.get("split") != "development_replay_only_not_held_out":
+    if book.get("schema") != SCHEMA or book.get("split") not in SPLITS:
         raise ValueError("Unrecognized casebook or undeclared evaluation split")
     cases = book.get("cases")
     if not isinstance(cases, list) or not 3 <= len(cases) <= 12:
@@ -236,7 +237,7 @@ def get_plan(book: dict[str, Any]) -> dict[str, Any]:
             "atlas_prompt_chars": len(arm_prompt(case, arm="atlas")),
         } for case in book["cases"]],
         "status": "ready_for_authenticated_opt_in_not_executed",
-        "limitations": ["Known development cases; no hidden test performance.",
+        "limitations": [("Fresh source cases selected before model execution; not independently sealed or human-adjudicated." if book["split"] != "development_replay_only_not_held_out" else "Known development cases; no hidden test performance."),
                         "Same sourced facts, different prompt sizes and inference steps.",
                         "No paid calls, independent model, or buyer action performed by plan."],
     }
@@ -327,7 +328,7 @@ def run_trial(book: dict[str, Any], *, proposer_provider: str, proposer_model: s
         "paid_buyer_outcomes": None,
         "token_and_monetary_cost": "unavailable_from_existing_CLI_adapter",
         "limitations": [
-            "Development-replay cases, not a sealed held-out commercial benchmark.",
+            ("Development-replay cases, not a sealed held-out commercial benchmark." if book["split"] == "development_replay_only_not_held_out" else "Prospective fresh cases; source-selected before this model trial, not independently sealed or adjudicated."),
             "Judge is another AI model, not independent professional validation.",
             "Source text equal; extra Atlas inference output makes prompt lengths unequal.",
             "No externally verified revenue, contracts, buyer interviews or time-to-conversion.",
