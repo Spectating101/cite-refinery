@@ -1,0 +1,98 @@
+{
+  "schema": "cite_refinery.public_demand_scan.v1",
+  "documented_scope": "Public source-led contrast experiment: one directly sourced conditional contribution prize and two Taiwan third-party procurement listings. No owner suitability, current bid eligibility, exact vendor requirements or payout is independently confirmed.",
+  "leads": [
+    {
+      "lead_id": "cognee-mergetober-2026",
+      "title": "Cognee Mergetober 2026 contribution competition",
+      "counterparty": "WeMakeDevs and Cognee organizers",
+      "kind": "conditional_prize",
+      "authority": "first_party",
+      "listing_url": "https://www.wemakedevs.org/hackathons/mergetober",
+      "terms_url": "https://www.wemakedevs.org/hackathons/mergetober/rules",
+      "posted_on": "2026-10-01",
+      "checked_on": "2026-10-24",
+      "deadline": "2026-10-31",
+      "advertised_value": {
+        "kind": "conditional_award",
+        "currency": "USD",
+        "amount": "2000.00",
+        "explanation": "Highest-contribution prize; there is also a separate random draw of 20 US$100 prizes; neither is guaranteed."
+      },
+      "capability_fit": "unvalidated",
+      "eligibility": "unverified",
+      "cost_to_attempt_known": false,
+      "commitment_status": "no_signed_customer_contract",
+      "demand_summary": "Event seeks original, solo integrations for Cognee; merged submissions may enter prize selection and contributors must follow issue assignment, code ownership, DCO, original-authored PR and blog requirements.",
+      "reason_to_investigate": "Integration building could exercise Atlas/Refinery connectors and produce public portfolio evidence even if no prize is won.",
+      "known_barriers": [
+        "No issue assignment or confirmed author eligibility exists for our selected GitHub account.",
+        "Competition forbids AI-generated PRs and requires contributor-authored original code.",
+        "Winner count and prize process are conditional; no guaranteed paid issue or customer budget.",
+        "Submission must be opened within the campaign deadline and supporting blog/form requirements met."
+      ],
+      "next_evidence": "Inspect one unclaimed issue and rules; confirm solo original authorship, maintainers' assignment and expected time before any contribution."
+    },
+    {
+      "lead_id": "taiwan-mod-ai-pm-2026",
+      "title": "Taiwan Ministry of National Defense AI project management procurement",
+      "counterparty": "Ministry of National Defense, Taiwan",
+      "kind": "tender",
+      "authority": "third_party_listing",
+      "listing_url": "https://www.beraniq.com/publicbid/biddetail?bid=3774067",
+      "terms_url": "https://www.beraniq.com/publicbid/biddetail?bid=3774067",
+      "posted_on": "2026-10-22",
+      "checked_on": "2026-10-24",
+      "deadline": "2026-11-05",
+      "advertised_value": {
+        "kind": "procurement_budget",
+        "currency": "TWD",
+        "amount": "60000000.00",
+        "explanation": "Listing reports 60m TWD allocation; not a payment offer to Atlas or verified eligibility."
+      },
+      "capability_fit": "unvalidated",
+      "eligibility": "unverified",
+      "cost_to_attempt_known": false,
+      "commitment_status": "no_signed_customer_contract",
+      "demand_summary": "Third-party notice identifies a selective government service procurement for AI-assisted decision functionality project management with substantial scope and legal contractor requirements.",
+      "reason_to_investigate": "It is useful evidence that institutional AI integration/project management has purchasing demand, but not a plausible solo bid without independent qualification and tender document review.",
+      "known_barriers": [
+        "Third-party listing is not the full authoritative tender pack; seek official PCC documents.",
+        "Selective procedure; bidding eligibility and invitation criteria are not established.",
+        "Contractor company registration, tax evidence, delivery capacity and security requirements may apply.",
+        "Project/program management scope appears significantly larger than our demonstrated delivery."
+      ],
+      "next_evidence": "Locate official tender CD15004L254 and decide whether legal eligibility, procurement stage, security and partnership capacity make any small subcontract realistic; otherwise archive."
+    },
+    {
+      "lead_id": "ncku-medical-data-2026",
+      "title": "NCKU Hospital next-generation analysis system purchase",
+      "counterparty": "National Cheng Kung University Hospital",
+      "kind": "tender",
+      "authority": "third_party_listing",
+      "listing_url": "https://www.tendersontime.com/tenders-details/first-and-second-level-next-generation-data-analysis-system-902d8bf/",
+      "terms_url": "https://www.tendersontime.com/tenders-details/first-and-second-level-next-generation-data-analysis-system-902d8bf/",
+      "posted_on": "2026-10-20",
+      "checked_on": "2026-10-24",
+      "deadline": "2026-10-29",
+      "advertised_value": {
+        "kind": "procurement_budget",
+        "currency": "TWD",
+        "amount": "3940000.00",
+        "explanation": "Third-party reported estimated tender value, not a software-service opportunity or cash receipt."
+      },
+      "capability_fit": "mismatch",
+      "eligibility": "unverified",
+      "cost_to_attempt_known": false,
+      "commitment_status": "no_signed_customer_contract",
+      "demand_summary": "A third-party listing identifies a next-generation laboratory analysis system purchase; this is not documented as a software research dashboard or a modular service bid.",
+      "reason_to_investigate": "Negative-control example: a real institutional data-analysis procurement can still be outside our product capabilities and should be rejected even with a large advertised budget.",
+      "known_barriers": [
+        "Specific system/medical-laboratory supply needs are not covered by verified Atlas/HS delivery.",
+        "Authoritative procurement documents and equipment specifications were not obtained.",
+        "Deadline is near and supplier eligibility/after-sales service requirements are unknown."
+      ],
+      "next_evidence": "Reject for current business experiment unless an official document changes the system requirement and a qualified delivery partner is independently established."
+    }
+  ]
+}
