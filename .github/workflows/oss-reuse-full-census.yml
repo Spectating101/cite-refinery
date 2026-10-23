@@ -1,0 +1,120 @@
+name: Reuse Science identities against frozen Refinery inventory
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/science_reuse_census.py"
+      - "tests/test_science_reuse_census_v1.py"
+      - "docs/OSS_REUSE_FULL_CENSUS_V1.md"
+      - ".github/workflows/oss-reuse-full-census.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-bound-local-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install local code
+        run: python -m pip install -e .
+      - name: Run actual 1,287 source identity/stratum tests
+        run: |
+          python -m compileall -q src/cite_refinery/science_reuse_census.py
+          python -m unittest discover -s tests -p 'test_science_reuse_census_v1.py' -v
+          python -m unittest discover -s tests -p 'test_external_reuse_bridge_v1.py' -v
+
+  bounded-100-source-exact-provider-lookup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: source-bound-local-contracts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Look up 100 precommitted source records by exact repository identity
+        run: |
+          python -m cite_refinery.science_reuse_census \
+            --primary research_materials/opportunity_atlas/github_repository_survey.json \
+            --frontier research_materials/opportunity_atlas/github_frontier_repository_survey.json \
+            --count 100 --out "$RUNNER_TEMP/science-cohort-100.json"
+      - name: Review identity outcomes without claiming functionality
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          j=json.loads((Path(os.environ["RUNNER_TEMP"])/"science-cohort-100.json").read_text())
+          assert j["frozen_original_repository_total"]==1287
+          assert j["covered_original_strata"]==44
+          assert j["cohort_size"]==100
+          assert j["accepted_scientific_or_implementation_relations"]==0
+          assert j["not_source_functionality_verified"] is True
+          print("SCIENCE_COHORT_100_REVIEW", json.dumps({
+            k:j[k] for k in (
+              "cohort_size","exact_single_project_matches",
+              "ambiguous_multiple_project_matches","reported_no_matching_project",
+              "not_evaluated_due_to_provider_failure",
+              "unaccounted_response_rows","status")},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: science-100-frozen-repo-reuse-audit
+          path: ${{ runner.temp }}/science-cohort-100.json
+          retention-days: 7
+          if-no-files-found: error
+
+  full-1287-source-exact-provider-lookup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: source-bound-local-contracts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Reconcile every already inventoried implementation repository
+        run: |
+          python -m cite_refinery.science_reuse_census \
+            --primary research_materials/opportunity_atlas/github_repository_survey.json \
+            --frontier research_materials/opportunity_atlas/github_frontier_repository_survey.json \
+            --count 1287 --out "$RUNNER_TEMP/science-full-1287.json"
+      - name: Publish metadata-only outcome counts
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          j=json.loads((Path(os.environ["RUNNER_TEMP"])/"science-full-1287.json").read_text())
+          assert j["cohort_size"]==1287
+          assert j["frozen_original_repository_total"]==1287
+          assert j["covered_original_strata"]==44
+          assert j["accepted_scientific_or_implementation_relations"]==0
+          assert j["not_source_functionality_verified"] is True
+          assert j["not_independent_relevance_or_accuracy_benchmark"] is True
+          print("SCIENCE_FULL_1287_REVIEW",json.dumps({
+            k:j[k] for k in (
+              "cohort_size","covered_original_strata","attempted_batches",
+              "exact_single_project_matches","ambiguous_multiple_project_matches",
+              "reported_no_matching_project","not_evaluated_due_to_provider_failure",
+              "unaccounted_response_rows","status",
+              "survey_fingerprint_sha256")},sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: science-full-1287-frozen-repo-reuse-audit
+          path: ${{ runner.temp }}/science-full-1287.json
+          retention-days: 7
+          if-no-files-found: error
