@@ -1,0 +1,168 @@
+{
+  "schema": "cite_refinery.competitor_relative_progress.v1",
+  "as_of": "2026-10-23",
+  "purpose": "Replace self-referential progress claims with sourced comparable competitor evidence and explicit no-head-to-head status",
+  "scope": "Development-only public source comparison; no independent competitor evaluation completed",
+  "metrics": {
+    "source_cards": {
+      "total": 1497,
+      "practical": 57,
+      "academic": 150,
+      "implementation": 1290,
+      "source": "https://github.com/Spectating101/cite-refinery/pull/117",
+      "note": "Not equivalent to full source documents, scholarly knowledge graphs or qualified working implementations"
+    },
+    "semantic_navigation": {
+      "development_paraphrase_targets": 10,
+      "browser_top5": 0,
+      "bge_small_top5": 6,
+      "minilm_top5": 8,
+      "implementation_minilm_top5": 1,
+      "implementation_probe_count": 3,
+      "source": "https://github.com/Spectating101/cite-refinery/actions/runs/39950488908",
+      "independent_gold": false
+    },
+    "science_catalogue": {
+      "original_github_identities": 1287,
+      "science_matched_identities": 398,
+      "science_unmatched": 889,
+      "source": "https://github.com/Spectating101/cite-refinery/actions/runs/39928095138",
+      "functionality_verified_by_catalogue": false
+    },
+    "source_claim_triage": {
+      "casebook_size": 21,
+      "mispaired_controls": 4,
+      "supported_reference_cases": 8,
+      "minilm_supported_candidates_matched_reference": 0,
+      "deberta_supported_candidates_matched_reference": 2,
+      "minilm_abstentions": 24,
+      "deberta_abstentions": 21,
+      "source": "https://github.com/Spectating101/cite-refinery/actions/runs/39955721716",
+      "original_xml_source_digest_confirmed": true,
+      "source_offsets_and_gold_independently_adjudicated": false
+    }
+  },
+  "alternatives": [
+    {
+      "id": "paperqa2",
+      "map": "academic",
+      "name": "PaperQA2",
+      "url": "https://github.com/Future-House/paper-qa",
+      "documented_capability": "Local full-text document ingest, scientific literature QA, agentic evidence retrieval/reranking and cited answers",
+      "evidence_kind": "original-maintainer-README",
+      "direct_head_to_head_measured": false,
+      "atlas_gap": "Our Academic answer and citation correctness on original passages is not independently scored",
+      "reusability": "Already trialed retrieval; full inference previously timed out",
+      "required_test": "Equal original PDF/source set, 15-30 blind scoped claims including negation, unsupported causal interpretation, retractions and numeric source-table claims"
+    },
+    {
+      "id": "openscholar",
+      "map": "academic",
+      "name": "OpenScholar",
+      "url": "https://www.nature.com/articles/s41586-025-10072-4",
+      "repository": "https://github.com/AkariAsai/OpenScholar",
+      "documented_capability": "Scientific literature synthesis grounded in a published 45-million-paper datastore and ScholarQABench expert-written questions",
+      "evidence_kind": "peer-reviewed-published-study-on-own-benchmarks",
+      "direct_head_to_head_measured": false,
+      "atlas_gap": "No demonstrated comparable multi-paper synthesis, citation accuracy or expert adjudication",
+      "reusability": "Research benchmark; avoid independently rebuilding corpus/LLM stack",
+      "required_test": "Shared allowed paper corpus; expert-adjudicated open-ended synthesis, citation quotation accuracy, source support and false-citation rate"
+    },
+    {
+      "id": "elicit",
+      "map": "academic",
+      "name": "Elicit",
+      "url": "https://support.elicit.com/en/articles/14757543-getting-started-with-elicit-which-workflow-should-i-use",
+      "documented_capability": "Research Agent for literature discovery/data extraction plus guided systematic-review workflows and PRISMA outputs",
+      "evidence_kind": "official-current-product-docs",
+      "direct_head_to_head_measured": false,
+      "atlas_gap": "No comparable complete systematic-review workflow demonstrated for Atlas",
+      "reusability": "External service benchmark, not an open-source backend",
+      "required_test": "Same investigator query, source access, inclusion-exclusion criteria, extraction-field correctness, evidence source tracing, cost/time"
+    },
+    {
+      "id": "openaleph",
+      "map": "practical",
+      "name": "OpenAleph",
+      "url": "https://openaleph.org/docs/user-guide/103/cross-reference/",
+      "repository": "https://github.com/openaleph/openaleph",
+      "documented_capability": "Investigative document and entity indexing plus private/public cross-dataset entity comparison with reviewer confirmation",
+      "evidence_kind": "official-platform-documentation",
+      "direct_head_to_head_measured": false,
+      "atlas_gap": "Frozen Practical 57-card map lacks real sanitized Nocturnal publication and comparable investigation workflow proof",
+      "reusability": "FollowTheMoney ontology compatibility; don't copy identity/review engine",
+      "required_test": "Two authorized public cases; entity disambiguation precision, original provenance, timeline corrections, false associations, abstention and reviewer time"
+    },
+    {
+      "id": "occrp_aleph",
+      "map": "practical",
+      "name": "OCCRP Aleph Pro",
+      "url": "https://aleph.occrp.org/",
+      "documented_capability": "Research records, entity search across datasets, investigative memory and public source fetching",
+      "evidence_kind": "official-current-product-description",
+      "direct_head_to_head_measured": false,
+      "atlas_gap": "No comparable released dataset breadth or journalistic investigator evaluation",
+      "reusability": "External user-facing benchmark with access limitations; do not claim same data access",
+      "required_test": "Fair source-matched public-only investigation tasks, including false-name merges, missing documents and chain-of-custody"
+    },
+    {
+      "id": "ecosystems_science",
+      "map": "implementation",
+      "name": "ecosyste.ms Science",
+      "url": "https://github.com/ecosyste-ms/science",
+      "documented_capability": "Scientific repository discovery, science scores, academic references, package/dependency relationships",
+      "evidence_kind": "original-maintainer-README-plus-own-live-identity-test",
+      "direct_head_to_head_measured": true,
+      "head_to_head_scope": "398/1287 exact source identity overlap only (not task outcome or scientific accuracy)",
+      "atlas_gap": "Our repo survey covers many entries outside Science, but no statistically verified comparative functionality qualification advantage",
+      "reusability": "Optional package/dependency context, fail back to GitHub original",
+      "required_test": "Twenty or more matched/unmatched task-specific repos, pinned commits, genuine functionality replays, false-positive qualification rate, evidence time"
+    },
+    {
+      "id": "orkg",
+      "map": "cross_layer",
+      "name": "Open Research Knowledge Graph",
+      "url": "https://orkg.org/about",
+      "documented_capability": "Tabular comparisons of research contributions to a question with structured scholarly graph",
+      "evidence_kind": "official-platform-description",
+      "direct_head_to_head_measured": false,
+      "atlas_gap": "Our Academic graph is not independently compared on real scientific comparison questions; other maps not matched functionality",
+      "reusability": "Read-only v2 paper metadata integration working; paper claims still unvalidated",
+      "required_test": "Twenty real research questions; match paper sources, original-study result granularity and contradictions with reviewer-scored accuracy"
+    },
+    {
+      "id": "general_research_agent",
+      "map": "cross_layer",
+      "name": "ChatGPT Deep Research",
+      "url": "https://help.openai.com/en/articles/10500283-deep-research-faq/",
+      "documented_capability": "Plan, research and synthesize complex source-grounded reports with citations",
+      "evidence_kind": "official-platform-description",
+      "direct_head_to_head_measured": false,
+      "atlas_gap": "No end-to-end comparison showing Atlas produces better evidence-qualified problem-to-research-to-working-tool conclusions",
+      "reusability": "Generic product baseline with equal permitted source access",
+      "required_test": "Same source-constrained real problem and exact evidence, trace actionable output and inappropriate confident claims, report latency and user value"
+    }
+  ],
+  "competitive_release_gate": {
+    "independently_adjudicated_task_count_minimum": 30,
+    "three_map_stratification_required": true,
+    "false_candidate_supported_claims_reported": true,
+    "unanswerable_abstention_reported": true,
+    "original_source_quote_offsets_verified": true,
+    "software_functional_execution_separate_from_topic_similarity": true,
+    "source_access_parity_required": true,
+    "candidate_comparator_answer_receipts_required": true,
+    "latency_and_cost_reported": true,
+    "no_claimed_competitor_outperformance_without_direct_receipts": true,
+    "status": "NOT_RUN",
+    "real_task_level_head_to_head_total": 0,
+    "measured_intelligence_advantage_claim": false
+  },
+  "next_decision": "Run an independently labelled, source-matched practical/academic/implementation head-to-head before stating parity/superiority. Focus reused models and evidence/negation validation, not more databases.",
+  "limits": [
+    "Published incumbent performance is not directly comparable to our archived development probes",
+    "Capability descriptions are sourced from maintainers/papers and not independently reproduced here",
+    "Current Atlas original paper/source SHA match does not prove claim entailment",
+    "Nonzero cards or CI passes alone are not market competitiveness"
+  ]
+}
