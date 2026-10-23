@@ -39,6 +39,36 @@ The standalone demand screen validates ISO dates, source authority, eligibility 
 
 The business workbench's private expense and outcome log does not accept advertised procurement amounts as money received.
 
+
+## Original GitHub bounty: first external payout due-diligence experiment
+
+A separate source-backed paid-work scanner now accepts *original issues only* alongside published payments terms. As of 2026-10-24 the frozen casebook `research_materials/opportunity_conversion/paid_work_original_issues_20261024.json` reports five examples:
+
+| Original issuer | Advertised reward | Original-issue fact | Commercial decision |
+| --- | ---: | --- | --- |
+| [Claude Builders hook #3](https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3) | US$100 | Open, about 1,886 issue comments; issuer promises automatic payment upon merge, **contradicted by** [Opire's direct payment arrangement terms](https://docs.opire.dev/rewards/pricing) | REJECT pending independently confirmed funded/payout and acceptance process |
+| [Tenstorrent #56290](https://github.com/tenstorrent/tt-metal/issues/56290) | US$500 | Original issue closed and assigned; a crawler copy can still look open | REJECT closed issue |
+| [Tenstorrent #56908](https://github.com/tenstorrent/tt-metal/issues/56908) | US$3,000 | Approved bounty but currently assigned to someone else and requires Wormhole hardware regressions | REJECT already assigned |
+| [Local AI Registry #216](https://github.com/sybil-solutions/local-ai-registry/issues/216) | US$50 | Original task open with six acceptance tests requiring actual Intel Arc B580, and payment arranged by sponsor after merge | HOLD unavailable/unverified hardware and unverified payout |
+| [Solana Pay Kit #354](https://github.com/solana-foundation/pay-kit/issues/354) | **No offered reward** | Technically relevant issue, but no published paid assignment or budget | REJECT as revenue opportunity; potentially useful unpaid open-source contribution |
+
+These original-source examples show why job/bounty board volumes are not the same as earnable money. The issue's comment count is a **competition/congestion proxy**, *not a count of submitted competing PRs*. Even allegedly independent payment metadata remains unverified operator input; this module **never authorizes starting work** without separate manual permission.
+
+Run the combined screen:
+
+```bash
+python -m unittest tests.test_market_demand_screen_v1 tests.test_paid_work_preflight_v1 -v
+cite-refinery-business board \
+  --plan examples/atlas_business_workbench_demo_v1.json \
+  --demand-scan research_materials/opportunity_conversion/public_demand_scan_20261024.json \
+  --paid-work-scan research_materials/opportunity_conversion/paid_work_original_issues_20261024.json \
+  --as-of 2026-10-24 --format json
+```
+
+### Economic conclusion
+
+All five developer-bounty leads fail at least one essential precondition, so **the right commercial move is to invest nothing in implementing these tasks as paid work**. The purpose of this gate is preserving development effort for genuine, confirmed paid client requests or for our own differentiated reusable assets. Even the lowest-cost bounty deserves evidence of a payer, payment mechanism, acceptance criteria, hardware availability, competition, time constraints and lawful payment eligibility.
+
 ## Commercial lesson and next milestone
 
 These leads are **negative-control examples**, not income prospects confirmed for the operator. Their utility is avoiding investments based on large headline budgets and uncertain contests.
