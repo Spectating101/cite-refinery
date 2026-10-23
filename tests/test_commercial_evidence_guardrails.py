@@ -97,6 +97,8 @@ class CommercialEvidenceGuardTests(unittest.TestCase):
         with patch.dict(os.environ, {KEY_ENV: ""}):
             report = evaluate(c)
         self.assertEqual(report["buyer"]["verified_demand_status"], "unverified_claim")
+        self.assertEqual(report["buyer"]["demand_status"], "unverified_claim")
+        self.assertEqual(report["buyer"]["claimed_demand_status"], "signed_commitment")
         self.assertFalse(report["buyer"]["demand_attestation_valid"])
         self.assertEqual(report["readiness"], "evidence_lead_only")
 
