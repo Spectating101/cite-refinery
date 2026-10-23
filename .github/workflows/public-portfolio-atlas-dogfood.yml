@@ -1,0 +1,81 @@
+name: First original-source portfolio Atlas dogfood (public repo scope)
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/portfolio_public_dogfood.py"
+      - "tests/test_portfolio_public_dogfood_v1.py"
+      - "research_materials/portfolio_dogfood/public_source_manifest_2026_10_23.json"
+      - "docs/PORTFOLIO_ACTUAL_ATLAS_DOGFOOD_V1.md"
+      - ".github/workflows/public-portfolio-atlas-dogfood.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real-original-repository-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install actual Cite-Refinery with CPU pretrained model
+        run: |
+          python -m pip install -e . 'fastembed==0.9.0'
+      - name: Test source scope, private isolation, no false promotions and graph projection
+        run: |
+          python -m compileall -q src/cite_refinery/portfolio_public_dogfood.py
+          python -m unittest discover -s tests -p 'test_portfolio_public_dogfood_v1.py' -v
+      - name: Run Atlas graph + real pretrained semantic retrieval on eight exact public GitHub source commits
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          TOKENIZERS_PARALLELISM: "false"
+          OMP_NUM_THREADS: "2"
+        run: |
+          python -m cite_refinery.portfolio_public_dogfood \
+            --manifest research_materials/portfolio_dogfood/public_source_manifest_2026_10_23.json \
+            --out "$RUNNER_TEMP/portfolio-actual-atlas-report.json" \
+            --semantic
+      - name: Verify actual engine and source/acceptance boundaries
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          j=json.loads((Path(os.environ["RUNNER_TEMP"])/"portfolio-actual-atlas-report.json").read_text())
+          assert len(j["source_snapshots"])==8
+          assert j["atlas_actual_semantic_graph_ingested"] is True
+          assert j["atlas_actual_product_workspace_rendered"] is True
+          assert j["private_repositories_included"]==0
+          assert j["maintainer_claims_independently_verified"]==0
+          assert j["accepted_cross_repo_compatibility"]==0
+          assert j["scientific_findings_verified_by_this_run"]==0
+          assert j["autonomous_semantic_understanding_demonstrated"] is False
+          assert j["neural_retrieval"]["model_load_executed"]
+          assert j["neural_retrieval"]["selected_target_count"]==8
+          assert len(j["neural_retrieval"]["deliberately_unanswerable_questions"])==3
+          print("REAL_PORTFOLIO_SOURCE_ASSESSMENT",json.dumps({
+            "repos":len(j["source_snapshots"]),
+            "nodes":j["source_nodes"],
+            "edges":j["source_edges"],
+            "layers":j["layers"],
+            "edge_states":j["edges_by_status"],
+            "same_commit_ci":j["same_commit_ci_observed"],
+            "bm25_rank_top1":j["neural_retrieval"]["same_corpus_BM25_baseline"]["selected_target_top1_hits"],
+            "bm25_rank_top3":j["neural_retrieval"]["same_corpus_BM25_baseline"]["selected_target_top3_hits"],
+            "model_rank_top1":j["neural_retrieval"]["selected_target_top1_hits"],
+            "model_rank_top3":j["neural_retrieval"]["selected_target_top3_hits"],
+            "verified_autonomous_portfolio_judgments":0
+          },sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: actual-public-portfolio-atlas-source-and-embedding-replay
+          path: ${{ runner.temp }}/portfolio-actual-atlas-report.json
+          retention-days: 7
+          if-no-files-found: error
