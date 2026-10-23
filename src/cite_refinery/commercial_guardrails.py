@@ -101,7 +101,7 @@ def assess(case: dict[str, Any], *, case_id: str, market_signals: list[dict[str,
         if demand_valid and claimed in {"funded_request", "signed_commitment"}:
             origin = urlsplit(payload["evidence_url"])
             if (origin.hostname in {"github.com", "www.github.com"}
-                    and re.search(r"/issues/\\d+(?:/|$)", origin.path)):
+                    and re.search(r"/issues/\d+(?:/|$)", origin.path)):
                 demand_valid = False
                 demand_reason = "A public GitHub issue is not an executed contract or funded procurement instrument"
         if demand_valid:
