@@ -1,0 +1,30 @@
+name: commercial-blind-offline
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/commercial_blind_trial.py"
+      - "tests/test_commercial_blind_trial_v1.py"
+      - "research_materials/opportunity_conversion/blind_casebook_development_v1.json"
+      - ".github/workflows/commercial-blind-offline.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-rehearsal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install core package
+        run: python -m pip install -e .
+      - name: Test no fabricated evidence or scores
+        run: python -m unittest tests.test_commercial_blind_trial_v1 -v
+      - name: Build source-matched plan (no model calls)
+        run: |
+          python -m cite_refinery.commercial_blind_trial plan > /tmp/commercial_blind_plan.json
+          python -c "import json; p=json.load(open('/tmp/commercial_blind_plan.json')); assert len(p['cases'])==4; assert p['status']=='ready_for_authenticated_opt_in_not_executed'; print('4 source-bound cases; no model requests')"
