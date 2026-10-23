@@ -117,6 +117,10 @@ class MarginalMetadataTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"Expected original complete"):
             validate_sample(self.sample,fake,self.primary,self.frontier)
         fake=deepcopy(self.census)
+        fake["exact_matches"][0]["science_project_id"]=123456789
+        with self.assertRaisesRegex(ValueError,"census report digest changed"):
+            validate_sample(self.sample,fake,self.primary,self.frontier)
+        fake=deepcopy(self.census)
         fake["survey_fingerprint_sha256"]="0"*64
         with self.assertRaisesRegex(ValueError,"source census"):
             validate_sample(self.sample,fake,self.primary,self.frontier)
