@@ -16,6 +16,9 @@ on:
       - "tests/test_portfolio_atomic_benchmark.py"
       - "scripts/portfolio_calibration_pilot.py"
       - "tests/test_portfolio_calibration_pilot.py"
+      - "src/cite_refinery/portfolio_strong_reasoner.py"
+      - "tests/test_portfolio_strong_reasoner_v1.py"
+      - "src/cite_refinery/external_llm_runtime.py"
       - "tests/test_portfolio_decision_eval_v2.py"
       - "tests/test_portfolio_autonomous_dossier_v3.py"
       - "tests/test_portfolio_cross_project_v3.py"
@@ -48,6 +51,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_portfolio_atomic_tasks.py' -v
           python -m unittest discover -s tests -p 'test_portfolio_atomic_benchmark.py' -v
           python -m unittest discover -s tests -p 'test_portfolio_calibration_pilot.py' -v
+          python -m unittest discover -s tests -p 'test_portfolio_strong_reasoner_v1.py' -v
       - name: Assert model API keys not needed for deterministic suite
         run: |
           python - <<'PY'
@@ -116,6 +120,7 @@ jobs:
           retention-days: 7
 
   stronger-model-calibration:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 28
     steps:
