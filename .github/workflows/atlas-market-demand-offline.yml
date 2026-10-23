@@ -6,6 +6,10 @@ on:
       - "src/cite_refinery/market_demand_screen.py"
       - "src/cite_refinery/paid_work_preflight.py"
       - "tests/test_paid_work_preflight_v1.py"
+      - "tests/test_commercial_adversarial_regression.py"
+      - "src/cite_refinery/business_workbench.py"
+      - "src/cite_refinery/opportunity_conversion.py"
+      - "src/cite_refinery/commercial_guardrails.py"
       - "research_materials/opportunity_conversion/paid_work_original_issues_20261024.json"
       - "src/cite_refinery/business_cli.py"
       - "tests/test_market_demand_screen_v1.py"
@@ -25,8 +29,17 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install -e .
-      - name: Test real public demand and negative revenue gates
-        run: python -m unittest tests.test_market_demand_screen_v1 tests.test_paid_work_preflight_v1 -v
+      - name: Test all stacked commercial components and adversarial cases
+        run: |
+          python -m unittest \
+            tests.test_opportunity_conversion \
+            tests.test_commercial_evidence_guardrails \
+            tests.test_commercial_comparison_v1 \
+            tests.test_commercial_blind_trial_v1 \
+            tests.test_business_workbench_v1 \
+            tests.test_market_demand_screen_v1 \
+            tests.test_paid_work_preflight_v1 \
+            tests.test_commercial_adversarial_regression -v
       - name: Run actual integrated four-case + three-public-lead CLI
         run: |
           cite-refinery-business board --plan examples/atlas_business_workbench_demo_v1.json --demand-scan research_materials/opportunity_conversion/public_demand_scan_20261024.json --as-of 2026-10-24 --paid-work-scan research_materials/opportunity_conversion/paid_work_original_issues_20261024.json --format json > /tmp/atlas_demand_screen.json
