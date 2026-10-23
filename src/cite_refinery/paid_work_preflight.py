@@ -91,9 +91,14 @@ def validate(data: Any) -> dict[str, Any]:
         for field in ("title", "scope", "payment_limitation", "next_verification"):
             if not isinstance(x.get(field), str) or not 15 <= len(x[field]) <= 900:
                 raise ValueError("Invalid or missing " + field)
-        if x.get("currency") != "USD":
-            raise ValueError("Only explicit USD nominal bounty values supported")
-        _amount(x.get("advertised_amount"))
+        if x.get("reward_status") not in {"advertised", "not_offered"}:
+            raise ValueError("Declare if a monetary reward is actually advertised")
+        if x["reward_status"] == "advertised":
+            if x.get("currency") != "USD":
+                raise ValueError("Only explicit USD nominal bounty values supported")
+            _amount(x.get("advertised_amount"))
+        elif x.get("advertised_amount") is not None or x.get("currency") is not None:
+            raise ValueError("Unpaid task must not invent a nominal bounty")
         comments = x.get("issue_comment_count")
         if isinstance(comments, bool) or not isinstance(comments, int) or not 0 <= comments <= 1000000:
             raise ValueError("Original-issue comment count required")
@@ -124,6 +129,9 @@ def evaluate(data: dict[str, Any], *, as_of: str) -> dict[str, Any]:
         if not x["original_issue_checked"] or stale:
             gate = "hold_refresh_original_issue"
             risk.append("stale_or_unverified_original_issue")
+        elif x["reward_status"] == "not_offered":
+            gate = "reject_no_payment_offer"
+            risk.append("no_recorded_bounty_or_payer")
         elif x["issue_state"] == "closed":
             gate = "reject_closed_issue"
             risk.append("original_issue_closed")
@@ -164,8 +172,9 @@ def evaluate(data: dict[str, Any], *, as_of: str) -> dict[str, Any]:
             "issue_state": x["issue_state"],
             "gate": gate,
             "risk_codes": risk,
-            "nominal_bounty": {"currency": "USD", "amount": _amount(x["advertised_amount"]),
-                               "value_type": "contingent_advertised_bounty_not_earned"},
+            "nominal_bounty": ({"currency": "USD", "amount": _amount(x["advertised_amount"]),
+                                "value_type": "contingent_advertised_bounty_not_earned"}
+                               if x["reward_status"] == "advertised" else None),
             "payment_verified": x["payment_state"] == "independently_confirmed",
             "claim_eligibility_confirmed": x["claimed_status"] in {"unclaimed", "assigned_to_operator"},
             "competition_proxy_issue_comments": x["issue_comment_count"],
@@ -203,7 +212,8 @@ def render(report: dict[str, Any]) -> str:
              "| Original task | Advertised | Gate | Blocker |",
              "| --- | ---: | --- | --- |"]
     for r in report["listings"]:
+        amount = "USD " + r["nominal_bounty"]["amount"] if r["nominal_bounty"] else "none"
         lines.append(f"| {r['title'].replace('|', '/')} | "
-                     f"USD {r['nominal_bounty']['amount']} | {r['gate']} | {', '.join(r['risk_codes'])} |")
+                     f"{amount} | {r['gate']} | {', '.join(r['risk_codes'])} |")
     lines.extend(["", "No payout, win probability, gross margin or return is inferred.", ""])
     return "\n".join(lines)
