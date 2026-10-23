@@ -36,7 +36,10 @@ class ConversionCaseTests(unittest.TestCase):
         ofn = evaluate(fixture("ofn-paid-contributor-route"))
         self.assertIn("community_contribution", foodsoft["conversion_routes"]["maintainer_service"])
         self.assertIn("paid_contributor", ofn["conversion_routes"]["maintainer_service"])
-        self.assertIn("application", ofn["recommended_next_test"])
+        self.assertIn("onboarding", ofn["recommended_next_test"])
+        self.assertIn("requires_onboarding", ofn["conversion_routes"]["maintainer_service"])
+        self.assertTrue(ofn["upstream"]["paid_onboarding_requirements"])
+        self.assertEqual(ofn["readiness"], "evidence_lead_only")
 
     def test_no_unlicensed_self_execution_or_reuse(self):
         food = evaluate(fixture("food-rescue-mvp-partner-audit"))
