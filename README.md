@@ -46,6 +46,16 @@ Hidden-population estimation
 
 The map is structural, not a composite score. `Practical + Academic + no Program`, for example, means that the current graph represents empirical and academic material around that module but does not currently represent program-side material. It does **not** prove that no program exists in the world.
 
+## Commercial application (local operator workbench)
+
+The optional [Atlas Business Workbench](docs/ATLAS_BUSINESS_WORKBENCH_V1.md) operates **downstream** of the three evidence maps and opportunity conversion. It turns cited opportunity hypotheses into bounded commercial experiments with explicit buyer/competitor/rights gates, validation budgets, stopping rules and a private, tamper-evident operator activity ledger.
+
+```bash
+cite-refinery-business board --plan examples/atlas_business_workbench_demo_v1.json
+```
+
+Its public demo has four historical evidence cases and hypothetical spending caps. **No customer, contract, funded grant, bank receipt, confirmed sale or realized income is inferred from a model recommendation or a local event.** The workbench does not perform outreach, payments, external model calls, or autonomous investment. Real activity logs remain outside the public checkout.
+
 ## What hangs off the map
 
 Lifecycle records remain useful, but they support the semantic map rather than define the interface:

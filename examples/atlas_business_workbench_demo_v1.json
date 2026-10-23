@@ -1,0 +1,59 @@
+{
+  "schema": "cite_refinery.business_plan.v1",
+  "currency": "TWD",
+  "scenario_notice": "EXAMPLE validation caps only; not an authorized expenditure, quote or financial commitment. No buyer contact, funding, contract, revenue, or actual cost has been reported.",
+  "opportunities": [
+    {
+      "case_id": "ofn-paid-contributor-route",
+      "channel": "partnership",
+      "validation_budget": "500.00",
+      "experiment": {
+        "question": "Is there a currently available paid contractor assignment for the reported Open Food Network Canada map defect?",
+        "success_signal": "Written confirmation of current eligibility, terms and funded scope by an authorized maintainer, not a generic invitation.",
+        "stop_signal": "Only an unpaid onboarding route or no funded scope after the defined outreach/check; pause rather than invest development effort."
+      }
+    },
+    {
+      "case_id": "foodsoft-food-coop-deployment",
+      "channel": "service",
+      "validation_budget": "500.00",
+      "experiment": {
+        "question": "Can the reported Foodsoft reconciliation defect be reproduced and tied to an operator prepared to fund its repair?",
+        "success_signal": "Regression fixture reproduces issue, maintainer accepts technical scope, and an operator independently confirms funded need.",
+        "stop_signal": "Bug is already fixed or nobody identifies a paid business need; retain as optional OSS credibility work."
+      }
+    },
+    {
+      "case_id": "pv-independent-rooftop-performance-audit",
+      "channel": "service",
+      "validation_budget": "2000.00",
+      "experiment": {
+        "question": "Can an independent rooftop PV performance report supply economically valuable analysis beyond existing vendor monitoring?",
+        "success_signal": "A site owner authorizes an anonymized data sample, describes an existing monitoring gap and confirms a price/budget under a bounded delivery proposal.",
+        "stop_signal": "Available vendor tools cover the use case adequately or buyer has no budget; do not build an unnecessary monitoring product."
+      },
+      "competitive_alternatives": [
+        {
+          "name": "Solargis PV Performance Assessment",
+          "url": "https://www.solargis.com/services/pv-performance-assessment",
+          "scope": "direct"
+        },
+        {
+          "name": "Raptor Maps Solar Management Platform",
+          "url": "https://raptormaps.com/products/solar-management-platform",
+          "scope": "partial"
+        }
+      ]
+    },
+    {
+      "case_id": "kobo-dog-sighting-integration",
+      "channel": "implementation",
+      "validation_budget": "1000.00",
+      "experiment": {
+        "question": "Does a minimal Kobo-based photograph, location and time survey preserve enough field data to support a separate dog identity-reconciliation workflow?",
+        "success_signal": "Local authorized offline workflow produces consistent test records and an identifiable operator verifies the data specification.",
+        "stop_signal": "Data cannot be reconciled reliably or there is no operator need; stop before developing speculative identity software."
+      }
+    }
+  ]
+}
