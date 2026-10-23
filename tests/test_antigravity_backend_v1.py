@@ -10,6 +10,14 @@ from cite_refinery.external_llm_runtime import invoke_semantic_llm, LLMUnavailab
 PROMPT="Review a claim against literal publisher evidence. Preserve original scope, distinguish source wording from causal attribution, and return a JSON decision only. "*2
 
 class AntigravityBackendTests(unittest.TestCase):
+    def setUp(self):
+        # Each contract test exercises a mocked subprocess, never a live CLI.
+        # An explicit inert binary path is required by the runtime's safe
+        # fail-closed CLI-presence guard; no installation or network needed.
+        env = patch.dict("os.environ", {"CITE_REFINERY_ANTIGRAVITY_BIN": "/opt/fake-agy-cli"})
+        env.start()
+        self.addCleanup(env.stop)
+
     def test_model_invocation_is_sandboxed_and_bounded(self):
         commands=[]
         def completed(command,**kwargs):
