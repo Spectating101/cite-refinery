@@ -31,7 +31,19 @@
         "question": "Can an independent rooftop PV performance report supply economically valuable analysis beyond existing vendor monitoring?",
         "success_signal": "A site owner authorizes an anonymized data sample, describes an existing monitoring gap and confirms a price/budget under a bounded delivery proposal.",
         "stop_signal": "Available vendor tools cover the use case adequately or buyer has no budget; do not build an unnecessary monitoring product."
-      }
+      },
+      "competitive_alternatives": [
+        {
+          "name": "Solargis PV Performance Assessment",
+          "url": "https://www.solargis.com/services/pv-performance-assessment",
+          "scope": "direct"
+        },
+        {
+          "name": "Raptor Maps Solar Management Platform",
+          "url": "https://raptormaps.com/products/solar-management-platform",
+          "scope": "partial"
+        }
+      ]
     },
     {
       "case_id": "kobo-dog-sighting-integration",
