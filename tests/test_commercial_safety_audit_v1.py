@@ -149,6 +149,11 @@ class FrozenCommercialSafetyAuditTests(unittest.TestCase):
         altered["cases"][0]["must_cite_ids"] = ["invented"]
         with self.assertRaisesRegex(ValueError, "frozen packet"):
             validate_rubric(self.book, altered)
+        for key, malformed in (("must_cite_ids", [["nested"]]), ("allowed_priorities", [{"key": "investigate"}])):
+            altered = deepcopy(self.rules)
+            altered["cases"][0][key] = malformed
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                validate_rubric(self.book, altered)
 
     def test_partial_receipt_audited_without_inventing_other_cases(self):
         r = deepcopy(self.receipt)
