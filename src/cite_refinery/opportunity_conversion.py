@@ -269,6 +269,8 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
         "cross_layer_fit": {
             "documented_capability": capability, "required_mechanism": requirement,
             "unverified_gap": gap, "fit_status": fit_level,
+            "execution_attestation_valid": commercial["technical_attestation_valid"],
+            "execution_verification_limitation": commercial["technical_verification_limitation"],
             "limitation": "A semantic match is not proof of operational implementation, stakeholder fit or economic value.",
         },
         "buyer": {"segment": buyer_segment, "demand_status": demand_level,
