@@ -1,0 +1,81 @@
+name: Measure incremental Science metadata value
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/science_marginal_metadata.py"
+      - "tests/test_science_marginal_metadata_v1.py"
+      - "research_materials/external_landscape/science_marginal_context_sample_v1.json"
+      - "docs/SCIENCE_MARGINAL_METADATA_VALUE_V1.md"
+      - ".github/workflows/science-marginal-metadata.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  source-verified-metadata-increment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout reuse branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Retrieve original immutable 1287-repository census receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/original-census"
+          gh run download 39928095138 --repo Spectating101/cite-refinery \
+            --name science-full-1287-frozen-repo-reuse-audit \
+            --dir "$RUNNER_TEMP/original-census"
+          test -s "$RUNNER_TEMP/original-census/science-full-1287.json"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install original Cite–Refinery
+        run: python -m pip install -e .
+      - name: Verify source selection and fail-closed mock cases
+        env:
+          SCIENCE_FULL_CENSUS_PATH: ${{ runner.temp }}/original-census/science-full-1287.json
+        run: |
+          python -m compileall -q src/cite_refinery/science_marginal_metadata.py
+          python -m unittest discover -s tests -p 'test_science_marginal_metadata_v1.py' -v
+      - name: Read actual Science contexts for 20 matched identities
+        run: |
+          python -m cite_refinery.science_marginal_metadata \
+            --sample research_materials/external_landscape/science_marginal_context_sample_v1.json \
+            --census "$RUNNER_TEMP/original-census/science-full-1287.json" \
+            --primary research_materials/opportunity_atlas/github_repository_survey.json \
+            --frontier research_materials/opportunity_atlas/github_frontier_repository_survey.json \
+            --out "$RUNNER_TEMP/science-20plus20-context-audit.json"
+      - name: Check no promotion and publish measured provider record counts
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          r=json.loads((Path(os.environ["RUNNER_TEMP"])/"science-20plus20-context-audit.json").read_text())
+          assert r["matched_sample_size"]==20 and r["unmatched_sample_size"]==20
+          assert r["source_matched_total"]==398 and r["source_unmatched_total"]==889
+          assert r["accepted_graph_evidence_edges"]==0
+          assert r["independent_software_quality_improvement_verified"] is False
+          assert r["independent_analyst_time_savings_measured"] is False
+          print("SCIENCE_MARGINAL_VALUE_REAL",json.dumps({
+            k:r[k] for k in (
+              "science_context_read_successes","science_with_package_metadata",
+              "science_with_indexed_direct_dependencies",
+              "science_with_multiple_descriptions","science_with_languages",
+              "original_github_matched_snapshot_description_present",
+              "original_github_unmatched_snapshot_description_present",
+              "science_context_errors","status")
+          },sort_keys=True))
+          PY
+      - name: Upload original-source-scoped metadata comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: science-20plus20-metadata-utility-review-only
+          path: ${{ runner.temp }}/science-20plus20-context-audit.json
+          retention-days: 7
+          if-no-files-found: error

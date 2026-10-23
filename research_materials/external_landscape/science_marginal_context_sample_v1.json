@@ -1,0 +1,113 @@
+{
+  "schema": "cite_refinery.science_marginal_context_preregistered_sample.v1",
+  "census_run": "https://github.com/Spectating101/cite-refinery/actions/runs/39928095138",
+  "census_source_sha256": "b8bb8c733801c04e8c6f07f0c9a99f4016edd8e677343c93ffe13612aea450d2",
+  "sampling_rule": "20 sha256(seed|lowercase_url) minimum matched; 20 same-rule unmatched, no manual cherry-pick",
+  "seed": "refinery-science-incremental-context-v1",
+  "matched": [
+    {
+      "repository": "https://github.com/iw4p/partialjson",
+      "science_project_id": 1226315
+    },
+    {
+      "repository": "https://github.com/kube-green/kube-green",
+      "science_project_id": 75490
+    },
+    {
+      "repository": "https://github.com/Cartus/Automated-Fact-Checking-Resources",
+      "science_project_id": 1424661
+    },
+    {
+      "repository": "https://github.com/kmnhan/erlabpy",
+      "science_project_id": 79711
+    },
+    {
+      "repository": "https://github.com/mesmo-dev/mesmo",
+      "science_project_id": 33567
+    },
+    {
+      "repository": "https://github.com/protontypes/climate-triage",
+      "science_project_id": 75130
+    },
+    {
+      "repository": "https://github.com/paperclipai/paperclip",
+      "science_project_id": 1286669
+    },
+    {
+      "repository": "https://github.com/djsilva99/heatrapy",
+      "science_project_id": 1219995
+    },
+    {
+      "repository": "https://github.com/nextflow-io/nextflow",
+      "science_project_id": 39834
+    },
+    {
+      "repository": "https://github.com/HKUDS/Vibe-Trading",
+      "science_project_id": 1166507
+    },
+    {
+      "repository": "https://github.com/rerun-io/rerun",
+      "science_project_id": 81037
+    },
+    {
+      "repository": "https://github.com/openrepair/data",
+      "science_project_id": 835545
+    },
+    {
+      "repository": "https://github.com/Mariewelt/OpenChem",
+      "science_project_id": 1242993
+    },
+    {
+      "repository": "https://github.com/open-risk/equinox",
+      "science_project_id": 75013
+    },
+    {
+      "repository": "https://github.com/ablab/IsoQuant",
+      "science_project_id": 1243502
+    },
+    {
+      "repository": "https://github.com/pvlib/pvlib-python",
+      "science_project_id": 885
+    },
+    {
+      "repository": "https://github.com/farmOS/farmOS",
+      "science_project_id": 1248261
+    },
+    {
+      "repository": "https://github.com/haxtheweb/haxcms-php",
+      "science_project_id": 1317005
+    },
+    {
+      "repository": "https://github.com/mlpack/mlpack",
+      "science_project_id": 1255
+    },
+    {
+      "repository": "https://github.com/deepseek-ai/deepseek-harness",
+      "science_project_id": 894057
+    }
+  ],
+  "unmatched": [
+    "https://github.com/cityssm/municipal-github-rankings",
+    "https://github.com/wilsonfreitas/awesome-quant",
+    "https://github.com/DataTalksClub/data-engineering-zoomcamp",
+    "https://github.com/nadar71/FreddyFridge",
+    "https://github.com/motedb/motedb",
+    "https://github.com/openscopeproject/InteractiveHtmlBom",
+    "https://github.com/ryancampbell/ask-canada",
+    "https://github.com/laramies/theHarvester",
+    "https://github.com/enpeizhao/CVprojects",
+    "https://github.com/MartijnVdS/pv2mqtt",
+    "https://github.com/guhou-hvi/elsevier-figure-style",
+    "https://github.com/WurthElektronik/Eagle-Library",
+    "https://github.com/ionworks/ionworksdata",
+    "https://github.com/ArVaViT/equip",
+    "https://github.com/openpolis/django-popolo",
+    "https://github.com/gov2-ro/prometeu",
+    "https://github.com/datasets/commons",
+    "https://github.com/zapplyjobs/New-Grad-Hardware-Engineering-Jobs-2027",
+    "https://github.com/myhhub/stock",
+    "https://github.com/1coderookie/KobraGoNeoInsights"
+  ],
+  "independent_validation": false,
+  "authority": "identity_overlap_only_not_functional_or_semantic"
+}
