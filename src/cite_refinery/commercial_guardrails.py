@@ -18,6 +18,7 @@ import json
 import os
 import re
 from typing import Any
+from urllib.parse import urlsplit
 
 KEY_ENV = "CITE_REFINERY_COMMERCIAL_REVIEW_KEY"
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
@@ -97,6 +98,12 @@ def assess(case: dict[str, Any], *, case_id: str, market_signals: list[dict[str,
         if not isinstance(payload, dict) or payload.get("demand_status") != claimed:
             demand_valid = False
             demand_reason = "review does not attest the claimed demand stage"
+        if demand_valid and claimed in {"funded_request", "signed_commitment"}:
+            origin = urlsplit(payload["evidence_url"])
+            if (origin.hostname in {"github.com", "www.github.com"}
+                    and re.search(r"/issues/\\d+(?:/|$)", origin.path)):
+                demand_valid = False
+                demand_reason = "A public GitHub issue is not an executed contract or funded procurement instrument"
         if demand_valid:
             buyer_id = payload["buyer_id"]
     effective = claimed if (claimed_kind is None or demand_valid) else "unverified_claim"
