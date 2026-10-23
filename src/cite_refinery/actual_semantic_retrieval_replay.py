@@ -20,6 +20,8 @@ from .semantic_integration_reality_audit import PAIRS, frontend_match
 
 SCHEMA = "cite_refinery.actual_semantic_retrieval_replay.v1"
 MODEL = "BAAI/bge-small-en-v1.5"
+COMPARATOR_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+VALID_REAL_MODELS = {MODEL, COMPARATOR_MODEL}
 # Development references only, known to the team before this evaluation.
 PROBE_ORIGIN = "historical_investigator_chosen_pairs_not_blind_independent_gold"
 
@@ -66,12 +68,12 @@ def _vectors(texts, embed: Callable[[list[str]], object]):
     return array / norms[:, None]
 
 
-def actual_fastembed(texts):
+def actual_fastembed(texts, *, model_name=MODEL):
     """No fake/keyword embedding fallback; missing model is an honest failure."""
     from fastembed import TextEmbedding
     from pathlib import Path
     import os
-    model = TextEmbedding(model_name=MODEL,
+    model = TextEmbedding(model_name=model_name,
                           cache_dir=os.environ.get("FASTEMBED_CACHE_PATH", None),
                           threads=2)
     return list(model.embed(texts, batch_size=32, parallel=None))
@@ -83,6 +85,9 @@ def run(pilot: dict, *, embed: Callable = actual_fastembed,
     known = _check_pilot(pilot)
     _require(model_id and isinstance(model_id, str) and len(model_id) <= 140,
              "Model identifier required")
+    if embed is actual_fastembed:
+        _require(model_id in VALID_REAL_MODELS,
+                 "Only explicit predeclared real embedding models are supported")
     ordered = [*sorted(pilot["cards"], key=lambda x: x["id"])]
     source_texts = [_document(c) for c in ordered]
     _require(all(source_texts), "Blank original source card")
@@ -100,7 +105,9 @@ def run(pilot: dict, *, embed: Callable = actual_fastembed,
     # NOTE: all queries are chosen *before* running the model and not part of
     # any vectorized source documents. No query title is inserted into source.
     import numpy as np
-    all_vectors = _vectors(source_texts + [q["text"] for q in queries], embed)
+    vector_embed = (lambda texts: actual_fastembed(texts, model_name=model_id)) if (
+        embed is actual_fastembed) else embed
+    all_vectors = _vectors(source_texts + [q["text"] for q in queries], vector_embed)
     source_vecs = all_vectors[:len(ordered)]
     query_vecs = all_vectors[len(ordered):]
     _require(source_vecs.shape[0] == 1497 and len(queries) == 23,
@@ -218,12 +225,13 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--pilot", required=True, type=Path)
     p.add_argument("--out", required=True, type=Path)
+    p.add_argument("--model", default=MODEL, choices=sorted(VALID_REAL_MODELS))
     args = p.parse_args(argv)
     _require(not args.out.exists(), "Never overwrite an earlier model trial")
     _require(args.pilot.is_file() and args.pilot.stat().st_size < 16_000_000
              and not args.pilot.is_symlink(), "Missing or invalid original pilot")
     pilot = json.loads(args.pilot.read_text(encoding="utf-8"))
-    result = run(pilot)
+    result = run(pilot, model_id=args.model)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n",
                         encoding="utf-8")
