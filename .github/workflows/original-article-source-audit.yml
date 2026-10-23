@@ -1,0 +1,60 @@
+name: Original published paper identity and numerical source audit
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/original_article_claim_source_audit.py"
+      - "tests/test_original_article_claim_source_audit_v1.py"
+      - ".github/workflows/original-article-source-audit.yml"
+      - "docs/ACTUAL_SOURCE_CLAIM_NLI_RESULTS_2026_10_23.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-real-public-article:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Adversarial JATS identity and table-text tests
+        run: |
+          python -m compileall -q src/cite_refinery/original_article_claim_source_audit.py
+          python -m unittest discover -s tests -p 'test_original_article_claim_source_audit_v1.py' -v
+      - name: Fetch exact canonical public Europe PMC original article (not an arbitrary URL)
+        run: |
+          python -m cite_refinery.original_article_claim_source_audit \
+            --out "$RUNNER_TEMP/published-original-paper-anchors.json"
+      - name: Check published source identity, all six numerical anchors and no authority promotion
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          j=json.loads((Path(os.environ["RUNNER_TEMP"])/"published-original-paper-anchors.json").read_text())
+          assert j["verified_doi"]=="10.14202/vetworld.2026.2816-2849"
+          assert j["verified_pmcid"]=="PMC13500148"
+          assert len(j["numeric_table_anchor_presence"])==6
+          assert all(j["numeric_table_anchor_presence"].values())
+          assert j["original_article_available"] is True
+          assert j["archived_curated_excerpt_offsets_verified_against_this_xml"] is False
+          assert j["nli_model_question_entailment_approved"] is False
+          print("PUBLISHED_PAPER_ORIGINAL_ANCHORS",json.dumps({
+            "source_url":j["source_url"],
+            "original_xml_sha256":j["original_xml_sha256"],
+            "numeric_table_anchor_presence":j["numeric_table_anchor_presence"],
+            "claim_review_approved":False,
+          },sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: original-paper-source-identity-and-table-anchors-review
+          path: ${{ runner.temp }}/published-original-paper-anchors.json
+          retention-days: 7
+          if-no-files-found: error

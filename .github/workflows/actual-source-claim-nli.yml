@@ -1,0 +1,133 @@
+name: Real source-claim NLI and abstention gate
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/actual_claim_entailment_gate.py"
+      - "tests/test_actual_claim_entailment_gate_v1.py"
+      - ".github/workflows/actual-source-claim-nli.yml"
+      - "docs/ACTUAL_SOURCE_CLAIM_NLI_GATE_V1.md"
+      - "docs/ACTUAL_SOURCE_CLAIM_NLI_RESULTS_2026_10_23.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-pinned-nli-cpu-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout unchanged prior frozen source excerpt casebook
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install original project and PyTorch CPU runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'torch==2.5.1+cpu' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e . 'sentence-transformers==5.1.2' 'sentencepiece==0.2.1' 'protobuf>=4,<7'
+      - name: Run source-bound integrity and adversarial nonpromotion tests
+        run: |
+          python -m compileall -q src/cite_refinery/actual_claim_entailment_gate.py
+          python -m unittest discover -s tests -p 'test_actual_claim_entailment_gate_v1.py' -v
+      - name: Verify article original XML exactly matches the immutable archived casebook source SHA
+        run: |
+          mkdir -p "$RUNNER_TEMP/source-claim-triage"
+          python -m cite_refinery.original_article_claim_source_audit \
+            --out "$RUNNER_TEMP/source-claim-triage/original-published-source.json"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          base=Path(os.environ["RUNNER_TEMP"])/"source-claim-triage"
+          original=json.loads((base/"original-published-source.json").read_text())
+          historical=json.loads(Path("research_materials/runtime_trials/fulltext_dog_20261020/benchmark_cases.json").read_text())
+          assert original["original_xml_sha256"]==historical["source_sha256"], \
+              "Historical benchmark source SHA does not match independently fetched original article"
+          assert original["verified_doi"]==historical["source_doi"]
+          assert original["archived_curated_excerpt_offsets_verified_against_this_xml"] is False
+          print("LIVE_ARCHIVED_ORIGINAL_SOURCE_SHA_MATCH",json.dumps({
+              "sha256":original["original_xml_sha256"],"doi":original["verified_doi"],
+              "curator_excerpt_offsets_verified":False,
+          },sort_keys=True))
+          PY
+      - name: Execute actual HF-revision-pinned MiniLM NLI model with predeclared no-auto-promotion policy
+        env:
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          TOKENIZERS_PARALLELISM: "false"
+          OMP_NUM_THREADS: "2"
+          MKL_NUM_THREADS: "2"
+        run: |
+          mkdir -p "$RUNNER_TEMP/source-claim-triage"
+          python -m cite_refinery.actual_claim_entailment_gate \
+            --cases research_materials/runtime_trials/fulltext_dog_20261020/benchmark_cases.json \
+            --out "$RUNNER_TEMP/source-claim-triage/actual-source-claim-nli.json"
+      - name: Audit actual outcomes and refuse scientific promotion
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          r=json.loads(Path(os.environ["RUNNER_TEMP"],"source-claim-triage",
+                            "actual-source-claim-nli.json").read_text("utf-8"))
+          assert r["inference_mode"]=="real_pretrained_cpu_cross_encoder"
+          assert r["model"]=="cross-encoder/nli-MiniLM2-L6-H768"
+          assert r["model_revision"]=="f3b1e8aac2451320dfe2ce56673b3f2ec63e6f03"
+          assert r["source_derived_case_count"]==21
+          assert r["deliberately_mismatched_source_negatives"]==4
+          assert len(r["case_results"])==25
+          assert r["support_or_contradiction_automatically_promoted"] is False
+          assert r["cross_layer_claims_created"]==0
+          assert r["independent_gold_labels_available"] is False
+          assert r["original_article_sha_independently_checked_this_run"] is False
+          print("NLI_TRIAGE_ACTUAL_RESULT",json.dumps({
+            "model":r["model"],"revision":r["model_revision"],
+            "counts":r["counts"],
+            "false_supported_cases":r["false_supported_cases"],
+            "unresolved_cases":[{"id":x["id"],"triage":x["triage"]}
+                                for x in r["unresolved_cases"]],
+            "negative_controls":[{"id":x["id"],"triage":x["triage"]}
+                                 for x in r["source_mismatch_cases"]]
+          },sort_keys=True))
+          PY
+      - name: Crosscheck real DeBERTa NLI with the SAME 21+4 cases and predeclared thresholds
+        env:
+          HF_HUB_DISABLE_TELEMETRY: "1"
+          TOKENIZERS_PARALLELISM: "false"
+          OMP_NUM_THREADS: "2"
+          MKL_NUM_THREADS: "2"
+        run: |
+          python -m cite_refinery.actual_claim_entailment_gate \
+            --cases research_materials/runtime_trials/fulltext_dog_20261020/benchmark_cases.json \
+            --model cross-encoder/nli-deberta-v3-small \
+            --out "$RUNNER_TEMP/source-claim-triage/actual-deberta-claim-nli.json"
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"source-claim-triage"
+          a=json.loads((p/"actual-source-claim-nli.json").read_text("utf-8"))
+          b=json.loads((p/"actual-deberta-claim-nli.json").read_text("utf-8"))
+          assert a["source_casebook_sha256"]==b["source_casebook_sha256"]
+          assert a["predeclared_policy"]==b["predeclared_policy"]
+          assert b["model_revision"]=="e9890682d9e4279b7ae6d0fcfb435a43206280ec"
+          assert len(a["case_results"])==len(b["case_results"])==25
+          assert a["support_or_contradiction_automatically_promoted"] is False
+          assert b["support_or_contradiction_automatically_promoted"] is False
+          print("ACTUAL_TWO_MODEL_NLI_COMPARISON",json.dumps({
+            "minilm":a["counts"],"deberta":b["counts"],
+            "false_supported_minilm":a["false_supported_cases"],
+            "false_supported_deberta":b["false_supported_cases"],
+            "source_casebook_sha256":a["source_casebook_sha256"],
+            "independent_gold_available":False
+          },sort_keys=True))
+          PY
+      - name: Upload actual neural logits and provenance as review-only artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-source-nli-21-plus-4-review-only
+          path: ${{ runner.temp }}/source-claim-triage/*.json
+          retention-days: 7
+          if-no-files-found: error
