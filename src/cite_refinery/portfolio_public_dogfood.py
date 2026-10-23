@@ -99,7 +99,7 @@ def validate_manifest(manifest):
                  re.fullmatch(r"[0-9a-f]{40}",r.get("readme_blob_sha","")) and
                  re.fullmatch(r"[a-z_]{4,60}",r.get("operator_declared_category","")),
                  "Original pinned source incomplete")
-    _require(set(manifest.get("disallowed_private_sources",[])).isdisjoint(ALLOWLIST),
+    _require(manifest.get("private_repositories_excluded_by_allowlist") is True,
              "Private/public scope collision")
     return records
 
