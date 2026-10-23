@@ -1,6 +1,6 @@
 {
   "schema": "cite_refinery.external_reuse_registry.v1",
-  "as_of": "2026-10-20",
+  "as_of": "2026-10-23",
   "policy": "discovery_only_no_auto_authority",
   "freeze": {
     "state": "evaluation_first",
@@ -365,6 +365,113 @@
       "status": "reference_only",
       "action": "Evaluate direct problem-to-solution directory overlap",
       "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "ecosystems-science",
+      "url": "https://github.com/ecosyste-ms/science",
+      "category": "scientific_software_knowledge_graph",
+      "capability": "Scientific software inventory, JOSS-linked project classification, repository quality indicators, research institutional metadata",
+      "status": "adapter_code_added_unverified_live",
+      "action": "New read-only literal/name software API adapter; compare against 1,287 unqualified GitHub leads; CC BY-SA API data reuse review",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Refinery"
+      ]
+    },
+    {
+      "id": "orkg",
+      "url": "https://orkg.org/",
+      "category": "structured_research_graph",
+      "capability": "Structured scholarly paper/contribution mapping and comparisons",
+      "status": "adapter_code_added_unverified_live",
+      "action": "New read-only title-filtered paper metadata adapter; compare against Academic findings and prevent ORKG verified flag being treated as independent source entailment",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Cite"
+      ]
+    },
+    {
+      "id": "openaleph",
+      "url": "https://github.com/openaleph/openaleph",
+      "category": "investigative_research_application",
+      "capability": "Source-based investigative document indexing, entity extraction, collaboration and cross-dataset investigation",
+      "status": "reference_only",
+      "action": "Potential Nocturnal investigation document backend; do not launch full service or ingest private records without separate authorization and threat review",
+      "reuse_for": [
+        "Nocturnal",
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "followthemoney",
+      "url": "https://github.com/opensanctions/followthemoney",
+      "category": "investigative_entity_schema",
+      "capability": "Structured people, organizations, payments, assets and court-case ontologies and parsers",
+      "status": "adapter_available",
+      "action": "Local bounded entity-schema preview integrated into landscape CLI; zero entity import, names suppressed; review Nocturnal permission gate before more",
+      "reuse_for": [
+        "Nocturnal",
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "openscholar",
+      "url": "https://github.com/akariasai/openscholar",
+      "category": "research_synthesis_engine",
+      "capability": "Retrieval-grounded scholarly synthesis with cited references",
+      "status": "reference_only",
+      "action": "Independent Academic answer baseline; not a new ingestion source unless content rights and original source checks pass",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Cite"
+      ]
+    },
+    {
+      "id": "ossf-scorecard",
+      "url": "https://github.com/ossf/scorecard",
+      "category": "repository_security_evaluation",
+      "capability": "Open source repository security and maintenance assessments",
+      "status": "reference_only",
+      "action": "Use as existing Implementation supply risk signal; not functional correctness, patent clearance or field suitability",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Refinery"
+      ]
+    },
+    {
+      "id": "zoekt",
+      "url": "https://github.com/sourcegraph/zoekt",
+      "category": "repository_code_search",
+      "capability": "Fast repository code search with trigram indexing",
+      "status": "reference_only",
+      "action": "Reuse for deeper pinned-code inspections only if current GitHub search is inadequate",
+      "reuse_for": [
+        "Cite-Refinery",
+        "Refinery"
+      ]
+    },
+    {
+      "id": "cognee",
+      "url": "https://github.com/topoteretes/cognee",
+      "category": "knowledge_graph_infrastructure",
+      "capability": "Agent memory and graph-backed retrieval",
+      "status": "reference_only",
+      "action": "Candidate graph backend comparison; no need to copy platform code until semantic benchmark demonstrates advantage",
+      "reuse_for": [
+        "Cite-Refinery"
+      ]
+    },
+    {
+      "id": "graphiti",
+      "url": "https://github.com/getzep/graphiti",
+      "category": "temporal_graph_infrastructure",
+      "capability": "Time-aware graph storage and relation mutation",
+      "status": "reference_only",
+      "action": "Compare Nocturnal correction timelines and supersession to mature temporal graph semantics before replacing existing native receipts",
+      "reuse_for": [
+        "Nocturnal",
         "Cite-Refinery"
       ]
     }
