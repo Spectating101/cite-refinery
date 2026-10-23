@@ -186,6 +186,7 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(upstream, dict) or upstream.get("engagement") not in ENGAGEMENT:
         raise ValueError("upstream engagement missing")
     upstream_signal = _signals(upstream.get("signals", []), "upstream.signals")
+    onboarding = _signals(upstream.get("paid_onboarding_requirements", []), "upstream.paid_onboarding_requirements")
     if upstream["engagement"] != "none" and not upstream_signal:
         raise ValueError("upstream invitation or permission must have a source")
     if upstream["engagement"] == "direct_permission" and not any(
@@ -222,7 +223,8 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
     if upstream["engagement"] == "direct_permission":
         partner_route = "permission_reported_validate_scope_and_terms"
     elif upstream["engagement"] == "public_invitation" and paid_invitation:
-        partner_route = "apply_for_published_paid_contributor_process_no_contract"
+        partner_route = ("paid_contributor_requires_onboarding_and_certification_no_contract"
+                         if onboarding else "apply_for_published_paid_contributor_process_no_contract")
     elif upstream["engagement"] == "public_invitation":
         partner_route = "community_contribution_invitation_not_a_paid_service"
     else:
@@ -232,6 +234,8 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
         next_action = "Ask maintainer about license/permission; do not copy, deploy or sell the code yet."
     elif commercial["competitors"] and not commercial["competitive_attestation_valid"]:
         next_action = "Compare the existing substitutes with an actual buyer; verify differentiated value and switching costs before commercialization."
+    elif paid_invitation and onboarding:
+        next_action = "Verify volunteer onboarding and contributor-certification requirements before proposing compensated work; payment for this issue is unconfirmed."
     elif paid_invitation:
         next_action = "Check whether the paid contributor application remains open and propose one bounded deliverable."
     elif upstream["engagement"] == "public_invitation":
@@ -287,7 +291,9 @@ def evaluate(case: dict[str, Any]) -> dict[str, Any]:
             "limitation": commercial["competitive_limitation"],
         },
         "upstream": {"engagement": upstream["engagement"], "signals": upstream_signal,
-                     "paid_contribution_invitation": paid_invitation},
+                     "paid_contribution_invitation": paid_invitation,
+                     "paid_onboarding_requirements": onboarding,
+                     "limitation": "A published paid-contributor pathway is not a funded assignment. Onboarding terms require current verification."},
         "conversion_routes": {
             "self_execution": self_route, "maintainer_service": partner_route,
             "reuse_as_component": ("blocked_until_rights_resolved" if rights_missing
