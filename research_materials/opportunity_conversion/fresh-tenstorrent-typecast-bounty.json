@@ -1,0 +1,48 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "fresh-tenstorrent-typecast-bounty",
+  "problem": {
+    "statement": "A Tenstorrent typecast hardware defect causes uint16 conversion to round while other device and host integer conversions truncate.",
+    "sources": [
+      {
+        "url": "https://github.com/tenstorrent/tt-metal/issues/51655",
+        "claim": "A Tenstorrent typecast hardware defect causes uint16 conversion to round while other device and host integer conversions truncate.",
+        "status": "reported"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "tenstorrent/tt-metal",
+    "url": "https://github.com/tenstorrent/tt-metal",
+    "description": "Specialized Tenstorrent hardware and neural-network operation runtime with device-specific kernel tests.",
+    "capability_source": "https://github.com/tenstorrent/tt-metal/blob/main/README.md",
+    "license_status": "unverified"
+  },
+  "fit": {
+    "documented_capability": "Specialized Tenstorrent hardware and neural-network operation runtime with device-specific kernel tests.",
+    "problem_requirement": "A suitable implementation requires hardware-level proof on Tenstorrent devices and an agreed owner for a correctly scoped uint16 conversion repair.",
+    "unverified_gap": "The original first-party bounty issue is OPEN but already ASSIGNED to a named contributor; local Tenstorrent device access and rights to take over the assignment are not established.",
+    "verification": "source_reviewed"
+  },
+  "market": {
+    "buyer_segment": "Project maintainer or alleged sponsor, without independently verified funded buyer",
+    "demand_status": "problem_signal",
+    "signals": [
+      {
+        "url": "https://github.com/tenstorrent/tt-metal/issues/51655",
+        "claim": "Original issue or issuer describes potential work or conditional payments but does not establish a contract with our operator.",
+        "status": "reported"
+      }
+    ]
+  },
+  "upstream": {
+    "engagement": "none",
+    "signals": [],
+    "paid_contribution_invitation": false
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": null
+}

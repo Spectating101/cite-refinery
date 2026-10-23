@@ -1,0 +1,55 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "fresh-homelab-integration-bounty",
+  "problem": {
+    "statement": "A maintainer lists a proposed integration testing suite with service health, endpoint, Docker configuration, stack interactions, and end-to-end authentication flows.",
+    "sources": [
+      {
+        "url": "https://github.com/illbnm/homelab-stack/issues/14",
+        "claim": "A maintainer lists a proposed integration testing suite with service health, endpoint, Docker configuration, stack interactions, and end-to-end authentication flows.",
+        "status": "reported"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "illbnm/homelab-stack",
+    "url": "https://github.com/illbnm/homelab-stack",
+    "description": "Docker-compose based self-hosting infrastructure deployment, monitoring, SSO and operational service configuration.",
+    "capability_source": "https://github.com/illbnm/homelab-stack/blob/main/README.md",
+    "license_status": "unverified"
+  },
+  "fit": {
+    "documented_capability": "Docker-compose based self-hosting infrastructure deployment, monitoring, SSO and operational service configuration.",
+    "problem_requirement": "The stated testing assignment needs reliable reproducible integration results across a full multi-service Docker homelab deployment, not merely a source-code scaffold.",
+    "unverified_gap": "The original issue title advertises $200 while the body advertises 280 USDT; explicit funded custody, task ownership, staging credentials, acceptance criteria, and realistic completion effort are not independently verified.",
+    "verification": "source_reviewed"
+  },
+  "market": {
+    "buyer_segment": "Project maintainer or alleged sponsor, without independently verified funded buyer",
+    "demand_status": "problem_signal",
+    "signals": [
+      {
+        "url": "https://github.com/illbnm/homelab-stack/issues/14",
+        "claim": "Original issue or issuer describes potential work or conditional payments but does not establish a contract with our operator.",
+        "status": "reported"
+      }
+    ]
+  },
+  "upstream": {
+    "engagement": "public_invitation",
+    "signals": [
+      {
+        "url": "https://github.com/illbnm/homelab-stack/issues/14",
+        "claim": "Published maintainer or issuer call describes an opportunity to contribute; current assignment and payment status require direct verification.",
+        "status": "reviewed",
+        "kind": "upstream_invitation"
+      }
+    ],
+    "paid_contribution_invitation": true
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": null
+}

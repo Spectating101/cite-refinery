@@ -1,0 +1,48 @@
+{
+  "schema": "cite_refinery.opportunity_case.v1",
+  "case_id": "fresh-rtx-5060-recipe-bounty",
+  "problem": {
+    "statement": "The source issue sought a fully tested local inference recipe on the RTX 5060 Ti with at least 128K context and measured long-context performance.",
+    "sources": [
+      {
+        "url": "https://github.com/sybil-solutions/local-ai-registry/issues/222",
+        "claim": "The source issue sought a fully tested local inference recipe on the RTX 5060 Ti with at least 128K context and measured long-context performance.",
+        "status": "reported"
+      }
+    ]
+  },
+  "repository": {
+    "slug": "sybil-solutions/local-ai-registry",
+    "url": "https://github.com/sybil-solutions/local-ai-registry",
+    "description": "Hardware-specific registry publishing measured local AI GPU/model inference configuration recipes.",
+    "capability_source": "https://github.com/sybil-solutions/local-ai-registry/blob/main/README.md",
+    "license_status": "unverified"
+  },
+  "fit": {
+    "documented_capability": "Hardware-specific registry publishing measured local AI GPU/model inference configuration recipes.",
+    "problem_requirement": "A credible contribution requires access to the exact RTX 5060 Ti hardware, six benchmark checks including tool use and long-context recall, a maintained recipe, and acceptance by the registry.",
+    "unverified_gap": "The original issue was closed when checked 2026-10-24; a copied listing or bounty label may still look available. Direct GPU hardware access, award payment and a live assignment are absent.",
+    "verification": "source_reviewed"
+  },
+  "market": {
+    "buyer_segment": "Project maintainer or alleged sponsor, without independently verified funded buyer",
+    "demand_status": "problem_signal",
+    "signals": [
+      {
+        "url": "https://github.com/sybil-solutions/local-ai-registry/issues/222",
+        "claim": "Original issue or issuer describes potential work or conditional payments but does not establish a contract with our operator.",
+        "status": "reported"
+      }
+    ]
+  },
+  "upstream": {
+    "engagement": "none",
+    "signals": [],
+    "paid_contribution_invitation": false
+  },
+  "compliance": {
+    "rights_reviewed": false,
+    "deployment_authorized": false
+  },
+  "unit_economics": null
+}
