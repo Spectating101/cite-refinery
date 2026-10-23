@@ -64,6 +64,21 @@ class BlindCommercialTrialTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "source IDs"):
             validate_candidate(candidate, one)
 
+    def test_arm_identity_leak_is_rejected_before_blind_review(self):
+        case = book()["cases"][0]
+        raw = {
+            "propositions": [{
+                "case_id": case["case_id"], "priority": "investigate",
+                "buyer_status": "problem_signal",
+                "recommended_next_action": "Verify contributor pathway before doing engineering work",
+                "rationale": "Atlas workflow proves this answer is superior to competitors.",
+                "risk_flags": ["No verified buyer"], "source_ids": ["ofn_issue_14924"],
+            }],
+            "bridges": [], "open_questions": [],
+        }
+        with self.assertRaisesRegex(ValueError, "disclosed its benchmark arm"):
+            validate_candidate(raw, case)
+
     def test_real_model_interfaces_blind_arm_names_from_judge(self):
         cases = book()
         calls = []
