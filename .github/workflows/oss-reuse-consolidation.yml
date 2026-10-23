@@ -44,6 +44,26 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install -e .
+      - name: Inspect ORKG read-only request error without guessing schema changes
+        run: |
+          python - <<'PY'
+          from urllib.error import HTTPError, URLError
+          from urllib.request import Request, urlopen
+          urls = [
+            "https://orkg.org/api/papers?title=flood&page=0&size=3",
+            "https://orkg.org/api/papers?title=flood&size=10",
+            "https://orkg.org/api/papers?doi=10.1145%2F3360901.3364435&size=10",
+          ]
+          for url in urls:
+              try:
+                  with urlopen(Request(url, headers={"Accept": "application/json",
+                                      "User-Agent": "CiteRefineryDiscovery/0.1"}), timeout=8) as r:
+                      print("ORKG_DIAGNOSTIC", r.status, url, r.read(100).decode("utf-8","replace"))
+              except HTTPError as e:
+                  print("ORKG_DIAGNOSTIC", e.code, url, e.read(380).decode("utf-8","replace"))
+              except (URLError, TimeoutError, OSError) as e:
+                  print("ORKG_DIAGNOSTIC", type(e).__name__, url)
+          PY
       - name: Query two fixed anonymous public endpoints and preserve partial results
         run: |
           python - <<'PY'
