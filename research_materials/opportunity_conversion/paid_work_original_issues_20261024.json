@@ -30,7 +30,8 @@
       "sources": [
         "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3",
         "https://docs.opire.dev/rewards/pricing"
-      ]
+      ],
+      "reward_status": "advertised"
     },
     {
       "lead_id": "tt-metal-56290-closed",
@@ -58,7 +59,8 @@
       "next_verification": "Do not pursue a closed issue; select a fresh original issuer task and verify submission access first.",
       "sources": [
         "https://github.com/tenstorrent/tt-metal/issues/56290"
-      ]
+      ],
+      "reward_status": "advertised"
     },
     {
       "lead_id": "tt-metal-56908-assigned",
@@ -86,7 +88,8 @@
       "next_verification": "Reject existing assignment; do not interfere with another solver or infer bounty collection from the issue amount.",
       "sources": [
         "https://github.com/tenstorrent/tt-metal/issues/56908"
-      ]
+      ],
+      "reward_status": "advertised"
     },
     {
       "lead_id": "sybil-intel-b580-216",
@@ -115,7 +118,8 @@
       "sources": [
         "https://github.com/sybil-solutions/local-ai-registry/issues/216",
         "https://github.com/sybil-solutions/.github/blob/main/BOUNTIES.md"
-      ]
+      ],
+      "reward_status": "advertised"
     },
     {
       "lead_id": "solana-pay-kit-354-unpaid",
@@ -126,8 +130,8 @@
       "claimed_status": "unknown",
       "technical_fit": "documented",
       "hardware": "none",
-      "advertised_amount": "1.00",
-      "currency": "USD",
+      "advertised_amount": null,
+      "currency": null,
       "payment_promise": "unknown",
       "payment_state": "unknown",
       "payment_claim_disputed": false,
@@ -139,11 +143,12 @@
       "issue_comment_count": 0,
       "last_checked_on": "2026-10-24",
       "prior_success_receipt": null,
-      "payment_limitation": "There is no source-supported reward. USD 1 is a placeholder used only to satisfy positive nominal input validation and MUST NOT be presented as an offered amount. This case should be excluded from monetary comparisons.",
+      "payment_limitation": "No reward or funded assignment appears on the original issue. This is an unpaid technical problem unless the project owner separately funds work.",
       "next_verification": "Treat as an unpaid research/code issue unless owner publishes an explicit funded task; do not estimate revenue.",
       "sources": [
         "https://github.com/solana-foundation/pay-kit/issues/354"
-      ]
+      ],
+      "reward_status": "not_offered"
     }
   ]
 }
