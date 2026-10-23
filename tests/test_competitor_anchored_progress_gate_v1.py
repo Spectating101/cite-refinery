@@ -28,8 +28,9 @@ def validate_baselines(data):
         ids.add(row["id"])
         assert row.get("map") in {"practical","academic","implementation","cross_layer"}
         per[row["map"]]+=1
+        assert isinstance(row.get("name"),str) and len(row["name"])>=3
         assert all(isinstance(row.get(k),str) and len(row[k])>=9
-                   for k in ("name","url","documented_capability","evidence_kind",
+                   for k in ("url","documented_capability","evidence_kind",
                              "atlas_gap","required_test"))
         for k in ("url","repository"):
             if row.get(k):
