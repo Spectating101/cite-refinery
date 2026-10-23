@@ -130,7 +130,10 @@ def assess(case: dict[str, Any], *, case_id: str, market_signals: list[dict[str,
         if assessment not in {"unreviewed", "unresolved", "buyer_verified_differentiation", "no_material_substitute"}:
             raise ValueError("unsupported competitor assessment")
         if assessment == "buyer_verified_differentiation":
-            if not cleaned:
+            payload = (review.get("attestation") or {}).get("payload", {}) if isinstance(review.get("attestation"), dict) else {}
+            if not isinstance(payload, dict) or payload.get("assessment") != assessment:
+                competitor_reason = "signed review does not attest the claimed competitive finding"
+            elif not cleaned:
                 competitor_reason = "Differentiation cannot be established without named alternatives."
             elif not buyer_id:
                 competitor_reason = "No independently attested buyer to anchor comparison."
