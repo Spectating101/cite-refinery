@@ -53,9 +53,10 @@ def audit_original(raw):
     _require(root.tag=="article","Original XML was not a JATS article")
     doi=[(x.text or "").strip().lower() for x in root.iter("article-id")
          if x.attrib.get("pub-id-type")=="doi"]
-    pmcs=[(x.text or "").strip().upper() for x in root.iter("article-id")
+    pmcs=[(x.text or "").strip().upper().removeprefix("PMC")
+          for x in root.iter("article-id")
           if x.attrib.get("pub-id-type") in {"pmcid","pmc"}]
-    _require(DOI in doi and PMCID in pmcs,
+    _require(DOI in doi and PMCID.removeprefix("PMC") in pmcs,
              "Original article DOI / PMC identity disagreement")
     title_nodes=list(root.iter("article-title"))
     _require(title_nodes, "Article missing title")
