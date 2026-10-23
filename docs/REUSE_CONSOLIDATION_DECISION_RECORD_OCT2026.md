@@ -19,7 +19,7 @@ The Atlas is **not** three alternative clones of investigative, scholarly, and s
 - Original immutable 753 + 605 survey occurrences reconstructed to **1,287 unique, exact GitHub identities** in **44 categories**. Count and category-integrity tests: PASS.
 - Fixed, seed-predeclared, category-covered **100-repository sample**, Science `POST /api/v1/projects/bulk_lookup`: **32 single-project identity matches; 68 explicitly unmatched; 0 ambiguous; 0 batch failures; 0 input/result accounting errors**. The category-covered sample is not a probability sample.
 - Original source metadata, publication dates, package names, Science scores, institutional matches and Science repository aliases **do not establish** original-code function, scientific validity or field suitability.
-- **Full 1,287-source job launched and is awaiting a GitHub runner at drafting time.** Do not infer full-corpus results from 32/100. A partial provider failure is not a source nonmatch.
+- **FULL 1,287-source live census completed successfully** across 52 Science bulk calls: **398 one-project identity matches; 889 explicit nonmatches; 0 multiple-project ambiguities; 0 source/provider failures; 0 missing response identities**. Complete source input SHA-256: `b8bb8c733801c04e8c6f07f0c9a99f4016edd8e677343c93ffe13612aea450d2`. Independently executed full-run receipt: https://github.com/Spectating101/cite-refinery/actions/runs/39928095138 (artifact: `science-full-1287-frozen-repo-reuse-audit`). Direct Science catalog identity overlap is **30.9%**, *not software functionality coverage*.
 - Pre-existing first-page Science literal search for `flood` returned two unrelated domain/name matches (oil-reservoir waterflooding, sports analytics) and one adjacent satellite flood/drought-image project, illustrating the danger of name-only retrieval.
 
 Review receipt: https://github.com/Spectating101/cite-refinery/pull/115
@@ -44,7 +44,7 @@ A proposed user question should draw from *proven existing systems* first:
 
 - Full census Actions result must pass with interpretable 1,287-source numbers and absence/alias distinction.
 - For *paired, representative* subsets of matched/unmatched repositories, measure original source depth, test availability, observed execution success and actual task relevance; compare with ordinary GitHub+AI under the same task and time budget.
-- Resolve ORKG HTTP 400 separately against current deployed API documentation, or leave Cite's existing sources in place. Never silently treat provider errors as zero scholarly coverage.
+- ORKG paper search originally returned HTTP 400 because our generic JSON Accept header selects the legacy controller with different parameter requirements. The v2 Kotlin backend explicitly produces `application/vnd.orkg.paper.v2+json`. A negotiation fix is now committed and awaiting an independent public smoke run; until observed green, keep ORKG optional and Cite's existing sources in place. Never silently treat provider errors as zero scholarly coverage.
 - Run Nocturnal private/native publish-only contract with Optiplex; do not bypass its publication approvals through FTM exports.
 - Run independent Academic semantic answers and implementation qualification tests; 32 catalog identities are not competitive semantic performance.
 - Test favorable adoption/funding hypotheses only after the three maps independently deliver dependable answers.
