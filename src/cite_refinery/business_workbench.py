@@ -84,6 +84,18 @@ def validate_plan(plan: Any) -> dict[str, Any]:
         if row.get("channel") not in CHANNELS:
             raise ValueError("Unrecognized commercial channel")
         money(row.get("validation_budget"), "validation_budget")
+        alternatives = row.get("competitive_alternatives", [])
+        if not isinstance(alternatives, list) or len(alternatives) > 12:
+            raise ValueError("Only 0-12 documented competitor alternatives permitted")
+        seen_urls = set()
+        for candidate in alternatives:
+            if (not isinstance(candidate, dict) or set(candidate) != {"name", "url", "scope"}
+                    or not isinstance(candidate["name"], str) or not 3 <= len(candidate["name"]) <= 180
+                    or not isinstance(candidate["url"], str) or not candidate["url"].startswith("https://")
+                    or candidate["scope"] not in {"direct", "partial", "adjacent"}
+                    or candidate["url"] in seen_urls):
+                raise ValueError("Malformed or duplicated competitor alternative")
+            seen_urls.add(candidate["url"])
         exp = row.get("experiment")
         if not isinstance(exp, dict) or set(exp) != {"question", "success_signal", "stop_signal"}:
             raise ValueError("Experiment must set question, success_signal and stop_signal")
@@ -213,6 +225,8 @@ def build_board(plan: dict[str, Any], ledger: dict[str, Any] | None = None) -> d
     for spec in plan["opportunities"]:
         cid = spec["case_id"]
         source = json.loads((SOURCE_DIR / (cid + ".json")).read_text(encoding="utf-8"))
+        if spec.get("competitive_alternatives"):
+            source["competitive_alternatives"] = spec["competitive_alternatives"]
         decision = evaluate(source)
         events = [e["event"] for e in ledger["entries"] if e["event"]["case_id"] == cid]
         cap = money(spec["validation_budget"], "validation_budget")
@@ -223,7 +237,7 @@ def build_board(plan: dict[str, Any], ledger: dict[str, Any] | None = None) -> d
         if human == "kill":
             state = "kill_by_operator"
             next_step = "Stop new work; preserve receipts and document lessons."
-        elif expenses >= cap and cap > 0:
+        elif expenses > cap or (expenses >= cap and cap > 0):
             state = "stop_validation_budget"
             next_step = "Stop spending; seek explicit reviewed budget amendment before further work."
         elif human == "hold":
@@ -277,6 +291,10 @@ def build_board(plan: dict[str, Any], ledger: dict[str, Any] | None = None) -> d
                 "independently_verified_profit": None,
             },
             "activity_count": len(events), "last_operator_decision": human,
+            "reported_outreach_count": sum(e["kind"] == "buyer_contact_reported" for e in events),
+            "reported_buyer_replies": sum(e["kind"] == "buyer_response_reported" for e in events),
+            "reported_pilot_results": sum(e["kind"] == "pilot_result_reported" for e in events),
+            "funding_lead_count_unverified": sum(e["kind"] == "funding_lead" for e in events),
         })
     return {
         "schema": REPORT_SCHEMA, "plan_sha256": digest(plan),
