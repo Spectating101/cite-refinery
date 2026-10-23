@@ -161,6 +161,8 @@ def screen(scan: dict[str, Any], *, as_of: str) -> dict[str, Any]:
             "deadline": x["deadline"],
             "days_until_deadline": days,
             "source_authority": x["authority"],
+            "source_authority_independently_verified": False,
+            "eligibility_independently_verified": False,
             "advertised_value": {
                 **x["advertised_value"],
                 "limitation": ("Public budget/prize figure only. Not awarded, receivable, "
@@ -189,6 +191,7 @@ def screen(scan: dict[str, Any], *, as_of: str) -> dict[str, Any]:
             "Public procurement budgets and conditional prize pools are not customer contracts.",
             "Actual operator eligibility, legal entity, tax status and delivery capacity were not verified.",
             "Third-party listings must be checked against original issuer records and updated deadlines.",
+            "Source authority and eligible status are case-author declarations, not verified issuer or applicant identities.",
             "No expected value, bid price, assumed win rate, revenue or margin is generated.",
             "No applications, submissions, issue assignments, third-party outreach or payments performed.",
         ],
