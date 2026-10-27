@@ -10,9 +10,11 @@ on:
       - 'src/cite_refinery/headless_mcp.py'
       - 'src/cite_refinery/development_steering.py'
       - 'src/cite_refinery/git_head_export.py'
+      - 'src/cite_refinery/github_release_export.py'
       - 'tests/test_headless_intelligence.py'
       - 'tests/test_development_steering.py'
       - 'tests/test_git_head_export.py'
+      - 'tests/test_github_release_export.py'
       - 'examples/headless/**'
       - 'pyproject.toml'
       - '.github/workflows/headless-intelligence.yml'
@@ -30,6 +32,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       - run: python -m unittest discover -s tests -p 'test_git_head_export.py' -v
+      - run: python -m unittest discover -s tests -p 'test_github_release_export.py' -v
       - run: python -m cite_refinery.headless_intelligence --db /tmp/cite-headless-ci.sqlite run --config examples/headless/feeds.json
       - run: python -m cite_refinery.headless_intelligence --db /tmp/cite-headless-ci.sqlite run --config examples/headless/feeds.json
       - run: python -m cite_refinery.headless_intelligence --db /tmp/cite-headless-ci.sqlite status
