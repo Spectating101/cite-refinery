@@ -3,8 +3,13 @@
   "records": [
     {
       "id": "synthetic:matter:1",
-      "title": "Illustrative public-sector operating problem (fictional)",
-      "source_url": "https://example.org/nocturnal"
+      "title": "Synthetic example: institutional accountability monitoring need",
+      "source_url": "https://example.org/nocturnal",
+      "signal": "market_demand",
+      "tags": [
+        "accountability",
+        "institutional_monitoring"
+      ]
     }
   ]
 }
