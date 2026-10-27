@@ -1,0 +1,54 @@
+name: hardware-market-radar-offline
+
+on:
+  pull_request:
+    paths:
+      - "src/cite_refinery/hardware_market_radar.py"
+      - "tests/test_hardware_market_radar_v0.py"
+      - "research_materials/opportunity_conversion/hardware_12_case_post_research_evidence_queue_20261028.json"
+      - "research_materials/opportunity_conversion/hardware_market_universe_64_unverified_20261028.json"
+      - "research_materials/opportunity_conversion/hardware_radar_*"
+      - ".github/workflows/hardware-market-radar-offline.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  market-radar-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install standard-library-first Cite-Refinery
+        run: python -m pip install -e .
+      - name: Run adversarial and end-to-end offline radar tests
+        run: python -m unittest tests.test_hardware_market_radar_v0 -v
+      - name: Run actual 64-idea 12-case pipeline and unchanged-snapshot replay
+        run: |
+          python -m cite_refinery.hardware_market_radar --as-of 2026-10-28 > /tmp/hardware_radar.json
+          python -m cite_refinery.hardware_market_radar --as-of 2026-10-28 --previous /tmp/hardware_radar.json > /tmp/hardware_radar_replay.json
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/hardware_radar.json'))
+          q=json.load(open('/tmp/hardware_radar_replay.json'))
+          assert p['summary']['catalog_concepts']==64, p['summary']
+          assert p['summary']['screened_cases']==12, p['summary']
+          assert p['summary']['source_observations']==12, p['summary']
+          assert p['summary']['qualified_opportunities']==0, p['summary']
+          assert q['change_detection']['new']==[], q['change_detection']
+          assert q['change_detection']['revised']==[], q['change_detection']
+          assert q['change_detection']['missing_from_input_not_stockout']==[], q['change_detection']
+          print("PASS: 64 concepts, 12 cases, 12 observations, no fabricated deal, stable replay")
+          PY
+      - name: Archive actual source-backed screening and delta replay
+        uses: actions/upload-artifact@v4
+        with:
+          name: hardware-market-radar-20261028
+          path: |
+            /tmp/hardware_radar.json
+            /tmp/hardware_radar_replay.json
+          retention-days: 14
+          if-no-files-found: error
