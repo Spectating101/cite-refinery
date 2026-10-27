@@ -1,0 +1,52 @@
+{
+  "schema": "cite_refinery.systems_discovery_batch.v1",
+  "source_queries": [
+    "independent source-backed app discovery examples"
+  ],
+  "promotion_authorized": false,
+  "provider_errors": {},
+  "records": [
+    {
+      "provider": "public_github_readme",
+      "external_id": "getzep/graphiti",
+      "label": "Graphiti",
+      "description": "Temporal knowledge graph construction and hybrid retrieval with source-traceable episodes and evolving relationships",
+      "source_url": "https://github.com/getzep/graphiti",
+      "candidate_kind": "repository_metadata",
+      "metadata": {
+        "source_type": "maintainer_readme",
+        "reviewed_as_of": "2026-10-28"
+      },
+      "authority": "navigation_candidate_only",
+      "promotion_authorized": false
+    },
+    {
+      "provider": "public_github_readme",
+      "external_id": "topoteretes/cognee",
+      "label": "Cognee",
+      "description": "Persistent AI agent memory built from documents code and conversations as a searchable knowledge graph",
+      "source_url": "https://github.com/topoteretes/cognee",
+      "candidate_kind": "repository_metadata",
+      "metadata": {
+        "source_type": "maintainer_readme",
+        "reviewed_as_of": "2026-10-28"
+      },
+      "authority": "navigation_candidate_only",
+      "promotion_authorized": false
+    },
+    {
+      "provider": "public_github_readme",
+      "external_id": "assafelovic/gpt-researcher",
+      "label": "GPT Researcher",
+      "description": "Autonomous online research with question planning, source retrieval, recursive investigation and report synthesis",
+      "source_url": "https://github.com/assafelovic/gpt-researcher",
+      "candidate_kind": "repository_metadata",
+      "metadata": {
+        "source_type": "maintainer_documentation",
+        "reviewed_as_of": "2026-10-28"
+      },
+      "authority": "navigation_candidate_only",
+      "promotion_authorized": false
+    }
+  ]
+}
