@@ -43,3 +43,12 @@ jobs:
           assert q['change_detection']['missing_from_input_not_stockout']==[], q['change_detection']
           print("PASS: 64 concepts, 12 cases, 12 observations, no fabricated deal, stable replay")
           PY
+      - name: Archive actual source-backed screening and delta replay
+        uses: actions/upload-artifact@v4
+        with:
+          name: hardware-market-radar-20261028
+          path: |
+            /tmp/hardware_radar.json
+            /tmp/hardware_radar_replay.json
+          retention-days: 14
+          if-no-files-found: error
