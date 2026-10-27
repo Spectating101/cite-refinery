@@ -20,6 +20,7 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[2]
 OBS_SCHEMA = "cite_refinery.hardware_market_observations.v1"
 CAP_SCHEMA = "cite_refinery.hardware_capability_manifest.v1"
+SUP_SCHEMA = "cite_refinery.hardware_supplier_candidates.v1"
 REPORT_SCHEMA = "cite_refinery.hardware_market_radar.v1"
 IDENT = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_-]{2,89}$")
 MARKETS = {"ID", "TW", "GLOBAL"}
@@ -179,10 +180,50 @@ def _capabilities(data: Any, cases: set[str]) -> tuple[dict[str, list[str]], lis
     return normalized, sorted(out, key=lambda x: x["id"])
 
 
+
+def _suppliers(data: Any) -> list[dict[str, Any]]:
+    """Research-only sourcing DIRECTORY, with no product/quote/availability claims."""
+    if data is None:
+        return []
+    if not isinstance(data, dict) or data.get("schema") != SUP_SCHEMA:
+        raise ValueError("Unrecognized supplier candidate manifest")
+    raw = data.get("suppliers")
+    if not isinstance(raw, list) or len(raw) > 1000:
+        raise ValueError("Suppliers need a bounded list")
+    out, seen = [], set()
+    for supplier in raw:
+        if not isinstance(supplier, dict):
+            raise ValueError("Supplier entry must be an object")
+        sid = supplier.get("id")
+        if not isinstance(sid, str) or not IDENT.fullmatch(sid) or sid in seen:
+            raise ValueError("Invalid/duplicate supplier ID")
+        seen.add(sid)
+        if supplier.get("role") not in {
+                "manufacturer_reference", "parts_distributor",
+                "fabrication_service", "robotics_module_vendor"}:
+            raise ValueError("Unsupported supplier role")
+        if supplier.get("status") != "public_catalog_unqualified":
+            raise ValueError("Supplier may not self-certify qualification")
+        out.append({
+            "id": sid,
+            "name": _text(supplier.get("name"), "supplier.name"),
+            "role": supplier["role"],
+            "source_url": _url(supplier.get("source_url")),
+            "advertised_capability_tags": _tags(supplier.get("advertised_capability_tags"), "supplier.tags"),
+            "status": "public_catalog_unqualified",
+            "verified_sku_availability": False,
+            "verified_quote_or_moq": False,
+            "verified_serves_target_market": False,
+            "licensed_for_reuse": None,
+            "procurement_qualified": False,
+        })
+    return sorted(out, key=lambda s: s["id"])
+
 def evaluate(
     catalog: dict[str, Any], queue: dict[str, Any],
     observations: dict[str, Any], capability_manifest: dict[str, Any],
     *, as_of: str, previous: dict[str, Any] | None = None,
+    supplier_manifest: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     today = _day(as_of, "as_of")
     concepts = catalog.get("concepts")
@@ -205,6 +246,17 @@ def evaluate(
         by_case[c["id"]] = c
     obs = _observations(observations, today=today, cases=set(by_case))
     needs, caps = _capabilities(capability_manifest, set(by_case))
+    supplier_candidates = _suppliers(supplier_manifest)
+    supplier_edges = [
+        {"case_id": cid, "supplier_id": supplier["id"],
+         "matched_needs": sorted(set(need).intersection(supplier["advertised_capability_tags"])),
+         "relation": "CATALOG_TAG_OVERLAP_ONLY",
+         "verified_product_compatibility": False,
+         "qualified_supplier_quote": False}
+        for cid, need in sorted(needs.items())
+        for supplier in supplier_candidates
+        if set(need).intersection(supplier["advertised_capability_tags"])
+    ]
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in obs:
         grouped[item["case_id"]].append(item)
@@ -244,6 +296,7 @@ def evaluate(
                 "compliance, and a physically tested build-or-buy alternative."
             ),
             "matched_capability_ids": sorted({e["capability_id"] for e in edges if e["case_id"] == cid}),
+            "candidate_supplier_ids": sorted({e["supplier_id"] for e in supplier_edges if e["case_id"] == cid}),
             "qualified_commercial_opportunity": False,
             "local_shortage_proven": False,
             "customer_demand_verified": False,
@@ -276,12 +329,14 @@ def evaluate(
     shared.sort(key=lambda x: (-x["distinct_sectors"], x["capability_id"]))
     return {
         "schema": REPORT_SCHEMA, "as_of": today.isoformat(),
-        "source_snapshot_sha256": hashlib.sha256(_canonical([catalog, queue, observations, capability_manifest])).hexdigest(),
+        "source_snapshot_sha256": hashlib.sha256(_canonical([catalog, queue, observations, capability_manifest, supplier_manifest])).hexdigest(),
         "summary": {
             "catalog_concepts": len(concepts),
             "catalog_sectors": len({x.get("sector") for x in concepts}),
             "screened_cases": len(board),
             "source_observations": len(obs),
+            "unqualified_supplier_directory_entries": len(supplier_candidates),
+            "candidate_supplier_case_links": len(supplier_edges),
             "cases_with_local_listings": sum(x["named_local_sellers"] > 0 for x in board),
             "qualified_opportunities": 0, "verified_supplier_quotes": 0,
             "verified_customer_payments": 0, "physically_validated_builds": 0,
@@ -292,6 +347,8 @@ def evaluate(
         "observation_fingerprints": current,
         "capabilities": caps,
         "candidate_capability_edges": edges,
+        "supplier_candidates": supplier_candidates,
+        "candidate_supplier_edges": supplier_edges,
         "cross_sector_reuse": shared,
         "change_detection": change,
         "safety_boundary": "Offline sources only; listings are not in-stock proof, tag matches not compatibility, no ranking of profit, no purchasing or outreach.",
@@ -305,6 +362,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--cases", type=Path, default=base / "hardware_12_case_post_research_evidence_queue_20261028.json")
     p.add_argument("--observations", type=Path, default=base / "hardware_radar_observations_seed_20261028.json")
     p.add_argument("--capabilities", type=Path, default=base / "hardware_radar_capabilities_20261028.json")
+    p.add_argument("--suppliers", type=Path, default=base / "hardware_radar_supplier_candidates_20261028.json")
     p.add_argument("--as-of", required=True, help="Explicit YYYY-MM-DD; never quietly use wall-clock time")
     p.add_argument("--previous", type=Path, default=None, help="Previous radar output; compare by observation ID and fingerprint")
     p.add_argument("--output", type=Path, default=None, help="Without this option, print JSON to stdout; no disk writes")
@@ -312,7 +370,8 @@ def main(argv: list[str] | None = None) -> int:
     def load(path: Path) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     report = evaluate(load(a.catalog), load(a.cases), load(a.observations), load(a.capabilities),
-                      as_of=a.as_of, previous=load(a.previous) if a.previous else None)
+                      as_of=a.as_of, previous=load(a.previous) if a.previous else None,
+                      supplier_manifest=load(a.suppliers))
     encoded = json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     if a.output:
         a.output.write_text(encoded, encoding="utf-8")
