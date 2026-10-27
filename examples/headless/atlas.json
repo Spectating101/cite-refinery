@@ -1,0 +1,45 @@
+{
+  "schema": "cite_refinery.semantic_graph.v1",
+  "project_id": "synthetic-headless-demo",
+  "source_system": "synthetic_three_layer_demo",
+  "nodes": [
+    {
+      "key": "demo-problem",
+      "layer": "practical",
+      "kind": "problem_claim",
+      "statement": "Synthetic measurement gap",
+      "source_refs": [
+        "https://example.org/problem"
+      ]
+    },
+    {
+      "key": "demo-program",
+      "layer": "program",
+      "kind": "capability",
+      "statement": "Synthetic candidate capability",
+      "source_refs": [
+        "https://example.org/capability"
+      ]
+    },
+    {
+      "key": "demo-method",
+      "layer": "academic",
+      "kind": "method",
+      "statement": "Synthetic evaluation method",
+      "source_refs": [
+        "https://example.org/method"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "demo-program",
+      "target": "demo-problem",
+      "relation": "ADDRESSES",
+      "status": "candidate",
+      "evidence_refs": [
+        "https://example.org/link"
+      ]
+    }
+  ]
+}
