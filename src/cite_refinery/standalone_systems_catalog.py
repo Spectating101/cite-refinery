@@ -240,7 +240,7 @@ def github_search(query,limit=8,fetch=None):
     if not isinstance(query,str) or not 3<=len(query)<=120 or not 1<=limit<=20:
         raise ValueError("Invalid discovery query/limit")
     url="https://api.github.com/search/repositories?"+urlencode(
-        {"q":query,"per_page":limit,"sort":"best-match"})
+        {"q":query,"per_page":limit})
     if fetch is None:
         class NoRedirect(HTTPRedirectHandler):
             def redirect_request(self,*args,**kwargs):raise ValueError("External redirect rejected")
