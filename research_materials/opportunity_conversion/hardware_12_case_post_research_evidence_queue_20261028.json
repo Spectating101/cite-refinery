@@ -1,0 +1,376 @@
+{
+  "snapshot_date": "2026-10-28",
+  "status": "OPEN_RESEARCH_QUEUE_NO_QUALIFIED_LEADS",
+  "source_note": "Historical listings, advertised seller prices and product homepages prove offers exist, never paid demand, local stock or addressable profit. Some comparators are functionally non-equivalent or bundled.",
+  "selection_method": "2 consumer; 2 education; 2 agritech; 2 industrial; 2 energy/cold-chain; 2 environment/metrology. Queue based on coverage, NOT likelihood of profit.",
+  "entry_rules": [
+    "one dated buyer pain or attributable paid procurement signal",
+    "two independent local exact-feature competitors or explicit exception",
+    "part/SKU/datasheet and compliance class",
+    "source/ODM/HS full cost and legal route",
+    "physical/functional equivalence and expected duty of care",
+    "documented decision state and cost-to-validate"
+  ],
+  "global_defaults": {
+    "paid_customer_confirmed": false,
+    "stock_verified": false,
+    "supplier_quote_verified": false,
+    "regulatory_clearance_verified": false,
+    "HS_manufacturing_validated": false,
+    "verified_gross_margin": null,
+    "verified_net_contribution": null,
+    "permission_to_purchase": false,
+    "permission_to_outreach": false
+  },
+  "cases": [
+    {
+      "id": "CASE-01",
+      "atlas": "MKT-001",
+      "sector": "Companion robots",
+      "market": "ID",
+      "concept": "Tabletop/rolling AI pet companion",
+      "buyer": "Families, premium-gadget hobbyists",
+      "comparator": {
+        "seller": "KEYi Robot Indonesia",
+        "product": "Loona Petbot Premium",
+        "asking_amount": 8864000,
+        "currency": "IDR",
+        "url": "https://keyirobot.com/en-id/products/petbot",
+        "evidence_type": "Manufacturer local-currency offer, not delivery/transaction proof"
+      },
+      "hypothesis": "More affordable and repairable interaction at matched features",
+      "disproven": [
+        "No Indonesian purchase channel"
+      ],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-02",
+      "atlas": "MKT-003",
+      "sector": "Smart pet-care",
+      "market": "ID",
+      "concept": "Modular or maintainable smart pet feeder",
+      "buyer": "Pet owners and pet stores",
+      "comparator": {
+        "seller": "BIOTA; BARDI",
+        "product": "4L camera-enabled feeder variants, features differ",
+        "asking_amount": null,
+        "currency": "IDR",
+        "price_observations": [
+          934000,
+          1973000
+        ],
+        "url": "https://biotahome.com/products/biota-smart-pet-feeder",
+        "secondary_url": "https://bardi.co.id/compare-product/pet-feeder/",
+        "evidence_type": "Two distinct manufacturer offers; no exact-SKU spread"
+      },
+      "hypothesis": "Service, reliability, spare parts or feature differentiation rather than generic feeder import",
+      "disproven": [
+        "No Indonesian smart pet feeder sellers"
+      ],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-03",
+      "atlas": "MKT-005",
+      "sector": "STEM robotics",
+      "market": "ID",
+      "concept": "Open hardware classroom robotics platform",
+      "buyer": "Schools, afterschool academies",
+      "comparator": {
+        "seller": "KHURSLABS",
+        "product": "EDU:BIT micro:bit training/project kit",
+        "asking_amount": 688000,
+        "currency": "IDR",
+        "url": "https://khurslabs.com/edu-bit-training-project-kit-for-micro-bit",
+        "evidence_type": "Local published retailer price with curriculum and integrated motor features"
+      },
+      "hypothesis": "Teacher-ready curriculum + maintainable kit at economical price",
+      "disproven": [],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-04",
+      "atlas": "MKT-007",
+      "sector": "Programmable quadrupeds",
+      "market": "ID/TW",
+      "concept": "Low-cost educational quadruped robot",
+      "buyer": "Robotics teaching labs, clubs",
+      "comparator": {
+        "seller": "Petoi",
+        "product": "Bittle X",
+        "asking_amount": 319,
+        "currency": "USD",
+        "url": "https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled",
+        "evidence_type": "Global manufacturer reference only; local exact SKU pending"
+      },
+      "hypothesis": "Lower-cost modular robot with explicit educational outcome",
+      "disproven": [],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-05",
+      "atlas": "MKT-017",
+      "sector": "Agricultural IoT",
+      "market": "ID",
+      "concept": "Low complexity smart irrigation retrofit",
+      "buyer": "Farm operators and rural installers",
+      "comparator": {
+        "seller": "ATAMAGRI",
+        "product": "Smart Irrigation Farming commercial package",
+        "asking_amount": 5155000,
+        "currency": "IDR",
+        "url": "https://www.atamagri.app/pricing",
+        "evidence_type": "Bundled service advertised price; feature scope and inclusion unverified"
+      },
+      "hypothesis": "Affordable fit-for-purpose retrofit, offline control or cheaper maintenance",
+      "disproven": [
+        "No Indonesian smart irrigation offers"
+      ],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-06",
+      "atlas": "MKT-021",
+      "sector": "Aquaculture",
+      "market": "ID",
+      "concept": "Fish feeder upgrade and independent telemetry module",
+      "buyer": "Fish/shrimp farms, feeder installers",
+      "comparator": {
+        "seller": "Indonesia Aquaculture technology competition",
+        "product": "Historical competing autofeeder units",
+        "asking_amount": null,
+        "currency": "IDR",
+        "price_observations": [
+          2600000,
+          3200000
+        ],
+        "url": "https://agresultsindonesia.wwf.id/profil-kompetitor-pertahun/tahun/4",
+        "evidence_type": "Historical contest publication, not current qualified procurement quote"
+      },
+      "hypothesis": "Existing feeder telemetry retrofit, serviceability and farm-verified feed loss reduction",
+      "disproven": [
+        "No feeder competitors in Indonesia"
+      ],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-07",
+      "atlas": "MKT-025",
+      "sector": "Industrial MRO",
+      "market": "ID/TW",
+      "concept": "Exact-controller obsolete part sourcing and safe substitution dossier",
+      "buyer": "Factory maintenance procurement and systems integrators",
+      "comparator": {
+        "seller": null,
+        "product": null,
+        "asking_amount": null,
+        "currency": null,
+        "url": null,
+        "evidence_type": "No matched exact-part competitor sourcing receipt yet"
+      },
+      "hypothesis": "Faster correct-revision sourcing with authenticated functional pinout and exchange option",
+      "disproven": [],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-08",
+      "atlas": "MKT-029",
+      "sector": "Manufacturing/QC",
+      "market": "ID/TW",
+      "concept": "Bench-level vision fixture and inspection cell",
+      "buyer": "SME electronics factories and QA leads",
+      "comparator": {
+        "seller": null,
+        "product": null,
+        "asking_amount": null,
+        "currency": null,
+        "url": null,
+        "evidence_type": "Exact machine, feature and local comparison missing"
+      },
+      "hypothesis": "Affordable camera-agnostic cell with measurable false reject rate and actual throughput",
+      "disproven": [],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-09",
+      "atlas": "MKT-045",
+      "sector": "Cold-chain sensor/logging",
+      "market": "ID",
+      "concept": "Recoverable temperature/RH logger plus evidence audit",
+      "buyer": "Food distribution, cold storage and labs",
+      "comparator": {
+        "seller": "Microthings",
+        "product": "TT18/TT18 4G variants",
+        "asking_amount": null,
+        "currency": "IDR",
+        "price_observations": [
+          1689000,
+          1890000
+        ],
+        "url": "https://www.microthings.id/product/temperature-humidity-data-logger/",
+        "evidence_type": "Seller public asking-price range, radio/accuracy/variant-specific requirements"
+      },
+      "hypothesis": "Device identity+measurement validation+calibration traceability or rental service",
+      "disproven": [
+        "No Indonesian temperature/RH device offering"
+      ],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-10",
+      "atlas": "MKT-037",
+      "sector": "PV/energy instrumentation",
+      "market": "TW/ID",
+      "concept": "Noninvasive solar performance evidence logger",
+      "buyer": "Solar asset operators, installer maintenance crews",
+      "comparator": {
+        "seller": null,
+        "product": null,
+        "asking_amount": null,
+        "currency": null,
+        "url": null,
+        "evidence_type": "No same-function independently verified offer"
+      },
+      "hypothesis": "Independent measurement evidence and exception triage, not meter certification",
+      "disproven": [],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-11",
+      "atlas": "MKT-023",
+      "sector": "Aquaculture environmental",
+      "market": "TW",
+      "concept": "Modular pond water-quality observation and service kit",
+      "buyer": "Fish farmers and local systems integrators",
+      "comparator": {
+        "seller": "Taiwan Agricultural Digital Marketplace",
+        "product": "Self-cleaning pond water monitoring complete package",
+        "asking_amount": 60000,
+        "currency": "TWD",
+        "url": "https://agdigi.atri.org.tw/Market/Content/63",
+        "evidence_type": "Service-system bundled price incl installation, telemetry, app; not a component quote"
+      },
+      "hypothesis": "Modular retrofit, replaceable probes, maintenance and qualified recalibration",
+      "disproven": [
+        "No Taiwanese aquaculture systems available"
+      ],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    },
+    {
+      "id": "CASE-12",
+      "atlas": "MKT-063",
+      "sector": "Repair/lab metrology",
+      "market": "TW/ID",
+      "concept": "Device-under-test measurement/provenance recorder",
+      "buyer": "University labs and electronics repair technicians",
+      "comparator": {
+        "seller": null,
+        "product": null,
+        "asking_amount": null,
+        "currency": null,
+        "url": null,
+        "evidence_type": "No external price/transaction baseline established"
+      },
+      "hypothesis": "Lab QA and signed evidence capture alongside off-the-shelf hardware instruments",
+      "disproven": [],
+      "evidence_status": "PARTIAL_REFERENCE_ONLY",
+      "next_decision": "RESEARCH_MORE_OR_HOLD",
+      "engineering_feasibility": "UNTESTED",
+      "buyer_willingness_to_pay": "UNKNOWN",
+      "landed_cost": null,
+      "unit_economics": null,
+      "supplier_quote": null,
+      "paid_transactions": 0,
+      "qualifying_status": "NOT_YET_QUALIFIED"
+    }
+  ]
+}
