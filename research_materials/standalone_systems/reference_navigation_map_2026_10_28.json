@@ -1,0 +1,539 @@
+{
+  "schema": "cite_refinery.standalone_systems_reference_map.v1",
+  "registry_as_of": "2026-10-20",
+  "external_examples_reviewed_as_of": "2026-10-28",
+  "inventory_count": 33,
+  "source_category_count": 24,
+  "model_generated_functional_clusters": 0,
+  "source_navigation_clusters": [
+    {
+      "name": "citation_assessment",
+      "count": 1,
+      "members": [
+        "registry:scite"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "claim_graph",
+      "count": 1,
+      "members": [
+        "registry:moyomap"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "evidence_mapping",
+      "count": 1,
+      "members": [
+        "registry:3ie-gap-maps"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "evidence_synthesis",
+      "count": 1,
+      "members": [
+        "registry:elicit"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "implementation_directory",
+      "count": 3,
+      "members": [
+        "registry:opensustain",
+        "registry:dpg-registry",
+        "registry:eu-osor"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "institutional_cases",
+      "count": 1,
+      "members": [
+        "registry:oecd-opsi"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "patent_discovery",
+      "count": 1,
+      "members": [
+        "registry:lens"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "policy_evidence_graph",
+      "count": 1,
+      "members": [
+        "registry:overton"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "problem_solution_catalog",
+      "count": 1,
+      "members": [
+        "registry:solved"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "product_discovery",
+      "count": 2,
+      "members": [
+        "registry:product-hunt",
+        "registry:alternative-to"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "project_discovery",
+      "count": 1,
+      "members": [
+        "registry:gittrend"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "prototype_discovery",
+      "count": 1,
+      "members": [
+        "registry:hf-spaces"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "repo_metadata",
+      "count": 2,
+      "members": [
+        "registry:ecosystems",
+        "registry:github"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "research_graph",
+      "count": 1,
+      "members": [
+        "registry:openaire"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "research_mapping",
+      "count": 2,
+      "members": [
+        "registry:open-knowledge-maps",
+        "registry:hypothesis-atlas"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "research_policy_graph",
+      "count": 1,
+      "members": [
+        "registry:dimensions"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "scholarly_metadata",
+      "count": 1,
+      "members": [
+        "registry:openalex"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "semantic_infrastructure",
+      "count": 3,
+      "members": [
+        "registry:graph-rag",
+        "registry:light-rag",
+        "registry:neo4j-graphrag"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "semantic_topics",
+      "count": 1,
+      "members": [
+        "registry:wikidata"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "software_discovery",
+      "count": 1,
+      "members": [
+        "registry:openalternative"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "software_intelligence",
+      "count": 1,
+      "members": [
+        "registry:oss-insight"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "statistical_graph",
+      "count": 1,
+      "members": [
+        "registry:data-commons"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "technical_discovery",
+      "count": 1,
+      "members": [
+        "registry:stackshare"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    },
+    {
+      "name": "uncategorized_external_candidate",
+      "count": 3,
+      "members": [
+        "github:getzep/graphiti",
+        "github:topoteretes/cognee",
+        "github:assafelovic/gpt-researcher"
+      ],
+      "origin": "source_category_or_uncategorized_only",
+      "verified_shared_capability": false
+    }
+  ],
+  "records": [
+    {
+      "id": "registry:gittrend",
+      "name": "gittrend",
+      "url": "https://gittrend.io/",
+      "description": "GitHub project rankings and topical curation",
+      "source_category": "project_discovery",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:oss-insight",
+      "name": "oss insight",
+      "url": "https://ossinsight.io/",
+      "description": "GitHub repository trends and analytics",
+      "source_category": "software_intelligence",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:open-knowledge-maps",
+      "name": "open knowledge maps",
+      "url": "https://openknowledgemaps.org/",
+      "description": "Visual topic clusters and scientific discovery",
+      "source_category": "research_mapping",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:3ie-gap-maps",
+      "name": "3ie gap maps",
+      "url": "https://www.3ieimpact.org/evidence-hub/evidence-gap-maps",
+      "description": "Intervention, outcome and gap matrices",
+      "source_category": "evidence_mapping",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:elicit",
+      "name": "elicit",
+      "url": "https://elicit.com/",
+      "description": "Research search and paper synthesis",
+      "source_category": "evidence_synthesis",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:scite",
+      "name": "scite",
+      "url": "https://scite.ai/",
+      "description": "Citation context and supporting or contrasting classifications",
+      "source_category": "citation_assessment",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:moyomap",
+      "name": "moyomap",
+      "url": "https://moyomap.com/",
+      "description": "Source-linked claims and competing maps",
+      "source_category": "claim_graph",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:opensustain",
+      "name": "opensustain",
+      "url": "https://opensustain.tech/",
+      "description": "Sustainability open-source project discovery",
+      "source_category": "implementation_directory",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:oecd-opsi",
+      "name": "oecd opsi",
+      "url": "https://oecd-opsi.org/",
+      "description": "Public-sector innovation case studies",
+      "source_category": "institutional_cases",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:dpg-registry",
+      "name": "dpg registry",
+      "url": "https://github.com/DPGAlliance/dpg-api",
+      "description": "Recognized digital public goods listings",
+      "source_category": "implementation_directory",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:dimensions",
+      "name": "dimensions",
+      "url": "https://www.dimensions.ai/",
+      "description": "Cross-linked grants, papers, datasets, patents, policy and trials",
+      "source_category": "research_policy_graph",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:overton",
+      "name": "overton",
+      "url": "https://www.overton.io/",
+      "description": "Policy documents and research-to-policy linkages",
+      "source_category": "policy_evidence_graph",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:data-commons",
+      "name": "data commons",
+      "url": "https://datacommons.org/",
+      "description": "Standardized statistical and geographic facts",
+      "source_category": "statistical_graph",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:wikidata",
+      "name": "wikidata",
+      "url": "https://www.wikidata.org/w/api.php",
+      "description": "Entity and topic discovery",
+      "source_category": "semantic_topics",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:openalex",
+      "name": "openalex",
+      "url": "https://help.openalex.org/api/",
+      "description": "Scholarly works, topics and author metadata",
+      "source_category": "scholarly_metadata",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:openaire",
+      "name": "openaire",
+      "url": "https://graph.openaire.eu/docs/apis/graph-api-v4/research-products/examples/",
+      "description": "Publications, datasets, research software and project links",
+      "source_category": "research_graph",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:ecosystems",
+      "name": "ecosystems",
+      "url": "https://docs.ecosyste.ms/docs/services/data-services/repositories/",
+      "description": "Repository metadata, dependency/package ecosystem records",
+      "source_category": "repo_metadata",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:github",
+      "name": "github",
+      "url": "https://docs.github.com/en/rest",
+      "description": "Canonical repository and commit evidence",
+      "source_category": "repo_metadata",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:graph-rag",
+      "name": "graph rag",
+      "url": "https://github.com/microsoft/graphrag",
+      "description": "Graph extraction and community clustering",
+      "source_category": "semantic_infrastructure",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:light-rag",
+      "name": "light rag",
+      "url": "https://github.com/HKUDS/LightRAG",
+      "description": "Incremental graph retrieval",
+      "source_category": "semantic_infrastructure",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:neo4j-graphrag",
+      "name": "neo4j graphrag",
+      "url": "https://neo4j.com/docs/neo4j-graphrag-python/current/",
+      "description": "Graph-backed RAG library",
+      "source_category": "semantic_infrastructure",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:lens",
+      "name": "lens",
+      "url": "https://docs.api.lens.org/",
+      "description": "Patent and scholarly links",
+      "source_category": "patent_discovery",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:product-hunt",
+      "name": "product hunt",
+      "url": "https://www.producthunt.com/",
+      "description": "New launches and positioning",
+      "source_category": "product_discovery",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:alternative-to",
+      "name": "alternative to",
+      "url": "https://alternativeto.net/",
+      "description": "Adjacent commercial and free alternatives",
+      "source_category": "product_discovery",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:openalternative",
+      "name": "openalternative",
+      "url": "https://openalternative.co/",
+      "description": "Open-source product alternatives",
+      "source_category": "software_discovery",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:stackshare",
+      "name": "stackshare",
+      "url": "https://stackshare.io/",
+      "description": "Technology stack references",
+      "source_category": "technical_discovery",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:hf-spaces",
+      "name": "hf spaces",
+      "url": "https://huggingface.co/spaces",
+      "description": "Runnable ML applications and prototypes",
+      "source_category": "prototype_discovery",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:eu-osor",
+      "name": "eu osor",
+      "url": "https://interoperable-europe.ec.europa.eu/collection/open-source-observatory-osor/oss-repositories",
+      "description": "Reusable public-sector OSS registries",
+      "source_category": "implementation_directory",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:hypothesis-atlas",
+      "name": "hypothesis atlas",
+      "url": "https://github.com/luxinlabs/Hypothesis-Atlas",
+      "description": "AI-assisted hypothesis or knowledge-tree prototypes",
+      "source_category": "research_mapping",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "registry:solved",
+      "name": "solved",
+      "url": "https://challengesolved.ai/knowledge-base/index.php",
+      "description": "Problem and solution listings",
+      "source_category": "problem_solution_catalog",
+      "source_kind": "curated_discovery_reference",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "github:getzep/graphiti",
+      "name": "Graphiti",
+      "url": "https://github.com/getzep/graphiti",
+      "description": "Temporal knowledge graph construction and hybrid retrieval with source-traceable episodes and evolving relationships",
+      "source_category": "uncategorized_external_candidate",
+      "source_kind": "maintainer_description",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "github:topoteretes/cognee",
+      "name": "Cognee",
+      "url": "https://github.com/topoteretes/cognee",
+      "description": "Persistent AI agent memory built from documents code and conversations as a searchable knowledge graph",
+      "source_category": "uncategorized_external_candidate",
+      "source_kind": "maintainer_description",
+      "authority": "source_description_only"
+    },
+    {
+      "id": "github:assafelovic/gpt-researcher",
+      "name": "GPT Researcher",
+      "url": "https://github.com/assafelovic/gpt-researcher",
+      "description": "Autonomous online research with question planning, source retrieval, recursive investigation and report synthesis",
+      "source_category": "uncategorized_external_candidate",
+      "source_kind": "maintainer_description",
+      "authority": "source_description_only"
+    }
+  ],
+  "semantic_relations": [],
+  "verified_interoperability": 0,
+  "source_category_not_functional_equivalence": true,
+  "cross_portfolio_dependencies": 0,
+  "missing_next_step": "Strong-model functionality clustering on the blind-to-category application descriptions, followed by source and relationship review; no automatic promotion"
+}
