@@ -93,6 +93,35 @@ releases, GitHub Issues, PR activity, or repository-wide merge state.
 Feed adapters for those require separate explicit data-access and identity
 checks, and are tracked in issue #131.
 
+## Poll selected public GitHub releases (actual external sources)
+
+An optional provider adapter reads **public release metadata** from GitHub's
+official repository releases API, with a fixed per-repository latest-10 bound.
+See examples/headless/github_release_sources.example.json for an allowlist
+of tracked projects such as Graphiti, TrendRadar, DeerFlow and Prefect.
+Entries are watch subjects, not endorsed components or installed dependencies.
+
+    cite-refinery-github-releases --sources /private/github_release_sources.json --registry /private/projects.json --out /private/github_releases.json
+
+To activate this source, add a record_list feed:
+
+    {"id": "releases", "system": "github_public_release", "kind": "record_list", "path": "github_releases.json"}
+
+Then add the releases feed to any registered project's subscriptions.
+A scheduler can call the exporter before poll and steer. GITHUB_TOKEN is
+optional for API rate limits; store credentials only in the machine's
+environment or secret manager. The command does not print or persist tokens.
+
+This source exports title, stable release ID, tag, publication date and
+official release URL, **not** release body or arbitrary GitHub files.
+A fixed published_since can suppress irrelevant historic backlog.
+Draft releases and prereleases are excluded unless explicitly permitted.
+Rate-limit failures and malformed API payloads abort without replacing the
+previous snapshot. A repository rename or redirect requires explicit review.
+Latest 10 releases is *not* exhaustive; high-frequency sources may need
+a future pagination/cursor adapter. No polling is activated on Optiplex
+by merely merging these files.
+
 ## Run repeatedly and consume through MCP
 
 Run the **export → poll → steer** sequence via a *trusted private* scheduler
@@ -122,7 +151,7 @@ must inspect the source and current repo implementation first.
 
 ## Boundaries and limitations
 
-- No live external models, TrendRadar, Graphiti, DeerFlow, The Lens or
+- No external model runtimes, TrendRadar/Graphiti/DeerFlow libraries, The Lens or
   Project Emet are installed in this PR. Their integration is separately
   gated by licensing, privacy, source reliability and benchmark results.
 - New recommendations require structured signal categories, HTTPS source
