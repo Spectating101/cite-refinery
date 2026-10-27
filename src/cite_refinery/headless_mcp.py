@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 
 from .headless_intelligence import status
+from .development_steering import project_brief as read_project_brief, load_registry
 
 
 def create_server():
@@ -31,6 +32,27 @@ def create_server():
         """Return recent content-digest changes without raw private source payloads."""
         snapshot = status(db, event_limit=limit)
         return {"events": snapshot["events"], "authority": "read_only"}
+
+    @app.tool()
+    def development_brief(project_id: str, limit: int = 20) -> dict:
+        """Retrieve candidate development steering changes and next checks."""
+        return read_project_brief(db, project_id, limit=limit)
+
+    @app.tool()
+    def registered_projects() -> dict:
+        """List projects explicitly opted into local monitoring, without checkout paths."""
+        raw = os.environ.get("CITE_REFINERY_DEVELOPMENT_REGISTRY")
+        if not raw:
+            return {"status": "not_configured", "projects": []}
+        try:
+            projects = load_registry(Path(raw))
+        except (OSError, ValueError):
+            return {"status": "invalid_registry", "projects": []}
+        return {"status": "configured", "projects": [
+            {"id": p["id"], "repository": p["repository"], "state": p["state"],
+             "goals": p["goals"], "current_priorities": p["current_priorities"]}
+            for p in projects
+        ], "authority": "local_read_only"}
 
     return app
 
