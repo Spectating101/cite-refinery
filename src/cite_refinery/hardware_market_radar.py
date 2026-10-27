@@ -76,7 +76,7 @@ def _canonical(value: Any) -> bytes:
 def _tags(raw: Any, name: str) -> list[str]:
     if not isinstance(raw, list) or len(raw) > 18:
         raise ValueError(name + " needs a bounded list")
-    if len(set(raw)) != len(raw) or any(not isinstance(s, str) or not TAG.fullmatch(s) for s in raw):
+    if any(not isinstance(s, str) or not TAG.fullmatch(s) for s in raw) or len(set(raw)) != len(raw):
         raise ValueError(name + " must contain unique machine-readable tags")
     return sorted(raw)
 
@@ -92,6 +92,12 @@ def _observations(data: Any, *, today: date, cases: set[str]) -> list[dict[str, 
     for o in raw:
         if not isinstance(o, dict):
             raise ValueError("Observation must be an object")
+        allowed = {"observation_id", "case_id", "kind", "market", "seller",
+                   "product", "observed_on", "source_url", "evidence_state",
+                   "exact_variant_matched", "price", "stock_verified",
+                   "buyer_verified", "supplier_qualified", "paid_sale_verified"}
+        if set(o) - allowed:
+            raise ValueError("Unexpected unsupported observation fields")
         oid = o.get("observation_id")
         if not isinstance(oid, str) or not IDENT.fullmatch(oid) or oid in ids:
             raise ValueError("Duplicate or invalid observation ID")
@@ -219,7 +225,8 @@ def evaluate(
     board = []
     for cid, c in sorted(by_case.items()):
         rows = grouped[cid]
-        local = [o for o in rows if o["kind"] == "local_offer" and o["market"] in {"ID", "TW"}]
+        local = [o for o in rows if o["kind"] == "local_offer" and o["market"] in {"ID", "TW"}
+                 and o["evidence_state"] == "public_listing_unverified"]
         sellers = sorted({(o["market"], o["seller"].casefold()) for o in local})
         markets = sorted({o["market"] for o in local})
         stale = [o["observation_id"] for o in rows if (today - date.fromisoformat(o["observed_on"])).days > 30]
