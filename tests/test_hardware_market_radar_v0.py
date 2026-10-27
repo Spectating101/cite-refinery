@@ -29,7 +29,8 @@ def fixture() -> tuple[dict, dict, dict, dict]:
 
 class HardwareMarketRadarTests(unittest.TestCase):
     def board(self, *, observed_on="2026-10-28"):
-        return evaluate(*fixture(), as_of=observed_on)
+        return evaluate(*fixture(), as_of=observed_on,
+                        supplier_manifest=read("hardware_radar_supplier_candidates_20261028.json"))
 
     def test_real_casebook_runs_but_never_invents_businesses(self):
         r = self.board()
@@ -71,6 +72,37 @@ class HardwareMarketRadarTests(unittest.TestCase):
         self.assertTrue(all(not x["verified_reuse"] for x in b["cross_sector_reuse"]))
         self.assertTrue(all(not x["physically_verified"] and not x["procurement_qualified"]
                             for x in b["capabilities"]))
+
+
+    def test_actual_supplier_catalog_is_unqualified_and_cross_sector(self):
+        r = self.board()
+        self.assertEqual(r["summary"]["unqualified_supplier_directory_entries"], 14)
+        self.assertGreater(r["summary"]["candidate_supplier_case_links"], 20)
+        self.assertTrue(any(x["supplier_id"] == "dfrobot" and x["case_id"] == "CASE-11"
+                            for x in r["candidate_supplier_edges"]))
+        self.assertTrue(any(x["supplier_id"] == "petoi" and x["case_id"] == "CASE-04"
+                            for x in r["candidate_supplier_edges"]))
+        self.assertTrue(all(not x["verified_sku_availability"] and
+                            not x["verified_quote_or_moq"] and
+                            not x["verified_serves_target_market"] and
+                            not x["procurement_qualified"]
+                            for x in r["supplier_candidates"]))
+        self.assertTrue(all(x["relation"] == "CATALOG_TAG_OVERLAP_ONLY" and
+                            not x["qualified_supplier_quote"]
+                            for x in r["candidate_supplier_edges"]))
+
+    def test_untrusted_supplier_manifest_fails_closed(self):
+        supplier_manifest = read("hardware_radar_supplier_candidates_20261028.json")
+        cat, queue, obs, cap = fixture()
+        supplier_manifest["suppliers"][0]["status"] = "qualified"
+        with self.assertRaisesRegex(ValueError, "self-certify"):
+            evaluate(cat, queue, obs, cap, as_of="2026-10-28",
+                     supplier_manifest=supplier_manifest)
+        supplier_manifest = read("hardware_radar_supplier_candidates_20261028.json")
+        supplier_manifest["suppliers"].append(deepcopy(supplier_manifest["suppliers"][0]))
+        with self.assertRaisesRegex(ValueError, "duplicate supplier"):
+            evaluate(cat, queue, obs, cap, as_of="2026-10-28",
+                     supplier_manifest=supplier_manifest)
 
     def test_repeatability_and_snapshot_change_semantics(self):
         cat, queue, obs, cap = fixture()
