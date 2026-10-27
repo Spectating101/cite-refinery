@@ -1,0 +1,215 @@
+{
+  "schema": "cite_refinery.hardware_capability_manifest.v1",
+  "snapshot_date": "2026-10-28",
+  "scope": "Manually classified needs and candidate technology capabilities. TAG MATCH DOES NOT DEMONSTRATE ELECTRICAL/FIRMWARE/MECHANICAL/COMMERCIAL INTEGRATION.",
+  "case_needs": {
+    "CASE-01": [
+      "mobile_robotics",
+      "on_device_ai",
+      "computer_vision",
+      "mechanical_assembly",
+      "battery_management"
+    ],
+    "CASE-02": [
+      "actuation_dosing",
+      "firmware_esp32",
+      "iot_connectivity",
+      "mechanical_assembly",
+      "computer_vision"
+    ],
+    "CASE-03": [
+      "firmware_esp32",
+      "robot_controls",
+      "electronics_pcb",
+      "mechanical_assembly",
+      "education_content"
+    ],
+    "CASE-04": [
+      "robot_controls",
+      "servos",
+      "mechanical_assembly",
+      "power_low_voltage",
+      "simulation_dynamics"
+    ],
+    "CASE-05": [
+      "sensor_network",
+      "firmware_esp32",
+      "pump_control",
+      "mechanical_assembly",
+      "power_low_voltage"
+    ],
+    "CASE-06": [
+      "sensor_network",
+      "power_low_voltage",
+      "motor_control",
+      "iot_connectivity",
+      "evidence_capture"
+    ],
+    "CASE-07": [
+      "component_identity",
+      "diagnostics",
+      "exact_part_sourcing",
+      "electronics_pcb",
+      "provenance"
+    ],
+    "CASE-08": [
+      "computer_vision",
+      "optics",
+      "fixture_printing",
+      "on_device_ai",
+      "inspection_evaluation"
+    ],
+    "CASE-09": [
+      "sensor_network",
+      "temperature_probe",
+      "iot_connectivity",
+      "evidence_capture",
+      "calibration"
+    ],
+    "CASE-10": [
+      "sensor_network",
+      "evidence_capture",
+      "measurement_instrument",
+      "solar_monitor",
+      "provenance"
+    ],
+    "CASE-11": [
+      "sensor_network",
+      "water_probe",
+      "calibration",
+      "iot_connectivity",
+      "mechanical_assembly"
+    ],
+    "CASE-12": [
+      "evidence_capture",
+      "measurement_instrument",
+      "electronics_pcb",
+      "diagnostics",
+      "provenance"
+    ]
+  },
+  "capabilities": [
+    {
+      "id": "hs_eda_bridge",
+      "name": "HS bounded PCB/EDA and KiCad verification bridge",
+      "provides": [
+        "electronics_pcb"
+      ],
+      "maturity": "repo_implemented_unverified_physical",
+      "source_url": "https://github.com/Spectating101/hardware-splicer/blob/main/docs/CIRCUIT_LOGIC_AUDIT.md"
+    },
+    {
+      "id": "hs_firmware_scaffold",
+      "name": "HS ESP32-oriented firmware scaffold (compile-only boundary)",
+      "provides": [
+        "firmware_esp32"
+      ],
+      "maturity": "repo_implemented_unverified_physical",
+      "source_url": "https://github.com/Spectating101/hardware-splicer/blob/main/docs/DEVICE_FIRMWARE.md"
+    },
+    {
+      "id": "hs_mecha",
+      "name": "HS Mecha-Splicer mechanisms/enclosure candidate generation",
+      "provides": [
+        "mechanical_assembly",
+        "fixture_printing"
+      ],
+      "maturity": "repo_implemented_unverified_physical",
+      "source_url": "https://github.com/Spectating101/hardware-splicer/blob/main/apps/mecha-splicer/docs/STATUS.md"
+    },
+    {
+      "id": "hs_market_router",
+      "name": "HS commercial routing/provenance, separate draft PR",
+      "provides": [
+        "component_identity",
+        "provenance"
+      ],
+      "maturity": "draft_unmerged",
+      "source_url": "https://github.com/Spectating101/hardware-splicer/pull/214"
+    },
+    {
+      "id": "hs_desktop_printer",
+      "name": "HS manufacturing operator OctoPrint stage-only draft",
+      "provides": [
+        "fixture_printing"
+      ],
+      "maturity": "draft_unmerged",
+      "source_url": "https://github.com/Spectating101/hardware-splicer/pull/225"
+    },
+    {
+      "id": "kicad",
+      "name": "KiCad EDA verification reference",
+      "provides": [
+        "electronics_pcb"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://www.kicad.org/"
+    },
+    {
+      "id": "freecad",
+      "name": "FreeCAD parametric mechanics and assembly reference",
+      "provides": [
+        "mechanical_assembly"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://www.freecad.org/"
+    },
+    {
+      "id": "espressif_esp_idf",
+      "name": "Espressif ESP-IDF",
+      "provides": [
+        "firmware_esp32",
+        "iot_connectivity"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://github.com/espressif/esp-idf"
+    },
+    {
+      "id": "opencv",
+      "name": "OpenCV vision library candidate",
+      "provides": [
+        "computer_vision",
+        "inspection_evaluation"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://github.com/opencv/opencv"
+    },
+    {
+      "id": "ros2_control",
+      "name": "ROS 2 control integration",
+      "provides": [
+        "robot_controls"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://github.com/ros-controls/ros2_control"
+    },
+    {
+      "id": "mujoco",
+      "name": "MuJoCo physical simulation engine",
+      "provides": [
+        "simulation_dynamics"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://github.com/google-deepmind/mujoco"
+    },
+    {
+      "id": "octoprint",
+      "name": "OctoPrint open printer control",
+      "provides": [
+        "fixture_printing"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://github.com/OctoPrint/OctoPrint"
+    },
+    {
+      "id": "esphome",
+      "name": "ESPHome sensor/IoT device configuration",
+      "provides": [
+        "sensor_network",
+        "iot_connectivity"
+      ],
+      "maturity": "external_candidate",
+      "source_url": "https://github.com/esphome/esphome"
+    }
+  ]
+}
