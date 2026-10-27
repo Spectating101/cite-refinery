@@ -52,7 +52,7 @@ class DevelopmentSteeringTests(unittest.TestCase):
     def source(self, records):
         self.save("external.json", {"schema": RECORD_SCHEMA, "records": records})
 
-    def run(self):
+    def run_cycle(self):
         self.assertTrue(poll(self.feeds, self.db)["ok"])
         return steer(self.feeds, self.registry, self.db)
 
@@ -74,7 +74,7 @@ class DevelopmentSteeringTests(unittest.TestCase):
                 "signal": "regulatory_change",
             },
         ])
-        result = self.run()
+        result = self.run_cycle()
         self.assertEqual(result["projects"][0]["candidates"], 1)
         self.assertEqual(result["projects"][1]["status"], "skipped_paused")
         brief = project_brief(self.db, "hardware")
@@ -82,7 +82,7 @@ class DevelopmentSteeringTests(unittest.TestCase):
         candidate = brief["candidates"][0]
         self.assertEqual(candidate["match_basis"], "structured_tag_intersection")
         self.assertEqual(candidate["status"], "candidate_review")
-        self.assertIn("Benchmark", candidate["next_check"] if "Benchmark" in candidate["next_check"] else candidate["next_check"].title())
+        self.assertIn("benchmark", candidate["next_check"].lower())
         self.assertEqual(project_brief(self.db, "legal")["candidates"], [])
         self.assertEqual(steer(self.feeds, self.registry, self.db)["projects"][0]["candidates"], 0)
 
@@ -95,7 +95,7 @@ class DevelopmentSteeringTests(unittest.TestCase):
                 "project_targets": ["hardware"],
             }
         ])
-        self.run()
+        self.run_cycle()
         candidate = project_brief(self.db, "hardware")["candidates"][0]
         self.assertEqual(candidate["match_basis"], "explicit_project_target")
         self.assertEqual(candidate["matched_tags"], [])
@@ -107,11 +107,11 @@ class DevelopmentSteeringTests(unittest.TestCase):
                 "signal": "competitor_release", "tags": ["cad"],
             }]
         self.source(item("First release"))
-        self.run()
+        self.run_cycle()
         self.source(item("Updated release"))
-        self.run()
+        self.run_cycle()
         self.assertEqual(len(project_brief(self.db, "hardware")["candidates"]), 2)
-        self.assertEqual(self.run()["projects"][0]["candidates"], 0)
+        self.assertEqual(self.run_cycle()["projects"][0]["candidates"], 0)
 
     def test_no_source_cursor_advance_on_missing_snapshot(self):
         self.source([
@@ -159,7 +159,7 @@ class DevelopmentSteeringTests(unittest.TestCase):
              "url": "https://example.org/y", "signal": "new_capability",
              "tags": []},
         ])
-        out = self.run()["projects"][0]
+        out = self.run_cycle()["projects"][0]
         self.assertEqual(out["candidates"], 0)
         self.assertEqual(out["ignored"], 4)
 
@@ -180,7 +180,7 @@ class DevelopmentSteeringTests(unittest.TestCase):
             {"id": "a", "title": "Claim under review", "url": "https://example.org/a",
              "tags": ["cad"], "signal": "competitor_release"}
         ])
-        self.run()
+        self.run_cycle()
         self.assertEqual(status(self.db)["events"][0]["record_id"], "a")
         self.assertEqual(project_brief(self.db, "hardware")["authority"],
                          "lead_only_not_an_implementation_instruction")
