@@ -1,0 +1,125 @@
+{
+  "schema": "portfolio_convergence.freeze.v1",
+  "date": "2026-10-28",
+  "status": "DESIGN_FREEZE_NO_RUNTIME_ACTIVATION",
+  "title": "Solo-Directed Research & Engineering Lab — Cross-Project Convergence",
+  "principles": [
+    "independently useful engines",
+    "reuse and absorb external capabilities with permission and proof",
+    "portable evidence and authority envelopes",
+    "no monolith",
+    "no claim promotion across domains",
+    "independent physical and economic verification"
+  ],
+  "domains": [
+    {
+      "name": "intelligence",
+      "engines": [
+        "Atlas",
+        "Nocturnal",
+        "Cite",
+        "Cite-Agent"
+      ],
+      "receives": [],
+      "emits": [
+        "candidate_problems",
+        "research_mechanisms",
+        "capability_candidates"
+      ],
+      "review_required": true
+    },
+    {
+      "name": "acquisition",
+      "engines": [
+        "Research Drive"
+      ],
+      "receives": [
+        "bounded_data_request"
+      ],
+      "emits": [
+        "immutable_source_receipts",
+        "verified_dataset"
+      ],
+      "review_required": true
+    },
+    {
+      "name": "implementation",
+      "engines": [
+        "Hardware Splicer",
+        "approved external engineering tools"
+      ],
+      "receives": [
+        "requirements",
+        "licensed_inputs"
+      ],
+      "emits": [
+        "design_artifacts",
+        "test_reports"
+      ],
+      "review_required": true
+    },
+    {
+      "name": "assessment",
+      "engines": [
+        "Policy Lab"
+      ],
+      "receives": [
+        "domain_claims",
+        "measurement_evidence"
+      ],
+      "emits": [
+        "HOLD_or_REJECT_or_REVIEW_decision",
+        "uncertainty"
+      ],
+      "review_required": true
+    },
+    {
+      "name": "conversion",
+      "engines": [
+        "Solarpunk",
+        "HS commercial",
+        "Gauntlet",
+        "Sharpe-Terminus"
+      ],
+      "receives": [
+        "reviewed_results"
+      ],
+      "emits": [
+        "conditional_economic_options",
+        "externally_verified_outcomes"
+      ],
+      "review_required": true
+    }
+  ],
+  "flagship": {
+    "name": "Energy Evidence Challenge 001",
+    "steps": [
+      "E0_source_grounded_offline_replay",
+      "E1_independent_isolated_DC_metrology",
+      "E2_true_generation_claim_adjudication"
+    ],
+    "e2_hard_gate": "NO_ISSUANCE_OR_REAL_ENERGY_CLAIM_FROM_E0_OR_E1",
+    "run_status": "NOT_STARTED"
+  },
+  "baselines": [
+    "strong_general_purpose_agent_plus_existing_tools",
+    "disconnected_portfolio_components",
+    "integrated_portable_envelope_pipeline"
+  ],
+  "metrics": [
+    "source_cell_correctness",
+    "claim_scope_and_uncertainty",
+    "negative_case_detection",
+    "functional_artifact_validation",
+    "independent_measurement_when_relevant",
+    "time_and_total_cost",
+    "human_interventions",
+    "repeatability",
+    "external_adoption_or_settled_value"
+  ],
+  "execution_authorized": false,
+  "physical_activity_authorized": false,
+  "publication_authorized": false,
+  "financial_issuance_authorized": false,
+  "project_source": "docs/PORTFOLIO_CONVERGENCE_FREEZE_2026-10-28.md"
+}
