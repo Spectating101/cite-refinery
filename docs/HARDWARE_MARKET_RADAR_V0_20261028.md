@@ -8,7 +8,7 @@
 - `src/cite_refinery/hardware_market_radar.py` — stdlib-only CLI and pure evaluators with canonical SHA-256 source snapshot; strict dated, named, publicly attributed source observations.
 - `research_materials/opportunity_conversion/hardware_radar_observations_seed_20261028.json` — 12 dated references from earlier market work spanning 11 cases. Price information is retailer/manufacturer *asking* information, including one HISTORICAL aquaculture figure. Zero verified live stock or transactions.
 - `research_materials/opportunity_conversion/hardware_radar_capabilities_20261028.json` — explicit technical requirements of 12 cases and 13 attributed HS / external capability candidates. Draft HS PRs flagged draft, not merged. A tag overlap is only a proposed engineering-reuse investigation, never proof of component compatibility or available modules.
-- `tests/test_hardware_market_radar_v0.py` — 11 deterministic tests including the actual 64-catalog/12-case evaluation, different current vs historical sellers, non-local global products, duplicate/future/invalid source, malicious self-certified demand, snapshot changes and no falsely computed income.
+- `research_materials/opportunity_conversion/hardware_radar_supplier_candidates_20261028.json` — 14 source-linked vendor/manufacturer/fabrication directory entries with broad catalog tags, deliberately unqualified (no matched SKU, quote or proven market service).\n- `tests/test_hardware_market_radar_v0.py` — 13 deterministic tests including the actual 64-catalog/12-case evaluation, different current vs historical sellers, non-local global products, duplicate/future/invalid source, malicious self-certified demand, snapshot changes and no falsely computed income.
 - `.github/workflows/hardware-market-radar-offline.yml` — GitHub Actions runs tests and actually calls the CLI twice, comparing stable snapshots.
 
 ## Reproduction
@@ -28,7 +28,7 @@ Expected baseline shape:
 - 64 concept hypotheses / 16 sectors
 - 12 cross-industry cases, including one with no observations
 - 12 individual attributed market observations (some local, some global, some historical, some supplier discovery)
-- Several potential cross-sector reuse links through ESP-IDF, HS firmware, mechanical design, IoT, PCB tools, vision/simulation and instrumentation
+- Several potential cross-sector reuse links through ESP-IDF, HS firmware, mechanical design, IoT, PCB tools, vision/simulation and instrumentation\n- 14 **unqualified** supplier/fabrication reference catalogs with deterministic candidate tag-overlap edges (NOT a qualified supplier graph)
 - **Zero qualified commercial opportunities, verified supplier quotes, customer payments, physical builds or profit projections**
 
 Every input observation is subject to validation; `buyer_verified`, `paid_sale_verified`, `stock_verified`, `supplier_qualified` declarations are REJECTED. Exact matched product functions are unverified, source URLs are attributed but not independently authenticated, and future-dated sources are rejected. Output includes provenance fingerprints, not a guarantee that a page is true or was reachable. Scores and implied ROI are deliberately omitted.
@@ -37,7 +37,7 @@ Every input observation is subject to validation; `buyer_verified`, `paid_sale_v
 
 **Market graph:** case → source observation → named seller/reference, including region, price only if recorded, evidence status, exact-variant comparability flag. Sector-wide references are not presented as local inventory.
 
-**Engineering capability graph:** case → explicit needed tag ↔ HS feature or external technical system, preserving maturity. Shared tags across cases identify **where to investigate reuse** (e.g. microcontroller firmware across education and agriculture, sensors/telemetry across farms and monitoring), not a validated common bill of materials.
+**Engineering capability graph:** case → explicit needed tag ↔ HS feature or external technical system, preserving maturity. Shared tags across cases identify **where to investigate reuse** (e.g. microcontroller firmware across education and agriculture, sensors/telemetry across farms and monitoring), not a validated common bill of materials.\n\n**Supplier candidate graph:** case → needed tag ↔ source-linked public component vendor, manufacturer or fabrication directory. Every edge is `CATALOG_TAG_OVERLAP_ONLY`; catalog breadth cannot verify target model SKU, geographic service, MOQ, quote, right to integrate or distribution agreement. Manufacturers already selling competitor products remain distinguished in the **market graph**.
 
 This intentionally complements rather than copies:
 - Cite–Refinery market-demand screen #128 and business workbench #127 (both draft) for actual buyer qualification, experiments and money controls.
