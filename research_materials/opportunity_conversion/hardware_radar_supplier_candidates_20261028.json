@@ -1,0 +1,175 @@
+{
+  "schema": "cite_refinery.hardware_supplier_candidates.v1",
+  "snapshot_date": "2026-10-28",
+  "source_role": "Source-linked generic vendor/service catalog and tag-matching DISCOVERY CANDIDATES, not matched manufacturer part numbers, stock, country access, quotations, MOQ, reseller rights, customs, safety or validated integration. Vendor advertised scopes must be independently checked per variant and destination.",
+  "suppliers": [
+    {
+      "id": "espressif",
+      "name": "Espressif",
+      "role": "manufacturer_reference",
+      "source_url": "https://www.espressif.com/en/products/socs",
+      "advertised_capability_tags": [
+        "firmware_esp32",
+        "iot_connectivity"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "seeed",
+      "name": "Seeed Studio",
+      "role": "robotics_module_vendor",
+      "source_url": "https://www.seeedstudio.com/",
+      "advertised_capability_tags": [
+        "sensor_network",
+        "firmware_esp32",
+        "iot_connectivity",
+        "power_low_voltage"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "dfrobot",
+      "name": "DFRobot",
+      "role": "robotics_module_vendor",
+      "source_url": "https://www.dfrobot.com/",
+      "advertised_capability_tags": [
+        "sensor_network",
+        "education_content",
+        "water_probe",
+        "temperature_probe"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "petoi",
+      "name": "Petoi",
+      "role": "robotics_module_vendor",
+      "source_url": "https://www.petoi.com/",
+      "advertised_capability_tags": [
+        "robot_controls",
+        "servos",
+        "education_content"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "lcsc",
+      "name": "LCSC",
+      "role": "parts_distributor",
+      "source_url": "https://www.lcsc.com/",
+      "advertised_capability_tags": [
+        "electronics_pcb",
+        "component_identity",
+        "power_low_voltage"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "jlcpcb",
+      "name": "JLCPCB",
+      "role": "fabrication_service",
+      "source_url": "https://jlcpcb.com/",
+      "advertised_capability_tags": [
+        "electronics_pcb"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "digikey_tw",
+      "name": "DigiKey Taiwan",
+      "role": "parts_distributor",
+      "source_url": "https://www.digikey.tw/",
+      "advertised_capability_tags": [
+        "electronics_pcb",
+        "component_identity",
+        "power_low_voltage",
+        "sensor_network"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "misumi_tw",
+      "name": "MISUMI Taiwan",
+      "role": "parts_distributor",
+      "source_url": "https://tw.misumi-ec.com/",
+      "advertised_capability_tags": [
+        "mechanical_assembly"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "waveshare",
+      "name": "Waveshare",
+      "role": "robotics_module_vendor",
+      "source_url": "https://www.waveshare.com/",
+      "advertised_capability_tags": [
+        "computer_vision",
+        "mobile_robotics",
+        "iot_connectivity",
+        "sensor_network"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "atlas_scientific",
+      "name": "Atlas Scientific",
+      "role": "robotics_module_vendor",
+      "source_url": "https://atlas-scientific.com/",
+      "advertised_capability_tags": [
+        "water_probe",
+        "calibration"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "robotis",
+      "name": "ROBOTIS",
+      "role": "robotics_module_vendor",
+      "source_url": "https://www.robotis.us/",
+      "advertised_capability_tags": [
+        "robot_controls",
+        "servos",
+        "mechanical_assembly"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "mouser_id",
+      "name": "Mouser Indonesia",
+      "role": "parts_distributor",
+      "source_url": "https://www.mouser.co.id/",
+      "advertised_capability_tags": [
+        "electronics_pcb",
+        "sensor_network",
+        "power_low_voltage",
+        "component_identity"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "pcbway",
+      "name": "PCBWay",
+      "role": "fabrication_service",
+      "source_url": "https://www.pcbway.com/",
+      "advertised_capability_tags": [
+        "electronics_pcb",
+        "fixture_printing",
+        "mechanical_assembly"
+      ],
+      "status": "public_catalog_unqualified"
+    },
+    {
+      "id": "adafruit",
+      "name": "Adafruit",
+      "role": "robotics_module_vendor",
+      "source_url": "https://www.adafruit.com/",
+      "advertised_capability_tags": [
+        "education_content",
+        "sensor_network",
+        "temperature_probe",
+        "power_low_voltage"
+      ],
+      "status": "public_catalog_unqualified"
+    }
+  ]
+}
