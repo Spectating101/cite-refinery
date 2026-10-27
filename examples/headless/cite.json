@@ -1,0 +1,10 @@
+{
+  "schema": "cite_refinery.headless_records.v1",
+  "records": [
+    {
+      "id": "synthetic:paper:1",
+      "title": "Illustrative academic methods lead (fictional)",
+      "source_url": "https://example.org/paper"
+    }
+  ]
+}
