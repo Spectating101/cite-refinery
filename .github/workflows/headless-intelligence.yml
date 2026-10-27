@@ -1,0 +1,28 @@
+name: headless intelligence
+
+on:
+  push:
+    branches:
+      - 'feature/headless-intelligence-feeds-v1'
+  pull_request:
+    paths:
+      - 'src/cite_refinery/headless_intelligence.py'
+      - 'src/cite_refinery/headless_mcp.py'
+      - 'tests/test_headless_intelligence.py'
+      - 'examples/headless/**'
+      - 'pyproject.toml'
+      - '.github/workflows/headless-intelligence.yml'
+
+jobs:
+  offline-headless:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e .
+      - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
+      - run: python -m cite_refinery.headless_intelligence --db /tmp/cite-headless-ci.sqlite run --config examples/headless/feeds.json
+      - run: python -m cite_refinery.headless_intelligence --db /tmp/cite-headless-ci.sqlite run --config examples/headless/feeds.json
+      - run: python -m cite_refinery.headless_intelligence --db /tmp/cite-headless-ci.sqlite status
