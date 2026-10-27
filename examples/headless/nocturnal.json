@@ -1,0 +1,10 @@
+{
+  "schema": "cite_refinery.headless_records.v1",
+  "records": [
+    {
+      "id": "synthetic:matter:1",
+      "title": "Illustrative public-sector operating problem (fictional)",
+      "source_url": "https://example.org/nocturnal"
+    }
+  ]
+}
