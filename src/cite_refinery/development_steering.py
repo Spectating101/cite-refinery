@@ -261,6 +261,8 @@ def project_brief(db_path: Path, project_id: str, *, limit: int = 20) -> dict[st
     if not db_path.is_file():
         return {"project_id": project_id, "candidates": [], "status": "not_initialized"}
     with sqlite3.connect(f"file:{db_path}?mode=ro", uri=True) as db:
+        if not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='steering_candidates'").fetchone():
+            return {"project_id": project_id, "candidates": [], "status": "not_initialized"}
         rows = db.execute(
             "SELECT feed,record_id,revision_digest,repository,signal,source_url,"
             "title,reason,next_check,matched_tags_json,match_basis,urgency,status,"
