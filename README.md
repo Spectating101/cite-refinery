@@ -23,6 +23,12 @@ authority, run third-party agents, or require a web app. See
 [the integration guide](docs/HEADLESS_INTELLIGENCE_PIPELINE_V1.md) and
 [synthetic replay](examples/headless/feeds.json).
 
+Development steering builds on this headless inbox: register any active
+project's repository, watch scopes and source feeds; candidate new findings
+then become project-specific validation tasks rather than undifferentiated
+alerts. A read-only local Git exporter can track checked-out HEAD revisions.
+See [project-development steering](docs/PROJECT_DEVELOPMENT_STEERING_V1.md).
+
 ## Core product model
 
 ```text
