@@ -1,0 +1,75 @@
+{
+  "schema": "cite_refinery.github_release_watch.v1",
+  "repositories": [
+    {
+      "repository": "getzep/graphiti",
+      "signal": "new_capability",
+      "tags": [
+        "knowledge_graph",
+        "provenance"
+      ],
+      "project_targets": [
+        "refinery"
+      ],
+      "published_since": "2026-10-01T00:00:00Z"
+    },
+    {
+      "repository": "sansan0/TrendRadar",
+      "signal": "new_capability",
+      "tags": [
+        "institutional_monitoring",
+        "research_tools"
+      ],
+      "project_targets": [
+        "nocturnal",
+        "refinery"
+      ],
+      "published_since": "2026-10-01T00:00:00Z"
+    },
+    {
+      "repository": "bytedance/deer-flow",
+      "signal": "competitor_release",
+      "tags": [
+        "research_tools",
+        "semantic_search"
+      ],
+      "project_targets": [
+        "refinery"
+      ],
+      "published_since": "2026-10-01T00:00:00Z"
+    },
+    {
+      "repository": "PrefectHQ/prefect",
+      "signal": "new_capability",
+      "tags": [
+        "research_tools"
+      ],
+      "project_targets": [
+        "refinery"
+      ],
+      "published_since": "2026-10-01T00:00:00Z"
+    },
+    {
+      "repository": "vovchenko/research-scout",
+      "signal": "competitor_release",
+      "tags": [
+        "research_tools"
+      ],
+      "project_targets": [
+        "refinery"
+      ],
+      "published_since": "2026-10-01T00:00:00Z"
+    },
+    {
+      "repository": "shuxiachai/academic-commercialization-agent",
+      "signal": "competitor_release",
+      "tags": [
+        "research_tools"
+      ],
+      "project_targets": [
+        "refinery"
+      ],
+      "published_since": "2026-10-01T00:00:00Z"
+    }
+  ]
+}
