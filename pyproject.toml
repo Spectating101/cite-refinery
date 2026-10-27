@@ -74,6 +74,7 @@ cite-refinery-headless = "cite_refinery.headless_intelligence:main"
 cite-refinery-headless-mcp = "cite_refinery.headless_mcp:main"
 cite-refinery-steer = "cite_refinery.development_steering:main"
 cite-refinery-git-heads = "cite_refinery.git_head_export:main"
+cite-refinery-github-releases = "cite_refinery.github_release_export:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
