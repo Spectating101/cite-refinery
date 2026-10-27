@@ -72,6 +72,8 @@ cite-refinery-cross-model-review = "cite_refinery.cross_model_evidence_check:mai
 cite-refinery-competitive-gate = "cite_refinery.competitive_gate:main"
 cite-refinery-headless = "cite_refinery.headless_intelligence:main"
 cite-refinery-headless-mcp = "cite_refinery.headless_mcp:main"
+cite-refinery-steer = "cite_refinery.development_steering:main"
+cite-refinery-git-heads = "cite_refinery.git_head_export:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
