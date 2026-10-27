@@ -1,0 +1,190 @@
+{
+  "schema": "cite_refinery.hardware_market_observations.v1",
+  "captured_on": "2026-10-28",
+  "caution": "Seed records transcribe published source claims and earlier comparison notes; dated intake only, not proof of live checkout, independent stock, sales, supply scarcity or product equivalence. Historical offers excluded from current seller counts. No authenticated buyer or landed cost.",
+  "observations": [
+    {
+      "observation_id": "ref_loona_id_20261028",
+      "case_id": "CASE-01",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "KEYi Robot Indonesia",
+      "product": "Loona Petbot Premium",
+      "source_url": "https://keyirobot.com/en-id/products/petbot",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "8864000",
+        "currency": "IDR"
+      }
+    },
+    {
+      "observation_id": "ref_biota_id_20261028",
+      "case_id": "CASE-02",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "BIOTA",
+      "product": "BIOTA 4L Smart Pet Feeder",
+      "source_url": "https://biotahome.com/products/biota-smart-pet-feeder",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "934000",
+        "currency": "IDR"
+      }
+    },
+    {
+      "observation_id": "ref_bardi_id_20261028",
+      "case_id": "CASE-02",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "BARDI",
+      "product": "BARDI Smart Pet Feeder Lite 4L",
+      "source_url": "https://www.shopbardi.com/details?commodityCode=CMcrnbkz764ztr&siteCode=ID",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "1973000",
+        "currency": "IDR"
+      }
+    },
+    {
+      "observation_id": "ref_edubit_id_20261028",
+      "case_id": "CASE-03",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "KHURSLABS",
+      "product": "EDU:BIT training/project kit",
+      "source_url": "https://khurslabs.com/edu-bit-training-project-kit-for-micro-bit",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "688000",
+        "currency": "IDR"
+      }
+    },
+    {
+      "observation_id": "ref_petoibittle_global_20261028",
+      "case_id": "CASE-04",
+      "kind": "global_reference",
+      "market": "GLOBAL",
+      "seller": "Petoi",
+      "product": "Petoi Bittle X voice controlled quadruped",
+      "source_url": "https://www.petoi.com/products/petoi-robot-dog-bittle-x-voice-controlled",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "319",
+        "currency": "USD"
+      }
+    },
+    {
+      "observation_id": "ref_atamagri_id_20261028",
+      "case_id": "CASE-05",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "ATAMAGRI",
+      "product": "Smart Irrigation Farming service bundle",
+      "source_url": "https://www.atamagri.app/pricing",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "5155000",
+        "currency": "IDR"
+      }
+    },
+    {
+      "observation_id": "ref_aquafeed_history_id_20261028",
+      "case_id": "CASE-06",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "Aquaculture technology contest archive",
+      "product": "Historical autofeeder competitor example",
+      "source_url": "https://agresultsindonesia.wwf.id/profil-kompetitor-pertahun/tahun/4",
+      "observed_on": "2026-10-28",
+      "evidence_state": "historical_reference",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "2600000",
+        "currency": "IDR"
+      }
+    },
+    {
+      "observation_id": "ref_oilfield_id_20261028",
+      "case_id": "CASE-07",
+      "kind": "supplier_candidate",
+      "market": "ID",
+      "seller": "Oilfield.id",
+      "product": "Industrial parts RFQ sourcing marketplace",
+      "source_url": "https://oilfield.id/",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": null
+    },
+    {
+      "observation_id": "ref_indusia_id_20261028",
+      "case_id": "CASE-08",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "INDUSIA",
+      "product": "Camera-agnostic AI visual inspection service",
+      "source_url": "https://indusia.ai/",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": null
+    },
+    {
+      "observation_id": "ref_microthings_id_20261028",
+      "case_id": "CASE-09",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "Microthings",
+      "product": "TT18 temperature/RH/location logger",
+      "source_url": "https://www.microthings.id/product/temperature-humidity-data-logger/",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "1689000",
+        "currency": "IDR"
+      }
+    },
+    {
+      "observation_id": "ref_ichibot_id_20261028",
+      "case_id": "CASE-10",
+      "kind": "local_offer",
+      "market": "ID",
+      "seller": "Ichibot",
+      "product": "Energy monitoring product/service",
+      "source_url": "https://www.ichibot.id/products/smart-energy-monitoring",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": null
+    },
+    {
+      "observation_id": "ref_pondtw_20261028",
+      "case_id": "CASE-11",
+      "kind": "local_offer",
+      "market": "TW",
+      "seller": "Taiwan Agricultural Digital Marketplace",
+      "product": "Self-cleaning water quality monitoring system bundle",
+      "source_url": "https://agdigi.atri.org.tw/Market/Content/63",
+      "observed_on": "2026-10-28",
+      "evidence_state": "public_listing_unverified",
+      "exact_variant_matched": false,
+      "price": {
+        "amount": "60000",
+        "currency": "TWD"
+      }
+    }
+  ]
+}
