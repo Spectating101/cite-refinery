@@ -1,0 +1,23 @@
+{
+  "schema": "cite_refinery.headless_feeds.v1",
+  "feeds": [
+    {
+      "id": "nocturnal",
+      "system": "nocturnal",
+      "kind": "record_list",
+      "path": "nocturnal.json"
+    },
+    {
+      "id": "cite",
+      "system": "cite-agent",
+      "kind": "record_list",
+      "path": "cite.json"
+    },
+    {
+      "id": "atlas",
+      "system": "cite-refinery",
+      "kind": "semantic_packet",
+      "path": "atlas.json"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "cite_refinery.headless_records.v1",
+  "records": [
+    {
+      "id": "synthetic:paper:1",
+      "title": "Synthetic example: provenance graph research lead",
+      "source_url": "https://example.org/paper",
+      "signal": "research_finding",
+      "tags": [
+        "knowledge_graph",
+        "provenance"
+      ]
+    }
+  ]
+}
