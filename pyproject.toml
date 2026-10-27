@@ -20,6 +20,7 @@ paperqa = ["paper-qa>=5"]
 lightrag = ["lightrag-hku>=1.4"]
 provenance = ["prov>=2,<3"]
 services = ["httpx>=0.27,<1"]
+headless = ["mcp>=1.2,<2"]
 semantic_discovery = ["numpy>=1.26", "scikit-learn>=1.4", "sentence-transformers>=3", "requests>=2.31", "beautifulsoup4>=4.12"]
 functional_probes = ["numpy>=1.24", "pandas>=2", "matplotlib>=3.7", "PyYAML>=6"]
 
@@ -69,6 +70,8 @@ cite-refinery-functional-probes = "cite_refinery.functional_component_probes:mai
 cite-refinery-functional-overlay = "cite_refinery.functional_three_layer_overlay:main"
 cite-refinery-cross-model-review = "cite_refinery.cross_model_evidence_check:main"
 cite-refinery-competitive-gate = "cite_refinery.competitive_gate:main"
+cite-refinery-headless = "cite_refinery.headless_intelligence:main"
+cite-refinery-headless-mcp = "cite_refinery.headless_mcp:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
