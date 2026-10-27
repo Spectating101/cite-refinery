@@ -1,0 +1,51 @@
+{
+  "schema": "cite_refinery.development_registry.v1",
+  "projects": [
+    {
+      "id": "refinery",
+      "repository": "Spectating101/cite-refinery",
+      "state": "active",
+      "feeds": [
+        "nocturnal",
+        "cite",
+        "atlas"
+      ],
+      "watch_tags": [
+        "knowledge_graph",
+        "provenance",
+        "semantic_search",
+        "research_tools"
+      ],
+      "goals": [
+        "Improve three-layer source-grounded research and capability mapping"
+      ],
+      "current_priorities": [
+        "Evidence quality and project development steering"
+      ],
+      "benchmark": "Source-reviewed, candidate-only graph; never auto-promote claims"
+    },
+    {
+      "id": "nocturnal",
+      "repository": "Spectating101/nocturnal-oversight",
+      "state": "active",
+      "feeds": [
+        "nocturnal",
+        "cite",
+        "atlas"
+      ],
+      "watch_tags": [
+        "accountability",
+        "legal_research",
+        "provenance",
+        "institutional_monitoring"
+      ],
+      "goals": [
+        "Preserve verifiable accountability evidence and investigative provenance"
+      ],
+      "current_priorities": [
+        "Source custody and human-reviewed investigation conclusions"
+      ],
+      "benchmark": "No automatic allegations or publication"
+    }
+  ]
+}
