@@ -70,6 +70,11 @@ def require_distinct_family(
 def _parse_response(payload):
     if isinstance(payload, dict) and all(k in payload for k in ("propositions","bridges","open_questions")):
         return payload
+    # Standalone app/system mapper proposal: provider envelopes may hold an
+    # already-structured object. Downstream validation still checks every app
+    # ID and source quotation; acceptance as ground truth is never implied.
+    if isinstance(payload, dict) and all(k in payload for k in ("clusters","unplaced_ids")):
+        return payload
     if isinstance(payload, dict):
         result = payload.get("structured_output") or payload.get("result") or payload.get("response")
         if result is None:
