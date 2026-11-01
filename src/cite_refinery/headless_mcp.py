@@ -11,6 +11,7 @@ from pathlib import Path
 
 from .headless_intelligence import status
 from .development_steering import project_brief as read_project_brief, load_registry
+from .portfolio_control import read_portfolio_brief
 
 
 def create_server():
@@ -53,6 +54,17 @@ def create_server():
              "goals": p["goals"], "current_priorities": p["current_priorities"]}
             for p in projects
         ], "authority": "local_read_only"}
+
+    @app.tool()
+    def portfolio_control_brief() -> dict:
+        """Read a separately generated local GitHub portfolio decision snapshot."""
+        location = os.environ.get("CITE_REFINERY_PORTFOLIO_REPORT")
+        if not location:
+            return {"status": "not_configured", "authority": "local_read_only"}
+        try:
+            return {"status": "configured", **read_portfolio_brief(Path(location))}
+        except (OSError, ValueError):
+            return {"status": "invalid_report", "authority": "local_read_only"}
 
     return app
 
