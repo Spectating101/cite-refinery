@@ -1,0 +1,128 @@
+{
+  "schema": "cite_refinery.discovery_requirements.v1",
+  "requirements": [
+    {
+      "id": "policy_pv_quality",
+      "project": "policy_lab",
+      "question": "Find directly relevant independent photovoltaic anomaly/fault/data-quality methods or held-out datasets for Policy Lab E7 parity checks",
+      "must_match": [
+        [
+          "photovolta",
+          "solar",
+          "pv"
+        ],
+        [
+          "anomal",
+          "fault",
+          "quality",
+          "degrad",
+          "diagnos"
+        ]
+      ],
+      "bonus": [
+        "dataset",
+        "benchmark",
+        "measurement",
+        "reproducib"
+      ],
+      "allow_source_types": [
+        "research",
+        "datasets",
+        "software"
+      ]
+    },
+    {
+      "id": "nocturnal_archiving",
+      "project": "nocturnal",
+      "question": "Find verifiable tools for preservation of changing online sources with traceable custody",
+      "must_match": [
+        [
+          "web",
+          "website",
+          "online",
+          "social",
+          "video"
+        ],
+        [
+          "archiv",
+          "preserv",
+          "capture"
+        ]
+      ],
+      "bonus": [
+        "evidence",
+        "forensic",
+        "source",
+        "integrity",
+        "history"
+      ],
+      "allow_source_types": [
+        "software",
+        "research"
+      ]
+    },
+    {
+      "id": "research_drive_pdf_tables",
+      "project": "research_drive",
+      "question": "Find source-traceable PDF tabular extraction and original-cell preservation approaches",
+      "must_match": [
+        [
+          "pdf",
+          "document"
+        ],
+        [
+          "table",
+          "cell"
+        ],
+        [
+          "extract",
+          "parser",
+          "layout",
+          "validat"
+        ]
+      ],
+      "bonus": [
+        "provenance",
+        "source",
+        "accurac",
+        "test"
+      ],
+      "allow_source_types": [
+        "software",
+        "research",
+        "datasets"
+      ]
+    },
+    {
+      "id": "cite_grounding",
+      "project": "cite_agent",
+      "question": "Find research literature claim grounding and citation verification methods",
+      "must_match": [
+        [
+          "paper",
+          "research",
+          "scientif",
+          "literature"
+        ],
+        [
+          "citat",
+          "cite",
+          "ground",
+          "verif",
+          "evidence"
+        ]
+      ],
+      "bonus": [
+        "claim",
+        "factual",
+        "reproducib",
+        "citation"
+      ],
+      "allow_source_types": [
+        "software",
+        "research",
+        "datasets"
+      ]
+    }
+  ]
+}

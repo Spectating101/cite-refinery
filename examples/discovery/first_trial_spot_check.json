@@ -1,0 +1,69 @@
+{
+  "schema": "cite_refinery.discovery_manual_spot_check.v1",
+  "scope": "Nonrandom assistant review of nine top-ranked results from focused 2026-11-02 live source collection; applicability only, not functionality validation",
+  "cases": [
+    {
+      "requirement_id": "policy_pv_quality",
+      "record_id": "datacite_pv:10.5281/zenodo.23646443",
+      "decision": "ON_SCOPE_BENCHMARK_LEAD",
+      "primary_evidence_url": "https://zenodo.org/records/23646443",
+      "rationale": "Original Zenodo record describes lab/testbed/PVDAQ field datasets, leakage-aware splits and 360 injected fault episodes; experimental fit, not replication."
+    },
+    {
+      "requirement_id": "policy_pv_quality",
+      "record_id": "openalex_pv:W7135057135",
+      "decision": "ON_SCOPE_BENCHMARK_LEAD",
+      "primary_evidence_url": "https://zenodo.org/records/18979876",
+      "rationale": "Original Zenodo record documents paired PV plants, 30-second string DC current/voltage and environment observations for time-series anomaly detection."
+    },
+    {
+      "requirement_id": "policy_pv_quality",
+      "record_id": "openalex_pv:W4225888491",
+      "decision": "OFF_SCOPE_FOR_PLANT_TIME_SERIES",
+      "primary_evidence_url": "https://doi.org/10.1109/tii.2022.3162846",
+      "rationale": "PV cell defect/anomaly dataset is not a drop-in plant-level, inverter, time-series anomaly benchmark; modality mismatch."
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:ciderapp/webview2-archives",
+      "decision": "OFF_SCOPE",
+      "primary_evidence_url": "https://github.com/ciderapp/WebView2-Archives",
+      "rationale": "README describes caching released Microsoft WebView2 binaries, not preserving arbitrary investigative webpages."
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:ga34-hp/atg-archival-website",
+      "decision": "OFF_SCOPE",
+      "primary_evidence_url": "https://github.com/GA34-hp/atg-archival-website",
+      "rationale": "README is generic Next.js scaffolding; no demonstrated evidence capture or custody."
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:getmefound/gmf-website-archive",
+      "decision": "OFF_SCOPE",
+      "primary_evidence_url": "https://github.com/getmefound/gmf-website-archive",
+      "rationale": "README is a business agency marketing website, not investigative source archiving."
+    },
+    {
+      "requirement_id": "research_drive_pdf_tables",
+      "record_id": "github_pdf:lydiatools/pdf-table-traps",
+      "decision": "ON_SCOPE_BENCHMARK_LEAD",
+      "primary_evidence_url": "https://github.com/LydiaTools/pdf-table-traps",
+      "rationale": "README provides original PDF fixtures, keyed row+column cell assertions, measured extraction failures and CLI check cases. Does not prove its performance on our corpus."
+    },
+    {
+      "requirement_id": "research_drive_pdf_tables",
+      "record_id": "github_pdf:rnahumaf/extract-pdf-table",
+      "decision": "INSUFFICIENT_EVIDENCE",
+      "primary_evidence_url": "https://github.com/rnahumaf/Extract-PDF-table",
+      "rationale": "GitHub metadata matched keywords, but original README lookup was unavailable; cannot infer capability from repo name."
+    },
+    {
+      "requirement_id": "cite_grounding",
+      "record_id": "openalex_citations:W7212013042",
+      "decision": "ON_SCOPE_BENCHMARK_LEAD",
+      "primary_evidence_url": "https://arxiv.org/abs/2609.07652",
+      "rationale": "Workshop paper reports citation-bounded claim checks and empirical evaluation; 71% end-to-end verdict accuracy on 8 manuscripts implies need for independent testing, not production readiness."
+    }
+  ]
+}
