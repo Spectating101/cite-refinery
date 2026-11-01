@@ -1,0 +1,60 @@
+{
+  "schema": "cite_refinery.multisource_discovery.v1",
+  "sources": [
+    {
+      "id": "datacite_pv",
+      "provider": "datacite",
+      "query": "photovoltaic",
+      "tags": [
+        "datasets",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab",
+        "research_drive"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "zenodo_evidence",
+      "provider": "zenodo",
+      "query": "research reproducibility",
+      "tags": [
+        "datasets",
+        "research"
+      ],
+      "project_targets": [
+        "cite_agent",
+        "research_drive"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "hn_research",
+      "provider": "hackernews",
+      "query": "open source research tool",
+      "tags": [
+        "open_source",
+        "community"
+      ],
+      "project_targets": [
+        "atlas"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "federal_energy",
+      "provider": "federal_register",
+      "query": "renewable energy",
+      "tags": [
+        "regulation",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab",
+        "nocturnal"
+      ],
+      "limit": 8
+    }
+  ]
+}

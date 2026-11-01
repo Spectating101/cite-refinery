@@ -1,0 +1,128 @@
+{
+  "schema": "cite_refinery.multisource_discovery.v1",
+  "sources": [
+    {
+      "id": "github_signals",
+      "provider": "github_signals",
+      "query": "research",
+      "tags": [
+        "open_source",
+        "research"
+      ],
+      "project_targets": [
+        "atlas",
+        "nocturnal"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "github_search",
+      "provider": "github_search",
+      "query": "source provenance",
+      "tags": [
+        "open_source",
+        "evidence"
+      ],
+      "project_targets": [
+        "atlas",
+        "research_drive"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "openalex_pv",
+      "provider": "openalex",
+      "query": "photovoltaic data quality",
+      "tags": [
+        "solar_energy",
+        "research"
+      ],
+      "project_targets": [
+        "policy_lab",
+        "atlas"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "crossref_pv",
+      "provider": "crossref",
+      "query": "photovoltaic data quality",
+      "tags": [
+        "solar_energy",
+        "research"
+      ],
+      "project_targets": [
+        "policy_lab",
+        "atlas"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "npm_provenance",
+      "provider": "npm",
+      "query": "data provenance",
+      "tags": [
+        "open_source",
+        "data"
+      ],
+      "project_targets": [
+        "research_drive",
+        "atlas"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "hf_models",
+      "provider": "huggingface_models",
+      "query": "document",
+      "tags": [
+        "models",
+        "documents"
+      ],
+      "project_targets": [
+        "cite_agent",
+        "research_drive"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "hf_datasets",
+      "provider": "huggingface_datasets",
+      "query": "solar",
+      "tags": [
+        "datasets",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab",
+        "research_drive"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "pypi_recent",
+      "provider": "pypi_updates",
+      "tags": [
+        "open_source",
+        "python"
+      ],
+      "project_targets": [
+        "atlas"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "arxiv_ai",
+      "provider": "arxiv_ai",
+      "tags": [
+        "research",
+        "ai_agents"
+      ],
+      "project_targets": [
+        "cite_agent",
+        "atlas"
+      ],
+      "limit": 8
+    }
+  ]
+}

@@ -1,0 +1,758 @@
+{
+  "schema": "cite_refinery.discovery_source_catalog.v1",
+  "purpose": "Cross-domain candidate sources, not an active crawler or evidence grade",
+  "status_meanings": {
+    "implemented_live": "Adapter available for opt-in bounded evaluation; functionality/availability must still be tested",
+    "catalog_only": "Discovery candidate; no executable adapter implied",
+    "needs_auth": "Provider access/credentials necessary, not enabled",
+    "needs_rights": "Licensing/copyright/terms assessment required before collection",
+    "blocked_source": "Known availability blocker or maintenance",
+    "rights_review": "Manual usage/licensing review required; no automated access implied"
+  },
+  "sources": [
+    {
+      "id": "github_signals",
+      "name": "GitHub Signals CSV",
+      "category": "software",
+      "discovery_method": "public_csv",
+      "readiness": "implemented_live",
+      "reference_url": "https://githubsignals.io/"
+    },
+    {
+      "id": "github_repository_search",
+      "name": "GitHub repository search",
+      "category": "software",
+      "discovery_method": "official_api",
+      "readiness": "implemented_live",
+      "reference_url": "https://docs.github.com/en/rest/search/search"
+    },
+    {
+      "id": "github_trending",
+      "name": "GitHub Trending",
+      "category": "software",
+      "discovery_method": "web_selection",
+      "readiness": "catalog_only",
+      "reference_url": "https://github.com/trending"
+    },
+    {
+      "id": "github_topics",
+      "name": "GitHub topic pages",
+      "category": "software",
+      "discovery_method": "web_selection",
+      "readiness": "catalog_only",
+      "reference_url": "https://github.com/topics"
+    },
+    {
+      "id": "gitlab_explore",
+      "name": "GitLab Explore",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://gitlab.com/explore"
+    },
+    {
+      "id": "codeberg_explore",
+      "name": "Codeberg Explore",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://codeberg.org/explore"
+    },
+    {
+      "id": "sourcehut",
+      "name": "SourceHut",
+      "category": "software",
+      "discovery_method": "feed_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://sr.ht/"
+    },
+    {
+      "id": "pypi",
+      "name": "Python Package Index",
+      "category": "software",
+      "discovery_method": "official_rss",
+      "readiness": "implemented_live",
+      "reference_url": "https://docs.pypi.org/api/"
+    },
+    {
+      "id": "npm",
+      "name": "npm registry",
+      "category": "software",
+      "discovery_method": "official_api",
+      "readiness": "implemented_live",
+      "reference_url": "https://api-docs.npmjs.com/"
+    },
+    {
+      "id": "crates",
+      "name": "Crates.io",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://crates.io/"
+    },
+    {
+      "id": "maven",
+      "name": "Maven Central",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://central.sonatype.org/search/rest-api-guide/"
+    },
+    {
+      "id": "nuget",
+      "name": "NuGet",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://learn.microsoft.com/en-us/nuget/api/overview"
+    },
+    {
+      "id": "rubygems",
+      "name": "RubyGems",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://guides.rubygems.org/rubygems-org-api/"
+    },
+    {
+      "id": "go_packages",
+      "name": "Go Packages",
+      "category": "software",
+      "discovery_method": "index_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://pkg.go.dev/"
+    },
+    {
+      "id": "dockerhub",
+      "name": "Docker Hub",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://docs.docker.com/docker-hub/api/latest/"
+    },
+    {
+      "id": "homebrew",
+      "name": "Homebrew Formulae",
+      "category": "software",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://formulae.brew.sh/api/"
+    },
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "category": "research",
+      "discovery_method": "official_api",
+      "readiness": "implemented_live",
+      "reference_url": "https://help.openalex.org/api/"
+    },
+    {
+      "id": "crossref",
+      "name": "Crossref",
+      "category": "research",
+      "discovery_method": "official_api",
+      "readiness": "implemented_live",
+      "reference_url": "https://www.crossref.org/documentation/retrieve-metadata/rest-api/"
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv Atom",
+      "category": "research",
+      "discovery_method": "official_atom",
+      "readiness": "implemented_live",
+      "reference_url": "https://info.arxiv.org/help/rss.html"
+    },
+    {
+      "id": "semantic_scholar",
+      "name": "Semantic Scholar Graph",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.semanticscholar.org/product/api"
+    },
+    {
+      "id": "pubmed",
+      "name": "PubMed E-utilities",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.ncbi.nlm.nih.gov/books/NBK25501/"
+    },
+    {
+      "id": "europepmc",
+      "name": "Europe PMC",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://europepmc.org/RestfulWebService"
+    },
+    {
+      "id": "biorxiv",
+      "name": "bioRxiv API",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://api.biorxiv.org/"
+    },
+    {
+      "id": "openreview",
+      "name": "OpenReview",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://docs.openreview.net/"
+    },
+    {
+      "id": "core",
+      "name": "CORE",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://core.ac.uk/services/api"
+    },
+    {
+      "id": "openadaire",
+      "name": "OpenAIRE Graph",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://graph.openaire.eu/"
+    },
+    {
+      "id": "doaj",
+      "name": "Directory of Open Access Journals",
+      "category": "research",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://doaj.org/api"
+    },
+    {
+      "id": "ssrn",
+      "name": "SSRN",
+      "category": "research",
+      "discovery_method": "web_or_rights",
+      "readiness": "rights_review",
+      "reference_url": "https://www.ssrn.com/"
+    },
+    {
+      "id": "ieee_xplore",
+      "name": "IEEE Xplore",
+      "category": "research",
+      "discovery_method": "licensed_api",
+      "readiness": "needs_rights",
+      "reference_url": "https://developer.ieee.org/"
+    },
+    {
+      "id": "datacite",
+      "name": "DataCite API",
+      "category": "datasets",
+      "discovery_method": "api_candidate",
+      "readiness": "implemented_live",
+      "reference_url": "https://support.datacite.org/docs/api"
+    },
+    {
+      "id": "zenodo",
+      "name": "Zenodo records",
+      "category": "datasets",
+      "discovery_method": "api_candidate",
+      "readiness": "implemented_live",
+      "reference_url": "https://developers.zenodo.org/"
+    },
+    {
+      "id": "huggingface_models",
+      "name": "Hugging Face models",
+      "category": "models",
+      "discovery_method": "official_api",
+      "readiness": "implemented_live",
+      "reference_url": "https://huggingface.co/docs/hub/en/api"
+    },
+    {
+      "id": "huggingface_datasets",
+      "name": "Hugging Face datasets",
+      "category": "datasets",
+      "discovery_method": "official_api",
+      "readiness": "implemented_live",
+      "reference_url": "https://huggingface.co/docs/hub/en/api"
+    },
+    {
+      "id": "kaggle",
+      "name": "Kaggle datasets",
+      "category": "datasets",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.kaggle.com/docs/api"
+    },
+    {
+      "id": "figshare",
+      "name": "Figshare",
+      "category": "datasets",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://docs.figshare.com/"
+    },
+    {
+      "id": "osf",
+      "name": "Open Science Framework",
+      "category": "datasets",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://developer.osf.io/"
+    },
+    {
+      "id": "data_gov_us",
+      "name": "Data.gov US",
+      "category": "datasets",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://catalog.data.gov/"
+    },
+    {
+      "id": "data_gov_tw",
+      "name": "Taiwan Open Data",
+      "category": "datasets",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://data.gov.tw/"
+    },
+    {
+      "id": "data_go_id",
+      "name": "Indonesia Satu Data",
+      "category": "datasets",
+      "discovery_method": "catalog_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://data.go.id/"
+    },
+    {
+      "id": "world_bank",
+      "name": "World Bank API",
+      "category": "economics",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information"
+    },
+    {
+      "id": "imf",
+      "name": "IMF SDMX",
+      "category": "economics",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://data.imf.org/"
+    },
+    {
+      "id": "oecd",
+      "name": "OECD SDMX",
+      "category": "economics",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.oecd.org/en/data.html"
+    },
+    {
+      "id": "fred",
+      "name": "FRED",
+      "category": "economics",
+      "discovery_method": "api_key",
+      "readiness": "needs_auth",
+      "reference_url": "https://fred.stlouisfed.org/docs/api/fred/"
+    },
+    {
+      "id": "eurostat",
+      "name": "Eurostat API",
+      "category": "economics",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://ec.europa.eu/eurostat/web/main/data/web-services"
+    },
+    {
+      "id": "openbb",
+      "name": "OpenBB",
+      "category": "economics",
+      "discovery_method": "provider_rights",
+      "readiness": "needs_rights",
+      "reference_url": "https://github.com/openbq-org/OpenBB"
+    },
+    {
+      "id": "sec_edgar",
+      "name": "SEC EDGAR companyfacts",
+      "category": "markets",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces"
+    },
+    {
+      "id": "companies_house",
+      "name": "UK Companies House",
+      "category": "markets",
+      "discovery_method": "api_key",
+      "readiness": "needs_auth",
+      "reference_url": "https://developer.company-information.service.gov.uk/"
+    },
+    {
+      "id": "opencorporates",
+      "name": "OpenCorporates",
+      "category": "markets",
+      "discovery_method": "licensed_api",
+      "readiness": "needs_rights",
+      "reference_url": "https://api.opencorporates.com/"
+    },
+    {
+      "id": "product_hunt",
+      "name": "Product Hunt",
+      "category": "products",
+      "discovery_method": "graphql_auth",
+      "readiness": "needs_auth",
+      "reference_url": "https://api.producthunt.com/v2/docs"
+    },
+    {
+      "id": "hackernews",
+      "name": "Hacker News API",
+      "category": "products",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://github.com/HackerNews/API"
+    },
+    {
+      "id": "hn_algolia",
+      "name": "HN Algolia Search",
+      "category": "products",
+      "discovery_method": "api_candidate",
+      "readiness": "implemented_live",
+      "reference_url": "https://hn.algolia.com/api"
+    },
+    {
+      "id": "github_advisories",
+      "name": "GitHub Advisory Database",
+      "category": "security",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://github.com/advisories"
+    },
+    {
+      "id": "osv",
+      "name": "OSV Vulnerability API",
+      "category": "security",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://google.github.io/osv.dev/api/"
+    },
+    {
+      "id": "cisa_kev",
+      "name": "CISA Known Exploited Vulnerabilities",
+      "category": "security",
+      "discovery_method": "json_feed",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+    },
+    {
+      "id": "nvd",
+      "name": "NVD CVE API",
+      "category": "security",
+      "discovery_method": "api_key_optional",
+      "readiness": "catalog_only",
+      "reference_url": "https://nvd.nist.gov/developers/vulnerabilities"
+    },
+    {
+      "id": "mitre_cve",
+      "name": "CVE program",
+      "category": "security",
+      "discovery_method": "feed_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.cve.org/"
+    },
+    {
+      "id": "wipo_patentscope",
+      "name": "WIPO PATENTSCOPE",
+      "category": "patents",
+      "discovery_method": "rights_review",
+      "readiness": "needs_rights",
+      "reference_url": "https://patentscope.wipo.int/"
+    },
+    {
+      "id": "epo_ops",
+      "name": "EPO Open Patent Services",
+      "category": "patents",
+      "discovery_method": "registration",
+      "readiness": "needs_auth",
+      "reference_url": "https://www.epo.org/en/searching-for-patents/data/web-services/ops"
+    },
+    {
+      "id": "uspto_odp",
+      "name": "USPTO Open Data Portal",
+      "category": "patents",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://data.uspto.gov/"
+    },
+    {
+      "id": "google_patents",
+      "name": "Google Patents",
+      "category": "patents",
+      "discovery_method": "web_rights_review",
+      "readiness": "needs_rights",
+      "reference_url": "https://patents.google.com/"
+    },
+    {
+      "id": "ietf_rfc",
+      "name": "RFC Editor",
+      "category": "standards",
+      "discovery_method": "feed_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.rfc-editor.org/"
+    },
+    {
+      "id": "w3c",
+      "name": "W3C standards",
+      "category": "standards",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.w3.org/TR/"
+    },
+    {
+      "id": "nist",
+      "name": "NIST publications",
+      "category": "standards",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.nist.gov/publications"
+    },
+    {
+      "id": "iso",
+      "name": "ISO standards",
+      "category": "standards",
+      "discovery_method": "licensed_metadata",
+      "readiness": "needs_rights",
+      "reference_url": "https://www.iso.org/standards.html"
+    },
+    {
+      "id": "iec",
+      "name": "IEC standards",
+      "category": "standards",
+      "discovery_method": "licensed_metadata",
+      "readiness": "needs_rights",
+      "reference_url": "https://www.iec.ch/standards"
+    },
+    {
+      "id": "ted",
+      "name": "EU TED procurement",
+      "category": "procurement",
+      "discovery_method": "official_search_api",
+      "readiness": "catalog_only",
+      "reference_url": "https://docs.ted.europa.eu/api/latest/search.html"
+    },
+    {
+      "id": "usaspending",
+      "name": "USAspending",
+      "category": "procurement",
+      "discovery_method": "official_api",
+      "readiness": "catalog_only",
+      "reference_url": "https://api.usaspending.gov/"
+    },
+    {
+      "id": "sam_gov",
+      "name": "SAM.gov opportunities",
+      "category": "procurement",
+      "discovery_method": "api_key",
+      "readiness": "needs_auth",
+      "reference_url": "https://open.gsa.gov/api/get-opportunities-public-api/"
+    },
+    {
+      "id": "sbir",
+      "name": "SBIR.gov",
+      "category": "funding",
+      "discovery_method": "maintenance_reported",
+      "readiness": "blocked_source",
+      "reference_url": "https://www.sbir.gov/api"
+    },
+    {
+      "id": "grants_gov",
+      "name": "Grants.gov",
+      "category": "funding",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.grants.gov/"
+    },
+    {
+      "id": "nih_reporter",
+      "name": "NIH RePORTER",
+      "category": "funding",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://api.reporter.nih.gov/"
+    },
+    {
+      "id": "cordis",
+      "name": "EU CORDIS",
+      "category": "funding",
+      "discovery_method": "data_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://cordis.europa.eu/"
+    },
+    {
+      "id": "nsf_awards",
+      "name": "NSF Awards",
+      "category": "funding",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.nsf.gov/awardsearch/"
+    },
+    {
+      "id": "open_sanctions",
+      "name": "OpenSanctions",
+      "category": "investigation",
+      "discovery_method": "license_api_key",
+      "readiness": "needs_rights",
+      "reference_url": "https://www.opensanctions.org/docs/api/"
+    },
+    {
+      "id": "openaleph",
+      "name": "OpenAleph",
+      "category": "investigation",
+      "discovery_method": "software_reference",
+      "readiness": "catalog_only",
+      "reference_url": "https://openaleph.org/"
+    },
+    {
+      "id": "bellingcat_autoarchiver",
+      "name": "Bellingcat Auto Archiver",
+      "category": "investigation",
+      "discovery_method": "software_reference",
+      "readiness": "catalog_only",
+      "reference_url": "https://github.com/bellingcat/auto-archiver"
+    },
+    {
+      "id": "courtlistener",
+      "name": "CourtListener",
+      "category": "legal",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.courtlistener.com/help/api/"
+    },
+    {
+      "id": "eurlex",
+      "name": "EUR-Lex",
+      "category": "legal",
+      "discovery_method": "data_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://eur-lex.europa.eu/"
+    },
+    {
+      "id": "us_federal_register",
+      "name": "US Federal Register",
+      "category": "legal",
+      "discovery_method": "official_api",
+      "readiness": "implemented_live",
+      "reference_url": "https://www.federalregister.gov/developers/documentation/api/v1"
+    },
+    {
+      "id": "legislation_gov_uk",
+      "name": "UK Legislation",
+      "category": "legal",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.legislation.gov.uk/"
+    },
+    {
+      "id": "gdelt",
+      "name": "GDELT",
+      "category": "news",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.gdeltproject.org/"
+    },
+    {
+      "id": "mediacloud",
+      "name": "Media Cloud",
+      "category": "news",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://mediacloud.org/"
+    },
+    {
+      "id": "bluesky",
+      "name": "Bluesky",
+      "category": "news",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://docs.bsky.app/"
+    },
+    {
+      "id": "reddit",
+      "name": "Reddit",
+      "category": "community",
+      "discovery_method": "oauth_rights",
+      "readiness": "needs_auth",
+      "reference_url": "https://www.reddit.com/dev/api/"
+    },
+    {
+      "id": "stackexchange",
+      "name": "Stack Exchange API",
+      "category": "community",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://api.stackexchange.com/docs"
+    },
+    {
+      "id": "energy_charts",
+      "name": "Energy-Charts",
+      "category": "energy",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://api.energy-charts.info/"
+    },
+    {
+      "id": "entsoe",
+      "name": "ENTSO-E Transparency",
+      "category": "energy",
+      "discovery_method": "registration",
+      "readiness": "needs_auth",
+      "reference_url": "https://transparency.entsoe.eu/"
+    },
+    {
+      "id": "eia",
+      "name": "US EIA",
+      "category": "energy",
+      "discovery_method": "api_key",
+      "readiness": "needs_auth",
+      "reference_url": "https://www.eia.gov/opendata/"
+    },
+    {
+      "id": "nrel_data",
+      "name": "NREL Data and Tools",
+      "category": "energy",
+      "discovery_method": "api_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.nrel.gov/research/data-tools.html"
+    },
+    {
+      "id": "open_power_system_data",
+      "name": "Open Power System Data",
+      "category": "energy",
+      "discovery_method": "dataset_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://open-power-system-data.org/"
+    },
+    {
+      "id": "pvdaq",
+      "name": "PVDAQ",
+      "category": "energy",
+      "discovery_method": "data_candidate",
+      "readiness": "catalog_only",
+      "reference_url": "https://www.nrel.gov/grid/solar-resource/pvdaq.html"
+    },
+    {
+      "id": "regulations_gov",
+      "name": "Regulations.gov",
+      "category": "legal",
+      "discovery_method": "api_key",
+      "readiness": "needs_auth",
+      "reference_url": "https://open.gsa.gov/api/regulationsgov/"
+    },
+    {
+      "id": "google_trends",
+      "name": "Google Trends",
+      "category": "demand",
+      "discovery_method": "unofficial_or_limited",
+      "readiness": "needs_rights",
+      "reference_url": "https://trends.google.com/"
+    }
+  ]
+}
