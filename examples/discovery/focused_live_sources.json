@@ -1,0 +1,148 @@
+{
+  "schema": "cite_refinery.multisource_discovery.v1",
+  "sources": [
+    {
+      "id": "signals_archive",
+      "provider": "github_signals",
+      "query": "archive",
+      "tags": [
+        "open_source",
+        "evidence"
+      ],
+      "project_targets": [
+        "atlas"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "signals_citation",
+      "provider": "github_signals",
+      "query": "citation",
+      "tags": [
+        "open_source",
+        "research"
+      ],
+      "project_targets": [
+        "atlas"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "github_archive",
+      "provider": "github_search",
+      "query": "web archiving",
+      "tags": [
+        "open_source",
+        "evidence"
+      ],
+      "project_targets": [
+        "nocturnal"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "github_pdf",
+      "provider": "github_search",
+      "query": "pdf table extraction",
+      "tags": [
+        "open_source",
+        "documents"
+      ],
+      "project_targets": [
+        "research_drive"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "github_claims",
+      "provider": "github_search",
+      "query": "citation grounded research",
+      "tags": [
+        "open_source",
+        "research"
+      ],
+      "project_targets": [
+        "cite_agent"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "github_pv",
+      "provider": "github_search",
+      "query": "photovoltaic anomaly",
+      "tags": [
+        "open_source",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "openalex_pv",
+      "provider": "openalex",
+      "query": "photovoltaic anomaly detection dataset",
+      "tags": [
+        "research",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "openalex_citations",
+      "provider": "openalex",
+      "query": "scientific claim verification citations",
+      "tags": [
+        "research",
+        "citations"
+      ],
+      "project_targets": [
+        "cite_agent"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "crossref_pv",
+      "provider": "crossref",
+      "query": "photovoltaic anomaly detection data quality",
+      "tags": [
+        "research",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "datacite_pv",
+      "provider": "datacite",
+      "query": "PVDAQ fault diagnosis",
+      "tags": [
+        "datasets",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab"
+      ],
+      "limit": 8
+    },
+    {
+      "id": "zenodo_pv",
+      "provider": "zenodo",
+      "query": "photovoltaic anomaly dataset",
+      "tags": [
+        "datasets",
+        "solar_energy"
+      ],
+      "project_targets": [
+        "policy_lab"
+      ],
+      "limit": 8
+    }
+  ]
+}
