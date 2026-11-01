@@ -1,0 +1,61 @@
+{
+  "schema": "cite_refinery.original_source_cases.v1",
+  "cases": [
+    {
+      "record_id": "datacite_pv:10.5281/zenodo.23646443",
+      "requirement_id": "policy_pv_quality"
+    },
+    {
+      "record_id": "openalex_pv:W7135057135",
+      "requirement_id": "policy_pv_quality"
+    },
+    {
+      "record_id": "openalex_pv:W4225888491",
+      "requirement_id": "policy_pv_quality"
+    },
+    {
+      "record_id": "github_archive:ciderapp/webview2-archives",
+      "requirement_id": "nocturnal_archiving"
+    },
+    {
+      "record_id": "github_archive:ga34-hp/atg-archival-website",
+      "requirement_id": "nocturnal_archiving"
+    },
+    {
+      "record_id": "github_archive:getmefound/gmf-website-archive",
+      "requirement_id": "nocturnal_archiving"
+    },
+    {
+      "record_id": "github_pdf:lydiatools/pdf-table-traps",
+      "requirement_id": "research_drive_pdf_tables"
+    },
+    {
+      "record_id": "github_pdf:rnahumaf/extract-pdf-table",
+      "requirement_id": "research_drive_pdf_tables"
+    },
+    {
+      "record_id": "openalex_citations:W7212013042",
+      "requirement_id": "cite_grounding"
+    },
+    {
+      "record_id": "github_archive:bhwilkoff/ear-drama",
+      "requirement_id": "nocturnal_archiving"
+    },
+    {
+      "record_id": "github_archive:dicklesworthstone/mcp_agent_mail_rust",
+      "requirement_id": "nocturnal_archiving"
+    },
+    {
+      "record_id": "github_pdf:api-evangelist/tensorlake",
+      "requirement_id": "research_drive_pdf_tables"
+    },
+    {
+      "record_id": "openalex_citations:W3023035014",
+      "requirement_id": "cite_grounding"
+    },
+    {
+      "record_id": "openalex_pv:W4385826204",
+      "requirement_id": "policy_pv_quality"
+    }
+  ]
+}

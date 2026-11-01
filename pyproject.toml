@@ -77,6 +77,7 @@ cite-refinery-git-heads = "cite_refinery.git_head_export:main"
 cite-refinery-github-releases = "cite_refinery.github_release_export:main"
 cite-refinery-multisource = "cite_refinery.multi_source_discovery:main"
 cite-refinery-discovery-review = "cite_refinery.discovery_capability_review:main"
+cite-refinery-source-gate = "cite_refinery.source_evidence_gate:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
