@@ -38,7 +38,8 @@
       "project_targets": [
         "nocturnal"
       ],
-      "limit": 8
+      "limit": 8,
+      "ranking": "recent"
     },
     {
       "id": "github_pdf",
@@ -51,7 +52,8 @@
       "project_targets": [
         "research_drive"
       ],
-      "limit": 8
+      "limit": 8,
+      "ranking": "recent"
     },
     {
       "id": "github_claims",
@@ -64,7 +66,8 @@
       "project_targets": [
         "cite_agent"
       ],
-      "limit": 8
+      "limit": 8,
+      "ranking": "recent"
     },
     {
       "id": "github_pv",
@@ -77,7 +80,8 @@
       "project_targets": [
         "policy_lab"
       ],
-      "limit": 8
+      "limit": 8,
+      "ranking": "recent"
     },
     {
       "id": "openalex_pv",

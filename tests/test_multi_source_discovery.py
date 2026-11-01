@@ -39,6 +39,25 @@ class SourceTests(unittest.TestCase):
         self.assertEqual(results[0]["entity_key"],"github:org/researchrepo")
         self.assertEqual(results[0]["evidence_status"],"unverified_external_metadata")
 
+    def test_github_search_relevance_default_and_explicit_recent(self):
+        from cite_refinery.multi_source_discovery import validate_sources
+        calls=[]
+        def github(path):
+            calls.append(path)
+            return {"items":[{"full_name":"Org/Repo","html_url":"https://github.com/Org/Repo"}]}
+        base=s("github_search",query="web archiving")
+        manifest={"schema":SCHEMA,"sources":[base]}
+        relevance=validate_sources(manifest)[0]
+        collect_provider(relevance,gh=github)
+        self.assertNotIn("sort=updated",calls[-1])
+        manifest["sources"][0]["ranking"]="recent"
+        recent=validate_sources(manifest)[0]
+        collect_provider(recent,gh=github)
+        self.assertIn("sort=updated",calls[-1])
+        manifest["sources"][0]["ranking"]="random"
+        with self.assertRaises(ValueError):
+            validate_sources(manifest)
+
     def test_github_search_and_signals_share_entity_key(self):
         csv=("repo_slug,repo_url,repo_keywords\n"
              "Org/Repo,https://github.com/Org/Repo,solar\n").encode()

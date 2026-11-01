@@ -1,0 +1,45 @@
+{
+  "schema": "cite_refinery.original_source_cases.v1",
+  "cases": [
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:archivebox/archivebox"
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:webrecorder/pywb"
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:internetarchive/heritrix3"
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:iipc/awesome-web-archiving"
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:mattermost/mattermost-webapp"
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "record_id": "github_archive:googlechrome/related-website-sets"
+    },
+    {
+      "requirement_id": "research_drive_pdf_tables",
+      "record_id": "github_pdf:atlanhq/camelot"
+    },
+    {
+      "requirement_id": "research_drive_pdf_tables",
+      "record_id": "github_pdf:xavctn/img2table"
+    },
+    {
+      "requirement_id": "research_drive_pdf_tables",
+      "record_id": "github_pdf:cycloneboy/pdf_table"
+    },
+    {
+      "requirement_id": "policy_pv_quality",
+      "record_id": "datacite_pv:10.5281/zenodo.23646443"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "schema": "cite_refinery.original_source_gate_config.v1",
+  "requirements": {
+    "schema": "cite_refinery.discovery_requirements.v1",
+    "requirements": [
+      {
+        "id": "policy_pv_quality",
+        "project": "policy_lab",
+        "question": "Plant time-series PV anomaly benchmark",
+        "must_match": [
+          [
+            "photovolta",
+            "solar",
+            "pv"
+          ],
+          [
+            "anomal",
+            "fault",
+            "quality",
+            "degrad",
+            "diagnos"
+          ]
+        ],
+        "bonus": [
+          "dataset"
+        ],
+        "allow_source_types": [
+          "research",
+          "datasets",
+          "software"
+        ]
+      },
+      {
+        "id": "nocturnal_archiving",
+        "project": "nocturnal",
+        "question": "Online evidence archive",
+        "must_match": [
+          [
+            "web",
+            "website",
+            "online",
+            "social",
+            "video"
+          ],
+          [
+            "archiv",
+            "preserv",
+            "capture"
+          ]
+        ],
+        "bonus": [
+          "evidence"
+        ],
+        "allow_source_types": [
+          "software",
+          "research"
+        ]
+      },
+      {
+        "id": "research_drive_pdf_tables",
+        "project": "research_drive",
+        "question": "PDF cell fidelity",
+        "must_match": [
+          [
+            "pdf",
+            "document"
+          ],
+          [
+            "table",
+            "cell"
+          ],
+          [
+            "extract",
+            "parser",
+            "layout",
+            "validat"
+          ]
+        ],
+        "bonus": [
+          "header",
+          "cell"
+        ],
+        "allow_source_types": [
+          "software",
+          "research",
+          "datasets"
+        ]
+      },
+      {
+        "id": "cite_grounding",
+        "project": "cite_agent",
+        "question": "Scientific claim citation grounding",
+        "must_match": [
+          [
+            "paper",
+            "research",
+            "scientif",
+            "literature"
+          ],
+          [
+            "citat",
+            "cite",
+            "ground",
+            "verif",
+            "evidence"
+          ]
+        ],
+        "bonus": [
+          "claim"
+        ],
+        "allow_source_types": [
+          "software",
+          "research",
+          "datasets"
+        ]
+      }
+    ]
+  },
+  "gates": [
+    {
+      "requirement_id": "policy_pv_quality",
+      "evidence_must_contain": [
+        [
+          "photovolta",
+          "solar",
+          "pv"
+        ],
+        [
+          "plant",
+          "inverter",
+          "field dataset",
+          "field data",
+          "time series",
+          "time-series",
+          "string-level"
+        ],
+        [
+          "anomal",
+          "fault",
+          "diagnos",
+          "degrad"
+        ]
+      ]
+    },
+    {
+      "requirement_id": "nocturnal_archiving",
+      "evidence_must_contain": [
+        [
+          "web page",
+          "webpage",
+          "websites",
+          "social media",
+          "website snapshot",
+          "website archiving",
+          "page capture"
+        ],
+        [
+          "archiv",
+          "preserv",
+          "capture",
+          "snapshot"
+        ],
+        [
+          "timestamp",
+          "hash",
+          "provenance",
+          "source url",
+          "metadata"
+        ]
+      ]
+    },
+    {
+      "requirement_id": "research_drive_pdf_tables",
+      "evidence_must_contain": [
+        [
+          "pdf"
+        ],
+        [
+          "table",
+          "cell",
+          "row"
+        ],
+        [
+          "header",
+          "column",
+          "cell",
+          "value"
+        ],
+        [
+          "check",
+          "assert",
+          "verif",
+          "test"
+        ]
+      ]
+    },
+    {
+      "requirement_id": "cite_grounding",
+      "evidence_must_contain": [
+        [
+          "research",
+          "scientif",
+          "paper",
+          "manuscript"
+        ],
+        [
+          "claim",
+          "citat",
+          "reference"
+        ],
+        [
+          "verif",
+          "evidence",
+          "support"
+        ]
+      ]
+    }
+  ],
+  "originals": {
+    "openalex_pv:W7135057135": "https://zenodo.org/records/18979876",
+    "openalex_citations:W7212013042": "https://arxiv.org/abs/2609.07652"
+  }
+}

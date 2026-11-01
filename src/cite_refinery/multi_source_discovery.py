@@ -131,6 +131,11 @@ def validate_sources(data: Any) -> list[dict[str, Any]]:
             raise ValueError("search sources need a substantive query")
         if type(limit) is not int or not 1 <= limit <= MAX_RESULT:
             raise ValueError("source limit must be 1..12")
+        ranking = row.get("ranking", "relevance")
+        if provider == "github_search" and ranking not in {"relevance", "recent"}:
+            raise ValueError("GitHub search ranking must be relevance or recent")
+        if provider != "github_search" and "ranking" in row:
+            raise ValueError("ranking only applies to GitHub repository search")
         if (not isinstance(tags, list) or not tags or len(tags) > 8
                 or any(not isinstance(t, str) or not SAFE_TAG_RE.fullmatch(t) for t in tags)):
             raise ValueError("source must have specific, safe tags")
@@ -140,7 +145,8 @@ def validate_sources(data: Any) -> list[dict[str, Any]]:
         ids.add(sid)
         out.append({"id": sid, "provider": provider, "query": query.strip(),
                     "limit": limit, "tags": sorted(set(tags)),
-                    "project_targets": sorted(set(targets))})
+                    "project_targets": sorted(set(targets)),
+                    "ranking": ranking if provider == "github_search" else None})
     return out
 
 
@@ -233,9 +239,12 @@ def collect_provider(source: dict[str, Any], fetch: Fetch = fetch_http,
             if len(rows) >= n:
                 break
     elif provider == "github_search":
-        endpoint = "search/repositories?" + urllib.parse.urlencode({
-            "q": q, "per_page": n, "sort": "updated", "order": "desc"
-        })
+        params = {"q": q, "per_page": n}
+        # Explicit opt-in to recent activity; retrieval relevance is the
+        # default because updated-time sorting buries foundational tools.
+        if source.get("ranking") == "recent":
+            params.update(sort="updated", order="desc")
+        endpoint = "search/repositories?" + urllib.parse.urlencode(params)
         raw = gh(endpoint)
         for v in raw.get("items", [])[:n]:
             slug = v.get("full_name", "")
