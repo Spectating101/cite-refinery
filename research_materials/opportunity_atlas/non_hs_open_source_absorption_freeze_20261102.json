@@ -1,0 +1,133 @@
+{
+  "schema": "atlas.non_hs_upstream_absorption_freeze.v1",
+  "frozen_at": "2026-11-02",
+  "timezone": "Asia/Taipei",
+  "status": "DOCUMENTATION_ONLY_FROZEN",
+  "owner": "Cite–Refinery/Atlas (coordination only)",
+  "source_document": "docs/NON_HS_OPEN_SOURCE_ABSORPTION_FREEZE_2026-11-02.md",
+  "prior_freeze_pr": "https://github.com/Spectating101/cite-refinery/pull/134",
+  "execution_authorized": false,
+  "install_authorized": false,
+  "merge_authorized": false,
+  "deploy_authorized": false,
+  "external_contact_authorized": false,
+  "notes": [
+    "Candidates from exploratory GitHub scouting; not installed, executed, independently benchmarked or adopted.",
+    "Relative priority is a proposed evaluation sequence, not project authority.",
+    "Use exact pinned upstream versions and project-owned independent baselines when work resumes.",
+    "Do not put private repository source, secrets, sensitive investigation data or unpublished vulnerability details in public indexes."
+  ],
+  "first_wave": [
+    {
+      "id": "N1",
+      "owner": "Nocturnal",
+      "task": "Archive permitted sources and inspect file metadata; preserve original hashes and claims/editorial boundaries",
+      "candidates": [
+        "https://github.com/bellingcat/auto-archiver",
+        "https://github.com/osintshifu/filegrail"
+      ],
+      "baseline": "Nocturnal current source capture, verified journal and local metadata inspection",
+      "acceptance": "Source bytes, custody/journal linkage, permission and planted metadata contradiction; no invented source truth",
+      "status": "BENCHMARK_FIRST"
+    },
+    {
+      "id": "P1",
+      "owner": "Policy Lab",
+      "task": "Independent PV time-series quality, physical-model baseline and negative controls",
+      "candidates": [
+        "https://github.com/pvlib/pvanalytics",
+        "https://github.com/pvlib/pvlib-python"
+      ],
+      "reference": [
+        "https://github.com/NatLabRockies/rdtools"
+      ],
+      "baseline": "Policy Lab existing source QA and E7/PVDAQ evidence decisions",
+      "acceptance": "Held-out quality flags, scientific parity, false admission, false rejection, exact unchanged domain decisions",
+      "status": "BENCHMARK_FIRST"
+    },
+    {
+      "id": "C1",
+      "owner": "Cite-Agent",
+      "task": "Held-out citation/source claim grounding comparison",
+      "candidates": [
+        "https://github.com/Future-House/paper-qa"
+      ],
+      "baseline": "Cite-Agent existing claim grounder and equal-access standalone agent",
+      "acceptance": "Correct supported/contradicted/unsupported determinations, exact quote/source, refusal when uncertain, measured cost",
+      "status": "BENCHMARK_FIRST"
+    }
+  ],
+  "later_wave": [
+    {
+      "owner": "Research Drive",
+      "candidate": "https://github.com/docling-project/docling",
+      "task": "Blind exact-cell/document layout extraction"
+    },
+    {
+      "owner": "Research Drive / Policy Lab",
+      "candidate": "https://github.com/frictionlessdata/frictionless-py",
+      "task": "Schema and cell preservation validation"
+    },
+    {
+      "owner": "Research Drive / Policy Lab / Cite",
+      "candidate": "https://github.com/ResearchObject/ro-crate-py",
+      "task": "Portable reproducible evidence package and rights preservation"
+    },
+    {
+      "owner": "Nocturnal / Atlas Practical",
+      "candidate": "https://github.com/openaleph/openaleph",
+      "task": "Entity-document case exchange with no unsupported promotion"
+    },
+    {
+      "owner": "Nocturnal",
+      "candidate": "https://github.com/thunderstornX/forenix-oss",
+      "task": "Compare audited case custody; optional architecture reference"
+    },
+    {
+      "owner": "Cite-Agent / Atlas Academic",
+      "candidate": "https://github.com/AImageLab-zip/paper-snitch",
+      "task": "Research reproducibility artifact screening"
+    },
+    {
+      "owner": "Atlas",
+      "candidate": "https://github.com/repowise-dev/repowise",
+      "task": "Repository structure and change impact comparison; assess AGPL obligations"
+    },
+    {
+      "owner": "Cross-portfolio",
+      "candidate": "https://github.com/cloudflare/security-audit-skill",
+      "task": "Isolated, permissioned independent audit method"
+    },
+    {
+      "owner": "Sharpe–Terminus / Research Drive",
+      "candidate": "https://github.com/openbq-org/OpenBB",
+      "task": "Financial data provider point-in-time/rights assessment"
+    }
+  ],
+  "unverified_candidates": [
+    {
+      "owner": "Gauntlet",
+      "previously_suggested": "Datalab-AUTH/esco-skill-extractor",
+      "reason": "GitHub repository path did not resolve; do not present as available"
+    }
+  ],
+  "admission_options": [
+    "ADOPT",
+    "ADAPT",
+    "REFERENCE",
+    "WATCH",
+    "REJECT",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "require": [
+    "pinned_upstream_sha",
+    "license_review",
+    "precommitted_holdout",
+    "baseline_parity",
+    "failure_receipts",
+    "cost_receipts",
+    "owner_review",
+    "unchanged_authority_boundary"
+  ],
+  "freeze_rule": "No activity until explicit resume request"
+}
