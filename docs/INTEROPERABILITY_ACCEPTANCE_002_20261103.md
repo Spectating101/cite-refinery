@@ -40,15 +40,30 @@ The positioned extractor is **reused from PDF Table Traps** (`scripts.positional
 
 During the more stringent checks, a native Nocturnal capture with **raw HTML different from extracted readable text** produced a WARC whose `X-Watchdog-SHA256` described the readable text, **not its archived HTML response body**. In a second negative control, a failed remote fetch could be replaced by an apparent successful HTTP response WARC.
 
-This was a **real source-side integrity-contract issue**, independent of pywb. The isolated Nocturnal [draft PR #114](https://github.com/Spectating101/nocturnal-oversight/pull/114) retains the original text digest for compatibility, adds `warc_payload_sha256`, passes that digest to the native WARC writer, and skips WARC creation after failed fetch/no body. Local **12 focused Nocturnal tests passed**. Its existing broad CI product suites currently fail during test collection due to missing `numpy`, not because the new custody assertions failed. No historical WARC was modified.
+This was a **real source-side integrity-contract issue**, independent of pywb. The isolated Nocturnal [draft PR #114](https://github.com/Spectating101/nocturnal-oversight/pull/114) retains the original text digest for compatibility, adds `warc_payload_sha256`, passes that digest to the native WARC writer, and skips WARC creation after failed fetch/no body. Local **12 focused Nocturnal tests passed**. The Nocturnal PR subsequently declared NumPy and provided Poppler test tools; all focused and full GitHub checks now pass. The PR remains unmerged. No historical WARC was modified.
 
 ## Deployment decision
 
-- **Research Drive:** `LIMITED_OPERATOR_ASSISTED_CANDIDATE`. img2table borderless remains promising for small digitally readable tables, but incomplete multi-page headers and untabulated positional layouts **fail closed**. Do not enable unattended PDF-to-data promotion, auto-fill missing cells, or replace a verified source-cell check with numeric-token presence. Keep the existing Research Drive `local_file` PDF result `metadata_only_backend` until its own owner-reviewed implementation is separately accepted.
+- **Research Drive:** `LIMITED_OPERATOR_ASSISTED_CANDIDATE`. img2table borderless remains promising for small digitally readable tables, but incomplete multi-page headers and untabulated positional layouts **fail closed**. Do not enable unattended PDF-to-data promotion, auto-fill missing cells, or replace a verified source-cell check with numeric-token presence. The `local_file` query backend remains intentionally metadata-only, but a separate native Research Drive PDF table helper already exists; it must be retained rather than duplicated.
 - **Nocturnal:** `SOURCE_INTEGRITY_FIX_REVIEW_REQUIRED`. Review and merge draft PR #114 only after affected consumers and a clean focused GitHub workflow check. The existing WARC/pywb replay stack still works for the earlier synthetic single-page test; it does not certify advanced capture.
 - **Atlas:** Preserve this second acceptance receipt on the original typed edges. A source can be viable for capture but not replay, or extraction but not trustworthy row/header continuity.
 
 **Caveat:** This was an expanded *independently maintained synthetic source corpus*. An attempt to fetch a real published annual financial PDF on Optiplex met HTTP 403/404; no real financial document was benchmarked, and no real-world performance number is asserted. There was no OCR, scanned-page, long-form academic, confidential or adversarial PDF evaluation. All source-specific inputs, artifacts and full logs remain private on Optiplex.
+
+## Native Research Drive baseline correction (November 3 follow-up)
+
+The earlier Atlas report inspected only the `local_file` query backend and incorrectly implied there was no existing Research Drive PDF table parser. The latest procurement-branch code (commit `42d5cdac4f0ef48269b14d38d93a7377cffde86a`) has an existing `recorded_fetch.HELPER.pdf_tables` backed by pdfplumber and a separate `PDFScope`/`SourceCell` evidence model.
+
+**Actual native helper replay against the independent source fixtures:**
+
+| Fixture | Native Research Drive parser | Optional img2table |
+|---|---|---|
+| Ruled table | 4/4 | 4/4 |
+| Borderless table | 0 pass, 1 fail, 3 unknown | 4/4 |
+| Prose negative control | 1/1 | 1/1 |
+| Positional two-page | 0 pass, 2 unknown | 0 pass, 2 unknown |
+
+The native system preserves PDF hash, physical page/table/row identity and source-cell references, with semantics marked unassessed. The new **optional candidate** in Research Drive draft PR #91 reuses those primitives, requires manual source-cell review and has no auto-publication capability. Neither approach is approved for unattended production ingestion.
 
 ## Reproduce
 
