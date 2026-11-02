@@ -78,7 +78,14 @@
           "table_index": 0,
           "id": "apple_fy25q1:08"
         }
-      ]
+      ],
+      "word_witness_header_contract": {
+        "row_index": 0,
+        "period_key_to_printed_text": {
+          "current_quarter": "2024",
+          "prior_quarter": "2023"
+        }
+      }
     },
     {
       "id": "apple_fy25q4",
@@ -153,7 +160,14 @@
           "table_index": 0,
           "id": "apple_fy25q4:08"
         }
-      ]
+      ],
+      "word_witness_header_contract": {
+        "row_index": 0,
+        "period_key_to_printed_text": {
+          "current_quarter": "2025",
+          "current_full_year": "2025"
+        }
+      }
     },
     {
       "id": "alphabet_2025q2",
@@ -228,7 +242,14 @@
           "table_index": 1,
           "id": "alphabet_2025q2:08"
         }
-      ]
+      ],
+      "word_witness_header_contract": {
+        "row_index": 0,
+        "period_key_to_printed_text": {
+          "current_quarter": "2025",
+          "prior_quarter": "2024"
+        }
+      }
     },
     {
       "id": "alphabet_2025q3",
@@ -299,7 +320,13 @@
           "table_index": 1,
           "id": "alphabet_2025q3:08"
         }
-      ]
+      ],
+      "word_witness_header_contract": {
+        "row_index": 0,
+        "period_key_to_printed_text": {
+          "current_quarter": "2025"
+        }
+      }
     },
     {
       "id": "amazon_2026q3",
@@ -374,7 +401,14 @@
           "table_index": 0,
           "id": "amazon_2026q3:08"
         }
-      ]
+      ],
+      "word_witness_header_contract": {
+        "row_index": 2,
+        "period_key_to_printed_text": {
+          "current_quarter": "2026",
+          "current_nine_months": "2026"
+        }
+      }
     }
   ]
 }

@@ -54,3 +54,21 @@ PYTHONPATH=src:. /path/to/isolated/bin/python scripts/financial_source_cell_acce
 The script fails on missing/mismatched original source hashes, refuses overwriting a receipt and calls the actual Research Drive helpers. A synthetic offline test suite verifies that a wrong row, a swapped period, a flattened value, a duplicate row and falsely numeric text cannot be promoted as an exact source cell. Output and the 40 individual outcomes are retained in [`financial_source_cell_acceptance_20261103.json`](../examples/discovery/financial_source_cell_acceptance_20261103.json).
 
 **Next release gate:** a second person independently adjudicates the same cells and a holdout with 5–10 additional document/layout classes (including negative controls), followed by a custody-compatible independent recheck of optional cells against original PDF bytes and physical word/geometry evidence. Only then consider a restricted, operator-approved route. No merge, production activation, public dataset publication or private-source use is implied.
+
+## Independent original-word/geometry verification bridge
+
+A follow-up Research Drive source module, `optional_pdf_source_check.py`, now **reuses Research Drive's pre-existing `cell_evidence.pdf_words`** to independently reopen original source bytes and confirm selected label/value/header PDF words against the candidate's 200-DPI pixel geometry projected onto original PDF points. It rejects invalid/missing geometry, cropped or rotated pages, changed source hashes and misaligned original-word associations, but cannot certify the semantic meaning of multi-level period headers without an additional operator decision.
+
+Atlas's executable wrapper [`scripts/interop_original_word_acceptance.py`](../scripts/interop_original_word_acceptance.py) replays the same five pinned company PDFs through **both** Research Drive functions and emits sanitized findings in [`original_pdf_word_witness_20261103.json`](../examples/discovery/original_pdf_word_witness_20261103.json). Result: **40 of 40 specifically selected cells obtained original-PDF label, number and selected header word witnesses; 0 abstentions on those selected cells**. All six comparison flags passed for each. These counts supplement, but do not upgrade, the earlier single-reviewer manually read cell checks. Original source bytes and fuller word excerpts remain in private local custody, not this Git repository.
+
+This is still **review-only original-word evidence**, not the trusted Research Drive independent PDF-to-CSV checker. The checker's output never becomes a `PDFScope`, never calls `write_evidence_table`, and cannot authorize procurement, publication or dataset registration. The original BIS/arXiv extraction failures are retained. Further acceptance needs multilevel header/footnote interpretation, double adjudication, and an independently controlled trust transition before approval.
+
+Replay (authorized local original PDFs and isolated `img2table==2.0.0` environment):
+
+```bash
+PYTHONPATH=src:. python scripts/interop_original_word_acceptance.py \
+  --oracle examples/discovery/operator_reviewed_financial_cells_20261103.json \
+  --pdf-dir /private/originals \
+  --research-drive-root /local/research-drive-private \
+  --out /private/new_word_witness.json
+```
