@@ -1,0 +1,56 @@
+# Financial source-cell accuracy gate — 3 November 2026
+
+**Decision: retain optional img2table as an operator-assisted experimental candidate; no default ingestion or trusted data export.** This is a source-backed comparison of two **existing** Research Drive functions, not another PDF parser or new table-custody system.
+
+## Corpus and chain of evidence
+
+Five distinct public primary-source earnings PDFs from **three publishers** (Apple, Alphabet, Amazon) were retrieved over HTTPS. Their exact original PDF SHA-256 digests, publisher links, source page IDs and approved operator column maps are pinned in [`operator_reviewed_financial_cells_20261103.json`](../examples/discovery/operator_reviewed_financial_cells_20261103.json). No source PDF bytes are committed.
+
+A single reviewer visually read full rendered original PDF pages (not the parser result) and transcribed **eight defined source cells per document, 40 total**. These pages contain comparative reporting-period columns, parenthesized negative numbers, quarterly/year-to-date values, footnotes and repeated numerical totals. No second independent reviewer or blinded random sampling was performed. Human inspection time was not measured and must not be fabricated.
+
+This follow-up uses the five new documents **in addition to** the five-document BIS/arXiv execution stress test in [`REAL_PDF_OPERATOR_PILOT_20261103.md`](REAL_PDF_OPERATOR_PILOT_20261103.md); those earlier documents were not cell-adjudicated and must not be mixed into the 40-cell denominator.
+
+### Verification rule
+
+The benchmark runs Research Drive's existing `recorded_fetch.HELPER.pdf_tables` (pdfplumber) and `optional_pdf_candidates.extract_candidates` (img2table 2.0.0). The checker is a **comparison harness**, not a trusted Research Drive PDF verifier.
+
+- Exact SHA-256 of the original source PDF must match the manually reviewed oracle before parsing.
+- Each expected value is pinned to a physical 1-based page, visually inspected table, exact row label, and period key. Table indices and period-column indices are **explicit operator-scoped declarations for each source and engine**, never inferred or silently repaired.
+- A successful match requires **two atomic parser cells** on the same row: a separate unique source label and the expected period's numeric value. Recognizing a number anywhere in a page, embedding several values in one cell, or matching across rows does **not** pass.
+- The numeric string preserves grouped thousands, parentheses, minus, decimals and trailing zero precision. Only whitespace and visual currency markers are removed. Wrong associated values are counted as wrong; unresolved/duplicate/flattened rows or missing column mappings abstain.
+- The independent original-source checker that protects Research Drive's trusted CSV lane was **not** invoked for optional parser results. All 40 matches remain reviewed parser candidates, not verified published datasets.
+
+## Measured result
+
+| Publisher PDF | Target cells | Native exact | Native abstain | Optional exact | Optional abstain |
+|---|---:|---:|---:|---:|---:|
+| Apple FY25 Q1 | 8 | 8 | 0 | 8 | 0 |
+| Apple FY25 Q4 | 8 | 8 | 0 | 8 | 0 |
+| Alphabet 2025 Q2 | 8 | 0 | 8 | 8 | 0 |
+| Alphabet 2025 Q3 | 8 | 0 | 8 | 8 | 0 |
+| Amazon 2026 Q3 | 8 | 0 | 8 | 8 | 0 |
+| **Total** | **40** | **16** | **24** | **40** | **0** |
+
+Both engines completed all five selected-page executions. No wrong associated value was detected among these targets. The native engine frequently returns an entire Alphabet/Amazon financial row as **one concatenated cell**, with the label and multiple period numbers merged. Those 24 values are correctly classified as *not independently period-associated*, even if their numbers appear as readable text. The optional engine separated the label and period values correctly in this tightly scoped corpus.
+
+Mean end-to-end per-document local execution: **native 0.233 seconds, optional 3.245 seconds**, on this single Optiplex host; execution timings are indicative and exclude manual inspection, network fetch and deployment overhead. This is a performance tradeoff, not statistical evidence of general throughput.
+
+## Why this does not overturn the earlier HOLD
+
+The first real-PDF stress pilot had **three img2table failures out of five document attempts** (two upstream PDF text/geometry `zip(..., strict=True)` errors and one rejected invalid bounding box). The present corpus deliberately selects structured public earnings reports with a single known target table/page for source-cell checks. Both results can be true: **excellent extraction on known financial statements and unreliable execution on a broader sample**.
+
+The 40/40 figure does not measure unknown-table detection, page-header continuation, false-positive chart detection, scanned PDF recovery, all-cell recall, random corpus generalization, or blind reviewer agreement. It also does not authorize a model to assert provenance from a parser-generated cell; the existing Research Drive native independent checker must independently verify approved data sources before any trusted output. Under this corpus, the native checker cannot verify many optional cells without an independently reviewed alternative verification route. Do not bypass that checker.
+
+## Reproducibility (local, authorized original PDFs only)
+
+```bash
+PYTHONPATH=src:. /path/to/isolated/bin/python scripts/financial_source_cell_acceptance.py \
+  --oracle examples/discovery/operator_reviewed_financial_cells_20261103.json \
+  --pdf-dir /path/to/original/pdfs \
+  --research-drive-root /path/to/research-drive-private \
+  --output /private/immutable/financial-cell-replay.json
+```
+
+The script fails on missing/mismatched original source hashes, refuses overwriting a receipt and calls the actual Research Drive helpers. A synthetic offline test suite verifies that a wrong row, a swapped period, a flattened value, a duplicate row and falsely numeric text cannot be promoted as an exact source cell. Output and the 40 individual outcomes are retained in [`financial_source_cell_acceptance_20261103.json`](../examples/discovery/financial_source_cell_acceptance_20261103.json).
+
+**Next release gate:** a second person independently adjudicates the same cells and a holdout with 5–10 additional document/layout classes (including negative controls), followed by a custody-compatible independent recheck of optional cells against original PDF bytes and physical word/geometry evidence. Only then consider a restricted, operator-approved route. No merge, production activation, public dataset publication or private-source use is implied.

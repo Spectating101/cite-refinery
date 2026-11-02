@@ -1,0 +1,380 @@
+{
+  "schema": "atlas.operator_reviewed_financial_cells.v1",
+  "created": "2026-11-03",
+  "annotation_method": "single_operator_visual_review_of_original_rendered_pdf_page_independent_of_parser_grids",
+  "double_reviewed": false,
+  "scope": "five public earnings-release PDFs; eight targeted cells per PDF; not a representative random sample",
+  "sources": [
+    {
+      "id": "apple_fy25q1",
+      "publisher": "Apple",
+      "url": "https://www.apple.com/newsroom/pdfs/fy2025-q1/FY25_Q1_Consolidated_Financial_Statements.pdf",
+      "sha256": "b45c21d81378d635103ac213cddf853599716b42b4df4646b2f5c07e5079c748",
+      "physical_page": 1,
+      "column_map": {
+        "current_quarter": {
+          "native": 1,
+          "optional": 1
+        },
+        "prior_quarter": {
+          "native": 3,
+          "optional": 2
+        }
+      },
+      "targets": [
+        {
+          "row_label": "Total net sales (1)",
+          "expected_printed_numeric": "124,300",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:01"
+        },
+        {
+          "row_label": "Gross margin",
+          "expected_printed_numeric": "58,275",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:02"
+        },
+        {
+          "row_label": "Research and development",
+          "expected_printed_numeric": "8,268",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:03"
+        },
+        {
+          "row_label": "Operating income",
+          "expected_printed_numeric": "42,832",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:04"
+        },
+        {
+          "row_label": "Other income/(expense), net",
+          "expected_printed_numeric": "(248)",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:05"
+        },
+        {
+          "row_label": "Net income",
+          "expected_printed_numeric": "36,330",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:06"
+        },
+        {
+          "row_label": "Americas",
+          "expected_printed_numeric": "52,648",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:07"
+        },
+        {
+          "row_label": "Europe",
+          "expected_printed_numeric": "30,397",
+          "period_key": "prior_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q1:08"
+        }
+      ]
+    },
+    {
+      "id": "apple_fy25q4",
+      "publisher": "Apple",
+      "url": "https://www.apple.com/newsroom/pdfs/fy2025-q4/FY25_Q4_Consolidated_Financial_Statements.pdf",
+      "sha256": "43e7f0730b3cce0fc37301a2f43c29712bbde6ab299d97c6df345fd0c754508a",
+      "physical_page": 1,
+      "column_map": {
+        "current_quarter": {
+          "native": 1,
+          "optional": 1
+        },
+        "current_full_year": {
+          "native": 5,
+          "optional": 3
+        }
+      },
+      "targets": [
+        {
+          "row_label": "Total net sales (1)",
+          "expected_printed_numeric": "102,466",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q4:01"
+        },
+        {
+          "row_label": "Gross margin",
+          "expected_printed_numeric": "48,341",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q4:02"
+        },
+        {
+          "row_label": "Research and development",
+          "expected_printed_numeric": "34,550",
+          "period_key": "current_full_year",
+          "table_index": 0,
+          "id": "apple_fy25q4:03"
+        },
+        {
+          "row_label": "Other income/(expense), net",
+          "expected_printed_numeric": "(321)",
+          "period_key": "current_full_year",
+          "table_index": 0,
+          "id": "apple_fy25q4:04"
+        },
+        {
+          "row_label": "Net income",
+          "expected_printed_numeric": "27,466",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q4:05"
+        },
+        {
+          "row_label": "Greater China",
+          "expected_printed_numeric": "64,377",
+          "period_key": "current_full_year",
+          "table_index": 0,
+          "id": "apple_fy25q4:06"
+        },
+        {
+          "row_label": "iPhone",
+          "expected_printed_numeric": "49,025",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "apple_fy25q4:07"
+        },
+        {
+          "row_label": "Operating income",
+          "expected_printed_numeric": "133,050",
+          "period_key": "current_full_year",
+          "table_index": 0,
+          "id": "apple_fy25q4:08"
+        }
+      ]
+    },
+    {
+      "id": "alphabet_2025q2",
+      "publisher": "Alphabet",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q2/2025q2-alphabet-earnings-release.pdf",
+      "sha256": "3581be042fcbda6ea71185d5aef47458ce3a56cf6b16022d61a997d1807a4de5",
+      "physical_page": 2,
+      "column_map": {
+        "current_quarter": {
+          "native": null,
+          "optional": 2
+        },
+        "prior_quarter": {
+          "native": null,
+          "optional": 1
+        }
+      },
+      "targets": [
+        {
+          "row_label": "Google Search & other",
+          "expected_printed_numeric": "54,190",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q2:01"
+        },
+        {
+          "row_label": "YouTube ads",
+          "expected_printed_numeric": "9,796",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q2:02"
+        },
+        {
+          "row_label": "Google Network",
+          "expected_printed_numeric": "7,354",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q2:03"
+        },
+        {
+          "row_label": "Google Services total",
+          "expected_printed_numeric": "82,543",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q2:04"
+        },
+        {
+          "row_label": "Google Cloud",
+          "expected_printed_numeric": "13,624",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q2:05"
+        },
+        {
+          "row_label": "Hedging gains (losses)",
+          "expected_printed_numeric": "(112)",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q2:06"
+        },
+        {
+          "row_label": "Total TAC",
+          "expected_printed_numeric": "14,705",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q2:07"
+        },
+        {
+          "row_label": "Alphabet-level activities(1)",
+          "expected_printed_numeric": "(3,372)",
+          "period_key": "current_quarter",
+          "table_index": 1,
+          "id": "alphabet_2025q2:08"
+        }
+      ]
+    },
+    {
+      "id": "alphabet_2025q3",
+      "publisher": "Alphabet",
+      "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/2025q3-alphabet-earnings-release.pdf",
+      "sha256": "dc759cd42f4b8b2935698e70dd21bb674cb10775bfda5f3990cda75f4c0428fd",
+      "physical_page": 2,
+      "column_map": {
+        "current_quarter": {
+          "native": null,
+          "optional": 2
+        }
+      },
+      "targets": [
+        {
+          "row_label": "Google Search & other",
+          "expected_printed_numeric": "56,567",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q3:01"
+        },
+        {
+          "row_label": "YouTube ads",
+          "expected_printed_numeric": "10,261",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q3:02"
+        },
+        {
+          "row_label": "Google Services total",
+          "expected_printed_numeric": "87,052",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q3:03"
+        },
+        {
+          "row_label": "Google Cloud",
+          "expected_printed_numeric": "15,157",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q3:04"
+        },
+        {
+          "row_label": "Hedging gains (losses)",
+          "expected_printed_numeric": "(207)",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q3:05"
+        },
+        {
+          "row_label": "Total TAC",
+          "expected_printed_numeric": "14,876",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "alphabet_2025q3:06"
+        },
+        {
+          "row_label": "Google Services(1)",
+          "expected_printed_numeric": "33,527",
+          "period_key": "current_quarter",
+          "table_index": 1,
+          "id": "alphabet_2025q3:07"
+        },
+        {
+          "row_label": "Alphabet-level activities(2)",
+          "expected_printed_numeric": "(4,467)",
+          "period_key": "current_quarter",
+          "table_index": 1,
+          "id": "alphabet_2025q3:08"
+        }
+      ]
+    },
+    {
+      "id": "amazon_2026q3",
+      "publisher": "Amazon",
+      "url": "https://ir.aboutamazon.com/files/doc_earnings/2026/q3/earnings-result/AMZN-Q3-2026-Earnings-Release.pdf",
+      "sha256": "4a038b395f07bef27476acb27fdf0029ff8fcd1a42d5d021bb0e0a3e29f8cc06",
+      "physical_page": 7,
+      "column_map": {
+        "current_quarter": {
+          "native": null,
+          "optional": 2
+        },
+        "current_nine_months": {
+          "native": null,
+          "optional": 4
+        }
+      },
+      "targets": [
+        {
+          "row_label": "Net product sales",
+          "expected_printed_numeric": "75,296",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "amazon_2026q3:01"
+        },
+        {
+          "row_label": "Net service sales",
+          "expected_printed_numeric": "126,648",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "amazon_2026q3:02"
+        },
+        {
+          "row_label": "Total net sales",
+          "expected_printed_numeric": "201,944",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "amazon_2026q3:03"
+        },
+        {
+          "row_label": "Cost of sales",
+          "expected_printed_numeric": "94,573",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "amazon_2026q3:04"
+        },
+        {
+          "row_label": "Technology and infrastructure",
+          "expected_printed_numeric": "34,814",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "amazon_2026q3:05"
+        },
+        {
+          "row_label": "Operating income",
+          "expected_printed_numeric": "28,076",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "amazon_2026q3:06"
+        },
+        {
+          "row_label": "Interest expense",
+          "expected_printed_numeric": "(1,691)",
+          "period_key": "current_quarter",
+          "table_index": 0,
+          "id": "amazon_2026q3:07"
+        },
+        {
+          "row_label": "Net income",
+          "expected_printed_numeric": "113,587",
+          "period_key": "current_nine_months",
+          "table_index": 0,
+          "id": "amazon_2026q3:08"
+        }
+      ]
+    }
+  ]
+}
