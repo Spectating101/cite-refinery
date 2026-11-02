@@ -1,0 +1,71 @@
+[
+  {
+    "source_id": "bis106",
+    "sha256": "56edaa1a93f11fbe1fa231ca179ebec6a79d5a89cd7915e1ff73d15188f5a69c",
+    "selected_pages": [
+      4,
+      7
+    ],
+    "status": "executed",
+    "error": null,
+    "tables_detected": 1,
+    "seconds": 4.028
+  },
+  {
+    "source_id": "bis116",
+    "sha256": "9832cc7a21a0012641131866eccfa09d1a23c34e44e00434da5d2452a9d463fb",
+    "selected_pages": [
+      4,
+      5
+    ],
+    "status": "executed",
+    "error": null,
+    "tables_detected": 3,
+    "seconds": 3.258
+  },
+  {
+    "source_id": "bis138",
+    "sha256": "11c941437cedc9f40e1e2a76f58fe3f49eaf0fdd56066dbdd1785f0d545de9f2",
+    "selected_pages": [
+      4,
+      6
+    ],
+    "status": "error",
+    "error": {
+      "type": "ValueError",
+      "message": "zip() argument 2 is longer than argument 1"
+    },
+    "tables_detected": null,
+    "seconds": 3.147
+  },
+  {
+    "source_id": "arxiv2604",
+    "sha256": "5c52ca855d9c09b23de5eeef57a3b2f4ffc977fc706ed129b31fa404d2750c99",
+    "selected_pages": [
+      7,
+      9
+    ],
+    "status": "error",
+    "error": {
+      "type": "ValueError",
+      "message": "zip() argument 2 is longer than argument 1"
+    },
+    "tables_detected": null,
+    "seconds": 5.829
+  },
+  {
+    "source_id": "arxiv2506",
+    "sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+    "selected_pages": [
+      6,
+      11
+    ],
+    "status": "error",
+    "error": {
+      "type": "ValueError",
+      "message": "empty or inverted extracted cell bounds"
+    },
+    "tables_detected": null,
+    "seconds": 4.736
+  }
+]

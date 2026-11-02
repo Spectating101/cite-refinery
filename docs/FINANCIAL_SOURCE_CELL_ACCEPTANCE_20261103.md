@@ -88,3 +88,14 @@ The Research Drive bridge now runs the full original-PDF period-group/date/year 
 The Atlas replay script accepts an optional --isolated switch. On all five publisher originals it independently rechecked 40/40 cells inside the separate worker, matching the 40/40 direct read-only verification count. Inspect the pinned, sanitized per-file and per-cell results in [isolated_period_context_acceptance_20261103.json](../examples/discovery/isolated_period_context_acceptance_20261103.json). A complete replay requires the original public files, Research Drive's installed sandbox and the optional img2table parser, and uses their original file SHA pins.
 
 This still measures operator-defined cells and header regions. It is not a blind/general semantic assessment, not trusted write-path integration, and not a repair for the earlier BIS/arXiv parsing failures. Release status stays HOLD.
+
+## New negative holdout: repeated real-PDF footnote labels
+
+Four public, original-SHA-pinned financial PDF pages were probed using Research Drive's pre-existing original-PDF word path and a new **non-authoritative note-marker ambiguity audit**. This is a negative source-context acceptance check, not a means to infer footnote meaning.
+
+- Apple FY25 Q1 and Q4: two separate sections printed as footnote (1) on each page (sales by segment versus category). Both require an explicit **ambiguous marker abstention**.
+- Alphabet 2025 Q2 and Q3: only one candidate note definition detected after the selected reference row on the checked page; neither is automatically linked or semantically approved.
+- **Zero automatic footnote links were verified** despite strong numeric/period source-word evidence. No note text is interpreted and no trusted source citation is generated.
+- This is a bounded, left-margin-based word-position heuristic. A lone matching marker does not prove which data field or table section the note explains. Unsupported/multilevel, missing or cross-page notes remain a manual-review obligation.
+
+The pinned [footnote negative acceptance receipt](../examples/discovery/real_pdf_footnote_ambiguity_20261103.json) and [replay script](../scripts/interop_footnote_ambiguity_acceptance.py) provide the original source SHA, selected physical page, reference-row lower boundary, definition count, and review status, without redistributing originals. These outcomes **do not reduce** the earlier 40/40 literal source-period witnesses: they define a separate unresolved layer of meaning. No promotion or publication is authorized.

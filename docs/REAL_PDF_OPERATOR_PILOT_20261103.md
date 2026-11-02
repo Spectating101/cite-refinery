@@ -26,3 +26,9 @@ The optional parser completed **2/5** selected-page evaluations, with one to thr
 There are **zero independently adjudicated ground-truth source cells** in this real-document pilot. Table counts, timings and source hashes cannot establish numerical correctness, header continuity, or chart/table distinction. The benchmark is deliberately negative evidence about integration readiness, not a replacement for a ground-truth corpus.
 
 The next acceptance should scope actual data tables, with visual checks of exact cell strings, negative values, footnotes, repeated or missing page headers and per-cell abstention. Require meaningful successful source-cell review against 5–10 documents **before** any move toward production. Even then, the checker must independently reparse approved original bytes rather than treating the optional parser's hypothesis as authority.
+
+## Repeated holdout on the post-verification bridge branch
+
+The same five original BIS/arXiv public files and original SHA-256 digests were replayed with the current Research Drive optional extraction path, keeping the same two selected physical pages per source. The isolated word/period verifier never runs if extraction itself errors. The result remained **2/5 successful parser executions, 3/5 parser exceptions**: two upstream strict-zip text-alignment errors and one deliberately rejected invalid cell geometry. Full source bytes were not committed and no developer patched away upstream errors.
+
+A new [sanitized heterogeneous regression receipt](../examples/discovery/heterogeneous_pdf_regression_replay_20261103.json) records each original source hash, page selection, status, exception and local execution time. This is a repeat run on the **same** five sources, not five additional independent documents; it does **not** expand the corpus denominator or establish semantic accuracy of successful candidates. The release decision remains **HOLD**.
