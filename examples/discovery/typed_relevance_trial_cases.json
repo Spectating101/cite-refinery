@@ -1,0 +1,45 @@
+{
+  "schema": "cite_refinery.typed_trial_cases.v1",
+  "cases": [
+    {
+      "record_id": "github_archive:archivebox/archivebox"
+    },
+    {
+      "record_id": "github_archive:webrecorder/pywb"
+    },
+    {
+      "record_id": "github_archive:internetarchive/heritrix3"
+    },
+    {
+      "record_id": "github_archive:iipc/awesome-web-archiving"
+    },
+    {
+      "record_id": "github_archive:mattermost/mattermost-webapp"
+    },
+    {
+      "record_id": "github_pdf:atlanhq/camelot"
+    },
+    {
+      "record_id": "github_pdf:xavctn/img2table"
+    },
+    {
+      "record_id": "github_pdf:cycloneboy/pdf_table"
+    },
+    {
+      "record_id": "datacite_pv:10.5281/zenodo.23646443"
+    },
+    {
+      "record_id": "openalex_pv:W7135057135"
+    },
+    {
+      "record_id": "openalex_pv:W4225888491"
+    },
+    {
+      "record_id": "openalex_citations:W7212013042"
+    }
+  ],
+  "originals": {
+    "openalex_pv:W7135057135": "https://zenodo.org/records/18979876",
+    "openalex_citations:W7212013042": "https://arxiv.org/abs/2609.07652"
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "schema": "cite_refinery.typed_capability_rules.v1",
+  "capabilities": [
+    {
+      "id": "web_capture",
+      "source_category": "software",
+      "kind": "IMPLEMENTATION_CLAIM",
+      "description": "web capture",
+      "input": "Permitted web URL",
+      "output": "Saved WARC/HTML/snapshot",
+      "must_evidence": [
+        [
+          "websites",
+          "web archiving",
+          "web content"
+        ],
+        [
+          "capture",
+          "save copies",
+          "archiv",
+          "preserv",
+          "captur"
+        ],
+        [
+          "warc",
+          "html",
+          "snapshot",
+          "web archives"
+        ]
+      ]
+    },
+    {
+      "id": "archive_replay",
+      "source_category": "software",
+      "kind": "IMPLEMENTATION_CLAIM",
+      "description": "archive replay",
+      "input": "Existing web archive",
+      "output": "Replayed historical website",
+      "must_evidence": [
+        [
+          "web archive",
+          "web archiv",
+          "archived web"
+        ],
+        [
+          "replay",
+          "replaying",
+          "wayback"
+        ]
+      ]
+    },
+    {
+      "id": "archival_crawling",
+      "source_category": "software",
+      "kind": "IMPLEMENTATION_CLAIM",
+      "description": "archival crawling",
+      "input": "Seed web URLs",
+      "output": "Web crawl outputs",
+      "must_evidence": [
+        [
+          "web crawler",
+          "web-scale",
+          "crawling"
+        ],
+        [
+          "collect",
+          "capture",
+          "preserv",
+          "archiv"
+        ]
+      ]
+    },
+    {
+      "id": "forensic_source_custody",
+      "source_category": "software",
+      "kind": "IMPLEMENTATION_CLAIM",
+      "description": "forensic source custody",
+      "input": "Captured evidence artifact",
+      "output": "Timestamp and hash receipt",
+      "must_evidence": [
+        [
+          "website",
+          "web capture",
+          "web archiving"
+        ],
+        [
+          "capture",
+          "preserv",
+          "archiv"
+        ],
+        [
+          "hash",
+          "checksum"
+        ],
+        [
+          "timestamp",
+          "provenance",
+          "time-stamp"
+        ]
+      ]
+    },
+    {
+      "id": "pdf_table_extraction",
+      "source_category": "software",
+      "kind": "IMPLEMENTATION_CLAIM",
+      "description": "pdf table extraction",
+      "input": "PDF document",
+      "output": "Structured table",
+      "must_evidence": [
+        [
+          "pdf"
+        ],
+        [
+          "table",
+          "tabular"
+        ],
+        [
+          "extract",
+          "parsing",
+          "parser",
+          "recognition",
+          "detect"
+        ]
+      ]
+    },
+    {
+      "id": "pdf_cell_validation",
+      "source_category": "software",
+      "kind": "IMPLEMENTATION_CLAIM",
+      "description": "pdf cell validation",
+      "input": "PDF table and keyed assertions",
+      "output": "Cell mismatch report",
+      "must_evidence": [
+        [
+          "pdf"
+        ],
+        [
+          "table",
+          "row"
+        ],
+        [
+          "cell",
+          "value"
+        ],
+        [
+          "row key",
+          "row label",
+          "column header",
+          "source cell",
+          "original value",
+          "cell mismatch",
+          "expected cell",
+          "keyed cell"
+        ]
+      ]
+    },
+    {
+      "id": "pv_plant_timeseries_dataset",
+      "source_category": "datasets",
+      "kind": "DATASET_DESCRIPTION",
+      "description": "pv plant timeseries dataset",
+      "input": "PV field sensor time series",
+      "output": "Observed PV faults/anomalies",
+      "must_evidence": [
+        [
+          "photovolta",
+          "pv",
+          "solar"
+        ],
+        [
+          "plant",
+          "inverter",
+          "field"
+        ],
+        [
+          "time series",
+          "time-series",
+          "15-min",
+          "30 seconds",
+          "measurements"
+        ],
+        [
+          "fault",
+          "anomal",
+          "diagnos",
+          "injected"
+        ]
+      ]
+    },
+    {
+      "id": "pv_cell_image_dataset",
+      "source_category": "datasets",
+      "kind": "DATASET_DESCRIPTION",
+      "description": "pv cell image dataset",
+      "input": "PV cell/module images",
+      "output": "Defect image labels",
+      "must_evidence": [
+        [
+          "pv",
+          "photovolta"
+        ],
+        [
+          "cell",
+          "module"
+        ],
+        [
+          "image",
+          "images",
+          "electroluminescence"
+        ],
+        [
+          "defect",
+          "fault",
+          "anomal"
+        ]
+      ]
+    },
+    {
+      "id": "citation_claim_review",
+      "source_category": "research",
+      "kind": "RESEARCH_METHOD_DESCRIPTION",
+      "description": "citation claim review",
+      "input": "Claim plus cited source",
+      "output": "Evidence alignment assessment",
+      "must_evidence": [
+        [
+          "scientif",
+          "research",
+          "manuscript"
+        ],
+        [
+          "claim"
+        ],
+        [
+          "citat",
+          "reference"
+        ],
+        [
+          "verif",
+          "alignment",
+          "evidence",
+          "support"
+        ]
+      ]
+    },
+    {
+      "id": "reproducibility_assessment",
+      "source_category": "research",
+      "kind": "RESEARCH_METHOD_DESCRIPTION",
+      "description": "reproducibility assessment",
+      "input": "Paper code and dataset records",
+      "output": "Artifact reproducibility screen",
+      "must_evidence": [
+        [
+          "research",
+          "paper",
+          "scientif"
+        ],
+        [
+          "reproducib"
+        ],
+        [
+          "code",
+          "data"
+        ],
+        [
+          "assessment",
+          "review",
+          "evaluat"
+        ]
+      ]
+    }
+  ]
+}

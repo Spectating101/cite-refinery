@@ -1,0 +1,63 @@
+{
+  "schema": "cite_refinery.typed_capability_needs.v1",
+  "needs": [
+    {
+      "id": "nocturnal_source_custody",
+      "project": "nocturnal",
+      "requirement": "Review external capabilities for nocturnal_source_custody separately from internal verified functionality",
+      "capability_ids": [
+        "web_capture",
+        "forensic_source_custody"
+      ]
+    },
+    {
+      "id": "nocturnal_replay",
+      "project": "nocturnal",
+      "requirement": "Review external capabilities for nocturnal_replay separately from internal verified functionality",
+      "capability_ids": [
+        "archive_replay"
+      ]
+    },
+    {
+      "id": "nocturnal_crawling",
+      "project": "nocturnal",
+      "requirement": "Review external capabilities for nocturnal_crawling separately from internal verified functionality",
+      "capability_ids": [
+        "archival_crawling"
+      ]
+    },
+    {
+      "id": "research_drive_cell_integrity",
+      "project": "research_drive",
+      "requirement": "Review external capabilities for research_drive_cell_integrity separately from internal verified functionality",
+      "capability_ids": [
+        "pdf_table_extraction",
+        "pdf_cell_validation"
+      ]
+    },
+    {
+      "id": "policy_lab_plant_fault",
+      "project": "policy_lab",
+      "requirement": "Review external capabilities for policy_lab_plant_fault separately from internal verified functionality",
+      "capability_ids": [
+        "pv_plant_timeseries_dataset"
+      ]
+    },
+    {
+      "id": "cite_agent_claims",
+      "project": "cite_agent",
+      "requirement": "Review external capabilities for cite_agent_claims separately from internal verified functionality",
+      "capability_ids": [
+        "citation_claim_review"
+      ]
+    },
+    {
+      "id": "atlas_reproducibility",
+      "project": "atlas",
+      "requirement": "Review external capabilities for atlas_reproducibility separately from internal verified functionality",
+      "capability_ids": [
+        "reproducibility_assessment"
+      ]
+    }
+  ]
+}
