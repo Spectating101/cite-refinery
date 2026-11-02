@@ -1,0 +1,325 @@
+{
+  "schema": "cite_refinery.external_interoperability_receipt.v1",
+  "executed_at_date": "2026-11-02",
+  "authority": "BENCHMARK_ONLY_NO_ADOPTION",
+  "data_policy": "Public source IDs, fixture hashes, engine versions and evaluations only. Full raw outputs remain on Optiplex.",
+  "pdf": {
+    "original_fixture_repo": "https://github.com/LydiaTools/pdf-table-traps",
+    "original_fixture_commit": "c63aab8884671aa4c789f08d0891f1a3f0ee5f5d",
+    "oracle": "table_traps check --format tables-json with explicit keyed cells",
+    "versions": {
+      "img2table": "2.0.0",
+      "camelot-py": "1.0.9",
+      "pdfplumber": "0.11.9",
+      "pymupdf": "1.28.2"
+    },
+    "results": [
+      {
+        "engine": "pdfplumber_default",
+        "case": "ruled",
+        "source_sha256": "f51bb87190c7f2a6bba2f556aaacc5f0d0c337749555e810025706383b8ec0e4",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 81.3,
+        "oracle": "pass",
+        "checks": {
+          "pass": 4,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "pymupdf_find_tables",
+        "case": "ruled",
+        "source_sha256": "f51bb87190c7f2a6bba2f556aaacc5f0d0c337749555e810025706383b8ec0e4",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 91.6,
+        "oracle": "pass",
+        "checks": {
+          "pass": 4,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "camelot_stream",
+        "case": "ruled",
+        "source_sha256": "f51bb87190c7f2a6bba2f556aaacc5f0d0c337749555e810025706383b8ec0e4",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 688.0,
+        "oracle": "unknown",
+        "checks": {
+          "pass": 1,
+          "fail": 0,
+          "unknown": 3
+        },
+        "error_type": null
+      },
+      {
+        "engine": "camelot_lattice",
+        "case": "ruled",
+        "source_sha256": "f51bb87190c7f2a6bba2f556aaacc5f0d0c337749555e810025706383b8ec0e4",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 534.5,
+        "oracle": "pass",
+        "checks": {
+          "pass": 4,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "img2table_ruled",
+        "case": "ruled",
+        "source_sha256": "f51bb87190c7f2a6bba2f556aaacc5f0d0c337749555e810025706383b8ec0e4",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 335.5,
+        "oracle": "pass",
+        "checks": {
+          "pass": 4,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "img2table_borderless",
+        "case": "ruled",
+        "source_sha256": "f51bb87190c7f2a6bba2f556aaacc5f0d0c337749555e810025706383b8ec0e4",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 437.5,
+        "oracle": "pass",
+        "checks": {
+          "pass": 4,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "pdfplumber_default",
+        "case": "borderless",
+        "source_sha256": "478c849f69c0f16defdf1f63e52bc76a7f8857d9cfdb42789c07c03d5d16c688",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 14.2,
+        "oracle": "fail",
+        "checks": {
+          "pass": 0,
+          "fail": 1,
+          "unknown": 3
+        },
+        "error_type": null
+      },
+      {
+        "engine": "pymupdf_find_tables",
+        "case": "borderless",
+        "source_sha256": "478c849f69c0f16defdf1f63e52bc76a7f8857d9cfdb42789c07c03d5d16c688",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 12.0,
+        "oracle": "fail",
+        "checks": {
+          "pass": 0,
+          "fail": 1,
+          "unknown": 3
+        },
+        "error_type": null
+      },
+      {
+        "engine": "camelot_stream",
+        "case": "borderless",
+        "source_sha256": "478c849f69c0f16defdf1f63e52bc76a7f8857d9cfdb42789c07c03d5d16c688",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 12.6,
+        "oracle": "unknown",
+        "checks": {
+          "pass": 1,
+          "fail": 0,
+          "unknown": 3
+        },
+        "error_type": null
+      },
+      {
+        "engine": "camelot_lattice",
+        "case": "borderless",
+        "source_sha256": "478c849f69c0f16defdf1f63e52bc76a7f8857d9cfdb42789c07c03d5d16c688",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 442.1,
+        "oracle": "fail",
+        "checks": {
+          "pass": 0,
+          "fail": 1,
+          "unknown": 3
+        },
+        "error_type": null
+      },
+      {
+        "engine": "img2table_ruled",
+        "case": "borderless",
+        "source_sha256": "478c849f69c0f16defdf1f63e52bc76a7f8857d9cfdb42789c07c03d5d16c688",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 192.5,
+        "oracle": "fail",
+        "checks": {
+          "pass": 0,
+          "fail": 1,
+          "unknown": 3
+        },
+        "error_type": null
+      },
+      {
+        "engine": "img2table_borderless",
+        "case": "borderless",
+        "source_sha256": "478c849f69c0f16defdf1f63e52bc76a7f8857d9cfdb42789c07c03d5d16c688",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 411.7,
+        "oracle": "pass",
+        "checks": {
+          "pass": 4,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "pdfplumber_default",
+        "case": "prose",
+        "source_sha256": "4618fab9ac73afead588cc203f29477ca81e2e19d3b5341789ee681729276bbe",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 19.7,
+        "oracle": "pass",
+        "checks": {
+          "pass": 1,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "pymupdf_find_tables",
+        "case": "prose",
+        "source_sha256": "4618fab9ac73afead588cc203f29477ca81e2e19d3b5341789ee681729276bbe",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 19.5,
+        "oracle": "pass",
+        "checks": {
+          "pass": 1,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "camelot_stream",
+        "case": "prose",
+        "source_sha256": "4618fab9ac73afead588cc203f29477ca81e2e19d3b5341789ee681729276bbe",
+        "table_count": 1,
+        "duration_ms_single_cold_run": 12.5,
+        "oracle": "fail",
+        "checks": {
+          "pass": 0,
+          "fail": 1,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "camelot_lattice",
+        "case": "prose",
+        "source_sha256": "4618fab9ac73afead588cc203f29477ca81e2e19d3b5341789ee681729276bbe",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 464.1,
+        "oracle": "pass",
+        "checks": {
+          "pass": 1,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "img2table_ruled",
+        "case": "prose",
+        "source_sha256": "4618fab9ac73afead588cc203f29477ca81e2e19d3b5341789ee681729276bbe",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 235.1,
+        "oracle": "pass",
+        "checks": {
+          "pass": 1,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      },
+      {
+        "engine": "img2table_borderless",
+        "case": "prose",
+        "source_sha256": "4618fab9ac73afead588cc203f29477ca81e2e19d3b5341789ee681729276bbe",
+        "table_count": 0,
+        "duration_ms_single_cold_run": 427.6,
+        "oracle": "pass",
+        "checks": {
+          "pass": 1,
+          "fail": 0,
+          "unknown": 0
+        },
+        "error_type": null
+      }
+    ],
+    "candidate_relation": {
+      "project": "research_drive",
+      "capability_id": "pdf_table_extraction",
+      "source_repo": "https://github.com/xavctn/img2table",
+      "engine": "img2table_borderless",
+      "disposition": "BENCHMARK_SUPPORTED_CANDIDATE",
+      "restriction": "Digitally readable source-checked PDFs only; 3 public fixtures; not validated general-purpose OCR or financial PDFs"
+    },
+    "actual_native_query": {
+      "project": "research_drive",
+      "backend": "local_file",
+      "fixture": "ruled.pdf",
+      "ok": false,
+      "rows": 0,
+      "error": "metadata_only_backend"
+    },
+    "replay_reproducibility_note": "Unchanged fixtures: original and final corrected rerun both 9/9 for img2table borderless. Intermediate harness build incorrectly rejected NaN empty DataFrame cells and showed 5/9; repaired and regression-tested."
+  },
+  "nocturnal": {
+    "fixture": "synthetic HTML source at example.invalid; injected, never externally fetched",
+    "external_versions": {
+      "warcio": "1.8.2",
+      "pywb": "2.11.0"
+    },
+    "warc_response_status": "written",
+    "warc_byte_size": 520,
+    "warc_exact_payload": true,
+    "native_capture_time_ms": 22.3,
+    "pywb_index_success": true,
+    "pywb_index_time_ms": 1203.7,
+    "pywb_offline_replay_success": true,
+    "pywb_http_status": 200,
+    "replay_sha256": "1348c7d3e0ade9439aad923e2eb547fd2158057ac479c0fef514a19b9fc0b3d7",
+    "native_html_sha256": "1348c7d3e0ade9439aad923e2eb547fd2158057ac479c0fef514a19b9fc0b3d7",
+    "candidate_relation": {
+      "project": "nocturnal",
+      "capability_id": "archive_replay",
+      "source_repo": "https://github.com/webrecorder/pywb",
+      "disposition": "OPTIONAL_REPLAY_SIDECAR_EVALUATE_LICENSE",
+      "restriction": "Validated synthetic HTML offline only; native WARC already supported; pywb GPL-3.0"
+    },
+    "local_source_commit": "d7f914f6e3b57f6cc65c827de868c284673b8876"
+  },
+  "verification": {
+    "pdf_fixture_project_tests_passed": 16,
+    "native_nocturnal_interop_tests_passed": 9,
+    "tracked_source_project_changes": false,
+    "final_corrected_pdf_repeat": "img2table_borderless:9 pass, 0 fail, 0 unknown; same 3 original source-checked fixtures"
+  },
+  "limits": [
+    "Single cold-run execution times; not cost/throughput stable",
+    "No real user or institutional source data",
+    "No native Research Drive PDF extraction component verified; query intentionally metadata-only",
+    "No benchmark receipt automatically upgrades a typed discovery claim into a verified product capability"
+  ]
+}
