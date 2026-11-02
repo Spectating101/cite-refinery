@@ -15,6 +15,9 @@ on:
       - 'src/cite_refinery/typed_capability_map.py'
       - 'tests/test_typed_capability_map.py'
       - 'tests/test_interop_benchmarks.py'
+      - 'tests/test_interop_acceptance_002.py'
+      - 'scripts/interop_multipage_benchmark.py'
+      - 'scripts/interop_positional_benchmark.py'
       - 'scripts/interop_pdf_benchmark.py'
       - 'scripts/interop_warc_benchmark.py'
       - 'examples/discovery/**'
@@ -38,6 +41,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_source_evidence_gate.py' -v
       - run: python -m unittest discover -s tests -p 'test_typed_capability_map.py' -v
       - run: python -m unittest discover -s tests -p 'test_interop_benchmarks.py' -v
+      - run: python -m unittest discover -s tests -p 'test_interop_acceptance_002.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.
