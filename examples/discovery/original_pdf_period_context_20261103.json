@@ -1,0 +1,621 @@
+{
+  "schema": "atlas.period_context_original_source_acceptance.v1",
+  "authority": "REVIEW_ONLY_NOT_TRUSTED_CSV",
+  "original_pdfs_committed": false,
+  "manual_geometry_scope": true,
+  "operator_double_reviewed": false,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "semantic_claim": "explicit group/date/year anchors, NOT full accounting interpretation",
+  "document_count": 5,
+  "checked_cells": 40,
+  "matched": 40,
+  "abstained": 0,
+  "cases": [
+    {
+      "source_id": "apple_fy25q1",
+      "original_sha256": "b45c21d81378d635103ac213cddf853599716b42b4df4646b2f5c07e5079c748",
+      "checked_cells": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_verdicts": [
+        {
+          "cell_id": "apple_fy25q1:01",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q1:02",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q1:03",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q1:04",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q1:05",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q1:06",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q1:07",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q1:08",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "apple_fy25q4",
+      "original_sha256": "43e7f0730b3cce0fc37301a2f43c29712bbde6ab299d97c6df345fd0c754508a",
+      "checked_cells": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_verdicts": [
+        {
+          "cell_id": "apple_fy25q4:01",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q4:02",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q4:03",
+          "status": "original_period_witness_match",
+          "kind": "twelve_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q4:04",
+          "status": "original_period_witness_match",
+          "kind": "twelve_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q4:05",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q4:06",
+          "status": "original_period_witness_match",
+          "kind": "twelve_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q4:07",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "apple_fy25q4:08",
+          "status": "original_period_witness_match",
+          "kind": "twelve_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "alphabet_2025q2",
+      "original_sha256": "3581be042fcbda6ea71185d5aef47458ce3a56cf6b16022d61a997d1807a4de5",
+      "checked_cells": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_verdicts": [
+        {
+          "cell_id": "alphabet_2025q2:01",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q2:02",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q2:03",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q2:04",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q2:05",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q2:06",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q2:07",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q2:08",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "alphabet_2025q3",
+      "original_sha256": "dc759cd42f4b8b2935698e70dd21bb674cb10775bfda5f3990cda75f4c0428fd",
+      "checked_cells": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_verdicts": [
+        {
+          "cell_id": "alphabet_2025q3:01",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q3:02",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q3:03",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q3:04",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q3:05",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q3:06",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q3:07",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "alphabet_2025q3:08",
+          "status": "original_period_witness_match",
+          "kind": "quarter",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "amazon_2026q3",
+      "original_sha256": "4a038b395f07bef27476acb27fdf0029ff8fcd1a42d5d021bb0e0a3e29f8cc06",
+      "checked_cells": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_verdicts": [
+        {
+          "cell_id": "amazon_2026q3:01",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "amazon_2026q3:02",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "amazon_2026q3:03",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "amazon_2026q3:04",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "amazon_2026q3:05",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "amazon_2026q3:06",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "amazon_2026q3:07",
+          "status": "original_period_witness_match",
+          "kind": "three_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        },
+        {
+          "cell_id": "amazon_2026q3:08",
+          "status": "original_period_witness_match",
+          "kind": "nine_months",
+          "checks": {
+            "original_period_group": true,
+            "original_date": true,
+            "original_header_year": true,
+            "source_number_and_label": true,
+            "period_group_owns_column": true,
+            "period_vertical_order": true,
+            "period_date_within_group": true
+          }
+        }
+      ]
+    }
+  ]
+}

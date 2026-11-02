@@ -72,3 +72,19 @@ PYTHONPATH=src:. python scripts/interop_original_word_acceptance.py \
   --research-drive-root /local/research-drive-private \
   --out /private/new_word_witness.json
 ```
+
+## Distinct reporting-period group and calendar-date evidence
+
+The follow-up original-source checker `optional_pdf_period_check.verify_candidate_period_context` reuses the existing Research Drive `verify_candidate_words` verification and `pdf_words` source geometry. It additionally requires an **operator-declared, physically bounded reporting-period heading and date** from the original PDF, checks their literal text in original-source word coordinates, and checks group ownership of the selected numerical column and vertical ordering of heading/date/year/value. This matters when the same literal `2025` year appears in multiple columns belonging to **Three Months Ended** versus **Twelve Months Ended**, or when an Amazon quarter column and a nine-month column share `2026`.
+
+Five real Apple/Alphabet/Amazon company PDFs were replayed against the independently sourced heading, source date, printed year, and selected values. **40/40 group/date/year/value witnesses matched**, with original, operator-scoped anchor rectangles and an explicit per-table group mapping. Individual check flags are committed in [`original_pdf_period_context_20261103.json`](../examples/discovery/original_pdf_period_context_20261103.json); the original source hashes and manually declared group/date rectangles are in the 40-cell oracle. [Reproduce the independent replay](../scripts/interop_period_context_acceptance.py) in an isolated environment containing Research Drive and the five unmodified public PDFs.
+
+Adversarial offline unit tests prove that swapping to the neighboring nine-month group while keeping the **same year and same number** fails, even though the simpler independent word witness alone passes. Wrong group text, date, geometry and source digest also fail or abstain. Reporting-period claims remain conditional on operator-supplied source anchors; there is **no automatic discovery, no independent human second adjudicator, no authoritative accounting meaning inference, and no trusted Research Drive publication**. Heterogeneous PDF failures recorded earlier remain unsolved.
+
+## Isolated no-network source-period acceptance
+
+The Research Drive bridge now runs the full original-PDF period-group/date/year check within its **existing** bwrap/libseccomp isolated execution facility. Host-controlled verification modules and the installed original-word parser are copied into a temporary read-only runtime; source PDFs, parser candidates and operator-scoped declarations are staged separately as untrusted inputs. The worker cannot connect to a network and emits a bounded source-hash/count-only receipt. No trusted CSV or PDFScope is created.
+
+The Atlas replay script accepts an optional --isolated switch. On all five publisher originals it independently rechecked 40/40 cells inside the separate worker, matching the 40/40 direct read-only verification count. Inspect the pinned, sanitized per-file and per-cell results in [isolated_period_context_acceptance_20261103.json](../examples/discovery/isolated_period_context_acceptance_20261103.json). A complete replay requires the original public files, Research Drive's installed sandbox and the optional img2table parser, and uses their original file SHA pins.
+
+This still measures operator-defined cells and header regions. It is not a blind/general semantic assessment, not trusted write-path integration, and not a repair for the earlier BIS/arXiv parsing failures. Release status stays HOLD.

@@ -19,6 +19,9 @@ on:
       - 'tests/test_real_pdf_operator_pilot.py'
       - 'tests/test_financial_source_cell_acceptance.py'
       - 'tests/test_original_pdf_word_witness.py'
+      - 'tests/test_original_pdf_period_context.py'
+      - 'tests/test_isolated_period_context_acceptance.py'
+      - 'scripts/interop_period_context_acceptance.py'
       - 'scripts/interop_original_word_acceptance.py'
       - 'scripts/financial_source_cell_acceptance.py'
       - 'scripts/interop_multipage_benchmark.py'
@@ -50,6 +53,8 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_real_pdf_operator_pilot.py' -v
       - run: python -m unittest discover -s tests -p 'test_financial_source_cell_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_original_pdf_word_witness.py' -v
+      - run: python -m unittest discover -s tests -p 'test_original_pdf_period_context.py' -v
+      - run: python -m unittest discover -s tests -p 'test_isolated_period_context_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.

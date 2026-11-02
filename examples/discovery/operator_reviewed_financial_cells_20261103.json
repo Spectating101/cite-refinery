@@ -85,6 +85,44 @@
           "current_quarter": "2024",
           "prior_quarter": "2023"
         }
+      },
+      "period_anchor_contracts": {
+        "0": {
+          "current_quarter": {
+            "kind": "three_months",
+            "expected_group": "Three Months Ended",
+            "group_bbox_pdf": [
+              397,
+              92,
+              565,
+              106
+            ],
+            "expected_date": "December 28,",
+            "date_bbox_pdf": [
+              424,
+              105,
+              484,
+              115.5
+            ]
+          },
+          "prior_quarter": {
+            "kind": "three_months",
+            "expected_group": "Three Months Ended",
+            "group_bbox_pdf": [
+              397,
+              92,
+              565,
+              106
+            ],
+            "expected_date": "December 30,",
+            "date_bbox_pdf": [
+              498,
+              105,
+              559,
+              115.5
+            ]
+          }
+        }
       }
     },
     {
@@ -166,6 +204,44 @@
         "period_key_to_printed_text": {
           "current_quarter": "2025",
           "current_full_year": "2025"
+        }
+      },
+      "period_anchor_contracts": {
+        "0": {
+          "current_quarter": {
+            "kind": "three_months",
+            "expected_group": "Three Months Ended",
+            "group_bbox_pdf": [
+              293,
+              92,
+              434,
+              105
+            ],
+            "expected_date": "September 27,",
+            "date_bbox_pdf": [
+              303,
+              105,
+              363,
+              115.5
+            ]
+          },
+          "current_full_year": {
+            "kind": "twelve_months",
+            "expected_group": "Twelve Months Ended",
+            "group_bbox_pdf": [
+              433,
+              92,
+              563,
+              105
+            ],
+            "expected_date": "September 27,",
+            "date_bbox_pdf": [
+              435,
+              105,
+              499,
+              115.5
+            ]
+          }
         }
       }
     },
@@ -249,6 +325,63 @@
           "current_quarter": "2025",
           "prior_quarter": "2024"
         }
+      },
+      "period_anchor_contracts": {
+        "0": {
+          "current_quarter": {
+            "kind": "quarter",
+            "expected_group": "Quarter Ended June 30,",
+            "group_bbox_pdf": [
+              418,
+              83,
+              562,
+              99
+            ],
+            "expected_date": "June 30,",
+            "date_bbox_pdf": [
+              492,
+              83,
+              541,
+              99
+            ]
+          },
+          "prior_quarter": {
+            "kind": "quarter",
+            "expected_group": "Quarter Ended June 30,",
+            "group_bbox_pdf": [
+              418,
+              83,
+              562,
+              99
+            ],
+            "expected_date": "June 30,",
+            "date_bbox_pdf": [
+              492,
+              83,
+              541,
+              99
+            ]
+          }
+        },
+        "1": {
+          "current_quarter": {
+            "kind": "quarter",
+            "expected_group": "Quarter Ended June 30,",
+            "group_bbox_pdf": [
+              418,
+              341,
+              562,
+              358
+            ],
+            "expected_date": "June 30,",
+            "date_bbox_pdf": [
+              492,
+              341,
+              541,
+              358
+            ]
+          }
+        }
       }
     },
     {
@@ -325,6 +458,46 @@
         "row_index": 0,
         "period_key_to_printed_text": {
           "current_quarter": "2025"
+        }
+      },
+      "period_anchor_contracts": {
+        "0": {
+          "current_quarter": {
+            "kind": "quarter",
+            "expected_group": "Quarter Ended September 30,",
+            "group_bbox_pdf": [
+              412,
+              125,
+              568,
+              142
+            ],
+            "expected_date": "September 30,",
+            "date_bbox_pdf": [
+              485,
+              125,
+              551,
+              142
+            ]
+          }
+        },
+        "1": {
+          "current_quarter": {
+            "kind": "quarter",
+            "expected_group": "Quarter Ended September 30,",
+            "group_bbox_pdf": [
+              412,
+              383,
+              568,
+              399
+            ],
+            "expected_date": "September 30,",
+            "date_bbox_pdf": [
+              485,
+              383,
+              552,
+              399
+            ]
+          }
         }
       }
     },
@@ -407,6 +580,44 @@
         "period_key_to_printed_text": {
           "current_quarter": "2026",
           "current_nine_months": "2026"
+        }
+      },
+      "period_anchor_contracts": {
+        "0": {
+          "current_quarter": {
+            "kind": "three_months",
+            "expected_group": "Three Months Ended",
+            "group_bbox_pdf": [
+              311,
+              91,
+              447,
+              101
+            ],
+            "expected_date": "September 30,",
+            "date_bbox_pdf": [
+              344,
+              101,
+              434,
+              112.5
+            ]
+          },
+          "current_nine_months": {
+            "kind": "nine_months",
+            "expected_group": "Nine Months Ended",
+            "group_bbox_pdf": [
+              446,
+              91,
+              564,
+              101
+            ],
+            "expected_date": "September 30,",
+            "date_bbox_pdf": [
+              471,
+              101,
+              553,
+              112.5
+            ]
+          }
         }
       }
     }
