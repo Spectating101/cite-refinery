@@ -1,0 +1,9 @@
+{
+  "schema": "cite_refinery.typed_trial_cases.v1",
+  "cases": [
+    {
+      "record_id": "github_pdf:lydiatools/pdf-table-traps"
+    }
+  ],
+  "originals": {}
+}

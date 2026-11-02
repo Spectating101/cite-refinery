@@ -12,6 +12,8 @@ on:
       - 'tests/test_discovery_capability_review.py'
       - 'src/cite_refinery/source_evidence_gate.py'
       - 'tests/test_source_evidence_gate.py'
+      - 'src/cite_refinery/typed_capability_map.py'
+      - 'tests/test_typed_capability_map.py'
       - 'examples/discovery/**'
       - 'docs/MULTISOURCE_DISCOVERY_V1.md'
       - 'pyproject.toml'
@@ -31,6 +33,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_multi_source_discovery.py' -v
       - run: python -m unittest discover -s tests -p 'test_discovery_capability_review.py' -v
       - run: python -m unittest discover -s tests -p 'test_source_evidence_gate.py' -v
+      - run: python -m unittest discover -s tests -p 'test_typed_capability_map.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.
