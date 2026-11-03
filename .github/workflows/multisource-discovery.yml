@@ -32,6 +32,12 @@ on:
       - 'tests/test_failed_page_native_crop_stability.py'
       - 'tests/test_original_ruled_cost_table_acceptance.py'
       - 'tests/test_ruled_row_region_external_acceptance.py'
+      - 'tests/test_locked_pdf_holdout_20261104.py'
+      - 'scripts/execute_locked_pdf_holdout_20261104.py'
+      - 'scripts/score_locked_pdf_holdout_20261104.py'
+      - 'examples/discovery/ruled_pdf_holdout_preregistration_20261104.json'
+      - 'examples/discovery/ruled_pdf_untouched_holdout_baseline_20261104.json'
+      - 'examples/discovery/ruled_pdf_untouched_holdout_scoring_20261104.json'
       - 'scripts/ruled_row_region_external_acceptance.py'
       - 'examples/discovery/ruled_row_region_external_oracle_20261104.json'
       - 'scripts/original_ruled_cost_table_acceptance.py'
@@ -91,6 +97,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_failed_page_native_crop_stability.py' -v
       - run: python -m unittest discover -s tests -p 'test_original_ruled_cost_table_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_ruled_row_region_external_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_locked_pdf_holdout_20261104.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.

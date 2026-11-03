@@ -1,0 +1,122 @@
+{
+  "schema": "atlas.locked_external_pdf_row_reference_scoring.v1",
+  "source_manifest_sha256": "b51cd9d988df57859eca76f41d956fc48d1cec9623c5a72c46b37950a1b35f47",
+  "source_upstream_git_commit": "92777b852e00933a5c4b9ba642601784604356cd",
+  "golden_reference_data_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/data.py",
+  "golden_reference_sha256": "27e9937c2b96f513c115353dadc619dac78bf3c369d8161720fd207b65d343e2",
+  "intent_to_test_pages": 16,
+  "pages_with_upstream_expected_row_assertions": 6,
+  "pages_without_comparable_upstream_expected_row_assertions": 10,
+  "unscored_filenames": [
+    "row_span_2.pdf",
+    "column_span_1.pdf",
+    "missing_values.pdf",
+    "image.pdf",
+    "empty.pdf",
+    "twotables_1.pdf",
+    "district_health.pdf",
+    "hybrid_multipage.pdf",
+    "rainfall_distribution.pdf",
+    "budget_2014-15.pdf"
+  ],
+  "exact_normalized_row_tp": 10,
+  "exact_normalized_row_fp": 0,
+  "exact_normalized_row_fn": 97,
+  "scored_row_precision_conditional": 1.0,
+  "scored_row_recall_conditional": 0.09345794392523364,
+  "unscored_candidate_rows_not_assumed_true": true,
+  "metric_not_full_corpus_or_global_accuracy": true,
+  "third_party_parser_tests_not_independent_human_adjudication": true,
+  "source_pdf_bytes_committed": false,
+  "complete_original_row_text_committed": false,
+  "auto_publish": false,
+  "trusted_dataset_promotions": 0,
+  "release_decision": "HOLD_LOW_RECALL_AND_UNKNOWN_GOLD",
+  "scored_cases": [
+    {
+      "filename": "vertical_header.pdf",
+      "gold_variables": [
+        "data_network_vertical_headers"
+      ],
+      "expected_upstream_test_rows": 17,
+      "predicted_source_band_rows": 0,
+      "exact_normalized_row_tp": 0,
+      "exact_normalized_row_fp": 0,
+      "exact_normalized_row_fn": 17,
+      "precision": null,
+      "recall": 0.0,
+      "matching_contract": "strict_NFKC_casefold_whitespace_row_text_equality"
+    },
+    {
+      "filename": "background_lines_1.pdf",
+      "gold_variables": [
+        "data_lattice_process_background"
+      ],
+      "expected_upstream_test_rows": 8,
+      "predicted_source_band_rows": 0,
+      "exact_normalized_row_tp": 0,
+      "exact_normalized_row_fp": 0,
+      "exact_normalized_row_fn": 8,
+      "precision": null,
+      "recall": 0.0,
+      "matching_contract": "strict_NFKC_casefold_whitespace_row_text_equality"
+    },
+    {
+      "filename": "multiple_tables.pdf",
+      "gold_variables": [
+        "data_network_two_tables_b_1",
+        "data_network_two_tables_b_2"
+      ],
+      "expected_upstream_test_rows": 10,
+      "predicted_source_band_rows": 10,
+      "exact_normalized_row_tp": 10,
+      "exact_normalized_row_fp": 0,
+      "exact_normalized_row_fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "matching_contract": "strict_NFKC_casefold_whitespace_row_text_equality"
+    },
+    {
+      "filename": "edge_tol.pdf",
+      "gold_variables": [
+        "data_network_edge_tol"
+      ],
+      "expected_upstream_test_rows": 24,
+      "predicted_source_band_rows": 0,
+      "exact_normalized_row_tp": 0,
+      "exact_normalized_row_fp": 0,
+      "exact_normalized_row_fn": 24,
+      "precision": null,
+      "recall": 0.0,
+      "matching_contract": "strict_NFKC_casefold_whitespace_row_text_equality"
+    },
+    {
+      "filename": "column_span_2.pdf",
+      "gold_variables": [
+        "data_lattice_shift_text_left_top"
+      ],
+      "expected_upstream_test_rows": 11,
+      "predicted_source_band_rows": 0,
+      "exact_normalized_row_tp": 0,
+      "exact_normalized_row_fp": 0,
+      "exact_normalized_row_fn": 11,
+      "precision": null,
+      "recall": 0.0,
+      "matching_contract": "strict_NFKC_casefold_whitespace_row_text_equality"
+    },
+    {
+      "filename": "detect_vertical_false.pdf",
+      "gold_variables": [
+        "data_network_strip_text"
+      ],
+      "expected_upstream_test_rows": 37,
+      "predicted_source_band_rows": 0,
+      "exact_normalized_row_tp": 0,
+      "exact_normalized_row_fp": 0,
+      "exact_normalized_row_fn": 37,
+      "precision": null,
+      "recall": 0.0,
+      "matching_contract": "strict_NFKC_casefold_whitespace_row_text_equality"
+    }
+  ]
+}
