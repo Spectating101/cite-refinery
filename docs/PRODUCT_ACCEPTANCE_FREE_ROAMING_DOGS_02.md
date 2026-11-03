@@ -148,6 +148,16 @@ and source-reviewed packet, uses existing local private-workspace
 review/queue/transaction worker under program control and evaluates the
 result. It does not publish data or touch the static Vercel demonstration.
 
+The read-only public preview now builds the same source-reviewed packet from
+the two checked-in public inputs, without running the private acceptance
+workspace or browser audit. Start it with:
+
+    python3 scripts/preview_public_demo.py
+
+See [the reviewer walkthrough](REVIEWER_WALKTHROUGH.md). The preview exposes
+the evidence map only, not private workspace state or acceptance runner
+internals.
+
 Headless local browser audit (requires Chrome and Playwright):
 
     PYTHONPATH=src:. python3 scripts/smoke_acceptance_free_roaming_dogs_browser.py

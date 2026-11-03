@@ -1,17 +1,16 @@
 # Public Atlas Preview
 
-This Vercel target is **not the hosted multi-user Cite-Refinery service**. It is a strictly read-only, interactive snapshot derived solely from `examples/free_roaming_dog_semantic_pilot.json`, a public-source semantic pilot. It does not read local `.cite-refinery` state, authenticate into Nocturnal or Cite, accept submissions, run AI, or write state.
+This preview is **not the hosted multi-user Cite-Refinery service**. It is a strictly read-only, interactive snapshot built from `examples/free_roaming_dog_semantic_pilot.json` plus `examples/acceptance_free_roaming_dog_source_review_v1.json`. The source-review overlay is validated and applied by `scripts/acceptance_free_roaming_dogs.py`; both source files are public and digest-pinned. The preview does not read local `.cite-refinery` state, authenticate into Nocturnal or Cite, accept submissions, run AI, or write state.
 
-Build locally with:
+Start an isolated local preview with:
 
 ```bash
-python3 scripts/build_public_preview.py
-python3 -m http.server 8766 --directory dist
+python3 scripts/preview_public_demo.py
 ```
 
-The generated `dist/index.html` preserves the map-first interface and `dist/snapshot.json` contains a self-contained three-layer project projection. The UI's read-only API is satisfied by that local snapshot. Vercel's `vercel.json` runs the same builder and publishes `dist`.
+Open the loopback URL printed by the command. It builds a temporary snapshot and serves it on `127.0.0.1`; `Ctrl+C` stops the server and removes the generated files. To build the static deployment artifact directly, run `python3 scripts/build_public_preview.py`. The generated `dist/index.html` preserves the map-first interface and `dist/snapshot.json` contains the self-contained project projection. Vercel's `vercel.json` runs the same builder and publishes `dist`.
 
-**Public-demo data boundary:** only the checked-in public pilot is included. Inspect the example's source and provenance receipts before changing it. Generated `dist/` is gitignored. Do not deploy an arbitrary project workspace or live JsonStore on an unauthenticated public site.
+**Public-demo data boundary:** only the checked-in public pilot and frozen source review are included. The builder refuses changed input digests. Inspect the example and review files before changing them. Generated `dist/` is gitignored. Do not deploy an arbitrary project workspace or live JsonStore on an unauthenticated public site.
 
 For a multi-user launch, add server-side authentication, tenant isolation, authorization, audit controls, durable storage, ingestion/job boundaries, and independent security review. This preview intentionally does not claim any of those.
 
