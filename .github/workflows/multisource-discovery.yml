@@ -27,6 +27,9 @@ on:
       - 'tests/test_heterogeneous_partial_page_acceptance.py'
       - 'tests/test_blind_review_invitations.py'
       - 'tests/test_heterogeneous_source_cell_quality.py'
+      - 'tests/test_manulife_sec_issuer_reconciliation.py'
+      - 'scripts/manulife_sec_issuer_reconciliation.py'
+      - 'examples/discovery/manulife_sec_issuer_reconciliation_oracle_20261103.json'
       - 'scripts/heterogeneous_source_cell_acceptance.py'
       - 'examples/discovery/heterogeneous_original_source_cell_oracle_20261103.json'
       - 'scripts/interop_partial_page_acceptance.py'
@@ -73,6 +76,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_heterogeneous_partial_page_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_blind_review_invitations.py' -v
       - run: python -m unittest discover -s tests -p 'test_heterogeneous_source_cell_quality.py' -v
+      - run: python -m unittest discover -s tests -p 'test_manulife_sec_issuer_reconciliation.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.
