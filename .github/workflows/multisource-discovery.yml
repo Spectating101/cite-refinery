@@ -24,6 +24,10 @@ on:
       - 'tests/test_real_pdf_footnote_ambiguity.py'
       - 'tests/test_heterogeneous_pdf_regression.py'
       - 'tests/test_operator_assisted_pdf_review.py'
+      - 'tests/test_heterogeneous_partial_page_acceptance.py'
+      - 'tests/test_blind_review_invitations.py'
+      - 'scripts/interop_partial_page_acceptance.py'
+      - 'scripts/prepare_blind_pdf_review_invites.py'
       - 'scripts/interop_operator_review_acceptance.py'
       - 'scripts/interop_footnote_ambiguity_acceptance.py'
       - 'scripts/interop_period_context_acceptance.py'
@@ -63,6 +67,8 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_real_pdf_footnote_ambiguity.py' -v
       - run: python -m unittest discover -s tests -p 'test_heterogeneous_pdf_regression.py' -v
       - run: python -m unittest discover -s tests -p 'test_operator_assisted_pdf_review.py' -v
+      - run: python -m unittest discover -s tests -p 'test_heterogeneous_partial_page_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_blind_review_invitations.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.

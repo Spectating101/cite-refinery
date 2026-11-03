@@ -1,0 +1,44 @@
+{
+  "schema": "atlas.blind_original_pdf_review_invitations.v1",
+  "source_count": 2,
+  "invitation_count": 4,
+  "actual_independent_human_reviewer_count": 0,
+  "source_semantics_independently_adjudicated": 0,
+  "source_pdf_bytes_committed": false,
+  "review_session_secrets_committed": false,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "status": "INVITATIONS_PREPARED_AWAITING_SEPARATE_HUMAN_REVIEWS",
+  "cases": [
+    {
+      "source_id": "apple_fy25q1",
+      "original_source_sha256": "b45c21d81378d635103ac213cddf853599716b42b4df4646b2f5c07e5079c748",
+      "official_publisher_url": "https://www.apple.com/newsroom/pdfs/fy2025-q1/FY25_Q1_Consolidated_Financial_Statements.pdf",
+      "source_physical_page": 1,
+      "source_cell_id": "apple_fy25q1:01",
+      "scope_case_id": "e538c89156afc13c7cdc0b2d0691b3619678c11427d020b29511179ef859f4fb",
+      "case_set_sha256": "c2d3d2c48c941010f6697829aa93d434dc25d186085ef559bf8ebf980de1a034",
+      "empty_review_invitations_created": 2,
+      "private_review_session_ids_committed": false,
+      "operator_annotations_submitted": 0,
+      "second_human_review_completed": false,
+      "source_word_semantic_links_approved": 0,
+      "automation_authority": false
+    },
+    {
+      "source_id": "apple_fy25q4",
+      "original_source_sha256": "43e7f0730b3cce0fc37301a2f43c29712bbde6ab299d97c6df345fd0c754508a",
+      "official_publisher_url": "https://www.apple.com/newsroom/pdfs/fy2025-q4/FY25_Q4_Consolidated_Financial_Statements.pdf",
+      "source_physical_page": 1,
+      "source_cell_id": "apple_fy25q4:01",
+      "scope_case_id": "2a210aa94d2dc26d7e2bcf6c09996f8b8a6005be0b31950becfb8f202bac33ea",
+      "case_set_sha256": "e69222022e584a608f47edd3c22a0a8291ea4af7c311629b69a2c516b9dd1a3c",
+      "empty_review_invitations_created": 2,
+      "private_review_session_ids_committed": false,
+      "operator_annotations_submitted": 0,
+      "second_human_review_completed": false,
+      "source_word_semantic_links_approved": 0,
+      "automation_authority": false
+    }
+  ]
+}
