@@ -1,0 +1,105 @@
+{
+  "schema": "atlas.original_pdf_row_region_external_acceptance.v1",
+  "authority": "SOURCE_ONLY_OPERATOR_ROW_REGION_PROPOSALS_NOT_DATASET_EVIDENCE",
+  "public_external_fixture_count": 2,
+  "preexisting_reference_document_count": 1,
+  "external_fixture_selection_blind": false,
+  "source_bytes_sha_verified_locally": true,
+  "full_unreviewed_source_word_text_committed": false,
+  "selected_operator_literal_controls_committed": true,
+  "original_pdf_bytes_committed": false,
+  "human_second_reviewer": false,
+  "table_semantics_verified": false,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "trusted_pdfscope_promotions": 0,
+  "release_decision": "HOLD_UNVERIFIED_SOURCE_ROWS_AND_HELDOUT_LAYOUT_AMBIGUITIES",
+  "cases": {
+    "health": {
+      "source_id": "camelot_health_public_fixture",
+      "source_sha256": "efdcd7794fc9397dd3626075f025fa27a95b1180331b0b2c5b89a6c85ae3c4f6",
+      "public_fixture_url": "https://raw.githubusercontent.com/camelot-dev/camelot/master/tests/files/health.pdf",
+      "original_physical_page": 1,
+      "strategy": "thin_filled_rects",
+      "source_rule_boundaries": 24,
+      "source_row_region_proposals": 23,
+      "source_column_count": 8,
+      "source_words_in_operator_region": 190,
+      "source_words_assigned": 190,
+      "source_words_ambiguous_or_unassigned": 0,
+      "single_line_rows_needing_review": 23,
+      "flagged_empty_or_multiline_rows": 0,
+      "geometry_status": "ROW_REGIONS_EXACT_ORIGINAL_WORD_COVERAGE_REVIEW_REQUIRED",
+      "operator_review_completed": false,
+      "trusted_dataset_rows": 0,
+      "original_page_literal_control_rows": 5,
+      "source_literal_controls_matched": 5,
+      "sample_control_results": [
+        {
+          "row_index": 0,
+          "literal_source_cell_match": true,
+          "cell_count": 8
+        },
+        {
+          "row_index": 6,
+          "literal_source_cell_match": true,
+          "cell_count": 8
+        },
+        {
+          "row_index": 12,
+          "literal_source_cell_match": true,
+          "cell_count": 8
+        },
+        {
+          "row_index": 18,
+          "literal_source_cell_match": true,
+          "cell_count": 8
+        },
+        {
+          "row_index": 22,
+          "literal_source_cell_match": true,
+          "cell_count": 8
+        }
+      ],
+      "complete_entire_table_across_pages": false,
+      "authenticated_original_government_source": false
+    },
+    "foo": {
+      "source_id": "camelot_foo_public_fixture",
+      "source_sha256": "7d6c24e45b38375e322419281cee1335ddb97e00fc86abe9f22afcd8b42e6d82",
+      "public_fixture_url": "https://raw.githubusercontent.com/camelot-dev/camelot/master/tests/files/foo.pdf",
+      "original_physical_page": 1,
+      "strategy": "thin_filled_rects",
+      "source_rule_boundaries": 7,
+      "source_row_region_proposals": 6,
+      "source_column_count": 7,
+      "source_words_in_operator_region": 52,
+      "source_words_assigned": 51,
+      "source_words_ambiguous_or_unassigned": 1,
+      "single_line_rows_needing_review": 5,
+      "flagged_empty_or_multiline_rows": 1,
+      "geometry_status": "ABSTAIN_BOUNDARY_OR_WORD_COVERAGE",
+      "operator_review_completed": false,
+      "trusted_dataset_rows": 0,
+      "held_on_incomplete_original_word_coverage": true
+    },
+    "previous_ruled_reference": {
+      "source_id": "arxiv2506",
+      "source_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+      "public_fixture_url": null,
+      "original_physical_page": 6,
+      "strategy": "vector_lines",
+      "source_rule_boundaries": 6,
+      "source_row_region_proposals": 5,
+      "source_column_count": 3,
+      "source_words_in_operator_region": 15,
+      "source_words_assigned": 15,
+      "source_words_ambiguous_or_unassigned": 0,
+      "single_line_rows_needing_review": 5,
+      "flagged_empty_or_multiline_rows": 0,
+      "geometry_status": "ROW_REGIONS_EXACT_ORIGINAL_WORD_COVERAGE_REVIEW_REQUIRED",
+      "operator_review_completed": false,
+      "trusted_dataset_rows": 0
+    }
+  }
+}

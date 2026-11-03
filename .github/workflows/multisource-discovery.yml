@@ -31,6 +31,9 @@ on:
       - 'tests/test_failed_page_native_crop_acceptance.py'
       - 'tests/test_failed_page_native_crop_stability.py'
       - 'tests/test_original_ruled_cost_table_acceptance.py'
+      - 'tests/test_ruled_row_region_external_acceptance.py'
+      - 'scripts/ruled_row_region_external_acceptance.py'
+      - 'examples/discovery/ruled_row_region_external_oracle_20261104.json'
       - 'scripts/original_ruled_cost_table_acceptance.py'
       - 'examples/discovery/original_ruled_cost_table_oracle_20261103.json'
       - 'scripts/failed_page_native_crop_stability_acceptance.py'
@@ -87,6 +90,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_failed_page_native_crop_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_failed_page_native_crop_stability.py' -v
       - run: python -m unittest discover -s tests -p 'test_original_ruled_cost_table_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_ruled_row_region_external_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.

@@ -1,0 +1,40 @@
+{
+  "schema": "atlas.original_ruled_row_region_external_oracle.v1",
+  "origin_note": "Downloaded unchanged public PDF fixtures from camelot-dev/camelot GitHub repository after the original arXiv source table benchmark was established. These are published test documents, not an independent blind random sample or authenticated government financial source.",
+  "health": {
+    "source_id": "camelot_health_public_fixture",
+    "source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/master/tests/files/health.pdf",
+    "source_sha256": "efdcd7794fc9397dd3626075f025fa27a95b1180331b0b2c5b89a6c85ae3c4f6",
+    "physical_page": 1,
+    "source_rule_strategy": "thin_filled_rects",
+    "table_slice_bbox_pdf": [36.48,124.56,579.0,621.4],
+    "column_edges_pdf": [36.48,157.56,218.4,275.88,336.84,383.76,448.2,518.16,579.0],
+    "sample_original_page_word_controls": [
+      {"row_index":0,"expected_original_cells":["Andhra Pradesh","47,824,589","9,967,837","1,275,000","15,000","59,082,426","14,898,243","73,980,669"]},
+      {"row_index":6,"expected_original_cells":["Goa","4,055,567","110,000","330,053","0","4,495,620","12,560","4,508,180"]},
+      {"row_index":12,"expected_original_cells":["Karnataka","34,939,843","4,317,801","3,669,700","0","42,927,344","631,088","43,558,432"]},
+      {"row_index":18,"expected_original_cells":["Mizoram","1,743,501","84,185","10,250","0","1,837,936","17,060","1,854,996"]},
+      {"row_index":22,"expected_original_cells":["Punjab","19,775,485","2,208,343","2,470,882","0","24,454,710","1,436,522","25,891,232"]}
+    ],
+    "original_government_issuer_bytes_authenticated": false,
+    "complete_full_table_or_document": false
+  },
+  "foo": {
+    "source_id": "camelot_foo_public_fixture",
+    "source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/master/tests/files/foo.pdf",
+    "source_sha256": "7d6c24e45b38375e322419281cee1335ddb97e00fc86abe9f22afcd8b42e6d82",
+    "physical_page": 1,
+    "source_rule_strategy": "thin_filled_rects",
+    "table_slice_bbox_pdf": [120.24,557.82,491.7,674.3],
+    "column_edges_pdf": [120.24,164.94,205.26,257.76,313.6,374.96,430.3,491.7],
+    "must_abstain_on_unassigned_or_multiline": true
+  },
+  "previous_ruled_reference": {
+    "source_id": "arxiv2506",
+    "source_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+    "physical_page": 6,
+    "source_rule_strategy": "vector_lines",
+    "table_slice_bbox_pdf": [347.24,71.15,483.31,134.94],
+    "column_edges_pdf": [347.24,394.62,450.72,483.31]
+  }
+}
