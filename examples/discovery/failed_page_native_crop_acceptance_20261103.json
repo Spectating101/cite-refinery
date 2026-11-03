@@ -1,0 +1,182 @@
+{
+  "schema": "atlas.failed_page_operator_cropped_native_recovery.v1",
+  "authority": "SOURCE_WORD_ONLY_OPERATOR_CROPS_NOT_TRUSTED_EXTRACTION",
+  "original_selected_failed_pages": 3,
+  "original_img2table_errors_still_reproduced": 3,
+  "cropped_native_pages_attempted": 2,
+  "chart_only_original_pages_held": 1,
+  "operator_selected_cells_checked": 8,
+  "source_word_matches": 8,
+  "source_word_abstentions": 0,
+  "verified_original_table_semantics": false,
+  "independent_human_adjudication": false,
+  "default_img2table_parser_repaired": false,
+  "original_pdf_bytes_committed": false,
+  "trusted_source_values_promoted": 0,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "release_decision": "HOLD_OPERATOR_SCOPED_RECOVERY_IS_NOT_DEFAULT_PARSER_FIX",
+  "cases": [
+    {
+      "source_id": "bis138",
+      "original_sha256": "11c941437cedc9f40e1e2a76f58fe3f49eaf0fdd56066dbdd1785f0d545de9f2",
+      "physical_page": 6,
+      "original_img2table_error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR",
+      "trusted_values": 0,
+      "original_operator_inspection": "THREE_CHART_PANELS_NOT_A_SOURCE_DATA_TABLE",
+      "original_caption_verified": true,
+      "native_fallback_attempted": false,
+      "original_source_cells_checked": 0,
+      "source_word_matches": 0,
+      "page_outcome": "CHART_ONLY_HOLD_NO_TABLE_RECONSTRUCTION"
+    },
+    {
+      "source_id": "arxiv2506",
+      "original_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+      "physical_page": 6,
+      "original_img2table_error_code": "INVALID_EXTRACTED_CELL_GEOMETRY",
+      "trusted_values": 0,
+      "original_table_caption_operator_observed": "Table 2: Cost comparison with alternative solutions.",
+      "native_fallback_attempted": true,
+      "operator_crop_bbox_pdf": [
+        340,
+        70,
+        500,
+        144
+      ],
+      "native_profile": "ruled_rows_text_columns",
+      "candidate_rows_in_crop": 5,
+      "candidate_cells_in_crop": 15,
+      "original_source_cells_checked": 4,
+      "source_word_matches": 4,
+      "source_word_abstentions": 0,
+      "original_word_and_geometry_checks": [
+        {
+          "source_row_index": 1,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        },
+        {
+          "source_row_index": 2,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        },
+        {
+          "source_row_index": 3,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        },
+        {
+          "source_row_index": 4,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        }
+      ],
+      "word_verifier_separate_library_from_detector": false,
+      "operator_table_context_independently_adjudicated": false,
+      "page_outcome": "SELECTED_SOURCE_WORDS_MATCH_REVIEW_ONLY"
+    },
+    {
+      "source_id": "arxiv2604",
+      "original_sha256": "5c52ca855d9c09b23de5eeef57a3b2f4ffc977fc706ed129b31fa404d2750c99",
+      "physical_page": 9,
+      "original_img2table_error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR",
+      "trusted_values": 0,
+      "original_table_caption_operator_observed": "Table 12: Open-source vs. proprietary LLM accuracy",
+      "native_fallback_attempted": true,
+      "operator_crop_bbox_pdf": [
+        350,
+        257,
+        550,
+        415
+      ],
+      "native_profile": "text_rows_text_columns",
+      "candidate_rows_in_crop": 24,
+      "candidate_cells_in_crop": 120,
+      "original_source_cells_checked": 4,
+      "source_word_matches": 4,
+      "source_word_abstentions": 0,
+      "original_word_and_geometry_checks": [
+        {
+          "source_row_index": 6,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        },
+        {
+          "source_row_index": 7,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        },
+        {
+          "source_row_index": 8,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        },
+        {
+          "source_row_index": 10,
+          "status": "native_original_word_witness_match",
+          "checks": {
+            "source_label_words": true,
+            "candidate_label": true,
+            "source_numeric_words": true,
+            "candidate_numeric": true,
+            "source_header_words": true,
+            "candidate_header": true
+          }
+        }
+      ],
+      "word_verifier_separate_library_from_detector": false,
+      "operator_table_context_independently_adjudicated": false,
+      "page_outcome": "SELECTED_SOURCE_WORDS_MATCH_REVIEW_ONLY"
+    }
+  ]
+}
