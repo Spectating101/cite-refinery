@@ -23,6 +23,8 @@ on:
       - 'tests/test_isolated_period_context_acceptance.py'
       - 'tests/test_real_pdf_footnote_ambiguity.py'
       - 'tests/test_heterogeneous_pdf_regression.py'
+      - 'tests/test_operator_assisted_pdf_review.py'
+      - 'scripts/interop_operator_review_acceptance.py'
       - 'scripts/interop_footnote_ambiguity_acceptance.py'
       - 'scripts/interop_period_context_acceptance.py'
       - 'scripts/interop_original_word_acceptance.py'
@@ -60,6 +62,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_isolated_period_context_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_real_pdf_footnote_ambiguity.py' -v
       - run: python -m unittest discover -s tests -p 'test_heterogeneous_pdf_regression.py' -v
+      - run: python -m unittest discover -s tests -p 'test_operator_assisted_pdf_review.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.
