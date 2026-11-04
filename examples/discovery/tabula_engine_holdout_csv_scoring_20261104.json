@@ -1,0 +1,310 @@
+{
+  "schema": "atlas.tabula_existing_engine_csv_reference_score.v1",
+  "manifest_sha256": "dfa758f61a2f2cc216738abd438d46ca025d764ae28ba6217a827000a5ed9613",
+  "first_pass_sha256": "68e5978269dbf1101ef86b3dff6b4c5cc3e76661b374022929010d18c3c2455c",
+  "scored_rows_policy": "published_Tabula_CSV_literal_NFKC_casefold_whitespace_multiset",
+  "total_first_pages": 12,
+  "pages_with_comparable_published_csv": 6,
+  "pages_without_comparable_published_csv": 6,
+  "frozen_primary": "hybrid",
+  "diagnostic_not_selected": [
+    "network",
+    "lattice"
+  ],
+  "primary_summary": {
+    "scored_pages": 6,
+    "exact_full_row_tp": 185,
+    "source_and_csv_exact_row_matches": 135,
+    "source_witnessed_candidate_rows": 150,
+    "unmatched_proposed_fp": 67,
+    "missed_expected_fn": 53,
+    "proposed_rows_on_scored_pages": 252,
+    "conditional_precision": 0.7341269841269841,
+    "conditional_recall": 0.7773109243697479
+  },
+  "diagnostic_summaries": {
+    "network": {
+      "scored_pages": 6,
+      "exact_full_row_tp": 185,
+      "source_and_csv_exact_row_matches": 138,
+      "source_witnessed_candidate_rows": 152,
+      "unmatched_proposed_fp": 67,
+      "missed_expected_fn": 53,
+      "proposed_rows_on_scored_pages": 252,
+      "conditional_precision": 0.7341269841269841,
+      "conditional_recall": 0.7773109243697479
+    },
+    "lattice": {
+      "scored_pages": 6,
+      "exact_full_row_tp": 146,
+      "source_and_csv_exact_row_matches": 91,
+      "source_witnessed_candidate_rows": 91,
+      "unmatched_proposed_fp": 13,
+      "missed_expected_fn": 92,
+      "proposed_rows_on_scored_pages": 159,
+      "conditional_precision": 0.9182389937106918,
+      "conditional_recall": 0.6134453781512605
+    }
+  },
+  "independent_human_adjudication": false,
+  "original_PDF_source_word_match_is_not_row_truth": true,
+  "trusted_rows": 0,
+  "source_files_committed": false,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "decision": "HOLD_NO_TRUSTED_PUBLICATION",
+  "cases": [
+    {
+      "filename": "rotated_page.pdf",
+      "original_sha256": "6d2ed4bf1bde424cfa6ecfa15762c875938a14f988f35328aaba57f86e08907d",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": null,
+      "reference_status": "NO_COMPARABLE_REFERENCE",
+      "engine_scores": {}
+    },
+    {
+      "filename": "jpeg2000.pdf",
+      "original_sha256": "85e12a48fe9ca227024ffabfd554847e3c530ed8736d06d938283b7435a552bc",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": null,
+      "reference_status": "NO_COMPARABLE_REFERENCE",
+      "engine_scores": {}
+    },
+    {
+      "filename": "spanning_cells.pdf",
+      "original_sha256": "f0a8fb8a293a192ca896ff4100b7b7113149ca89145ba61da662bd9d9fec3acf",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": "8ccdf414c7bd7c67801728002e5e04a1b08006ff3f8d5ae1f2b18c919723972f",
+      "reference_status": "REFERENCE_SCORABLE_SINGLE_ORIGINAL_PAGE",
+      "engine_scores": {
+        "hybrid": {
+          "expected_csv_rows": 25,
+          "proposed_rows": 26,
+          "exact_full_row_tp": 25,
+          "unmatched_proposed_fp": 1,
+          "missed_expected_fn": 0,
+          "matched_rows_with_original_word_witness": 21
+        },
+        "network": {
+          "expected_csv_rows": 25,
+          "proposed_rows": 26,
+          "exact_full_row_tp": 25,
+          "unmatched_proposed_fp": 1,
+          "missed_expected_fn": 0,
+          "matched_rows_with_original_word_witness": 24
+        },
+        "lattice": {
+          "expected_csv_rows": 25,
+          "proposed_rows": 21,
+          "exact_full_row_tp": 21,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 4,
+          "matched_rows_with_original_word_witness": 18
+        }
+      },
+      "expected_rows_in_csv": 25
+    },
+    {
+      "filename": "should_detect_rulings.pdf",
+      "original_sha256": "ea7c01fd7a96a6cc4d4a13641bcc78308cb90eb91cc726138d59532cc16564c4",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": null,
+      "reference_status": "NO_COMPARABLE_REFERENCE",
+      "engine_scores": {}
+    },
+    {
+      "filename": "us-020.pdf",
+      "original_sha256": "d884d32bd2a1d620e0c7b5446e4d0b58ba67dab04e884839b2640b9a35749e99",
+      "original_pdf_pages": 6,
+      "reference_csv_sha256": "ff0ccd1d6ec4023e0c47a05d32f3dc8aa804f48cb28f704ab1886fedba80382b",
+      "reference_status": "UNSCORED_REFERENCE_COVERS_MULTIPAGE_DOCUMENT",
+      "engine_scores": {}
+    },
+    {
+      "filename": "twotables.pdf",
+      "original_sha256": "72a9d20672e4d581ae9933a07cbe9a6f6db40632218fb7e73bd923dee033d8cd",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": "9fa47b7f1d16d2d16afdc8544fc1a67d078690cc08b091a5a51425940af99c6c",
+      "reference_status": "REFERENCE_SCORABLE_SINGLE_ORIGINAL_PAGE",
+      "engine_scores": {
+        "hybrid": {
+          "expected_csv_rows": 22,
+          "proposed_rows": 54,
+          "exact_full_row_tp": 16,
+          "unmatched_proposed_fp": 38,
+          "missed_expected_fn": 6,
+          "matched_rows_with_original_word_witness": 16
+        },
+        "network": {
+          "expected_csv_rows": 22,
+          "proposed_rows": 54,
+          "exact_full_row_tp": 16,
+          "unmatched_proposed_fp": 38,
+          "missed_expected_fn": 6,
+          "matched_rows_with_original_word_witness": 16
+        },
+        "lattice": {
+          "expected_csv_rows": 22,
+          "proposed_rows": 22,
+          "exact_full_row_tp": 22,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 0,
+          "matched_rows_with_original_word_witness": 19
+        }
+      },
+      "expected_rows_in_csv": 22
+    },
+    {
+      "filename": "schools.pdf",
+      "original_sha256": "d73a342af0250f36b08b718dbf6b73def928e103aa7911ff18018534aa5c87fb",
+      "original_pdf_pages": 5,
+      "reference_csv_sha256": "0df48a0880fe82ae7d73675d4a044b4e89d27ebacbbc427492c070dda44a2d43",
+      "reference_status": "UNSCORED_REFERENCE_COVERS_MULTIPAGE_DOCUMENT",
+      "engine_scores": {}
+    },
+    {
+      "filename": "Publication_of_award_of_Bids_for_Transport_Sector__August_2016.pdf",
+      "original_sha256": "038126d57e3d9aadfee6c3ac44acc66d4fbdc13598dad8deadd7ec76a2a7d2ab",
+      "original_pdf_pages": 5,
+      "reference_csv_sha256": "d4ae792846efa5cb1a2829ec8fe767d2aae62c6e96de5e8d9538cba465a3032e",
+      "reference_status": "UNSCORED_REFERENCE_COVERS_MULTIPAGE_DOCUMENT",
+      "engine_scores": {}
+    },
+    {
+      "filename": "MultiColumn.pdf",
+      "original_sha256": "ad8639d78ff804aff84ec15eac915367f3aa177f39de12b7b02cbc6cb19d3162",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": "b0d2ad968bcd3920f3002878948d266ef5a91bfe8800fb975780de105d9d4e87",
+      "reference_status": "REFERENCE_SCORABLE_SINGLE_ORIGINAL_PAGE",
+      "engine_scores": {
+        "hybrid": {
+          "expected_csv_rows": 44,
+          "proposed_rows": 44,
+          "exact_full_row_tp": 44,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 0,
+          "matched_rows_with_original_word_witness": 44
+        },
+        "network": {
+          "expected_csv_rows": 44,
+          "proposed_rows": 44,
+          "exact_full_row_tp": 44,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 0,
+          "matched_rows_with_original_word_witness": 44
+        },
+        "lattice": {
+          "expected_csv_rows": 44,
+          "proposed_rows": 0,
+          "exact_full_row_tp": 0,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 44,
+          "matched_rows_with_original_word_witness": 0
+        }
+      },
+      "expected_rows_in_csv": 44
+    },
+    {
+      "filename": "argentina_diputados_voting_record.pdf",
+      "original_sha256": "101064f0dc6aaafbab30ebccce14f290e695ef220b01699254df607f2000b61e",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": "c254b43910112e3ff7b2c2f1b012bb64ca39d2f4c7e2d8f8f410c2238d616417",
+      "reference_status": "REFERENCE_SCORABLE_SINGLE_ORIGINAL_PAGE",
+      "engine_scores": {
+        "hybrid": {
+          "expected_csv_rows": 31,
+          "proposed_rows": 0,
+          "exact_full_row_tp": 0,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 31,
+          "matched_rows_with_original_word_witness": 0
+        },
+        "network": {
+          "expected_csv_rows": 31,
+          "proposed_rows": 0,
+          "exact_full_row_tp": 0,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 31,
+          "matched_rows_with_original_word_witness": 0
+        },
+        "lattice": {
+          "expected_csv_rows": 31,
+          "proposed_rows": 0,
+          "exact_full_row_tp": 0,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 31,
+          "matched_rows_with_original_word_witness": 0
+        }
+      },
+      "expected_rows_in_csv": 31
+    },
+    {
+      "filename": "frx_2012_disclosure.pdf",
+      "original_sha256": "aa80de941ee2999798e2d36b63b475861468bcb958cb7106e9afcc12242ad54a",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": "7fc6282b949d41620a81c7a92f2c05b298f88cde6f1eb65be1ac8b37d8c843b0",
+      "reference_status": "REFERENCE_SCORABLE_SINGLE_ORIGINAL_PAGE",
+      "engine_scores": {
+        "hybrid": {
+          "expected_csv_rows": 88,
+          "proposed_rows": 92,
+          "exact_full_row_tp": 86,
+          "unmatched_proposed_fp": 6,
+          "missed_expected_fn": 2,
+          "matched_rows_with_original_word_witness": 41
+        },
+        "network": {
+          "expected_csv_rows": 88,
+          "proposed_rows": 92,
+          "exact_full_row_tp": 86,
+          "unmatched_proposed_fp": 6,
+          "missed_expected_fn": 2,
+          "matched_rows_with_original_word_witness": 41
+        },
+        "lattice": {
+          "expected_csv_rows": 88,
+          "proposed_rows": 88,
+          "exact_full_row_tp": 88,
+          "unmatched_proposed_fp": 0,
+          "missed_expected_fn": 0,
+          "matched_rows_with_original_word_witness": 41
+        }
+      },
+      "expected_rows_in_csv": 88
+    },
+    {
+      "filename": "spreadsheet_no_bounding_frame.pdf",
+      "original_sha256": "67192f9b786462db2db772d4f526486fa65d8dc46e121957ce1ad08ec09c21e0",
+      "original_pdf_pages": 1,
+      "reference_csv_sha256": "5504df3b96fadb47c92ee116f2c3b4be87b52917243223f514ccecb8abea9f4d",
+      "reference_status": "REFERENCE_SCORABLE_SINGLE_ORIGINAL_PAGE",
+      "engine_scores": {
+        "hybrid": {
+          "expected_csv_rows": 28,
+          "proposed_rows": 36,
+          "exact_full_row_tp": 14,
+          "unmatched_proposed_fp": 22,
+          "missed_expected_fn": 14,
+          "matched_rows_with_original_word_witness": 13
+        },
+        "network": {
+          "expected_csv_rows": 28,
+          "proposed_rows": 36,
+          "exact_full_row_tp": 14,
+          "unmatched_proposed_fp": 22,
+          "missed_expected_fn": 14,
+          "matched_rows_with_original_word_witness": 13
+        },
+        "lattice": {
+          "expected_csv_rows": 28,
+          "proposed_rows": 28,
+          "exact_full_row_tp": 15,
+          "unmatched_proposed_fp": 13,
+          "missed_expected_fn": 13,
+          "matched_rows_with_original_word_witness": 13
+        }
+      },
+      "expected_rows_in_csv": 28
+    }
+  ]
+}

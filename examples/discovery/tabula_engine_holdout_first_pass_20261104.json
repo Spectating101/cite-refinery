@@ -1,0 +1,433 @@
+{
+  "schema": "atlas.tabula_existing_engine_first_pass.v1",
+  "original_manifest_sha256": "dfa758f61a2f2cc216738abd438d46ca025d764ae28ba6217a827000a5ed9613",
+  "original_upstream_commit": "2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f",
+  "frozen_research_drive_commit": "9b502d8b8ca6605c452a7202c2bd2905c97785a9",
+  "primary_engine": "hybrid",
+  "diagnostic_engines": [
+    "network",
+    "lattice"
+  ],
+  "original_first_pages_attempted": 12,
+  "primary_pages_with_candidates": 6,
+  "primary_candidate_rows": 325,
+  "primary_candidate_source_word_matched_rows": 171,
+  "primary_engine_errors_or_timeouts": 5,
+  "primary_source_only_not_truth": true,
+  "source_reference_row_accuracy_not_yet_scored": true,
+  "trusted_publication_rows": 0,
+  "all_pdf_and_candidate_text_private": true,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "release": "HOLD_EXTERNAL_ORACLE_AND_INDEPENDENT_HUMAN_REQUIRED",
+  "cases": [
+    {
+      "filename": "rotated_page.pdf",
+      "stratum": "stress",
+      "original_sha256": "6d2ed4bf1bde424cfa6ecfa15762c875938a14f988f35328aaba57f86e08907d",
+      "original_size_bytes": 449324,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "network": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "lattice": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "jpeg2000.pdf",
+      "stratum": "stress",
+      "original_sha256": "85e12a48fe9ca227024ffabfd554847e3c530ed8736d06d938283b7435a552bc",
+      "original_size_bytes": 34154,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 73,
+          "candidate_tables": 1,
+          "candidate_cells": 584,
+          "source_word_witness_cells": 141,
+          "fully_original_word_matched_rows": 21
+        },
+        "network": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 73,
+          "candidate_tables": 1,
+          "candidate_cells": 584,
+          "source_word_witness_cells": 141,
+          "fully_original_word_matched_rows": 21
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0,
+          "fully_original_word_matched_rows": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "spanning_cells.pdf",
+      "stratum": "stress",
+      "original_sha256": "f0a8fb8a293a192ca896ff4100b7b7113149ca89145ba61da662bd9d9fec3acf",
+      "original_size_bytes": 27918,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 26,
+          "candidate_tables": 2,
+          "candidate_cells": 156,
+          "source_word_witness_cells": 126,
+          "fully_original_word_matched_rows": 21
+        },
+        "network": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 26,
+          "candidate_tables": 2,
+          "candidate_cells": 112,
+          "source_word_witness_cells": 93,
+          "fully_original_word_matched_rows": 24
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 21,
+          "candidate_tables": 1,
+          "candidate_cells": 126,
+          "source_word_witness_cells": 108,
+          "fully_original_word_matched_rows": 18
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "should_detect_rulings.pdf",
+      "stratum": "stress",
+      "original_sha256": "ea7c01fd7a96a6cc4d4a13641bcc78308cb90eb91cc726138d59532cc16564c4",
+      "original_size_bytes": 206050,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "network": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "lattice": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "us-020.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "d884d32bd2a1d620e0c7b5446e4d0b58ba67dab04e884839b2640b9a35749e99",
+      "original_size_bytes": 122078,
+      "original_pdf_pages": 6,
+      "engines": {
+        "hybrid": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0,
+          "fully_original_word_matched_rows": 0
+        },
+        "network": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0,
+          "fully_original_word_matched_rows": 0
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0,
+          "fully_original_word_matched_rows": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "twotables.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "72a9d20672e4d581ae9933a07cbe9a6f6db40632218fb7e73bd923dee033d8cd",
+      "original_size_bytes": 204955,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 54,
+          "candidate_tables": 2,
+          "candidate_cells": 435,
+          "source_word_witness_cells": 102,
+          "fully_original_word_matched_rows": 28
+        },
+        "network": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 54,
+          "candidate_tables": 2,
+          "candidate_cells": 435,
+          "source_word_witness_cells": 102,
+          "fully_original_word_matched_rows": 28
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 22,
+          "candidate_tables": 2,
+          "candidate_cells": 154,
+          "source_word_witness_cells": 83,
+          "fully_original_word_matched_rows": 19
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "schools.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "d73a342af0250f36b08b718dbf6b73def928e103aa7911ff18018534aa5c87fb",
+      "original_size_bytes": 72878,
+      "original_pdf_pages": 5,
+      "engines": {
+        "hybrid": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "network": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "lattice": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "Publication_of_award_of_Bids_for_Transport_Sector__August_2016.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "038126d57e3d9aadfee6c3ac44acc66d4fbdc13598dad8deadd7ec76a2a7d2ab",
+      "original_size_bytes": 121559,
+      "original_pdf_pages": 5,
+      "engines": {
+        "hybrid": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "network": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "lattice": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "MultiColumn.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "ad8639d78ff804aff84ec15eac915367f3aa177f39de12b7b02cbc6cb19d3162",
+      "original_size_bytes": 8336,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 44,
+          "candidate_tables": 2,
+          "candidate_cells": 132,
+          "source_word_witness_cells": 132,
+          "fully_original_word_matched_rows": 44
+        },
+        "network": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 44,
+          "candidate_tables": 2,
+          "candidate_cells": 132,
+          "source_word_witness_cells": 132,
+          "fully_original_word_matched_rows": 44
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0,
+          "fully_original_word_matched_rows": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "argentina_diputados_voting_record.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "101064f0dc6aaafbab30ebccce14f290e695ef220b01699254df607f2000b61e",
+      "original_size_bytes": 47834,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "network": {
+          "status": "ENGINE_ERROR",
+          "error_type": "SubprocessNonzeroExit",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 0,
+          "candidate_tables": 0,
+          "candidate_cells": 0,
+          "source_word_witness_cells": 0,
+          "fully_original_word_matched_rows": 0
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "frx_2012_disclosure.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "aa80de941ee2999798e2d36b63b475861468bcb958cb7106e9afcc12242ad54a",
+      "original_size_bytes": 21404,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 92,
+          "candidate_tables": 1,
+          "candidate_cells": 460,
+          "source_word_witness_cells": 165,
+          "fully_original_word_matched_rows": 41
+        },
+        "network": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 92,
+          "candidate_tables": 1,
+          "candidate_cells": 460,
+          "source_word_witness_cells": 165,
+          "fully_original_word_matched_rows": 41
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 88,
+          "candidate_tables": 1,
+          "candidate_cells": 440,
+          "source_word_witness_cells": 168,
+          "fully_original_word_matched_rows": 41
+        }
+      },
+      "trusted_rows": 0
+    },
+    {
+      "filename": "spreadsheet_no_bounding_frame.pdf",
+      "stratum": "hash_sample",
+      "original_sha256": "67192f9b786462db2db772d4f526486fa65d8dc46e121957ce1ad08ec09c21e0",
+      "original_size_bytes": 963925,
+      "original_pdf_pages": 1,
+      "engines": {
+        "hybrid": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 36,
+          "candidate_tables": 1,
+          "candidate_cells": 252,
+          "source_word_witness_cells": 141,
+          "fully_original_word_matched_rows": 16
+        },
+        "network": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 36,
+          "candidate_tables": 1,
+          "candidate_cells": 180,
+          "source_word_witness_cells": 115,
+          "fully_original_word_matched_rows": 15
+        },
+        "lattice": {
+          "status": "SOURCE_REVIEW_ONLY",
+          "candidate_rows": 28,
+          "candidate_tables": 1,
+          "candidate_cells": 168,
+          "source_word_witness_cells": 143,
+          "fully_original_word_matched_rows": 13
+        }
+      },
+      "trusted_rows": 0
+    }
+  ]
+}
