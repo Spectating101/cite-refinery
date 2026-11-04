@@ -1,0 +1,202 @@
+{
+  "schema": "atlas.original_pdf_operator_review_pilot.v1",
+  "source_manifest_sha256": "dfa758f61a2f2cc216738abd438d46ca025d764ae28ba6217a827000a5ed9613",
+  "frozen_first_pass_sha256": "68e5978269dbf1101ef86b3dff6b4c5cc3e76661b374022929010d18c3c2455c",
+  "original_first_pages_attempted": 12,
+  "original_candidate_rows": 325,
+  "original_source_witnessed_review_rows": 68,
+  "blocked_from_operator_review": 257,
+  "private_review_sheets_created": 3,
+  "original_candidates_failing_engine": 5,
+  "operator_actions_submitted": 0,
+  "real_independent_reviewers": 0,
+  "trusted_pdfscope_promotions": 0,
+  "trusted_dataset_rows": 0,
+  "source_pdf_and_review_text_committed": false,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "release_state": "HOLD_OPERATOR_AND_SECOND_REVIEW_MISSING",
+  "cases": [
+    {
+      "source_file": "rotated_page.pdf",
+      "original_sha256": "6d2ed4bf1bde424cfa6ecfa15762c875938a14f988f35328aaba57f86e08907d",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 0,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 0,
+      "reason_codes": {},
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "state": "ENGINE_ERROR_STILL_BLOCKED"
+    },
+    {
+      "source_file": "jpeg2000.pdf",
+      "original_sha256": "85e12a48fe9ca227024ffabfd554847e3c530ed8736d06d938283b7435a552bc",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 73,
+      "operator_ready_rows": 3,
+      "blocked_review_rows": 70,
+      "reason_codes": {
+        "CANDIDATE_WORD_DISAGREEMENT": 52,
+        "EMPTY_OR_MERGED_CELL": 62,
+        "MULTILINE_SOURCE_CELL": 16
+      },
+      "review_sheet_created": true,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "source_packet_digest_sha256": "3662972aa5240eca4f51ba7aefaf38571dc6cacf87c7739384eeb6698295c998",
+      "state": "UNREVIEWED_OPERATOR_BUNDLE"
+    },
+    {
+      "source_file": "spanning_cells.pdf",
+      "original_sha256": "f0a8fb8a293a192ca896ff4100b7b7113149ca89145ba61da662bd9d9fec3acf",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 26,
+      "operator_ready_rows": 21,
+      "blocked_review_rows": 5,
+      "reason_codes": {
+        "CANDIDATE_WORD_DISAGREEMENT": 5,
+        "EMPTY_OR_MERGED_CELL": 5
+      },
+      "review_sheet_created": true,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "source_packet_digest_sha256": "63761a9c2d941accd5ba45040616aa2d2ec5e270871824b9145ea6087fb8928d",
+      "state": "UNREVIEWED_OPERATOR_BUNDLE"
+    },
+    {
+      "source_file": "should_detect_rulings.pdf",
+      "original_sha256": "ea7c01fd7a96a6cc4d4a13641bcc78308cb90eb91cc726138d59532cc16564c4",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 0,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 0,
+      "reason_codes": {},
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "state": "ENGINE_ERROR_STILL_BLOCKED"
+    },
+    {
+      "source_file": "us-020.pdf",
+      "original_sha256": "d884d32bd2a1d620e0c7b5446e4d0b58ba67dab04e884839b2640b9a35749e99",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 0,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 0,
+      "reason_codes": {},
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "source_packet_digest_sha256": "a2bf6950c651915c2ef79f7ebb981a05fc8db5907fa161737c9a649355a1b78c",
+      "state": "UNREVIEWED_OPERATOR_BUNDLE"
+    },
+    {
+      "source_file": "twotables.pdf",
+      "original_sha256": "72a9d20672e4d581ae9933a07cbe9a6f6db40632218fb7e73bd923dee033d8cd",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 54,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 54,
+      "reason_codes": {
+        "CANDIDATE_WORD_DISAGREEMENT": 26,
+        "DUPLICATED_ORIGINAL_WORD": 15,
+        "EMPTY_OR_MERGED_CELL": 51
+      },
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "source_packet_digest_sha256": "68363909b7373d083ff13d07f7f1aa701177517b1a4fdcb267189ab585006945",
+      "state": "UNREVIEWED_OPERATOR_BUNDLE"
+    },
+    {
+      "source_file": "schools.pdf",
+      "original_sha256": "d73a342af0250f36b08b718dbf6b73def928e103aa7911ff18018534aa5c87fb",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 0,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 0,
+      "reason_codes": {},
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "state": "ENGINE_ERROR_STILL_BLOCKED"
+    },
+    {
+      "source_file": "Publication_of_award_of_Bids_for_Transport_Sector__August_2016.pdf",
+      "original_sha256": "038126d57e3d9aadfee6c3ac44acc66d4fbdc13598dad8deadd7ec76a2a7d2ab",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 0,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 0,
+      "reason_codes": {},
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "state": "ENGINE_ERROR_STILL_BLOCKED"
+    },
+    {
+      "source_file": "MultiColumn.pdf",
+      "original_sha256": "ad8639d78ff804aff84ec15eac915367f3aa177f39de12b7b02cbc6cb19d3162",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 44,
+      "operator_ready_rows": 44,
+      "blocked_review_rows": 0,
+      "reason_codes": {},
+      "review_sheet_created": true,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "source_packet_digest_sha256": "348799bd7d924e4aed5393e05ca12f7dc095d9711003afd458388694f4f0d101",
+      "state": "UNREVIEWED_OPERATOR_BUNDLE"
+    },
+    {
+      "source_file": "argentina_diputados_voting_record.pdf",
+      "original_sha256": "101064f0dc6aaafbab30ebccce14f290e695ef220b01699254df607f2000b61e",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 0,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 0,
+      "reason_codes": {},
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "state": "ENGINE_ERROR_STILL_BLOCKED"
+    },
+    {
+      "source_file": "frx_2012_disclosure.pdf",
+      "original_sha256": "aa80de941ee2999798e2d36b63b475861468bcb958cb7106e9afcc12242ad54a",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 92,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 92,
+      "reason_codes": {
+        "CANDIDATE_WORD_DISAGREEMENT": 51,
+        "EMPTY_OR_MERGED_CELL": 91,
+        "MULTILINE_SOURCE_CELL": 2
+      },
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "source_packet_digest_sha256": "b1957a33fcfdfd2d9ae0c2f5ee83400b78bc29f3b49ba0a93db70222d16f8c77",
+      "state": "UNREVIEWED_OPERATOR_BUNDLE"
+    },
+    {
+      "source_file": "spreadsheet_no_bounding_frame.pdf",
+      "original_sha256": "67192f9b786462db2db772d4f526486fa65d8dc46e121957ce1ad08ec09c21e0",
+      "frozen_primary": "hybrid",
+      "first_pass_candidate_rows": 36,
+      "operator_ready_rows": 0,
+      "blocked_review_rows": 36,
+      "reason_codes": {
+        "CANDIDATE_WORD_DISAGREEMENT": 20,
+        "EMPTY_OR_MERGED_CELL": 36
+      },
+      "review_sheet_created": false,
+      "reviewer_actions_submitted": 0,
+      "trusted_rows": 0,
+      "source_packet_digest_sha256": "5de47e88980fea5789414377ea6262670bef2c53c8bd162a4365a86c4241acf8",
+      "state": "UNREVIEWED_OPERATOR_BUNDLE"
+    }
+  ]
+}

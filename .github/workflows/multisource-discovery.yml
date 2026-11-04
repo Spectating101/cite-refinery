@@ -34,6 +34,11 @@ on:
       - 'tests/test_ruled_row_region_external_acceptance.py'
       - 'tests/test_locked_pdf_holdout_20261104.py'
       - 'tests/test_tabula_multi_engine_holdout_20261104.py'
+      - 'tests/test_tabula_operator_review_queue_20261104.py'
+      - 'scripts/tabula_operator_review_pilot_20261104.py'
+      - 'scripts/tabula_geometry_blockers_20261104.py'
+      - 'examples/discovery/tabula_operator_review_queue_20261104.json'
+      - 'examples/discovery/tabula_original_geometry_blockers_20261104.json'
       - 'scripts/run_locked_tabula_multi_engine_20261104.py'
       - 'scripts/score_tabula_multi_engine_20261104.py'
       - 'scripts/compare_frozen_ruled_tabula_holdout_20261104.py'
@@ -107,6 +112,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_ruled_row_region_external_acceptance.py' -v
       - run: python -m unittest discover -s tests -p 'test_locked_pdf_holdout_20261104.py' -v
       - run: python -m unittest discover -s tests -p 'test_tabula_multi_engine_holdout_20261104.py' -v
+      - run: python -m unittest discover -s tests -p 'test_tabula_operator_review_queue_20261104.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.

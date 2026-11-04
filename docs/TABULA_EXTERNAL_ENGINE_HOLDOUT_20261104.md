@@ -54,3 +54,7 @@ The previous 9.35% recall on the different Camelot fixture corpus is NOT a same-
 - Frozen ruled-only comparison: scripts/compare_frozen_ruled_tabula_holdout_20261104.py and tabula_ruled_baseline_same_cohort_20261104.json.
 
 Remaining blockers include rotated/cropped source coordinate calibration, 5 engine errors/timeouts, merged headers, source-word mismatch, multi-page and missing-reference cases, unbiased new-publisher accuracy checks and second-human semantic review. Source-location matches are not accounting or publisher semantic approval. Both PRs remain open drafts, unmerged, undeployed and without automatic trusted publication authority.
+
+## Follow-on private operator queue — 2026-11-04
+
+The fixed first-pass `hybrid` output was run through Research Drive's stricter source-and-row review packet builder. Of the original **325 source candidates**, only **68** had all nonempty cells originally word-matched without reused word geometry or multiline ambiguity, and **257** are held with reason codes. Real offline HTML source-preview reviews are prepared privately for three PDFs (44 + 21 + 3 rows). No operator input or second human review was submitted. Original engine failures remain 3 rotated, 1 offset CropBox and 1 inconsistent Camelot row/cell output. The earlier **171 all-cells-match flag** and **135 source+CSV reference matches** remain separate historical quantities, not counts of rows approved for publication. See `docs/TABULA_OPERATOR_REVIEW_QUEUE_20261104.md` and the sanitized receipt; release HOLD.
