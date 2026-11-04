@@ -31,3 +31,7 @@ Of the original five Camelot hybrid engine errors: **three** first pages have PD
 Versioned evidence: `examples/discovery/tabula_operator_review_queue_20261104.json`, `examples/discovery/tabula_original_geometry_blockers_20261104.json`, `scripts/tabula_operator_review_pilot_20261104.py`, and `scripts/tabula_geometry_blockers_20261104.py`; synthetic regression controls and HTML rendering live in Research Drive #91.
 
 **Release remains HOLD.** Source and row review are not full table completeness or financial semantics. A real human operator must submit decisions; a separate independently verified reviewer must resolve any positive claims before any publisher dataset consideration. No draft merges or production deployment.
+
+## Calibrated source-coordinate follow-on (2026-11-05)
+
+A new independent original-source affine calibration path was subsequently tested on the **four geometry-blocked original PDFs**. It produced 255 additional untrusted Camelot row candidates, of which only **30** passed the original-source nonempty/nonoverlap operator gate; 225 remained blocked. The fifth error (inconsistent Camelot row/cell geometry) remains unresolved. The older 325 original candidate and 68 operator-row baseline is unchanged. This is post-holdout exploration, not a new blind accuracy result. See `docs/TABULA_ORIGINAL_GEOMETRY_REPAIR_20261105.md`. No human decisions or trust promotions.
