@@ -36,6 +36,12 @@ on:
       - 'tests/test_tabula_multi_engine_holdout_20261104.py'
       - 'tests/test_tabula_operator_review_queue_20261104.py'
       - 'tests/test_tabula_original_geometry_recovery_20261105.py'
+      - 'tests/test_pdfplumber_geometry_holdout_20261105.py'
+      - 'scripts/preregister_pdfplumber_geometry_holdout_20261105.py'
+      - 'scripts/pdfplumber_geometry_holdout_runner_20261105.py'
+      - 'examples/discovery/pdfplumber_geometry_holdout_preregistration_20261105.json'
+      - 'examples/discovery/pdfplumber_geometry_first_pass_20261105.json'
+      - 'docs/PDFPLUMBER_UNSEEN_GEOMETRY_HOLDOUT_20261105.md'
       - 'scripts/tabula_original_geometry_recovery_acceptance_20261105.py'
       - 'examples/discovery/tabula_original_geometry_recovery_20261105.json'
       - 'docs/TABULA_ORIGINAL_GEOMETRY_REPAIR_20261105.md'
@@ -118,6 +124,7 @@ jobs:
       - run: python -m unittest discover -s tests -p 'test_tabula_multi_engine_holdout_20261104.py' -v
       - run: python -m unittest discover -s tests -p 'test_tabula_operator_review_queue_20261104.py' -v
       - run: python -m unittest discover -s tests -p 'test_tabula_original_geometry_recovery_20261105.py' -v
+      - run: python -m unittest discover -s tests -p 'test_pdfplumber_geometry_holdout_20261105.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.

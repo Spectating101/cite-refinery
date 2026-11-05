@@ -33,3 +33,7 @@ The remaining three normalized source PDFs produce **no** review-ready rows unde
 - Research Drive #91 supplies synthetic original-PDF adversarial unit tests and the usable private calibrated review CLI.
 
 **HOLD:** zero actual operator submissions, zero independent reviewers, zero trusted `PDFScope` promotions, zero dataset publication. Both PRs remain open drafts, unmerged and undeployed. Further unknown-layout accuracy needs a **new** preregistered untouched rotated/cropped PDF sample and true original semantic adjudication.
+
+## New independent external source cohort (2026-11-05)
+
+Subsequent prospectively locked pdfplumber original PDF fixtures were run without per-file tuning: 12/12 original files SHA-pinned and attempted; 6 original word-box calibrations, but only 2 produced fixed-hybrid candidate tables (88 rows), of which only **3** passed the strict original-source row review gate. Ten other cases errored or abstained. No independent row gold exists for that sample; precision/recall are UNKNOWN. The earlier Tabula 255/30 post-holdout recovery counts are not results from this new corpus. See `docs/PDFPLUMBER_UNSEEN_GEOMETRY_HOLDOUT_20261105.md`.
