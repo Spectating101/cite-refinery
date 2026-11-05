@@ -1,0 +1,155 @@
+{
+  "schema": "atlas.real_pdf_operator_pilot.v1",
+  "date": "2026-11-03",
+  "authority": "REVIEW_ONLY",
+  "environment": {
+    "img2table": "2.0.0",
+    "pdfplumber": "0.11.9",
+    "python": "3.13",
+    "ocr": false,
+    "source_files": "original_public_pdfs_local_only"
+  },
+  "semantic_accuracy": "NOT_MEASURED",
+  "independent_truth_checked_cells": 0,
+  "automatic_adoption": false,
+  "decision": "HOLD_OPTIONAL_PARSER_NOT_PRODUCTION_READY",
+  "cases": [
+    {
+      "id": "bis106",
+      "source_url": "https://www.bis.org/publications/bulletin-106-retail-investors-private-credit.pdf",
+      "source_type": "central_bank_financial_research",
+      "source_sha256": "56edaa1a93f11fbe1fa231ca179ebec6a79d5a89cd7915e1ff73d15188f5a69c",
+      "selected_physical_pages": [
+        4,
+        7
+      ],
+      "native": {
+        "status": "ok",
+        "tables_detected": 6,
+        "cells_proposed": 415,
+        "elapsed_seconds": 0.457,
+        "error": null,
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      },
+      "optional": {
+        "status": "ok",
+        "tables_detected": 1,
+        "cells_proposed": 6,
+        "elapsed_seconds": 4.383,
+        "error": null,
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      }
+    },
+    {
+      "id": "bis116",
+      "source_url": "https://www.bis.org/publications/bulletin-116-rise-non-bank-financial-institutions-implications-monetary-policy.pdf",
+      "source_type": "central_bank_financial_research",
+      "source_sha256": "9832cc7a21a0012641131866eccfa09d1a23c34e44e00434da5d2452a9d463fb",
+      "selected_physical_pages": [
+        4,
+        5
+      ],
+      "native": {
+        "status": "ok",
+        "tables_detected": 6,
+        "cells_proposed": 700,
+        "elapsed_seconds": 0.411,
+        "error": null,
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      },
+      "optional": {
+        "status": "ok",
+        "tables_detected": 3,
+        "cells_proposed": 55,
+        "elapsed_seconds": 3.023,
+        "error": null,
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      }
+    },
+    {
+      "id": "bis138",
+      "source_url": "https://www.bis.org/publications/bulletin-138-chokepoint-disruptions-and-their-macroeconomic-consequences.pdf",
+      "source_type": "central_bank_macro_research",
+      "source_sha256": "11c941437cedc9f40e1e2a76f58fe3f49eaf0fdd56066dbdd1785f0d545de9f2",
+      "selected_physical_pages": [
+        4,
+        6
+      ],
+      "native": {
+        "status": "ok",
+        "tables_detected": 6,
+        "cells_proposed": 256,
+        "elapsed_seconds": 0.587,
+        "error": null,
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      },
+      "optional": {
+        "status": "error",
+        "tables_detected": null,
+        "cells_proposed": null,
+        "elapsed_seconds": 3.857,
+        "error": "ValueError: zip() argument 2 is longer than argument 1",
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      }
+    },
+    {
+      "id": "arxiv2604",
+      "source_url": "https://arxiv.org/pdf/2604.12047",
+      "source_type": "open_academic_financial_document_parsing",
+      "source_sha256": "5c52ca855d9c09b23de5eeef57a3b2f4ffc977fc706ed129b31fa404d2750c99",
+      "selected_physical_pages": [
+        7,
+        9
+      ],
+      "native": {
+        "status": "ok",
+        "tables_detected": 5,
+        "cells_proposed": 215,
+        "elapsed_seconds": 0.411,
+        "error": null,
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      },
+      "optional": {
+        "status": "error",
+        "tables_detected": null,
+        "cells_proposed": null,
+        "elapsed_seconds": 6.029,
+        "error": "ValueError: zip() argument 2 is longer than argument 1",
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      }
+    },
+    {
+      "id": "arxiv2506",
+      "source_url": "https://arxiv.org/pdf/2506.05182",
+      "source_type": "open_academic_financial_document_parsing",
+      "source_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+      "selected_physical_pages": [
+        6,
+        11
+      ],
+      "native": {
+        "status": "ok",
+        "tables_detected": 9,
+        "cells_proposed": 156,
+        "elapsed_seconds": 0.793,
+        "error": null,
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      },
+      "optional": {
+        "status": "error",
+        "tables_detected": null,
+        "cells_proposed": null,
+        "elapsed_seconds": 5.838,
+        "error": "ValueError: empty or inverted extracted cell bounds",
+        "reliability": "UNVERIFIED_CANDIDATE_OR_SPURIOUS_REGION"
+      }
+    }
+  ],
+  "observations": [
+    "All source PDFs verified by original-byte SHA-256; five distinct public papers within 30 pages.",
+    "Native parser returned many graph-shaped candidate grids in BIS documents; table detection counts are not table accuracy.",
+    "Optional parser completed on 2 of 5 documents; two strict zip-length failures originate inside img2table PdfOCR and one geometry failure was rejected by the Research Drive candidate guard.",
+    "No human adjudicated source-cell ground-truth grid was completed. These are execution/abstention measurements, not semantic accuracy scores.",
+    "No OCR, product installation, registration, autonomous procurement or publication executed."
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "schema": "cite_refinery.autonomous_capability_goal.v1",
+  "goal": "Identify reusable open-source engineering capabilities that Hardware Splicer could integrate rather than reimplement.",
+  "project": "hardware_splicer",
+  "target_repo": "Spectating101/hardware-splicer",
+  "evidence_policy": "metadata_discovery_then_exact_sha_pinned_implementation_file_witness",
+  "requirements": [
+    {
+      "id": "robot_urdf",
+      "question": "Find reusable URDF import and robot simulation components.",
+      "query": "robot URDF importer",
+      "must_match": [
+        [
+          "urdf",
+          "robot"
+        ],
+        [
+          "import",
+          "simulat",
+          "physics",
+          "blender"
+        ]
+      ],
+      "bonus": [
+        "simulation",
+        "robotics",
+        "physics"
+      ],
+      "evidence_path_tokens": [
+        "urdf",
+        "robot",
+        "sim"
+      ],
+      "evidence_text_tokens": [
+        "urdf",
+        "robot",
+        "joint",
+        "link"
+      ],
+      "next_test": "Run an independent URDF fixture and compare parsed joint origins, axes, and limits."
+    },
+    {
+      "id": "parametric_cad",
+      "question": "Find scriptable, parametric CAD components for product geometry.",
+      "query": "CAD parametric modeling python",
+      "must_match": [
+        [
+          "cad",
+          "parametric"
+        ],
+        [
+          "python",
+          "script",
+          "model"
+        ]
+      ],
+      "bonus": [
+        "cadquery",
+        "occt",
+        "geometry"
+      ],
+      "evidence_path_tokens": [
+        "cad",
+        "cq",
+        "parametric",
+        "shape",
+        "geometry"
+      ],
+      "evidence_text_tokens": [
+        "cadquery",
+        "occt",
+        "workplane",
+        "shape",
+        "solid"
+      ],
+      "next_test": "Build an editable parameterized sample and export STEP and mesh with dimensional assertions."
+    },
+    {
+      "id": "pcb_validation",
+      "question": "Find reusable KiCad PCB inspection and design-rule automation.",
+      "query": "KiCad PCB DRC automation",
+      "must_match": [
+        [
+          "kicad",
+          "pcb"
+        ],
+        [
+          "inspect",
+          "drc",
+          "validation",
+          "check",
+          "design",
+          "automation"
+        ]
+      ],
+      "bonus": [
+        "drc",
+        "rules",
+        "pcb"
+      ],
+      "evidence_path_tokens": [
+        "kicad",
+        "pcb",
+        "drc",
+        "erc",
+        "inspect"
+      ],
+      "evidence_text_tokens": [
+        "kicad",
+        "pcb",
+        "drc",
+        "design_rule",
+        "violation"
+      ],
+      "next_test": "Run on known KiCad boards with planted shorts or clearance violations; compare against KiCad's DRC."
+    },
+    {
+      "id": "printer_interface",
+      "question": "Find device-independent 3D printer command/monitor interfaces with safety gates.",
+      "query": "3D printer MCP OctoPrint",
+      "must_match": [
+        [
+          "printer",
+          "3d print"
+        ],
+        [
+          "mcp",
+          "octoprint",
+          "klipper",
+          "control",
+          "api"
+        ]
+      ],
+      "bonus": [
+        "gcode",
+        "moonraker",
+        "monitor"
+      ],
+      "evidence_path_tokens": [
+        "printer",
+        "mcp",
+        "octoprint",
+        "klipper",
+        "moonraker",
+        "gcode"
+      ],
+      "evidence_text_tokens": [
+        "printer",
+        "octoprint",
+        "klipper",
+        "moonraker",
+        "gcode",
+        "mcp"
+      ],
+      "next_test": "Exercise a simulator/mocked printer only; require operator approval before any physical action."
+    },
+    {
+      "id": "bom_tools",
+      "question": "Find KiCad bill-of-materials generation and electronics sourcing adapters.",
+      "query": "KiCad BOM generator",
+      "must_match": [
+        [
+          "kicad",
+          "pcb"
+        ],
+        [
+          "bom",
+          "bill of materials",
+          "generator"
+        ]
+      ],
+      "bonus": [
+        "bom",
+        "component",
+        "manufactur"
+      ],
+      "evidence_path_tokens": [
+        "bom",
+        "kicad",
+        "pcb",
+        "component"
+      ],
+      "evidence_text_tokens": [
+        "bom",
+        "bill of materials",
+        "kicad",
+        "component"
+      ],
+      "next_test": "Generate BOM for a known KiCad fixture and check item counts, fields and duplicates."
+    }
+  ]
+}

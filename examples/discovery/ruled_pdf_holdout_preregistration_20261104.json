@@ -1,0 +1,146 @@
+{
+  "schema": "atlas.preregistered_untouched_pdf_holdout.v1",
+  "creation_date": "2026-11-04",
+  "upstream_repo": "https://github.com/camelot-dev/camelot",
+  "upstream_commit": "92777b852e00933a5c4b9ba642601784604356cd",
+  "selection_seed": "2026-11-04-ruled-external-locked-v1",
+  "predeclared_stress_fixture_names": [
+    "row_span_2.pdf",
+    "column_span_1.pdf",
+    "missing_values.pdf",
+    "vertical_header.pdf",
+    "background_lines_1.pdf",
+    "image.pdf",
+    "empty.pdf",
+    "multiple_tables.pdf"
+  ],
+  "deterministic_hash_sample_count": 8,
+  "deterministic_hash_sample_names": [
+    "edge_tol.pdf",
+    "twotables_1.pdf",
+    "column_span_2.pdf",
+    "district_health.pdf",
+    "hybrid_multipage.pdf",
+    "rainfall_distribution.pdf",
+    "detect_vertical_false.pdf",
+    "budget_2014-15.pdf"
+  ],
+  "selected_source_files": [
+    {
+      "filename": "row_span_2.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/row_span_2.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "column_span_1.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/column_span_1.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "missing_values.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/missing_values.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "vertical_header.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/vertical_header.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "background_lines_1.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/background_lines_1.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "image.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/image.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "empty.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/empty.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "multiple_tables.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/multiple_tables.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "challenge"
+    },
+    {
+      "filename": "edge_tol.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/edge_tol.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    },
+    {
+      "filename": "twotables_1.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/twotables_1.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    },
+    {
+      "filename": "column_span_2.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/column_span_2.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    },
+    {
+      "filename": "district_health.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/district_health.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    },
+    {
+      "filename": "hybrid_multipage.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/hybrid_multipage.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    },
+    {
+      "filename": "rainfall_distribution.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/rainfall_distribution.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    },
+    {
+      "filename": "detect_vertical_false.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/detect_vertical_false.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    },
+    {
+      "filename": "budget_2014-15.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/camelot-dev/camelot/92777b852e00933a5c4b9ba642601784604356cd/tests/files/budget_2014-15.pdf",
+      "first_physical_page": 1,
+      "predeclared_stratum": "hash_sample"
+    }
+  ],
+  "previously_inspected_fixtures_excluded": [
+    "foo.pdf",
+    "health.pdf"
+  ],
+  "metric_contract": {
+    "unit": "first-original-physical-PDF-page",
+    "intent_to_test_pages": 16,
+    "zero_cherry_picking": true,
+    "recovery_attempt": "one noninteractive source-rule scan per page, no manual table crop or tuning after downloading selected PDFs",
+    "row_precision": "TP/(TP+FP) against independently available upstream-oracle row transcription; UNKNOWN if no independent row oracle, never guessed",
+    "row_recall": "TP/(TP+FN) against independently available upstream-oracle rows; UNKNOWN if no independent row oracle",
+    "no_annotation_rule": "keep every page in intent-to-test denominator; do not manufacture source truth from parser predictions",
+    "execution_failures": "count as failures or abstentions, do not omit from intent-to-test",
+    "false_positive_policy": "chart, empty/image-only and unsupported merged headers must abstain when no source backed table",
+    "source_custody": "original upstream commit, each downloaded original SHA-256, original page and no committed publisher PDFs",
+    "trusted_data_promotions": 0
+  },
+  "independent_external_human_review_requested": false,
+  "source_pdf_bytes_downloaded_before_manifest_freeze": false,
+  "data_release_authority": "NONE_HOLD"
+}

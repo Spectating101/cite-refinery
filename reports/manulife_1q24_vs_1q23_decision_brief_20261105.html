@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Manulife issuer-backed research brief</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+  :root{color-scheme:light}
+  *{box-sizing:border-box}
+  html{background:#f5f7f8}
+  body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62;color:#1b2e3c;margin:0 auto;max-width:1120px;padding:42px 34px 80px}
+  h1{font-size:clamp(30px,4vw,48px);letter-spacing:-.045em;line-height:1.16;margin:0 0 10px;color:#102e43}
+  h1+p{font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:#617786;margin-bottom:34px}
+  h2{margin-top:42px;margin-bottom:10px;border-top:1px solid #d7e0e5;padding-top:22px;letter-spacing:-.025em;font-size:24px}
+  p{max-width:920px}
+  strong{font-weight:750}
+  body>p:nth-of-type(2),body>h2:first-of-type+p{font-size:17px;line-height:1.7;color:#2c4251}
+  a{color:#175f82;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  table{width:100%;border-collapse:collapse;background:white;box-shadow:0 2px 8px #20304408;border:1px solid #dce4e8;border-radius:8px;font-variant-numeric:tabular-nums;display:block;overflow-x:auto;font-size:13px}
+  thead{background:#ebf1f4}
+  th{font-size:12px;font-weight:800;color:#4b6475}
+  th,td{text-align:left;border-bottom:1px solid #e4eaee;padding:11px 14px;min-width:100px}
+  tbody tr:last-child td{border-bottom:none}
+  table th:nth-child(1),table td:nth-child(1){min-width:240px}
+  table th:nth-child(6),table td:nth-child(6){min-width:250px}
+  td:nth-child(2),td:nth-child(3),td:nth-child(4),td:nth-child(5){white-space:nowrap;text-align:right}
+  td:nth-child(6){font-size:12px}
+  ul{padding-left:22px}
+  li{margin:9px 0}
+  h2:last-of-type{margin-top:55px}
+  @media(max-width:700px){body{padding:24px 15px 50px}h1{font-size:32px}h2{font-size:21px}table{font-size:12px}th,td{padding:10px}}
+  </style>
+</head>
+<body>
+<h1 id="manulife-improving-core-earnings-falling-net-income">Manulife:
+improving core earnings, falling net income</h1>
+<p>Issuer-backed research brief | Q1 2024 versus Q1 2023 | Analyst
+review pending</p>
+<h2 id="what-matters">What matters</h2>
+<p>Core earnings (non-GAAP) increased +14.6% on displayed nominal C$
+figures, while net income attributed to shareholders fell -38.4%. The
+numerical gap between them widened from C$125m to C$888m. This is a real
+difference in printed values, NOT an established causal explanation.</p>
+<p>APE sales rose +17.7%, new business CSM +48.9%, and NBV +31.4%. Core
+expenses rose +4.2%. These signals justify reviewing the non-GAAP
+reconciliation and currency context, not a trading conclusion.</p>
+<h2 id="original-issuer-data-and-calculated-comparison">Original issuer
+data and calculated comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">1Q24</th>
+<th style="text-align: right;">1Q23</th>
+<th style="text-align: right;">Nominal change</th>
+<th style="text-align: right;">Reported change</th>
+<th>SEC source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net income attributed to shareholders (C$m)</td>
+<td style="text-align: right;">866</td>
+<td style="text-align: right;">1,406</td>
+<td style="text-align: right;">-38.4%</td>
+<td style="text-align: right;">(38)%</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T10 R5</a>; <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm">earnings
+release T8 R4</a></td>
+</tr>
+<tr>
+<td>Core earnings (non-GAAP) (C$m)</td>
+<td style="text-align: right;">1,754</td>
+<td style="text-align: right;">1,531</td>
+<td style="text-align: right;">+14.6%</td>
+<td style="text-align: right;">16%</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T10 R6</a>; <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm">earnings
+release T8 R5</a></td>
+</tr>
+<tr>
+<td>APE sales (C$m)</td>
+<td style="text-align: right;">1,883</td>
+<td style="text-align: right;">1,600</td>
+<td style="text-align: right;">+17.7%</td>
+<td style="text-align: right;">21%</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T10 R14</a>; <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm">earnings
+release T8 R13</a></td>
+</tr>
+<tr>
+<td>New business CSM (C$m)</td>
+<td style="text-align: right;">658</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">+48.9%</td>
+<td style="text-align: right;">52%</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T10 R15</a>; <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm">earnings
+release T8 R14</a></td>
+</tr>
+<tr>
+<td>New business value (NBV) (C$m)</td>
+<td style="text-align: right;">669</td>
+<td style="text-align: right;">509</td>
+<td style="text-align: right;">+31.4%</td>
+<td style="text-align: right;">34%</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T10 R16</a>; <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm">earnings
+release T8 R15</a></td>
+</tr>
+<tr>
+<td>Global WAM net flows (C$bn)</td>
+<td style="text-align: right;">6.7</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">+52.3%</td>
+<td style="text-align: right;">55%</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T10 R17</a>; <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm">earnings
+release T8 R16</a></td>
+</tr>
+<tr>
+<td>Average AUMA (C$bn)</td>
+<td style="text-align: right;">880.0</td>
+<td style="text-align: right;">804.0</td>
+<td style="text-align: right;">+9.5%</td>
+<td style="text-align: right;">9%</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T10 R50</a>; <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm">earnings
+release T10 R44</a></td>
+</tr>
+<tr>
+<td>General expenses (C$m)</td>
+<td style="text-align: right;">1,102</td>
+<td style="text-align: right;">1,086</td>
+<td style="text-align: right;">+1.5%</td>
+<td style="text-align: right;">—</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T329 R4</a></td>
+</tr>
+<tr>
+<td>Total expenses (C$m)</td>
+<td style="text-align: right;">1,679</td>
+<td style="text-align: right;">1,665</td>
+<td style="text-align: right;">+0.8%</td>
+<td style="text-align: right;">—</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T329 R7</a></td>
+</tr>
+<tr>
+<td>Core expenses (C$m)</td>
+<td style="text-align: right;">1,673</td>
+<td style="text-align: right;">1,605</td>
+<td style="text-align: right;">+4.2%</td>
+<td style="text-align: right;">—</td>
+<td><a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm">shareholder
+report T329 R13</a></td>
+</tr>
+</tbody>
+</table>
+<p>Reported change is transcribed from the issuer's 1Q24 shareholder
+report; nominal change is calculated as (1Q24/1Q23 - 1) × 100 from
+displayed amounts. They can differ because the issuer reports some
+changes on constant-exchange-rate or non-GAAP bases. Do not treat them
+as equivalent.</p>
+<h2 id="reproducible-evidence-chain">Reproducible evidence chain</h2>
+<ul>
+<li>shareholder report: <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm"><span>https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm</span></a>;
+this capture SHA-256
+c6429ba27a56ca4b3fda665c77c772af359d30f0cc3356a8e2f83e54444725fe;
+4619742 bytes. Earlier pinned SEC capture byte-identical? False.</li>
+<li>earnings release: <a
+href="https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm"><span>https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm</span></a>;
+this capture SHA-256
+0bf1fbc03b562f9dbbc90429bd6944493b4c9a9eebea4bb75d772956c5db608d; 612304
+bytes. Earlier pinned SEC capture byte-identical? False.</li>
+</ul>
+<p>The existing Research Drive EDGAR witness revalidated eight 1Q24
+issuer shareholder rows and seven 1Q24 earnings-release rows, plus one
+expense qualifier. Seven historical metric pairs matched across two
+separate SEC exhibits by the <strong>same issuer</strong>, and three
+expense pairs were sourced from the shareholder report only.</p>
+<p>The reproduced secondary PDF is not the issuer's source. Its earlier
+strict parser check matched six of eight cells and abstained on two.
+Primary issuer HTML corroboration does not silently approve those parser
+failures.</p>
+<h2 id="decision-and-limitations">Decision and limitations</h2>
+<p><strong>Next research question:</strong> determine the items
+explaining the widening difference between core earnings and net income,
+and reconcile constant-exchange-rate reporting using the issuer's
+MD&amp;A before asserting the drivers.</p>
+<ul>
+<li>The full core-earnings to net-income reconciliation was not
+performed</li>
+<li>Published changes may be on a constant-exchange-rate/non-GAAP basis,
+not nominal arithmetic</li>
+<li>The original issuer PDF binary is not verified; primary evidence is
+SEC-filed issuer HTML</li>
+<li>The previously parsed secondary PDF has two unresolved strict parser
+abstentions</li>
+<li>Neither source agreement nor a generated report is independent human
+semantic review</li>
+</ul>
+<p>Outcome: 10 issuer-linked historical metric comparisons; 7
+dual-exhibit checks; 3 expense context checks. Zero independent human
+approvals and zero trusted dataset promotions. Historical issuer
+analysis only, not investment advice.</p>
+</body>
+</html>

@@ -1,0 +1,875 @@
+{
+  "schema": "atlas.financial_source_cell_acceptance.v1",
+  "date": "2026-11-03",
+  "authority": "REVIEW_ONLY_DO_NOT_AUTO_PROMOTE",
+  "oracle_review": "SINGLE_VISUAL_OPERATOR_NOT_DOUBLE_ADJUDICATED",
+  "operator_review_seconds": "NOT_TIMED",
+  "interpretation": "operator-predeclared per-PDF table and column mapping; not automatic header inference",
+  "source_count": 5,
+  "target_cell_count": 40,
+  "no_ocr": true,
+  "source_pdf_redistributed": false,
+  "adoption": "HOLD_PENDING_BROADER_INDEPENDENT_ADJUDICATION",
+  "totals": {
+    "native": {
+      "executed_documents": 5,
+      "errored_documents": 0,
+      "exact_row_period_cells": 16,
+      "wrong_cell_associations": 0,
+      "abstained_cells": 24,
+      "mean_execution_seconds": 0.233
+    },
+    "optional": {
+      "executed_documents": 5,
+      "errored_documents": 0,
+      "exact_row_period_cells": 40,
+      "wrong_cell_associations": 0,
+      "abstained_cells": 0,
+      "mean_execution_seconds": 3.245
+    }
+  },
+  "cases": [
+    {
+      "id": "apple_fy25q1",
+      "publisher": "Apple",
+      "source_url": "https://www.apple.com/newsroom/pdfs/fy2025-q1/FY25_Q1_Consolidated_Financial_Statements.pdf",
+      "source_sha256": "b45c21d81378d635103ac213cddf853599716b42b4df4646b2f5c07e5079c748",
+      "selected_physical_pages": [
+        1
+      ],
+      "oracle_cells": 8,
+      "engines": {
+        "native": {
+          "execution": "ok",
+          "elapsed_seconds": 0.339,
+          "detected_tables": 1,
+          "candidate_cells": 176,
+          "pass": 8,
+          "wrong": 0,
+          "abstain": 0,
+          "verdicts": [
+            {
+              "id": "apple_fy25q1:01",
+              "expected": "124,300",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "124,300",
+              "row_index": 2,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:02",
+              "expected": "58,275",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "58,275",
+              "row_index": 8,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:03",
+              "expected": "8,268",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "8,268",
+              "row_index": 11,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:04",
+              "expected": "42,832",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "42,832",
+              "row_index": 15,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:05",
+              "expected": "(248)",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "(248)",
+              "row_index": 16,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:06",
+              "expected": "36,330",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "36,330",
+              "row_index": 19,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:07",
+              "expected": "52,648",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "52,648",
+              "row_index": 30,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:08",
+              "expected": "30,397",
+              "period_key": "prior_quarter",
+              "status": "pass",
+              "observed": "30,397",
+              "row_index": 31,
+              "table_index": 0
+            }
+          ]
+        },
+        "optional": {
+          "execution": "ok",
+          "elapsed_seconds": 1.272,
+          "detected_tables": 1,
+          "candidate_cells": 117,
+          "pass": 8,
+          "wrong": 0,
+          "abstain": 0,
+          "verdicts": [
+            {
+              "id": "apple_fy25q1:01",
+              "expected": "124,300",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "124,300",
+              "row_index": 4,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:02",
+              "expected": "58,275",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "58,275",
+              "row_index": 9,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:03",
+              "expected": "8,268",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "8,268",
+              "row_index": 11,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:04",
+              "expected": "42,832",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "42,832",
+              "row_index": 14,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:05",
+              "expected": "(248)",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "(248)",
+              "row_index": 15,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:06",
+              "expected": "36,330",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "36,330",
+              "row_index": 18,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:07",
+              "expected": "52,648",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "52,648",
+              "row_index": 26,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q1:08",
+              "expected": "30,397",
+              "period_key": "prior_quarter",
+              "status": "pass",
+              "observed": "30,397",
+              "row_index": 27,
+              "table_index": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "apple_fy25q4",
+      "publisher": "Apple",
+      "source_url": "https://www.apple.com/newsroom/pdfs/fy2025-q4/FY25_Q4_Consolidated_Financial_Statements.pdf",
+      "source_sha256": "43e7f0730b3cce0fc37301a2f43c29712bbde6ab299d97c6df345fd0c754508a",
+      "selected_physical_pages": [
+        1
+      ],
+      "oracle_cells": 8,
+      "engines": {
+        "native": {
+          "execution": "ok",
+          "elapsed_seconds": 0.521,
+          "detected_tables": 1,
+          "candidate_cells": 360,
+          "pass": 8,
+          "wrong": 0,
+          "abstain": 0,
+          "verdicts": [
+            {
+              "id": "apple_fy25q4:01",
+              "expected": "102,466",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "102,466",
+              "row_index": 2,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:02",
+              "expected": "48,341",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "48,341",
+              "row_index": 8,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:03",
+              "expected": "34,550",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "34,550",
+              "row_index": 11,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:04",
+              "expected": "(321)",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "(321)",
+              "row_index": 16,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:05",
+              "expected": "27,466",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "27,466",
+              "row_index": 19,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:06",
+              "expected": "64,377",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "64,377",
+              "row_index": 33,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:07",
+              "expected": "49,025",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "49,025",
+              "row_index": 39,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:08",
+              "expected": "133,050",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "133,050",
+              "row_index": 15,
+              "table_index": 0
+            }
+          ]
+        },
+        "optional": {
+          "execution": "ok",
+          "elapsed_seconds": 1.789,
+          "detected_tables": 1,
+          "candidate_cells": 195,
+          "pass": 8,
+          "wrong": 0,
+          "abstain": 0,
+          "verdicts": [
+            {
+              "id": "apple_fy25q4:01",
+              "expected": "102,466",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "102,466",
+              "row_index": 4,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:02",
+              "expected": "48,341",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "48,341",
+              "row_index": 9,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:03",
+              "expected": "34,550",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "34,550",
+              "row_index": 11,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:04",
+              "expected": "(321)",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "(321)",
+              "row_index": 15,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:05",
+              "expected": "27,466",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "27,466",
+              "row_index": 18,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:06",
+              "expected": "64,377",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "64,377",
+              "row_index": 28,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:07",
+              "expected": "49,025",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "49,025",
+              "row_index": 33,
+              "table_index": 0
+            },
+            {
+              "id": "apple_fy25q4:08",
+              "expected": "133,050",
+              "period_key": "current_full_year",
+              "status": "pass",
+              "observed": "133,050",
+              "row_index": 14,
+              "table_index": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "alphabet_2025q2",
+      "publisher": "Alphabet",
+      "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q2/2025q2-alphabet-earnings-release.pdf",
+      "source_sha256": "3581be042fcbda6ea71185d5aef47458ce3a56cf6b16022d61a997d1807a4de5",
+      "selected_physical_pages": [
+        2
+      ],
+      "oracle_cells": 8,
+      "engines": {
+        "native": {
+          "execution": "ok",
+          "elapsed_seconds": 0.094,
+          "detected_tables": 2,
+          "candidate_cells": 26,
+          "pass": 0,
+          "wrong": 0,
+          "abstain": 8,
+          "verdicts": [
+            {
+              "id": "alphabet_2025q2:01",
+              "expected": "54,190",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q2:02",
+              "expected": "9,796",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q2:03",
+              "expected": "7,354",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q2:04",
+              "expected": "82,543",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q2:05",
+              "expected": "13,624",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q2:06",
+              "expected": "(112)",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q2:07",
+              "expected": "14,705",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q2:08",
+              "expected": "(3,372)",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            }
+          ]
+        },
+        "optional": {
+          "execution": "ok",
+          "elapsed_seconds": 4.155,
+          "detected_tables": 2,
+          "candidate_cells": 63,
+          "pass": 8,
+          "wrong": 0,
+          "abstain": 0,
+          "verdicts": [
+            {
+              "id": "alphabet_2025q2:01",
+              "expected": "54,190",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "54,190",
+              "row_index": 1,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q2:02",
+              "expected": "9,796",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "9,796",
+              "row_index": 2,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q2:03",
+              "expected": "7,354",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "7,354",
+              "row_index": 3,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q2:04",
+              "expected": "82,543",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "82,543",
+              "row_index": 6,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q2:05",
+              "expected": "13,624",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "13,624",
+              "row_index": 7,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q2:06",
+              "expected": "(112)",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "(112)",
+              "row_index": 9,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q2:07",
+              "expected": "14,705",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "14,705",
+              "row_index": 11,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q2:08",
+              "expected": "(3,372)",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "(3,372)",
+              "row_index": 5,
+              "table_index": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "alphabet_2025q3",
+      "publisher": "Alphabet",
+      "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/2025q3-alphabet-earnings-release.pdf",
+      "source_sha256": "dc759cd42f4b8b2935698e70dd21bb674cb10775bfda5f3990cda75f4c0428fd",
+      "selected_physical_pages": [
+        2
+      ],
+      "oracle_cells": 8,
+      "engines": {
+        "native": {
+          "execution": "ok",
+          "elapsed_seconds": 0.108,
+          "detected_tables": 2,
+          "candidate_cells": 26,
+          "pass": 0,
+          "wrong": 0,
+          "abstain": 8,
+          "verdicts": [
+            {
+              "id": "alphabet_2025q3:01",
+              "expected": "56,567",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q3:02",
+              "expected": "10,261",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q3:03",
+              "expected": "87,052",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q3:04",
+              "expected": "15,157",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q3:05",
+              "expected": "(207)",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q3:06",
+              "expected": "14,876",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q3:07",
+              "expected": "33,527",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "alphabet_2025q3:08",
+              "expected": "(4,467)",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            }
+          ]
+        },
+        "optional": {
+          "execution": "ok",
+          "elapsed_seconds": 4.195,
+          "detected_tables": 2,
+          "candidate_cells": 63,
+          "pass": 8,
+          "wrong": 0,
+          "abstain": 0,
+          "verdicts": [
+            {
+              "id": "alphabet_2025q3:01",
+              "expected": "56,567",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "56,567",
+              "row_index": 1,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q3:02",
+              "expected": "10,261",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "10,261",
+              "row_index": 2,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q3:03",
+              "expected": "87,052",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "87,052",
+              "row_index": 6,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q3:04",
+              "expected": "15,157",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "15,157",
+              "row_index": 7,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q3:05",
+              "expected": "(207)",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "(207)",
+              "row_index": 9,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q3:06",
+              "expected": "14,876",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "14,876",
+              "row_index": 11,
+              "table_index": 0
+            },
+            {
+              "id": "alphabet_2025q3:07",
+              "expected": "33,527",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "33,527",
+              "row_index": 2,
+              "table_index": 1
+            },
+            {
+              "id": "alphabet_2025q3:08",
+              "expected": "(4,467)",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "(4,467)",
+              "row_index": 5,
+              "table_index": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "amazon_2026q3",
+      "publisher": "Amazon",
+      "source_url": "https://ir.aboutamazon.com/files/doc_earnings/2026/q3/earnings-result/AMZN-Q3-2026-Earnings-Release.pdf",
+      "source_sha256": "4a038b395f07bef27476acb27fdf0029ff8fcd1a42d5d021bb0e0a3e29f8cc06",
+      "selected_physical_pages": [
+        7
+      ],
+      "oracle_cells": 8,
+      "engines": {
+        "native": {
+          "execution": "ok",
+          "elapsed_seconds": 0.101,
+          "detected_tables": 1,
+          "candidate_cells": 78,
+          "pass": 0,
+          "wrong": 0,
+          "abstain": 8,
+          "verdicts": [
+            {
+              "id": "amazon_2026q3:01",
+              "expected": "75,296",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "amazon_2026q3:02",
+              "expected": "126,648",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "amazon_2026q3:03",
+              "expected": "201,944",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "amazon_2026q3:04",
+              "expected": "94,573",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "amazon_2026q3:05",
+              "expected": "34,814",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "amazon_2026q3:06",
+              "expected": "28,076",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "amazon_2026q3:07",
+              "expected": "(1,691)",
+              "period_key": "current_quarter",
+              "status": "abstain_no_period_column",
+              "observed": null
+            },
+            {
+              "id": "amazon_2026q3:08",
+              "expected": "113,587",
+              "period_key": "current_nine_months",
+              "status": "abstain_no_period_column",
+              "observed": null
+            }
+          ]
+        },
+        "optional": {
+          "execution": "ok",
+          "elapsed_seconds": 4.813,
+          "detected_tables": 1,
+          "candidate_cells": 140,
+          "pass": 8,
+          "wrong": 0,
+          "abstain": 0,
+          "verdicts": [
+            {
+              "id": "amazon_2026q3:01",
+              "expected": "75,296",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "75,296",
+              "row_index": 3,
+              "table_index": 0
+            },
+            {
+              "id": "amazon_2026q3:02",
+              "expected": "126,648",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "126,648",
+              "row_index": 4,
+              "table_index": 0
+            },
+            {
+              "id": "amazon_2026q3:03",
+              "expected": "201,944",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "201,944",
+              "row_index": 5,
+              "table_index": 0
+            },
+            {
+              "id": "amazon_2026q3:04",
+              "expected": "94,573",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "94,573",
+              "row_index": 7,
+              "table_index": 0
+            },
+            {
+              "id": "amazon_2026q3:05",
+              "expected": "34,814",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "34,814",
+              "row_index": 9,
+              "table_index": 0
+            },
+            {
+              "id": "amazon_2026q3:06",
+              "expected": "28,076",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "28,076",
+              "row_index": 14,
+              "table_index": 0
+            },
+            {
+              "id": "amazon_2026q3:07",
+              "expected": "(1,691)",
+              "period_key": "current_quarter",
+              "status": "pass",
+              "observed": "(1,691)",
+              "row_index": 16,
+              "table_index": 0
+            },
+            {
+              "id": "amazon_2026q3:08",
+              "expected": "113,587",
+              "period_key": "current_nine_months",
+              "status": "pass",
+              "observed": "113,587",
+              "row_index": 22,
+              "table_index": 0
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

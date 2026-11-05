@@ -1,0 +1,128 @@
+{
+  "schema": "atlas.pdfplumber_new_geometry_holdout_preregistration.v1",
+  "selection_date": "2026-11-05",
+  "upstream_repository": "https://github.com/jsvine/pdfplumber",
+  "upstream_commit": "4c64b92d5caccd71c645e98e0fabb0c4dba7ff45",
+  "selection_seed": "independent-original-geometry-20261105-source-only-v1",
+  "predeclared_geometry_and_table_stress_cases": [
+    "annotations-rotated-90.pdf",
+    "annotations-rotated-180.pdf",
+    "annotations-rotated-270.pdf",
+    "nics-background-checks-2015-11-rotated.pdf",
+    "page-boxes-example.pdf",
+    "table-curves-example.pdf",
+    "senate-expenditures.pdf"
+  ],
+  "deterministically_sampled_uninspected_filenames": [
+    "line-char-render-example.pdf",
+    "issue-461-example.pdf",
+    "annotations.pdf",
+    "issue-192-example.pdf",
+    "pr-138-example.pdf"
+  ],
+  "intent_to_test_original_first_pages": 12,
+  "prior_tabula_and_camelot_fixture_corpora_not_reused": true,
+  "pdf_bytes_not_opened_or_downloaded_before_commit": true,
+  "cases": [
+    {
+      "filename": "annotations-rotated-90.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/annotations-rotated-90.pdf",
+      "repository_metadata_size_bytes": 170174,
+      "physical_page": 1,
+      "selection_type": "stress"
+    },
+    {
+      "filename": "annotations-rotated-180.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/annotations-rotated-180.pdf",
+      "repository_metadata_size_bytes": 170175,
+      "physical_page": 1,
+      "selection_type": "stress"
+    },
+    {
+      "filename": "annotations-rotated-270.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/annotations-rotated-270.pdf",
+      "repository_metadata_size_bytes": 170175,
+      "physical_page": 1,
+      "selection_type": "stress"
+    },
+    {
+      "filename": "nics-background-checks-2015-11-rotated.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/nics-background-checks-2015-11-rotated.pdf",
+      "repository_metadata_size_bytes": 90415,
+      "physical_page": 1,
+      "selection_type": "stress"
+    },
+    {
+      "filename": "page-boxes-example.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/page-boxes-example.pdf",
+      "repository_metadata_size_bytes": 1187,
+      "physical_page": 1,
+      "selection_type": "stress"
+    },
+    {
+      "filename": "table-curves-example.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/table-curves-example.pdf",
+      "repository_metadata_size_bytes": 153741,
+      "physical_page": 1,
+      "selection_type": "stress"
+    },
+    {
+      "filename": "senate-expenditures.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/senate-expenditures.pdf",
+      "repository_metadata_size_bytes": 53481,
+      "physical_page": 1,
+      "selection_type": "stress"
+    },
+    {
+      "filename": "line-char-render-example.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/line-char-render-example.pdf",
+      "repository_metadata_size_bytes": 13649,
+      "physical_page": 1,
+      "selection_type": "hash_sample"
+    },
+    {
+      "filename": "issue-461-example.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/issue-461-example.pdf",
+      "repository_metadata_size_bytes": 154889,
+      "physical_page": 1,
+      "selection_type": "hash_sample"
+    },
+    {
+      "filename": "annotations.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/annotations.pdf",
+      "repository_metadata_size_bytes": 132177,
+      "physical_page": 1,
+      "selection_type": "hash_sample"
+    },
+    {
+      "filename": "issue-192-example.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/issue-192-example.pdf",
+      "repository_metadata_size_bytes": 169520,
+      "physical_page": 1,
+      "selection_type": "hash_sample"
+    },
+    {
+      "filename": "pr-138-example.pdf",
+      "original_source_url": "https://raw.githubusercontent.com/jsvine/pdfplumber/4c64b92d5caccd71c645e98e0fabb0c4dba7ff45/tests/pdfs/pr-138-example.pdf",
+      "repository_metadata_size_bytes": 89950,
+      "physical_page": 1,
+      "selection_type": "hash_sample"
+    }
+  ],
+  "frozen_test_contract": {
+    "original_source_sha256": "pin every original file after downloading; no substitutions",
+    "source_metric": "PDF physical-page original word retention and independent word-box affine mapping",
+    "candidate_metric": "fixed Camelot 1.0.9 hybrid on independently normalized source derivative only when calibration succeeds",
+    "strict_row_metric": "source-only nonempty nonoverlap original word review gate, no semantic row approval",
+    "zero_truth_invention": "no original table gold available by default; precision and recall UNKNOWN without separate authored external row gold",
+    "failure_policy": "all 12 cases count; timeouts, errors, abstentions, negative cases remain",
+    "no_tuning": "no adaptive page-specific flavor/coordinate changes after source download",
+    "bounded_execution": "per-document offline subprocess with finite timeout",
+    "original_pages_only": "first original physical page; other pages explicitly out of scope",
+    "future_changed_scanner_requires_new_cohort": true
+  },
+  "independent_human_reviewer": false,
+  "trusted_pdfscope_promotions": 0,
+  "auto_publish": false,
+  "auto_register_dataset": false
+}

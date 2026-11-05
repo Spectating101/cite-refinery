@@ -1,0 +1,364 @@
+{
+  "schema": "atlas.manulife_sec_issuer_reconciliation.v1",
+  "reproduced_figure_source_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+  "source_roles": {
+    "shareholder_report": {
+      "issuer_cik": "0001086888",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm",
+      "source_sha256": "3dda99b6b62ced91bf8ec73e44354255a24e9da0046847256d92f734f665666a",
+      "source_kind": "SEC_EDGAR_ISSUER_FILED_EXHIBIT_HTML_NOT_DIRECT_ISSUER_PDF",
+      "checked": 8,
+      "matched": 8,
+      "abstained": 0,
+      "row_verdicts": [
+        {
+          "case_id": "manulife-01",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Net income attributed to shareholders",
+          "issuer_numeric": "866",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$866",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 5
+        },
+        {
+          "case_id": "manulife-02",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Core earnings",
+          "issuer_numeric": "1,754",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$1,754",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 6
+        },
+        {
+          "case_id": "manulife-03",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Total expenses",
+          "issuer_numeric": "1,679",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$1,679",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 329,
+          "row_index": 7
+        },
+        {
+          "case_id": "manulife-04",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "APE sales",
+          "issuer_numeric": "1,883",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$1.9",
+          "reconciliation": "millions_to_billions_one_decimal",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 14
+        },
+        {
+          "case_id": "manulife-05",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "NBV",
+          "issuer_numeric": "669",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$669",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 16
+        },
+        {
+          "case_id": "manulife-06",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "New business CSM",
+          "issuer_numeric": "658",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$658",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 15
+        },
+        {
+          "case_id": "manulife-07",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Global WAM net flows ($ billions)",
+          "issuer_numeric": "6.7",
+          "issuer_unit": "CAD_billions",
+          "reproduced_figure_numeric": "$6.7",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 17
+        },
+        {
+          "case_id": "manulife-08",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Average AUMA ($ billions) 2",
+          "issuer_numeric": "880",
+          "issuer_unit": "CAD_billions",
+          "reproduced_figure_numeric": "$880",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 50
+        }
+      ]
+    },
+    "earnings_release": {
+      "issuer_cik": "0001086888",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm",
+      "source_sha256": "5d391dbf96689b2bb0b8ac5feb2be3c4b9b9a20409685ae06f0025e28b2c9179",
+      "source_kind": "SEC_EDGAR_ISSUER_FILED_EXHIBIT_HTML_NOT_DIRECT_ISSUER_PDF",
+      "checked": 7,
+      "matched": 7,
+      "abstained": 0,
+      "row_verdicts": [
+        {
+          "case_id": "manulife-01",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Net income attributed to shareholders",
+          "issuer_numeric": "866",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$866",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 8,
+          "row_index": 4
+        },
+        {
+          "case_id": "manulife-02",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Core earnings",
+          "issuer_numeric": "1,754",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$1,754",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 8,
+          "row_index": 5
+        },
+        {
+          "case_id": "manulife-04",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "APE sales",
+          "issuer_numeric": "1,883",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$1.9",
+          "reconciliation": "millions_to_billions_one_decimal",
+          "quarter_header": "1Q24",
+          "table_index": 8,
+          "row_index": 13
+        },
+        {
+          "case_id": "manulife-05",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "NBV",
+          "issuer_numeric": "669",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$669",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 8,
+          "row_index": 15
+        },
+        {
+          "case_id": "manulife-06",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "New business CSM",
+          "issuer_numeric": "658",
+          "issuer_unit": "CAD_millions",
+          "reproduced_figure_numeric": "$658",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 8,
+          "row_index": 14
+        },
+        {
+          "case_id": "manulife-07",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Global WAM net flows ($ billions)",
+          "issuer_numeric": "6.7",
+          "issuer_unit": "CAD_billions",
+          "reproduced_figure_numeric": "$6.7",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 8,
+          "row_index": 16
+        },
+        {
+          "case_id": "manulife-08",
+          "status": "issuer_edgar_row_and_unit_witness_match",
+          "checks": {
+            "issuer_table_source_label": true,
+            "issuer_table_numeric_print": true,
+            "issuer_numeric_value": true,
+            "issuer_original_quarter_header": true,
+            "issuer_original_unit_header": true,
+            "issuer_to_figure_units_and_value": true
+          },
+          "issuer_label": "Average AUMA ($ billions) 5",
+          "issuer_numeric": "880",
+          "issuer_unit": "CAD_billions",
+          "reproduced_figure_numeric": "$880",
+          "reconciliation": "identity",
+          "quarter_header": "1Q24",
+          "table_index": 10,
+          "row_index": 44
+        }
+      ]
+    }
+  },
+  "expense_qualifier_context": {
+    "checked": 1,
+    "matched": 1,
+    "abstained": 0,
+    "row_verdicts": [
+      {
+        "case_id": "manulife-03-expense-qualifier",
+        "status": "issuer_edgar_row_and_unit_witness_match",
+        "checks": {
+          "issuer_table_source_label": true,
+          "issuer_table_numeric_print": true,
+          "issuer_numeric_value": true,
+          "issuer_original_quarter_header": true,
+          "issuer_original_unit_header": true,
+          "issuer_to_figure_units_and_value": true
+        },
+        "source_numeric": "1,102",
+        "table_index": 329,
+        "row_index": 4
+      }
+    ]
+  },
+  "source_document_type": "ISSUER_AUTHORED_SEC_EDGAR_EXHIBITS_NOT_MANULIFE_COM_PDF",
+  "local_original_html_sha256_verified": true,
+  "issuer_original_pdf_sha256_verified": false,
+  "manual_cross_format_metric_alignment": true,
+  "independent_second_human_review": false,
+  "original_figure_parser_strict_source_matches": 6,
+  "original_figure_parser_strict_source_abstentions": 2,
+  "trusted_pdfscope_promotions": 0,
+  "trusted_dataset_registrations": 0,
+  "original_html_bytes_committed": false,
+  "original_figure_pdf_bytes_committed": false,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "release_decision": "HOLD_INDEPENDENT_HUMAN_REVIEW_AND_ORIGINAL_PDF_LINKAGE"
+}

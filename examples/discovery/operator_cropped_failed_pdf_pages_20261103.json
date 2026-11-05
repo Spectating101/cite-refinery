@@ -1,0 +1,131 @@
+{
+  "schema": "atlas.operator_cropped_failed_pdf_pages.v1",
+  "comment": "All original PDF pages were visually inspected. Only two table-containing pages have explicit native crop instructions. Graph 3 remains a negative control.",
+  "chart_case": {
+    "source_id": "bis138",
+    "physical_page": 6,
+    "original_image_classification": "THREE_CHART_PANELS_NOT_A_SOURCE_DATA_TABLE",
+    "caption_bbox_pdf": [
+      76,
+      132,
+      545,
+      151
+    ],
+    "expected_caption": "Substitution is significant after geopolitical disruptions, but input prices rise Graph 3",
+    "strict_img2table_error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR",
+    "trusted_values": 0
+  },
+  "table_cases": [
+    {
+      "source_id": "arxiv2506",
+      "physical_page": 6,
+      "crop_bbox_pdf": [
+        340,
+        70,
+        500,
+        144
+      ],
+      "profile": "ruled_rows_text_columns",
+      "original_table_caption": "Table 2: Cost comparison with alternative solutions.",
+      "strict_img2table_error_code": "INVALID_EXTRACTED_CELL_GEOMETRY",
+      "selected": [
+        {
+          "table_index": 0,
+          "row_index": 1,
+          "label_column": 0,
+          "value_column": 2,
+          "header_row": 0,
+          "expected_label": "LlamaParse",
+          "expected_numeric": "$0.03000",
+          "expected_header": "Cost/Page"
+        },
+        {
+          "table_index": 0,
+          "row_index": 2,
+          "label_column": 0,
+          "value_column": 2,
+          "header_row": 0,
+          "expected_label": "VertexAI",
+          "expected_numeric": "$0.11610",
+          "expected_header": "Cost/Page"
+        },
+        {
+          "table_index": 0,
+          "row_index": 3,
+          "label_column": 0,
+          "value_column": 2,
+          "header_row": 0,
+          "expected_label": "Anthropic",
+          "expected_numeric": "$0.00900",
+          "expected_header": "Cost/Page"
+        },
+        {
+          "table_index": 0,
+          "row_index": 4,
+          "label_column": 0,
+          "value_column": 2,
+          "header_row": 0,
+          "expected_label": "Oursolution",
+          "expected_numeric": "$0.00231",
+          "expected_header": "Cost/Page"
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv2604",
+      "physical_page": 9,
+      "crop_bbox_pdf": [
+        350,
+        257,
+        550,
+        415
+      ],
+      "profile": "text_rows_text_columns",
+      "original_table_caption": "Table 12: Open-source vs. proprietary LLM accuracy",
+      "strict_img2table_error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR",
+      "selected": [
+        {
+          "table_index": 0,
+          "row_index": 6,
+          "label_column": 0,
+          "value_column": 3,
+          "header_row": 2,
+          "expected_label": "DeepSeek-R1",
+          "expected_numeric": "24.14",
+          "expected_header": "k=1"
+        },
+        {
+          "table_index": 0,
+          "row_index": 7,
+          "label_column": 0,
+          "value_column": 3,
+          "header_row": 2,
+          "expected_label": "Llama-3.2",
+          "expected_numeric": "31.90",
+          "expected_header": "k=1"
+        },
+        {
+          "table_index": 0,
+          "row_index": 8,
+          "label_column": 0,
+          "value_column": 3,
+          "header_row": 2,
+          "expected_label": "Gemma-3",
+          "expected_numeric": "41.38",
+          "expected_header": "k=1"
+        },
+        {
+          "table_index": 0,
+          "row_index": 10,
+          "label_column": 0,
+          "value_column": 3,
+          "header_row": 2,
+          "expected_label": "Qwen2.5",
+          "expected_numeric": "30.17",
+          "expected_header": "k=1"
+        }
+      ]
+    }
+  ],
+  "release_decision": "HOLD_NO_AUTOMATIC_DATASET_PROMOTION"
+}

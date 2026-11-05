@@ -1,0 +1,151 @@
+{
+  "schema": "atlas.original_failed_page_crop_robustness.v1",
+  "authority": "READ_ONLY_CROP_ROBUSTNESS_ONLY_NOT_DATASET_EVIDENCE",
+  "tested_original_pages": 2,
+  "baseline_source_word_matches": 8,
+  "total_boundary_perturbations": 10,
+  "all_source_words_matched_perturbations": 6,
+  "failed_or_abstained_perturbations": 4,
+  "crop_sensitive_pages": 1,
+  "robust_under_tested_crops_pages": 1,
+  "perturbation_offsets_pdf_points": [
+    -5,
+    -2,
+    0,
+    2,
+    5
+  ],
+  "source_pdf_bytes_committed": false,
+  "independent_human_review": false,
+  "verified_source_table_completeness": false,
+  "trusted_pdfscope_promotions": 0,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "decision": "HOLD_CROP_SENSITIVITY_AND_UNREVIEWED_SEMANTICS",
+  "cases": [
+    {
+      "source_id": "arxiv2506",
+      "original_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+      "physical_page": 6,
+      "original_img2table_error_code": "INVALID_EXTRACTED_CELL_GEOMETRY",
+      "operator_crop_bbox_pdf": [
+        340,
+        70,
+        500,
+        144
+      ],
+      "operator_profile": "ruled_rows_text_columns",
+      "selected_original_source_cells": 4,
+      "baseline_match_count": 4,
+      "perturbation_count": 5,
+      "successful_perturbations": 1,
+      "failed_or_abstained_perturbations": 4,
+      "all_tested_crops_match": false,
+      "review_state": "CROP_SENSITIVE_OPERATOR_REVIEW_HOLD",
+      "source_table_completeness_verified": false,
+      "trusted_source_values": 0,
+      "trials": [
+        {
+          "inset_pdf_points": -5,
+          "status": "ABSTAIN_CROP_SHAPE_CHANGED",
+          "failure_code": "MULTILINE_OR_MISSING_CELL",
+          "matched": 0,
+          "abstained": 4
+        },
+        {
+          "inset_pdf_points": -2,
+          "status": "ABSTAIN_CROP_SHAPE_CHANGED",
+          "failure_code": "MULTILINE_OR_MISSING_CELL",
+          "matched": 0,
+          "abstained": 4
+        },
+        {
+          "inset_pdf_points": 0,
+          "status": "ALL_SELECTED_ORIGINAL_WORDS_MATCH",
+          "candidate_tables": 1,
+          "candidate_cells": 15,
+          "matched": 4,
+          "abstained": 0
+        },
+        {
+          "inset_pdf_points": 2,
+          "status": "ABSTAIN_CROP_SHAPE_CHANGED",
+          "failure_code": "MISSING_CELL_OR_HEADER",
+          "matched": 0,
+          "abstained": 4
+        },
+        {
+          "inset_pdf_points": 5,
+          "status": "ABSTAIN_CROP_SHAPE_CHANGED",
+          "failure_code": "MISSING_CELL_OR_HEADER",
+          "matched": 0,
+          "abstained": 4
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv2604",
+      "original_sha256": "5c52ca855d9c09b23de5eeef57a3b2f4ffc977fc706ed129b31fa404d2750c99",
+      "physical_page": 9,
+      "original_img2table_error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR",
+      "operator_crop_bbox_pdf": [
+        350,
+        257,
+        550,
+        415
+      ],
+      "operator_profile": "text_rows_text_columns",
+      "selected_original_source_cells": 4,
+      "baseline_match_count": 4,
+      "perturbation_count": 5,
+      "successful_perturbations": 5,
+      "failed_or_abstained_perturbations": 0,
+      "all_tested_crops_match": true,
+      "review_state": "CROP_STABLE_ORIGINAL_SOURCE_WORDS_NOT_SEMANTIC_APPROVAL",
+      "source_table_completeness_verified": false,
+      "trusted_source_values": 0,
+      "trials": [
+        {
+          "inset_pdf_points": -5,
+          "status": "ALL_SELECTED_ORIGINAL_WORDS_MATCH",
+          "candidate_tables": 1,
+          "candidate_cells": 120,
+          "matched": 4,
+          "abstained": 0
+        },
+        {
+          "inset_pdf_points": -2,
+          "status": "ALL_SELECTED_ORIGINAL_WORDS_MATCH",
+          "candidate_tables": 1,
+          "candidate_cells": 120,
+          "matched": 4,
+          "abstained": 0
+        },
+        {
+          "inset_pdf_points": 0,
+          "status": "ALL_SELECTED_ORIGINAL_WORDS_MATCH",
+          "candidate_tables": 1,
+          "candidate_cells": 120,
+          "matched": 4,
+          "abstained": 0
+        },
+        {
+          "inset_pdf_points": 2,
+          "status": "ALL_SELECTED_ORIGINAL_WORDS_MATCH",
+          "candidate_tables": 1,
+          "candidate_cells": 120,
+          "matched": 4,
+          "abstained": 0
+        },
+        {
+          "inset_pdf_points": 5,
+          "status": "ALL_SELECTED_ORIGINAL_WORDS_MATCH",
+          "candidate_tables": 1,
+          "candidate_cells": 120,
+          "matched": 4,
+          "abstained": 0
+        }
+      ]
+    }
+  ]
+}

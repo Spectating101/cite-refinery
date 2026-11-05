@@ -1,0 +1,338 @@
+{
+  "schema": "atlas.heterogeneous_source_cell_quality_acceptance.v1",
+  "authority": "ORIGINAL_SOURCE_WORD_REVIEW_NO_ISSUER_VERIFICATION",
+  "documents": 5,
+  "candidate_cells_total": 131,
+  "table_regions_triaged": 7,
+  "candidate_rows_triaged": 33,
+  "shape_reviewable_rows": 8,
+  "abstained_candidate_rows": 25,
+  "manual_source_cell_acceptance": {
+    "source_id": "arxiv2506",
+    "page": 11,
+    "original_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+    "reviewed_cells": 8,
+    "source_word_matches": 6,
+    "source_word_abstentions": 2,
+    "source_label_and_value_flags": [
+      {
+        "id": "manulife-01",
+        "status": "source_word_witness_match",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": true,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      },
+      {
+        "id": "manulife-02",
+        "status": "source_word_witness_match",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": true,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      },
+      {
+        "id": "manulife-03",
+        "status": "source_word_witness_match",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": true,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      },
+      {
+        "id": "manulife-04",
+        "status": "source_word_witness_match",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": true,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      },
+      {
+        "id": "manulife-05",
+        "status": "abstain_word_or_geometry_mismatch",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": false,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      },
+      {
+        "id": "manulife-06",
+        "status": "abstain_word_or_geometry_mismatch",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": false,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      },
+      {
+        "id": "manulife-07",
+        "status": "source_word_witness_match",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": true,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      },
+      {
+        "id": "manulife-08",
+        "status": "source_word_witness_match",
+        "checks": {
+          "label_original_word_match": true,
+          "label_candidate_match": true,
+          "value_original_word_match": true,
+          "value_candidate_match": true,
+          "header_original_word_match": true,
+          "header_candidate_match": true
+        }
+      }
+    ],
+    "provenance": {
+      "classification": "SECONDARY_REPRODUCED_ISSUER_FACT_SHEET_IN_RESEARCH_ARTICLE",
+      "original_issuer_source_verified": false,
+      "issuer_original_url_pinned": false,
+      "independent_second_reviewer": false,
+      "trusted_primary_financial_data": false
+    },
+    "publisher_original_verified": false,
+    "trusted_financial_export": false
+  },
+  "actual_second_human_adjudication": false,
+  "primary_issuer_source_verified": false,
+  "source_file_bytes_committed": false,
+  "trusted_data_promotions": 0,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "decision": "HOLD_UNVERIFIED_LAYOUTS_SECONDARY_SOURCE_AND_FAILED_PAGES",
+  "cases": [
+    {
+      "source_id": "bis106",
+      "original_sha256": "56edaa1a93f11fbe1fa231ca179ebec6a79d5a89cd7915e1ff73d15188f5a69c",
+      "selected_pages": [
+        4,
+        7
+      ],
+      "failed_pages": [],
+      "pages_with_tables": [
+        4
+      ],
+      "total_unverified_parser_cells": 6,
+      "table_shape_diagnostics": [
+        {
+          "page": 4,
+          "table_index": 0,
+          "label_column": 0,
+          "value_column": 1,
+          "row_count": 2,
+          "shape_reviewable_rows": 0,
+          "abstained_rows": 2,
+          "outcomes": [
+            "abstain_missing_selected_cells",
+            "abstain_flattened_multiline_cells"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "bis116",
+      "original_sha256": "9832cc7a21a0012641131866eccfa09d1a23c34e44e00434da5d2452a9d463fb",
+      "selected_pages": [
+        4,
+        5
+      ],
+      "failed_pages": [],
+      "pages_with_tables": [
+        4,
+        5
+      ],
+      "total_unverified_parser_cells": 55,
+      "table_shape_diagnostics": [
+        {
+          "page": 4,
+          "table_index": 0,
+          "label_column": 0,
+          "value_column": 1,
+          "row_count": 3,
+          "shape_reviewable_rows": 0,
+          "abstained_rows": 3,
+          "outcomes": [
+            "abstain_axis_ticks_or_not_single_label",
+            "abstain_missing_selected_cells",
+            "abstain_missing_selected_cells"
+          ]
+        },
+        {
+          "page": 4,
+          "table_index": 1,
+          "label_column": 0,
+          "value_column": 1,
+          "row_count": 7,
+          "shape_reviewable_rows": 0,
+          "abstained_rows": 7,
+          "outcomes": [
+            "abstain_missing_selected_cells",
+            "abstain_axis_ticks_or_not_single_label",
+            "abstain_missing_selected_cells",
+            "abstain_missing_selected_cells",
+            "abstain_missing_selected_cells",
+            "abstain_missing_selected_cells",
+            "abstain_missing_selected_cells"
+          ]
+        },
+        {
+          "page": 5,
+          "table_index": 0,
+          "label_column": 0,
+          "value_column": 2,
+          "row_count": 3,
+          "shape_reviewable_rows": 0,
+          "abstained_rows": 3,
+          "outcomes": [
+            "abstain_missing_selected_cells",
+            "abstain_non_atomic_currency_or_number",
+            "abstain_missing_selected_cells"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "bis138",
+      "original_sha256": "11c941437cedc9f40e1e2a76f58fe3f49eaf0fdd56066dbdd1785f0d545de9f2",
+      "selected_pages": [
+        4,
+        6
+      ],
+      "failed_pages": [
+        {
+          "page": 6,
+          "status": "failed",
+          "error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR"
+        }
+      ],
+      "pages_with_tables": [
+        4
+      ],
+      "total_unverified_parser_cells": 12,
+      "table_shape_diagnostics": [
+        {
+          "page": 4,
+          "table_index": 0,
+          "label_column": 0,
+          "value_column": 1,
+          "row_count": 4,
+          "shape_reviewable_rows": 0,
+          "abstained_rows": 4,
+          "outcomes": [
+            "abstain_axis_ticks_or_not_single_label",
+            "abstain_flattened_multiline_cells",
+            "abstain_flattened_multiline_cells",
+            "abstain_missing_selected_cells"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv2604",
+      "original_sha256": "5c52ca855d9c09b23de5eeef57a3b2f4ffc977fc706ed129b31fa404d2750c99",
+      "selected_pages": [
+        7,
+        9
+      ],
+      "failed_pages": [
+        {
+          "page": 9,
+          "status": "failed",
+          "error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR"
+        }
+      ],
+      "pages_with_tables": [
+        7
+      ],
+      "total_unverified_parser_cells": 10,
+      "table_shape_diagnostics": [
+        {
+          "page": 7,
+          "table_index": 0,
+          "label_column": 0,
+          "value_column": 1,
+          "row_count": 2,
+          "shape_reviewable_rows": 0,
+          "abstained_rows": 2,
+          "outcomes": [
+            "abstain_non_atomic_currency_or_number",
+            "abstain_flattened_multiline_cells"
+          ]
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv2506",
+      "original_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+      "selected_pages": [
+        6,
+        11
+      ],
+      "failed_pages": [
+        {
+          "page": 6,
+          "status": "failed",
+          "error_code": "INVALID_EXTRACTED_CELL_GEOMETRY"
+        }
+      ],
+      "pages_with_tables": [
+        11
+      ],
+      "total_unverified_parser_cells": 48,
+      "table_shape_diagnostics": [
+        {
+          "page": 11,
+          "table_index": 0,
+          "label_column": 1,
+          "value_column": 2,
+          "row_count": 12,
+          "shape_reviewable_rows": 8,
+          "abstained_rows": 4,
+          "outcomes": [
+            "abstain_missing_selected_cells",
+            "abstain_non_atomic_currency_or_number",
+            "source_verification_required_not_approved",
+            "source_verification_required_not_approved",
+            "source_verification_required_not_approved",
+            "abstain_non_atomic_currency_or_number",
+            "source_verification_required_not_approved",
+            "source_verification_required_not_approved",
+            "source_verification_required_not_approved",
+            "source_verification_required_not_approved",
+            "source_verification_required_not_approved",
+            "abstain_flattened_multiline_cells"
+          ]
+        }
+      ]
+    }
+  ]
+}

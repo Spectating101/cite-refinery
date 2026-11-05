@@ -10,11 +10,87 @@ on:
       - 'tests/test_multi_source_discovery.py'
       - 'src/cite_refinery/discovery_capability_review.py'
       - 'tests/test_discovery_capability_review.py'
+      - 'src/cite_refinery/atlas_capability_investigator.py'
+      - 'tests/test_atlas_capability_investigator.py'
+      - 'examples/discovery/hardware_splicer_capability_goal_20261105.json'
+      - 'examples/discovery/hs_atlas_source_investigation_20261105.json'
+      - 'reports/hs_atlas_source_investigation_20261105.md'
+      - 'docs/ATLAS_SOURCE_FIRST_HS_DISCOVERY_20261105.md'
       - 'src/cite_refinery/source_evidence_gate.py'
       - 'tests/test_source_evidence_gate.py'
       - 'src/cite_refinery/typed_capability_map.py'
       - 'tests/test_typed_capability_map.py'
       - 'tests/test_interop_benchmarks.py'
+      - 'tests/test_interop_acceptance_002.py'
+      - 'tests/test_real_pdf_operator_pilot.py'
+      - 'tests/test_financial_source_cell_acceptance.py'
+      - 'tests/test_original_pdf_word_witness.py'
+      - 'tests/test_original_pdf_period_context.py'
+      - 'tests/test_isolated_period_context_acceptance.py'
+      - 'tests/test_real_pdf_footnote_ambiguity.py'
+      - 'tests/test_heterogeneous_pdf_regression.py'
+      - 'tests/test_operator_assisted_pdf_review.py'
+      - 'tests/test_heterogeneous_partial_page_acceptance.py'
+      - 'tests/test_blind_review_invitations.py'
+      - 'tests/test_heterogeneous_source_cell_quality.py'
+      - 'tests/test_manulife_sec_issuer_reconciliation.py'
+      - 'tests/test_issuer_financial_dossier.py'
+      - 'scripts/issuer_financial_dossier.py'
+      - 'examples/discovery/manulife_1q24_vs_1q23_decision_dossier_20261105.json'
+      - 'reports/**'
+      - 'docs/ISSUER_EVIDENCE_TO_DECISION_CASE_20261105.md'
+      - 'tests/test_failed_page_native_crop_acceptance.py'
+      - 'tests/test_failed_page_native_crop_stability.py'
+      - 'tests/test_original_ruled_cost_table_acceptance.py'
+      - 'tests/test_ruled_row_region_external_acceptance.py'
+      - 'tests/test_locked_pdf_holdout_20261104.py'
+      - 'tests/test_tabula_multi_engine_holdout_20261104.py'
+      - 'tests/test_tabula_operator_review_queue_20261104.py'
+      - 'tests/test_tabula_original_geometry_recovery_20261105.py'
+      - 'tests/test_pdfplumber_geometry_holdout_20261105.py'
+      - 'scripts/preregister_pdfplumber_geometry_holdout_20261105.py'
+      - 'scripts/pdfplumber_geometry_holdout_runner_20261105.py'
+      - 'examples/discovery/pdfplumber_geometry_holdout_preregistration_20261105.json'
+      - 'examples/discovery/pdfplumber_geometry_first_pass_20261105.json'
+      - 'docs/PDFPLUMBER_UNSEEN_GEOMETRY_HOLDOUT_20261105.md'
+      - 'scripts/tabula_original_geometry_recovery_acceptance_20261105.py'
+      - 'examples/discovery/tabula_original_geometry_recovery_20261105.json'
+      - 'docs/TABULA_ORIGINAL_GEOMETRY_REPAIR_20261105.md'
+      - 'scripts/tabula_operator_review_pilot_20261104.py'
+      - 'scripts/tabula_geometry_blockers_20261104.py'
+      - 'examples/discovery/tabula_operator_review_queue_20261104.json'
+      - 'examples/discovery/tabula_original_geometry_blockers_20261104.json'
+      - 'scripts/run_locked_tabula_multi_engine_20261104.py'
+      - 'scripts/score_tabula_multi_engine_20261104.py'
+      - 'scripts/compare_frozen_ruled_tabula_holdout_20261104.py'
+      - 'examples/discovery/tabula_engine_holdout_preregistration_20261104.json'
+      - 'examples/discovery/tabula_engine_holdout_first_pass_20261104.json'
+      - 'examples/discovery/tabula_engine_holdout_csv_scoring_20261104.json'
+      - 'examples/discovery/tabula_ruled_baseline_same_cohort_20261104.json'
+      - 'scripts/execute_locked_pdf_holdout_20261104.py'
+      - 'scripts/score_locked_pdf_holdout_20261104.py'
+      - 'examples/discovery/ruled_pdf_holdout_preregistration_20261104.json'
+      - 'examples/discovery/ruled_pdf_untouched_holdout_baseline_20261104.json'
+      - 'examples/discovery/ruled_pdf_untouched_holdout_scoring_20261104.json'
+      - 'scripts/ruled_row_region_external_acceptance.py'
+      - 'examples/discovery/ruled_row_region_external_oracle_20261104.json'
+      - 'scripts/original_ruled_cost_table_acceptance.py'
+      - 'examples/discovery/original_ruled_cost_table_oracle_20261103.json'
+      - 'scripts/failed_page_native_crop_stability_acceptance.py'
+      - 'scripts/failed_page_native_crop_acceptance.py'
+      - 'scripts/manulife_sec_issuer_reconciliation.py'
+      - 'examples/discovery/manulife_sec_issuer_reconciliation_oracle_20261103.json'
+      - 'scripts/heterogeneous_source_cell_acceptance.py'
+      - 'examples/discovery/heterogeneous_original_source_cell_oracle_20261103.json'
+      - 'scripts/interop_partial_page_acceptance.py'
+      - 'scripts/prepare_blind_pdf_review_invites.py'
+      - 'scripts/interop_operator_review_acceptance.py'
+      - 'scripts/interop_footnote_ambiguity_acceptance.py'
+      - 'scripts/interop_period_context_acceptance.py'
+      - 'scripts/interop_original_word_acceptance.py'
+      - 'scripts/financial_source_cell_acceptance.py'
+      - 'scripts/interop_multipage_benchmark.py'
+      - 'scripts/interop_positional_benchmark.py'
       - 'scripts/interop_pdf_benchmark.py'
       - 'scripts/interop_warc_benchmark.py'
       - 'examples/discovery/**'
@@ -35,9 +111,33 @@ jobs:
       - run: python -m pip install -e .
       - run: python -m unittest discover -s tests -p 'test_multi_source_discovery.py' -v
       - run: python -m unittest discover -s tests -p 'test_discovery_capability_review.py' -v
+      - run: python -m unittest discover -s tests -p 'test_atlas_capability_investigator.py' -v
       - run: python -m unittest discover -s tests -p 'test_source_evidence_gate.py' -v
       - run: python -m unittest discover -s tests -p 'test_typed_capability_map.py' -v
       - run: python -m unittest discover -s tests -p 'test_interop_benchmarks.py' -v
+      - run: python -m unittest discover -s tests -p 'test_interop_acceptance_002.py' -v
+      - run: python -m unittest discover -s tests -p 'test_real_pdf_operator_pilot.py' -v
+      - run: python -m unittest discover -s tests -p 'test_financial_source_cell_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_original_pdf_word_witness.py' -v
+      - run: python -m unittest discover -s tests -p 'test_original_pdf_period_context.py' -v
+      - run: python -m unittest discover -s tests -p 'test_isolated_period_context_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_real_pdf_footnote_ambiguity.py' -v
+      - run: python -m unittest discover -s tests -p 'test_heterogeneous_pdf_regression.py' -v
+      - run: python -m unittest discover -s tests -p 'test_operator_assisted_pdf_review.py' -v
+      - run: python -m unittest discover -s tests -p 'test_heterogeneous_partial_page_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_blind_review_invitations.py' -v
+      - run: python -m unittest discover -s tests -p 'test_heterogeneous_source_cell_quality.py' -v
+      - run: python -m unittest discover -s tests -p 'test_manulife_sec_issuer_reconciliation.py' -v
+      - run: python -m unittest discover -s tests -p 'test_issuer_financial_dossier.py' -v
+      - run: python -m unittest discover -s tests -p 'test_failed_page_native_crop_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_failed_page_native_crop_stability.py' -v
+      - run: python -m unittest discover -s tests -p 'test_original_ruled_cost_table_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_ruled_row_region_external_acceptance.py' -v
+      - run: python -m unittest discover -s tests -p 'test_locked_pdf_holdout_20261104.py' -v
+      - run: python -m unittest discover -s tests -p 'test_tabula_multi_engine_holdout_20261104.py' -v
+      - run: python -m unittest discover -s tests -p 'test_tabula_operator_review_queue_20261104.py' -v
+      - run: python -m unittest discover -s tests -p 'test_tabula_original_geometry_recovery_20261105.py' -v
+      - run: python -m unittest discover -s tests -p 'test_pdfplumber_geometry_holdout_20261105.py' -v
       - run: python -m unittest discover -s tests -p 'test_headless_intelligence.py' -v
       - run: python -m unittest discover -s tests -p 'test_development_steering.py' -v
       # Synthetic, offline fixtures only. No provider crawling or account secrets in CI.

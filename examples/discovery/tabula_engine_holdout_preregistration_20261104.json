@@ -1,0 +1,127 @@
+{
+  "schema": "atlas.preregistered_tabula_external_engine_holdout.v1",
+  "date": "2026-11-04",
+  "source_repo": "https://github.com/tabulapdf/tabula-java",
+  "source_commit": "2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f",
+  "selection_seed": "atlas-2026-11-04-separate-tabula-holdout-v1",
+  "metadata_only_before_pdf_download": true,
+  "stress_cases_predeclared": [
+    "rotated_page.pdf",
+    "jpeg2000.pdf",
+    "spanning_cells.pdf",
+    "should_detect_rulings.pdf"
+  ],
+  "hash_selected_csv_backed": [
+    "us-020.pdf",
+    "twotables.pdf",
+    "schools.pdf",
+    "Publication_of_award_of_Bids_for_Transport_Sector__August_2016.pdf",
+    "MultiColumn.pdf",
+    "argentina_diputados_voting_record.pdf",
+    "frx_2012_disclosure.pdf",
+    "spreadsheet_no_bounding_frame.pdf"
+  ],
+  "total_first_pages": 12,
+  "prior_camelot_test_holdout_reused": false,
+  "files": [
+    {
+      "filename": "rotated_page.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/rotated_page.pdf",
+      "independent_published_csv_url": null,
+      "page": 1,
+      "stratum": "stress"
+    },
+    {
+      "filename": "jpeg2000.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/jpeg2000.pdf",
+      "independent_published_csv_url": null,
+      "page": 1,
+      "stratum": "stress"
+    },
+    {
+      "filename": "spanning_cells.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/spanning_cells.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/spanning_cells.csv",
+      "page": 1,
+      "stratum": "stress"
+    },
+    {
+      "filename": "should_detect_rulings.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/should_detect_rulings.pdf",
+      "independent_published_csv_url": null,
+      "page": 1,
+      "stratum": "stress"
+    },
+    {
+      "filename": "us-020.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/us-020.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/us-020.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    },
+    {
+      "filename": "twotables.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/twotables.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/twotables.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    },
+    {
+      "filename": "schools.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/schools.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/schools.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    },
+    {
+      "filename": "Publication_of_award_of_Bids_for_Transport_Sector__August_2016.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/Publication_of_award_of_Bids_for_Transport_Sector__August_2016.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/Publication_of_award_of_Bids_for_Transport_Sector__August_2016.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    },
+    {
+      "filename": "MultiColumn.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/MultiColumn.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/MultiColumn.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    },
+    {
+      "filename": "argentina_diputados_voting_record.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/argentina_diputados_voting_record.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/argentina_diputados_voting_record.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    },
+    {
+      "filename": "frx_2012_disclosure.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/frx_2012_disclosure.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/frx_2012_disclosure.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    },
+    {
+      "filename": "spreadsheet_no_bounding_frame.pdf",
+      "pdf_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/spreadsheet_no_bounding_frame.pdf",
+      "independent_published_csv_url": "https://raw.githubusercontent.com/tabulapdf/tabula-java/2cdf3b4fd3f7e921dca8cc6814cdd9316be40f0f/src/test/resources/technology/tabula/csv/spreadsheet_no_bounding_frame.csv",
+      "page": 1,
+      "stratum": "hash_sample"
+    }
+  ],
+  "frozen_engine_policy": {
+    "primary": "camelot-py==1.0.9 flavor=hybrid pages=1",
+    "diagnostics": [
+      "camelot-py==1.0.9 flavor=network pages=1",
+      "camelot-py==1.0.9 flavor=lattice pages=1"
+    ],
+    "selection": "never choose best engine based on gold",
+    "source_guard": "original SHA-256 pinned + original pdfplumber source-word cell witness",
+    "reference_policy": "score only independently published CSV rows with matching page scope; unscorable pages explicit",
+    "denominators": "12 first pages all errors and abstentions retained",
+    "replay_rule": "no tuning on cohort; revisions require new untouched cohort"
+  },
+  "human_review_completed": false,
+  "trusted_source_registration": false,
+  "auto_publish": false
+}

@@ -1,0 +1,131 @@
+{
+  "schema": "atlas.tabula_same_cohort_frozen_ruled_diagnostic.v1",
+  "comparison_kind": "POSTHOC_FROZEN_OLD_SCANNER_SAME_NEW_COHORT",
+  "old_engine_commit": "2f5bd7f",
+  "new_engine_first_pass_sha256": "68e5978269dbf1101ef86b3dff6b4c5cc3e76661b374022929010d18c3c2455c",
+  "same_original_pdf_sha_verified": true,
+  "attempted_pages": 12,
+  "pages_with_ruled_row_proposals": 4,
+  "row_proposals_total": 163,
+  "scored_pages": 6,
+  "true_positive_rows": 115,
+  "false_positive_rows": 48,
+  "false_negative_rows": 123,
+  "conditional_precision": 0.7055214723926381,
+  "conditional_recall": 0.4831932773109244,
+  "not_originally_preregistered_as_primary": true,
+  "publisher_truth_not_adjudicated": true,
+  "trusted_rows": 0,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "cases": [
+    {
+      "filename": "rotated_page.pdf",
+      "source_sha256": "6d2ed4bf1bde424cfa6ecfa15762c875938a14f988f35328aaba57f86e08907d",
+      "source_status": "SCANNER_ERROR_ValueError",
+      "proposed_rows": 0,
+      "reference_status": "NO_COMPARABLE_CSV"
+    },
+    {
+      "filename": "jpeg2000.pdf",
+      "source_sha256": "85e12a48fe9ca227024ffabfd554847e3c530ed8736d06d938283b7435a552bc",
+      "source_status": "ABSTAIN_NO_RULES",
+      "proposed_rows": 0,
+      "reference_status": "NO_COMPARABLE_CSV"
+    },
+    {
+      "filename": "spanning_cells.pdf",
+      "source_sha256": "f0a8fb8a293a192ca896ff4100b7b7113149ca89145ba61da662bd9d9fec3acf",
+      "source_status": "SOURCE_ROW_PROPOSALS_UNVERIFIED",
+      "proposed_rows": 25,
+      "reference_status": "ONE_PAGE_REFERENCE",
+      "expected": 25,
+      "tp": 25,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "filename": "should_detect_rulings.pdf",
+      "source_sha256": "ea7c01fd7a96a6cc4d4a13641bcc78308cb90eb91cc726138d59532cc16564c4",
+      "source_status": "SCANNER_ERROR_ValueError",
+      "proposed_rows": 0,
+      "reference_status": "NO_COMPARABLE_CSV"
+    },
+    {
+      "filename": "us-020.pdf",
+      "source_sha256": "d884d32bd2a1d620e0c7b5446e4d0b58ba67dab04e884839b2640b9a35749e99",
+      "source_status": "ABSTAIN_NO_RULES",
+      "proposed_rows": 0,
+      "reference_status": "MULTIPAGE_CSV_NOT_COMPARABLE"
+    },
+    {
+      "filename": "twotables.pdf",
+      "source_sha256": "72a9d20672e4d581ae9933a07cbe9a6f6db40632218fb7e73bd923dee033d8cd",
+      "source_status": "ABSTAIN_NO_RULES",
+      "proposed_rows": 0,
+      "reference_status": "ONE_PAGE_REFERENCE",
+      "expected": 22,
+      "tp": 0,
+      "fp": 0,
+      "fn": 22
+    },
+    {
+      "filename": "schools.pdf",
+      "source_sha256": "d73a342af0250f36b08b718dbf6b73def928e103aa7911ff18018534aa5c87fb",
+      "source_status": "SCANNER_ERROR_ValueError",
+      "proposed_rows": 0,
+      "reference_status": "MULTIPAGE_CSV_NOT_COMPARABLE"
+    },
+    {
+      "filename": "Publication_of_award_of_Bids_for_Transport_Sector__August_2016.pdf",
+      "source_sha256": "038126d57e3d9aadfee6c3ac44acc66d4fbdc13598dad8deadd7ec76a2a7d2ab",
+      "source_status": "SCANNER_ERROR_ValueError",
+      "proposed_rows": 0,
+      "reference_status": "MULTIPAGE_CSV_NOT_COMPARABLE"
+    },
+    {
+      "filename": "MultiColumn.pdf",
+      "source_sha256": "ad8639d78ff804aff84ec15eac915367f3aa177f39de12b7b02cbc6cb19d3162",
+      "source_status": "ABSTAIN_NO_RULES",
+      "proposed_rows": 0,
+      "reference_status": "ONE_PAGE_REFERENCE",
+      "expected": 44,
+      "tp": 0,
+      "fp": 0,
+      "fn": 44
+    },
+    {
+      "filename": "argentina_diputados_voting_record.pdf",
+      "source_sha256": "101064f0dc6aaafbab30ebccce14f290e695ef220b01699254df607f2000b61e",
+      "source_status": "SOURCE_ROW_PROPOSALS_UNVERIFIED",
+      "proposed_rows": 32,
+      "reference_status": "ONE_PAGE_REFERENCE",
+      "expected": 31,
+      "tp": 31,
+      "fp": 1,
+      "fn": 0
+    },
+    {
+      "filename": "frx_2012_disclosure.pdf",
+      "source_sha256": "aa80de941ee2999798e2d36b63b475861468bcb958cb7106e9afcc12242ad54a",
+      "source_status": "SOURCE_ROW_PROPOSALS_UNVERIFIED",
+      "proposed_rows": 88,
+      "reference_status": "ONE_PAGE_REFERENCE",
+      "expected": 88,
+      "tp": 41,
+      "fp": 47,
+      "fn": 47
+    },
+    {
+      "filename": "spreadsheet_no_bounding_frame.pdf",
+      "source_sha256": "67192f9b786462db2db772d4f526486fa65d8dc46e121957ce1ad08ec09c21e0",
+      "source_status": "SOURCE_ROW_PROPOSALS_UNVERIFIED",
+      "proposed_rows": 18,
+      "reference_status": "ONE_PAGE_REFERENCE",
+      "expected": 28,
+      "tp": 18,
+      "fp": 0,
+      "fn": 10
+    }
+  ]
+}

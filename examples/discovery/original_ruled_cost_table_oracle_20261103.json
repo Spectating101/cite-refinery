@@ -1,0 +1,23 @@
+{
+  "schema": "atlas.operator_original_ruled_table_oracle.v1",
+  "source_id": "arxiv2506",
+  "original_physical_page": 6,
+  "original_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+  "source_description": "Academic PDF Table 2: cost comparison with alternative solutions; original vector-ruled PDF, not issuer financial data",
+  "ruled_source_bbox_pdf": [347.24, 71.15, 483.31, 134.94],
+  "operator_source_column_edges_pdf": [347.24, 394.62, 450.72, 483.31],
+  "original_printed_table_rows": [
+    ["Solution", "MainModel", "Cost/Page"],
+    ["LlamaParse", "GPT-4o", "$0.03000"],
+    ["VertexAI", "Gemini-2.0-flash", "$0.11610"],
+    ["Anthropic", "Claude3Opus", "$0.00900"],
+    ["Oursolution", "GPT-4o", "$0.00231"]
+  ],
+  "baseline_operator_crop_bbox_pdf": [340, 70, 500, 144],
+  "baseline_native_profile": "ruled_rows_text_columns",
+  "original_printed_caption": "Table2: Costcomparisonwithalternativesolutions.",
+  "operator_requires_second_human_review": true,
+  "source_scope": "COMPLETE_WITHIN_OPERATOR_DECLARED_RULED_TABLE_NOT_COMPLETE_PAGE_OR_DOCUMENT",
+  "auto_publish": false,
+  "auto_register_dataset": false
+}

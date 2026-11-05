@@ -1,0 +1,322 @@
+{
+  "schema": "cite_refinery.real_interop_acceptance_002.v1",
+  "date": "2026-11-03",
+  "authority": "REVIEW_ONLY_NO_PRODUCTION_ADOPTION",
+  "fixture_upstream": "https://github.com/LydiaTools/pdf-table-traps",
+  "fixture_commit": "c63aab8884671aa4c789f08d0891f1a3f0ee5f5d",
+  "multipage": [
+    {
+      "case": "single-header",
+      "engine": "pdfplumber_default",
+      "mode": "naive_page_header",
+      "pdf_sha256": "8623f8d2907448bba0dcae18e0f48f6c016dcecf0f0755e91f698d58238a8d4e",
+      "expected_rows": 24,
+      "correct_row_count": 22,
+      "missing_row_ids": [
+        "Plant-09",
+        "Plant-17"
+      ],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "MISSING_REPEATED_HEADER_FIRST_ROW_AT_RISK",
+        "MISSING_REPEATED_HEADER_FIRST_ROW_AT_RISK"
+      ],
+      "pass": false
+    },
+    {
+      "case": "single-header",
+      "engine": "pdfplumber_default",
+      "mode": "operator_declared_header",
+      "pdf_sha256": "8623f8d2907448bba0dcae18e0f48f6c016dcecf0f0755e91f698d58238a8d4e",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "OPERATOR_APPROVED_HEADER_CARRY_FORWARD",
+        "OPERATOR_APPROVED_HEADER_CARRY_FORWARD"
+      ],
+      "pass": true
+    },
+    {
+      "case": "single-header",
+      "engine": "pymupdf_find_tables",
+      "mode": "naive_page_header",
+      "pdf_sha256": "8623f8d2907448bba0dcae18e0f48f6c016dcecf0f0755e91f698d58238a8d4e",
+      "expected_rows": 24,
+      "correct_row_count": 22,
+      "missing_row_ids": [
+        "Plant-09",
+        "Plant-17"
+      ],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "MISSING_REPEATED_HEADER_FIRST_ROW_AT_RISK",
+        "MISSING_REPEATED_HEADER_FIRST_ROW_AT_RISK"
+      ],
+      "pass": false
+    },
+    {
+      "case": "single-header",
+      "engine": "pymupdf_find_tables",
+      "mode": "operator_declared_header",
+      "pdf_sha256": "8623f8d2907448bba0dcae18e0f48f6c016dcecf0f0755e91f698d58238a8d4e",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "OPERATOR_APPROVED_HEADER_CARRY_FORWARD",
+        "OPERATOR_APPROVED_HEADER_CARRY_FORWARD"
+      ],
+      "pass": true
+    },
+    {
+      "case": "single-header",
+      "engine": "img2table_borderless",
+      "mode": "naive_page_header",
+      "pdf_sha256": "8623f8d2907448bba0dcae18e0f48f6c016dcecf0f0755e91f698d58238a8d4e",
+      "expected_rows": 24,
+      "correct_row_count": 22,
+      "missing_row_ids": [
+        "Plant-09",
+        "Plant-17"
+      ],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "MISSING_REPEATED_HEADER_FIRST_ROW_AT_RISK",
+        "MISSING_REPEATED_HEADER_FIRST_ROW_AT_RISK"
+      ],
+      "pass": false
+    },
+    {
+      "case": "single-header",
+      "engine": "img2table_borderless",
+      "mode": "operator_declared_header",
+      "pdf_sha256": "8623f8d2907448bba0dcae18e0f48f6c016dcecf0f0755e91f698d58238a8d4e",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "OPERATOR_APPROVED_HEADER_CARRY_FORWARD",
+        "OPERATOR_APPROVED_HEADER_CARRY_FORWARD"
+      ],
+      "pass": true
+    },
+    {
+      "case": "repeat-header",
+      "engine": "pdfplumber_default",
+      "mode": "naive_page_header",
+      "pdf_sha256": "42316d2df20f5445c2b99403524638461c8d1959ce40634f4d564858a5c296e5",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER"
+      ],
+      "pass": true
+    },
+    {
+      "case": "repeat-header",
+      "engine": "pdfplumber_default",
+      "mode": "operator_declared_header",
+      "pdf_sha256": "42316d2df20f5445c2b99403524638461c8d1959ce40634f4d564858a5c296e5",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER"
+      ],
+      "pass": true
+    },
+    {
+      "case": "repeat-header",
+      "engine": "pymupdf_find_tables",
+      "mode": "naive_page_header",
+      "pdf_sha256": "42316d2df20f5445c2b99403524638461c8d1959ce40634f4d564858a5c296e5",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER"
+      ],
+      "pass": true
+    },
+    {
+      "case": "repeat-header",
+      "engine": "pymupdf_find_tables",
+      "mode": "operator_declared_header",
+      "pdf_sha256": "42316d2df20f5445c2b99403524638461c8d1959ce40634f4d564858a5c296e5",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER"
+      ],
+      "pass": true
+    },
+    {
+      "case": "repeat-header",
+      "engine": "img2table_borderless",
+      "mode": "naive_page_header",
+      "pdf_sha256": "42316d2df20f5445c2b99403524638461c8d1959ce40634f4d564858a5c296e5",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER"
+      ],
+      "pass": true
+    },
+    {
+      "case": "repeat-header",
+      "engine": "img2table_borderless",
+      "mode": "operator_declared_header",
+      "pdf_sha256": "42316d2df20f5445c2b99403524638461c8d1959ce40634f4d564858a5c296e5",
+      "expected_rows": 24,
+      "correct_row_count": 24,
+      "missing_row_ids": [],
+      "wrong_count_labels": [],
+      "source_header_statuses": [
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER",
+        "EXPLICIT_SOURCE_HEADER"
+      ],
+      "pass": true
+    }
+  ],
+  "positioned": [
+    {
+      "engine": "pdfplumber_default",
+      "source_sha256": "0938b3d14f6acbaeb0ecb40395fe6ce843d338f57117c60c1b591b9062b1b50d",
+      "checks": {
+        "pass": 0,
+        "fail": 0,
+        "unknown": 2
+      },
+      "status": "unknown",
+      "operator_defined_scope": false
+    },
+    {
+      "engine": "pymupdf_find_tables",
+      "source_sha256": "0938b3d14f6acbaeb0ecb40395fe6ce843d338f57117c60c1b591b9062b1b50d",
+      "checks": {
+        "pass": 0,
+        "fail": 0,
+        "unknown": 2
+      },
+      "status": "unknown",
+      "operator_defined_scope": false
+    },
+    {
+      "engine": "img2table_borderless",
+      "source_sha256": "0938b3d14f6acbaeb0ecb40395fe6ce843d338f57117c60c1b591b9062b1b50d",
+      "checks": {
+        "pass": 0,
+        "fail": 0,
+        "unknown": 2
+      },
+      "status": "unknown",
+      "operator_defined_scope": false
+    },
+    {
+      "engine": "operator_scoped_positioned",
+      "source_sha256": "0938b3d14f6acbaeb0ecb40395fe6ce843d338f57117c60c1b591b9062b1b50d",
+      "checks": {
+        "pass": 2,
+        "fail": 0,
+        "unknown": 0
+      },
+      "status": "pass",
+      "operator_defined_scope": true
+    }
+  ],
+  "nocturnal": {
+    "finding": "Legacy readable-text SHA reused as WARC payload hash when extracted text differs from raw HTML",
+    "reproduced_on_original_commit": "d7f914f6e3b57f6cc65c827de868c284673b8876",
+    "repair_pr": "https://github.com/Spectating101/nocturnal-oversight/pull/114",
+    "new_tests_passed": 3,
+    "local_interop_suite_passed": 12,
+    "behavior": "Keep text hash; hash exact WARC payload separately; skip fake response after failed fetch",
+    "followup_ci_status": "All full and focused GitHub checks passed on draft PR #114 after NumPy and Poppler CI fixes."
+  },
+  "project_decisions": [
+    {
+      "project": "research_drive",
+      "type": "pdf_table_extraction",
+      "decision": "LIMITED_OPERATOR_ASSISTED_CANDIDATE",
+      "reason": "Original three simple fixtures 9/9 only for img2table borderless; 2/3-page irregular fixtures require source header or coordinate scope; native query remains metadata-only."
+    },
+    {
+      "project": "nocturnal",
+      "type": "evidence_custody",
+      "decision": "DEFECT_REPAIRED_IN_DRAFT_NOT_MERGED",
+      "reason": "Distinct readable text could corrupt WARC payload hash interpretation; source-side PR #114 is isolated and tested; prior saved evidence not rewritten."
+    },
+    {
+      "project": "atlas",
+      "type": "capability_adoption",
+      "decision": "DO_NOT_AUTO_PROMOTE",
+      "reason": "Candidate source documentation + successful small fixtures is insufficient for general PDF extraction or trustworthy source-custody promotion."
+    }
+  ],
+  "limitations": [
+    "Public synthetic source-checked PDF fixtures only; real official financial PDF fetch was HTTP 403/404 in Optiplex checks",
+    "Operator-supplied header carry-forward and region edges are not automatic document understanding",
+    "Cases chosen after earlier exploratory results; not held-out statistical accuracy",
+    "No native project repo merged or deployed"
+  ],
+  "research_drive_native_replay": {
+    "date": "2026-11-03",
+    "source_commit": "42d5cdac4f0ef48269b14d38d93a7377cffde86a",
+    "native_module": "recorded_fetch.HELPER.pdf_tables",
+    "native_parser": "pdfplumber",
+    "existing_evidence_model": "PDFScope / SourceCell",
+    "source_checked_cells": {
+      "ruled": [
+        4,
+        0,
+        0
+      ],
+      "borderless": [
+        0,
+        1,
+        3
+      ],
+      "prose": [
+        1,
+        0,
+        0
+      ],
+      "positional": [
+        0,
+        0,
+        2
+      ]
+    },
+    "correction": "metadata_only_backend is a separate query backend, not proof of absent native PDF capability",
+    "optional_adapter": "operator_requested_img2table_no_auto_publish"
+  }
+}

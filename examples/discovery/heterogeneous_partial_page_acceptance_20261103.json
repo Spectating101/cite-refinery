@@ -1,0 +1,173 @@
+{
+  "schema": "atlas.heterogeneous_pdf_partial_page_acceptance.v1",
+  "document_count": 5,
+  "requested_pages": 10,
+  "successful_pages": 7,
+  "failed_pages": 3,
+  "documents_with_any_candidate_page": 5,
+  "pages_with_table_candidates": 6,
+  "documents_with_all_requested_pages": 2,
+  "candidate_cells": 131,
+  "source_pdf_bytes_committed": false,
+  "numeric_cell_truth_checked": false,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "release_decision": "HOLD_INCOMPLETE_COVERAGE_AND_SEMANTIC_REVIEW",
+  "cases": [
+    {
+      "source_id": "bis106",
+      "original_sha256": "56edaa1a93f11fbe1fa231ca179ebec6a79d5a89cd7915e1ff73d15188f5a69c",
+      "selected_physical_pages": [
+        4,
+        7
+      ],
+      "status": "ALL_SELECTED_PAGES_EXTRACTED_UNVERIFIED",
+      "successful_pages": [
+        4,
+        7
+      ],
+      "successful_page_details": [
+        {
+          "page": 4,
+          "table_count": 1,
+          "candidate_cells": 6
+        },
+        {
+          "page": 7,
+          "table_count": 0,
+          "candidate_cells": 0
+        }
+      ],
+      "failed_pages": [],
+      "successful_page_count": 2,
+      "failed_page_count": 0,
+      "candidate_cell_count": 6,
+      "candidate_trust": "UNVERIFIED_PARSER_HYPOTHESES",
+      "trusted_csv_export": false
+    },
+    {
+      "source_id": "bis116",
+      "original_sha256": "9832cc7a21a0012641131866eccfa09d1a23c34e44e00434da5d2452a9d463fb",
+      "selected_physical_pages": [
+        4,
+        5
+      ],
+      "status": "ALL_SELECTED_PAGES_EXTRACTED_UNVERIFIED",
+      "successful_pages": [
+        4,
+        5
+      ],
+      "successful_page_details": [
+        {
+          "page": 4,
+          "table_count": 2,
+          "candidate_cells": 40
+        },
+        {
+          "page": 5,
+          "table_count": 1,
+          "candidate_cells": 15
+        }
+      ],
+      "failed_pages": [],
+      "successful_page_count": 2,
+      "failed_page_count": 0,
+      "candidate_cell_count": 55,
+      "candidate_trust": "UNVERIFIED_PARSER_HYPOTHESES",
+      "trusted_csv_export": false
+    },
+    {
+      "source_id": "bis138",
+      "original_sha256": "11c941437cedc9f40e1e2a76f58fe3f49eaf0fdd56066dbdd1785f0d545de9f2",
+      "selected_physical_pages": [
+        4,
+        6
+      ],
+      "status": "PARTIAL_CANDIDATES_ONLY",
+      "successful_pages": [
+        4
+      ],
+      "successful_page_details": [
+        {
+          "page": 4,
+          "table_count": 1,
+          "candidate_cells": 12
+        }
+      ],
+      "failed_pages": [
+        {
+          "page": 6,
+          "status": "failed",
+          "error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR"
+        }
+      ],
+      "successful_page_count": 1,
+      "failed_page_count": 1,
+      "candidate_cell_count": 12,
+      "candidate_trust": "UNVERIFIED_PARSER_HYPOTHESES",
+      "trusted_csv_export": false
+    },
+    {
+      "source_id": "arxiv2604",
+      "original_sha256": "5c52ca855d9c09b23de5eeef57a3b2f4ffc977fc706ed129b31fa404d2750c99",
+      "selected_physical_pages": [
+        7,
+        9
+      ],
+      "status": "PARTIAL_CANDIDATES_ONLY",
+      "successful_pages": [
+        7
+      ],
+      "successful_page_details": [
+        {
+          "page": 7,
+          "table_count": 1,
+          "candidate_cells": 10
+        }
+      ],
+      "failed_pages": [
+        {
+          "page": 9,
+          "status": "failed",
+          "error_code": "UPSTREAM_TEXT_ALIGNMENT_ERROR"
+        }
+      ],
+      "successful_page_count": 1,
+      "failed_page_count": 1,
+      "candidate_cell_count": 10,
+      "candidate_trust": "UNVERIFIED_PARSER_HYPOTHESES",
+      "trusted_csv_export": false
+    },
+    {
+      "source_id": "arxiv2506",
+      "original_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+      "selected_physical_pages": [
+        6,
+        11
+      ],
+      "status": "PARTIAL_CANDIDATES_ONLY",
+      "successful_pages": [
+        11
+      ],
+      "successful_page_details": [
+        {
+          "page": 11,
+          "table_count": 1,
+          "candidate_cells": 48
+        }
+      ],
+      "failed_pages": [
+        {
+          "page": 6,
+          "status": "failed",
+          "error_code": "INVALID_EXTRACTED_CELL_GEOMETRY"
+        }
+      ],
+      "successful_page_count": 1,
+      "failed_page_count": 1,
+      "candidate_cell_count": 48,
+      "candidate_trust": "UNVERIFIED_PARSER_HYPOTHESES",
+      "trusted_csv_export": false
+    }
+  ]
+}

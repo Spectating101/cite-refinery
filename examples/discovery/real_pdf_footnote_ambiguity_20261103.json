@@ -1,0 +1,58 @@
+{
+  "schema": "atlas.real_pdf_footnote_marker_holdout.v1",
+  "authority": "REVIEW_ONLY_NO_AUTO_FOOTNOTE_LINK",
+  "source_count": 4,
+  "ambiguous_reused_markers": 2,
+  "single_printed_definition_manual_review": 2,
+  "semantic_links_verified": 0,
+  "automatic_acceptances": 0,
+  "original_source_pdf_bytes_committed": false,
+  "status": "HOLD_FOOTNOTE_SEMANTIC_LINK_UNVERIFIED",
+  "interpretation": "leftmost original-page marker heuristic, not interpretation of note scope or footnote text",
+  "cases": [
+    {
+      "source_id": "apple_fy25q1",
+      "original_source_sha256": "b45c21d81378d635103ac213cddf853599716b42b4df4646b2f5c07e5079c748",
+      "page": 1,
+      "marker": "(1)",
+      "reference_bottom": 180,
+      "candidate_definition_count": 2,
+      "status": "abstain_ambiguous_reused_marker",
+      "semantic_note_link": "NOT_VERIFIED",
+      "authority": "REVIEW_ONLY_NEVER_AUTO_LINK_FOOTNOTE"
+    },
+    {
+      "source_id": "apple_fy25q4",
+      "original_source_sha256": "43e7f0730b3cce0fc37301a2f43c29712bbde6ab299d97c6df345fd0c754508a",
+      "page": 1,
+      "marker": "(1)",
+      "reference_bottom": 180,
+      "candidate_definition_count": 2,
+      "status": "abstain_ambiguous_reused_marker",
+      "semantic_note_link": "NOT_VERIFIED",
+      "authority": "REVIEW_ONLY_NEVER_AUTO_LINK_FOOTNOTE"
+    },
+    {
+      "source_id": "alphabet_2025q2",
+      "original_source_sha256": "3581be042fcbda6ea71185d5aef47458ce3a56cf6b16022d61a997d1807a4de5",
+      "page": 2,
+      "marker": "(1)",
+      "reference_bottom": 450,
+      "candidate_definition_count": 1,
+      "status": "single_printed_definition_requires_manual_link_review",
+      "semantic_note_link": "NOT_VERIFIED",
+      "authority": "REVIEW_ONLY_NEVER_AUTO_LINK_FOOTNOTE"
+    },
+    {
+      "source_id": "alphabet_2025q3",
+      "original_source_sha256": "dc759cd42f4b8b2935698e70dd21bb674cb10775bfda5f3990cda75f4c0428fd",
+      "page": 2,
+      "marker": "(1)",
+      "reference_bottom": 460,
+      "candidate_definition_count": 1,
+      "status": "single_printed_definition_requires_manual_link_review",
+      "semantic_note_link": "NOT_VERIFIED",
+      "authority": "REVIEW_ONLY_NEVER_AUTO_LINK_FOOTNOTE"
+    }
+  ]
+}

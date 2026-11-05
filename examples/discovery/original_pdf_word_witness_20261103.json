@@ -1,0 +1,541 @@
+{
+  "schema": "atlas.original_pdf_word_witness_acceptance.v1",
+  "date": "2026-11-03",
+  "authority": "REVIEW_ONLY_NO_TRUSTED_EXPORT",
+  "independent_word_engine": "ResearchDrive.cell_evidence.pdf_words",
+  "candidate_engine": "ResearchDrive.optional_pdf_candidates.extract_candidates",
+  "original_pdf_files_committed": false,
+  "operator_period_group_reviewed": false,
+  "trust_promotion": false,
+  "document_count": 5,
+  "selected_cells": 40,
+  "source_word_matches": 40,
+  "abstentions": 0,
+  "cases": [
+    {
+      "source_id": "apple_fy25q1",
+      "source_sha256": "b45c21d81378d635103ac213cddf853599716b42b4df4646b2f5c07e5079c748",
+      "selected": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_checks": [
+        {
+          "source_cell_id": "apple_fy25q1:01",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q1:02",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q1:03",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q1:04",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q1:05",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q1:06",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q1:07",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q1:08",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "apple_fy25q4",
+      "source_sha256": "43e7f0730b3cce0fc37301a2f43c29712bbde6ab299d97c6df345fd0c754508a",
+      "selected": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_checks": [
+        {
+          "source_cell_id": "apple_fy25q4:01",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q4:02",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q4:03",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q4:04",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q4:05",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q4:06",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q4:07",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "apple_fy25q4:08",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "alphabet_2025q2",
+      "source_sha256": "3581be042fcbda6ea71185d5aef47458ce3a56cf6b16022d61a997d1807a4de5",
+      "selected": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_checks": [
+        {
+          "source_cell_id": "alphabet_2025q2:01",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q2:02",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q2:03",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q2:04",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q2:05",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q2:06",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q2:07",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q2:08",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "alphabet_2025q3",
+      "source_sha256": "dc759cd42f4b8b2935698e70dd21bb674cb10775bfda5f3990cda75f4c0428fd",
+      "selected": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_checks": [
+        {
+          "source_cell_id": "alphabet_2025q3:01",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q3:02",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q3:03",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q3:04",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q3:05",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q3:06",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q3:07",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "alphabet_2025q3:08",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        }
+      ]
+    },
+    {
+      "source_id": "amazon_2026q3",
+      "source_sha256": "4a038b395f07bef27476acb27fdf0029ff8fcd1a42d5d021bb0e0a3e29f8cc06",
+      "selected": 8,
+      "matched": 8,
+      "abstained": 0,
+      "cell_checks": [
+        {
+          "source_cell_id": "amazon_2026q3:01",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "amazon_2026q3:02",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "amazon_2026q3:03",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "amazon_2026q3:04",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "amazon_2026q3:05",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "amazon_2026q3:06",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "amazon_2026q3:07",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        },
+        {
+          "source_cell_id": "amazon_2026q3:08",
+          "status": "source_word_witness_match",
+          "checks": {
+            "label_original_word_match": true,
+            "label_candidate_match": true,
+            "value_original_word_match": true,
+            "value_candidate_match": true,
+            "header_original_word_match": true,
+            "header_candidate_match": true
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "atlas.original_ruled_cost_table_completeness.v1",
+  "source_id": "arxiv2506",
+  "original_sha256": "90e404679232184441c26136a68a9fca03d60cb840a8d0a2c9e64961e8f4a4b0",
+  "original_physical_page": 6,
+  "source_rule_region_pdf": [
+    347.24,
+    71.15,
+    483.31,
+    134.94
+  ],
+  "column_edges_pdf": [
+    347.24,
+    394.62,
+    450.72,
+    483.31
+  ],
+  "original_vector_horizontal_row_boundaries": 6,
+  "bounded_original_ruled_table_rows": 5,
+  "bounded_original_ruled_table_columns": 3,
+  "original_words_in_ruled_region": 15,
+  "all_original_words_assigned_to_one_cell": true,
+  "source_rows_exact_word_inventory": 5,
+  "bounded_original_table_complete_from_original_rules": true,
+  "operator_selected_native_crop_parser_rows": 5,
+  "operator_selected_native_crop_parser_cells": 15,
+  "operator_native_candidate_row_exactness": [
+    {
+      "row_index": 0,
+      "parser_source_row_exact_match": true
+    },
+    {
+      "row_index": 1,
+      "parser_source_row_exact_match": true
+    },
+    {
+      "row_index": 2,
+      "parser_source_row_exact_match": true
+    },
+    {
+      "row_index": 3,
+      "parser_source_row_exact_match": true
+    },
+    {
+      "row_index": 4,
+      "parser_source_row_exact_match": true
+    }
+  ],
+  "original_native_numeric_word_witnesses": 4,
+  "original_native_numeric_word_abstentions": 0,
+  "native_crop_boundary_stability_verified": false,
+  "native_crop_matching_perturbations": 1,
+  "native_crop_perturbations_tested": 5,
+  "complete_only_within_explicit_vector_rulings": true,
+  "original_document_semantics_independently_reviewed": false,
+  "table_prices_current_or_market_verified": false,
+  "trusted_pdfscope_promotions": 0,
+  "auto_publish": false,
+  "auto_register_dataset": false,
+  "authority": "BOUNDED_ORIGINAL_SOURCE_RULED_TABLE_GRID_NOT_TRUSTED_DATA",
+  "decision": "HOLD_CROP_FRAGILITY_AND_INDEPENDENT_SEMANTICS_REVIEW"
+}
