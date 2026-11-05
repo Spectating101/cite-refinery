@@ -1,0 +1,843 @@
+{
+  "schema": "cite_refinery.atlas_capability_investigation.v1",
+  "goal": "Identify reusable open-source engineering capabilities that Hardware Splicer could integrate rather than reimplement.",
+  "project": "hardware_splicer",
+  "goal_spec_digest_sha256": "d658c152db003d222d763cf8b891ae1b0a24c00abbcad1795f7efd62e3d1fca9",
+  "observed_at": "2026-11-05T16:18:48+00:00",
+  "provider_outcomes": [
+    {
+      "source": "robot_urdf_search",
+      "provider": "github_search",
+      "state": "ok",
+      "count": 9
+    },
+    {
+      "source": "parametric_cad_search",
+      "provider": "github_search",
+      "state": "ok",
+      "count": 9
+    },
+    {
+      "source": "pcb_validation_search",
+      "provider": "github_search",
+      "state": "ok",
+      "count": 9
+    },
+    {
+      "source": "printer_interface_search",
+      "provider": "github_search",
+      "state": "ok",
+      "count": 7
+    },
+    {
+      "source": "bom_tools_search",
+      "provider": "github_search",
+      "state": "ok",
+      "count": 9
+    }
+  ],
+  "provider_discovery_candidates": 43,
+  "existing_lexical_review_authority": "READ_ONLY_LEXICAL_TRIAGE_NO_CAPABILITY_ASSERTIONS",
+  "metadata_candidates_abstained": 3,
+  "capability_questions": 5,
+  "total_code_repository_probes": 13,
+  "target_repository": "Spectating101/hardware-splicer",
+  "target_default_branch_only_not_open_prs": true,
+  "categories_with_possible_existing_target_code_indicators": 5,
+  "capabilities_with_some_source_indicator": 5,
+  "atlas_top_original_code_indicators": 5,
+  "plain_github_first_result_code_indicators": 5,
+  "comparison_note": "SAME_PROVIDER_QUERY_AND_PROBE_POLICY__NOT_INDEPENDENT_SCIENTIFIC_BENCHMARK",
+  "tested_integrations": 0,
+  "independent_analyst_reviews": 0,
+  "source_code_presence_is_not_working_integration": true,
+  "license_clearance_complete": false,
+  "economic_opportunity_verified": false,
+  "automatically_merged_repositories": 0,
+  "automatic_device_actions": 0,
+  "decision": "SOURCE_FIRST_INTEGRATION_HYPOTHESES_NOT_VALIDATED",
+  "requirements": [
+    {
+      "id": "robot_urdf",
+      "question": "Find reusable URDF import and robot simulation components.",
+      "search_query": "robot URDF importer",
+      "search_provider_status": "ok",
+      "provider_search_baseline_repo": "Unity-Technologies/URDF-Importer",
+      "matched_metadata_candidates": 9,
+      "source_probed_repos": [
+        "HoangGiang93/urdf_importer",
+        "kralf/blender-urdf",
+        "Unity-Technologies/URDF-Importer"
+      ],
+      "ranked_original_source_witnesses": [
+        {
+          "repository": "HoangGiang93/urdf_importer",
+          "url": "https://github.com/HoangGiang93/urdf_importer",
+          "source_sha": "f73d1585df2b15816c121eb195c2379f4e8c30de",
+          "original_source_code_files": [
+            {
+              "path": "urdf_importer_addon/urdf_importer/robot_builder.py",
+              "git_blob_sha": "4c1e9bdf920b501b9310931aa9192eb3ab247d4c",
+              "raw_bytes": 37990,
+              "pinned_url": "https://github.com/HoangGiang93/urdf_importer/blob/f73d1585df2b15816c121eb195c2379f4e8c30de/urdf_importer_addon/urdf_importer/robot_builder.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "urdf",
+              "indicator_line_number": 39,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "urdf_importer_addon/__init__.py",
+              "git_blob_sha": "28aa858cef88e7f36e94323c01f4245f6b380408",
+              "raw_bytes": 1202,
+              "pinned_url": "https://github.com/HoangGiang93/urdf_importer/blob/f73d1585df2b15816c121eb195c2379f4e8c30de/urdf_importer_addon/__init__.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "urdf",
+              "indicator_line_number": 4,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 5,
+          "license_api_spdx": "MIT",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 147,
+          "last_pushed_provider_metadata": "2026-09-28T17:09:25Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "Unity-Technologies/URDF-Importer",
+          "url": "https://github.com/Unity-Technologies/URDF-Importer",
+          "source_sha": "90f353e4352aae4df52fa2c05e49b804631d2a63",
+          "original_source_code_files": [
+            {
+              "path": "com.unity.robotics.urdf-importer/Editor/CustomEditors/HingeJointLimitsManagerEditor.cs",
+              "git_blob_sha": "885d2ec5038c17302e25eb6d55e2111b03989330",
+              "raw_bytes": 2614,
+              "pinned_url": "https://github.com/Unity-Technologies/URDF-Importer/blob/90f353e4352aae4df52fa2c05e49b804631d2a63/com.unity.robotics.urdf-importer/Editor/CustomEditors/HingeJointLimitsManagerEditor.cs",
+              "implementation_literal_found": true,
+              "literal_indicator": "urdf",
+              "indicator_line_number": 17,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "com.unity.robotics.urdf-importer/Editor/CustomEditors/InspectorReadOnlyAttributeDrawer.cs",
+              "git_blob_sha": "b436580f7520a43e17e5a36936931550ad7153c4",
+              "raw_bytes": 809,
+              "pinned_url": "https://github.com/Unity-Technologies/URDF-Importer/blob/90f353e4352aae4df52fa2c05e49b804631d2a63/com.unity.robotics.urdf-importer/Editor/CustomEditors/InspectorReadOnlyAttributeDrawer.cs",
+              "implementation_literal_found": false,
+              "literal_indicator": null,
+              "indicator_line_number": null,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 48,
+          "license_api_spdx": "Apache-2.0",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 340,
+          "last_pushed_provider_metadata": "2023-10-02T16:23:25Z",
+          "source_tree_truncated_or_sampled": true,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "kralf/blender-urdf",
+          "url": "https://github.com/kralf/blender-urdf",
+          "source_sha": "9eeba46f7bec9c68189e14028b275f28e2f40fb7",
+          "original_source_code_files": [
+            {
+              "path": "src/io_scene_urdf/urdf/robot.py",
+              "git_blob_sha": "7a4b1dc8afa72857f1b226cc3c8f71d49e9ca078",
+              "raw_bytes": 3171,
+              "pinned_url": "https://github.com/kralf/blender-urdf/blob/9eeba46f7bec9c68189e14028b275f28e2f40fb7/src/io_scene_urdf/urdf/robot.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "urdf",
+              "indicator_line_number": 40,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "src/io_scene_urdf/__init__.py",
+              "git_blob_sha": "27f7cdeda19bc82e3ca06b6d98b51454abe9171c",
+              "raw_bytes": 4856,
+              "pinned_url": "https://github.com/kralf/blender-urdf/blob/9eeba46f7bec9c68189e14028b275f28e2f40fb7/src/io_scene_urdf/__init__.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "urdf",
+              "indicator_line_number": 22,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 31,
+          "license_api_spdx": "LGPL-3.0",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 16,
+          "last_pushed_provider_metadata": "2015-01-21T14:37:01Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        }
+      ],
+      "existing_target_repository_source_probe": {
+        "repository": "Spectating101/hardware-splicer",
+        "url": "https://github.com/Spectating101/hardware-splicer",
+        "source_sha": "38dbad2b759a9313b81a5b10bfde7f20d64f308c",
+        "original_source_code_files": [
+          {
+            "path": "apps/3d-splicer/src/decomposition/simulation/physics_engine.py",
+            "git_blob_sha": "2bc3d30d80740de8c1d35458d246e46255389236",
+            "raw_bytes": 14369,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/3d-splicer/src/decomposition/simulation/physics_engine.py",
+            "implementation_literal_found": true,
+            "literal_indicator": "joint",
+            "indicator_line_number": 299,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          },
+          {
+            "path": "apps/3d-splicer/src/decomposition/simulation/stress_test.py",
+            "git_blob_sha": "d3e75017984a173a4770ea88156f8d030fcfe252",
+            "raw_bytes": 10530,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/3d-splicer/src/decomposition/simulation/stress_test.py",
+            "implementation_literal_found": false,
+            "literal_indicator": null,
+            "indicator_line_number": null,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          }
+        ],
+        "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+        "source_file_path_matches": 2,
+        "license_api_spdx": "MIT",
+        "license_clearance_complete": false,
+        "runtime_integration_verified": false,
+        "external_code_executed": false,
+        "device_action_performed": false,
+        "safe_to_auto_merge": false,
+        "archived": false,
+        "stars_provider_metadata_only": 0,
+        "last_pushed_provider_metadata": "2026-11-05T15:29:44Z",
+        "source_tree_truncated_or_sampled": true
+      },
+      "target_default_branch_source_overlap_status": "POSSIBLE_ALREADY_IMPLEMENTED_CHECK_FUNCTIONAL_EQUIVALENCE",
+      "atlas_top_source_review_repo": "HoangGiang93/urdf_importer",
+      "top_evidence_tied_not_unique_winner": true,
+      "top_evidence_equal_priority_repositories": [
+        "HoangGiang93/urdf_importer",
+        "Unity-Technologies/URDF-Importer",
+        "kralf/blender-urdf"
+      ],
+      "atlas_top_source_code_indicator": true,
+      "baseline_source_code_indicator": true,
+      "next_falsifying_test": "Run an independent URDF fixture and compare parsed joint origins, axes, and limits.",
+      "decision": "REVIEW_EXISTING_TARGET_CODE_BEFORE_ANY_LIBRARY_ADOPTION"
+    },
+    {
+      "id": "parametric_cad",
+      "question": "Find scriptable, parametric CAD components for product geometry.",
+      "search_query": "CAD parametric modeling python",
+      "search_provider_status": "ok",
+      "provider_search_baseline_repo": "CadQuery/cadquery",
+      "matched_metadata_candidates": 8,
+      "source_probed_repos": [
+        "CadQuery/cadquery",
+        "JonFermin/cadsmith"
+      ],
+      "ranked_original_source_witnesses": [
+        {
+          "repository": "CadQuery/cadquery",
+          "url": "https://github.com/CadQuery/cadquery",
+          "source_sha": "8178185a24a035c9af7f4679033be14267f6a6ef",
+          "original_source_code_files": [
+            {
+              "path": "cadquery/cq_directive.py",
+              "git_blob_sha": "3749c379f225b9eb1e35525a33d0db3cce9d46dd",
+              "raw_bytes": 9908,
+              "pinned_url": "https://github.com/CadQuery/cadquery/blob/8178185a24a035c9af7f4679033be14267f6a6ef/cadquery/cq_directive.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "shape",
+              "indicator_line_number": 143,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "cadquery/cqgi.py",
+              "git_blob_sha": "2b7c301a5158982fb2ce2526ea3169e76c5f85c6",
+              "raw_bytes": 17521,
+              "pinned_url": "https://github.com/CadQuery/cadquery/blob/8178185a24a035c9af7f4679033be14267f6a6ef/cadquery/cqgi.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "cadquery",
+              "indicator_line_number": 2,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 32,
+          "license_api_spdx": "NOASSERTION",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 6065,
+          "last_pushed_provider_metadata": "2026-10-24T15:18:33Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "JonFermin/cadsmith",
+          "url": "https://github.com/JonFermin/cadsmith",
+          "source_sha": "00c334dd4202116091e2cca75296333757947366",
+          "original_source_code_files": [],
+          "review_status": "METADATA_ONLY_ABSTAIN",
+          "source_file_path_matches": 0,
+          "license_api_spdx": "MIT",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 8,
+          "last_pushed_provider_metadata": "2026-10-03T03:02:23Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 5
+        }
+      ],
+      "existing_target_repository_source_probe": {
+        "repository": "Spectating101/hardware-splicer",
+        "url": "https://github.com/Spectating101/hardware-splicer",
+        "source_sha": "38dbad2b759a9313b81a5b10bfde7f20d64f308c",
+        "original_source_code_files": [
+          {
+            "path": "apps/3d-splicer/src/core/cadquery_generator.py",
+            "git_blob_sha": "9cca02ab96fbb986fc11cfbca81ff35b8a27388d",
+            "raw_bytes": 6531,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/3d-splicer/src/core/cadquery_generator.py",
+            "implementation_literal_found": true,
+            "literal_indicator": "cadquery",
+            "indicator_line_number": 45,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          },
+          {
+            "path": "apps/circuit-ai/circuit-ai-frontend/app/api/proxy/validate-kicad/route.ts",
+            "git_blob_sha": "88c469187f9c40d9314dec817b51bd454da7d68e",
+            "raw_bytes": 1372,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/circuit-ai/circuit-ai-frontend/app/api/proxy/validate-kicad/route.ts",
+            "implementation_literal_found": false,
+            "literal_indicator": null,
+            "indicator_line_number": null,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          }
+        ],
+        "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+        "source_file_path_matches": 15,
+        "license_api_spdx": "MIT",
+        "license_clearance_complete": false,
+        "runtime_integration_verified": false,
+        "external_code_executed": false,
+        "device_action_performed": false,
+        "safe_to_auto_merge": false,
+        "archived": false,
+        "stars_provider_metadata_only": 0,
+        "last_pushed_provider_metadata": "2026-11-05T15:29:44Z",
+        "source_tree_truncated_or_sampled": true
+      },
+      "target_default_branch_source_overlap_status": "POSSIBLE_ALREADY_IMPLEMENTED_CHECK_FUNCTIONAL_EQUIVALENCE",
+      "atlas_top_source_review_repo": "CadQuery/cadquery",
+      "top_evidence_tied_not_unique_winner": false,
+      "top_evidence_equal_priority_repositories": [
+        "CadQuery/cadquery"
+      ],
+      "atlas_top_source_code_indicator": true,
+      "baseline_source_code_indicator": true,
+      "next_falsifying_test": "Build an editable parameterized sample and export STEP and mesh with dimensional assertions.",
+      "decision": "REVIEW_EXISTING_TARGET_CODE_BEFORE_ANY_LIBRARY_ADOPTION"
+    },
+    {
+      "id": "pcb_validation",
+      "question": "Find reusable KiCad PCB inspection and design-rule automation.",
+      "search_query": "KiCad PCB DRC automation",
+      "search_provider_status": "ok",
+      "provider_search_baseline_repo": "salitronic/eda-agent",
+      "matched_metadata_candidates": 9,
+      "source_probed_repos": [
+        "archimedes-market/mcp-kicad-pcb-inspector",
+        "kehindejanetolaniyi23/home-automation-kicad-work-in-progress",
+        "salitronic/eda-agent"
+      ],
+      "ranked_original_source_witnesses": [
+        {
+          "repository": "archimedes-market/mcp-kicad-pcb-inspector",
+          "url": "https://github.com/archimedes-market/mcp-kicad-pcb-inspector",
+          "source_sha": "a9879dddbafd358ccdb858af7ca2a95a827752e2",
+          "original_source_code_files": [
+            {
+              "path": "src/mcp_kicad_pcb_inspector/__init__.py",
+              "git_blob_sha": "dd24584d1fca838ac30bf207eee60935eb1a05a0",
+              "raw_bytes": 105,
+              "pinned_url": "https://github.com/archimedes-market/mcp-kicad-pcb-inspector/blob/a9879dddbafd358ccdb858af7ca2a95a827752e2/src/mcp_kicad_pcb_inspector/__init__.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "kicad",
+              "indicator_line_number": 1,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "src/mcp_kicad_pcb_inspector/cli.py",
+              "git_blob_sha": "2237462855a9334e5c954ad5d7359b32a819bf6f",
+              "raw_bytes": 612,
+              "pinned_url": "https://github.com/archimedes-market/mcp-kicad-pcb-inspector/blob/a9879dddbafd358ccdb858af7ca2a95a827752e2/src/mcp_kicad_pcb_inspector/cli.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "kicad",
+              "indicator_line_number": 1,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 3,
+          "license_api_spdx": "MIT",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 0,
+          "last_pushed_provider_metadata": "2026-05-19T04:09:27Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "salitronic/eda-agent",
+          "url": "https://github.com/salitronic/eda-agent",
+          "source_sha": "b1a2f60806fbf690d1c2e27686c3594862186a59",
+          "original_source_code_files": [
+            {
+              "path": "src/eda_agent/core/kicad_drc.py",
+              "git_blob_sha": "4e6e1988fcc4bca6338e8c84d7cbcfa2a3517f2b",
+              "raw_bytes": 6694,
+              "pinned_url": "https://github.com/salitronic/eda-agent/blob/b1a2f60806fbf690d1c2e27686c3594862186a59/src/eda_agent/core/kicad_drc.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "kicad",
+              "indicator_line_number": 3,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "src/eda_agent/core/kicad_pcb.py",
+              "git_blob_sha": "5d2f57e4776e136b8eaf6e78bb232320586dcad4",
+              "raw_bytes": 6288,
+              "pinned_url": "https://github.com/salitronic/eda-agent/blob/b1a2f60806fbf690d1c2e27686c3594862186a59/src/eda_agent/core/kicad_pcb.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "kicad",
+              "indicator_line_number": 3,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 32,
+          "license_api_spdx": "Apache-2.0",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 320,
+          "last_pushed_provider_metadata": "2026-11-05T16:11:16Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "kehindejanetolaniyi23/home-automation-kicad-work-in-progress",
+          "url": "https://github.com/kehindejanetolaniyi23/home-automation-kicad-work-in-progress",
+          "source_sha": "2b75f4455bb1c829ec8686049fd8df2762133cdb",
+          "original_source_code_files": [],
+          "review_status": "METADATA_ONLY_ABSTAIN",
+          "source_file_path_matches": 0,
+          "license_api_spdx": null,
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 0,
+          "last_pushed_provider_metadata": "2026-06-25T18:45:48Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 5
+        }
+      ],
+      "existing_target_repository_source_probe": {
+        "repository": "Spectating101/hardware-splicer",
+        "url": "https://github.com/Spectating101/hardware-splicer",
+        "source_sha": "38dbad2b759a9313b81a5b10bfde7f20d64f308c",
+        "original_source_code_files": [
+          {
+            "path": "apps/circuit-ai/circuit-ai-frontend/lib/pcb/drc.ts",
+            "git_blob_sha": "318c6821ea4179936e1a21628e05e1722c5e4d90",
+            "raw_bytes": 11621,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/circuit-ai/circuit-ai-frontend/lib/pcb/drc.ts",
+            "implementation_literal_found": true,
+            "literal_indicator": "drc",
+            "indicator_line_number": 19,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          },
+          {
+            "path": "apps/circuit-ai/circuit-ai-frontend/app/api/proxy/validate-kicad/route.ts",
+            "git_blob_sha": "88c469187f9c40d9314dec817b51bd454da7d68e",
+            "raw_bytes": 1372,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/circuit-ai/circuit-ai-frontend/app/api/proxy/validate-kicad/route.ts",
+            "implementation_literal_found": true,
+            "literal_indicator": "kicad",
+            "indicator_line_number": 21,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          }
+        ],
+        "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+        "source_file_path_matches": 9,
+        "license_api_spdx": "MIT",
+        "license_clearance_complete": false,
+        "runtime_integration_verified": false,
+        "external_code_executed": false,
+        "device_action_performed": false,
+        "safe_to_auto_merge": false,
+        "archived": false,
+        "stars_provider_metadata_only": 0,
+        "last_pushed_provider_metadata": "2026-11-05T15:29:44Z",
+        "source_tree_truncated_or_sampled": true
+      },
+      "target_default_branch_source_overlap_status": "POSSIBLE_ALREADY_IMPLEMENTED_CHECK_FUNCTIONAL_EQUIVALENCE",
+      "atlas_top_source_review_repo": "archimedes-market/mcp-kicad-pcb-inspector",
+      "top_evidence_tied_not_unique_winner": true,
+      "top_evidence_equal_priority_repositories": [
+        "archimedes-market/mcp-kicad-pcb-inspector",
+        "salitronic/eda-agent"
+      ],
+      "atlas_top_source_code_indicator": true,
+      "baseline_source_code_indicator": true,
+      "next_falsifying_test": "Run on known KiCad boards with planted shorts or clearance violations; compare against KiCad's DRC.",
+      "decision": "REVIEW_EXISTING_TARGET_CODE_BEFORE_ANY_LIBRARY_ADOPTION"
+    },
+    {
+      "id": "printer_interface",
+      "question": "Find device-independent 3D printer command/monitor interfaces with safety gates.",
+      "search_query": "3D printer MCP OctoPrint",
+      "search_provider_status": "ok",
+      "provider_search_baseline_repo": "DMontgomery40/mcp-3D-printer-server",
+      "matched_metadata_candidates": 6,
+      "source_probed_repos": [
+        "DMontgomery40/mcp-3D-printer-server",
+        "Villocity-Labs/mcp-printer"
+      ],
+      "ranked_original_source_witnesses": [
+        {
+          "repository": "DMontgomery40/mcp-3D-printer-server",
+          "url": "https://github.com/DMontgomery40/mcp-3D-printer-server",
+          "source_sha": "29a06af87f1d52fb2c72a3013ed0feeed7cb602f",
+          "original_source_code_files": [
+            {
+              "path": "src/printers/klipper.ts",
+              "git_blob_sha": "0420b9a5388f223d33223f9d835b144bedc9102c",
+              "raw_bytes": 11609,
+              "pinned_url": "https://github.com/DMontgomery40/mcp-3D-printer-server/blob/29a06af87f1d52fb2c72a3013ed0feeed7cb602f/src/printers/klipper.ts",
+              "implementation_literal_found": true,
+              "literal_indicator": "klipper",
+              "indicator_line_number": 17,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "src/printers/octoprint.ts",
+              "git_blob_sha": "82add72087f76d0ad039605544c9f14eb5f1b89c",
+              "raw_bytes": 11320,
+              "pinned_url": "https://github.com/DMontgomery40/mcp-3D-printer-server/blob/29a06af87f1d52fb2c72a3013ed0feeed7cb602f/src/printers/octoprint.ts",
+              "implementation_literal_found": true,
+              "literal_indicator": "octoprint",
+              "indicator_line_number": 15,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 16,
+          "license_api_spdx": "GPL-2.0",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 259,
+          "last_pushed_provider_metadata": "2026-11-05T08:44:03Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "Villocity-Labs/mcp-printer",
+          "url": "https://github.com/Villocity-Labs/mcp-printer",
+          "source_sha": "b9aa78ade7ebd47a2553565ab1da20389addf843",
+          "original_source_code_files": [
+            {
+              "path": "mcp_printer/__init__.py",
+              "git_blob_sha": "c2c9121a0b2f8ed3371d9b7c35590d2d2da95e26",
+              "raw_bytes": 78,
+              "pinned_url": "https://github.com/Villocity-Labs/mcp-printer/blob/b9aa78ade7ebd47a2553565ab1da20389addf843/mcp_printer/__init__.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "printer",
+              "indicator_line_number": 1,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "mcp_printer/__main__.py",
+              "git_blob_sha": "3c63a7b4bee6a28c84fae85c79c93ea39b697b48",
+              "raw_bytes": 2274,
+              "pinned_url": "https://github.com/Villocity-Labs/mcp-printer/blob/b9aa78ade7ebd47a2553565ab1da20389addf843/mcp_printer/__main__.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "printer",
+              "indicator_line_number": 13,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 6,
+          "license_api_spdx": "MIT",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 0,
+          "last_pushed_provider_metadata": "2026-06-03T10:42:05Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        }
+      ],
+      "existing_target_repository_source_probe": {
+        "repository": "Spectating101/hardware-splicer",
+        "url": "https://github.com/Spectating101/hardware-splicer",
+        "source_sha": "38dbad2b759a9313b81a5b10bfde7f20d64f308c",
+        "original_source_code_files": [
+          {
+            "path": "apps/3d-splicer/src/template_generation/printer/printer.py",
+            "git_blob_sha": "c8706a12b14d39c0d1df5aea1820fcf71915bee6",
+            "raw_bytes": 17345,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/3d-splicer/src/template_generation/printer/printer.py",
+            "implementation_literal_found": true,
+            "literal_indicator": "printer",
+            "indicator_line_number": 19,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          },
+          {
+            "path": "apps/circuit-ai/circuit-ai-mcp/src/index.ts",
+            "git_blob_sha": "f7ea576e513e3b39b9241476e81eb772ff34c48d",
+            "raw_bytes": 8064,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/circuit-ai/circuit-ai-mcp/src/index.ts",
+            "implementation_literal_found": true,
+            "literal_indicator": "mcp",
+            "indicator_line_number": 285,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          }
+        ],
+        "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+        "source_file_path_matches": 2,
+        "license_api_spdx": "MIT",
+        "license_clearance_complete": false,
+        "runtime_integration_verified": false,
+        "external_code_executed": false,
+        "device_action_performed": false,
+        "safe_to_auto_merge": false,
+        "archived": false,
+        "stars_provider_metadata_only": 0,
+        "last_pushed_provider_metadata": "2026-11-05T15:29:44Z",
+        "source_tree_truncated_or_sampled": true
+      },
+      "target_default_branch_source_overlap_status": "POSSIBLE_ALREADY_IMPLEMENTED_CHECK_FUNCTIONAL_EQUIVALENCE",
+      "atlas_top_source_review_repo": "DMontgomery40/mcp-3D-printer-server",
+      "top_evidence_tied_not_unique_winner": true,
+      "top_evidence_equal_priority_repositories": [
+        "DMontgomery40/mcp-3D-printer-server",
+        "Villocity-Labs/mcp-printer"
+      ],
+      "atlas_top_source_code_indicator": true,
+      "baseline_source_code_indicator": true,
+      "next_falsifying_test": "Exercise a simulator/mocked printer only; require operator approval before any physical action.",
+      "decision": "REVIEW_EXISTING_TARGET_CODE_BEFORE_ANY_LIBRARY_ADOPTION"
+    },
+    {
+      "id": "bom_tools",
+      "question": "Find KiCad bill-of-materials generation and electronics sourcing adapters.",
+      "search_query": "KiCad BOM generator",
+      "search_provider_status": "ok",
+      "provider_search_baseline_repo": "kylemanna/kicad-utils",
+      "matched_metadata_candidates": 8,
+      "source_probed_repos": [
+        "AlexanderNickolsky/KiCad-Better-BOM",
+        "mondalaci/kicad-bom-generator",
+        "kylemanna/kicad-utils"
+      ],
+      "ranked_original_source_witnesses": [
+        {
+          "repository": "AlexanderNickolsky/KiCad-Better-BOM",
+          "url": "https://github.com/AlexanderNickolsky/KiCad-Better-BOM",
+          "source_sha": "37a169217842676403f3ee810c66bffd0885b15e",
+          "original_source_code_files": [
+            {
+              "path": "kicad_bom.py",
+              "git_blob_sha": "bed20f928619b9e121728559efd9d3f18ad84052",
+              "raw_bytes": 24646,
+              "pinned_url": "https://github.com/AlexanderNickolsky/KiCad-Better-BOM/blob/37a169217842676403f3ee810c66bffd0885b15e/kicad_bom.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "kicad",
+              "indicator_line_number": 288,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 1,
+          "license_api_spdx": "MIT",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 6,
+          "last_pushed_provider_metadata": "2026-06-17T07:42:29Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "kylemanna/kicad-utils",
+          "url": "https://github.com/kylemanna/kicad-utils",
+          "source_sha": "0d8b015509d785f4c44ee4922590fe89e79248d6",
+          "original_source_code_files": [
+            {
+              "path": "kicad_unified_bom_xyrs.py",
+              "git_blob_sha": "2f66421ddf44d4c12a67393a5c486f31deb66583",
+              "raw_bytes": 8558,
+              "pinned_url": "https://github.com/kylemanna/kicad-utils/blob/0d8b015509d785f4c44ee4922590fe89e79248d6/kicad_unified_bom_xyrs.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "bom",
+              "indicator_line_number": 4,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            },
+            {
+              "path": "kicad_netlist_reader.py",
+              "git_blob_sha": "407f5725041cf031c8f1d902d5b28b87f22e4b1c",
+              "raw_bytes": 25364,
+              "pinned_url": "https://github.com/kylemanna/kicad-utils/blob/0d8b015509d785f4c44ee4922590fe89e79248d6/kicad_netlist_reader.py",
+              "implementation_literal_found": true,
+              "literal_indicator": "bom",
+              "indicator_line_number": 15,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 2,
+          "license_api_spdx": "MIT",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 5,
+          "last_pushed_provider_metadata": "2018-10-16T18:28:24Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        },
+        {
+          "repository": "mondalaci/kicad-bom-generator",
+          "url": "https://github.com/mondalaci/kicad-bom-generator",
+          "source_sha": "7fdf5b90564d0d81409475620b5708b1241cfb10",
+          "original_source_code_files": [
+            {
+              "path": "bin/kicad-bom-generator.js",
+              "git_blob_sha": "e89a1a5ba0bbb0e057217b900bf0c2f4d8f73238",
+              "raw_bytes": 1023,
+              "pinned_url": "https://github.com/mondalaci/kicad-bom-generator/blob/7fdf5b90564d0d81409475620b5708b1241cfb10/bin/kicad-bom-generator.js",
+              "implementation_literal_found": true,
+              "literal_indicator": "kicad",
+              "indicator_line_number": 5,
+              "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+            }
+          ],
+          "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+          "source_file_path_matches": 1,
+          "license_api_spdx": "GPL-3.0",
+          "license_clearance_complete": false,
+          "runtime_integration_verified": false,
+          "external_code_executed": false,
+          "device_action_performed": false,
+          "safe_to_auto_merge": false,
+          "archived": false,
+          "stars_provider_metadata_only": 3,
+          "last_pushed_provider_metadata": "2015-05-08T06:37:40Z",
+          "source_tree_truncated_or_sampled": false,
+          "source_review_priority_not_adoption_score": 105
+        }
+      ],
+      "existing_target_repository_source_probe": {
+        "repository": "Spectating101/hardware-splicer",
+        "url": "https://github.com/Spectating101/hardware-splicer",
+        "source_sha": "38dbad2b759a9313b81a5b10bfde7f20d64f308c",
+        "original_source_code_files": [
+          {
+            "path": "apps/circuit-ai/circuit-ai-frontend/components/cad/pcb-viewport.tsx",
+            "git_blob_sha": "37e4ab6e979c039ebc640555c4162fffb1bf8825",
+            "raw_bytes": 58422,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/circuit-ai/circuit-ai-frontend/components/cad/pcb-viewport.tsx",
+            "implementation_literal_found": true,
+            "literal_indicator": "bom",
+            "indicator_line_number": 26,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          },
+          {
+            "path": "apps/3d-splicer/src/decomposition/core/component.py",
+            "git_blob_sha": "00df88af75951261cefe1dc7d39410b0a4424298",
+            "raw_bytes": 23559,
+            "pinned_url": "https://github.com/Spectating101/hardware-splicer/blob/38dbad2b759a9313b81a5b10bfde7f20d64f308c/apps/3d-splicer/src/decomposition/core/component.py",
+            "implementation_literal_found": true,
+            "literal_indicator": "component",
+            "indicator_line_number": 42,
+            "verified": "EXACT_ORIGINAL_GIT_BLOB_SHA_ONLY"
+          }
+        ],
+        "review_status": "CODE_LITERAL_OBSERVED_NOT_TESTED",
+        "source_file_path_matches": 85,
+        "license_api_spdx": "MIT",
+        "license_clearance_complete": false,
+        "runtime_integration_verified": false,
+        "external_code_executed": false,
+        "device_action_performed": false,
+        "safe_to_auto_merge": false,
+        "archived": false,
+        "stars_provider_metadata_only": 0,
+        "last_pushed_provider_metadata": "2026-11-05T15:29:44Z",
+        "source_tree_truncated_or_sampled": true
+      },
+      "target_default_branch_source_overlap_status": "POSSIBLE_ALREADY_IMPLEMENTED_CHECK_FUNCTIONAL_EQUIVALENCE",
+      "atlas_top_source_review_repo": "AlexanderNickolsky/KiCad-Better-BOM",
+      "top_evidence_tied_not_unique_winner": true,
+      "top_evidence_equal_priority_repositories": [
+        "AlexanderNickolsky/KiCad-Better-BOM",
+        "kylemanna/kicad-utils",
+        "mondalaci/kicad-bom-generator"
+      ],
+      "atlas_top_source_code_indicator": true,
+      "baseline_source_code_indicator": true,
+      "next_falsifying_test": "Generate BOM for a known KiCad fixture and check item counts, fields and duplicates.",
+      "decision": "REVIEW_EXISTING_TARGET_CODE_BEFORE_ANY_LIBRARY_ADOPTION"
+    }
+  ]
+}
