@@ -1,0 +1,289 @@
+{
+  "schema": "atlas.issuer_financial_decision_dossier.v1",
+  "issuer": "Manulife Financial Corporation",
+  "scope": "First quarter 2024 versus first quarter 2023",
+  "source_exhibits": {
+    "shareholder_report": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1086888/000119312524134354/d798617dex991.htm",
+      "source_sha256": "c6429ba27a56ca4b3fda665c77c772af359d30f0cc3356a8e2f83e54444725fe",
+      "source_size_bytes": 4619742,
+      "earlier_pinned_sha256": "3dda99b6b62ced91bf8ec73e44354255a24e9da0046847256d92f734f665666a",
+      "earlier_capture_same_bytes": false,
+      "source_kind": "SEC_FILED_ISSUER_HTML_NOT_ISSUER_ORIGINAL_PDF"
+    },
+    "earnings_release": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1086888/000119312524134343/d798735dex991.htm",
+      "source_sha256": "0bf1fbc03b562f9dbbc90429bd6944493b4c9a9eebea4bb75d772956c5db608d",
+      "source_size_bytes": 612304,
+      "earlier_pinned_sha256": "5d391dbf96689b2bb0b8ac5feb2be3c4b9b9a20409685ae06f0025e28b2c9179",
+      "earlier_capture_same_bytes": false,
+      "source_kind": "SEC_FILED_ISSUER_HTML_NOT_ISSUER_ORIGINAL_PDF"
+    }
+  },
+  "metrics": [
+    {
+      "id": "manulife-01",
+      "label": "Net income attributed to shareholders",
+      "now": "866",
+      "prior": "1406",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "-38.40682788051209103840682788",
+      "issuer_printed_change": "(38)%",
+      "filing_correspondence": "BOTH_ISSUER_EXHIBITS",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 10,
+          "row": 5,
+          "col_2024": 3,
+          "col_2023": 7
+        },
+        {
+          "role": "earnings_release",
+          "table": 8,
+          "row": 4,
+          "col_2024": 3,
+          "col_2023": 7
+        }
+      ]
+    },
+    {
+      "id": "manulife-02",
+      "label": "Core earnings (non-GAAP)",
+      "now": "1754",
+      "prior": "1531",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "14.56564337034617896799477470",
+      "issuer_printed_change": "16%",
+      "filing_correspondence": "BOTH_ISSUER_EXHIBITS",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 10,
+          "row": 6,
+          "col_2024": 3,
+          "col_2023": 7
+        },
+        {
+          "role": "earnings_release",
+          "table": 8,
+          "row": 5,
+          "col_2024": 3,
+          "col_2023": 7
+        }
+      ]
+    },
+    {
+      "id": "manulife-04",
+      "label": "APE sales",
+      "now": "1883",
+      "prior": "1600",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "17.687500",
+      "issuer_printed_change": "21%",
+      "filing_correspondence": "BOTH_ISSUER_EXHIBITS",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 10,
+          "row": 14,
+          "col_2024": 3,
+          "col_2023": 7
+        },
+        {
+          "role": "earnings_release",
+          "table": 8,
+          "row": 13,
+          "col_2024": 3,
+          "col_2023": 7
+        }
+      ]
+    },
+    {
+      "id": "manulife-06",
+      "label": "New business CSM",
+      "now": "658",
+      "prior": "442",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "48.86877828054298642533936650",
+      "issuer_printed_change": "52%",
+      "filing_correspondence": "BOTH_ISSUER_EXHIBITS",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 10,
+          "row": 15,
+          "col_2024": 3,
+          "col_2023": 7
+        },
+        {
+          "role": "earnings_release",
+          "table": 8,
+          "row": 14,
+          "col_2024": 3,
+          "col_2023": 7
+        }
+      ]
+    },
+    {
+      "id": "manulife-05",
+      "label": "New business value (NBV)",
+      "now": "669",
+      "prior": "509",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "31.43418467583497053045186640",
+      "issuer_printed_change": "34%",
+      "filing_correspondence": "BOTH_ISSUER_EXHIBITS",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 10,
+          "row": 16,
+          "col_2024": 3,
+          "col_2023": 7
+        },
+        {
+          "role": "earnings_release",
+          "table": 8,
+          "row": 15,
+          "col_2024": 3,
+          "col_2023": 7
+        }
+      ]
+    },
+    {
+      "id": "manulife-07",
+      "label": "Global WAM net flows",
+      "now": "6.7",
+      "prior": "4.4",
+      "unit": "CAD_billions",
+      "computed_nominal_change_pct": "52.27272727272727272727272730",
+      "issuer_printed_change": "55%",
+      "filing_correspondence": "BOTH_ISSUER_EXHIBITS",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 10,
+          "row": 17,
+          "col_2024": 3,
+          "col_2023": 7
+        },
+        {
+          "role": "earnings_release",
+          "table": 8,
+          "row": 16,
+          "col_2024": 3,
+          "col_2023": 7
+        }
+      ]
+    },
+    {
+      "id": "manulife-08",
+      "label": "Average AUMA",
+      "now": "880",
+      "prior": "804",
+      "unit": "CAD_billions",
+      "computed_nominal_change_pct": "9.452736318407960199004975100",
+      "issuer_printed_change": "9%",
+      "filing_correspondence": "BOTH_ISSUER_EXHIBITS",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 10,
+          "row": 50,
+          "col_2024": 3,
+          "col_2023": 7
+        },
+        {
+          "role": "earnings_release",
+          "table": 10,
+          "row": 44,
+          "col_2024": 3,
+          "col_2023": 7
+        }
+      ]
+    },
+    {
+      "id": "general_expenses",
+      "label": "General expenses",
+      "now": "1102",
+      "prior": "1086",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "1.473296500920810313075506400",
+      "issuer_printed_change": null,
+      "filing_correspondence": "SHAREHOLDER_REPORT_ONLY",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 329,
+          "row": 4,
+          "col_2024": 3,
+          "col_2023": 19
+        }
+      ]
+    },
+    {
+      "id": "total_expenses",
+      "label": "Total expenses",
+      "now": "1679",
+      "prior": "1665",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "0.840840840840840840840840800",
+      "issuer_printed_change": null,
+      "filing_correspondence": "SHAREHOLDER_REPORT_ONLY",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 329,
+          "row": 7,
+          "col_2024": 3,
+          "col_2023": 19
+        }
+      ]
+    },
+    {
+      "id": "core_expenses",
+      "label": "Core expenses",
+      "now": "1673",
+      "prior": "1605",
+      "unit": "CAD_millions",
+      "computed_nominal_change_pct": "4.236760124610591900311526500",
+      "issuer_printed_change": null,
+      "filing_correspondence": "SHAREHOLDER_REPORT_ONLY",
+      "source_cells": [
+        {
+          "role": "shareholder_report",
+          "table": 329,
+          "row": 13,
+          "col_2024": 3,
+          "col_2023": 19
+        }
+      ]
+    }
+  ],
+  "analysis": {
+    "gap_core_minus_net_2024_cad_millions": "888",
+    "gap_core_minus_net_2023_cad_millions": "125",
+    "issuer_reported_change_and_nominal_arithmetic_kept_distinct": true
+  },
+  "issuer_2024_rows_verified_shareholder": 8,
+  "issuer_2024_rows_verified_release": 7,
+  "issuer_2024_expense_qualifier_verified": 1,
+  "historical_rows_with_two_same_issuer_exhibits": 7,
+  "historical_expense_rows_one_exhibit": 3,
+  "secondary_pdf_sha_rechecked": true,
+  "secondary_parser_prior_strict_matches": 6,
+  "secondary_parser_prior_abstentions": 2,
+  "uncertainties": [
+    "The full core-earnings to net-income reconciliation was not performed",
+    "Published changes may be on a constant-exchange-rate/non-GAAP basis, not nominal arithmetic",
+    "The original issuer PDF binary is not verified; primary evidence is SEC-filed issuer HTML",
+    "The previously parsed secondary PDF has two unresolved strict parser abstentions",
+    "Neither source agreement nor a generated report is independent human semantic review"
+  ],
+  "independent_human_approvals": 0,
+  "trusted_dataset_promotions": 0,
+  "auto_publish": false,
+  "decision": "HOLD_REVIEW_BEFORE_TRUSTED_PUBLICATION",
+  "execution_seconds": 10.01
+}
