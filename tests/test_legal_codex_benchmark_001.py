@@ -74,6 +74,25 @@ class LegalCodexBenchmarkTests(unittest.TestCase):
         self.assertTrue(all(n["layer"] == "neutral" for n in packet["nodes"]))
         self.assertTrue(all(e["status"] == "candidate" for e in packet["edges"]))
 
+    def test_existing_semantic_graph_preview_and_import(self):
+        from tempfile import TemporaryDirectory
+        from cite_refinery.app import CiteRefinery
+        from cite_refinery.semantic import SemanticGraph
+        packet = semantic_packet(self.bundle, evaluate(self.bundle))
+        with TemporaryDirectory() as folder:
+            app = CiteRefinery(folder)
+            project = app.init_project("Legal Codex three-case pilot", "Compare evidence and institutional outcomes")
+            graph = SemanticGraph(app.store)
+            preview = graph.preview_packet(project.id, packet)
+            self.assertEqual(preview["declared_node_layers"].get("neutral"), len(packet["nodes"]))
+            self.assertFalse(preview["authority_boundary_warnings"])
+            receipt = graph.ingest_packet(project.id, packet,
+                                          expected_state_digest=preview["state_digest"])
+            self.assertTrue(receipt["edge_ids"])
+            state = app.store.load()
+            self.assertTrue(all(state["semantic_edges"][edge_id]["status"] == "candidate"
+                                for edge_id in receipt["edge_ids"]))
+
     def test_stale_graph_result_rejected(self):
         result = evaluate(self.bundle)
         self.bundle["cases"][0]["title"] = "Different evidence case"
