@@ -15,8 +15,8 @@
       "url": "https://www.legislation.gov.uk/ukpga/2006/45/section/4",
       "publisher": "UK Animal Welfare Act 2006, section 4",
       "published": "2006-11-08",
-      "excerpt": "the animal is a protected animal, and the suffering is unnecessary.",
-      "excerpt_sha256": "3e047e23d424c6f05eebf7fbcf03931c862a73399dcffed549abead13fd9b15c",
+      "excerpt": "the suffering is unnecessary.",
+      "excerpt_sha256": "3d5ea8d748e954726cb794f9e489c1b64a57141effb3c01b2971426c7b7a0e0b",
       "custody": "excerpt_only_unverified"
     },
     {
@@ -123,7 +123,7 @@
       "support": [
         {
           "source_id": "s_uk_animal",
-          "quote": "the animal is a protected animal, and the suffering is unnecessary."
+          "quote": "the suffering is unnecessary."
         }
       ],
       "jurisdiction": "England and Wales",
