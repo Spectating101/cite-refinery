@@ -37,6 +37,7 @@ def verified_passage(
     extracted text and proposal re-derivation checks. Passing a fake loader is
     never a live verification and must not be reported as one.
     """
+    production_loader = loader is None
     if loader is None:
         try:
             from src.nocturnal_engine.source_capture import load_verified_capture
@@ -87,7 +88,8 @@ def verified_passage(
         "raw_sha256": capture["raw_sha256"],
         "extracted_sha256": capture["extracted_sha256"],
         "excerpt_sha256": _digest(excerpt),
-        "integrity": "nocturnal_loader_rechecked",
+        "integrity": "nocturnal_loader_rechecked" if production_loader else "test_double_untrusted",
+        "real_capture_checked": production_loader,
         "source_authenticity": "not_established",
         "claim_truth": "not_adjudicated",
         "publication_authorized": False,
@@ -115,10 +117,11 @@ def evaluate_captures(bundle: dict[str, Any], references: list[dict[str, Any]],
     result = evaluate(bundle)
     result["nocturnal_receipts"] = receipts
     result["source_integrity"] = {
-        "checked_sources": len(receipts),
+        "checked_sources": sum(x["real_capture_checked"] for x in receipts),
+        "simulated_sources": sum(not x["real_capture_checked"] for x in receipts),
         "total_sources": len(sources),
         "scope": "rechecked_source_bytes_and_extractions_not_source_truth",
-        "live_verification": loader is None,
+        "live_verification": all(x["real_capture_checked"] for x in receipts),
     }
     # In particular: DO NOT change authority, approval status, or causal estimates.
     return result
