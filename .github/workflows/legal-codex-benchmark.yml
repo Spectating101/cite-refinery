@@ -3,17 +3,17 @@ name: legal-codex-benchmark
 on:
   pull_request:
     paths:
-      - 'src/cite_refinery/legal_codex_benchmark.py'
-      - 'examples/legal_codex_benchmark_001.json'
-      - 'tests/test_legal_codex_benchmark_001.py'
+      - 'src/cite_refinery/legal_codex_*.py'
+      - 'examples/legal_codex_*.json'
+      - 'tests/test_legal_codex*.py'
       - '.github/workflows/legal-codex-benchmark.yml'
   push:
     branches:
       - 'feature/legal-codex-benchmark-*'
     paths:
-      - 'src/cite_refinery/legal_codex_benchmark.py'
-      - 'examples/legal_codex_benchmark_001.json'
-      - 'tests/test_legal_codex_benchmark_001.py'
+      - 'src/cite_refinery/legal_codex_*.py'
+      - 'examples/legal_codex_*.json'
+      - 'tests/test_legal_codex*.py'
       - '.github/workflows/legal-codex-benchmark.yml'
 
 jobs:
@@ -26,4 +26,4 @@ jobs:
           python-version: '3.11'
       - name: Test legal benchmark and semantic graph integration
         run: |
-          PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex_benchmark_001.py' -v
+          PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex*.py' -v
