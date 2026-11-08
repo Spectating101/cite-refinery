@@ -65,13 +65,13 @@ class BlindRetrievalTests(unittest.TestCase):
     def test_decoy_does_not_replace_relevant_candidate(self):
         self.library.reverse()
         output = retrieve(prepare_questions(self.seed), self.library)
-        self.assertEqual([x["ranked_candidates"][0]["candidate_id"]
-                          for x in output["results"]],
-                         ["m_gdpr_article22", "m_criminal_review",
-                          "m_animal_welfare"] if sorted(x["case_id"] for x in output["results"]) !=
-                         [x["case_id"] for x in output["results"]] else [
-                          "m_gdpr_article22", "m_criminal_review",
-                          "m_animal_welfare"])
+        ranked = {x["case_id"]: x["ranked_candidates"][0]["candidate_id"]
+                  for x in output["results"]}
+        self.assertEqual(ranked, {
+            "wangwang": "m_animal_welfare",
+            "horizon": "m_criminal_review",
+            "dutch_benefits": "m_gdpr_article22",
+        })
 
     def test_empty_overlap_abstains(self):
         questions = [{"case_id": "negative", "problem_statement":
