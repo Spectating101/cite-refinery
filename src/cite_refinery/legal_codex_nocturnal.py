@@ -122,3 +122,30 @@ def evaluate_captures(bundle: dict[str, Any], references: list[dict[str, Any]],
     }
     # In particular: DO NOT change authority, approval status, or causal estimates.
     return result
+
+
+def main(argv=None):
+    """Revalidate existing Nocturnal captures before making audit candidates.
+
+    The private Nocturnal checkout/package must be installed in the caller's
+    Python environment. A JSON receipt is never accepted as evidence by itself.
+    """
+    import argparse
+    import json
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("benchmark")
+    p.add_argument("capture_references",
+                   help="JSON list: source_id, state_dir, case_id, capture_id, proposal_id")
+    p.add_argument("--output", default="legal_codex_nocturnal_result.json")
+    args = p.parse_args(argv)
+    bundle = json.loads(Path(args.benchmark).read_text(encoding="utf-8"))
+    refs = json.loads(Path(args.capture_references).read_text(encoding="utf-8"))
+    result = evaluate_captures(bundle, refs)
+    Path(args.output).write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n",
+                                 encoding="utf-8")
+    print(json.dumps({"capture_integrity_checked": len(result["nocturnal_receipts"]),
+                      "claim_truth_verified": False, "publication_authorized": False}))
+
+
+if __name__ == "__main__":
+    main()
