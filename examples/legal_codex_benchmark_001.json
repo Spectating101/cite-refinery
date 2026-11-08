@@ -75,7 +75,8 @@
       "failure_modes": [
         "animal_cruelty_protection_gap",
         "juvenile_prevention_uncertainty"
-      ]
+      ],
+      "problem_statement": "Juveniles were involved in animal cruelty causing suffering to dogs and puppies; investigate protected animal suffering offences and prevention remedies."
     },
     {
       "id": "horizon",
@@ -86,7 +87,8 @@
       "failure_modes": [
         "unreliable_machine_evidence",
         "lack_independent_scrutiny"
-      ]
+      ],
+      "problem_statement": "Unreliable computer accounting evidence underpinned criminal prosecution and potentially wrongful convictions; investigate independent conviction review and technical evidence safeguards."
     },
     {
       "id": "dutch_benefits",
@@ -97,7 +99,8 @@
       "failure_modes": [
         "discriminatory_automated_decision",
         "lack_independent_scrutiny"
-      ]
+      ],
+      "problem_statement": "Government childcare benefits applicants suffered discriminatory nationality profiling and automated administrative welfare decisions; investigate automated decision safeguards and appeals."
     }
   ],
   "claims": [
