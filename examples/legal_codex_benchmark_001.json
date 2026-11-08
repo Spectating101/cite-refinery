@@ -1,0 +1,245 @@
+{
+  "schema": "legal_codex.benchmark.v1",
+  "sources": [
+    {
+      "id": "s_jieyang",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33483434",
+      "publisher": "Jieyang Xinheng town statement, republished",
+      "published": "2026-06-30",
+      "excerpt": "4名涉事人员（均未满14周岁）均已送专门学校教育",
+      "excerpt_sha256": "5d81cd0f6e3fa954548f76bb9630dc35594270b4e9954914d3a595d16ea12bf6",
+      "custody": "excerpt_only_unverified"
+    },
+    {
+      "id": "s_uk_animal",
+      "url": "https://www.legislation.gov.uk/ukpga/2006/45/section/4",
+      "publisher": "UK Animal Welfare Act 2006, section 4",
+      "published": "2006-11-08",
+      "excerpt": "the animal is a protected animal, and the suffering is unnecessary.",
+      "excerpt_sha256": "3e047e23d424c6f05eebf7fbcf03931c862a73399dcffed549abead13fd9b15c",
+      "custody": "excerpt_only_unverified"
+    },
+    {
+      "id": "s_hamilton",
+      "url": "https://ccrc.gov.uk/post-office-horizon-cases/",
+      "publisher": "Criminal Cases Review Commission",
+      "published": "2024-05-24",
+      "excerpt": "no independent evidence of an actual loss, the trial process could not have been fair",
+      "excerpt_sha256": "a94bf099f278e9f98c4c9a517e18da56beb74558bb0193e95f5a2c11a6c899d1",
+      "custody": "excerpt_only_unverified"
+    },
+    {
+      "id": "s_ccrc",
+      "url": "https://ccrc.gov.uk/post-office-horizon-cases/",
+      "publisher": "Criminal Cases Review Commission",
+      "published": "2024-05-24",
+      "excerpt": "The CCRC referred 34 cases to the Court of Appeal in June 2020.",
+      "excerpt_sha256": "a7f3166a0dbaa1154577740c5cb9f01b3fb89b7e9d3039980902e42b7d5809ae",
+      "custody": "excerpt_only_unverified"
+    },
+    {
+      "id": "s_nl_dpa",
+      "url": "https://autoriteitpersoonsgegevens.nl/en/current/tax-administration-fined-for-discriminatory-and-unlawful-data-processing",
+      "publisher": "Dutch Data Protection Authority",
+      "published": "2021-12-07",
+      "excerpt": "processed data on the (dual) nationality of childcare benefit applicants in an unlawful, discriminatory and therefore improper manner.",
+      "excerpt_sha256": "89664de3cd0dd3d7f09b519f4d81e9be8546634b8112b35a614913e5436c64c1",
+      "custody": "excerpt_only_unverified"
+    },
+    {
+      "id": "s_nl_parliament",
+      "url": "https://www.staatscommissietegendiscriminatieenracisme.nl/documenten/2020/12/17/rapport-ongekend-onrecht",
+      "publisher": "Dutch parliamentary inquiry",
+      "published": "2020-12-17",
+      "excerpt": "een grote groep ouders tene onrechte als frauders zijn behandeld",
+      "excerpt_sha256": "2ad9b8e965e922a9a1a10c14438a681ac79a3884d5d008d0359f6c70c437f620",
+      "custody": "excerpt_only_unverified"
+    },
+    {
+      "id": "s_nl_prosecution",
+      "url": "https://www.om.nl/actueel/nieuws/2021/01/07/geen-strafrechtelijk-onderzoek-naar-belastingdienst",
+      "publisher": "Netherlands Public Prosecution Service",
+      "published": "2021-01-07",
+      "excerpt": "de Belastingdienst, als onderdeel van de Staat, immuun voor strafrechtelijke vervolging",
+      "excerpt_sha256": "12f93ddd06b638ade9f80dfb4693dda55b2ec04e785dee95a859f28d8ae59699",
+      "custody": "excerpt_only_unverified"
+    }
+  ],
+  "cases": [
+    {
+      "id": "wangwang",
+      "title": "Jieyang animal cruelty incident and juvenile institutional response",
+      "jurisdiction": "China",
+      "anchor_date": "2026-06-29",
+      "primary_claim": "c_jieyang_notice",
+      "failure_modes": [
+        "animal_cruelty_protection_gap",
+        "juvenile_prevention_uncertainty"
+      ]
+    },
+    {
+      "id": "horizon",
+      "title": "Horizon defective accounting evidence and unsafe prosecutions",
+      "jurisdiction": "England and Wales",
+      "anchor_date": "2015-01-01",
+      "primary_claim": "c_horizon_incident",
+      "failure_modes": [
+        "unreliable_machine_evidence",
+        "lack_independent_scrutiny"
+      ]
+    },
+    {
+      "id": "dutch_benefits",
+      "title": "Dutch childcare benefit nationality-data discrimination",
+      "jurisdiction": "Netherlands",
+      "anchor_date": "2020-07-17",
+      "primary_claim": "c_nl_dpa",
+      "failure_modes": [
+        "discriminatory_automated_decision",
+        "lack_independent_scrutiny"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "c_jieyang_notice",
+      "case_id": "wangwang",
+      "kind": "incident",
+      "statement": "Jieyang local officials reported four participants under fourteen sent to specialized schools.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_jieyang",
+          "quote": "4名涉事人员（均未满14周岁）均已送专门学校教育"
+        }
+      ]
+    },
+    {
+      "id": "c_uk_animal_law",
+      "case_id": "wangwang",
+      "kind": "legal_rule",
+      "statement": "The England and Wales statute explicitly defines unnecessary suffering to a protected animal.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_uk_animal",
+          "quote": "the animal is a protected animal, and the suffering is unnecessary."
+        }
+      ],
+      "jurisdiction": "England and Wales",
+      "effective_from": "2007-04-06"
+    },
+    {
+      "id": "c_horizon_incident",
+      "case_id": "horizon",
+      "kind": "incident",
+      "statement": "Post Office prosecutions were reviewed amid concerns about Horizon accounting-data reliability.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_hamilton",
+          "quote": "no independent evidence of an actual loss"
+        }
+      ]
+    },
+    {
+      "id": "c_horizon_outcome",
+      "case_id": "horizon",
+      "kind": "outcome",
+      "statement": "The appellate judgment treated particular Horizon-dependent trials as unfair.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_hamilton",
+          "quote": "the trial process could not have been fair"
+        }
+      ]
+    },
+    {
+      "id": "c_ccrc_review",
+      "case_id": "horizon",
+      "kind": "institutional_action",
+      "statement": "The CCRC referred thirty-four Horizon cases to appeal judges in June 2020.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_ccrc",
+          "quote": "The CCRC referred 34 cases to the Court of Appeal in June 2020."
+        }
+      ]
+    },
+    {
+      "id": "c_nl_dpa",
+      "case_id": "dutch_benefits",
+      "kind": "incident",
+      "statement": "The Dutch DPA found discriminatory and unlawful processing of applicant nationality data.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_nl_dpa",
+          "quote": "processed data on the (dual) nationality of childcare benefit applicants in an unlawful, discriminatory and therefore improper manner."
+        }
+      ]
+    },
+    {
+      "id": "c_nl_parliament",
+      "case_id": "dutch_benefits",
+      "kind": "institutional_action",
+      "statement": "A Dutch parliamentary inquiry reported that a large group of parents were wrongly treated as fraudsters.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_nl_parliament",
+          "quote": "een grote groep ouders tene onrechte als frauders zijn behandeld"
+        }
+      ]
+    },
+    {
+      "id": "c_nl_prosecutor",
+      "case_id": "dutch_benefits",
+      "kind": "institutional_action",
+      "statement": "Dutch prosecutors stated the tax administration has criminal immunity as part of the state.",
+      "review": "unreviewed",
+      "support": [
+        {
+          "source_id": "s_nl_prosecution",
+          "quote": "de Belastingdienst, als onderdeel van de Staat, immuun voor strafrechtelijke vervolging"
+        }
+      ]
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "m_uk_animal_offence",
+      "source_case": "uk_animal_statute",
+      "supporting_claim": "c_uk_animal_law",
+      "addresses": [
+        "animal_cruelty_protection_gap"
+      ],
+      "available_from": "2007-04-06",
+      "effect_estimate": null
+    },
+    {
+      "id": "m_ccrc_independent_review",
+      "source_case": "uk_review_body",
+      "supporting_claim": "c_ccrc_review",
+      "addresses": [
+        "unreliable_machine_evidence",
+        "lack_independent_scrutiny"
+      ],
+      "available_from": "1997-04-01",
+      "effect_estimate": null
+    },
+    {
+      "id": "m_dpa_institutional_scrutiny",
+      "source_case": "netherlands_dpa",
+      "supporting_claim": "c_nl_dpa",
+      "addresses": [
+        "discriminatory_automated_decision",
+        "lack_independent_scrutiny"
+      ],
+      "available_from": "2021-12-07",
+      "effect_estimate": null
+    }
+  ]
+}
