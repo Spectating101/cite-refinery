@@ -117,7 +117,8 @@ class NocturnalBridgeTests(unittest.TestCase):
 
     def test_receipt_proves_no_more_than_archive_integrity(self):
         receipt = self.check()
-        self.assertEqual(receipt["integrity"], "nocturnal_loader_rechecked")
+        self.assertEqual(receipt["integrity"], "test_double_untrusted")
+        self.assertFalse(receipt["real_capture_checked"])
         self.assertEqual(receipt["source_authenticity"], "not_established")
         self.assertEqual(receipt["claim_truth"], "not_adjudicated")
         self.assertFalse(receipt["publication_authorized"])
@@ -154,7 +155,8 @@ class NocturnalBridgeTests(unittest.TestCase):
             "proposal_id": self.proposal_id,
         }]
         result = evaluate_captures(self.bundle, ref, loader=self.loader)
-        self.assertEqual(result["source_integrity"]["checked_sources"], 1)
+        self.assertEqual(result["source_integrity"]["checked_sources"], 0)
+        self.assertEqual(result["source_integrity"]["simulated_sources"], 1)
         self.assertFalse(result["source_integrity"]["live_verification"])
         self.assertFalse(result["publication_authorized"])
         self.assertTrue(all(c["causal_effect"] is None for c in result["cases"]))
