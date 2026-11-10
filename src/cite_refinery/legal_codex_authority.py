@@ -88,7 +88,8 @@ def validate(bundle):
             raise ValueError(f"{ident}: original document not archived in this repository")
         receipt = s.get("capture_receipt")
         if receipt is not None:
-            if (s["type"] != "prosecution_statement"
+            if (s["type"] not in {"prosecution_statement", "ministry_administrative_letter",
+                                         "statute_index_and_text"}
                     or receipt.get("archive_class") != "nocturnal_live_ci_capture"
                     or not re.fullmatch(r"[0-9a-f]{64}", str(receipt.get("raw_sha256", "")))
                     or not re.fullmatch(r"[0-9a-f]{64}", str(receipt.get("text_sha256", "")))
