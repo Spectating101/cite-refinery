@@ -29,7 +29,17 @@
       "id": "s_nadiem_cassation",
       "class": "journalistic_case_reporting",
       "url": "https://news.detik.com/berita/d-8711476/vonis-jadi-9-tahun-penjara-nadiem-makarim-ajukan-kasasi",
-      "full_original_judgment_captured": false
+      "full_original_judgment_captured": false,
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42876552798,
+        "capture_id": "cap-b84bc9998302ccc193b1b28a",
+        "captured_at": "2026-11-10T18:34:45Z",
+        "raw_sha256": "56d30a256b17b26dd49eec6c91a928b8ee7a83090895151303da3b2392ec5d87",
+        "extracted_sha256": "21d731059be3d7d2315c39926533879b98fabda590bd2e4981ee5b8b75c398c9",
+        "source_truth_verified": false,
+        "original_judgment_verified": false
+      }
     },
     {
       "id": "s_sri_noappeal",
@@ -41,7 +51,17 @@
       "id": "s_academic_examination",
       "class": "independent_legal_commentary",
       "url": "https://www.hukumonline.com/berita/a/bedah-putusan-nadiem-makarim--eksaminasi-ui-ugm-soroti-logika-tipikor-dan-kerugian-negara-lt6aea8ed36b2ad",
-      "full_original_judgment_captured": false
+      "full_original_judgment_captured": false,
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42876552798,
+        "capture_id": "cap-5cde86342565ee11ea3bd611",
+        "captured_at": "2026-11-10T18:34:45Z",
+        "raw_sha256": "fc5923d0427cb857638b5c1bf2ee410c43a270434771c5791758af6993a93bd3",
+        "extracted_sha256": "2e62eea0cb070e22c34873e00d750c74a8ec567b7f1a6ea21e2c9f686f51b9d5",
+        "source_truth_verified": false,
+        "original_judgment_verified": false
+      }
     }
   ],
   "cases": [
