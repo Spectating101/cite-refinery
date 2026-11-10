@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import re
+import calendar
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -25,7 +26,7 @@ SOURCES = {
 }
 CHANNELS = {"apbn_directorate_grant_to_school", "school_siplah_purchase",
             "directorate_ecatalog_purchase", "dak_regional_ecatalog",
-            "ministerial_policy_or_guideline"}
+            "ministerial_policy_or_guideline", "marketplace_registration_not_purchase"}
 STATUSES = {"contemporaneous_official_statement", "prosecutor_allegation",
             "ministry_self_report", "regulatory_scope_statement",
             "oversight_statement"}
@@ -58,6 +59,14 @@ def _date(s):
     return date.fromisoformat(s)
 
 
+def _latest_source_date(s):
+    """Only upper-bound an explicitly month-dated document; never invent a day."""
+    if isinstance(s, str) and re.fullmatch(r"\d{4}-\d{2}", s):
+        yr, mo = map(int, s.split("-"))
+        return date(yr, mo, calendar.monthrange(yr, mo)[1])
+    return _date(s)
+
+
 def _index(rows, label):
     if not isinstance(rows, list) or not rows:
         raise ValueError(f"{label} records required")
@@ -86,7 +95,7 @@ def validate(data):
     for key, s in sources.items():
         if s.get("type") not in SOURCES or not _valid_url(s.get("url")):
             raise ValueError(f"{key}: invalid source")
-        _date(s.get("source_date"))
+        _latest_source_date(s.get("source_date"))
         if s.get("source_claims_fully_adjudicated") is not False:
             raise ValueError(f"{key}: may not certify source truth")
         if s.get("original_document_archive_status") != "not_archived_in_this_repo":
@@ -108,7 +117,7 @@ def validate(data):
         if src is None or c is None:
             raise ValueError(f"{key}: missing claim source or channel")
         when = _date(o.get("event_date"))
-        reported = _date(src["source_date"])
+        reported = _latest_source_date(src["source_date"])
         if when > reported:
             raise ValueError(f"{key}: source cannot report future event as completed")
         if when.year != c["year"]:
