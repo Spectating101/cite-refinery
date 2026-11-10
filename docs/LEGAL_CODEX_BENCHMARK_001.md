@@ -41,12 +41,12 @@ Next integration should reuse the frozen Nocturnal source bridge and the existin
 
 **Two explicitly separate tests:**
 
-1. \`legal_codex_blind.py\` retrieves candidate legal mechanisms by plain lexical overlap from nine supplied candidate documents. The matcher receives only an incident question, anchor date and candidate descriptions/source locators; the earlier manually-labelled failure-mode tags are stripped from the request. A hidden answer key exists only in acceptance tests. This is **candidate-library retrieval**, not autonomous discovery from the world or proof of actual effectiveness.
-2. \`legal_codex_nocturnal.py\` calls Nocturnal's real \`src.nocturnal_engine.source_capture.load_verified_capture\` against an existing local capture. That loader rechecks identity, raw response bytes, re-extracted text and exact quote proposal integrity. The adapter rejects injected-test fetchers or unverified TLS captures. It still does **not** claim source authenticity, fact truth, or permission to publish.
+1. `legal_codex_blind.py` retrieves candidate legal mechanisms by plain lexical overlap from nine supplied candidate documents. The matcher receives only an incident question, anchor date and candidate descriptions/source locators; the earlier manually-labelled failure-mode tags are stripped from the request. A hidden answer key exists only in acceptance tests. This is **candidate-library retrieval**, not autonomous discovery from the world or proof of actual effectiveness.
+2. `legal_codex_nocturnal.py` calls Nocturnal's real `src.nocturnal_engine.source_capture.load_verified_capture` against an existing local capture. That loader rechecks identity, raw response bytes, re-extracted text and exact quote proposal integrity. The adapter rejects injected-test fetchers or unverified TLS captures. It still does **not** claim source authenticity, fact truth, or permission to publish.
 
 Run:
 
-\`\`\`bash
+```bash
 PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex*.py' -v
 PYTHONPATH=src python -m cite_refinery.legal_codex_blind \
   examples/legal_codex_benchmark_001.json \
@@ -56,15 +56,15 @@ PYTHONPATH=src python -m cite_refinery.legal_codex_blind \
 PYTHONPATH=src python -m cite_refinery.legal_codex_nocturnal \
   examples/legal_codex_benchmark_001.json /path/to/nocturnal-capture-references.json \
   --output /tmp/nocturnal-result.json
-\`\`\`
+```
 
-A capture-reference file is a JSON array. Each item has \`source_id\` from the benchmark plus \`state_dir\`, \`case_id\`, \`capture_id\` and \`proposal_id\` for a real Nocturnal capture. The benchmark's synthetic/example capture objects do not pass the real loader. No live capture of these three cases has been performed by this PR.
+A capture-reference file is a JSON array. Each item has `source_id` from the benchmark plus `state_dir`, `case_id`, `capture_id` and `proposal_id` for a real Nocturnal capture. The benchmark's synthetic/example capture objects do not pass the real loader. No live capture of these three cases has been performed by this PR.
 
 ### Evidence and evaluation limitations
 
 - The three case questions and nine candidate descriptions were curated for development. The top-one retrieval result is an **in-sample, small-set engineering check**, not an independent blind holdout or a generalization score.
 - The blind matcher has no semantic entailment, statutory hierarchy, multilingual reasoning, or causal evaluation; its lexical scores are relevance heuristics only.
-- The Nocturnal private repository and any real case capture state are *not* bundled with Cite-Refinery. Tests inject simulated captures solely to exercise fail-closed policy and mark those receipts \`test_double_untrusted\`; they do not count as real verified sources.
+- The Nocturnal private repository and any real case capture state are *not* bundled with Cite-Refinery. Tests inject simulated captures solely to exercise fail-closed policy and mark those receipts `test_double_untrusted`; they do not count as real verified sources.
 - Even a real Nocturnal capture confirms archived-byte/extraction integrity rather than the truth of the source, the legal meaning of a statute or whether the proposed mechanism works.
 - Publication, named-person responsibility and policy causal-effects estimates remain explicitly blocked.
 
@@ -73,13 +73,13 @@ A capture-reference file is a JSON array. Each item has \`source_id\` from the b
 
 ## Integration Benchmark 003 — actor names, court roles, and actual Nocturnal interop
 
-Implemented in \`legal_codex_actors.py\`, seeded in \`examples/legal_codex_indonesia_actor_register_001.json\`, tested by \`tests/test_legal_codex_actors_003.py\` and separately by the actual private Nocturnal engine at [Nocturnal PR #115](https://github.com/Spectating101/nocturnal-oversight/pull/115).
+Implemented in `legal_codex_actors.py`, seeded in `examples/legal_codex_indonesia_actor_register_001.json`, tested by `tests/test_legal_codex_actors_003.py` and separately by the actual private Nocturnal engine at [Nocturnal PR #115](https://github.com/Spectating101/nocturnal-oversight/pull/115).
 
 The input register contains two distinct Indonesian trial-court records, twelve *source-named* entities (ten people plus two court-case nodes), and ten explicit **pending** observations about defendants, prosecutors and judge-panel roles. Each observation has a recorded case source and date. Four cross-case same-name pairs are listed as **unresolved possible identities**, not merged actors. The official court-directory HTML is a source locator, not yet an independently archived and authenticated original-document capture.
 
 ### Rules enforced
 
-- Reuse Nocturnal's \`analyze_relationships\` at runtime; do not copy its identification or review logic into Cite.
+- Reuse Nocturnal's `analyze_relationships` at runtime; do not copy its identification or review logic into Cite.
 - Nocturnal's pending, reported, rejected and direct-reviewed observations remain distinct. Only *direct-record accepted* relationships can project as graph edges, and even these appear as **candidate** edges in Cite, never automatic assertions.
 - Exact names/aliases alone cannot merge people across cases. Cross-case accepted relationships require an independently reviewed identity crosswalk (not yet implemented).
 - The approved link types are procedural (defendant, prosecutor, judge, testimony, documented appointment and similar); no claim of bribery, conspiracy, guilt or common control is created from graph proximity.
@@ -89,16 +89,16 @@ The input register contains two distinct Indonesian trial-court records, twelve 
 
 ### Real cross-repository software acceptance
 
-The private Nocturnal \`test/legal-codex-actor-interop\` branch checks out the public Cite–Refinery feature branch and invokes Nocturnal's actual relation analyzer. On the pending real-world register it checks ten pending observations and four unmerged identity candidates. It then applies one **synthetic** accepted review solely to exercise the review-to-candidate graph transition. This is a real source-code integration test, **not** a real-world fact verification or legal ruling.
+The private Nocturnal `test/legal-codex-actor-interop` branch checks out the public Cite–Refinery feature branch and invokes Nocturnal's actual relation analyzer. On the pending real-world register it checks ten pending observations and four unmerged identity candidates. It then applies one **synthetic** accepted review solely to exercise the review-to-candidate graph transition. This is a real source-code integration test, **not** a real-world fact verification or legal ruling.
 
 Run the Cite side:
-\`\`\`bash
+```bash
 PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex*.py' -v
 # Only when the private Nocturnal distribution is installed in the same environment:
 PYTHONPATH=src python -m cite_refinery.legal_codex_actors \
   examples/legal_codex_indonesia_actor_register_001.json \
   --output /tmp/legal-actors.json
-\`\`\`
+```
 
 ### Next hard acceptance gate
 
@@ -107,17 +107,17 @@ Acquire and revalidate the actual source documents through Nocturnal's capture/c
 
 ## Procurement investigation — source-first authority and utilization audit
 
-Original-source reconstruction is implemented in \`legal_codex_authority.py\` and
-\`examples/legal_codex_chromebook_source_audit_v1.json\`. At the current revision
-there are **9 source records, 14 named actors or institutions, 18 sourced
-observations and 7 unresolved questions**, ingested as neutral, candidate-only
-\`REPORTS\` graph edges.
+Original-source reconstruction is implemented in `legal_codex_authority.py` and
+`examples/legal_codex_chromebook_source_audit_v1.json`. At the current revision
+there are **11 source records, 14 named actors or institutions, 24 sourced
+observations and 9 unresolved questions**, ingested as neutral, candidate-only
+`REPORTS` graph edges.
 
-The December 2025 and January 2026 prosecutor pages, and the December 2023
-ministry letter, have been **fetched through Nocturnal's real bounded network
+The December 2025 and January 2026 prosecutor pages, the December 2023
+ministry letter, plus the 2018 and 2021 presidential procurement regulations have been **fetched through Nocturnal's real bounded network
 source capture and raw/text SHA checks**, not just JSON fixture tests. See the
-private Nocturnal PR #115, the \`legal-codex-official-source-capture\` CI
-workflow and its ephemeral private (7-day retention) artifacts. These live
+private Nocturnal PR #115, the `legal-codex-official-source-capture` CI
+workflow and its ephemeral private (30-day retention) artifacts. These live
 captures are not independent assessments of source truth. The February 2026
 prosecutor report and AP witness account remain source locators only.
 
@@ -131,7 +131,7 @@ Important distinctions:
 - The ministry's Dec 2023 98.82% APBN and 61.27% DAK figures concern **inventory
   mapping** and cannot be represented as device utilization percentages.
 - An original **August 2020 junior-secondary education ministry guide**
-  (\`https://repositori.kemendikdasmen.go.id/19935/1/Pemanfaatan%20Peralatan%20TIK%20Bantuan%202020.pdf\`)
+  (`https://repositori.kemendikdasmen.go.id/19935/1/Pemanfaatan%20Peralatan%20TIK%20Bantuan%202020.pdf`)
   identifies **Drs. Mulyatsyah, M.M.** as director in its foreword and discusses
   online and offline Chromebook teaching uses. The recorded source date is
   month precision, not a manufactured exact day. This establishes contemporaneous
@@ -151,3 +151,55 @@ The original 2020 ministry manual is also being attempted via Nocturnal's
 bounded PDF capture in the private CI branch; a locator/indexed PDF is not
 equal to a successfully archived one. Do not substitute offline **capability**
 for independent evidence of offline **use** in affected schools.
+
+
+### Authority and document-custody evidence update (November 10, 2026)
+
+**Versioned law, rather than title-based culpability:** The new module
+`legal_codex_authority_matrix.py` and its six decision questions separate the
+2018 PA/KPA/PPK allocation from the amendments effective February 2, 2021.
+Article 11's technical specification role appears as Pasal 11(1)(b) in 2018
+and Pasal 11(1)(c) in the 2021 amendment. A decision dated merely "2021"
+gets **both candidate versions and an explicit amendment-boundary warning**.
+Perpres 46/2025 took effect April 30, 2025; the two-version module abstains
+rather than extrapolating a superseded text to later procurement decisions.
+Even if a generic PPK role is legally implicated, the output cannot name a
+PPK, PA, KPA or guilty person without an actual signed delegation.
+
+**Loss accounting:** Article 26(6) in both the original and 2021 texts states
+that HPS is *not* the basis for calculating state losses. A price estimate, by
+itself, must therefore not become an asserted corruption-loss figure. The code
+forces `estimated_state_loss=null`, forbids injected loss estimates, and
+requires an independent financial/accounting examination before any figure
+is considered.
+
+**Judicial exhibit routing:** The Ibam trial directory's evidentiary
+disposition references separate proceedings including Sri Wahyuningsih and
+Nadiem. The Nadiem trial directory's evidentiary disposition references
+material for the separate Jurist Tan case. These observations are indexed
+procedural cross-references only. **They are not evidence of payments, collusion
+or common criminal intent.** The original exhibit IDs and custody/hashes have
+not been reconciled across proceedings.
+
+**Source custody:** The two original presidential regulation PDFs were
+successfully fetched and rechecked by Nocturnal's bounded PDF pipeline in
+private GitHub Actions run 42826411730. That source run's SHA-256 receipts,
+selected pages and capture IDs are referenced from the public-source audit
+fixture. Source bytes remain only in the private workflow's time-limited
+artifact, **not** a permanent WARC archive in Cite–Refinery. The snapshots
+demonstrate byte/extraction integrity, **not** the truth of a legal assertion or
+an independently reviewed interpretation.
+
+**Still missing before authority attribution:** Original PPK appointment and
+KPA delegation instruments; named signers of technical studies and contract
+packages; the full tender/e-purchasing RUP/HPS/KAK records; original trial
+and appeal judgment PDFs with evidentiary appendices; independent financial
+loss calculations and device-utilization evidence. A list of names from
+a judgment cannot replace these records.
+
+```bash
+PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex*.py' -v
+PYTHONPATH=src python -m cite_refinery.legal_codex_authority_matrix \
+  examples/legal_codex_procurement_authority_2018_2021.json \
+  --output /tmp/authority-by-date.json
+```
