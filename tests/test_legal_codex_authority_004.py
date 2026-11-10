@@ -41,12 +41,23 @@ class ChromebookAuthorityTests(unittest.TestCase):
     def test_two_real_nocturnal_source_capture_receipts_are_narrow(self):
         captured = [x["capture_receipt"] for x in self.fixture["sources"]
                     if x.get("capture_receipt")]
-        self.assertEqual(len(captured), 2)
-        self.assertEqual({x["workflow_run"] for x in captured}, {42820272488})
+        self.assertEqual(len(captured), 5)
+        self.assertEqual({x["workflow_run"] for x in captured}, {42820272488, 42826411730})
         self.assertTrue(all(len(x["raw_sha256"]) == 64 for x in captured))
         self.assertTrue(all(s["original_document_bytes_archived"] is False
                             and s["claim_truth_authenticated"] is False
                             for s in self.fixture["sources"]))
+
+    def test_both_historical_procurement_statutes_have_real_pdf_capture_receipts(self):
+        by_id = {x["id"]: x for x in self.fixture["sources"]}
+        for key in ("perpres_2018_original", "perpres_2021_amendment"):
+            receipt = by_id[key]["capture_receipt"]
+            self.assertEqual(receipt["workflow_run"], 42826411730)
+            self.assertEqual(receipt["archive_class"], "nocturnal_live_ci_capture")
+            self.assertTrue(receipt["capture_id"].startswith("cap-"))
+            self.assertTrue(len(receipt["pages_selected"]) > 2)
+            self.assertFalse(by_id[key]["claim_truth_authenticated"])
+            self.assertFalse(by_id[key]["original_document_bytes_archived"])
 
     def test_admin_mapping_is_not_usage_rate(self):
         result = evaluate(self.fixture)
