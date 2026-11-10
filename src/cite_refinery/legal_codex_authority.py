@@ -11,6 +11,7 @@ import json
 import re
 from collections import Counter, defaultdict
 from datetime import date
+import calendar
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -18,7 +19,7 @@ SCHEMA = "legal_codex.chromebook_source_audit.v1"
 TYPES = {
     "prosecution_statement", "court_directory_metadata",
     "statute_index_and_text", "ministry_administrative_letter",
-    "independent_reporting",
+    "independent_reporting", "ministry_administrative_manual",
 }
 STANCES = {
     "prosecution_allegation", "prosecution_report_of_witness",
@@ -38,6 +39,9 @@ def _date(raw, *, optional=False):
         return None
     if not isinstance(raw, str):
         raise ValueError("source/event date required")
+    if re.fullmatch(r"\d{4}-\d{2}", raw):
+        year, month = map(int, raw.split("-"))
+        return date(year, month, calendar.monthrange(year, month)[1])
     return date.fromisoformat(raw)
 
 
@@ -116,6 +120,9 @@ def validate(bundle):
             raise ValueError(f"{ident}: actor unknown")
         if o.get("human_review") != "pending" or o.get("factual_truth_established") is not False:
             raise ValueError(f"{ident}: may not upgrade a source assertion into a finding")
+        if (o["stance"] == "administrative_statement" and src["type"] not in
+                {"ministry_administrative_letter", "ministry_administrative_manual"}):
+            raise ValueError("administrative claim source type mismatch")
         if o["stance"] == "regulatory_text_as_indexed":
             if src["type"] != "statute_index_and_text" or not o.get("effective_from"):
                 raise ValueError("regulation lacks source or effective date")
