@@ -96,6 +96,17 @@
       "document_role": "Trial judgment index 147/Pid.Sus-TPK/2025/PN Jkt.Pst",
       "claim_truth_authenticated": false,
       "original_document_bytes_archived": false
+    },
+    {
+      "id": "ministry_manual_2020",
+      "url": "https://repositori.kemendikdasmen.go.id/19935/1/Pemanfaatan%20Peralatan%20TIK%20Bantuan%202020.pdf",
+      "type": "ministry_administrative_manual",
+      "published_at": "2020-08",
+      "publisher": "Education Ministry Indonesia, Directorate of Junior Secondary Schools",
+      "document_role": "Book 5: Pemanfaatan Peralatan TIK Bantuan 2020; foreword dated August 2020",
+      "date_precision": "month",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
     }
   ],
   "actors": [
@@ -136,7 +147,8 @@
       "kind": "person",
       "source_ids": [
         "pros_dec",
-        "pros_jan"
+        "pros_jan",
+        "ministry_manual_2020"
       ],
       "status": "source_named_requires_identity_review"
     },
@@ -489,6 +501,35 @@
       "event_at": "2026-06-30",
       "human_review": "pending",
       "factual_truth_established": false
+    },
+    {
+      "id": "original_manual_muly",
+      "source_id": "ministry_manual_2020",
+      "reported_at": "2020-08",
+      "event_at": null,
+      "stance": "administrative_statement",
+      "topic": "implementation",
+      "statement": "An original August 2020 ministry Chromebook teaching-material guide credits Drs. Mulyatsyah, M.M. as Director of Sekolah Menengah Pertama in its foreword. This directly supports his institutional title at that point, not a procurement contract signatory or criminal responsibility.",
+      "actor_ids": [
+        "muly",
+        "ministry"
+      ],
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "original_manual_offline",
+      "source_id": "ministry_manual_2020",
+      "reported_at": "2020-08",
+      "event_at": null,
+      "stance": "administrative_statement",
+      "topic": "implementation",
+      "statement": "The August 2020 ministry guide acknowledges separate instructions for online and offline Chromebook operation, and describes using devices in both connected and disconnected modes. It does not measure actual school adoption or learning outcomes.",
+      "actor_ids": [
+        "ministry"
+      ],
+      "human_review": "pending",
+      "factual_truth_established": false
     }
   ],
   "issues": [
@@ -533,7 +574,8 @@
         "delivery_vs_use",
         "mapped_apbn",
         "mapped_dak",
-        "usage_followup"
+        "usage_followup",
+        "original_manual_offline"
       ],
       "missing_original_records": [
         "School-level device verification records with denominator and sample methodology",
@@ -585,6 +627,22 @@
         "Original full signed trial and appellate judgments",
         "Separate majority/dissent reasoning and evidence exhibits",
         "Subsequent cassation docket and decisions"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "operational_prerequisites",
+      "topic": "implementation",
+      "question": "What minimum initial enrollment, internet, electrical and ongoing administration conditions were required, and which schools could meet them, given that offline tasks are sometimes possible?",
+      "observation_ids": [
+        "original_manual_offline",
+        "usage_followup",
+        "delivery_vs_use"
+      ],
+      "missing_original_records": [
+        "Original school-level activation/enrollment and connectivity records",
+        "Device management and account policies for offline-capable classroom workflows",
+        "Independent school evaluations stratified by connectivity"
       ],
       "verdict": "unresolved_requires_original_records"
     }
