@@ -107,6 +107,26 @@
       "date_precision": "month",
       "claim_truth_authenticated": false,
       "original_document_bytes_archived": false
+    },
+    {
+      "id": "perpres_2018_original",
+      "url": "https://www.kemhan.go.id/itjen/wp-content/uploads/2022/08/Peraturan-Presiden-Nomor-16-Tahun-2018_1001_1.pdf",
+      "type": "statute_index_and_text",
+      "published_at": "2018-03-22",
+      "publisher": "President of Indonesia (copy hosted by Ministry of Defence)",
+      "document_role": "Perpres 16/2018 Pasal 9, 10 and 11 original procurement authority allocation",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
+    },
+    {
+      "id": "perpres_2021_amendment",
+      "url": "https://www.kemhan.go.id/itjen/wp-content/uploads/2022/07/Perpres-Nomor-12-Tahun-2021.pdf",
+      "type": "statute_index_and_text",
+      "published_at": "2021-02-02",
+      "publisher": "President of Indonesia (copy hosted by Ministry of Defence)",
+      "document_role": "Perpres 12/2021 amendment to Perpres 16/2018, particularly Article 11 duties",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
     }
   ],
   "actors": [
@@ -530,6 +550,58 @@
       ],
       "human_review": "pending",
       "factual_truth_established": false
+    },
+    {
+      "id": "role_pa_2018",
+      "source_id": "perpres_2018_original",
+      "reported_at": "2018-03-22",
+      "event_at": "2018-03-22",
+      "stance": "regulatory_text_as_indexed",
+      "topic": "regulation",
+      "statement": "The original 2018 procurement regulation Article 9 allocated planning and appointment of the PPK officer to PA; this is a statutory role, not evidence that a particular officeholder signed the Chromebook specification.",
+      "actor_ids": [],
+      "human_review": "pending",
+      "factual_truth_established": false,
+      "effective_from": "2018-03-22"
+    },
+    {
+      "id": "role_kpa_2018",
+      "source_id": "perpres_2018_original",
+      "reported_at": "2018-03-22",
+      "event_at": "2018-03-22",
+      "stance": "regulatory_text_as_indexed",
+      "topic": "regulation",
+      "statement": "The original 2018 Article 10 states that KPA acts under delegated authority from PA; a particular budget-office title does not independently establish what individual delegation was issued.",
+      "actor_ids": [],
+      "human_review": "pending",
+      "factual_truth_established": false,
+      "effective_from": "2018-03-22"
+    },
+    {
+      "id": "role_ppk_2018",
+      "source_id": "perpres_2018_original",
+      "reported_at": "2018-03-22",
+      "event_at": "2018-03-22",
+      "stance": "regulatory_text_as_indexed",
+      "topic": "regulation",
+      "statement": "The original 2018 Article 11(1)(b) lists specification and KAK setting among PPK duties; the original article also separately covers draft contracts and HPS. The named PPK in any specific procurement remains unidentified.",
+      "actor_ids": [],
+      "human_review": "pending",
+      "factual_truth_established": false,
+      "effective_from": "2018-03-22"
+    },
+    {
+      "id": "role_ppk_2021",
+      "source_id": "perpres_2021_amendment",
+      "reported_at": "2021-02-02",
+      "event_at": "2021-02-02",
+      "stance": "regulatory_text_as_indexed",
+      "topic": "regulation",
+      "statement": "The 2021 regulation amended Article 11: technical specification/KAK setting appears at Article 11(1)(c), draft contracts at (d), and HPS at (e). The amended law is not automatically applicable to a 2020 decision.",
+      "actor_ids": [],
+      "human_review": "pending",
+      "factual_truth_established": false,
+      "effective_from": "2021-02-02"
     }
   ],
   "issues": [
@@ -643,6 +715,27 @@
         "Original school-level activation/enrollment and connectivity records",
         "Device management and account policies for offline-capable classroom workflows",
         "Independent school evaluations stratified by connectivity"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "legal_roles_vs_actual_signers",
+      "topic": "regulation",
+      "question": "For every centrally funded APBN or DAK Chromebook purchase, who was appointed PA/KPA/PPK, which legal version governed the transaction, and which authenticated document bears the actual technical-specification or contract signature?",
+      "observation_ids": [
+        "role_pa_2018",
+        "role_kpa_2018",
+        "role_ppk_2018",
+        "role_ppk_2021",
+        "kpa_budget_roles",
+        "may2020_instruction",
+        "jurist_reuse"
+      ],
+      "missing_original_records": [
+        "Signed 2020, 2021, 2022 PA/KPA/PPK designation instruments with effective dates and budget streams",
+        "DIPA/RUP and procurement package identifiers mapped to APBN/DAK flows",
+        "Signed specification/KAK, HPS, vendor selection, purchase order and contract variations per package",
+        "Original 2020 study revisions with authorship and approval audit history"
       ],
       "verdict": "unresolved_requires_original_records"
     }
