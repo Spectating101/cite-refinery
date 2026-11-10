@@ -2,15 +2,15 @@
   "schema": "legal_codex.case_posture.v1",
   "sources": [
     {
-      "id": "s_nadiem_trial_reporting",
-      "class": "journalistic_case_reporting",
-      "url": "https://news.detik.com/berita/d-8711476/vonis-jadi-9-tahun-penjara-nadiem-makarim-ajukan-kasasi",
+      "id": "s_nadiem_trial_official",
+      "class": "official_court_case_page",
+      "url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
       "full_original_judgment_captured": false
     },
     {
-      "id": "s_ibam_trial_reporting",
-      "class": "journalistic_case_reporting",
-      "url": "https://chatnews.id/pt-dki-jakarta-perberat-vonis-ibrahim-arief",
+      "id": "s_ibam_trial_official",
+      "class": "official_court_case_page",
+      "url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
       "full_original_judgment_captured": false
     },
     {
@@ -54,10 +54,10 @@
       "original_sd_order_matched": false,
       "events": [
         {
-          "kind": "trial_judgment_reported",
+          "kind": "trial_directory_listing",
           "date": "2026-06-30",
           "docket": "147/Pid.Sus-TPK/2025/PN Jkt.Pst",
-          "source_id": "s_nadiem_trial_reporting",
+          "source_id": "s_nadiem_trial_official",
           "original_court_document_acquired": false,
           "legal_finality_verified": false,
           "universal_culpability_inferred": false
@@ -91,10 +91,10 @@
       "original_sd_order_matched": false,
       "events": [
         {
-          "kind": "trial_judgment_reported",
+          "kind": "trial_directory_listing",
           "date": "2026-05-12",
           "docket": "148/Pid.Sus-TPK/2025/PN Jkt.Pst",
-          "source_id": "s_ibam_trial_reporting",
+          "source_id": "s_ibam_trial_official",
           "original_court_document_acquired": false,
           "legal_finality_verified": false,
           "universal_culpability_inferred": false
