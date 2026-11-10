@@ -65,7 +65,19 @@
       "publisher": "Education Ministry Indonesia",
       "document_role": "Letter 12235/C/PR.04.01/2023: inventory mapping and utilization survey instructions",
       "claim_truth_authenticated": false,
-      "original_document_bytes_archived": false
+      "original_document_bytes_archived": false,
+      "capture_receipt": {
+        "archive_class": "nocturnal_live_ci_capture",
+        "workflow_run": 42826411730,
+        "capture_id": "cap-f922794f9079a7aa99c311b0",
+        "raw_sha256": "6f7d822509cb527f8a54f6a9aae6116d760521a4f97d4e872065d678c7c0ecc1",
+        "text_sha256": "ee27c5c41c0f29ce0b1a2d2adfc426a825d9d7c5ddb3e3405557eb93fedacf8a",
+        "captured_at": "2026-11-10T13:39:15Z",
+        "pages_selected": [
+          1,
+          2
+        ]
+      }
     },
     {
       "id": "ap_google",
@@ -116,7 +128,21 @@
       "publisher": "President of Indonesia (copy hosted by Ministry of Defence)",
       "document_role": "Perpres 16/2018 Pasal 9, 10 and 11 original procurement authority allocation",
       "claim_truth_authenticated": false,
-      "original_document_bytes_archived": false
+      "original_document_bytes_archived": false,
+      "capture_receipt": {
+        "archive_class": "nocturnal_live_ci_capture",
+        "workflow_run": 42826411730,
+        "capture_id": "cap-36b1ea073d4cb1c58fa483ee",
+        "raw_sha256": "aa7520dd21aa4c7243ddcc998a09394e707b8582b6d2962740c8ba88d593e85b",
+        "text_sha256": "f12825103da081dd37f01ca5b2235da4b69cddecc16165afa39eef36a5caedd5",
+        "captured_at": "2026-11-10T13:39:33Z",
+        "pages_selected": [
+          1,
+          16,
+          17,
+          18
+        ]
+      }
     },
     {
       "id": "perpres_2021_amendment",
@@ -126,7 +152,21 @@
       "publisher": "President of Indonesia (copy hosted by Ministry of Defence)",
       "document_role": "Perpres 12/2021 amendment to Perpres 16/2018, particularly Article 11 duties",
       "claim_truth_authenticated": false,
-      "original_document_bytes_archived": false
+      "original_document_bytes_archived": false,
+      "capture_receipt": {
+        "archive_class": "nocturnal_live_ci_capture",
+        "workflow_run": 42826411730,
+        "capture_id": "cap-fe548d5248cd74c30a1c733e",
+        "raw_sha256": "9adc85dc252497dbc010542432b2dbfa094b08e08c90952eec25fac8413ec052",
+        "text_sha256": "a001f0fad0558156f932e0c63fa55b16de40a862ca7f7f6906d9b4a947a4edc0",
+        "captured_at": "2026-11-10T13:39:36Z",
+        "pages_selected": [
+          1,
+          12,
+          13,
+          14
+        ]
+      }
     }
   ],
   "actors": [
@@ -788,6 +828,6 @@
       "verdict": "unresolved_requires_original_records"
     }
   ],
-  "access_note": "Official prosecution pages rechecked by Nocturnal GitHub CI on 2026-11-10; all other pages are source locators/indexed text. Original trial PDFs, full ministry PDF scans and BPK statute PDF visual inspection remain incomplete.",
+  "access_note": "Five official-source snapshots (two prosecutor pages, 2023 ministry letter, 2018 and 2021 presidential regulations) were independently fetched and integrity-rechecked by Nocturnal CI; original bytes reside in separate time-limited private workflow artifacts, not this public repository. This is not source-content truth adjudication. Full signed court judgments, appointment delegations, procurement contract scans and the 2020 guide remain unverified or unarchived; the BPK page returned HTTP 403.",
   "publication_authorized": false
 }
