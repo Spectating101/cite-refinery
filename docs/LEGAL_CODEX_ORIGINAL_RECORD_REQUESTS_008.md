@@ -91,6 +91,29 @@ Jika arsip berada pada pengadilan/instansi lain, mohon nama unit pengampu serta 
 
 ---
 
+## Request E — Direktorat Jenderal PAUD Dikdasmen: **technical-team SK series**, not PPK appointment (Milestone 010, **not sent**)
+
+**Perihal: Permohonan salinan SK Tim Teknis/Reviu Kajian TIK Tahun Anggaran 2020 dan lampiran penugasan**
+
+Yth. PPID Kemendikdasmen / pemegang arsip eks Ditjen PAUD, Pendidikan Dasar, dan Pendidikan Menengah,
+
+Dalam rangka membedakan kewenangan teknis dari kewenangan penetapan pejabat penandatangan belanja/pemesanan, mohon konfirmasi nomor definitif serta salinan resmi (berikut lampiran nama, tanggal penetapan dan pencabutan/perubahan) empat surat keputusan yang **disebut dalam salinan sekunder pertimbangan perkara**:
+
+- `4143/C.C1/SP/2020` tanggal **27 April 2020** — dilaporkan terkait tim awal analisis kebutuhan TIK.
+- `4317/C/SP/2020` tanggal **30 April 2020** — dilaporkan terkait perubahan/penetapan anggota tim teknis.
+- `4538/C/SP/2020` tanggal **11 Mei 2020** — dilaporkan terkait keanggotaan/tugas tim teknis.
+- `5190/C.C1/KP/2020` tanggal **8 Juni 2020** — dilaporkan terkait tim reviu hasil kajian teknis dan pelaksana.
+
+Mohon pula (jika terbuka untuk publik) daftar penandatangan dan dokumen reviu kajian teknis beserta lembar pengesahan, risalah perubahan spesifikasi, dan pernyataan ruang lingkup kewenangan anggota tim **untuk membedakannya dari kewenangan KPA/PPK**. Permohonan ini **tidak** menganggap keikutsertaan dalam tim teknis sebagai bukti otorisasi pembelian atau bukti tindak pidana.
+
+**Source locator only:** https://www.hukum-hukum.com/2026/08/contoh-perkara-penyalahgunaan-kewenangan-administrasi-pemerintahan-yang-berdimensi-tindak-pidana-korupsi.html ; https://www.hukumhukum.com/2026/08/swasta-yang-bukan-pegawai-negeri-sipil-pun-dapat-divonis-korupsi-dengan-undang-undang-tipikor.html
+
+The webpages reproduce purported judicial quotations but do **not** supply independently authenticated signed originals. Their interpretations can differ; do not reconcile contradictory excerpts as original court findings without the official judgment text.
+
+**Prepared only, not sent.** Applicant identity and lawful public-access eligibility must be supplied by the legitimate requester.
+
+---
+
 ## Reconciliation acceptance conditions
 
 A finding can advance from "reported lead" to "appointment verified" **only when** a signed/authorized original copy or equally authenticated official register resolves the full identifier, actor, office scope, effective date and any amendment. A finding can advance to "transaction matched" **only when** the system logs or original signed order resolve a concrete purchase number, buyer, approver, supplier, product, price and timestamp. The **two** records must have a date- and scope-consistent link.
