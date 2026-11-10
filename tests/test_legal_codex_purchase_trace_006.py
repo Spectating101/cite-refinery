@@ -80,6 +80,23 @@ class ChannelTraceTests(unittest.TestCase):
         self.assertEqual(vendor["purchase_mode"], "marketplace_registration_not_purchase")
         self.assertFalse(vendor["transaction_price_verified"])
 
+    def test_lkpp_original_source_receipts_bounded_to_custody(self):
+        by_id = {x["id"]: x for x in self.fixture["sources"]}
+        self.assertEqual(sum(bool(s.get("capture_receipt")) for s in by_id.values()), 2)
+        for key in ("lkpp_2022_price", "lkpp_vendor_2022"):
+            s = by_id[key]
+            self.assertEqual(s["capture_receipt"]["workflow_run"], 42830489546)
+            self.assertEqual(s["capture_receipt"]["class"], "nocturnal_private_ci_capture")
+            self.assertEqual(len(s["capture_receipt"]["raw_sha256"]), 64)
+            self.assertFalse(s["source_claims_fully_adjudicated"])
+            self.assertEqual(s["original_document_archive_status"], "not_archived_in_this_repo")
+
+    def test_spoofed_custody_hash_is_rejected(self):
+        source = next(x for x in self.fixture["sources"] if x["id"] == "lkpp_2022_price")
+        source["capture_receipt"]["raw_sha256"] = "fabricated"
+        with self.assertRaisesRegex(ValueError, "capture receipt"):
+            validate(self.fixture)
+
     def test_fake_purchase_id_blocked(self):
         self.fixture["verified_procurement_packages"] = ["imagined_id"]
         with self.assertRaisesRegex(ValueError, "verified package"):
