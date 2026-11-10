@@ -16,9 +16,22 @@
 
 On 4 November 2026, [Hukumonline reported a UI/UGM academic examination](https://www.hukumonline.com/berita/a/bedah-putusan-nadiem-makarim--eksaminasi-ui-ugm-soroti-logika-tipikor-dan-kerugian-negara-lt6aea8ed36b2ad) criticizing aspects of the Nadiem trial and appeal reasoning, including state loss and the connection between any proven benefit and replacement money. This is separately attributed expert criticism, **not** an official reconsideration, finding of innocence, or new quantified loss. Do not use a court-calculated loss amount as an independently audited cash-flow fact; identify the judgment stage and alleged/accounting methodology when obtaining it.
 
+## Actual Nocturnal source acquisitions (not official court originals)
+
+In [Nocturnal private Actions capture run 42876552798](https://github.com/Spectating101/nocturnal-oversight/actions/runs/42876552798), source-page HTML and extracted text were successfully captured and rechecked for two 2026 reporting sources:
+
+| Source | Capture ID | Raw HTML SHA-256 | Extracted text SHA-256 |
+| --- | --- | --- | --- |
+| [Detik, 17 October, cassation filing report](https://news.detik.com/berita/d-8711476/vonis-jadi-9-tahun-penjara-nadiem-makarim-ajukan-kasasi) | `cap-b84bc9998302ccc193b1b28a` | `56d30a256b17b26dd49eec6c91a928b8ee7a83090895151303da3b2392ec5d87` | `21d731059be3d7d2315c39926533879b98fabda590bd2e4981ee5b8b75c398c9` |
+| [Hukumonline, 4 November, academic evaluation](https://www.hukumonline.com/berita/a/bedah-putusan-nadiem-makarim--eksaminasi-ui-ugm-soroti-logika-tipikor-dan-kerugian-negara-lt6aea8ed36b2ad) | `cap-5cde86342565ee11ea3bd611` | `fc5923d0427cb857638b5c1bf2ee410c43a270434771c5791758af6993a93bd3` | `2e62eea0cb070e22c34873e00d750c74a8ec567b7f1a6ea21e2c9f686f51b9d5` |
+
+Captured at 2026-11-10 18:34:45 UTC (2026-11-11 02:34:45 Taiwan time). The private source snapshot artifacts expire according to the workflow's 30-day retention. These **page receipts prove only byte/text capture integrity at that moment**; they do not verify an official cassation filing, article truth, original judgment signature, original judicial evidence or legal culpability. The two cited original Supreme Court trial pages and the official appellate index are search-indexed locators, **not archived by Nocturnal in this milestone**.
+
 ## Original 2020 record remains the central unresolved hinge
 
 The secondary [2020 school-aid guideline](https://id.scribd.com/document/523226738/Pedoman-Pelaksanaan-Bantuan-Sarana-PHBS-2020) quotes the **full title** of decree `15004/C3/KPA/VI/KP/2020` dated 8 June 2020 as covering appointment of `Pejabat Penandatangan SPM, Pejabat Pembuat Komitmen (PPK), Bendahara Pengeluaran Pembantu` and personnel administration. This makes the decree a strong PPK-appointment search target, but its annex, any June 30 amendment/termination, signatories and period of delegated authority are **not present**. Do **not** infer Bambang/Wahyu's lawful appointment from the title or treat this as the June 30 replacement decree. The later **SMP** November purchase-order addenda remain a separate channel.
+
+A separate secondary judicial transcription also lists **four April–June 2020 technical-team appointment decrees**: `4143/C.C1/SP/2020` (27 April), `4317/C/SP/2020` (30 April), `4538/C/SP/2020` (11 May), and `5190/C.C1/KP/2020` (8 June). These relate to reported technical-team roles and must **not** be equated with the SD directorate PPK authority or signed purchasing approval. See the new **Request E** in the record-request document. The reproduced texts are secondary and not independently authenticated.
 
 The proposed acquisition chain is:
 
