@@ -6,49 +6,56 @@
       "url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
       "class": "reported_judicial_reasoning",
       "published_at": "2026-04-30",
-      "original_legal_document_archived": false
+      "original_legal_document_archived": false,
+      "date_basis": "article_publication_day"
     },
     {
       "id": "s_witness_detik",
       "url": "https://news.detik.com/berita/d-8339004/saksi-kasus-chromebook-ketakutan-lalu-mundur-dari-ppk-saya-sampai-sakit",
       "class": "reported_witness_testimony",
       "published_at": "2026-02-03",
-      "original_legal_document_archived": false
+      "original_legal_document_archived": false,
+      "date_basis": "article_publication_day"
     },
     {
       "id": "s_prosecutor_july",
       "url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
       "class": "prosecution_allegation",
       "published_at": "2025-07-15",
-      "original_legal_document_archived": false
+      "original_legal_document_archived": false,
+      "date_basis": "government_statement_day"
     },
     {
       "id": "s_pati_response",
       "url": "https://laporgub.jatengprov.go.id/detail/LGWP34314431.html",
       "class": "official_administrative_response",
       "published_at": "2021-03-06",
-      "original_legal_document_archived": false
+      "original_legal_document_archived": false,
+      "date_basis": "government_response_day"
     },
     {
       "id": "s_phbs_copy",
       "url": "https://id.scribd.com/document/523226738/Pedoman-Pelaksanaan-Bantuan-Sarana-PHBS-2020",
       "class": "third_party_government_document_copy",
       "published_at": "2020-10-07",
-      "original_legal_document_archived": false
+      "original_legal_document_archived": false,
+      "date_basis": "underlying_document_day_not_upload_date"
     },
     {
       "id": "s_ibam_court_quotes",
       "url": "https://www.hukum-hukum.com/2026/08/contoh-perkara-penyalahgunaan-kewenangan-administrasi-pemerintahan-yang-berdimensi-tindak-pidana-korupsi.html",
       "class": "third_party_court_transcription",
-      "published_at": "2026-08-01",
-      "original_legal_document_archived": false
+      "published_at": "2026-08",
+      "original_legal_document_archived": false,
+      "date_basis": "article_publication_month_only"
     },
     {
       "id": "s_nadiem_trial_reupload",
       "url": "https://id.scribd.com/document/1059397899/Putusan-tindak-pidana-korupsi-no-147-Pid-sus-tpk-2025-Pn-Jkt-pst-Nadiem-Makarim",
       "class": "third_party_court_transcription",
       "published_at": "2026-06-30",
-      "original_legal_document_archived": false
+      "original_legal_document_archived": false,
+      "date_basis": "underlying_judgment_day_not_upload_date"
     }
   ],
   "documents": [
