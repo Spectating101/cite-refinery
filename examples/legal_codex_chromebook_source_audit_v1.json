@@ -1,0 +1,594 @@
+{
+  "schema": "legal_codex.chromebook_source_audit.v1",
+  "sources": [
+    {
+      "id": "pros_dec",
+      "url": "https://kejati-sulawesiselatan.kejaksaan.go.id/conference/news/9698/read",
+      "type": "prosecution_statement",
+      "published_at": "2025-12-08",
+      "publisher": "Indonesian Attorney General's Office",
+      "document_role": "Filing and prosecution theory of Chromebook case",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false,
+      "capture_receipt": {
+        "archive_class": "nocturnal_live_ci_capture",
+        "workflow_run": 42820272488,
+        "capture_id": "cap-a52fe1b731bda12f9c491868",
+        "raw_sha256": "4e5865e1f846178dcd79c0e409697758c0a878cc7ce4c081ac2f76aa3b7dcc2f",
+        "text_sha256": "c916d7c056056333ca4bfef0136564456f68040321ceb707666b54f595cd43bb",
+        "captured_at": "2026-11-10T12:58:29Z"
+      }
+    },
+    {
+      "id": "pros_jan",
+      "url": "https://kejati-jawatengah.kejaksaan.go.id/conference/news/10385/read",
+      "type": "prosecution_statement",
+      "published_at": "2026-01-09",
+      "publisher": "Indonesian Attorney General's Office",
+      "document_role": "Prosecutor account of ministry witness testimony",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false,
+      "capture_receipt": {
+        "archive_class": "nocturnal_live_ci_capture",
+        "workflow_run": 42820272488,
+        "capture_id": "cap-4fdf64270e7f50192ebc5671",
+        "raw_sha256": "1c80032d83c7bf8b9cc22cbc8da4f29283c70d5b852fc52d722bc62b93207c44",
+        "text_sha256": "1215486add160b675945560343087f2a8deab2c8d9b95ba63e03b67b69ce7798",
+        "captured_at": "2026-11-10T12:58:25Z"
+      }
+    },
+    {
+      "id": "pros_feb",
+      "url": "https://kejari-parepare.kejaksaan.go.id/conference/news/10712/read",
+      "type": "prosecution_statement",
+      "published_at": "2026-02-06",
+      "publisher": "Indonesian Attorney General's Office",
+      "document_role": "Prosecutor's account of Fiona Handayani testimony",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
+    },
+    {
+      "id": "reg_dak2021",
+      "url": "https://peraturan.bpk.go.id/Details/163575/permendikbud-no-5-tahun-2021",
+      "type": "statute_index_and_text",
+      "published_at": "2021-02-11",
+      "publisher": "BPK regulatory database",
+      "document_role": "Permendikbud 5/2021 DAK Fisik Regular Education FY2021; effective Feb 11",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
+    },
+    {
+      "id": "ministry_2023",
+      "url": "https://pusatinformasi.rumahpendidikan.kemendikdasmen.go.id/hc/id/article_attachments/52510595419161",
+      "type": "ministry_administrative_letter",
+      "published_at": "2023-12-01",
+      "publisher": "Education Ministry Indonesia",
+      "document_role": "Letter 12235/C/PR.04.01/2023: inventory mapping and utilization survey instructions",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
+    },
+    {
+      "id": "ap_google",
+      "url": "https://apnews.com/article/indonesia-google-chromebook-corruption-5526609dd100adc95b5609bedc529edb",
+      "type": "independent_reporting",
+      "published_at": "2026-04-20",
+      "publisher": "Associated Press",
+      "document_role": "Reported testimony of Google executives and defendant response",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
+    },
+    {
+      "id": "court_ibam",
+      "url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "type": "court_directory_metadata",
+      "published_at": "2026-05-12",
+      "publisher": "Indonesian Supreme Court judgment directory",
+      "document_role": "Trial judgment index 148/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
+    },
+    {
+      "id": "court_nadiem",
+      "url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "type": "court_directory_metadata",
+      "published_at": "2026-06-30",
+      "publisher": "Indonesian Supreme Court judgment directory",
+      "document_role": "Trial judgment index 147/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "claim_truth_authenticated": false,
+      "original_document_bytes_archived": false
+    }
+  ],
+  "actors": [
+    {
+      "id": "nadiem",
+      "name": "Nadiem Anwar Makarim",
+      "kind": "person",
+      "source_ids": [
+        "pros_dec",
+        "court_nadiem",
+        "ap_google"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "ibam",
+      "name": "Ibrahim Arief (Ibam)",
+      "kind": "person",
+      "source_ids": [
+        "pros_dec",
+        "court_ibam"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "sri",
+      "name": "Sri Wahyuningsih",
+      "kind": "person",
+      "source_ids": [
+        "pros_dec",
+        "pros_jan"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "muly",
+      "name": "Mulyatsyah (reported spelling varies)",
+      "kind": "person",
+      "source_ids": [
+        "pros_dec",
+        "pros_jan"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "jurist",
+      "name": "Jurist Tan",
+      "kind": "person",
+      "source_ids": [
+        "pros_jan"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "purwadi",
+      "name": "Purwadi Sutanto",
+      "kind": "person",
+      "source_ids": [
+        "pros_jan"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "hasbi",
+      "name": "Muhamad Hasbi",
+      "kind": "person",
+      "source_ids": [
+        "pros_jan"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "iwan",
+      "name": "Iwan Syahril",
+      "kind": "person",
+      "source_ids": [
+        "ministry_2023"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "fiona",
+      "name": "Fiona Handayani",
+      "kind": "person",
+      "source_ids": [
+        "pros_feb"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "scott",
+      "name": "Scott Beaumont",
+      "kind": "person",
+      "source_ids": [
+        "ap_google"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "caesar",
+      "name": "Caesar Sengupta",
+      "kind": "person",
+      "source_ids": [
+        "ap_google"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "kind": "organization",
+      "source_ids": [
+        "ap_google"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "ministry",
+      "name": "Indonesian Education Ministry",
+      "kind": "institution",
+      "source_ids": [
+        "pros_dec",
+        "ministry_2023"
+      ],
+      "status": "source_named_requires_identity_review"
+    },
+    {
+      "id": "court",
+      "name": "Jakarta Central Corruption Court",
+      "kind": "institution",
+      "source_ids": [
+        "court_nadiem",
+        "court_ibam"
+      ],
+      "status": "source_named_requires_identity_review"
+    }
+  ],
+  "observations": [
+    {
+      "id": "may2020_instruction",
+      "source_id": "pros_dec",
+      "reported_at": "2025-12-08",
+      "stance": "prosecution_allegation",
+      "topic": "specification",
+      "statement": "Prosecutors alleged the education minister directed revision of the 2020 technical review to specify Chrome OS rather than an operating-system-neutral requirement.",
+      "actor_ids": [
+        "nadiem",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "ibam_technical_role",
+      "source_id": "pros_dec",
+      "reported_at": "2025-12-08",
+      "stance": "prosecution_allegation",
+      "topic": "specification",
+      "statement": "The prosecution filing described Ibrahim Arief as a technology consultant and alleged involvement in shaping the technical review of procurement requirements.",
+      "actor_ids": [
+        "ibam",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "kpa_budget_roles",
+      "source_id": "pros_dec",
+      "reported_at": "2025-12-08",
+      "stance": "prosecution_allegation",
+      "topic": "budget_authority",
+      "statement": "The filing named Sri Wahyuningsih as primary-school director and Mulyatsyah as middle-school director, each also described as a budget-authority delegate for fiscal 2020 to 2021.",
+      "actor_ids": [
+        "sri",
+        "muly",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "director_no_review",
+      "source_id": "pros_jan",
+      "reported_at": "2026-01-09",
+      "stance": "prosecution_report_of_witness",
+      "topic": "specification",
+      "statement": "According to the prosecution's account, director Purwadi Sutanto said his directorate did not undertake a fresh price or technical-specification evaluation and reused a 2020 review.",
+      "actor_ids": [
+        "purwadi",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "jurist_reuse",
+      "source_id": "pros_jan",
+      "reported_at": "2026-01-09",
+      "stance": "prosecution_report_of_witness",
+      "topic": "specification",
+      "statement": "According to testimony as summarized by prosecutors, Jurist Tan instructed use of the earlier technical review across 2021 ministry procurements without a fresh review.",
+      "actor_ids": [
+        "jurist",
+        "hasbi",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "delivery_vs_use",
+      "source_id": "pros_jan",
+      "reported_at": "2026-01-09",
+      "stance": "prosecution_report_of_witness",
+      "topic": "implementation",
+      "statement": "A witness reportedly described a Google Form as checking device receipt by schools, not the actual educational utilization of supplied Chromebooks.",
+      "actor_ids": [
+        "hasbi",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "reg_rule_scope",
+      "source_id": "reg_dak2021",
+      "reported_at": "2021-02-11",
+      "stance": "regulatory_text_as_indexed",
+      "topic": "regulation",
+      "statement": "Permendikbud 5/2021 concerns operational guidance for regular physical special-allocation funds for education in fiscal year 2021; it is not automatically the governing rule for every funding stream or earlier decision.",
+      "actor_ids": [
+        "ministry"
+      ],
+      "event_at": "2021-02-11",
+      "human_review": "pending",
+      "factual_truth_established": false,
+      "effective_from": "2021-02-11"
+    },
+    {
+      "id": "mapped_apbn",
+      "source_id": "ministry_2023",
+      "reported_at": "2023-12-01",
+      "stance": "administrative_statement",
+      "topic": "implementation",
+      "statement": "The ministry's December 2023 letter reported that 98.82 percent of centrally funded APBN devices were mapped as of November 23; this is an inventory mapping metric, not a device utilization rate.",
+      "actor_ids": [
+        "iwan",
+        "ministry"
+      ],
+      "event_at": "2023-11-23",
+      "human_review": "pending",
+      "factual_truth_established": false,
+      "metric": {
+        "name": "device_mapping_coverage",
+        "unit": "percent",
+        "population": "APBN_Pusat",
+        "value": 98.82
+      }
+    },
+    {
+      "id": "mapped_dak",
+      "source_id": "ministry_2023",
+      "reported_at": "2023-12-01",
+      "stance": "administrative_statement",
+      "topic": "implementation",
+      "statement": "The same ministry letter reported that 61.27 percent of DAK Fisik funded devices were mapped as of November 23; this does not measure educational use.",
+      "actor_ids": [
+        "iwan",
+        "ministry"
+      ],
+      "event_at": "2023-11-23",
+      "human_review": "pending",
+      "factual_truth_established": false,
+      "metric": {
+        "name": "device_mapping_coverage",
+        "unit": "percent",
+        "population": "DAK_Fisik",
+        "value": 61.27
+      }
+    },
+    {
+      "id": "usage_followup",
+      "source_id": "ministry_2023",
+      "reported_at": "2023-12-01",
+      "stance": "administrative_statement",
+      "topic": "implementation",
+      "statement": "The ministry asked provincial and local education officials to continue device-usage collection and address infrastructure problems, including connectivity and electricity limitations.",
+      "actor_ids": [
+        "iwan",
+        "ministry"
+      ],
+      "event_at": "2023-12-01",
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "fiona_messages",
+      "source_id": "pros_feb",
+      "reported_at": "2026-02-06",
+      "stance": "prosecution_allegation",
+      "topic": "supplier_influence",
+      "statement": "Prosecutors said messaging groups involving advisers discussed Chromebook adoption before formal procurement, with Fiona Handayani named in the reported testimony.",
+      "actor_ids": [
+        "fiona",
+        "nadiem",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "google_investment_claim",
+      "source_id": "pros_feb",
+      "reported_at": "2026-02-06",
+      "stance": "prosecution_allegation",
+      "topic": "supplier_influence",
+      "statement": "Prosecutors alleged an advance co-investment discussion involving Google in the context of the proposed Chromebook procurement; independently validated transaction and decision links remain unavailable.",
+      "actor_ids": [
+        "google",
+        "nadiem"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "google_exec_denial",
+      "source_id": "ap_google",
+      "reported_at": "2026-04-20",
+      "stance": "external_witness_as_reported",
+      "topic": "supplier_influence",
+      "statement": "AP reported that former Google executives denied any connection between Google's GoTo investment and the Education Ministry's Chromebook procurement decisions.",
+      "actor_ids": [
+        "scott",
+        "caesar",
+        "google"
+      ],
+      "event_at": "2026-04-20",
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "nadiem_defense",
+      "source_id": "ap_google",
+      "reported_at": "2026-04-20",
+      "stance": "defense_position_as_reported",
+      "topic": "budget_authority",
+      "statement": "AP reported Nadiem's denial of personally receiving procurement-related funds and his defense position that procurement decisions were made by technical teams and ministry officials.",
+      "actor_ids": [
+        "nadiem",
+        "ministry"
+      ],
+      "event_at": null,
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "ibam_trial_result",
+      "source_id": "court_ibam",
+      "reported_at": "2026-05-12",
+      "stance": "court_disposition_as_indexed",
+      "topic": "appeal_and_trial",
+      "statement": "The official trial-court index records that Ibrahim Arief was acquitted on the primary charge and convicted on the subsidiary charge in the May 12 2026 judgment.",
+      "actor_ids": [
+        "ibam",
+        "court"
+      ],
+      "event_at": "2026-05-12",
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "nadiem_trial_result",
+      "source_id": "court_nadiem",
+      "reported_at": "2026-06-30",
+      "stance": "court_disposition_as_indexed",
+      "topic": "appeal_and_trial",
+      "statement": "The official trial-court index records that Nadiem Makarim was acquitted on the primary charge and convicted on the subsidiary charge in the June 30 2026 judgment.",
+      "actor_ids": [
+        "nadiem",
+        "court"
+      ],
+      "event_at": "2026-06-30",
+      "human_review": "pending",
+      "factual_truth_established": false
+    }
+  ],
+  "issues": [
+    {
+      "id": "who_changed_spec",
+      "topic": "specification",
+      "question": "Which signed authority, revision history, and review process changed the 2020 OS-neutral technical study into a Chrome OS requirement?",
+      "observation_ids": [
+        "may2020_instruction",
+        "ibam_technical_role",
+        "director_no_review",
+        "jurist_reuse"
+      ],
+      "missing_original_records": [
+        "Full signed 2020 original study and later review/redlines",
+        "Appointment or assignment records for technical consultants and approval signatories",
+        "Meeting minutes and original authenticated electronic communications"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "kpa_vs_minister",
+      "topic": "budget_authority",
+      "question": "Which decision rights belonged to the minister, staff advisers, technical team and designated budget authorities in each procurement?",
+      "observation_ids": [
+        "kpa_budget_roles",
+        "nadiem_defense",
+        "jurist_reuse"
+      ],
+      "missing_original_records": [
+        "Ministry's organizational delegation/Kuasa Pengguna Anggaran instrument",
+        "2020-2022 tender, selection, award and contract approvals",
+        "Mandates of non-civil-service advisers"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "true_utilization",
+      "topic": "implementation",
+      "question": "How many devices were delivered, mapped, actually activated and used for education, per funding stream and school?",
+      "observation_ids": [
+        "delivery_vs_use",
+        "mapped_apbn",
+        "mapped_dak",
+        "usage_followup"
+      ],
+      "missing_original_records": [
+        "School-level device verification records with denominator and sample methodology",
+        "Chrome Device Management telemetry and ownership records",
+        "Independent school audit samples across internet and electricity coverage"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "google_link",
+      "topic": "supplier_influence",
+      "question": "Were procurement choices and corporate investment decisions causally or contractually linked, and what contrary evidence exists?",
+      "observation_ids": [
+        "google_investment_claim",
+        "google_exec_denial",
+        "fiona_messages"
+      ],
+      "missing_original_records": [
+        "Original investment agreements and board minutes",
+        "Authenticated communication records and full witness transcripts",
+        "Procurement selection comparisons with competing technologies"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "regulation_in_time",
+      "topic": "regulation",
+      "question": "Which provisions of Permendikbud 5/2021 applied to particular 2021 DAK funds, and what governed 2020 and other funding streams?",
+      "observation_ids": [
+        "reg_rule_scope",
+        "jurist_reuse"
+      ],
+      "missing_original_records": [
+        "Complete regulation and appendices including validity and amendment trail",
+        "Item-level APBN/DAK funding codes and dates",
+        "2020 purchasing rules and authority instruments"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "court_reasoning",
+      "topic": "appeal_and_trial",
+      "question": "Which legal elements and evidentiary disagreements explain the different trial dispositions and subsequent appellate treatment?",
+      "observation_ids": [
+        "ibam_trial_result",
+        "nadiem_trial_result"
+      ],
+      "missing_original_records": [
+        "Original full signed trial and appellate judgments",
+        "Separate majority/dissent reasoning and evidence exhibits",
+        "Subsequent cassation docket and decisions"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    }
+  ],
+  "access_note": "Official prosecution pages rechecked by Nocturnal GitHub CI on 2026-11-10; all other pages are source locators/indexed text. Original trial PDFs, full ministry PDF scans and BPK statute PDF visual inspection remain incomplete.",
+  "publication_authorized": false
+}
