@@ -17,6 +17,8 @@ INPUT_SCHEMA = "legal_codex.actor_register.v1"
 GRAPH_SCHEMA = "cite_refinery.semantic_graph.v1"
 REL_SCHEMA = "nocturnal_relationship_graph.v1"
 KINDS = {"person", "institution", "organization", "court_case", "document", "position"}
+CASE_TYPES = {"court_case", "investigation_matter"}
+IDENTITY_STATES = {"source_named_unreviewed", "source_initials_unresolved"}
 RELATIONS = {
     "DEFENDANT_IN", "PROSECUTOR_IN", "PRESIDED_OVER", "HEARD_BY",
     "TESTIFIED_IN", "NAMED_IN_RECORD", "SAT_ON_PANEL", "SIGNED_DOCUMENT",
@@ -60,6 +62,8 @@ def _checked(data):
         if (not _url(c.get("source_url")) or not c.get("reference")
                 or not isinstance(c.get("jurisdiction"), str) or not c["jurisdiction"].strip()):
             raise ValueError("case lacks an official source locator and reference")
+        if c.get("case_type", "court_case") not in CASE_TYPES:
+            raise ValueError("case kind must distinguish judicial proceeding from investigation")
         by_case[cid] = c
     by_entity = {}
     for entity in entities:
@@ -77,8 +81,10 @@ def _checked(data):
             raise ValueError("entity name/aliases invalid")
         if not isinstance(refs, list) or not refs or any(not _url(u) for u in refs):
             raise ValueError("entity lacks source locators")
-        if entity.get("identity_status") != "source_named_unreviewed":
+        if entity.get("identity_status") not in IDENTITY_STATES:
             raise ValueError("source-named actors cannot self-certify identity")
+        if entity["identity_status"] == "source_initials_unresolved" and entity["kind"] != "person":
+            raise ValueError("initials-only identity must be a person lead")
         by_entity[ident] = entity
     seen_rel = set()
     for row in observations:
@@ -102,6 +108,10 @@ def _checked(data):
         # separately reviewed source identity crosswalk in a future milestone.
         if by_entity[src]["case_id"] != by_entity[dst]["case_id"] and row["review_state"] == "accepted":
             raise ValueError("cross-case relationship needs reviewed identity crosswalk")
+        if row["review_state"] == "accepted" and any(
+                by_entity[e]["identity_status"] == "source_initials_unresolved"
+                for e in (src, dst)):
+            raise ValueError("unresolved initials may not be accepted as an identified signatory")
         if row["review_state"] == "accepted" and (not row.get("reviewer") or not row.get("reviewed_at")):
             raise ValueError("accepted relationship must have a reviewer")
         key = (src, dst, row["relation"], row["source_url"], row["evidence_ref"], row["observed_at"])
@@ -113,7 +123,8 @@ def _checked(data):
 
 def _identity_candidates(entities):
     """Same display name is an investigative lead, NEVER a merged identity."""
-    people = sorted((e for e in entities.values() if e["kind"] == "person"), key=lambda e: e["id"])
+    people = sorted((e for e in entities.values() if e["kind"] == "person" and
+                     e["identity_status"] == "source_named_unreviewed"), key=lambda e: e["id"])
     candidates = []
     for i, a in enumerate(people):
         names_a = {a["name"].casefold().strip(), *(s.casefold().strip() for s in a.get("aliases", []))}
@@ -191,7 +202,8 @@ def build_actor_graph(data: dict, *, analyzer: Callable | None = None) -> dict:
     for c in cases.values():
         nodes.append({
             "key": "case-" + c["id"], "kind": "concept", "layer": "neutral",
-            "statement": "Court case " + c["reference"],
+            "statement": ("Court case " if c.get("case_type", "court_case") == "court_case"
+                          else "Investigation matter ") + c["reference"],
             "source_refs": [c["source_url"]],
             "provenance": {"jurisdiction": c["jurisdiction"], "case_id": c["id"],
                            "publication_authorized": False},
@@ -206,7 +218,7 @@ def build_actor_graph(data: dict, *, analyzer: Callable | None = None) -> dict:
             "source_refs": e["source_refs"],
             "tags": ["identity_unresolved", e["kind"]],
             "provenance": {"case_id": e["case_id"], "source_entity_id": e["id"],
-                           "identity_status": "source_named_unreviewed",
+                           "identity_status": e["identity_status"],
                            "same_name_is_not_same_identity": True,
                            "publication_authorized": False},
         })
