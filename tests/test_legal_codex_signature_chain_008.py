@@ -69,6 +69,28 @@ class SignatureChainTests(unittest.TestCase):
         self.assertTrue(all(not item["court_original_confirmed"]
                             for item in entries["c_replacement_reason"]["accounts"]))
 
+    def test_live_captures_verify_pages_not_signed_documents(self):
+        sources = {x["id"]: x for x in self.data["sources"]}
+        expected = {"s_pati_response", "s_witness_detik", "s_trial_hukumonline"}
+        self.assertEqual({k for k, v in sources.items() if v.get("capture_receipt")}, expected)
+        for key in expected:
+            receipt = sources[key]["capture_receipt"]
+            self.assertEqual(receipt["workflow_run"], 42834469206)
+            self.assertEqual(len(receipt["raw_sha256"]), 64)
+            self.assertEqual(len(receipt["extracted_sha256"]), 64)
+            self.assertFalse(receipt["original_2020_instrument_verified"])
+            self.assertFalse(sources[key]["original_legal_document_archived"])
+
+    def test_spoofed_capture_or_truth_upgrade_rejected(self):
+        source = next(x for x in self.data["sources"] if x["id"] == "s_pati_response")
+        source["capture_receipt"]["raw_sha256"] = "fabricated"
+        with self.assertRaisesRegex(ValueError, "capture receipt"):
+            validate(self.data)
+        source["capture_receipt"]["raw_sha256"] = "a" * 64
+        source["capture_receipt"]["original_2020_instrument_verified"] = True
+        with self.assertRaisesRegex(ValueError, "overclaimed"):
+            validate(self.data)
+
     def test_fake_named_signatory_rejected(self):
         self.docs()["d_wahyu_replacement"]["actual_signatory"] = "Wahyu Haryadi"
         with self.assertRaisesRegex(ValueError, "not verified"):
