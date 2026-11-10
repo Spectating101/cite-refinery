@@ -119,8 +119,13 @@ Draft releases and prereleases are excluded unless explicitly permitted.
 Rate-limit failures and malformed API payloads abort without replacing the
 previous snapshot. A repository rename or redirect requires explicit review.
 Latest 10 releases is *not* exhaustive; high-frequency sources may need
-a future pagination/cursor adapter. No polling is activated on Optiplex
-by merely merging these files.
+a future pagination/cursor adapter. When GitHub's ten-release response exceeds
+the existing 512 KiB response bound because it contains long release bodies,
+the collector retries up to ten one-release pages, preserving the same
+per-response byte limit. Any failed, malformed or repeating page aborts the
+entire snapshot without writing a partial result. The extra API calls
+may require a trusted GitHub token for rate limits; no token is persisted.
+No polling is activated on Optiplex by merely merging these files.
 
 ## Run repeatedly and consume through MCP
 

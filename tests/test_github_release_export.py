@@ -104,6 +104,46 @@ class GithubReleaseExportTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             load_sources(self.sources, project_ids={"refinery"})
 
+    def test_oversized_latest_ten_retries_bounded_pages_without_body(self):
+        urls = []
+        one = self.response()[0]
+        two = dict(one, id=103, tag_name="v2.0.1", name="Next update")
+        def fake(url, _token):
+            urls.append(url)
+            if url.endswith("?per_page=10"):
+                raise ValueError("GitHub release API result exceeds 512 KiB")
+            if url.endswith("page=1"):
+                return [one]
+            if url.endswith("page=2"):
+                return [two]
+            if url.endswith("page=3"):
+                return []
+            raise AssertionError("Unexpected page: " + url)
+        result = collect_releases(self.sources, self.registry, fetcher=fake)
+        self.assertEqual({x["tag"] for x in result["records"]}, {"v2.0.0", "v2.0.1"})
+        self.assertEqual(len(urls), 4)
+        self.assertTrue(all("page=" in url for url in urls[1:]))
+        self.assertTrue(all("body" not in x for x in result["records"]))
+
+    def test_oversized_fallback_rejects_repeated_pages_and_preserves_checkpoint(self):
+        self.write(self.snapshot, {"schema": "prior-snapshot", "records": []})
+        one = self.response()[0]
+        def fake(url, _token):
+            if url.endswith("?per_page=10"):
+                raise ValueError("GitHub release API result exceeds 512 KiB")
+            return [one]  # Malicious/broken server repeats page 1 forever
+        with self.assertRaisesRegex(ValueError, "repeated paginated release"):
+            collect_releases(self.sources, self.registry, fetcher=fake)
+        self.assertEqual(json.loads(self.snapshot.read_text())["schema"], "prior-snapshot")
+
+    def test_oversized_fallback_refuses_invalid_paginated_shape(self):
+        def fake(url, _token):
+            if url.endswith("?per_page=10"):
+                raise ValueError("GitHub release API result exceeds 512 KiB")
+            return self.response()  # page-size=1 but returns three rows
+        with self.assertRaisesRegex(ValueError, "invalid bounded single-release page"):
+            collect_releases(self.sources, self.registry, fetcher=fake)
+
     def test_prerelease_requires_explicit_consent(self):
         source = json.loads(self.sources.read_text())
         source["repositories"][0]["include_prereleases"] = True
