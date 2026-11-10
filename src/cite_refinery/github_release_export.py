@@ -92,6 +92,40 @@ def _fetch_json(url: str, token: str | None) -> Any:
         return json.loads(body)
 
 
+
+def _get_bounded_releases(repo: str, request: Callable[[str, str | None], Any],
+                          token: str | None) -> list[dict[str, Any]]:
+    """Keep 512 KiB response caps while accommodating release-note-heavy repos.
+
+    The public GitHub REST endpoint includes release bodies even though our
+    exported data needs only metadata. If its latest-ten response is oversized,
+    fetch up to ten one-release pages without removing the payload limit.
+    A malformed/failed page aborts the entire snapshot (no partial acceptance).
+    """
+    endpoint = f"https://api.github.com/repos/{repo}/releases"
+    try:
+        rows = request(f"{endpoint}?per_page=10", token)
+    except ValueError as exc:
+        if str(exc) != "GitHub release API result exceeds 512 KiB":
+            raise
+        rows = []
+        seen: set[int] = set()
+        for page in range(1, 11):
+            batch = request(f"{endpoint}?per_page=1&page={page}", token)
+            if not isinstance(batch, list) or len(batch) > 1:
+                raise ValueError("invalid bounded single-release page")
+            if not batch:
+                break
+            release_id = batch[0].get("id") if isinstance(batch[0], dict) else None
+            if (not isinstance(release_id, int) or isinstance(release_id, bool)
+                    or release_id in seen):
+                raise ValueError("invalid or repeated paginated release ID")
+            seen.add(release_id)
+            rows.extend(batch)
+    if not isinstance(rows, list) or len(rows) > 10:
+        raise ValueError("upstream GitHub release response was not a bounded list")
+    return rows
+
 def collect_releases(
     sources_path: Path, registry_path: Path,
     *, fetcher: Callable[[str, str | None], Any] | None = None,
@@ -104,10 +138,7 @@ def collect_releases(
     records = []
     for source in sources:
         repo = source["repository"]
-        url = f"https://api.github.com/repos/{repo}/releases?per_page=10"
-        rows = request(url, token)
-        if not isinstance(rows, list) or len(rows) > 10:
-            raise ValueError("upstream GitHub release response was not a bounded list")
+        rows = _get_bounded_releases(repo, request, token)
         for release in rows:
             if not isinstance(release, dict) or release.get("draft") is not False:
                 continue
