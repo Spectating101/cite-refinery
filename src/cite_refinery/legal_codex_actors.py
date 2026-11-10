@@ -19,7 +19,7 @@ REL_SCHEMA = "nocturnal_relationship_graph.v1"
 KINDS = {"person", "institution", "organization", "court_case", "document", "position"}
 RELATIONS = {
     "DEFENDANT_IN", "PROSECUTOR_IN", "PRESIDED_OVER", "HEARD_BY",
-    "TESTIFIED_IN", "NAMED_IN_RECORD", "SIGNED_DOCUMENT",
+    "TESTIFIED_IN", "NAMED_IN_RECORD", "SAT_ON_PANEL", "SIGNED_DOCUMENT",
     "APPOINTED_TO", "CONTRACTED_WITH", "REVIEWED_BY", "REPORTED_TO",
 }
 _ID = re.compile(r"[a-z][a-z0-9_-]{2,63}\Z")
@@ -197,7 +197,9 @@ def build_actor_graph(data: dict, *, analyzer: Callable | None = None) -> dict:
         })
     for e in entities.values():
         nodes.append({
-            "key": "actor-" + e["id"], "kind": "person" if e["kind"] == "person" else "institution",
+            "key": "actor-" + e["id"], "kind": ("person" if e["kind"] == "person" else
+                     "concept" if e["kind"] in {"court_case", "position"} else
+                     "source" if e["kind"] == "document" else "institution"),
             "layer": "neutral", "statement": e["name"],
             "aliases": e.get("aliases", []),
             "source_refs": e["source_refs"],
