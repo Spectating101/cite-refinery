@@ -75,6 +75,28 @@ class ProcurementAuthorityTests(unittest.TestCase):
         self.assertEqual(result["version_uncertainty"], "no_matching_candidate_rule")
         self.assertIsNone(result["actual_authority_holder"])
 
+    def test_state_loss_not_inferred_from_hps(self):
+        result = evaluate(self.bundle)
+        for decision in result["decisions"]:
+            self.assertIsNone(decision["estimated_state_loss"])
+            self.assertTrue(decision["hps_is_not_a_state_loss_estimator"])
+            self.assertIn("26(6)", decision["loss_rule_reference"])
+
+    def test_injected_fiscal_loss_claim_fails_closed(self):
+        self.bundle["decision_questions"][0]["estimated_state_loss"] = 999999
+        with self.assertRaisesRegex(ValueError, "calculated fiscal loss"):
+            validate(self.bundle)
+
+    def test_spoofed_statutory_source_url_rejected(self):
+        self.bundle["legal_sources"][0]["url"] = "https://example.com/pretend-official.pdf"
+        with self.assertRaisesRegex(ValueError, "statutory URL/date"):
+            validate(self.bundle)
+
+    def test_spoofed_amendment_dates_rejected(self):
+        self.bundle["legal_sources"][1]["effective_from"] = "2019-01-01"
+        with self.assertRaisesRegex(ValueError, "statutory URL/date"):
+            validate(self.bundle)
+
     def test_fabricated_statute_capture_rejected(self):
         self.bundle["legal_sources"][0]["original_bytes_captured"] = True
         with self.assertRaisesRegex(ValueError, "original source capture"):
