@@ -57,7 +57,8 @@ def _checked(data):
         cid = c.get("id")
         if not isinstance(cid, str) or not _ID.fullmatch(cid) or cid in by_case:
             raise ValueError("invalid or duplicate case identifier")
-        if not _url(c.get("source_url")) or not c.get("reference"):
+        if (not _url(c.get("source_url")) or not c.get("reference")
+                or not isinstance(c.get("jurisdiction"), str) or not c["jurisdiction"].strip()):
             raise ValueError("case lacks an official source locator and reference")
         by_case[cid] = c
     by_entity = {}
@@ -192,7 +193,7 @@ def build_actor_graph(data: dict, *, analyzer: Callable | None = None) -> dict:
             "key": "case-" + c["id"], "kind": "concept", "layer": "neutral",
             "statement": "Court case " + c["reference"],
             "source_refs": [c["source_url"]],
-            "provenance": {"jurisdiction": "Indonesia", "case_id": c["id"],
+            "provenance": {"jurisdiction": c["jurisdiction"], "case_id": c["id"],
                            "publication_authorized": False},
         })
     for e in entities.values():
