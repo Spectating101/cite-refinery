@@ -64,6 +64,17 @@ class ProcurementAuthorityTests(unittest.TestCase):
         self.assertNotIn("r21_ppk_spec",
                          [x["role_rule_id"] for x in old["possible_statutory_roles"]])
 
+    def test_2025_second_amendment_blocks_unmodeled_2026_duties(self):
+        copy = dict(self.bundle["decision_questions"][0])
+        copy["id"] = "q_2026_spec"
+        copy["event_date"] = "2026-06-15"
+        copy["event_date_precision"] = "day"
+        self.bundle["decision_questions"].append(copy)
+        result = self.by_id(evaluate(self.bundle))["q_2026_spec"]
+        self.assertEqual(result["possible_statutory_roles"], [])
+        self.assertEqual(result["version_uncertainty"], "no_matching_candidate_rule")
+        self.assertIsNone(result["actual_authority_holder"])
+
     def test_fabricated_statute_capture_rejected(self):
         self.bundle["legal_sources"][0]["original_bytes_captured"] = True
         with self.assertRaisesRegex(ValueError, "original source capture"):
