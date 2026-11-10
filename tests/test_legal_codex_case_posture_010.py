@@ -22,6 +22,8 @@ class CasePostureTests(unittest.TestCase):
         self.assertEqual(result["official_trial_case_pages_indexed"], 2)
         self.assertEqual(result["official_appeal_index_entries"], 2)
         self.assertEqual(result["original_court_pdf_count"], 0)
+        self.assertEqual(result["source_page_captures_rechecked"], 2)
+        self.assertTrue(result["source_page_capture_does_not_verify_judgment"])
         self.assertEqual(result["certified_finality_count"], 0)
         stages = {x["id"]: x["posture"] for x in result["case_trajectories"]}
         self.assertEqual(stages["case_nadiem"], "cassation_reported_pending_official_verification")
@@ -31,6 +33,18 @@ class CasePostureTests(unittest.TestCase):
     def test_trial_official_page_cannot_be_swapped_between_people(self):
         self.case("case_nadiem")["events"][0]["source_id"] = "s_ibam_trial_official"
         with self.assertRaisesRegex(ValueError, "trial directory metadata mismatch"):
+            validate(self.data)
+
+    def test_spoofed_page_receipt_rejected(self):
+        rec = next(s for s in self.data["sources"] if s["id"] == "s_nadiem_cassation")["capture_receipt"]
+        rec["raw_sha256"] = "forged"
+        with self.assertRaisesRegex(ValueError, "capture receipt"):
+            validate(self.data)
+
+    def test_captured_article_does_not_become_original_judgment(self):
+        rec = next(s for s in self.data["sources"] if s["id"] == "s_academic_examination")["capture_receipt"]
+        rec["original_judgment_verified"] = True
+        with self.assertRaisesRegex(ValueError, "capture receipt"):
             validate(self.data)
 
     def test_reported_finality_is_not_certified(self):
