@@ -19,6 +19,7 @@ class CasePostureTests(unittest.TestCase):
         result = evaluate(self.data)
         self.assertEqual(result["case_count"], 3)
         self.assertEqual(result["event_count"], 7)
+        self.assertEqual(result["official_trial_case_pages_indexed"], 2)
         self.assertEqual(result["official_appeal_index_entries"], 2)
         self.assertEqual(result["original_court_pdf_count"], 0)
         self.assertEqual(result["certified_finality_count"], 0)
@@ -26,6 +27,11 @@ class CasePostureTests(unittest.TestCase):
         self.assertEqual(stages["case_nadiem"], "cassation_reported_pending_official_verification")
         self.assertEqual(stages["case_sri"], "finality_reported_without_official_certificate")
         self.assertEqual(stages["case_ibam"], "appeal_judgment_indexed_no_cassation_status_established")
+
+    def test_trial_official_page_cannot_be_swapped_between_people(self):
+        self.case("case_nadiem")["events"][0]["source_id"] = "s_ibam_trial_official"
+        with self.assertRaisesRegex(ValueError, "trial directory metadata mismatch"):
+            validate(self.data)
 
     def test_reported_finality_is_not_certified(self):
         self.case("case_sri")["finality_certificate_verified"] = True
