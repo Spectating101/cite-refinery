@@ -103,3 +103,51 @@ PYTHONPATH=src python -m cite_refinery.legal_codex_actors \
 ### Next hard acceptance gate
 
 Acquire and revalidate the actual source documents through Nocturnal's capture/case-reconstruction workflows, review the source-quoted case roles, and separately resolve cross-case identity and dates of authority before mapping procurement choices. Do not treat a lawyer's or investigator's allegation as a sourced direct-record relationship; attach defense and appeal material before any substantive judicial or institutional conclusion.
+
+
+## Procurement investigation — source-first authority and utilization audit
+
+Original-source reconstruction is implemented in \`legal_codex_authority.py\` and
+\`examples/legal_codex_chromebook_source_audit_v1.json\`. At the current revision
+there are **9 source records, 14 named actors or institutions, 18 sourced
+observations and 7 unresolved questions**, ingested as neutral, candidate-only
+\`REPORTS\` graph edges.
+
+The December 2025 and January 2026 prosecutor pages, and the December 2023
+ministry letter, have been **fetched through Nocturnal's real bounded network
+source capture and raw/text SHA checks**, not just JSON fixture tests. See the
+private Nocturnal PR #115, the \`legal-codex-official-source-capture\` CI
+workflow and its ephemeral private (7-day retention) artifacts. These live
+captures are not independent assessments of source truth. The February 2026
+prosecutor report and AP witness account remain source locators only.
+
+Important distinctions:
+
+- The prosecution's account of 2020 technical-review revisions and subsequent
+  reuse by directorates is explicitly attributed, not certified as a finding.
+- Budget delegation to named KPA officials and technical influence by advisers
+  are distinct; original appointment, sign-off, technical review/redlines and
+  contract authorizations are still missing.
+- The ministry's Dec 2023 98.82% APBN and 61.27% DAK figures concern **inventory
+  mapping** and cannot be represented as device utilization percentages.
+- An original **August 2020 junior-secondary education ministry guide**
+  (\`https://repositori.kemendikdasmen.go.id/19935/1/Pemanfaatan%20Peralatan%20TIK%20Bantuan%202020.pdf\`)
+  identifies **Drs. Mulyatsyah, M.M.** as director in its foreword and discusses
+  online and offline Chromebook teaching uses. The recorded source date is
+  month precision, not a manufactured exact day. This establishes contemporaneous
+  ministry documentation, **not** that every school could configure/use the
+  devices or that the procurement complied with the law.
+- Permendikbud 5/2021's recorded effective date is 2021-02-11; its DAK
+  Fisik FY2021 scope does not automatically govern 2020 purchases or every
+  APBN-funded activity. The BPK page returned HTTP 403 to Nocturnal; its
+  original text remains unarchived in this investigation.
+- Prosecution, defense, independent witness accounts and trial-index outcomes
+  stay in different epistemic lanes. Full court judgments, trial exhibits,
+  ministerial authority delegations, procurement records and independent
+  on-site usage measurements must be acquired before conclusions about
+  institutional breach or any individual's culpability.
+
+The original 2020 ministry manual is also being attempted via Nocturnal's
+bounded PDF capture in the private CI branch; a locator/indexed PDF is not
+equal to a successfully archived one. Do not substitute offline **capability**
+for independent evidence of offline **use** in affected schools.
