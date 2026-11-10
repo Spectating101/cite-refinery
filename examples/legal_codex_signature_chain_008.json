@@ -7,7 +7,17 @@
       "class": "reported_judicial_reasoning",
       "published_at": "2026-04-30",
       "original_legal_document_archived": false,
-      "date_basis": "article_publication_day"
+      "date_basis": "article_publication_day",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42834469206,
+        "capture_id": "cap-1a52f9e464b7ab3beb20b56d",
+        "raw_sha256": "390107533446a8297c68bd4b54a0518870e013817409e977e3205df16b5f7bb9",
+        "extracted_sha256": "917deca6cf6997a0b54dbe4062eaa16f3321c88cb73905f4ccb593bf0b62755f",
+        "captured_at": "2026-11-10T14:29:36Z",
+        "source_truth_verified": false,
+        "original_2020_instrument_verified": false
+      }
     },
     {
       "id": "s_witness_detik",
@@ -15,7 +25,17 @@
       "class": "reported_witness_testimony",
       "published_at": "2026-02-03",
       "original_legal_document_archived": false,
-      "date_basis": "article_publication_day"
+      "date_basis": "article_publication_day",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42834469206,
+        "capture_id": "cap-85aad45a0b8b79679baff16f",
+        "raw_sha256": "293a9fcbb6134206c9439f404dfe0d716386a3e702e519268dc369f9debbed19",
+        "extracted_sha256": "4294f64b0da7ca9e1a9b26d98f786a61d43c238cd3198950a83a3458a01d3c43",
+        "captured_at": "2026-11-10T14:29:34Z",
+        "source_truth_verified": false,
+        "original_2020_instrument_verified": false
+      }
     },
     {
       "id": "s_prosecutor_july",
@@ -31,7 +51,17 @@
       "class": "official_administrative_response",
       "published_at": "2021-03-06",
       "original_legal_document_archived": false,
-      "date_basis": "government_response_day"
+      "date_basis": "government_response_day",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42834469206,
+        "capture_id": "cap-90a8aaccf59bc957354ee019",
+        "raw_sha256": "22b58020ed4134fa8d01e1e8cd0948caf141a3e7b3c355214c4489e3f88ce4ee",
+        "extracted_sha256": "eee2b726471c0208dc3cf3a63d7f0a6a656208cc3ebf4ff6db0f861cf60f4070",
+        "captured_at": "2026-11-10T14:29:32Z",
+        "source_truth_verified": false,
+        "original_2020_instrument_verified": false
+      }
     },
     {
       "id": "s_phbs_copy",
