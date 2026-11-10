@@ -38,7 +38,7 @@ _FACT_STANCES = {
     "third_party_transcription",
 }
 _ID = re.compile(r"[a-z][a-z0-9_]{2,79}\Z")
-_FULL = re.compile(r"[A-Za-z0-9.-]+(?:/[A-Za-z0-9.-]+){2,}\Z")
+_FULL = re.compile(r"[A-Za-z0-9.-]+(?:/[A-Za-z0-9.-]+(?: [A-Za-z0-9.-]+)?){2,}\Z")
 
 
 def _index(items, label):
