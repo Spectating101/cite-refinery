@@ -35,7 +35,15 @@
       "source_date": "2022-07-28",
       "source_claims_fully_adjudicated": false,
       "original_document_archive_status": "not_archived_in_this_repo",
-      "title": "LKPP Circular 9/2022, 2022 DAK regional Chromebook consolidated e-catalog, annex page 7"
+      "title": "LKPP Circular 9/2022, 2022 DAK regional Chromebook consolidated e-catalog, annex page 7",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_capture",
+        "workflow_run": 42830489546,
+        "capture_id": "cap-54f9da906e661dabb4de8394",
+        "raw_sha256": "9292cedc942c4da2c0b863c6a9365f2583ce0a83672ec825b9275ccdb60c587c",
+        "text_sha256": "c6359939cb6278d7331928bd270a11d72315995e4af0ea14a293899fab0a3db6",
+        "captured_at": "2026-11-10T14:06:11Z"
+      }
     },
     {
       "id": "lkpp_vendor_2022",
@@ -44,7 +52,15 @@
       "source_date": "2022-01-26",
       "source_claims_fully_adjudicated": false,
       "original_document_archive_status": "not_archived_in_this_repo",
-      "title": "LKPP Decree 6/2022 appointed Bhinneka Mentaridimensi as digital shop partner; not contract award"
+      "title": "LKPP Decree 6/2022 appointed Bhinneka Mentaridimensi as digital shop partner; not contract award",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_capture",
+        "workflow_run": 42830489546,
+        "capture_id": "cap-a990323bc650f8bdf46497cb",
+        "raw_sha256": "7e5edb58cdda39638b5bc68628a61b8b4f3a493617e60d9c938e24c0ff557f7b",
+        "text_sha256": "dc2e0c42e7dc2396357b58d64f2cfd40b4ccddc4b007d62836045d9dac46826e",
+        "captured_at": "2026-11-10T14:05:38Z"
+      }
     }
   ],
   "channels": [
@@ -447,5 +463,5 @@
   "accepted_signatures": [],
   "verified_contracts": [],
   "state_loss_estimate": null,
-  "custody_note": "Sources are public locators and extracted/indexed text, NOT direct Nocturnal original-capture receipts. Event dates and amounts are attributed and not independently accepted as transactions. Do not assert a named PPK's signing authority from a media or prosecution statement."
+  "custody_note": "Two LKPP documents have private Nocturnal live byte-and-text recheck receipts, CI run 42830489546; source bytes remain in a time-limited private workflow artifact rather than here. Ministry 2020 news and Jan 2022 annual PDF are indexed source leads only (capture attempts timed out). The 2025 prosecutor original and a mirrored page returned HTTP 404 in Nocturnal; these are not archived. No assertions about criminal culpability or financial loss are established."
 }
