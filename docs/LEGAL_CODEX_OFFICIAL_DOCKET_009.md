@@ -15,6 +15,8 @@ The 148 official summary explicitly says its documentary/electronic evidence was
 
 A search-indexed court record is stronger provenance for *case identity, case date and document availability* than Scribd. But indexing does **not** mean the PDF was downloaded and vetted. Access to the official directory may be robot-restricted; do not substitute a third-party mirror while marking it as official custody.
 
+**Live acquisition outcome:** Nocturnal read-only CI run [42845627132](https://github.com/Spectating101/nocturnal-oversight/actions/runs/42845627132) passed its overall capture workflow but received **HTTP 403** for both official 147/148 directory URLs. The attempts are explicitly failed, not captured; their HTML/PDF bytes have not been archived. The workflow's other captured sources do not establish these court originals. Do not evade access controls; request records via official court PPID or approved public download channels.
+
 ## Conflicting PPK replacement accounts — precise unresolved questions
 
 1. The prosecutor's 2025 account attributes the 30 June 2020 replacement to refusal/obstruction of a Chrome OS purchase instruction.
