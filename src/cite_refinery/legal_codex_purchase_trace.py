@@ -100,6 +100,16 @@ def validate(data):
             raise ValueError(f"{key}: may not certify source truth")
         if s.get("original_document_archive_status") != "not_archived_in_this_repo":
             raise ValueError(f"{key}: cannot imply original full-record custody")
+        capture = s.get("capture_receipt")
+        if capture is not None:
+            if (capture.get("class") != "nocturnal_private_ci_capture"
+                    or type(capture.get("workflow_run")) is not int
+                    or not re.fullmatch(r"cap-[a-f0-9]{24}", str(capture.get("capture_id", "")))
+                    or not re.fullmatch(r"[a-f0-9]{64}", str(capture.get("raw_sha256", "")))
+                    or not re.fullmatch(r"[a-f0-9]{64}", str(capture.get("text_sha256", "")))
+                    or not isinstance(capture.get("captured_at"), str)):
+                raise ValueError(f"{key}: invalid private Nocturnal capture receipt")
+
     for key, c in channels.items():
         if c.get("type") not in CHANNELS or not isinstance(c.get("description"), str):
             raise ValueError(f"{key}: invalid purchase channel")
