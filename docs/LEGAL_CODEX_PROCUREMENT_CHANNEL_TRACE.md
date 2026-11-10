@@ -148,3 +148,53 @@ loss estimation, and expert adjudication of contradictory legal arguments.
 The separate GitHub full test workflows may still fail on unrelated optional
 dependencies; the dedicated Legal Codex and Nocturnal cross-repository CI
 gates must pass before either PR is considered merge-ready.
+
+
+## Milestone 008 — signed PPK appointment and purchase order hunt
+
+Detailed **reported instrument identifiers**, prosecution/court disagreement, and unverified
+judicial exhibit inventory:
+\`examples/legal_codex_signature_chain_008.json\`, analyzed by
+\`src/cite_refinery/legal_codex_signature_chain.py\`.
+
+The actionable official-access requests are prepared, **NOT SUBMITTED**, in
+\`docs/LEGAL_CODEX_ORIGINAL_RECORD_REQUESTS_008.md\`. They specify exactly what
+is missing from ministry PPID, LKPP/SiRUP/e-catalog and Jakarta court: a complete
+signed 2020 KPA/PPK decision (including the June 30 change), original full e-order
+IDs, corresponding SD/SMP contract signatories, and the full 149 trial judgment.
+These require the legitimate applicant's government-form identity information
+and permitted disclosure procedures; no user identity details were supplied.
+
+The reported instrument leads must remain distinct:
+- "nomor 4" in Bambang's Feb 2026 reported resignation testimony is incomplete.
+- \`15004/C3/KPA/VI/KP/2020\` refers to a **June 8** SD financial appointment
+  decree in a third-party 2020 PHBS school-aid guide, not the June 30
+  Chromebook PPK replacement.
+- \`26721/C3/KPA/IX/TIK/2020\` is an October 2020 KPA assistance guideline
+  cited by a March 2021 **official Pati** administrative response, which says
+  schools made their own SIPLah purchase and payment decisions.
+- \`3535/C4/LK/2020\` and \`3945/C4/LK/2020\` are reported Nov 2020 **SMP**
+  purchase-order addenda in a third-party court-document copy, not the original
+  June 30 SD e-order.
+- \`149/Pid.Sus-TPK/2025/PN Jkt.Pst\` is the separately reported trial
+  docket for Sri Wahyuningsih; its full original signed judgment and itemized
+  exhibit set have not yet been obtained.
+
+Nocturnal private CI run \`42834469206\` successfully captured and verified
+original **webpage bytes** for the official Pati response, Detik courtroom
+report and Hukumonline legal commentary (all three source-specific SHA receipts
+are retained in the fixture). This is verifiable provenance of what the
+**publishers** printed—not of the underlying appointment instrument, witness
+testimony's truth, signed court judgment, or purchase authorization.
+
+The account of why the June 30 replacement happened is contested. Prosecution
+accounts attribute it to failure to carry out Chromebook-related purchasing
+instructions; Hukumonline's report of the Sri trial panel describes a voluntary
+Bambang resignation, replacement with certified Wahyu Haryadi during deadline
+pressure, and criticism of the absence of a documented handover. Preserve
+these as **different attributed accounts** pending original official judgment
+and personnel-file records.
+
+Tests assert the graph cannot promote a reported document reference into an
+accepted signer, a reported judicial narrative into primary signed evidence,
+or either account into an accusation of culpability.
