@@ -16,9 +16,9 @@
       "url": "https://www.kemhan.go.id/itjen/wp-content/uploads/2022/07/Perpres-Nomor-12-Tahun-2021.pdf",
       "jurisdiction": "Indonesia",
       "effective_from": "2021-02-02",
-      "effective_until": null,
+      "effective_until": "2025-04-29",
       "original_bytes_captured": false,
-      "title": "Perpres 12/2021 amending Perpres 16/2018; pre-2025 portion only",
+      "title": "Perpres 12/2021 amended procurement provisions for the 2021-2025 interval before Perpres 46/2025",
       "source_kind": "official_government_pdf"
     }
   ],
@@ -197,5 +197,5 @@
     }
   ],
   "person_assignments": [],
-  "interpretation_limit": "Role matrix is a date-specific source of possible administrative duties, not a determination of any person's role, case validity, fiscal loss or culpability."
+  "interpretation_limit": "Role matrix is a date-specific source of possible administrative duties, not a determination of any person's role, case validity, fiscal loss or culpability. A second amendment, Perpres 46/2025, became effective 2025-04-30: this two-version matrix deliberately abstains for later decisions; pre-existing contracts may have transitional treatment."
 }
