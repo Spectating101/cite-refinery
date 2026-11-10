@@ -20,6 +20,9 @@ _SOURCE_CLASSES = {
     "reported_judicial_reasoning", "prosecution_allegation",
     "third_party_court_transcription", "third_party_government_document_copy",
 }
+_DATE_BASES = {"article_publication_day", "government_statement_day", "government_response_day",
+              "underlying_document_day_not_upload_date", "article_publication_month_only",
+              "underlying_judgment_day_not_upload_date"}
 _DOC_KINDS = {
     "kpa_appointment_decree", "ppk_replacement_decree", "resignation_letter",
     "kpa_procurement_guideline", "smp_purchase_addendum",
@@ -82,7 +85,13 @@ def validate(bundle):
         if (s.get("class") not in _SOURCE_CLASSES or not _url(s.get("url"))
                 or s.get("original_legal_document_archived") is not False):
             raise ValueError(f"{key}: invalid source provenance")
-        _date(s.get("published_at"))
+        if s.get("date_basis") not in _DATE_BASES:
+            raise ValueError(f"{key}: missing date provenance basis")
+        if s["date_basis"] == "article_publication_month_only":
+            if not re.fullmatch(r"\d{4}-\d{2}", s.get("published_at", "")):
+                raise ValueError(f"{key}: month-only date must not invent a day")
+        else:
+            _date(s.get("published_at"))
     for key, doc in docs.items():
         if doc.get("document_kind") not in _DOC_KINDS or doc.get("channel") not in _CHANNELS:
             raise ValueError(f"{key}: invalid legal instrument type or procurement channel")
