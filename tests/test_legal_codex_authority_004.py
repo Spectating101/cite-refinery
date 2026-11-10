@@ -30,8 +30,8 @@ class ChromebookAuthorityTests(unittest.TestCase):
         result = evaluate(self.fixture)
         self.assertEqual(result["source_count"], 11)
         self.assertEqual(result["actor_count"], 14)
-        self.assertEqual(result["observation_count"], 22)
-        self.assertEqual(len(result["disputes"]), 8)
+        self.assertEqual(result["observation_count"], 24)
+        self.assertEqual(len(result["disputes"]), 9)
         self.assertFalse(result["personal_guilt_assessed_by_system"])
         self.assertFalse(result["actor_decision_authority_verified"])
         self.assertFalse(result["publication_authorized"])
@@ -138,6 +138,16 @@ class ChromebookAuthorityTests(unittest.TestCase):
         self.assertEqual(new["actor_ids"], [])
         self.assertIn("not automatically applicable", new["statement"])
 
+    def test_trial_exhibit_reuse_cannot_be_construed_as_collusion(self):
+        result = evaluate(self.fixture)
+        obs = {x["id"]: x for x in result["timeline"]}
+        self.assertEqual(obs["ibam_exhibit_reuse"]["stance"], "court_disposition_as_indexed")
+        self.assertEqual(obs["nadiem_exhibit_reuse"]["stance"], "court_disposition_as_indexed")
+        self.assertFalse(obs["ibam_exhibit_reuse"]["factual_truth_established"])
+        self.assertFalse(obs["nadiem_exhibit_reuse"]["factual_truth_established"])
+        self.assertFalse(result["personal_guilt_assessed_by_system"])
+        self.assertIn("judicial_exhibit_lineage", [x["issue_id"] for x in result["disputes"]])
+
     def test_source_first_graph_imports_without_asserting_guilt(self):
         packet = semantic_packet(self.fixture)
         self.assertTrue(all(n["layer"] == "neutral" for n in packet["nodes"]))
@@ -152,7 +162,7 @@ class ChromebookAuthorityTests(unittest.TestCase):
             preview = graph.preview_packet(project.id, packet)
             receipt = graph.ingest_packet(
                 project.id, packet, expected_state_digest=preview["state_digest"])
-            self.assertEqual(len(receipt["edge_ids"]), 22)
+            self.assertEqual(len(receipt["edge_ids"]), 24)
             stored = app.store.load()
             self.assertTrue(all(stored["semantic_edges"][eid]["status"] == "candidate"
                                 for eid in receipt["edge_ids"]))
