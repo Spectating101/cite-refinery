@@ -1,0 +1,253 @@
+{
+  "schema": "legal_codex.actor_register.v1",
+  "cases": [
+    {
+      "id": "nadiem_147",
+      "reference": "147/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+    },
+    {
+      "id": "ibam_148",
+      "reference": "148/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html"
+    }
+  ],
+  "entities": [
+    {
+      "id": "nadiem_147_defendant",
+      "case_id": "nadiem_147",
+      "kind": "person",
+      "name": "Nadiem Anwar Makarim",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "nadiem_147_case",
+      "case_id": "nadiem_147",
+      "kind": "court_case",
+      "name": "147/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "nadiem_147_prosecutor",
+      "case_id": "nadiem_147",
+      "kind": "person",
+      "name": "Muhammad Fadil Paramajeng",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "nadiem_147_chair",
+      "case_id": "nadiem_147",
+      "kind": "person",
+      "name": "Purwanto S. Abdullah",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "nadiem_147_panel_mardi",
+      "case_id": "nadiem_147",
+      "kind": "person",
+      "name": "Mardiantos",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "nadiem_147_panel_andi",
+      "case_id": "nadiem_147",
+      "kind": "person",
+      "name": "Andi Saputra",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ibam_148_defendant",
+      "case_id": "ibam_148",
+      "kind": "person",
+      "name": "Ibrahim Arief",
+      "aliases": [
+        "Ibam"
+      ],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ibam_148_case",
+      "case_id": "ibam_148",
+      "kind": "court_case",
+      "name": "148/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ibam_148_prosecutor",
+      "case_id": "ibam_148",
+      "kind": "person",
+      "name": "Muhammad Fadil Paramajeng",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ibam_148_chair",
+      "case_id": "ibam_148",
+      "kind": "person",
+      "name": "Purwanto S. Abdullah",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ibam_148_panel_mardi",
+      "case_id": "ibam_148",
+      "kind": "person",
+      "name": "Mardiantos",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ibam_148_panel_andi",
+      "case_id": "ibam_148",
+      "kind": "person",
+      "name": "Andi Saputra",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    }
+  ],
+  "relationships": [
+    {
+      "source_entity_id": "nadiem_147_defendant",
+      "target_entity_id": "nadiem_147_case",
+      "relation": "DEFENDANT_IN",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-06-30",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "nadiem_147_prosecutor",
+      "target_entity_id": "nadiem_147_case",
+      "relation": "PROSECUTOR_IN",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-06-30",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "nadiem_147_chair",
+      "target_entity_id": "nadiem_147_case",
+      "relation": "PRESIDED_OVER",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-06-30",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "nadiem_147_panel_mardi",
+      "target_entity_id": "nadiem_147_case",
+      "relation": "SAT_ON_PANEL",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-06-30",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "nadiem_147_panel_andi",
+      "target_entity_id": "nadiem_147_case",
+      "relation": "SAT_ON_PANEL",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-06-30",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "ibam_148_defendant",
+      "target_entity_id": "ibam_148_case",
+      "relation": "DEFENDANT_IN",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-05-12",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "ibam_148_prosecutor",
+      "target_entity_id": "ibam_148_case",
+      "relation": "PROSECUTOR_IN",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-05-12",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "ibam_148_chair",
+      "target_entity_id": "ibam_148_case",
+      "relation": "PRESIDED_OVER",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-05-12",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "ibam_148_panel_mardi",
+      "target_entity_id": "ibam_148_case",
+      "relation": "SAT_ON_PANEL",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-05-12",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "ibam_148_panel_andi",
+      "target_entity_id": "ibam_148_case",
+      "relation": "SAT_ON_PANEL",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "evidence_ref": "official_supreme_court_directory_case_metadata",
+      "observed_at": "2026-05-12",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    }
+  ]
+}
