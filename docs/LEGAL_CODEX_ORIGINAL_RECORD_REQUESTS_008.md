@@ -67,6 +67,30 @@ Saya tidak meminta penetapan ulang tanggung jawab pidana, penafsiran di luar ama
 
 ---
 
+## Request D — pengadilan: status banding/kasasi dan kekuatan hukum tetap (Milestone 010, **not sent**)
+
+**Perihal: Permohonan salinan putusan, status upaya hukum, dan bukti finalitas perkara Chromebook**
+
+Yth. PPID Pengadilan Negeri Jakarta Pusat / Pengadilan Tinggi Jakarta / Mahkamah Agung Republik Indonesia,
+
+Untuk memastikan urutan putusan perkara terkait pengadaan Chromebook tanpa menyamakan putusan tingkat pertama dengan banding atau kasasi, mohon informasi publik atau rujukan ke unduhan resmi untuk:
+
+1. Putusan resmi lengkap `149/Pid.Sus-TPK/2025/PN Jkt.Pst` atas nama Sri Wahyuningsih, tanggal **30 April 2026**, berikut tanggal unggah dan daftar lampiran/barang bukti. Mohon konfirmasi apakah putusan tersebut sudah **berkekuatan hukum tetap (inkracht)** beserta **tanggal dan dasar administratif penetapannya**, atau keterangan bahwa salinan surat keterangan finalitas tidak tersedia untuk publik. Pernyataan media 12 Mei 2026 tentang tidak adanya banding **bukan** pengganti surat resmi.
+2. Putusan tingkat banding `41/PID.SUS-TPK/2026/PT DKI` atas nama Nadiem Anwar Makarim, tanggal **24 September 2026**, termasuk putusan lengkap dan identifikasi barang bukti, tidak hanya ringkasan direktori. Untuk pengajuan kasasi yang **diberitakan** pada **16 Oktober 2026**, mohon nomor register resmi kasasi (jika sudah tersedia), tanggal pengajuan/registrasi, dan status perkara pada saat jawaban.
+3. Putusan tingkat banding `31/PID.SUS-TPK/2026/PT DKI` atas nama Ibrahim Arief alias Ibam, tanggal **31 Agustus 2026**, berikut status upaya hukum selanjutnya. Jangan menganggap putusan ini berkekuatan hukum tetap tanpa konfirmasi.
+4. Untuk tiap perkara, apabila tersedia bagi publik: indeks ekshibit yang mengidentifikasi SK pengangkatan/penggantian PPK Direktorat SD per 30 Juni 2020, surat pengunduran diri, bukti serah terima, surat pesanan SD, dan log e-purchasing yang dirujuk hakim, dengan nomor halaman/identitas lampiran yang dapat ditelusuri. Mohon salinan bagian yang dapat dibuka, dengan penyamaran data pribadi yang dikecualikan.
+
+Jika arsip berada pada pengadilan/instansi lain, mohon nama unit pengampu serta dasar alih kewenangan. Permohonan ini tidak meminta informasi rahasia, analisis ulang tindak pidana, atau penetapan kesalahan baru.
+
+**Record locators, not proof of original judicial-PDF custody:**
+- MA official appellate **index**: https://putusan3.mahkamahagung.go.id/direktori/index/pengadilan/pt-jakarta/kategori/korupsi-1/tahunjenis/putus/tahun/2026.html
+- Nadiem cassation filing **reported by press**: https://news.detik.com/berita/d-8711476/vonis-jadi-9-tahun-penjara-nadiem-makarim-ajukan-kasasi
+- Sri non-appeal status **reported by press**: https://tirto.id/kejagung-tak-banding-terkait-vonis-2-terdakwa-kasus-chromebook-hv3m
+
+**No submission has been made.** Applicant identity, eligibility and lawful access conditions must be supplied and confirmed by the legitimate requester. Do not fabricate a requester or send on their behalf.
+
+---
+
 ## Reconciliation acceptance conditions
 
 A finding can advance from "reported lead" to "appointment verified" **only when** a signed/authorized original copy or equally authenticated official register resolves the full identifier, actor, office scope, effective date and any amendment. A finding can advance to "transaction matched" **only when** the system logs or original signed order resolve a concrete purchase number, buyer, approver, supplier, product, price and timestamp. The **two** records must have a date- and scope-consistent link.
