@@ -74,6 +74,18 @@ def validate(bundle):
                 raise ValueError("invalid official trial directory page")
         elif parsed.hostname == _OFFICIAL_HOST:
             raise ValueError("official court source mislabeled as reporting")
+        receipt = s.get("capture_receipt")
+        if receipt is not None:
+            if (s["class"] not in {"journalistic_case_reporting", "independent_legal_commentary"}
+                    or receipt.get("class") != "nocturnal_private_ci_web_capture"
+                    or type(receipt.get("workflow_run")) is not int
+                    or not re.fullmatch(r"cap-[a-f0-9]{24}", str(receipt.get("capture_id", "")))
+                    or not re.fullmatch(r"[a-f0-9]{64}", str(receipt.get("raw_sha256", "")))
+                    or not re.fullmatch(r"[a-f0-9]{64}", str(receipt.get("extracted_sha256", "")))
+                    or not isinstance(receipt.get("captured_at"), str)
+                    or receipt.get("source_truth_verified") is not False
+                    or receipt.get("original_judgment_verified") is not False):
+                raise ValueError("unverified or malformed source-page capture receipt")
         sources[key] = s
     cases = {}
     for c in raw_cases:
@@ -186,6 +198,8 @@ def evaluate(bundle):
             "summary": o["summary"], "not_a_court_holding": True}
             for o in bundle["external_opinions"]],
         "certified_finality_count": 0,
+        "source_page_captures_rechecked": sum(bool(s.get("capture_receipt")) for s in sources.values()),
+        "source_page_capture_does_not_verify_judgment": True,
         "original_court_pdf_count": 0,
         "authenticated_2020_ppk_appointments": 0,
         "matched_original_2020_sd_orders": 0,
@@ -207,6 +221,7 @@ def semantic_packet(bundle):
                 "source_refs": [ref],
                 "provenance": {
                     "source_class": sources[ev["source_id"]]["class"],
+                    "page_capture_integrity_checked": bool(sources[ev["source_id"]].get("capture_receipt")),
                     "original_document_acquired": False,
                     "legal_finality_certified": False, "cross_case_guilt_established": False}})
             if ix:
