@@ -28,10 +28,10 @@ class ChromebookAuthorityTests(unittest.TestCase):
 
     def test_full_reconstruction_keeps_unresolved_sides_separate(self):
         result = evaluate(self.fixture)
-        self.assertEqual(result["source_count"], 9)
+        self.assertEqual(result["source_count"], 11)
         self.assertEqual(result["actor_count"], 14)
-        self.assertEqual(result["observation_count"], 18)
-        self.assertEqual(len(result["disputes"]), 7)
+        self.assertEqual(result["observation_count"], 22)
+        self.assertEqual(len(result["disputes"]), 8)
         self.assertFalse(result["personal_guilt_assessed_by_system"])
         self.assertFalse(result["actor_decision_authority_verified"])
         self.assertFalse(result["publication_authorized"])
@@ -120,6 +120,24 @@ class ChromebookAuthorityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "future event"):
             validate(self.fixture)
 
+    def test_statutory_roles_are_not_named_person_appointments(self):
+        result = evaluate(self.fixture)
+        for item in result["timeline"]:
+            if item["id"].startswith("role_"):
+                self.assertEqual(item["actors_named"], [])
+                self.assertFalse(item["factual_truth_established"])
+        self.assertFalse(result["actor_decision_authority_verified"])
+        self.assertTrue(all(issue["verdict"] == "unresolved_requires_original_records"
+                            for issue in result["disputes"]))
+
+    def test_2018_versus_2021_statute_keeps_distinct_effective_dates(self):
+        old = self.observe("role_ppk_2018")
+        new = self.observe("role_ppk_2021")
+        self.assertEqual(old["effective_from"], "2018-03-22")
+        self.assertEqual(new["effective_from"], "2021-02-02")
+        self.assertEqual(new["actor_ids"], [])
+        self.assertIn("not automatically applicable", new["statement"])
+
     def test_source_first_graph_imports_without_asserting_guilt(self):
         packet = semantic_packet(self.fixture)
         self.assertTrue(all(n["layer"] == "neutral" for n in packet["nodes"]))
@@ -134,7 +152,7 @@ class ChromebookAuthorityTests(unittest.TestCase):
             preview = graph.preview_packet(project.id, packet)
             receipt = graph.ingest_packet(
                 project.id, packet, expected_state_digest=preview["state_digest"])
-            self.assertEqual(len(receipt["edge_ids"]), 18)
+            self.assertEqual(len(receipt["edge_ids"]), 22)
             stored = app.store.load()
             self.assertTrue(all(stored["semantic_edges"][eid]["status"] == "candidate"
                                 for eid in receipt["edge_ids"]))
