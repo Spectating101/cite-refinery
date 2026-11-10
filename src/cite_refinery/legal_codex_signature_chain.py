@@ -92,6 +92,18 @@ def validate(bundle):
                 raise ValueError(f"{key}: month-only date must not invent a day")
         else:
             _date(s.get("published_at"))
+        receipt = s.get("capture_receipt")
+        if receipt is not None:
+            if (receipt.get("class") != "nocturnal_private_ci_web_capture"
+                    or type(receipt.get("workflow_run")) is not int
+                    or not re.fullmatch(r"cap-[a-f0-9]{24}", str(receipt.get("capture_id", "")))
+                    or not re.fullmatch(r"[a-f0-9]{64}", str(receipt.get("raw_sha256", "")))
+                    or not re.fullmatch(r"[a-f0-9]{64}", str(receipt.get("extracted_sha256", "")))
+                    or not isinstance(receipt.get("captured_at"), str)
+                    or receipt.get("source_truth_verified") is not False
+                    or receipt.get("original_2020_instrument_verified") is not False):
+                raise ValueError(f"{key}: invalid or overclaimed Nocturnal page capture receipt")
+
     for key, doc in docs.items():
         if doc.get("document_kind") not in _DOC_KINDS or doc.get("channel") not in _CHANNELS:
             raise ValueError(f"{key}: invalid legal instrument type or procurement channel")
