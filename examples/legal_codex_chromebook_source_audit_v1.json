@@ -602,6 +602,39 @@
       "human_review": "pending",
       "factual_truth_established": false,
       "effective_from": "2021-02-02"
+    },
+    {
+      "id": "ibam_exhibit_reuse",
+      "source_id": "court_ibam",
+      "reported_at": "2026-05-12",
+      "event_at": "2026-05-12",
+      "stance": "court_disposition_as_indexed",
+      "topic": "appeal_and_trial",
+      "statement": "The Ibam trial-court directory's evidence disposition references electronic exhibits for another proceeding named for Sri Wahyuningsih and identifies defense evidence retained for another proceeding involving Nadiem. These are judicial evidence-handling references, not proof that one accused paid, instructed or colluded with another.",
+      "actor_ids": [
+        "ibam",
+        "sri",
+        "nadiem",
+        "court"
+      ],
+      "human_review": "pending",
+      "factual_truth_established": false
+    },
+    {
+      "id": "nadiem_exhibit_reuse",
+      "source_id": "court_nadiem",
+      "reported_at": "2026-06-30",
+      "event_at": "2026-06-30",
+      "stance": "court_disposition_as_indexed",
+      "topic": "appeal_and_trial",
+      "statement": "The Nadiem trial-court directory says documentary and electronic evidence was reserved for use in a separate case involving Jurist Tan. This identifies a procedural exhibit cross-reference and does not establish shared criminal intent or asset transfers.",
+      "actor_ids": [
+        "nadiem",
+        "jurist",
+        "court"
+      ],
+      "human_review": "pending",
+      "factual_truth_established": false
     }
   ],
   "issues": [
@@ -736,6 +769,21 @@
         "DIPA/RUP and procurement package identifiers mapped to APBN/DAK flows",
         "Signed specification/KAK, HPS, vendor selection, purchase order and contract variations per package",
         "Original 2020 study revisions with authorship and approval audit history"
+      ],
+      "verdict": "unresolved_requires_original_records"
+    },
+    {
+      "id": "judicial_exhibit_lineage",
+      "topic": "appeal_and_trial",
+      "question": "Do overlapping electronic exhibits have matching original item identifiers, exhibit hashes, chain-of-custody receipts and judicial reasons across the Ibam, Nadiem, Sri Wahyuningsih and Jurist Tan case files?",
+      "observation_ids": [
+        "ibam_exhibit_reuse",
+        "nadiem_exhibit_reuse"
+      ],
+      "missing_original_records": [
+        "Complete court trial exhibits' original item numbers and hashes",
+        "Court orders and authenticated electronic chain-of-custody transfers",
+        "Associated separate court dockets and appeal exhibits; retain identities separately until matched"
       ],
       "verdict": "unresolved_requires_original_records"
     }
