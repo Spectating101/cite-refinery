@@ -14,6 +14,23 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 SCHEMA = "legal_codex.procurement_authority_matrix.v1"
+
+PINNED_STATUTES = {
+    "perpres_2018": {
+        "url": "https://www.kemhan.go.id/itjen/wp-content/uploads/2022/08/Peraturan-Presiden-Nomor-16-Tahun-2018_1001_1.pdf",
+        "effective_from": "2018-03-22", "effective_until": "2021-02-01",
+    },
+    "perpres_2021": {
+        "url": "https://www.kemhan.go.id/itjen/wp-content/uploads/2022/07/Perpres-Nomor-12-Tahun-2021.pdf",
+        "effective_from": "2021-02-02", "effective_until": "2025-04-29",
+    },
+}
+EXPECTED_DECISION_KEYS = {
+    "id", "authority", "event_date", "event_date_precision",
+    "funding_stream", "source_ref", "named_authority_holder",
+    "provenance_status",
+}
+
 _ROLES = {"PA", "KPA", "PPK", "Pokja", "PejabatPengadaan"}
 _ACTIONS = {
     "technical_specification", "price_estimate", "draft_contract", "contract_oversight",
@@ -77,7 +94,12 @@ def validate(bundle):
     decisions = _ids(bundle.get("decision_questions"), "decision")
     if bundle.get("person_assignments") != []:
         raise ValueError("person assignments require signed appointment records; none supplied")
+    if set(sources) != set(PINNED_STATUTES):
+        raise ValueError("unexpected statutory source version")
     for key, source in sources.items():
+        pinned = PINNED_STATUTES[key]
+        if any(source.get(k) != v for k, v in pinned.items()):
+            raise ValueError("statutory URL/date must match the identified official version")
         if not _url(source.get("url")) or source.get("jurisdiction") != "Indonesia":
             raise ValueError(f"{key}: invalid source or jurisdiction")
         if source.get("original_bytes_captured") is not False:
@@ -104,6 +126,8 @@ def validate(bundle):
     if {x["source_id"] for x in rules.values()} != {"perpres_2018", "perpres_2021"}:
         raise ValueError("both historical rule versions required")
     for key, question in decisions.items():
+        if set(question) != EXPECTED_DECISION_KEYS:
+            raise ValueError("unsupported decision claims, including calculated fiscal loss")
         if question.get("authority") not in _ACTIONS:
             raise ValueError(f"{key}: invalid decision function")
         if question.get("event_date_precision") not in _PRECISIONS:
@@ -154,6 +178,9 @@ def evaluate(bundle):
             "signed_specification_or_contract": None,
             "person_officially_linked_to_procurement": False,
             "legal_violation_established": False,
+            "estimated_state_loss": None,
+            "hps_is_not_a_state_loss_estimator": True,
+            "loss_rule_reference": "Perpres 16/2018 and Perpres 12/2021, Pasal 26(6)",
             "source_claim_review": "pending",
         })
     return {
