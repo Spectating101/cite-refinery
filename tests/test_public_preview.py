@@ -18,8 +18,10 @@ class PublicPreviewTests(unittest.TestCase):
             self.assertIn("Public demonstration", html)
             self.assertIn("No login, private project data, or live ingestion", html)
             self.assertEqual(stats["clusters"], 4)
-            self.assertEqual(stats["nodes"], 12)
-            self.assertEqual(stats["edges"], 12)
+            # The source-reviewed overlay adds three nodes and four relations
+            # to the original pilot (see the reviewer walkthrough).
+            self.assertEqual(stats["nodes"], 15)
+            self.assertEqual(stats["edges"], 16)
             project = next(iter(data["workspaces"].values()))
             self.assertEqual(project["atlas"]["layers"], ["practical", "academic", "program"])
             self.assertTrue(project["atlas"]["clusters"])
