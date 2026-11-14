@@ -1,0 +1,456 @@
+{
+  "schema": "legal_codex.outcome_trace.v1",
+  "as_of": "2026-11-15",
+  "sources": [
+    {
+      "id": "s_uk_moj",
+      "url": "https://www.gov.uk/government/publications/post-office-horizon-system-offences-act-2024-quashed-convictions-management-information/summary-quashed-convictions-management-information-24-september-2026",
+      "jurisdiction": "England and Wales",
+      "data_as_of": "2026-09-15",
+      "published_or_corrected_on": "2026-09-24",
+      "source_kind": "official_casework_summary",
+      "scope": "Ministry of Justice casework assessments for the 2024 Act; not the 2021 Hamilton appeal cohort or the universe of Horizon prosecutions.",
+      "reporting_tier": "official_aggregate_reporting",
+      "original_bytes_captured": false,
+      "individual_records_obtained": false,
+      "source_independent_truth_verified": false
+    },
+    {
+      "id": "s_uk_redress_oct",
+      "url": "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026/post-office-horizon-financial-redress-data-as-of-30-october-2026",
+      "jurisdiction": "England and Wales",
+      "data_as_of": "2026-10-30",
+      "published_or_corrected_on": "2026-11-13",
+      "source_kind": "official_redress_statistics",
+      "scope": "Department for Business official multi-scheme redress data including offers, accepted settlements and cumulative cash paid; schemes overlap in claimant journeys.",
+      "reporting_tier": "official_aggregate_reporting",
+      "original_bytes_captured": false,
+      "individual_records_obtained": false,
+      "source_independent_truth_verified": false
+    },
+    {
+      "id": "s_uk_redress_sep",
+      "url": "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026/post-office-horizon-financial-redress-data-as-of-30-september-2026",
+      "jurisdiction": "England and Wales",
+      "data_as_of": "2026-09-30",
+      "published_or_corrected_on": "2026-11-13",
+      "source_kind": "corrected_official_statistics",
+      "scope": "September cash reporting was corrected in the official 13 November update; figure 1727 million replaces previously published 1731 million.",
+      "reporting_tier": "official_aggregate_reporting",
+      "original_bytes_captured": false,
+      "individual_records_obtained": false,
+      "source_independent_truth_verified": false
+    },
+    {
+      "id": "s_nl_dashboard",
+      "url": "https://herstel.toeslagen.nl/dashboard-kinderopvangtoeslag/",
+      "jurisdiction": "Netherlands",
+      "data_as_of": "2026-10-16",
+      "published_or_corrected_on": null,
+      "source_kind": "official_dynamic_programme_dashboard",
+      "scope": "Dynamic Dutch UHT herstel programme dashboard with week-42 as-of date; publication date of this dynamic snapshot is unverified and no raw byte archive is held.",
+      "reporting_tier": "official_aggregate_reporting",
+      "original_bytes_captured": false,
+      "individual_records_obtained": false,
+      "source_independent_truth_verified": false
+    },
+    {
+      "id": "s_nl_update_sep",
+      "url": "https://www.rijksoverheid.nl/actueel/nieuws/2026/09/18/steeds-meer-ouders-ronden-hun-aanvullende-schade-af",
+      "jurisdiction": "Netherlands",
+      "data_as_of": "2026-09-18",
+      "published_or_corrected_on": "2026-09-18",
+      "source_kind": "official_ministerial_update",
+      "scope": "Dutch government September communication reporting approximately 4500 additional-damages completions, without a claimant-level link to 2019 judgments.",
+      "reporting_tier": "official_aggregate_reporting",
+      "original_bytes_captured": false,
+      "individual_records_obtained": false,
+      "source_independent_truth_verified": false
+    }
+  ],
+  "cohorts": [
+    {
+      "id": "uk_moj_casework",
+      "source_id": "s_uk_moj",
+      "data_as_of": "2026-09-15",
+      "unit": "case_records",
+      "reported_total": 1011,
+      "stages": {
+        "assessed": 1011
+      },
+      "is_exhaustive_partition": false,
+      "approximate": false,
+      "scope_note": "Ministry of Justice traceable case records received and assessed for 2024 statutory eligibility; NOT all UK prosecutions or individual 2021 appeal cases.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "uk_quashed_people",
+      "source_id": "s_uk_moj",
+      "data_as_of": "2026-09-15",
+      "unit": "individuals",
+      "reported_total": 620,
+      "stages": {
+        "notified": 584
+      },
+      "is_exhaustive_partition": false,
+      "approximate": false,
+      "scope_note": "Individual people identified as having at least one conviction quashed under the 2024 Act; letters sent are a reporting subset, not financial compensation.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "uk_hcrs_claims",
+      "source_id": "s_uk_redress_oct",
+      "data_as_of": "2026-10-30",
+      "unit": "claims",
+      "reported_total": 545,
+      "stages": {
+        "settled": 515,
+        "offer_not_accepted": 14,
+        "under_assessment": 16
+      },
+      "is_exhaustive_partition": true,
+      "approximate": false,
+      "scope_note": "Horizon Convictions Redress Scheme full and final claims including transferred Overturned Convictions claims; settled may mean offer accepted but not yet cash delivered.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "uk_hss_claims",
+      "source_id": "s_uk_redress_oct",
+      "data_as_of": "2026-10-30",
+      "unit": "claims",
+      "reported_total": 14901,
+      "stages": {
+        "settled": 13541,
+        "offer_not_accepted": 582,
+        "under_assessment": 778
+      },
+      "is_exhaustive_partition": true,
+      "approximate": false,
+      "scope_note": "Horizon Shortfall Scheme cumulative eligible claims including original and later applicants; HSSA-accepted claims may also appear among HSS settled cohort.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "uk_glo_claims",
+      "source_id": "s_uk_redress_oct",
+      "data_as_of": "2026-10-30",
+      "unit": "claims",
+      "reported_total": 492,
+      "stages": {
+        "settled": 463,
+        "offer_not_accepted": 26,
+        "under_assessment": 3
+      },
+      "is_exhaustive_partition": true,
+      "approximate": false,
+      "scope_note": "Group Litigation Order scheme full and final claims for 492 group members not convicted; not identical to Horizon Convictions Redress Scheme claimants.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "uk_hssa_claims",
+      "source_id": "s_uk_redress_oct",
+      "data_as_of": "2026-10-30",
+      "unit": "claims",
+      "reported_total": 173,
+      "stages": {
+        "settled": 28,
+        "offer_not_accepted": 86,
+        "under_assessment": 59
+      },
+      "is_exhaustive_partition": true,
+      "approximate": false,
+      "scope_note": "Horizon Shortfall Scheme Appeals full claims with all required information; not all 576 entity registrations and not independent of original HSS population.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "nl_parent_classification",
+      "source_id": "s_nl_dashboard",
+      "data_as_of": "2026-10-16",
+      "unit": "parent_registrations",
+      "reported_total": 69738,
+      "stages": {
+        "recognized": 44131,
+        "not_recognized": 25607
+      },
+      "is_exhaustive_partition": true,
+      "approximate": false,
+      "scope_note": "Registered Dutch childcare-benefit programme applicants categorized as recognized or not recognized harmed; an administrative finding is not proof full damages paid.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "nl_objections",
+      "source_id": "s_nl_dashboard",
+      "data_as_of": "2026-10-16",
+      "unit": "objections",
+      "reported_total": 18886,
+      "stages": {
+        "decision_issued": 13570,
+        "pending": 5316
+      },
+      "is_exhaustive_partition": true,
+      "approximate": false,
+      "scope_note": "Distinct objections filed concerning Dutch herstel process, not necessarily one per affected parent; decision issued does not mean objection upheld or redress completed.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "nl_cws_cases",
+      "source_id": "s_nl_dashboard",
+      "data_as_of": "2026-10-16",
+      "unit": "applications",
+      "reported_total": 12377,
+      "stages": {
+        "advice_issued": 1964,
+        "waiting": 669,
+        "in_review": 714,
+        "on_hold": 304,
+        "no_longer_in_review": 8726
+      },
+      "is_exhaustive_partition": true,
+      "approximate": false,
+      "scope_note": "Commission Werkelijke Schade admissible supplemental-damage applications; no-longer-in-review is NOT equivalent to award or final payout.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "nl_integral_assessments",
+      "source_id": "s_nl_dashboard",
+      "data_as_of": "2026-10-16",
+      "unit": "assessment_processes",
+      "reported_total": 69517,
+      "stages": {},
+      "is_exhaustive_partition": false,
+      "approximate": false,
+      "scope_note": "Dutch comprehensive assessment processes marked completed, including preliminary notices or opt-outs; neither identical to registered parents nor fully paid remedies.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    },
+    {
+      "id": "nl_additional_damages_approx",
+      "source_id": "s_nl_update_sep",
+      "data_as_of": "2026-09-18",
+      "unit": "parents",
+      "reported_total": 4500,
+      "stages": {},
+      "is_exhaustive_partition": false,
+      "approximate": true,
+      "scope_note": "Approximate number of harmed Dutch parents said by the government on 18 September to have finished additional-damages route; not the 2019 appellants.",
+      "court_appellants_matched": false,
+      "same_persons_as_other_cohort": false,
+      "all_fully_compensated": false
+    }
+  ],
+  "money": [
+    {
+      "id": "uk_all_redress_oct",
+      "source_id": "s_uk_redress_oct",
+      "unit": "GBP_million",
+      "reported_amount": 1756,
+      "scope_note": "Overall Horizon financial redress across distinct scheme categories including interim and prior closed scheme payouts; approximate headline.",
+      "data_as_of": "2026-10-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "uk_all_redress_sep_corrected",
+      "source_id": "s_uk_redress_sep",
+      "unit": "GBP_million",
+      "reported_amount": 1727,
+      "scope_note": "September 2026 overall Horizon redress total after official 13 November correction; previously published 1731 is superseded.",
+      "data_as_of": "2026-09-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "uk_hss_paid",
+      "source_id": "s_uk_redress_oct",
+      "unit": "GBP_million",
+      "reported_amount": 1106,
+      "scope_note": "Horizon Shortfall Scheme payments including interim payments, awards and top-ups; not per-claim average paid.",
+      "data_as_of": "2026-10-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "uk_hssa_paid",
+      "source_id": "s_uk_redress_oct",
+      "unit": "GBP_million",
+      "reported_amount": 18,
+      "scope_note": "Horizon Shortfall Scheme Appeals cumulative payout, possible overlaps in claimant pathways with HSS.",
+      "data_as_of": "2026-10-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "uk_glo_paid",
+      "source_id": "s_uk_redress_oct",
+      "unit": "GBP_million",
+      "reported_amount": 237,
+      "scope_note": "Group Litigation Order scheme cumulative payments including interim redress.",
+      "data_as_of": "2026-10-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "uk_hcrs_paid",
+      "source_id": "s_uk_redress_oct",
+      "unit": "GBP_million",
+      "reported_amount": 326,
+      "scope_note": "Horizon Convictions Redress Scheme cumulative payments including interim redress and transitioned claims.",
+      "data_as_of": "2026-10-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "uk_oc_closed_paid",
+      "source_id": "s_uk_redress_oct",
+      "unit": "GBP_million",
+      "reported_amount": 68,
+      "scope_note": "Overturned Convictions scheme historical closed payments, with later top-up payments addressed separately.",
+      "data_as_of": "2026-10-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "nl_first_check_disbursed",
+      "source_id": "s_nl_dashboard",
+      "unit": "EUR_million",
+      "reported_amount": 795.5,
+      "scope_note": "Dutch UHT cumulative payouts after first test, a payment route rather than total restitution to each parent.",
+      "data_as_of": "2026-10-16",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "nl_integral_assessment_disbursed",
+      "source_id": "s_nl_dashboard",
+      "unit": "EUR_million",
+      "reported_amount": 1760,
+      "scope_note": "Dutch UHT cumulative amounts after comprehensive assessment, not a proof that every affected parent is fully restored.",
+      "data_as_of": "2026-10-16",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    },
+    {
+      "id": "nl_actual_damage_disbursed",
+      "source_id": "s_nl_dashboard",
+      "unit": "EUR_million",
+      "reported_amount": 42.1,
+      "scope_note": "Dutch CWS actual-damages compensation disbursement amount and not the 2019 appellant's individual court award.",
+      "data_as_of": "2026-10-16",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
+    }
+  ],
+  "corrections": [
+    {
+      "id": "uk_sep_total_correction",
+      "target_amount_id": "uk_all_redress_sep_corrected",
+      "superseded_amount": 1731,
+      "corrected_amount": 1727,
+      "revision_published_on": "2026-11-13",
+      "source_url": "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026",
+      "superseded_not_current": true,
+      "change_is_new_payment": false
+    }
+  ],
+  "court_context_links": [
+    {
+      "id": "link_hamilton_hcrs",
+      "judgment_id": "hamilton_2021",
+      "cohort_id": "uk_hcrs_claims",
+      "review_status": "aggregate_context_only",
+      "individual_case_identity_verified": false,
+      "causal_link_to_judgment_proven": false,
+      "case_specific_payment_verified": false
+    },
+    {
+      "id": "link_3535_programme",
+      "judgment_id": "dutch_3535",
+      "cohort_id": "nl_parent_classification",
+      "review_status": "aggregate_context_only",
+      "individual_case_identity_verified": false,
+      "causal_link_to_judgment_proven": false,
+      "case_specific_payment_verified": false
+    },
+    {
+      "id": "link_3536_objections",
+      "judgment_id": "dutch_3536",
+      "cohort_id": "nl_objections",
+      "review_status": "aggregate_context_only",
+      "individual_case_identity_verified": false,
+      "causal_link_to_judgment_proven": false,
+      "case_specific_payment_verified": false
+    }
+  ],
+  "unresolved_gaps": [
+    {
+      "id": "g_hamilton_payment",
+      "judgment_id": "hamilton_2021",
+      "record_needed": "Official individual matching crosswalk from each of the 42 Hamilton appeal dispositions to subsequent statutory eligibility, actual payments, dates, and remaining unsettled remedies.",
+      "state": "unverified_original_individual_record",
+      "individual_outcome_proven": false
+    },
+    {
+      "id": "g_nl3535_followup",
+      "judgment_id": "dutch_3535",
+      "record_needed": "Original tax authority reconsideration order and any subsequent appeal or claimant payment for the anonymized 2019 ECLI 3535 case; public aggregate UHT figures cannot identify the appellant.",
+      "state": "unverified_original_individual_record",
+      "individual_outcome_proven": false
+    },
+    {
+      "id": "g_nl3536_followup",
+      "judgment_id": "dutch_3536",
+      "record_needed": "Original Dutch recovery remittal decision and any subsequent actual repayment resolution for the 2019 ECLI 3536 individual litigant, preserving confidentiality.",
+      "state": "unverified_original_individual_record",
+      "individual_outcome_proven": false
+    },
+    {
+      "id": "g_causal_independence",
+      "judgment_id": "hamilton_2021",
+      "record_needed": "Independent eligible-population reconciliation and empirical counterfactual design before any claim that a 2021 judicial holding caused 2026 scheme-wide recovery.",
+      "state": "unverified_original_individual_record",
+      "individual_outcome_proven": false
+    }
+  ],
+  "original_sources_archived": false,
+  "independent_audit_completed": false,
+  "publication_authorized": false,
+  "causal_effect_estimated": false
+}
