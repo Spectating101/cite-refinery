@@ -73,6 +73,7 @@ COUNT_PINS = {
 MONEY_PINS = {
     "uk_all_redress_oct": ("s_uk_redress_oct", "GBP_million", 1756),
     "uk_all_redress_sep_corrected": ("s_uk_redress_sep", "GBP_million", 1727),
+    "uk_hssa_sep_corrected": ("s_uk_redress_sep", "GBP_million", 18),
     "uk_hss_paid": ("s_uk_redress_oct", "GBP_million", 1106),
     "uk_hssa_paid": ("s_uk_redress_oct", "GBP_million", 18),
     "uk_glo_paid": ("s_uk_redress_oct", "GBP_million", 237),
@@ -85,6 +86,7 @@ MONEY_PINS = {
 CORRECTION_SOURCE_URL = "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026"
 CORRECTION_PINS = {
     "uk_sep_total_correction": ("uk_all_redress_sep_corrected", 1731, 1727),
+    "uk_sep_hssa_correction": ("uk_hssa_sep_corrected", 22, 18),
 }
 EXPECTED_LINKS = {
     "link_hamilton_hcrs": ("hamilton_2021", "uk_hcrs_claims"),
