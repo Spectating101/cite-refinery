@@ -99,6 +99,23 @@
       "causal_effect_size": null
     },
     {
+      "id": "uk_no_motive_finding",
+      "judgment_id": "hamilton_2021",
+      "paragraph": "136",
+      "kind": "individual_motive_not_adjudicated",
+      "summary": "The court was not persuaded that Post Office prosecutions were pursued for an improper financial motivation and expressly declined to determine any individual's belief or allegedly suppressed doubts; the court instead focused on the corporate prosecutor's duties.",
+      "domestic_legal_bases": [
+        "abuse_of_process",
+        "criminal_prosecution_disclosure"
+      ],
+      "docket": "[2021] EWCA Crim 577",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
       "id": "uk_prosecution_abuse",
       "judgment_id": "hamilton_2021",
       "paragraph": "137",
