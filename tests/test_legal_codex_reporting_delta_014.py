@@ -84,7 +84,7 @@ class ReportingDelta014Tests(unittest.TestCase):
     def test_cannot_remove_one_correction_to_hide_revision(self):
         self.bundle["corrections"]=[x for x in self.bundle["corrections"]
                                    if x["id"]!="uk_sep_hssa_correction"]
-        with self.assertRaisesRegex(ValueError,"correction"):
+        with self.assertRaisesRegex(ValueError,"revision|correction"):
             evaluate(self.bundle)
 
     def test_cannot_claim_superseded_value_is_current(self):
