@@ -24,7 +24,7 @@ PINNED = {
         "url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
         "date": "2021-04-23",
         "format": "pdf",
-        "allowed_paragraphs": {"121", "137", "440", "447"},
+        "allowed_paragraphs": {"121", "136", "137", "440", "447"},
     },
     "dutch_3535": {
         "jurisdiction": "Netherlands",
@@ -46,6 +46,7 @@ PINNED = {
 KIND = {
     "reliability_and_disclosure": ("hamilton_2021", "121"),
     "prosecution_abuse": ("hamilton_2021", "137"),
+    "individual_motive_not_adjudicated": ("hamilton_2021", "136"),
     "case_specific_exception": ("hamilton_2021", "440"),
     "mixed_appeal_disposition": ("hamilton_2021", "447"),
     "proportionate_entitlement": ("dutch_3535", "8.11"),
