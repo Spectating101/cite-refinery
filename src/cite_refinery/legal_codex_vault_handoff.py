@@ -14,6 +14,12 @@ import json
 from pathlib import Path
 
 SCHEMA = "legal_codex.vault_handoff_014.v1"
+PINNED_PUBLIC_COURT_MIRRORS = {
+    "judgment_dutch_3535": [
+        "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3535"],
+    "judgment_dutch_3536": [
+        "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536"],
+}
 
 
 def _base():
@@ -33,6 +39,8 @@ def _expected():
         "source_url": j["source_url"], "reference_date": j["decided_on"],
         "source_family": "judgment_012",
     } for j in courts["judgments"]]
+    for row in rows:
+        row["approved_official_alternates"] = PINNED_PUBLIC_COURT_MIRRORS.get(row["source_id"], [])
     return sorted(rows, key=lambda x: x["source_id"])
 
 
@@ -78,7 +86,7 @@ def evaluate(bundle, *, vault_root=None, verifier=None):
     for item in expected:
         matches = [s for s in all_receipts if s.get("source_id") == item["source_id"]]
         exact = [s for s in matches if
-                 s.get("source_url") == item["source_url"] and
+                 s.get("source_url") in [item["source_url"], *item["approved_official_alternates"]] and
                  s.get("reference_date") == item["reference_date"]]
         authentic = [s for s in exact if
                      real_loader and s.get("acquisition_state") == "live_nocturnal_loader_rechecked"
@@ -91,6 +99,7 @@ def evaluate(bundle, *, vault_root=None, verifier=None):
             **item, "custody_status": status,
             "verified_byte_captures": len(authentic),
             "snapshot_raw_sha256": [s["raw_sha256"] for s in authentic],
+            "acquired_official_source_urls": sorted(set(s["source_url"] for s in authentic)),
             "legal_source_authenticity": "not_established",
             "source_truth_verified": False,
             "individual_remedy_verified": False,
