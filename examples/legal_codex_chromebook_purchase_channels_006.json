@@ -1,0 +1,467 @@
+{
+  "schema": "legal_codex.procurement_channel_trace.v1",
+  "sources": [
+    {
+      "id": "min_sd_oct2020",
+      "url": "https://ditsd.kemendikdasmen.go.id/artikel/detail/direktorat-sekolah-dasar-salurkan-bantuan-tik-untuk-asesmen-kompetensi-minimum-akm",
+      "type": "contemporary_ministry_announcement",
+      "source_date": "2020-10-23",
+      "source_claims_fully_adjudicated": false,
+      "original_document_archive_status": "not_archived_in_this_repo",
+      "title": "Elementary-school directorate official program announcement October 2020"
+    },
+    {
+      "id": "pros_jul2025",
+      "url": "https://kejati-jatim.kejaksaan.go.id/conference/news/6389/read",
+      "type": "retrospective_prosecution_statement",
+      "source_date": "2025-07-15",
+      "source_claims_fully_adjudicated": false,
+      "original_document_archive_status": "not_archived_in_this_repo",
+      "title": "Attorney General July 15 2025 prosecution allegation, PR-624"
+    },
+    {
+      "id": "sd_lakip_2021",
+      "url": "https://ditsd.kemendikdasmen.go.id/upload/filemanager/download/LAKIP%20DIT.SD%20TAHUN%202021_TTD.pdf",
+      "type": "ministry_performance_self_report",
+      "source_date": "2022-01",
+      "source_claims_fully_adjudicated": false,
+      "original_document_archive_status": "not_archived_in_this_repo",
+      "title": "Direktorat SD performance report FY2021, dated January 2022, pages 48-49"
+    },
+    {
+      "id": "lkpp_2022_price",
+      "url": "https://jdih.lkpp.go.id/regulation/download/surat-edaran-kepala-lkpp-nomor-9-tahun-2022/1",
+      "type": "procurement_regulator_circular",
+      "source_date": "2022-07-28",
+      "source_claims_fully_adjudicated": false,
+      "original_document_archive_status": "not_archived_in_this_repo",
+      "title": "LKPP Circular 9/2022, 2022 DAK regional Chromebook consolidated e-catalog, annex page 7",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_capture",
+        "workflow_run": 42830489546,
+        "capture_id": "cap-54f9da906e661dabb4de8394",
+        "raw_sha256": "9292cedc942c4da2c0b863c6a9365f2583ce0a83672ec825b9275ccdb60c587c",
+        "text_sha256": "c6359939cb6278d7331928bd270a11d72315995e4af0ea14a293899fab0a3db6",
+        "captured_at": "2026-11-10T14:06:11Z"
+      }
+    },
+    {
+      "id": "lkpp_vendor_2022",
+      "url": "https://jdih.lkpp.go.id/regulation/keputusan-deputi-ii/keputusan-deputi-ii-nomor-6-tahun-2022",
+      "type": "official_regulatory_listing",
+      "source_date": "2022-01-26",
+      "source_claims_fully_adjudicated": false,
+      "original_document_archive_status": "not_archived_in_this_repo",
+      "title": "LKPP Decree 6/2022 appointed Bhinneka Mentaridimensi as digital shop partner; not contract award",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_capture",
+        "workflow_run": 42830489546,
+        "capture_id": "cap-a990323bc650f8bdf46497cb",
+        "raw_sha256": "7e5edb58cdda39638b5bc68628a61b8b4f3a493617e60d9c938e24c0ff557f7b",
+        "text_sha256": "dc2e0c42e7dc2396357b58d64f2cfd40b4ccddc4b007d62836045d9dac46826e",
+        "captured_at": "2026-11-10T14:05:38Z"
+      }
+    }
+  ],
+  "channels": [
+    {
+      "id": "sd_policy_spec_2020",
+      "year": 2020,
+      "type": "ministerial_policy_or_guideline",
+      "source_id": "pros_jul2025",
+      "description": "2020 national technical study, Chrome OS specification and operating guidelines: policy setting, not school purchase execution.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    },
+    {
+      "id": "sd_apbn_grant_2020",
+      "year": 2020,
+      "type": "apbn_directorate_grant_to_school",
+      "source_id": "min_sd_oct2020",
+      "description": "2020 elementary-school APBN grant transfer to recipient schools; school purchasing may occur after receipt, and this announcement is not an individual purchase order.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    },
+    {
+      "id": "sd_siplah_order_2020",
+      "year": 2020,
+      "type": "school_siplah_purchase",
+      "source_id": "min_sd_oct2020",
+      "description": "School-level SIPLah ordering in the 2020 SD program, distinct from ministry approval and from a central directorate e-catalog click.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    },
+    {
+      "id": "sd_directorate_ecat_2020",
+      "year": 2020,
+      "type": "directorate_ecatalog_purchase",
+      "source_id": "pros_jul2025",
+      "description": "Alleged June 30 2020 elementary directorate PPK replacement and e-catalog order; not matched to signed procurement package ID.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    },
+    {
+      "id": "smp_ecat_2020",
+      "year": 2020,
+      "type": "directorate_ecatalog_purchase",
+      "source_id": "pros_jul2025",
+      "description": "Alleged June 30 2020 junior-secondary PPK e-catalog purchase directive; distinguish SMP procurement from SD SIPLah transfers.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    },
+    {
+      "id": "sd_apbn_grant_2021",
+      "year": 2021,
+      "type": "apbn_directorate_grant_to_school",
+      "source_id": "sd_lakip_2021",
+      "description": "2021 elementary directorate self-reported government aid output of 4,981 device packages; package counts and program expenditure not individual invoices.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    },
+    {
+      "id": "bhinneka_marketplace_2022",
+      "year": 2022,
+      "type": "marketplace_registration_not_purchase",
+      "source_id": "lkpp_vendor_2022",
+      "description": "January 26 2022 LKPP recognition of Bhinneka as marketplace partner is status evidence only, not award of a 2020 contract or common ownership.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    },
+    {
+      "id": "dak_laptop_2022",
+      "year": 2022,
+      "type": "dak_regional_ecatalog",
+      "source_id": "lkpp_2022_price",
+      "description": "July 2022 LKPP national-consolidated domestic laptop framework applicable to 2022 DAK educational laptop e-purchases and specified scope, not 2020 school bundles.",
+      "actual_signing_officer": null,
+      "actual_contract_id": null
+    }
+  ],
+  "observations": [
+    {
+      "id": "study_second_prosecution",
+      "channel_id": "sd_policy_spec_2020",
+      "source_id": "pros_jul2025",
+      "event_date": "2020-06-06",
+      "stance": "prosecutor_allegation",
+      "statement": "The 2025 prosecution account alleges a June 2020 request for the technical team to replace or revise an operating-system comparison with a Chrome OS-directed study; no signed source drafts attached.",
+      "metric": null,
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "sd_2020_target_schools",
+      "channel_id": "sd_apbn_grant_2020",
+      "source_id": "min_sd_oct2020",
+      "event_date": "2020-10-13",
+      "stance": "contemporaneous_official_statement",
+      "statement": "A contemporaneous October 2020 elementary directorate announcement described funding assistance to 2,330 SD schools to purchase specified ICT sets for minimum competency assessment.",
+      "metric": {
+        "kind": "schools_earmarked_for_grants",
+        "value": 2330,
+        "unit": "count",
+        "scope": "APBN_2020_SD_school_grant",
+        "verified_transaction_value": false
+      },
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "sd_2020_grant_unit",
+      "channel_id": "sd_apbn_grant_2020",
+      "source_id": "min_sd_oct2020",
+      "event_date": "2020-10-13",
+      "stance": "contemporaneous_official_statement",
+      "statement": "The education ministry announced 88,250,000 rupiah transferred per recipient elementary school for a 2020 education-ICT kit; this was per-school assistance, not an audited single laptop price.",
+      "metric": {
+        "kind": "grant_allocation_per_school_idr",
+        "value": 88250000,
+        "unit": "IDR",
+        "scope": "APBN_2020_SD_school_grant",
+        "verified_transaction_value": false
+      },
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "siplah_2020_school_procure",
+      "channel_id": "sd_siplah_order_2020",
+      "source_id": "min_sd_oct2020",
+      "event_date": "2020-10-13",
+      "stance": "contemporaneous_official_statement",
+      "statement": "The ministry said recipient elementary schools would purchase 15 Chromebooks and a connector via SIPLah, while router and projector procurement would use e-catalog; individual schools' transactions were not listed.",
+      "metric": null,
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "sd_ppk_june30_replacement",
+      "channel_id": "sd_directorate_ecat_2020",
+      "source_id": "pros_jul2025",
+      "event_date": "2020-06-30",
+      "stance": "prosecutor_allegation",
+      "statement": "The July 2025 prosecution press release alleges elementary director Sri Wahyuningsih replaced PPK identified by initials BH with another PPK identified by initials WH on June 30 2020; no signed appointment or revocation attached.",
+      "metric": null,
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "sd_ppk_june30_order",
+      "channel_id": "sd_directorate_ecat_2020",
+      "source_id": "pros_jul2025",
+      "event_date": "2020-06-30",
+      "stance": "prosecutor_allegation",
+      "statement": "The July 2025 prosecution account alleges PPK identified as WH acted on an e-catalog order after meeting a representative identified as IN of PT Bhinneka Mentaridimensi; transaction identity, time and signatory not independently verified.",
+      "metric": null,
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "smp_ppk_june30_order",
+      "channel_id": "smp_ecat_2020",
+      "source_id": "pros_jul2025",
+      "event_date": "2020-06-30",
+      "stance": "prosecutor_allegation",
+      "statement": "The same prosecutor account alleges the SMP director instructed PPK identified by initials HS to place a Chrome OS order involving PT Bhinneka Mentaridimensi; this is not verified procurement execution.",
+      "metric": null,
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "sd_2021_output_count",
+      "channel_id": "sd_apbn_grant_2021",
+      "source_id": "sd_lakip_2021",
+      "event_date": "2021-12-31",
+      "stance": "ministry_self_report",
+      "statement": "The SD Directorate FY2021 performance report states output target and achievement of 4,981 educational equipment packages; reporting an output count does not establish use by pupils.",
+      "metric": {
+        "kind": "output_packages_reported",
+        "value": 4981,
+        "unit": "count",
+        "scope": "APBN_2021_SD_package",
+        "verified_transaction_value": false
+      },
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "sd_2021_package_nominal",
+      "channel_id": "sd_apbn_grant_2021",
+      "source_id": "sd_lakip_2021",
+      "event_date": "2021-12-31",
+      "stance": "ministry_self_report",
+      "statement": "The January 2022 performance report describes 2021 assistance for 4,981 packages with a nominal allocation of Rp95,000,000 per package; not a proven unit invoice or independently audited purchase price.",
+      "metric": {
+        "kind": "announced_package_allocation_idr",
+        "value": 95000000,
+        "unit": "IDR",
+        "scope": "APBN_2021_SD_package",
+        "verified_transaction_value": false
+      },
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "sd_2021_disbursement_selfreport",
+      "channel_id": "sd_apbn_grant_2021",
+      "source_id": "sd_lakip_2021",
+      "event_date": "2021-12-31",
+      "stance": "ministry_self_report",
+      "statement": "In its analysis of the equipment-output program, the 2021 Directorate report describes Rp471,685,757,000 and phased allocations; do not equate this reported program figure to the complete procurement payment ledger.",
+      "metric": {
+        "kind": "reported_program_expenditure_idr",
+        "value": 471685757000,
+        "unit": "IDR",
+        "scope": "APBN_2021_SD_package",
+        "verified_transaction_value": false
+      },
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "vendor_listing_2022",
+      "channel_id": "bhinneka_marketplace_2022",
+      "source_id": "lkpp_vendor_2022",
+      "event_date": "2022-01-26",
+      "stance": "regulatory_scope_statement",
+      "statement": "LKPP Decree 6/2022 identifies PT Bhinneka Mentaridimensi as a digital marketplace partner as of January 26 2022; the later designation does not validate a particular 2020 purchase.",
+      "metric": null,
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "dak_2022_catalogue_scope",
+      "channel_id": "dak_laptop_2022",
+      "source_id": "lkpp_2022_price",
+      "event_date": "2022-07-28",
+      "stance": "regulatory_scope_statement",
+      "statement": "LKPP Circular 9/2022 describes the 2022 national consolidated Chromebook e-catalog for educational DAK Fisik and separate office-use laptop procurement; scope must be checked per funding source.",
+      "metric": null,
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    },
+    {
+      "id": "dak_2022_laptop_ceiling",
+      "channel_id": "dak_laptop_2022",
+      "source_id": "lkpp_2022_price",
+      "event_date": "2022-07-28",
+      "stance": "regulatory_scope_statement",
+      "statement": "The LKPP 2022 circular annex lists a Rp5,550,000 ceiling for one domestic Chromebook under a consolidated framework, including Chrome Education Upgrade but excluding freight; it is not comparable without adjustment to 2020 per-school kits.",
+      "metric": {
+        "kind": "framework_unit_ceiling_idr",
+        "value": 5550000,
+        "unit": "IDR",
+        "scope": "DAK_2022_catalogue_laptop",
+        "verified_transaction_value": false
+      },
+      "review": "pending",
+      "named_signatory_verified": false,
+      "legal_breach_verified": false
+    }
+  ],
+  "required_records": [
+    {
+      "id": "req_01",
+      "channel_id": "sd_policy_spec_2020",
+      "record_kind": "TECHNICAL_KAK_SIGNATURE",
+      "reason": "Original first and second technical reviews with redlines and named approval signatures",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_02",
+      "channel_id": "sd_policy_spec_2020",
+      "record_kind": "PA_KPA_PPK_APPOINTMENT",
+      "reason": "Ministerial delegation and role scopes at the date of the technical study",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_03",
+      "channel_id": "sd_apbn_grant_2020",
+      "record_kind": "DIPA_RUP_PACKAGE_ID",
+      "reason": "Original funding allocation and recipient school transfer identifiers for 2,330 grants",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_04",
+      "channel_id": "sd_apbn_grant_2020",
+      "record_kind": "DELIVERY_AND_ACCEPTANCE",
+      "reason": "School recipient acknowledgments and 2020 device acceptance documentation",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_05",
+      "channel_id": "sd_siplah_order_2020",
+      "record_kind": "SIPLAH_SCHOOL_ORDER",
+      "reason": "School-by-school SIPLah order IDs, invoices, payment and supplier identities",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_06",
+      "channel_id": "sd_siplah_order_2020",
+      "record_kind": "SCHOOL_USAGE_EVIDENCE",
+      "reason": "School-level activation and actual educational utilization records",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_07",
+      "channel_id": "sd_directorate_ecat_2020",
+      "record_kind": "PA_KPA_PPK_APPOINTMENT",
+      "reason": "Signed appointment and revocation for PPK initials BH and WH effective 30 June 2020",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_08",
+      "channel_id": "sd_directorate_ecat_2020",
+      "record_kind": "E_CATALOG_PURCHASE_ORDER",
+      "reason": "Original June 30 e-catalog purchase order and PPK authorization event log",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_09",
+      "channel_id": "sd_directorate_ecat_2020",
+      "record_kind": "VENDOR_CONTRACT",
+      "reason": "Executed contract or supplier confirmation identifying the buyer and financial terms",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_10",
+      "channel_id": "smp_ecat_2020",
+      "record_kind": "PA_KPA_PPK_APPOINTMENT",
+      "reason": "Signed SMP PPK HS appointment for June 2020 package and term of authority",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_11",
+      "channel_id": "smp_ecat_2020",
+      "record_kind": "E_CATALOG_PURCHASE_ORDER",
+      "reason": "Original junior-secondary order identifier and supplier acceptance",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_12",
+      "channel_id": "sd_apbn_grant_2021",
+      "record_kind": "DIPA_RUP_PACKAGE_ID",
+      "reason": "Individual school grant recipient package identifiers and budget authority coding for 2021",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_13",
+      "channel_id": "sd_apbn_grant_2021",
+      "record_kind": "SIPLAH_SCHOOL_ORDER",
+      "reason": "School 2021 purchase orders and invoice values to reconcile 4,981 output packages",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_14",
+      "channel_id": "sd_apbn_grant_2021",
+      "record_kind": "DELIVERY_AND_ACCEPTANCE",
+      "reason": "Original report workpapers and recipient acceptance audit trail for 2021",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_15",
+      "channel_id": "bhinneka_marketplace_2022",
+      "record_kind": "VENDOR_CONTRACT",
+      "reason": "2022 marketplace designation instrument and any actual underlying procurement agreement, not a 2020 award",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_16",
+      "channel_id": "dak_laptop_2022",
+      "record_kind": "E_CATALOG_PURCHASE_ORDER",
+      "reason": "Actual 2022 DAK purchasing authority, order identifiers and negotiated prices by government buyer",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_17",
+      "channel_id": "dak_laptop_2022",
+      "record_kind": "HPS_PRICE_WORKSHEET",
+      "reason": "Specific 2022 purchase price build-up, specifications and freight separately from catalogue ceiling",
+      "status": "unobtained"
+    },
+    {
+      "id": "req_18",
+      "channel_id": "dak_laptop_2022",
+      "record_kind": "DELIVERY_AND_ACCEPTANCE",
+      "reason": "Shipping, serial-number and acceptance evidence for the identified 2022 regional transactions",
+      "status": "unobtained"
+    }
+  ],
+  "verified_procurement_packages": [],
+  "accepted_signatures": [],
+  "verified_contracts": [],
+  "state_loss_estimate": null,
+  "custody_note": "Two LKPP documents have private Nocturnal live byte-and-text recheck receipts, CI run 42830489546; source bytes remain in a time-limited private workflow artifact rather than here. Ministry 2020 news and Jan 2022 annual PDF are indexed source leads only (capture attempts timed out). The 2025 prosecutor original and a mirrored page returned HTTP 404 in Nocturnal; these are not archived. No assertions about criminal culpability or financial loss are established."
+}

@@ -1,0 +1,176 @@
+{
+  "schema": "legal_codex.case_posture.v1",
+  "sources": [
+    {
+      "id": "s_nadiem_trial_official",
+      "class": "official_court_case_page",
+      "url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "full_original_judgment_captured": false
+    },
+    {
+      "id": "s_ibam_trial_official",
+      "class": "official_court_case_page",
+      "url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "full_original_judgment_captured": false
+    },
+    {
+      "id": "s_sri_trial_reporting",
+      "class": "journalistic_case_reporting",
+      "url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "full_original_judgment_captured": false
+    },
+    {
+      "id": "s_official_appeal_index",
+      "class": "official_court_index",
+      "url": "https://putusan3.mahkamahagung.go.id/direktori/index/pengadilan/pt-jakarta/kategori/korupsi-1/tahunjenis/putus/tahun/2026.html",
+      "full_original_judgment_captured": false
+    },
+    {
+      "id": "s_nadiem_cassation",
+      "class": "journalistic_case_reporting",
+      "url": "https://news.detik.com/berita/d-8711476/vonis-jadi-9-tahun-penjara-nadiem-makarim-ajukan-kasasi",
+      "full_original_judgment_captured": false,
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42876552798,
+        "capture_id": "cap-b84bc9998302ccc193b1b28a",
+        "captured_at": "2026-11-10T18:34:45Z",
+        "raw_sha256": "56d30a256b17b26dd49eec6c91a928b8ee7a83090895151303da3b2392ec5d87",
+        "extracted_sha256": "21d731059be3d7d2315c39926533879b98fabda590bd2e4981ee5b8b75c398c9",
+        "source_truth_verified": false,
+        "original_judgment_verified": false
+      }
+    },
+    {
+      "id": "s_sri_noappeal",
+      "class": "journalistic_case_reporting",
+      "url": "https://tirto.id/kejagung-tak-banding-terkait-vonis-2-terdakwa-kasus-chromebook-hv3m",
+      "full_original_judgment_captured": false
+    },
+    {
+      "id": "s_academic_examination",
+      "class": "independent_legal_commentary",
+      "url": "https://www.hukumonline.com/berita/a/bedah-putusan-nadiem-makarim--eksaminasi-ui-ugm-soroti-logika-tipikor-dan-kerugian-negara-lt6aea8ed36b2ad",
+      "full_original_judgment_captured": false,
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42876552798,
+        "capture_id": "cap-5cde86342565ee11ea3bd611",
+        "captured_at": "2026-11-10T18:34:45Z",
+        "raw_sha256": "fc5923d0427cb857638b5c1bf2ee410c43a270434771c5791758af6993a93bd3",
+        "extracted_sha256": "2e62eea0cb070e22c34873e00d750c74a8ec567b7f1a6ea21e2c9f686f51b9d5",
+        "source_truth_verified": false,
+        "original_judgment_verified": false
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "case_nadiem",
+      "trial_docket": "147/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "original_judgment_pdf_read": false,
+      "finality_certificate_verified": false,
+      "original_2020_ppk_appointment_verified": false,
+      "original_sd_order_matched": false,
+      "events": [
+        {
+          "kind": "trial_directory_listing",
+          "date": "2026-06-30",
+          "docket": "147/Pid.Sus-TPK/2025/PN Jkt.Pst",
+          "source_id": "s_nadiem_trial_official",
+          "original_court_document_acquired": false,
+          "legal_finality_verified": false,
+          "universal_culpability_inferred": false
+        },
+        {
+          "kind": "appeal_directory_listing",
+          "date": "2026-09-24",
+          "docket": "41/PID.SUS-TPK/2026/PT DKI",
+          "source_id": "s_official_appeal_index",
+          "original_court_document_acquired": false,
+          "legal_finality_verified": false,
+          "universal_culpability_inferred": false
+        },
+        {
+          "kind": "cassation_filing_reported",
+          "date": "2026-10-16",
+          "docket": null,
+          "source_id": "s_nadiem_cassation",
+          "original_court_document_acquired": false,
+          "legal_finality_verified": false,
+          "universal_culpability_inferred": false
+        }
+      ]
+    },
+    {
+      "id": "case_ibam",
+      "trial_docket": "148/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "original_judgment_pdf_read": false,
+      "finality_certificate_verified": false,
+      "original_2020_ppk_appointment_verified": false,
+      "original_sd_order_matched": false,
+      "events": [
+        {
+          "kind": "trial_directory_listing",
+          "date": "2026-05-12",
+          "docket": "148/Pid.Sus-TPK/2025/PN Jkt.Pst",
+          "source_id": "s_ibam_trial_official",
+          "original_court_document_acquired": false,
+          "legal_finality_verified": false,
+          "universal_culpability_inferred": false
+        },
+        {
+          "kind": "appeal_directory_listing",
+          "date": "2026-08-31",
+          "docket": "31/PID.SUS-TPK/2026/PT DKI",
+          "source_id": "s_official_appeal_index",
+          "original_court_document_acquired": false,
+          "legal_finality_verified": false,
+          "universal_culpability_inferred": false
+        }
+      ]
+    },
+    {
+      "id": "case_sri",
+      "trial_docket": "149/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "original_judgment_pdf_read": false,
+      "finality_certificate_verified": false,
+      "original_2020_ppk_appointment_verified": false,
+      "original_sd_order_matched": false,
+      "events": [
+        {
+          "kind": "trial_judgment_reported",
+          "date": "2026-04-30",
+          "docket": "149/Pid.Sus-TPK/2025/PN Jkt.Pst",
+          "source_id": "s_sri_trial_reporting",
+          "original_court_document_acquired": false,
+          "legal_finality_verified": false,
+          "universal_culpability_inferred": false
+        },
+        {
+          "kind": "no_appeal_reported",
+          "date": "2026-05-12",
+          "docket": null,
+          "source_id": "s_sri_noappeal",
+          "original_court_document_acquired": false,
+          "legal_finality_verified": false,
+          "universal_culpability_inferred": false
+        }
+      ]
+    }
+  ],
+  "external_opinions": [
+    {
+      "source_id": "s_academic_examination",
+      "case_id": "case_nadiem",
+      "summary": "Hukumonline reports an independent UI/UGM academic examination criticizing the reasoning on legal benefits, causal allocation of financial loss and replacement-money liability in the trial and appeal judgments.",
+      "not_court_holding": true,
+      "allegations_adjudicated": false
+    }
+  ],
+  "original_judgment_pdfs_in_hand": [],
+  "authenticated_finality_certificates": [],
+  "signed_2020_ppk_instruments": [],
+  "matching_sd_e_purchase_orders": [],
+  "limitations": "Only indexed appellate directory listings, not original judgments, were identified. Sri original judgment and finality certificate unavailable. Nadiem cassation filing and Sri's non-appeal position are sourced to journalism. The appeal-stage figures should never override original court text when later acquired."
+}

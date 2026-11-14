@@ -1,0 +1,65 @@
+[
+  {
+    "id": "m_animal_welfare",
+    "description": "Animal cruelty law penalizes unnecessary suffering of protected animals including deliberate physical mistreatment of dogs, and establishes animal welfare offences.",
+    "jurisdiction": "England and Wales",
+    "available_from": "2007-04-06",
+    "source_url": "https://www.legislation.gov.uk/ukpga/2006/45/section/4"
+  },
+  {
+    "id": "m_criminal_review",
+    "description": "Independent criminal conviction review agency investigates potential wrongful convictions caused by unreliable computer forensic evidence and flawed prosecution records and refers cases for appeal.",
+    "jurisdiction": "England and Wales",
+    "available_from": "1997-03-31",
+    "source_url": "https://ccrc.gov.uk/how-it-all-began/"
+  },
+  {
+    "id": "m_gdpr_article22",
+    "description": "Data protection safeguards restrict solely automated administrative decisions involving profiling of welfare benefits applicants, allowing affected people to contest such decisions and request human intervention.",
+    "jurisdiction": "European Union incl. Netherlands",
+    "available_from": "2018-05-25",
+    "source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+  },
+  {
+    "id": "m_later_ai_act",
+    "description": "AI Act high-risk automated welfare benefits decision system duties include technical risk management and governance for public eligibility determinations, with later staged application.",
+    "jurisdiction": "European Union incl. Netherlands",
+    "available_from": "2027-12-02",
+    "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+  },
+  {
+    "id": "d_environment",
+    "description": "Industrial air emissions and wastewater monitoring requires environmental permits and pollutant reporting for manufacturing sites.",
+    "jurisdiction": "European Union",
+    "available_from": "2010-11-24",
+    "source_url": "https://eur-lex.europa.eu/eli/dir/2010/75/oj"
+  },
+  {
+    "id": "d_traffic",
+    "description": "Traffic safety and road transport statutes regulate licensing vehicles, seat belts and driving on public roads.",
+    "jurisdiction": "England and Wales",
+    "available_from": "1988-11-15",
+    "source_url": "https://www.legislation.gov.uk/ukpga/1988/52/contents"
+  },
+  {
+    "id": "d_education",
+    "description": "Education authorities may consider school attendance and educational intervention for young people through separate welfare and youth institutions.",
+    "jurisdiction": "England and Wales",
+    "available_from": "1996-11-01",
+    "source_url": "https://www.legislation.gov.uk/ukpga/1996/56/contents"
+  },
+  {
+    "id": "d_tax",
+    "description": "Property tax assessment and local land valuation disputes may be appealed to independent valuation tribunals.",
+    "jurisdiction": "England and Wales",
+    "available_from": "1992-03-06",
+    "source_url": "https://www.legislation.gov.uk/ukpga/1992/14/contents"
+  },
+  {
+    "id": "d_public_health",
+    "description": "Public health response plans regulate infectious disease surveillance, isolation and access to preventive healthcare.",
+    "jurisdiction": "England and Wales",
+    "available_from": "1984-06-26",
+    "source_url": "https://www.legislation.gov.uk/ukpga/1984/22/contents"
+  }
+]

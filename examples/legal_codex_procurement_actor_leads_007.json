@@ -1,0 +1,210 @@
+{
+  "schema": "legal_codex.actor_register.v1",
+  "cases": [
+    {
+      "id": "chromebook_2020_matter",
+      "case_type": "investigation_matter",
+      "reference": "July 15 2025 Attorney General PR-624 procurement account",
+      "jurisdiction": "Indonesia",
+      "source_url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+    },
+    {
+      "id": "court_evidence_2026",
+      "case_type": "court_case",
+      "reference": "147/Pid.Sus-TPK/2025/PN Jkt.Pst evidence-handling index",
+      "jurisdiction": "Indonesia",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+    }
+  ],
+  "entities": [
+    {
+      "id": "pros_jul2025_doc",
+      "case_id": "chromebook_2020_matter",
+      "kind": "document",
+      "name": "Attorney General July 15 2025 prosecution release",
+      "aliases": [],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ppk_sd_bh",
+      "case_id": "chromebook_2020_matter",
+      "kind": "person",
+      "name": "PPK reference BH (initials only)",
+      "aliases": [
+        "BH"
+      ],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_initials_unresolved"
+    },
+    {
+      "id": "ppk_sd_wh",
+      "case_id": "chromebook_2020_matter",
+      "kind": "person",
+      "name": "PPK reference WH (initials only)",
+      "aliases": [
+        "WH"
+      ],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_initials_unresolved"
+    },
+    {
+      "id": "ppk_smp_hs",
+      "case_id": "chromebook_2020_matter",
+      "kind": "person",
+      "name": "PPK reference HS (initials only)",
+      "aliases": [
+        "HS"
+      ],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_initials_unresolved"
+    },
+    {
+      "id": "sri_wahyuningsih",
+      "case_id": "chromebook_2020_matter",
+      "kind": "person",
+      "name": "Sri Wahyuningsih",
+      "aliases": [],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "mulyatsyah",
+      "case_id": "chromebook_2020_matter",
+      "kind": "person",
+      "name": "Mulyatsyah",
+      "aliases": [],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "bhinneka_provider",
+      "case_id": "chromebook_2020_matter",
+      "kind": "organization",
+      "name": "PT Bhinneka Mentaridimensi",
+      "aliases": [],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "ppk_sd_position",
+      "case_id": "chromebook_2020_matter",
+      "kind": "position",
+      "name": "Elementary directorate PPK office (fiscal 2020)",
+      "aliases": [],
+      "source_refs": [
+        "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "court_nadiem_evidence",
+      "case_id": "court_evidence_2026",
+      "kind": "document",
+      "name": "Nadiem trial directory evidence-handling index",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    },
+    {
+      "id": "wahyu_haryadi_index",
+      "case_id": "court_evidence_2026",
+      "kind": "person",
+      "name": "Wahyu Haryadi",
+      "aliases": [],
+      "source_refs": [
+        "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html"
+      ],
+      "identity_status": "source_named_unreviewed"
+    }
+  ],
+  "relationships": [
+    {
+      "source_entity_id": "ppk_sd_bh",
+      "target_entity_id": "pros_jul2025_doc",
+      "relation": "NAMED_IN_RECORD",
+      "source_url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
+      "evidence_ref": "prosecution_press_release_PR_624_2025_claims",
+      "observed_at": "2025-07-15",
+      "evidence_basis": "source_report",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "ppk_sd_wh",
+      "target_entity_id": "pros_jul2025_doc",
+      "relation": "NAMED_IN_RECORD",
+      "source_url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
+      "evidence_ref": "prosecution_press_release_PR_624_2025_claims",
+      "observed_at": "2025-07-15",
+      "evidence_basis": "source_report",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "ppk_smp_hs",
+      "target_entity_id": "pros_jul2025_doc",
+      "relation": "NAMED_IN_RECORD",
+      "source_url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
+      "evidence_ref": "prosecution_press_release_PR_624_2025_claims",
+      "observed_at": "2025-07-15",
+      "evidence_basis": "source_report",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "sri_wahyuningsih",
+      "target_entity_id": "pros_jul2025_doc",
+      "relation": "NAMED_IN_RECORD",
+      "source_url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
+      "evidence_ref": "prosecution_press_release_PR_624_2025_claims",
+      "observed_at": "2025-07-15",
+      "evidence_basis": "source_report",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "mulyatsyah",
+      "target_entity_id": "pros_jul2025_doc",
+      "relation": "NAMED_IN_RECORD",
+      "source_url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
+      "evidence_ref": "prosecution_press_release_PR_624_2025_claims",
+      "observed_at": "2025-07-15",
+      "evidence_basis": "source_report",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "bhinneka_provider",
+      "target_entity_id": "pros_jul2025_doc",
+      "relation": "NAMED_IN_RECORD",
+      "source_url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
+      "evidence_ref": "prosecution_press_release_PR_624_2025_claims",
+      "observed_at": "2025-07-15",
+      "evidence_basis": "source_report",
+      "review_state": "pending"
+    },
+    {
+      "source_entity_id": "wahyu_haryadi_index",
+      "target_entity_id": "court_nadiem_evidence",
+      "relation": "NAMED_IN_RECORD",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "evidence_ref": "supreme_court_judgment_directory_evidence_inventory",
+      "observed_at": "2026-06-30",
+      "evidence_basis": "native_record",
+      "review_state": "pending"
+    }
+  ],
+  "interpretation_note": "Only prosecutor statement and court index identity leads; do not interpret BH/WH/HS initials as proof of appointment; WH in prosecutor text is not yet proven to be the Wahyu Haryadi named in 2026 judicial evidence-handling metadata. All relations are pending, no recognized signatories or financial transfers."
+}

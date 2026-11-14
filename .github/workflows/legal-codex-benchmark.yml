@@ -1,0 +1,108 @@
+name: legal-codex-benchmark
+
+on:
+  pull_request:
+    paths:
+      - 'src/cite_refinery/legal_codex_*.py'
+      - 'examples/legal_codex_*.json'
+      - 'tests/test_legal_codex*.py'
+      - '.github/workflows/legal-codex-benchmark.yml'
+  push:
+    branches:
+      - 'feature/legal-codex-benchmark-*'
+    paths:
+      - 'src/cite_refinery/legal_codex_*.py'
+      - 'examples/legal_codex_*.json'
+      - 'tests/test_legal_codex*.py'
+      - '.github/workflows/legal-codex-benchmark.yml'
+
+jobs:
+  legal-benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test legal benchmark and semantic graph integration
+        run: |
+          PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex*.py' -v
+      - name: Generate unreviewed 011 comparative audit and candidate graph
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_comparative_audit \
+            examples/legal_codex_comparative_audit_011.json \
+            --output legal-codex-comparative-011-result.json \
+            --packet legal-codex-comparative-011-graph.json
+      - name: Upload bounded comparative audit output (not a published legal conclusion)
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-comparative-011-unreviewed
+          path: |
+            legal-codex-comparative-011-result.json
+            legal-codex-comparative-011-graph.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Generate unreviewed judgment reconstruction 012 and candidate graph
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_judgment_reconstruction \
+            examples/legal_codex_judgment_reconstruction_012.json \
+            --output legal-codex-judgment-012-result.json \
+            --packet legal-codex-judgment-012-graph.json
+      - name: Retain judicial paragraph candidate graph and review state
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-judgment-012-unreviewed
+          path: |
+            legal-codex-judgment-012-result.json
+            legal-codex-judgment-012-graph.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Generate dated official remedy outcome trace 013 and candidate graph
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_outcome_trace \
+            examples/legal_codex_outcome_trace_013.json \
+            --output legal-codex-outcome-013-result.json \
+            --packet legal-codex-outcome-013-graph.json
+      - name: Preserve bounded official outcome trace and corrections
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-outcome-013-unreviewed
+          path: |
+            legal-codex-outcome-013-result.json
+            legal-codex-outcome-013-graph.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Generate unreviewed Legal Codex source vault custody baseline 014
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_vault_handoff \
+            examples/legal_codex_vault_handoff_014.json \
+            --output legal-codex-vault-014-coverage.json \
+            --packet legal-codex-vault-014-graph.json
+      - name: Retain missing-source coverage register, not invented original bytes
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-vault-014-custody-baseline
+          path: |
+            legal-codex-vault-014-coverage.json
+            legal-codex-vault-014-graph.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Generate correction-aware official reporting change 014
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_reporting_delta \
+            examples/legal_codex_outcome_trace_013.json \
+            --output legal-codex-reporting-delta-014-result.json \
+            --packet legal-codex-reporting-delta-014-graph.json
+      - name: Retain reported period deltas separately from retroactive corrections
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-reporting-delta-014-unreviewed
+          path: |
+            legal-codex-reporting-delta-014-result.json
+            legal-codex-reporting-delta-014-graph.json
+          if-no-files-found: error
+          retention-days: 30
