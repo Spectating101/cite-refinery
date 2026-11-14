@@ -84,7 +84,7 @@ class ComparativeAudit011Tests(unittest.TestCase):
             validate(self.data)
 
     def test_source_cannot_impersonate_a_different_institutional_power(self):
-        self.find("findings", "f_uk_act")["kind"] = "regulatory_determination"
+        self.find("findings", "f_uk_law")["kind"] = "regulatory_determination"
         with self.assertRaisesRegex(ValueError, "different type"):
             validate(self.data)
 
