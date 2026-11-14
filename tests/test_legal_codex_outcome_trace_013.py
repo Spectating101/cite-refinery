@@ -23,8 +23,8 @@ class OutcomeTrace013Tests(unittest.TestCase):
         out = evaluate(self.data)
         self.assertEqual(out["source_count"], 5)
         self.assertEqual(out["cohort_count"], 11)
-        self.assertEqual(out["monetary_category_count"], 10)
-        self.assertEqual(out["correction_count"], 1)
+        self.assertEqual(out["monetary_category_count"], 11)
+        self.assertEqual(out["correction_count"], 2)
         self.assertEqual(out["context_only_court_link_count"], 3)
         self.assertEqual(out["unresolved_individual_record_count"], 4)
         self.assertEqual(out["individual_case_outcomes_authenticated"], 0)
@@ -93,10 +93,14 @@ class OutcomeTrace013Tests(unittest.TestCase):
 
     def test_superseded_uk_september_number_preserved_as_correction_not_payment(self):
         result=evaluate(self.data)
-        correction=result["corrected_official_figures"][0]
+        by_id={c["id"]:c for c in result["corrected_official_figures"]}
+        correction=by_id["uk_sep_total_correction"]
         self.assertEqual((correction["superseded"],correction["current"]),(1731,1727))
         self.assertTrue(correction["not_new_disbursement"])
         self.assertEqual(correction["revision_date"],"2026-11-13")
+        hssa=by_id["uk_sep_hssa_correction"]
+        self.assertEqual((hssa["superseded"],hssa["current"]),(22,18))
+        self.assertTrue(hssa["not_new_disbursement"])
 
     def test_reporting_total_not_component_sum_due_to_rounding_overlap(self):
         amounts={m["id"]:m for m in self.data["money"]}
