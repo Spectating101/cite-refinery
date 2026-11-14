@@ -58,3 +58,19 @@ jobs:
             legal-codex-judgment-012-graph.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Generate dated official remedy outcome trace 013 and candidate graph
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_outcome_trace \
+            examples/legal_codex_outcome_trace_013.json \
+            --output legal-codex-outcome-013-result.json \
+            --packet legal-codex-outcome-013-graph.json
+      - name: Preserve bounded official outcome trace and corrections
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-outcome-013-unreviewed
+          path: |
+            legal-codex-outcome-013-result.json
+            legal-codex-outcome-013-graph.json
+          if-no-files-found: error
+          retention-days: 30
