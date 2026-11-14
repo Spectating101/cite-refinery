@@ -165,6 +165,26 @@ class ComparativeAudit011Tests(unittest.TestCase):
         self.assertTrue(all(e["provenance"]["foreign_law_applicable"] is False
                             for e in comparisons))
 
+    def test_packet_works_with_real_cite_preview_and_ingestion(self):
+        from tempfile import TemporaryDirectory
+        from cite_refinery.app import CiteRefinery
+        from cite_refinery.semantic import SemanticGraph
+
+        result = evaluate(self.data)
+        packet = semantic_packet(self.data, result)
+        with TemporaryDirectory() as tmp:
+            app = CiteRefinery(tmp)
+            project = app.init_project("Global legal comparison pilot", "Unreviewed institutional-source candidate graph")
+            graph = SemanticGraph(app.store)
+            preview = graph.preview_packet(project.id, packet)
+            self.assertFalse(preview["authority_boundary_warnings"])
+            receipt = graph.ingest_packet(
+                project.id, packet, expected_state_digest=preview["state_digest"])
+            self.assertEqual(len(receipt["edge_ids"]), 30)
+            self.assertTrue(all(
+                app.store.load()["semantic_edges"][eid]["status"] == "candidate"
+                for eid in receipt["edge_ids"]))
+
     def test_stale_result_rejected(self):
         out = evaluate(self.data)
         mutated = copy.deepcopy(self.data)
