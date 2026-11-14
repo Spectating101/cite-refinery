@@ -41,7 +41,7 @@ HSS and HSSA claimant journeys may overlap. HCRS includes transfers from the clo
 
 The headline **approximately GBP 1,756 million** cumulative paid across Horizon schemes includes interim payments. Approximate rounded categories: HSS 1,106m; HSSA 18m; GLO 237m; HCRS 326m; closed OC 68m. The rounded components sum to 1,755m, not 1,756m; this does not indicate a discrepancy in an audited individual ledger, as the amounts are rounded and their reporting rules differ.
 
-**Correction gate:** on **13 November 2026**, the department corrected September total from **GBP 1,731m to GBP 1,727m**. A revision of previously reported data must not be counted as new payments or negative recovered cash. This pilot pins the corrected amount and retains the superseded value as an explicit correction event.
+**Correction gate:** on **13 November 2026**, the department corrected September total from **GBP 1,731m to GBP 1,727m**, and September HSSA payments from **GBP 22m to GBP 18m**. A revision of previously reported data must not be counted as new payments or negative recovered cash. This pilot pins the corrected amount and retains the superseded value as an explicit correction event.
 
 ## Netherlands: administrative classifications versus effective relief
 
@@ -57,8 +57,8 @@ The national programme does not prove the individual claimant's post-remittal re
 
 ## Code and reproducibility
 
-- src/cite_refinery/legal_codex_outcome_trace.py — validates five official-source locators, as-of dates, immutable source figures, cohort units, stage partitions, reported money types and correction history; no inter-country causal comparisons.
-- examples/legal_codex_outcome_trace_013.json — eleven distinct cohorts, ten monetary categories, one official September correction, three **context-only** judgment references and four unverified individual-record requests.
+- src/cite_refinery/legal_codex_outcome_trace.py — validates five official-source locators, as-of dates, immutable source figures, cohort units, stage partitions, reported money types and correction history for both overall and HSSA September payments; no inter-country causal comparisons.
+- examples/legal_codex_outcome_trace_013.json — eleven distinct cohorts, eleven monetary categories, two official September corrections, three **context-only** judgment references and four unverified individual-record requests.
 - tests/test_legal_codex_outcome_trace_013.py — adversarial tests rejecting fake original archives, case/person/claims conflation, stale amount, invalid stage/denominator, currency mixing, individual-payment inference, foreign law transfer and forged judicial links.
 - Candidate-only semantic graph; **no aggregate link to individual court holding establishes payment, culpability or causation.**
 
