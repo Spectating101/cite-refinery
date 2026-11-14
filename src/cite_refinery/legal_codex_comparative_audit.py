@@ -140,7 +140,7 @@ def validate(bundle):
             raise ValueError("source page must not impersonate archived original")
         parsed = urlsplit(src["url"])
         allowed = _SOURCE_HOSTS.get(src["kind"])
-        if (not allowed or parsed.scheme != "https" or parsed.hostname not in allowed or
+        if (not allowed or parsed.scheme != "https" or parsed.hostname.removeprefix("www.") not in allowed or
                 parsed.username or parsed.password or parsed.port not in (None, 443) or
                 not parsed.path or parsed.path == "/"):
             raise ValueError("source host/type provenance invalid")
