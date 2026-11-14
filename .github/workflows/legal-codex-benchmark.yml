@@ -42,3 +42,19 @@ jobs:
             legal-codex-comparative-011-graph.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Generate unreviewed judgment reconstruction 012 and candidate graph
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_judgment_reconstruction \
+            examples/legal_codex_judgment_reconstruction_012.json \
+            --output legal-codex-judgment-012-result.json \
+            --packet legal-codex-judgment-012-graph.json
+      - name: Retain judicial paragraph candidate graph and review state
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-judgment-012-unreviewed
+          path: |
+            legal-codex-judgment-012-result.json
+            legal-codex-judgment-012-graph.json
+          if-no-files-found: error
+          retention-days: 30
