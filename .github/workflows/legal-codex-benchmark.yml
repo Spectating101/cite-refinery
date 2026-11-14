@@ -90,3 +90,19 @@ jobs:
             legal-codex-vault-014-graph.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Generate correction-aware official reporting change 014
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_reporting_delta \
+            examples/legal_codex_outcome_trace_013.json \
+            --output legal-codex-reporting-delta-014-result.json \
+            --packet legal-codex-reporting-delta-014-graph.json
+      - name: Retain reported period deltas separately from retroactive corrections
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-reporting-delta-014-unreviewed
+          path: |
+            legal-codex-reporting-delta-014-result.json
+            legal-codex-reporting-delta-014-graph.json
+          if-no-files-found: error
+          retention-days: 30
