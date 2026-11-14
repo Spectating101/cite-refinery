@@ -45,6 +45,44 @@ class VaultHandoff014Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"source list"):
             validate(self.seed)
 
+    def test_dutch_official_ecli_xml_mirrors_are_pinned_but_not_promoted(self):
+        mirrors={
+            x["source_id"]:x["approved_official_alternates"]
+            for x in self.seed["expected_sources"]
+        }
+        self.assertEqual(
+            mirrors["judgment_dutch_3535"],
+            ["https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3535"])
+        self.assertEqual(
+            mirrors["judgment_dutch_3536"],
+            ["https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536"])
+        self.assertEqual(mirrors["judgment_hamilton_2021"],[])
+        self.assertEqual(evaluate(self.seed)["verified_byte_source_count"],0)
+
+    def test_dutch_court_mirror_cannot_be_replaced_by_third_party(self):
+        x=next(x for x in self.seed["expected_sources"]
+               if x["source_id"]=="judgment_dutch_3535")
+        x["approved_official_alternates"]=["https://example.com/fake"]
+        with self.assertRaisesRegex(ValueError,"source list"):
+            validate(self.seed)
+
+    def test_mirror_receipt_from_test_double_is_still_untrusted(self):
+        x=next(x for x in self.seed["expected_sources"]
+               if x["source_id"]=="judgment_dutch_3535")
+        receipt={
+            "source_id":x["source_id"],
+            "source_url":x["approved_official_alternates"][0],
+            "reference_date":x["reference_date"],
+            "acquisition_state":"live_nocturnal_loader_rechecked",
+            "source_truth_verified":False,
+            "raw_sha256":"a"*64,
+        }
+        out=evaluate(self.seed,vault_root="/fake",
+                     verifier=lambda _:self.fake([receipt]))
+        row=next(r for r in out["source_status"] if r["source_id"]==x["source_id"])
+        self.assertEqual(row["custody_status"],"synthetic_or_untrusted_capture")
+        self.assertEqual(out["verified_byte_source_count"],0)
+
     def test_full_report_cannot_claim_originals_in_seed(self):
         self.seed["originals_archived_in_fixture"]=True
         with self.assertRaisesRegex(ValueError,"promoted"):
