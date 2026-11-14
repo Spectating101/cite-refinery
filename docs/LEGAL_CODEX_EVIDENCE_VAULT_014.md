@@ -1,6 +1,6 @@
 # Global Legal Codex — Milestone 014: Source Vault and Revision-Aware Audit
 
-**Status date:** 15 November 2026. **Implementation:** source-custody infrastructure and reporting-delta test, not original document acquisition or legal publication clearance.
+**Status date:** 15 November 2026. **Implementation:** source-custody infrastructure, reporting-delta test and a subsequently completed **live 8/8 source-byte acquisition and archive import** in a private operator environment. No independent court-signature certification, source-entailment approval, backed-up off-device archive or legal publication clearance.
 
 ## Evidence problem solved
 
@@ -22,7 +22,7 @@ Previous Nocturnal capture workflows retained original HTML/PDF bytes only withi
 | --- | ---: | --- |
 | Milestone 012 | UK Hamilton PDF plus Dutch ECLI 3535 and 3536 | Awaiting genuine verified source-byte archive |
 | Milestone 013 | UK MoJ summary, September and October UK redress, Dutch UHT dashboard and ministerial announcement | Awaiting genuine verified source-byte archive |
-| Total | **8** | **Zero source original acquisitions certified in the fixture-only CI test** |
+| Total | **8** | **Fixture-only CI continues to certify zero. Separately, the authorized live operator vault now verifies all eight source-byte captures through the production Nocturnal→Cite bridge.** |
 
 The earlier Milestone 011 institutional sources can be added in a future versioned whitelist after their real capture receipts are separately audited. These eight are not a claim about global source completeness.
 
@@ -97,6 +97,21 @@ For reporting deltas:
 - **Not autonomous publication:** all graph relations remain candidates. An independent legal/editorial gate remains required.
 - **Not a completed live capture:** as of this handoff, new 014 genuine source ingestion and Nocturnal workflow execution receipts have not been confirmed. The Cite test baseline truthfully reports missing bytes.
 
-**Next gate:** verify that one live source per jurisdiction can be captured, preserved on a real persistent vault, verified after a second run, and independently anchored. Separately acquire lawful individualized post-judgment orders; do not use national aggregate statistics as substitutes.
+**Next gate:** complete off-device backup/restore and independent checkpoint verification, recheck the full UK judicial text and Dutch paragraphs with bilingual legal review, and obtain lawfully accessible individual post-judgment order/payment records. Separately acquire lawful individualized post-judgment orders; do not use national aggregate statistics as substitutes.
 
 Indonesia Chromebook PPK signed appointment and e-catalog order remain unverified; formal PPID requests remain prepared but not sent. Keep both PRs draft.
+
+
+## Live acquisition and persistent vault addendum — 15 November 2026 (Taiwan)
+
+After the initial fixture-only test, the complete 014 acquisition path was exercised through **real network retrieval and actual production Nocturnal byte/text rechecks** on a connected authorized Optiplex, using isolated temporary repository checkouts rather than modifying an existing development tree. The first run revealed and fixed the native hyphenated case-ID mismatch; independent tests subsequently passed. The judgment-source capture originally failed for two Dutch HTML pages; the implementation was extended with an opt-in, TLS-pinned and entity/DOCTYPE-rejecting official Rechtspraak XML parser, and Dutch ECLI documents were acquired via the judiciary's official XML endpoint. The UK Hamilton PDF capture was corrected to inspect selected opening and operative-disposition pages (not a full-page legal verification).
+
+**Verified live results:** five official 013 reporting pages and three official 012 court source files acquired, giving **8/8** original-source-byte coverage. All captures passed Nocturnal loader integrity checking, were imported into a private operator-controlled local vault outside the temporary test checkout, and were matched by Cite's real `--vault-root` handoff. The private vault contains eight source snapshots and a hash-linked eight-event chain with no synthetic source records. The local vault directory is restricted to 0700 permissions; blob objects were created 0600. No source bytes or private filesystem paths are committed in this public Cite repository.
+
+**Independent suite results:** 34/34 Nocturnal vault/parser tests passed, 252/252 Cite Legal Codex tests passed and the live Nocturnal↔Cite cross-repository contract returned `PASS`. This is not a claim that every Nocturnal general product test ran or that all original-document judicial interpretations were validated.
+
+**Off-vault checkpoint:** a hash-only eight-source inventory and final archive-head digest are committed in Nocturnal's private Git history at `docs/LEGAL_CODEX_VAULT_CHECKPOINT_014.md`. The Git commit is an externally stored hash reference, **not** a digitally signed/witnessed timestamp, WORM guarantee or backup of the source bodies. The latest source data were captured on 2026-11-15 Taiwan time; their authoritative reporting reference periods are earlier and distinct from capture time.
+
+**Important historical correction gap:** the September UK financial page originally published *before* its November revision was **not** archived. Capturing the corrected page does not retroactively establish possession of the earlier version. The September original/correction comparison remains source-attributed to the official notice and not a two-version byte-level proof.
+
+**Remaining gates:** provision an independent, access-controlled backup of the local vault and test restoration; externally verify future checkpoint hashes; review all original judgments (including pages not extracted from the UK PDF) with a qualified legal reader; reconcile individual remedies through lawful original case records; maintain the Indonesia June 2020 signed PPK and purchase-order search separately. The public CI `legal_codex_vault_handoff` fixture intentionally still returns **0 authenticated bytes** because CI does not have access to the private operator archive. No legal publication or liability finding is authorized.
