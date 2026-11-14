@@ -169,8 +169,8 @@ def validate(bundle):
         if s["kind"] != kinds[f["kind"]]:
             raise ValueError("finding impersonates a different type of authority")
         when = _date(f["observed_on"])
-        if when > _date(s["published_on"]) or when > as_of:
-            raise ValueError("finding event occurs after its cited source")
+        if when != _date(s["published_on"]) or when > as_of:
+            raise ValueError("finding date must equal the cited official publication date; no backdating")
     interventions = _indexed(bundle["interventions"], "intervention")
     for action in interventions.values():
         c, s = cases.get(action["case_id"]), sources.get(action["source_id"])
@@ -192,8 +192,8 @@ def validate(bundle):
                 action["claims_foreign_applicability"] is not False):
             raise ValueError("unverified remedy, impact or foreign-law transfer")
         when = _date(action["effective_on"])
-        if when > _date(s["published_on"]) or when > as_of:
-            raise ValueError("intervention dated after source or audit")
+        if when != _date(s["published_on"]) or when != _date(f["observed_on"]) or when > as_of:
+            raise ValueError("intervention cannot be backdated beyond official publication")
         expected = {
             "statutory_quashing": "legislative_response",
             "independent_case_review": "official_review",
