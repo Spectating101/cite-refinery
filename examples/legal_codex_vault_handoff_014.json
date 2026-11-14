@@ -6,49 +6,61 @@
       "source_id": "judgment_dutch_3535",
       "source_url": "https://www.raadvanstate.nl/uitspraken/@118143/201900753-1-a2/",
       "reference_date": "2019-10-23",
-      "source_family": "judgment_012"
+      "source_family": "judgment_012",
+      "approved_official_alternates": [
+        "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3535"
+      ]
     },
     {
       "source_id": "judgment_dutch_3536",
       "source_url": "https://www.raadvanstate.nl/uitspraken/@118142/201802802-1-a2/",
       "reference_date": "2019-10-23",
-      "source_family": "judgment_012"
+      "source_family": "judgment_012",
+      "approved_official_alternates": [
+        "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536"
+      ]
     },
     {
       "source_id": "judgment_hamilton_2021",
       "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
       "reference_date": "2021-04-23",
-      "source_family": "judgment_012"
+      "source_family": "judgment_012",
+      "approved_official_alternates": []
     },
     {
       "source_id": "s_nl_dashboard",
       "source_url": "https://herstel.toeslagen.nl/dashboard-kinderopvangtoeslag/",
       "reference_date": "2026-10-16",
-      "source_family": "outcome_013"
+      "source_family": "outcome_013",
+      "approved_official_alternates": []
     },
     {
       "source_id": "s_nl_update_sep",
       "source_url": "https://www.rijksoverheid.nl/actueel/nieuws/2026/09/18/steeds-meer-ouders-ronden-hun-aanvullende-schade-af",
       "reference_date": "2026-09-18",
-      "source_family": "outcome_013"
+      "source_family": "outcome_013",
+      "approved_official_alternates": []
     },
     {
       "source_id": "s_uk_moj",
       "source_url": "https://www.gov.uk/government/publications/post-office-horizon-system-offences-act-2024-quashed-convictions-management-information/summary-quashed-convictions-management-information-24-september-2026",
       "reference_date": "2026-09-15",
-      "source_family": "outcome_013"
+      "source_family": "outcome_013",
+      "approved_official_alternates": []
     },
     {
       "source_id": "s_uk_redress_oct",
       "source_url": "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026/post-office-horizon-financial-redress-data-as-of-30-october-2026",
       "reference_date": "2026-10-30",
-      "source_family": "outcome_013"
+      "source_family": "outcome_013",
+      "approved_official_alternates": []
     },
     {
       "source_id": "s_uk_redress_sep",
       "source_url": "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026/post-office-horizon-financial-redress-data-as-of-30-september-2026",
       "reference_date": "2026-09-30",
-      "source_family": "outcome_013"
+      "source_family": "outcome_013",
+      "approved_official_alternates": []
     }
   ],
   "originals_archived_in_fixture": false,
