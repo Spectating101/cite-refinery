@@ -376,6 +376,18 @@
       "is_rounded": true,
       "individually_reconciled": false,
       "additive_to_other_categories": false
+    },
+    {
+      "id": "uk_hssa_sep_corrected",
+      "source_id": "s_uk_redress_sep",
+      "unit": "GBP_million",
+      "reported_amount": 18,
+      "scope_note": "September 2026 HSSA cash paid following the 13 November official revision from an erroneously published GBP 22 million to GBP 18 million; not new money.",
+      "data_as_of": "2026-09-30",
+      "amount_kind": "cumulative_official_reported_amount",
+      "is_rounded": true,
+      "individually_reconciled": false,
+      "additive_to_other_categories": false
     }
   ],
   "corrections": [
@@ -384,6 +396,16 @@
       "target_amount_id": "uk_all_redress_sep_corrected",
       "superseded_amount": 1731,
       "corrected_amount": 1727,
+      "revision_published_on": "2026-11-13",
+      "source_url": "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026",
+      "superseded_not_current": true,
+      "change_is_new_payment": false
+    },
+    {
+      "id": "uk_sep_hssa_correction",
+      "target_amount_id": "uk_hssa_sep_corrected",
+      "superseded_amount": 22,
+      "corrected_amount": 18,
       "revision_published_on": "2026-11-13",
       "source_url": "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026",
       "superseded_not_current": true,
