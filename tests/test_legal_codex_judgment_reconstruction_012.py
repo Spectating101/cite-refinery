@@ -22,7 +22,7 @@ class JudgmentReconstruction012Tests(unittest.TestCase):
         result = evaluate(self.data)
         self.assertEqual(result["judgment_count"], 3)
         self.assertEqual(result["jurisdiction_count"], 2)
-        self.assertEqual(result["holding_count"], 12)
+        self.assertEqual(result["holding_count"], 13)
         self.assertEqual(result["comparison_count"], 3)
         self.assertEqual([x["docket"] for x in result["judgments"]],
                          ["ECLI:NL:RVS:2019:3535", "ECLI:NL:RVS:2019:3536", "[2021] EWCA Crim 577"])
@@ -108,6 +108,14 @@ class JudgmentReconstruction012Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "disposition"):
             validate(self.data)
 
+    def test_hamilton_expressly_did_not_find_individual_financial_motive(self):
+        row = self.item("holdings", "uk_no_motive_finding")
+        self.assertEqual(row["paragraph"], "136")
+        self.assertEqual(row["kind"], "individual_motive_not_adjudicated")
+        self.data["holdings"] = [h for h in self.data["holdings"] if h["id"] != row["id"]]
+        with self.assertRaisesRegex(ValueError, "holding types"):
+            validate(self.data)
+
     def test_uk_nonessential_horizon_exception_is_preserved(self):
         self.data["holdings"] = [
             h for h in self.data["holdings"] if h["id"] != "uk_specific_exception"]
@@ -163,8 +171,8 @@ class JudgmentReconstruction012Tests(unittest.TestCase):
         out = evaluate(self.data)
         packet = semantic_packet(self.data, out)
         self.assertEqual(packet["schema"], "cite_refinery.semantic_graph.v1")
-        self.assertEqual(len(packet["nodes"]), 15)
-        self.assertEqual(len(packet["edges"]), 15)
+        self.assertEqual(len(packet["nodes"]), 16)
+        self.assertEqual(len(packet["edges"]), 16)
         self.assertTrue(all(e["status"] == "candidate" for e in packet["edges"]))
         self.assertFalse(any(e["relation"] in {"CAUSES", "GUILTY", "LAW_APPLIES", "PAID", "SIGNED"}
                              for e in packet["edges"]))
@@ -191,7 +199,7 @@ class JudgmentReconstruction012Tests(unittest.TestCase):
             self.assertFalse(preview["authority_boundary_warnings"])
             receipt = graph.ingest_packet(
                 project.id, packet, expected_state_digest=preview["state_digest"])
-            self.assertEqual(len(receipt["edge_ids"]), 15)
+            self.assertEqual(len(receipt["edge_ids"]), 16)
             self.assertTrue(all(
                 app.store.load()["semantic_edges"][i]["status"] == "candidate"
                 for i in receipt["edge_ids"]))
