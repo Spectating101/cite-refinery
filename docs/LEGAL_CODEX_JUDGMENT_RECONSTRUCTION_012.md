@@ -1,7 +1,7 @@
 # Global Legal Codex — Milestone 012: judicial decision reconstruction
 
 **Study date:** 15 November 2026  
-**State:** primary court-hosted texts consulted via public web view; three identifiers and twelve paragraph-specific paraphrases seeded; original downloaded bytes, per-page hashes, certified judicial orders and independent bilingual legal review **not** acquired by this pipeline. This is an investigative research candidate, not a published determination of foreign legal applicability or causation.
+**State:** primary court-hosted texts consulted via public web view; three identifiers and thirteen paragraph-specific paraphrases seeded; original downloaded bytes, per-page hashes, certified judicial orders and independent bilingual legal review **not** acquired by this pipeline. This is an investigative research candidate, not a published determination of foreign legal applicability or causation.
 
 ## Why this differs from Milestone 011
 
@@ -18,6 +18,7 @@ An action occurring in 2024 cannot supply a 2021 court's reasoning. The Dutch 20
 - **Jurisdiction:** England and Wales, Court of Appeal (Criminal Division).
 - **Neutral citation:** **[2021] EWCA Crim 577**, decided **23 April 2021**; 42 linked appeals, individually assessed.
 - **Paras 120–123:** The court accepted that Horizon defects could generate apparent shortfalls without actual losses. The relevant prosecutions lacked independent loss evidence and suffered serious investigation and disclosure failures.
+- **Para 136, critical limitation:** The court did not find that prosecutions were financially motivated or determine any individual's subjective belief or suppression of doubts. The judicial finding concerns the corporate prosecutorial duties, not inferred criminal motive.
 - **Paras 127–138:** The court distinguished *category 1* abuse (unfair trial) and *category 2* abuse (affront to conscience of court) and held that both applied to the relevant Horizon-dependent prosecutions.
 - **Paras 357–446:** Three contested appeals demanded case-specific review. At **para 440**, Neelam Hussain's prosecution was not dependent on Horizon's general reliability in the required sense; her appeal failed.
 - **Para 447, operative disposition:** **39 appeals allowed**, with all those appellants' respective convictions quashed; appeals of **Wendy Cousins, Stanley Fell and Neelam Hussain dismissed**. The 39/42 ratio is the *appeal* denominator within this 2021 judgment, not the total prosecutions ever undertaken or later statutory relief.
@@ -59,7 +60,7 @@ The [Raad van State's official 23 October 2019 press explanation](https://www.ra
 
 ## Files and reproducibility
 
-- examples/legal_codex_judgment_reconstruction_012.json — pinned court URLs, dockets, judicial dispositions, twelve paragraph-holding records, three bounded comparison questions, four unresolved primary-record gaps.
+- examples/legal_codex_judgment_reconstruction_012.json — pinned court URLs, dockets, judicial dispositions, thirteen paragraph-holding records, three bounded comparison questions, four unresolved primary-record gaps.
 - src/cite_refinery/legal_codex_judgment_reconstruction.py — fail-closed evaluator; jurisdiction, docket, legal basis, paragraph and disposition gates; candidate-only semantic graph export.
 - tests/test_legal_codex_judgment_reconstruction_012.py — adversarial checks for fake original hashes, misdated or foreign law, incorrect denominators, erased UK exceptions, paragraph swaps, false financial remedies and stale graphs.
 
