@@ -74,3 +74,19 @@ jobs:
             legal-codex-outcome-013-graph.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Generate unreviewed Legal Codex source vault custody baseline 014
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_vault_handoff \
+            examples/legal_codex_vault_handoff_014.json \
+            --output legal-codex-vault-014-coverage.json \
+            --packet legal-codex-vault-014-graph.json
+      - name: Retain missing-source coverage register, not invented original bytes
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-vault-014-custody-baseline
+          path: |
+            legal-codex-vault-014-coverage.json
+            legal-codex-vault-014-graph.json
+          if-no-files-found: error
+          retention-days: 30
