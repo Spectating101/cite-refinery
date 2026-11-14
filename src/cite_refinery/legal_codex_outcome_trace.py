@@ -82,6 +82,7 @@ MONEY_PINS = {
     "nl_integral_assessment_disbursed": ("s_nl_dashboard", "EUR_million", 1760),
     "nl_actual_damage_disbursed": ("s_nl_dashboard", "EUR_million", 42.1),
 }
+CORRECTION_SOURCE_URL = "https://www.gov.uk/government/publications/post-office-horizon-financial-redress-and-legal-costs-data-for-2026"
 CORRECTION_PINS = {
     "uk_sep_total_correction": ("uk_all_redress_sep_corrected", 1731, 1727),
 }
@@ -208,7 +209,7 @@ def validate(bundle):
                 row.get("revision_published_on") != "2026-11-13" or
                 row.get("superseded_not_current") is not True or
                 row.get("change_is_new_payment") is not False or
-                row.get("source_url") != SOURCE_PINS["s_uk_redress_sep"][0]):
+                row.get("source_url") != CORRECTION_SOURCE_URL):
             raise ValueError("stale UK redress data promoted or revision misrepresented")
     links = _indexed(bundle["court_context_links"], "court links")
     if set(links) != set(EXPECTED_LINKS):
