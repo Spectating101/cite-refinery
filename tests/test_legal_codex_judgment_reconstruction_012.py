@@ -135,7 +135,7 @@ class JudgmentReconstruction012Tests(unittest.TestCase):
             validate(self.data)
 
     def test_dutch_same_day_changes_do_not_form_one_holding(self):
-        self.item("comparisons", "cmp_dutch_split")["left_holding"] = "nl_3536_discretion"
+        self.item("comparisons", "cmp_dutch_split")["left_holding"] = "nl_3536_individual_facts"
         with self.assertRaisesRegex(ValueError, "distinct judicial decisions"):
             validate(self.data)
 
