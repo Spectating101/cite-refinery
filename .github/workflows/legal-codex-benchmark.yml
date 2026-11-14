@@ -27,3 +27,18 @@ jobs:
       - name: Test legal benchmark and semantic graph integration
         run: |
           PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex*.py' -v
+      - name: Generate unreviewed 011 comparative audit and candidate graph
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_comparative_audit \
+            examples/legal_codex_comparative_audit_011.json \
+            --output legal-codex-comparative-011-result.json \
+            --packet legal-codex-comparative-011-graph.json
+      - name: Upload bounded comparative audit output (not a published legal conclusion)
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-comparative-011-unreviewed
+          path: |
+            legal-codex-comparative-011-result.json
+            legal-codex-comparative-011-graph.json
+          if-no-files-found: error
+          retention-days: 30
