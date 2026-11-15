@@ -24,9 +24,9 @@ class PreventionEdge015Tests(unittest.TestCase):
 
     def test_result_is_still_proposal_not_historical_proof(self):
         result = evaluate(self.data)
-        self.assertEqual(result["case_count"], 5)
+        self.assertEqual(result["case_count"], 6)
         self.assertEqual(result["instrument_count"], 7)
-        self.assertEqual(result["examined_edge_count"], 12)
+        self.assertEqual(result["examined_edge_count"], 13)
         self.assertFalse(result["historical_prevention_proven"])
         self.assertFalse(result["individual_guilt_proven"])
         self.assertIsNone(result["regulation_success_rate"])
@@ -91,6 +91,15 @@ class PreventionEdge015Tests(unittest.TestCase):
     def test_same_horizon_record_provenance_design_remains_proposed(self):
         row = self.edge("p_uk_digital_provenance")
         self.assertEqual(row["edge_determination"], "future_design_candidate_not_historical_law")
+        self.assertFalse(row["historical_prevention_proven"])
+
+    def test_foreign_procedure_same_stage_is_research_analogy_not_law(self):
+        row = self.edge("p_foreign_uk_trial_disclosure")
+        self.assertEqual(row["country_scope"], "foreign_only")
+        self.assertTrue(row["arena_match"])
+        self.assertTrue(row["checkpoint_match"])
+        self.assertEqual(row["edge_determination"], "foreign_analogy_not_binding_law")
+        self.assertFalse(row["cross_border_rule_applied"])
         self.assertFalse(row["historical_prevention_proven"])
 
     def test_foreign_uk_to_indonesia_is_rejected_by_stage(self):
@@ -160,7 +169,7 @@ class PreventionEdge015Tests(unittest.TestCase):
         self.assertEqual(packet["schema"], "cite_refinery.semantic_graph.v1")
         candidate_proposals = [p for p in result["paths"]
                                if p["edge_determination"] != "failure_path_or_operational_stage_mismatch"]
-        self.assertEqual(len(packet["nodes"]), 5 + 7 + len(candidate_proposals))
+        self.assertEqual(len(packet["nodes"]), 6 + 7 + len(candidate_proposals))
         self.assertEqual(len(packet["edges"]), 2 * len(candidate_proposals))
         self.assertTrue(all(x["status"] == "candidate" for x in packet["edges"]))
         self.assertFalse(any(x["relation"] in (
