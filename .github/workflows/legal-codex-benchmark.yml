@@ -106,3 +106,19 @@ jobs:
             legal-codex-reporting-delta-014-graph.json
           if-no-files-found: error
           retention-days: 30
+
+      - name: Evaluate regulation to failure breakpoints 015
+        run: |
+          PYTHONPATH=src python -m cite_refinery.legal_codex_prevention_edges \
+            examples/legal_codex_prevention_edges_015.json \
+            --output legal-codex-prevention-015-result.json \
+            --packet legal-codex-prevention-015-graph.json
+      - name: Retain explainable candidate and rejected regulatory edges
+        uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-prevention-015-unreviewed
+          path: |
+            legal-codex-prevention-015-result.json
+            legal-codex-prevention-015-graph.json
+          if-no-files-found: error
+          retention-days: 30
