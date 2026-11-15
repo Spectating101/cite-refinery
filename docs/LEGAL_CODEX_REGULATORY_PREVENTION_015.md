@@ -67,6 +67,13 @@ Article 11 assigns PPK procurement duties, including preserving execution docume
 
 The missing signed June 30, 2020 PPK replacement and the corresponding SD e-purchase order remain the central Indonesian record gap.
 
+**Operational two-stage correction:** a prospective preventive control must not require an already executed original purchase order *before the order can be created*. Instead:
+- **Before binding execution:** verify the PPK appointment, effective period, delegated scope and a **proposed order/package identifier**. An unverified input holds the proposed transaction for human review; verifying all four only admits it to the proposed approval workflow.
+- **After execution:** preserve and reconcile the **actual signed order** against the earlier package, authorization and event logs for a forensic documentary chain. This after-order check does not retroactively authorize the transaction.
+
+Both are **synthetic engineering controls**, not proof of an Indonesian rule requiring this workflow in 2020. The absence of a document in this investigation cannot establish unlawful purchase authority.
+
+
 **Proposed new operational control, not a 2020 rule:** test a system that requires all four checks before simulated authorization: original appointment, effective date, delegation scope, and matching original purchase order. Missing verification causes a hold for documentary review, not a determination of criminal wrongdoing.
 
 ## Cross-jurisdiction transfer policy
