@@ -22,12 +22,13 @@ CASE_OUTCOMES = {
     "documented_failure_later_quashed",
     "remitted_for_new_decision",
     "judicial_review_recovery_upheld",
+    "judicial_review_recovery_waived",
     "unresolved_documentary_authority",
     "hypothetical_inference_risk_only",
 }
 IMPLEMENTATION = {
     "documented_duty_failure", "earlier_interpretation_not_yet_adopted",
-    "judicially_considered_no_relief", "unverified",
+    "judicially_considered_no_relief", "judicially_considered_full_relief", "unverified",
     "not_historically_implemented", "not_applicable",
 }
 KINDS = {"statute", "judicial_interpretation", "proposed_workflow"}
@@ -72,6 +73,8 @@ PERMITTED_CASE_IMPL = {
     "remitted_for_new_decision": {"earlier_interpretation_not_yet_adopted",
                                   "unverified", "not_applicable"},
     "judicial_review_recovery_upheld": {"judicially_considered_no_relief",
+                                        "not_applicable", "unverified"},
+    "judicial_review_recovery_waived": {"judicially_considered_full_relief",
                                         "not_applicable", "unverified"},
     "unresolved_documentary_authority": {"unverified",
                                          "not_historically_implemented",
@@ -257,6 +260,8 @@ def _evaluate_proposal(case, instrument, proposal):
         determination = "preexisting_duty_failed_to_prevent"
     elif status == "judicially_considered_no_relief":
         determination = "documented_rule_considered_no_relief"
+    elif status == "judicially_considered_full_relief":
+        determination = "documented_rule_considered_court_ordered_relief"
     else:
         determination = "potential_domestic_safeguard_implementation_unverified"
     stages = {
@@ -280,6 +285,8 @@ def _evaluate_proposal(case, instrument, proposal):
         "missing_required_evidence": list(instrument["missing_implementation_proof"])
             + list(proposal["missing_evidence"]),
         "legally_applicable_to_individual_proven": False,
+        "judicial_recovery_relief_ordered": determination == "documented_rule_considered_court_ordered_relief",
+        "actual_payment_or_full_restoration_verified": False,
         "historical_prevention_proven": False,
         "causal_effect_estimated": None,
         "cross_border_rule_applied": False,
@@ -301,6 +308,7 @@ def evaluate(bundle):
         "foreign_only_edges": sum(
             r["edge_determination"] == "foreign_analogy_not_binding_law"
             for r in rows),
+        "documented_judicial_remedy_edges": sum(r["judicial_recovery_relief_ordered"] for r in rows),
         "paths": rows, "individual_guilt_proven": False,
         "historical_prevention_proven": False,
         "regulation_success_rate": None, "intervention_effect_size": None,
