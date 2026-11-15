@@ -304,12 +304,12 @@
         "order_authorization"
       ],
       "source_url": "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf",
-      "description": "Research-designed digital purchasing guardrail inspired by PPK authority and document-preservation duties: hold a simulated order if appointment, date, delegation or original order evidence is unverified.",
-      "control_action": "On submission, validate signed PPK appointment, effective date, delegated scope and matching original order identifiers, holding any unverified transaction for human review.",
-      "version_limit_note": "This is a proposed engineering control, not a legislative requirement proven operative on 30 June 2020; absence of a document in this research archive is not absence in the government's files.",
+      "description": "Research-designed precommit procurement guardrail inspired by PPK duties: verify an appointment, delegated authority and an identifiable proposed purchase package before any binding electronic order, with a separate after-order audit of executed originals.",
+      "control_action": "Before executing an electronic purchase, check signed PPK appointment, intended order date, delegated procurement scope and proposed package identifier; after execution, archive the original signed order for forensic matching.",
+      "version_limit_note": "This is a new prospective research-designed two-stage workflow, not an automatic statutory veto proven enacted in 2020; a post-execution purchase order cannot be used as a prerequisite to creating that order.",
       "missing_implementation_proof": [
-        "System-level access and role management design allowing safe authorization verification",
-        "Independent records demonstrating the proposed hold control would be followed and not bypassed"
+        "Role and package metadata available in the buyer authorization system prior to order submission",
+        "After-order original signed purchase order and immutable approval history for independent audit"
       ],
       "binding_law": false,
       "source_authenticity_claimed": false,
@@ -443,9 +443,10 @@
       "analyst_review_state": "unreviewed_hypothesis",
       "outcome_prevented": false,
       "counterfactual_probability": null,
-      "interruption_path": "A proposed electronic workflow could hold a prospective purchase when signed appointment, delegated scope, timing or matching order is unverified, without claiming it was legally mandated or installed in 2020.",
+      "interruption_path": "A proposed precommit service could hold an upcoming e-purchase when the dated PPK appointment, authority scope or *proposed purchase package* cannot be verified; only after execution would the original signed order be compared for forensic audit. This workflow is not proven installed or required in 2020.",
       "missing_evidence": [
-        "An operator-tested workflow and historical permissions evidence"
+        "An operator-tested prospective package and delegation gate before actual purchase commitment",
+        "A separate signed final order and full historical approval log for after-order reconciliation"
       ]
     },
     {
