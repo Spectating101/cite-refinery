@@ -110,24 +110,18 @@ class PreventionEdge015Tests(unittest.TestCase):
 
     def test_false_future_regulation_can_not_be_backdated(self):
         self.item("instruments", "nl_2019_recovery_interpretation")["effective_from"] = "2029-01-01"
-        with self.assertRaisesRegex(ValueError, "historical instrument"):
+        with self.assertRaisesRegex(ValueError, "instrument legal scope"):
             validate(self.data)
 
     def test_rewrite_2019_judgment_into_1994_source_blocked(self):
         self.item("instruments", "nl_2019_recovery_interpretation")["effective_from"] = "1993-01-01"
-        # A legal-publisher URL alone does not authenticate historical effective dates.
-        # The fixture has no independent authority-review gate, so this should never
-        # be sufficient to prove applicability to any individual in output.
-        row = self.edge("p_dutch_2019_backwards")
-        self.assertFalse(row["legally_applicable_to_individual_proven"])
-        self.assertFalse(row["historical_prevention_proven"])
+        with self.assertRaisesRegex(ValueError, "instrument legal scope"):
+            validate(self.data)
 
-    def test_wrong_country_still_not_legal_applicability(self):
+    def test_wrong_country_cannot_impersonate_domestic_law(self):
         self.item("instruments", "uk_cpia_disclosure")["jurisdiction"] = "Indonesia"
-        result = evaluate(self.data)
-        row = next(x for x in result["paths"] if x["proposal_id"] == "p_uk_duty_horizon")
-        self.assertEqual(row["country_scope"], "foreign_only")
-        self.assertFalse(row["cross_border_rule_applied"])
+        with self.assertRaisesRegex(ValueError, "instrument legal scope"):
+            evaluate(self.data)
 
     def test_spoof_source_host_rejected(self):
         self.item("instruments", "id_ppk_2018_record_integrity")["source_url"] = "https://example.org/fake"
