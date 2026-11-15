@@ -1,0 +1,489 @@
+{
+  "schema": "legal_codex.regulatory_prevention.v1",
+  "as_of": "2026-11-16",
+  "cases": [
+    {
+      "id": "horizon_prosecutions",
+      "jurisdiction": "England and Wales",
+      "arena": "criminal_prosecution",
+      "failure_window_start": "2000-01-01",
+      "failure_window_end": "2015-12-31",
+      "reported_outcome": "documented_failure_later_quashed",
+      "failure_modes": [
+        "withheld_undermining_material",
+        "unreliable_machine_evidence",
+        "unverifiable_record_provenance"
+      ],
+      "checkpoints": [
+        "pretrial_disclosure",
+        "evidence_reliability_review"
+      ],
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "evidence_note": "The 2021 Court of Appeal documented material disclosure and investigation failures in Horizon-dependent prosecutions and quashed 39 appeals; this test is a period, not a fabricated exact date for any single prosecution.",
+      "hypothetical": false,
+      "source_custody": "existing_public_source_locator_only",
+      "individual_culpability": false,
+      "exact_original_transaction_verified": false
+    },
+    {
+      "id": "dutch_2017_childcare_recovery",
+      "jurisdiction": "Netherlands",
+      "arena": "benefit_recovery",
+      "failure_window_start": "2011-08-24",
+      "failure_window_end": "2017-03-24",
+      "reported_outcome": "remitted_for_new_decision",
+      "failure_modes": [
+        "unadjusted_full_recovery",
+        "unweighed_individual_interests"
+      ],
+      "checkpoints": [
+        "recovery_decision",
+        "objection_review"
+      ],
+      "source_url": "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536",
+      "evidence_note": "The 2019 Raad van State ruling examined a 2010 benefit year's 2011/2017 administrative decisions and directed renewed recovery consideration. It did not certify any eventual cash refund.",
+      "hypothetical": false,
+      "source_custody": "existing_public_source_locator_only",
+      "individual_culpability": false,
+      "exact_original_transaction_verified": false
+    },
+    {
+      "id": "dutch_2021_child_budget_appeal",
+      "jurisdiction": "Netherlands",
+      "arena": "benefit_recovery",
+      "failure_window_start": "2021-08-04",
+      "failure_window_end": "2021-08-04",
+      "reported_outcome": "judicial_review_recovery_upheld",
+      "failure_modes": [
+        "unadjusted_full_recovery",
+        "unweighed_individual_interests"
+      ],
+      "checkpoints": [
+        "appellate_review"
+      ],
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@126332/201908482-1-a2/",
+      "evidence_note": "The 4 August 2021 Raad van State judgment cites the 2019 recovery-proportionality precedent, considers hardship and special circumstances, but upholds recovery in that distinct child-budget case.",
+      "hypothetical": false,
+      "source_custody": "existing_public_source_locator_only",
+      "individual_culpability": false,
+      "exact_original_transaction_verified": false
+    },
+    {
+      "id": "indonesia_2020_ppk_authority",
+      "jurisdiction": "Indonesia",
+      "arena": "public_procurement",
+      "failure_window_start": "2020-06-08",
+      "failure_window_end": "2020-06-30",
+      "reported_outcome": "unresolved_documentary_authority",
+      "failure_modes": [
+        "unverifiable_purchasing_authority",
+        "missing_authority_documents",
+        "unverifiable_record_provenance"
+      ],
+      "checkpoints": [
+        "order_authorization",
+        "document_handover"
+      ],
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "evidence_note": "The official signed June 30 PPK replacement and matching SD e-catalog order have not been obtained; conflicting reported accounts remain unverified. A documentary gap is not proof that the authority never existed.",
+      "hypothetical": false,
+      "source_custody": "existing_public_source_locator_only",
+      "individual_culpability": false,
+      "exact_original_transaction_verified": false
+    },
+    {
+      "id": "indonesia_2020_hps_inference_scenario",
+      "jurisdiction": "Indonesia",
+      "arena": "procurement_loss_review",
+      "failure_window_start": "2020-06-30",
+      "failure_window_end": "2020-06-30",
+      "reported_outcome": "hypothetical_inference_risk_only",
+      "failure_modes": [
+        "hps_estimate_as_direct_state_loss"
+      ],
+      "checkpoints": [
+        "loss_estimation"
+      ],
+      "source_url": "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf",
+      "evidence_note": "Analytical negative-control scenario only: misusing an HPS reference to calculate a criminal state-loss amount would contradict the 2018 regulatory text. No actual calculation in this case is adjudicated here.",
+      "hypothetical": true,
+      "source_custody": "existing_public_source_locator_only",
+      "individual_culpability": false,
+      "exact_original_transaction_verified": false
+    }
+  ],
+  "instruments": [
+    {
+      "id": "uk_cpia_disclosure",
+      "jurisdiction": "England and Wales",
+      "arena": "criminal_prosecution",
+      "kind": "statute",
+      "effective_from": "1997-04-01",
+      "interpretation_clarified_on": null,
+      "addresses": [
+        "withheld_undermining_material"
+      ],
+      "checkpoints": [
+        "pretrial_disclosure"
+      ],
+      "source_url": "https://www.legislation.gov.uk/ukpga/1996/25/section/3",
+      "description": "Criminal Procedure and Investigations Act 1996, Section 3, imposed prosecutor disclosure obligations. Hamilton later found failures to investigate and disclose matters undermining Horizon prosecutions.",
+      "control_action": "Require prosecutors to disclose material potentially undermining the allegation, including known material software reliability problems, before relying on the system-generated shortfall.",
+      "version_limit_note": "Different original and post-April-2005 disclosure tests apply depending on investigation date; current section 3 text cannot be mechanically backdated unchanged.",
+      "missing_implementation_proof": [
+        "Case-specific inquiry and unused-material disclosure schedules showing what was given to each accused",
+        "Historical investigation start dates establishing which statutory wording applied"
+      ],
+      "binding_law": true,
+      "source_authenticity_claimed": false,
+      "legal_effect_certified": false
+    },
+    {
+      "id": "nl_awb_proportionality",
+      "jurisdiction": "Netherlands",
+      "arena": "benefit_recovery",
+      "kind": "statute",
+      "effective_from": "1994-01-01",
+      "interpretation_clarified_on": "2019-10-23",
+      "addresses": [
+        "unadjusted_full_recovery",
+        "unweighed_individual_interests"
+      ],
+      "checkpoints": [
+        "recovery_decision",
+        "objection_review"
+      ],
+      "source_url": "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536",
+      "description": "Article 3:4 Awb provided administrative proportionality from 1994. Its relevance to discretion under Article 26 Awir was expressly reinterpreted in the 2019 childcare-recovery judgment.",
+      "control_action": "Before deciding recovery, weigh the directly affected interests and consider whether special circumstances warrant a reduction or waiver, subject to applicable sector legislation.",
+      "version_limit_note": "The Article 3:4 norm predated the historical decisions, but the particular anti-automatic-recovery reading of Article 26 was not adopted by the Raad van State until 23 October 2019.",
+      "missing_implementation_proof": [
+        "Original administrative decision's recorded interest balancing and explanation",
+        "Historical decision's legal interpretation, applicable Awir version and available discretion"
+      ],
+      "binding_law": true,
+      "source_authenticity_claimed": false,
+      "legal_effect_certified": false
+    },
+    {
+      "id": "nl_2019_recovery_interpretation",
+      "jurisdiction": "Netherlands",
+      "arena": "benefit_recovery",
+      "kind": "judicial_interpretation",
+      "effective_from": "2019-10-23",
+      "interpretation_clarified_on": null,
+      "addresses": [
+        "unadjusted_full_recovery",
+        "unweighed_individual_interests"
+      ],
+      "checkpoints": [
+        "recovery_decision",
+        "objection_review",
+        "appellate_review"
+      ],
+      "source_url": "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536",
+      "description": "The Raad van State's October 2019 ECLI:NL:RVS:2019:3536 clarified that Article 26 Awir did not invariably require full recovery, permitting mitigation in special circumstances.",
+      "control_action": "Apply the court-recognized discretion to review recovery proportionality with case-specific facts and record a reasoned outcome, including when no reduction is warranted.",
+      "version_limit_note": "This is an authoritative 2019 judicial interpretation, not an independently verified new statute that can prevent an earlier 2017 decision.",
+      "missing_implementation_proof": [
+        "Source-specific decision reasons citing the 2019 precedent",
+        "Evidence that the claimant's special circumstances satisfied the applicable proportionality test"
+      ],
+      "binding_law": true,
+      "source_authenticity_claimed": false,
+      "legal_effect_certified": false
+    },
+    {
+      "id": "id_ppk_2018_record_integrity",
+      "jurisdiction": "Indonesia",
+      "arena": "public_procurement",
+      "kind": "statute",
+      "effective_from": "2018-03-22",
+      "interpretation_clarified_on": null,
+      "addresses": [
+        "missing_authority_documents",
+        "unverifiable_purchasing_authority",
+        "unverifiable_record_provenance"
+      ],
+      "checkpoints": [
+        "order_authorization",
+        "document_handover"
+      ],
+      "source_url": "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf",
+      "description": "Indonesian Presidential Regulation 16/2018, Article 11, assigned PPK duties including technical procurement preparation, certain e-purchasing activity and preserving execution records.",
+      "control_action": "Check PA/KPA delegation and PPK appointment dates and retain procurement documents, authority scope, and original e-purchasing records for later source-specific accountability review.",
+      "version_limit_note": "The 2018 rule applies to covered public procurement, but whether a named officer was appointed for the June 2020 SD order requires signed instruments; no general automated veto is written into Article 11.",
+      "missing_implementation_proof": [
+        "Signed original PPK and PA/KPA appointment/delegation instruments with effective scope",
+        "Original SD purchase order, buyer account and auditable ordering log"
+      ],
+      "binding_law": true,
+      "source_authenticity_claimed": false,
+      "legal_effect_certified": false
+    },
+    {
+      "id": "id_hps_2018_loss_boundary",
+      "jurisdiction": "Indonesia",
+      "arena": "procurement_loss_review",
+      "kind": "statute",
+      "effective_from": "2018-03-22",
+      "interpretation_clarified_on": null,
+      "addresses": [
+        "hps_estimate_as_direct_state_loss"
+      ],
+      "checkpoints": [
+        "loss_estimation"
+      ],
+      "source_url": "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf",
+      "description": "Article 26(6) Perpres 16/2018 states that the HPS estimate is not the basis for calculating state losses; this constrains what can be inferred from an estimated procurement price.",
+      "control_action": "Reject any state-loss conclusion based solely on HPS; require a separate evidentiary and financial methodology before quantifying an alleged loss.",
+      "version_limit_note": "The intervention is an evidentiary inference limit in the 2018 legal text, not proof that a particular state-loss assessment in the Chromebook litigation is wrong.",
+      "missing_implementation_proof": [
+        "Authenticated transaction and financial records supporting an independent loss calculation",
+        "Actual judicial or audit methodology rather than an assumed HPS-price difference"
+      ],
+      "binding_law": true,
+      "source_authenticity_claimed": false,
+      "legal_effect_certified": false
+    },
+    {
+      "id": "design_ppk_document_gate",
+      "jurisdiction": "Indonesia",
+      "arena": "public_procurement",
+      "kind": "proposed_workflow",
+      "effective_from": null,
+      "interpretation_clarified_on": null,
+      "addresses": [
+        "unverifiable_purchasing_authority",
+        "missing_authority_documents"
+      ],
+      "checkpoints": [
+        "order_authorization"
+      ],
+      "source_url": "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf",
+      "description": "Research-designed digital purchasing guardrail inspired by PPK authority and document-preservation duties: hold a simulated order if appointment, date, delegation or original order evidence is unverified.",
+      "control_action": "On submission, validate signed PPK appointment, effective date, delegated scope and matching original order identifiers, holding any unverified transaction for human review.",
+      "version_limit_note": "This is a proposed engineering control, not a legislative requirement proven operative on 30 June 2020; absence of a document in this research archive is not absence in the government's files.",
+      "missing_implementation_proof": [
+        "System-level access and role management design allowing safe authorization verification",
+        "Independent records demonstrating the proposed hold control would be followed and not bypassed"
+      ],
+      "binding_law": false,
+      "source_authenticity_claimed": false,
+      "legal_effect_certified": false
+    },
+    {
+      "id": "design_cross_case_provenance_gate",
+      "jurisdiction": "Comparative nonbinding",
+      "arena": "cross_sector",
+      "kind": "proposed_workflow",
+      "effective_from": null,
+      "interpretation_clarified_on": null,
+      "addresses": [
+        "unverifiable_record_provenance"
+      ],
+      "checkpoints": [
+        "evidence_reliability_review",
+        "order_authorization"
+      ],
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "description": "Cross-sector governance design extrapolated from the Horizon evidentiary failure: verify independent system provenance before relying on a machine record for a consequential decision.",
+      "control_action": "Require verified provenance, source audit logs, independent reviewable records, and escalation when core machine-generated evidence cannot be independently substantiated.",
+      "version_limit_note": "This is a conceptual process mechanism drawn from a UK case, not an enforceable UK statute in Indonesian purchasing or a proven universal prevention intervention.",
+      "missing_implementation_proof": [
+        "Actual logs, provenance and independent review capacity in the target system",
+        "Evidence that the verification would change behavior rather than merely produce a compliance checkbox"
+      ],
+      "binding_law": false,
+      "source_authenticity_claimed": false,
+      "legal_effect_certified": false
+    }
+  ],
+  "proposals": [
+    {
+      "id": "p_uk_duty_horizon",
+      "instrument_id": "uk_cpia_disclosure",
+      "case_id": "horizon_prosecutions",
+      "checkpoint": "pretrial_disclosure",
+      "implementation_status": "documented_duty_failure",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "Disclosure of known Horizon defects could have supported challenges before unreliable data was relied on; the actual appeal found that the prosecution repeatedly failed this preexisting duty.",
+      "missing_evidence": [
+        "The documentary disclosure timeline for each individual prosecution"
+      ]
+    },
+    {
+      "id": "p_dutch_norm_2017",
+      "instrument_id": "nl_awb_proportionality",
+      "case_id": "dutch_2017_childcare_recovery",
+      "checkpoint": "recovery_decision",
+      "implementation_status": "earlier_interpretation_not_yet_adopted",
+      "source_url": "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "An effective proportionality assessment could have identified exceptional individual hardship before full recovery; the broad statute existed, but the 2019 judicial understanding had not yet been adopted.",
+      "missing_evidence": [
+        "Historical agency instructions and original reasons for 2011 and 2017 decisions"
+      ]
+    },
+    {
+      "id": "p_dutch_2019_backwards",
+      "instrument_id": "nl_2019_recovery_interpretation",
+      "case_id": "dutch_2017_childcare_recovery",
+      "checkpoint": "objection_review",
+      "implementation_status": "unverified",
+      "source_url": "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "The 2019 interpretation justified redoing an earlier recovery decision, but could not have been a previously announced requirement preventing an already issued 2017 objection ruling.",
+      "missing_evidence": [
+        "The post-remittal administrative decision and any later review"
+      ]
+    },
+    {
+      "id": "p_dutch_reused_in_2021",
+      "instrument_id": "nl_2019_recovery_interpretation",
+      "case_id": "dutch_2021_child_budget_appeal",
+      "checkpoint": "appellate_review",
+      "implementation_status": "judicially_considered_no_relief",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@126332/201908482-1-a2/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "The 2021 appellate court expressly applied the 2019 recovery interpretation to a different child-budget dispute, assessed proportionality and still upheld recovery because relevant exceptions were not shown.",
+      "missing_evidence": [
+        "Later individual administrative outcomes after the 2021 judgment"
+      ]
+    },
+    {
+      "id": "p_indonesia_ppk_2020",
+      "instrument_id": "id_ppk_2018_record_integrity",
+      "case_id": "indonesia_2020_ppk_authority",
+      "checkpoint": "document_handover",
+      "implementation_status": "unverified",
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "Retaining original delegation and PPK records would allow investigators to verify authority for an e-purchase rather than infer a signer from initials or later courtroom reporting; the originals are still unavailable.",
+      "missing_evidence": [
+        "Authorized dated June 30 appointment/handover and original SD e-order matching"
+      ]
+    },
+    {
+      "id": "p_id_loss_guard",
+      "instrument_id": "id_hps_2018_loss_boundary",
+      "case_id": "indonesia_2020_hps_inference_scenario",
+      "checkpoint": "loss_estimation",
+      "implementation_status": "unverified",
+      "source_url": "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "If an analyst incorrectly tried to equate HPS with state loss, Article 26(6) would block the unsupported inference; this is a synthetic review hazard, not proof such a judicial error occurred.",
+      "missing_evidence": [
+        "A source-supported actual HPS and loss-accounting methodology if the issue arises"
+      ]
+    },
+    {
+      "id": "p_id_proposed_authority_gate",
+      "instrument_id": "design_ppk_document_gate",
+      "case_id": "indonesia_2020_ppk_authority",
+      "checkpoint": "order_authorization",
+      "implementation_status": "not_historically_implemented",
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "A proposed electronic workflow could hold a prospective purchase when signed appointment, delegated scope, timing or matching order is unverified, without claiming it was legally mandated or installed in 2020.",
+      "missing_evidence": [
+        "An operator-tested workflow and historical permissions evidence"
+      ]
+    },
+    {
+      "id": "p_transfer_system_provenance_to_id",
+      "instrument_id": "design_cross_case_provenance_gate",
+      "case_id": "indonesia_2020_ppk_authority",
+      "checkpoint": "order_authorization",
+      "implementation_status": "not_historically_implemented",
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "Transfer the general Horizon lesson about independently verifiable machine records into a proposed e-catalog provenance check; it is a governance design analogy rather than UK law imported into Indonesia.",
+      "missing_evidence": [
+        "Original Indonesian technical transaction logs and operational acceptance controls"
+      ]
+    },
+    {
+      "id": "p_uk_digital_provenance",
+      "instrument_id": "design_cross_case_provenance_gate",
+      "case_id": "horizon_prosecutions",
+      "checkpoint": "evidence_reliability_review",
+      "implementation_status": "not_historically_implemented",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "Independent reproducibility checks of electronic shortfalls before charge could identify defective system records if executed; no claim this proposed safeguard existed or would have changed each historic conviction.",
+      "missing_evidence": [
+        "Technical reliability and independent shortfall evidence by prosecution"
+      ]
+    },
+    {
+      "id": "p_foreign_dutch_into_uk",
+      "instrument_id": "nl_awb_proportionality",
+      "case_id": "horizon_prosecutions",
+      "checkpoint": "pretrial_disclosure",
+      "implementation_status": "not_applicable",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "Attempting to use Dutch benefit-recovery proportionality to govern UK criminal disclosure is neither the same legal function nor enforceable domestic law, despite broad similarities in fairness principles.",
+      "missing_evidence": [
+        "Applicable domestic criminal disclosure standards"
+      ]
+    },
+    {
+      "id": "p_foreign_uk_into_id",
+      "instrument_id": "uk_cpia_disclosure",
+      "case_id": "indonesia_2020_ppk_authority",
+      "checkpoint": "order_authorization",
+      "implementation_status": "not_applicable",
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "UK criminal evidentiary disclosure does not regulate an Indonesian 2020 e-catalog purchase-order authorization, so this false legal transfer must be rejected rather than styled as prevention.",
+      "missing_evidence": [
+        "Indonesian procurement authority, scope and primary purchase records"
+      ]
+    },
+    {
+      "id": "p_foreign_nl_into_id",
+      "instrument_id": "nl_2019_recovery_interpretation",
+      "case_id": "indonesia_2020_ppk_authority",
+      "checkpoint": "order_authorization",
+      "implementation_status": "not_applicable",
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "Dutch childcare-benefit recovery case law is from another jurisdiction and another administrative stage, and supplies no authority for identifying Indonesian procurement signatories.",
+      "missing_evidence": [
+        "Legal applicability of Indonesian procurement regulations instead"
+      ]
+    }
+  ],
+  "original_bytes_newly_authenticated": false,
+  "expert_review_completed": false,
+  "causal_effect_estimated": false,
+  "individual_liability_proven": false,
+  "publication_authorized": false
+}
