@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from cite_refinery.legal_codex_prevention_edges import (
-    evaluate, semantic_packet, simulate_authority_gate, validate,
+    evaluate, semantic_packet, simulate_authority_gate, simulate_precommit_gate, validate,
 )
 
 SEED = Path(__file__).resolve().parents[1] / "examples/legal_codex_prevention_edges_015.json"
@@ -222,7 +222,8 @@ class PreventionEdge015Tests(unittest.TestCase):
             effective_date_covers_order=True,
             role_scope_covers_order=True,
             original_purchase_order_verified=True)
-        self.assertEqual(response["result"], "permit_simulated_authorization")
+        self.assertEqual(response["result"], "post_order_documentary_chain_complete")
+        self.assertEqual(response["workflow_stage"], "after_order_exists_forensic_review")
         self.assertFalse(response["actual_person_identity_proven"])
 
     def test_one_wrong_date_blocks_even_when_other_docs_present(self):
@@ -233,6 +234,35 @@ class PreventionEdge015Tests(unittest.TestCase):
             original_purchase_order_verified=True)
         self.assertEqual(response["missing_verifications"], ["date_window_matches"])
         self.assertEqual(response["result"], "hold_for_documentary_review")
+
+    def test_precommit_never_demands_completed_purchase_order(self):
+        response=simulate_precommit_gate(
+            appointment_original_verified=True,
+            effective_date_covers_order=True,
+            role_scope_covers_order=True,
+            proposed_package_identity_verified=True)
+        self.assertEqual(response["result"], "proposed_order_may_enter_approval_flow")
+        self.assertFalse(response["executed_original_order_required_before_creation"])
+        self.assertFalse(response["actual_purchase_executed"])
+        self.assertEqual(response["workflow_stage"],"before_binding_order_execution")
+
+    def test_precommit_missing_proposed_package_holds_before_order(self):
+        response=simulate_precommit_gate(
+            appointment_original_verified=True,
+            effective_date_covers_order=True,
+            role_scope_covers_order=True,
+            proposed_package_identity_verified=False)
+        self.assertEqual(response["result"],"hold_prior_to_execution")
+        self.assertEqual(response["missing_verifications"],["proposed_order_package_verified"])
+        self.assertFalse(response["real_2020_legality_determined"])
+
+    def test_precommit_non_boolean_input_rejected(self):
+        with self.assertRaisesRegex(ValueError,"explicit boolean"):
+            simulate_precommit_gate(
+                appointment_original_verified=True,
+                effective_date_covers_order=True,
+                role_scope_covers_order=True,
+                proposed_package_identity_verified="probably")
 
     def test_invalid_synthetic_flag_refused(self):
         with self.assertRaisesRegex(ValueError, "explicit boolean"):
