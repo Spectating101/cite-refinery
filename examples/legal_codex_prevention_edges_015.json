@@ -130,6 +130,29 @@
       "source_custody": "existing_public_source_locator_only",
       "individual_culpability": false,
       "exact_original_transaction_verified": false
+    },
+    {
+      "id": "dutch_2026_recovery_waived",
+      "jurisdiction": "Netherlands",
+      "arena": "benefit_recovery",
+      "failure_window_start": "2024-01-05",
+      "failure_window_end": "2026-03-25",
+      "reported_outcome": "judicial_review_recovery_waived",
+      "failure_modes": [
+        "unadjusted_full_recovery",
+        "unweighed_individual_interests",
+        "unverifiable_record_provenance"
+      ],
+      "checkpoints": [
+        "appellate_review",
+        "recovery_decision"
+      ],
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@157254/202501843-1-a2/",
+      "evidence_note": "In Dutch ECLI:NL:RVS:2026:1753 the court on 25 March 2026 cited its 2019:3536 precedent, applied administrative proportionality and the codified Awir Article 13b, and directly reduced recovery of 2023 health, rent and child-budget benefits by 100 percent to nil because exceptional circumstances included unavailable agency application records. This is judicial relief from recovery, not proof any previously collected money was refunded, nor prevention of the original decision.",
+      "hypothetical": false,
+      "source_custody": "existing_public_source_locator_only",
+      "individual_culpability": false,
+      "exact_original_transaction_verified": false
     }
   ],
   "instruments": [
@@ -513,6 +536,22 @@
       "interruption_path": "A UK disclosure safeguard can suggest a research question about preserving and disclosing exculpatory technical evidence in Indonesian criminal proceedings; its statute does not bind Indonesia and no actual withholding is alleged.",
       "missing_evidence": [
         "Original Indonesian procedural rules and the specific court's admissible evidence-disclosure orders"
+      ]
+    },
+    {
+      "id": "p_dutch_2019_2026_full_relief",
+      "instrument_id": "nl_2019_recovery_interpretation",
+      "case_id": "dutch_2026_recovery_waived",
+      "checkpoint": "appellate_review",
+      "implementation_status": "judicially_considered_full_relief",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@157254/202501843-1-a2/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "The appellate court expressly used the 2019 precedent and Awb proportionality together with later codification in Awir Article 13b to reconsider an otherwise full recovery. Because the agency lacked the claimant's application form and visit records, the court judicially reduced recovery by 100 percent to nil. It was a retrospective individual judicial remedy, not historical prevention or proof of repayment.",
+      "missing_evidence": [
+        "Authenticated court operative order and any postjudgment execution/refund confirmation",
+        "Independent review of applicable Awir Article 13b statutory version and causal attribution beyond the court's reasons"
       ]
     }
   ],
