@@ -110,6 +110,26 @@
       "source_custody": "existing_public_source_locator_only",
       "individual_culpability": false,
       "exact_original_transaction_verified": false
+    },
+    {
+      "id": "indonesia_trial_disclosure_hypothesis",
+      "jurisdiction": "Indonesia",
+      "arena": "criminal_prosecution",
+      "failure_window_start": "2025-01-01",
+      "failure_window_end": "2026-11-16",
+      "reported_outcome": "hypothetical_inference_risk_only",
+      "failure_modes": [
+        "withheld_undermining_material"
+      ],
+      "checkpoints": [
+        "pretrial_disclosure"
+      ],
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "evidence_note": "An explicitly hypothetical courtroom-disclosure counterexample connected to Indonesian Chromebook trial reporting. No claim is made that prosecutors withheld material or that UK procedure applies in Indonesia.",
+      "hypothetical": true,
+      "source_custody": "existing_public_source_locator_only",
+      "individual_culpability": false,
+      "exact_original_transaction_verified": false
     }
   ],
   "instruments": [
@@ -478,6 +498,21 @@
       "interruption_path": "Dutch childcare-benefit recovery case law is from another jurisdiction and another administrative stage, and supplies no authority for identifying Indonesian procurement signatories.",
       "missing_evidence": [
         "Legal applicability of Indonesian procurement regulations instead"
+      ]
+    },
+    {
+      "id": "p_foreign_uk_trial_disclosure",
+      "instrument_id": "uk_cpia_disclosure",
+      "case_id": "indonesia_trial_disclosure_hypothesis",
+      "checkpoint": "pretrial_disclosure",
+      "implementation_status": "not_applicable",
+      "source_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "analyst_review_state": "unreviewed_hypothesis",
+      "outcome_prevented": false,
+      "counterfactual_probability": null,
+      "interruption_path": "A UK disclosure safeguard can suggest a research question about preserving and disclosing exculpatory technical evidence in Indonesian criminal proceedings; its statute does not bind Indonesia and no actual withholding is alleged.",
+      "missing_evidence": [
+        "Original Indonesian procedural rules and the specific court's admissible evidence-disclosure orders"
       ]
     }
   ],
