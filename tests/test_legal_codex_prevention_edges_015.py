@@ -24,9 +24,9 @@ class PreventionEdge015Tests(unittest.TestCase):
 
     def test_result_is_still_proposal_not_historical_proof(self):
         result = evaluate(self.data)
-        self.assertEqual(result["case_count"], 6)
+        self.assertEqual(result["case_count"], 7)
         self.assertEqual(result["instrument_count"], 7)
-        self.assertEqual(result["examined_edge_count"], 13)
+        self.assertEqual(result["examined_edge_count"], 14)
         self.assertFalse(result["historical_prevention_proven"])
         self.assertFalse(result["individual_guilt_proven"])
         self.assertIsNone(result["regulation_success_rate"])
@@ -59,6 +59,35 @@ class PreventionEdge015Tests(unittest.TestCase):
         self.assertEqual(row["intervention_path"]["implementation_evidence"],
                          "judicially_considered_no_relief")
         self.assertFalse(row["historical_prevention_proven"])
+
+    def test_2026_dutch_precedent_yields_court_ordered_full_waiver(self):
+        row = self.edge("p_dutch_2019_2026_full_relief")
+        self.assertEqual(row["temporal_relation"], "rule_preexisted_failure")
+        self.assertEqual(row["country_scope"], "domestic_candidate")
+        self.assertEqual(row["edge_determination"],
+                         "documented_rule_considered_court_ordered_relief")
+        self.assertTrue(row["judicial_recovery_relief_ordered"])
+        self.assertFalse(row["historical_prevention_proven"])
+        self.assertFalse(row["actual_payment_or_full_restoration_verified"])
+
+    def test_one_2019_dutch_interpretation_opposite_2021_and_2026_outcomes(self):
+        by_id = {r["proposal_id"]: r for r in evaluate(self.data)["paths"]}
+        losing = by_id["p_dutch_reused_in_2021"]
+        winning = by_id["p_dutch_2019_2026_full_relief"]
+        self.assertEqual(losing["instrument_id"], winning["instrument_id"])
+        self.assertEqual(losing["edge_determination"],
+                         "documented_rule_considered_no_relief")
+        self.assertEqual(winning["edge_determination"],
+                         "documented_rule_considered_court_ordered_relief")
+        self.assertEqual(evaluate(self.data)["documented_judicial_remedy_edges"],1)
+        self.assertFalse(losing["historical_prevention_proven"])
+        self.assertFalse(winning["historical_prevention_proven"])
+
+    def test_positive_judicial_waiver_cannot_be_invented_for_adverse_2021_case(self):
+        self.item("proposals", "p_dutch_reused_in_2021")[
+            "implementation_status"] = "judicially_considered_full_relief"
+        with self.assertRaisesRegex(ValueError, "contradicts documented case outcome"):
+            validate(self.data)
 
     def test_indonesia_existing_document_duty_cannot_verify_missing_2020_signed_order(self):
         row = self.edge("p_indonesia_ppk_2020")
@@ -169,7 +198,7 @@ class PreventionEdge015Tests(unittest.TestCase):
         self.assertEqual(packet["schema"], "cite_refinery.semantic_graph.v1")
         candidate_proposals = [p for p in result["paths"]
                                if p["edge_determination"] != "failure_path_or_operational_stage_mismatch"]
-        self.assertEqual(len(packet["nodes"]), 6 + 7 + len(candidate_proposals))
+        self.assertEqual(len(packet["nodes"]), 7 + 7 + len(candidate_proposals))
         self.assertEqual(len(packet["edges"]), 2 * len(candidate_proposals))
         self.assertTrue(all(x["status"] == "candidate" for x in packet["edges"]))
         self.assertFalse(any(x["relation"] in (
