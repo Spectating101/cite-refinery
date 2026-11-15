@@ -17,7 +17,7 @@ An edge can be rejected for wrong legal jurisdiction, wrong procedural stage, la
 
 ## Cases and regulation instruments
 
-The test uses six source-attributed case contexts: UK Horizon system-dependent prosecutions; Dutch childcare recovery reconsidered in 2019 (ECLI:NL:RVS:2019:3536); a distinct 2021 Dutch child-budget appeal (ECLI:NL:RVS:2021:1729); Indonesian June 2020 Chromebook PPK authority-document investigation; a synthetic Indonesian HPS-as-state-loss inference hazard; and a synthetic Indonesian trial disclosure risk with **no allegation that actual prosecutors withheld evidence**.
+The test uses seven source-attributed case contexts: UK Horizon system-dependent prosecutions; Dutch childcare recovery reconsidered in 2019 (ECLI:NL:RVS:2019:3536); a distinct 2021 Dutch child-budget appeal (ECLI:NL:RVS:2021:1729); a distinct March 2026 Dutch health/rent/child-budget recovery appeal (ECLI:NL:RVS:2026:1753); Indonesian June 2020 Chromebook PPK authority-document investigation; a synthetic Indonesian HPS-as-state-loss inference hazard; and a synthetic Indonesian trial disclosure risk with **no allegation that actual prosecutors withheld evidence**.
 
 Seven instruments are version-pinned in the evaluator: UK Criminal Procedure and Investigations Act 1996 Section 3; Netherlands Awb Article 3:4; 2019 Dutch ECLI 3536 judicial interpretation; Indonesian Perpres 16/2018 PPK duties (Article 11); Indonesian Perpres 16/2018 Article 26(6) HPS restriction; a newly designed conditional PPK appointment/order gate; and a proposed cross-sector independent provenance audit. The last two are engineering designs, **not enacted laws**.
 
@@ -47,6 +47,18 @@ On 23 October 2019, ECLI:NL:RVS:2019:3536 reinterpreted Awir Article 26: full be
 
 The Raad van State's 4 August 2021 judgment ECLI:NL:RVS:2021:1729 expressly refers to the 2019 interpretation and the 17 April 2020 implementing policy. It assessed recovery proportionality in a **different child-budget case** and still upheld the recovery: the claimant did not establish circumstances requiring mitigation. Thus legal reasoning propagated into a later case, but **did not produce the remedy requested**. This is direct legal-process reuse, not evidence of aggregate prevention effectiveness.
 
+### B2. Same 2019 Dutch precedent, real full recovery waiver in 2026
+
+**Official judgment:** https://www.raadvanstate.nl/uitspraken/@157254/202501843-1-a2/ — ECLI:NL:RVS:2026:1753, 25 March 2026, paragraphs 11.1–11.4, conclusion paragraph 12 and operative ruling V–VI.
+
+This **different** case concerns provisional **2023 health, rent and child-budget benefits**, recalculated in 2024. The court explicitly cited the 2019 recovery interpretation, applied proportionality and referred to the *later codification in Awir Article 13b*. The administrative service could not supply its own original application form or a meaningful visit record; the resulting uncertainty about who entered the estimated income should not be assigned entirely to the claimant.
+
+**Actual adjudicated remedy:** the Administrative Jurisdiction Division reduced the disputed repayment by **100% and set it at zero** (operative paragraph 12 and ruling V–VI), reversing the recovery element of the administrative decision while otherwise upholding the eligibility adjustments. The court additionally ordered litigation-cost/court-fee reimbursements, but their actual subsequent payment is unverified. This **does not prove an earlier payment had been returned**.
+
+The 2021 no-relief and 2026 full-waiver cases therefore show the same 2019 doctrinal reference **applied to different facts with opposite outcomes**. One legal edge is documented_rule_considered_no_relief; the other is documented_rule_considered_court_ordered_relief. Both remain distinct from demonstrated prevention or a general causal success rate. In the 2026 decision the court also relied on **Awir Article 13b** and factual record failures, so the 2019 precedent cannot be credited as the single causal factor.
+
+**Primary-source archive:** Nocturnal fetched, re-extracted and byte-hash-checked both public ECLI XML records. The operator private vault stores them as separately identified publisher snapshots, without asserting a certified signed judgment, independently reviewed legal translation or a cash-remedy event.
+
 ### C. Indonesian procurement duties as auditability controls, not automatic guilt findings
 
 **Historical law:** https://peraturan.bpk.go.id/Details/73586/perpresno-16-tahun-2018 (effective 22 March 2018). Original text: https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf.
@@ -66,7 +78,7 @@ Separately, a UK criminal disclosure rule is tested against an explicitly hypoth
 ## Files and execution
 
 - src/cite_refinery/legal_codex_prevention_edges.py: chronology, statute source, country, legal arena, required stage and enforcement-status gates; graph export and a deliberately synthetic appointment gate.
-- examples/legal_codex_prevention_edges_015.json: six cases, seven instruments, thirteen proposed regulation-to-case edges with explicit missing evidence and source URLs.
+- examples/legal_codex_prevention_edges_015.json: six cases, seven instruments, fourteen proposed regulation-to-case edges with explicit missing evidence and source URLs.
 - tests/test_legal_codex_prevention_edges_015.py: positive, negative, historical-version, spoofed-source, synthetic-authorization and real Cite graph-ingestion tests.
 
     PYTHONPATH=src python -m unittest discover -s tests -p 'test_legal_codex_prevention_edges_015.py' -v
