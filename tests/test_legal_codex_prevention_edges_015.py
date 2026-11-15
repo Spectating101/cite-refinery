@@ -134,7 +134,7 @@ class PreventionEdge015Tests(unittest.TestCase):
 
     def test_spoof_source_host_rejected(self):
         self.item("instruments", "id_ppk_2018_record_integrity")["source_url"] = "https://example.org/fake"
-        with self.assertRaisesRegex(ValueError, "source provenance"):
+        with self.assertRaisesRegex(ValueError, "instrument legal scope"):
             validate(self.data)
 
     def test_allegation_of_missing_decree_is_not_adjudicated_crime(self):
