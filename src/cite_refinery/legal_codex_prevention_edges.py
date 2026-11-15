@@ -321,9 +321,10 @@ def simulate_authority_gate(*, appointment_original_verified: bool,
                             effective_date_covers_order: bool,
                             role_scope_covers_order: bool,
                             original_purchase_order_verified: bool):
-    """Purely synthetic proposed workflow, NOT a rule in Perpres 16/2018.
+    """Post-order documentary chain audit, NOT a pre-purchase approval gate.
 
-    A false verification flag means 'not verified', not 'proven nonexistent'.
+    A final original purchase order can only be checked *after* the order
+    exists. A missing research record means unverified, not unlawful.
     """
     values = {
         "signed_appointment_verified": appointment_original_verified,
@@ -336,11 +337,45 @@ def simulate_authority_gate(*, appointment_original_verified: bool,
     return {
         "schema": "legal_codex.synthetic_procurement_gate.v1",
         "synthetic_only": True, "control_source": "proposed_workflow_not_current_statutory_mandate",
-        "result": "permit_simulated_authorization" if all(values.values())
+        "workflow_stage": "after_order_exists_forensic_review",
+        "result": "post_order_documentary_chain_complete" if all(values.values())
                   else "hold_for_documentary_review",
         "missing_verifications": [k for k, v in values.items() if not v],
         "real_2020_legality_determined": False,
         "actual_person_identity_proven": False,
+        "publication_authorized": False,
+    }
+
+
+def simulate_precommit_gate(*, appointment_original_verified: bool,
+                            effective_date_covers_order: bool,
+                            role_scope_covers_order: bool,
+                            proposed_package_identity_verified: bool):
+    """Optional prospective order check, not a rule enacted in 2020.
+
+    Unlike the after-order forensic audit, this NEVER requires an already
+    executed original purchase order. A valid proposal/package ID, authority,
+    and delegation are checked *before* allowing an approval workflow.
+    """
+    values = {
+        "signed_appointment_verified": appointment_original_verified,
+        "date_window_matches": effective_date_covers_order,
+        "delegation_scope_matches": role_scope_covers_order,
+        "proposed_order_package_verified": proposed_package_identity_verified,
+    }
+    if any(type(v) is not bool for v in values.values()):
+        raise ValueError("synthetic precommit gate requires explicit boolean verification")
+    return {
+        "schema": "legal_codex.synthetic_precommit_gate.v1",
+        "synthetic_only": True,
+        "workflow_stage": "before_binding_order_execution",
+        "control_source": "proposed_workflow_not_current_statutory_mandate",
+        "result": ("proposed_order_may_enter_approval_flow"
+                   if all(values.values()) else "hold_prior_to_execution"),
+        "missing_verifications": [k for k,v in values.items() if not v],
+        "executed_original_order_required_before_creation": False,
+        "real_2020_legality_determined": False,
+        "actual_purchase_executed": False,
         "publication_authorized": False,
     }
 
