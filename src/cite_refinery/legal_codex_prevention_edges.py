@@ -190,7 +190,7 @@ def validate(bundle):
 def _evaluate_proposal(case, instrument, proposal):
     overlap = sorted(set(case["failure_modes"]) & set(instrument["addresses"]))
     stage_aligned = proposal["checkpoint"] in instrument["checkpoints"]
-    arena_aligned = case["arena"] == instrument["arena"]
+    arena_aligned = case["arena"] == instrument["arena"] or (instrument["kind"] == "proposed_workflow" and instrument["arena"] == "cross_sector")
     domestic = case["jurisdiction"] == instrument["jurisdiction"]
     begin, end = _date(case["failure_window_start"]), _date(case["failure_window_end"])
     legal_from = instrument["effective_from"]
@@ -207,10 +207,10 @@ def _evaluate_proposal(case, instrument, proposal):
     status = proposal["implementation_status"]
     if not overlap or not stage_aligned or not arena_aligned:
         determination = "failure_path_or_operational_stage_mismatch"
-    elif not domestic:
-        determination = "foreign_analogy_not_binding_law"
     elif instrument["kind"] == "proposed_workflow":
         determination = "future_design_candidate_not_historical_law"
+    elif not domestic:
+        determination = "foreign_analogy_not_binding_law"
     elif time_status == "introduced_after_failure":
         determination = "postevent_remedy_not_historical_prevention"
     elif time_status == "rule_introduced_during_failure":
