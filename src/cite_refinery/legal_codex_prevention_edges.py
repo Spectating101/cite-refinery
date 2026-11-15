@@ -38,6 +38,33 @@ TRUSTED_HOSTS = {
     "laporgub.jatengprov.go.id", "www.wetten.overheid.nl",
     "wetten.overheid.nl",
 }
+# This small reviewed pilot catalogue is deliberately version-pinned.
+# Extending it requires a source/temporal audit and a code review; a caller
+# cannot relabel 2019 court law as a 1994 enactment simply by editing JSON.
+PILOT_INSTRUMENT_PINS = {
+    "uk_cpia_disclosure": (
+        "England and Wales", "criminal_prosecution", "statute", "1997-04-01",
+        None, "https://www.legislation.gov.uk/ukpga/1996/25/section/3"),
+    "nl_awb_proportionality": (
+        "Netherlands", "benefit_recovery", "statute", "1994-01-01",
+        "2019-10-23", "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536"),
+    "nl_2019_recovery_interpretation": (
+        "Netherlands", "benefit_recovery", "judicial_interpretation", "2019-10-23",
+        None, "https://data.rechtspraak.nl/uitspraken/content?Id=ECLI:NL:RVS:2019:3536"),
+    "id_ppk_2018_record_integrity": (
+        "Indonesia", "public_procurement", "statute", "2018-03-22",
+        None, "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf"),
+    "id_hps_2018_loss_boundary": (
+        "Indonesia", "procurement_loss_review", "statute", "2018-03-22",
+        None, "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf"),
+    "design_ppk_document_gate": (
+        "Indonesia", "public_procurement", "proposed_workflow", None,
+        None, "https://peraturan.bpk.go.id/Download/64076/Perpres%20Nomor%2016%20Tahun%202018.pdf"),
+    "design_cross_case_provenance_gate": (
+        "Comparative nonbinding", "cross_sector", "proposed_workflow", None,
+        None, "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf"),
+}
+
 PERMITTED_CASE_IMPL = {
     "documented_failure_later_quashed": {"documented_duty_failure",
                                          "not_historically_implemented",
@@ -135,7 +162,16 @@ def validate(bundle):
             raise ValueError("analytical hazard cannot masquerade as observed violation")
         if case["reported_outcome"] == "unresolved_documentary_authority" and case.get("hypothetical") is not False:
             raise ValueError("unresolved authority records must remain unverified leads")
+    if set(mechanisms) != set(PILOT_INSTRUMENT_PINS):
+        raise ValueError("versioned pilot instrument catalogue changed without source review")
     for instrument in mechanisms.values():
+        expected = PILOT_INSTRUMENT_PINS[instrument["id"]]
+        observed = (instrument.get("jurisdiction"), instrument.get("arena"),
+                    instrument.get("kind"), instrument.get("effective_from"),
+                    instrument.get("interpretation_clarified_on"),
+                    instrument.get("source_url"))
+        if observed != expected:
+            raise ValueError("instrument legal scope, effective date or official source altered")
         if instrument.get("kind") not in KINDS:
             raise ValueError("unrecognized legal instrument type")
         _source(instrument.get("source_url"))
