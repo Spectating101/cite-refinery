@@ -1,8 +1,6 @@
 """018: read-only public record-location/access research. Never fetch a private case file.
-
-These are policy/legal source documents, NOT the claimant's operational logs.
-Fixed HTTPS endpoints, public-address TLS pinning, bounded bytes, no credentials,
-no forms or requests submitted. Artifacts are expiring CI copies, not a vault.
+These are policy/legal source documents, NOT claimant operational logs.
+Fixed HTTPS endpoints, public-address TLS pinning, bounded bytes, no credentials.
 """
 import argparse
 from datetime import datetime, timezone
@@ -24,11 +22,9 @@ SOURCES={
  'portal':('https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/hoe_werken_toeslagen/mijn-toeslagen/hoe-werkt-mijn-toeslagen','html',['klikt','Uitbetaald','DigiD']),
  'woo':('https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/prive/toeslagen/hoe_werken_toeslagen/ik_wil_informatie_over_toeslagen/ik_wil_vragen_om_informatie_openbaar_te_maken','html',['Iedereen','documenten','openbaar']),
  'ministerial_2025':('https://zoek.officielebekendmakingen.nl/kst-36708-28.html','html',['inzage','bezwaar','2012']),
- 'cjeu_logs':('https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0579','html',['dates and purposes','identity of the employees','Article 15']),
- 'cjeu_copies':('https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0487','html',['entire documents','essential','Article 15']),
+ 'cjeu_logs':('https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:62021CJ0579','html',['dates and purposes','identity of the employees','Article 15']),
+ 'cjeu_copies':('https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:62021CJ0487','html',['entire documents','essential','Article 15']),
 }
-LIMIT=12*1024*1024
-
 def sha(b):return hashlib.sha256(b).hexdigest()
 class Text(HTMLParser):
  def __init__(self):super().__init__(convert_charrefs=True);self.parts=[];self.hidden=0
@@ -39,7 +35,7 @@ class Text(HTMLParser):
  def handle_data(self,data):
   if not self.hidden:self.parts.append(data)
 
-def fetch(url):
+def fetch(url,limit):
  original=urlsplit(url);host=original.hostname
  for attempt in range(3):
   parsed=urlsplit(url)
@@ -59,8 +55,8 @@ def fetch(url):
    if response.status in {301,302,303,307,308}:
     url=urljoin(url,response.getheader('Location',''));continue
    if response.status!=200:raise ValueError('HTTP '+str(response.status))
-   body=response.read(LIMIT+1)
-   if len(body)>LIMIT:raise ValueError('source exceeds byte budget')
+   body=response.read(limit+1)
+   if len(body)>limit:raise ValueError('source exceeds byte budget')
    return body,ctype,url
   finally:conn.close()
  raise ValueError('redirect limit')
@@ -71,7 +67,7 @@ def main():
  for sid,(url,fmt,terms) in SOURCES.items():
   row={'source_id':sid,'requested_url':url,'source_tier':'public_policy_or_access_law','captured_at':datetime.now(timezone.utc).isoformat()}
   try:
-   raw,ctype,final=fetch(url);ext='pdf' if fmt=='pdf' else 'html';path=root/(sid+'.'+ext)
+   raw,ctype,final=fetch(url,(64 if fmt=='pdf' else 4)*1024*1024);ext='pdf' if fmt=='pdf' else 'html';path=root/(sid+'.'+ext)
    if fmt=='pdf' and not raw.startswith(b'%PDF'):raise ValueError('not PDF')
    if fmt=='html' and 'html' not in ctype.lower():raise ValueError('not HTML')
    path.write_bytes(raw)
@@ -89,6 +85,5 @@ def main():
   rows.append(row)
  result={'schema':'legal_codex.public_record_leads_capture_018.v1','sources':rows,'captured_count':sum(r['status']=='captured' for r in rows),'claimant_originals_obtained':0,'requests_submitted':0,'private_portal_accessed':False}
  (root/'receipt.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps(result))
- # A failure is recorded and visible; CI cannot certify complete acquisition.
  return 0 if result['captured_count']==len(SOURCES) else 1
 if __name__=='__main__':raise SystemExit(main())
