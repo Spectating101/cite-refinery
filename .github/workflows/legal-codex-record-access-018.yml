@@ -1,0 +1,32 @@
+name: legal-codex-record-access-018
+on:
+  push:
+    branches: ['feature/legal-codex-benchmark-001']
+    paths:
+      - 'scripts/legal_codex_capture_018.py'
+      - 'src/cite_refinery/legal_codex_record_access*.py'
+      - 'tests/test_legal_codex_record_access_018.py'
+      - '.github/workflows/legal-codex-record-access-018.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-source-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF extraction
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - name: Capture public policy and legal access sources, never personal dossiers
+        run: python scripts/legal_codex_capture_018.py --output-dir evidence-018
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: legal-codex-018-PUBLIC-POLICY-NOT-CLAIMANT-RECORDS
+          path: evidence-018
+          retention-days: 30
+          if-no-files-found: error
