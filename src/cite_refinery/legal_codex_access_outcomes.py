@@ -19,8 +19,11 @@ SOURCE_PINS = {
  'staff_identity_2025': ('f7c4048e7dffabfc112e33106474c6b00e0fad3ee20f3534f6873f17ea2162c7','2025-07-16','public_administration'),
  'contact_center_2026': ('c60d07c96460348536924e3aaa8430996e8cf0323448f342812a8212dd82cc78','2026-06-01','institutional_advice'),
 }
+# The policy site's HTML wrapper varies between captures while every extracted
+# block is unchanged. Preserve each raw receipt, and separately pin the complete
+# extracted document. A changed substantive text still requires manual review.
+POLICY_TEXT_PIN='899eaa5676b97f48d54b80ec9ae12b7ced3ac2e7649b2937b68187f457615ef7'
 # Reviewed source-specific selections. Test counts measure code, not interpretation accuracy.
-# source, block, evidence role, dimension, status, English paraphrase
 ANNOTATIONS = (
  ('hospital_2024','p0113','court_reasoning','staff_identity','roles_can_suffice',
   'The court accepted role descriptions without employee names for this access request and rejected a blanket demand for identities.'),
@@ -77,21 +80,27 @@ def load_sources(folder):
  for sid,(pin,decided,sector) in SOURCE_PINS.items():
   row=registry[sid];url,fmt,ident=capture.SOURCES[sid]
   if (row.get('status')!='captured_and_reextracted' or row.get('url')!=url or row.get('final_url')!=url
-      or row.get('tls_hostname_verified') is not True or row.get('raw_sha256')!=pin):
-   raise ValueError('source identity/status/version mismatch')
+      or row.get('tls_hostname_verified') is not True):
+   raise ValueError('source identity/status mismatch: '+sid)
   when=datetime.fromisoformat(row['attempted_at'].replace('Z','+00:00'))
   if when.tzinfo is None:raise ValueError('capture timezone missing')
   path=root/(sid+'.'+fmt)
   if path.is_symlink():raise ValueError('source symlink rejected')
-  raw=path.read_bytes()
-  if digest(raw)!=pin:raise ValueError('publisher snapshot changed; explicit re-review required')
+  raw=path.read_bytes();actual_hash=digest(raw)
+  if actual_hash!=row.get('raw_sha256'):raise ValueError('capture receipt/body hash mismatch')
+  if fmt=='xml' and actual_hash!=pin:
+   raise ValueError('judicial snapshot changed; explicit re-review required')
   doc=capture.extract(raw,fmt,ident)
+  if fmt=='html' and digest(doc)!=POLICY_TEXT_PIN:
+   raise ValueError('policy source text changed; explicit re-review required')
   if fmt=='xml' and decided not in doc['metadata']['decision_dates']:raise ValueError('judgment date mismatch')
   saved=json.loads((root/(sid+'.json')).read_text(encoding='utf-8'))
   if saved!=doc:raise ValueError('saved extraction differs from source bytes')
-  result[sid]={**doc,'source_url':url,'source_id':sid,'raw_sha256':pin,'date':decided,
+  result[sid]={**doc,'source_url':url,'source_id':sid,'raw_sha256':actual_hash,'date':decided,
                'date_kind':'decision_date' if fmt=='xml' else 'publication_date',
-               'sector':sector,'captured_at':row['attempted_at']}
+               'sector':sector,'captured_at':row['attempted_at'],
+               'raw_matches_initial_snapshot':actual_hash==pin,
+               'version_check':'exact_xml_bytes' if fmt=='xml' else 'complete_extracted_policy_document'}
  return result,receipt
 
 
@@ -134,6 +143,9 @@ def build(folder):
            for r in receipt['sources']]
  return {'schema':'legal_codex.access_outcomes_019.v1','as_of':'2026-11-18',
   'curated_judgments':3,'captured_core_sources':len(sources),'source_status':statuses,
+  'source_versions':[{'source_id':s['source_id'],'raw_sha256':s['raw_sha256'],
+                     'raw_matches_initial_snapshot':s['raw_matches_initial_snapshot'],
+                     'version_check':s['version_check']} for s in sources.values()],
   'observations':observations,'discovered_reference_mentions':references,'cross_case_citations':links,
   'unresolved_literal_references':[h for h in references if h['reference']=='ECLI:EU:C:2023:50'],
   'rule_scope':'Shared EU data-access law; not automatic transplantation to Indonesia.',
