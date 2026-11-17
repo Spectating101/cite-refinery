@@ -1,0 +1,43 @@
+name: legal-codex-record-plan-018
+on:
+  push:
+    branches: ['feature/legal-codex-benchmark-001']
+    paths:
+      - 'src/cite_refinery/legal_codex_record_access.py'
+      - 'tests/test_legal_codex_record_access_018.py'
+      - '.github/workflows/legal-codex-record-plan-018.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unsent-access-plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test evidence-tier and access boundaries with native graph
+        env:
+          PYTHONPATH: src
+        run: |
+          python - <<'PY'
+          import unittest
+          from cite_refinery.app import CiteRefinery
+          from cite_refinery.semantic import SemanticGraph
+          r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.discover('tests',pattern='test_legal_codex_record_access_018.py'))
+          assert r.wasSuccessful() and not r.skipped
+          PY
+      - name: Export unacquired record targets and unsent request routes
+        env:
+          PYTHONPATH: src
+        run: python -m cite_refinery.legal_codex_record_access --output record-plan-018.json --packet record-plan-018-graph.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-018-UNSENT-RECORD-PLAN
+          path: |
+            record-plan-018.json
+            record-plan-018-graph.json
+          retention-days: 30
+          if-no-files-found: error
