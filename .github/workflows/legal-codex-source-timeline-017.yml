@@ -4,7 +4,7 @@ on:
     branches: ['feature/legal-codex-benchmark-001']
     paths:
       - 'scripts/legal_codex_capture_017.py'
-      - 'src/cite_refinery/legal_codex_source_timeline.py'
+      - 'src/cite_refinery/legal_codex_source_timeline*.py'
       - 'tests/test_legal_codex_source_timeline_017.py'
       - '.github/workflows/legal-codex-source-timeline-017.yml'
   workflow_dispatch:
@@ -21,6 +21,23 @@ jobs:
           python-version: '3.11'
       - name: Acquire three actual court-published XML records
         run: python scripts/legal_codex_capture_017.py --output-dir evidence-017
+      - name: Test real snapshots and native Cite integration with no skipped checks
+        env:
+          PYTHONPATH: src
+          LEGAL_CODEX_017_EVIDENCE: ${{ github.workspace }}/evidence-017
+        run: |
+          python -c "from cite_refinery.app import CiteRefinery; from cite_refinery.semantic import SemanticGraph; from cite_refinery.legal_codex_control_replay import replay"
+          python - <<'PY'
+          import unittest
+          suite=unittest.defaultTestLoader.discover('tests',pattern='test_legal_codex_source_timeline_017.py')
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.wasSuccessful() and not result.skipped, 'All real-source checks must execute'
+          PY
+      - name: Generate source-backed timeline and candidate graph, not operational replay
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m cite_refinery.legal_codex_source_timeline --evidence-dir evidence-017 --output evidence-017/timeline.json --fixture-output evidence-017/fixture.json --packet evidence-017/graph.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
