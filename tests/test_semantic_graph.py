@@ -3,9 +3,11 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from copy import deepcopy
+from unittest.mock import patch
 
 from cite_refinery.app import CiteRefinery
-from cite_refinery.semantic import SEMANTIC_PACKET_SCHEMA, SemanticGraph
+from cite_refinery.semantic import SEMANTIC_PACKET_SCHEMA, SemanticGraph, _StagedStore
 
 
 class SemanticGraphTest(unittest.TestCase):
@@ -20,6 +22,21 @@ class SemanticGraphTest(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.tmp.cleanup()
+
+    def test_staging_copies_at_boundaries_and_preserves_isolation(self) -> None:
+        original = {"nested": {"items": []}}
+        with patch("cite_refinery.semantic.deepcopy", wraps=deepcopy) as copy_state:
+            staged = _StagedStore(original)
+            for value in range(100):
+                state = staged.load()
+                state["nested"]["items"].append(value)
+                staged.save(state)
+            result = staged.snapshot()
+        self.assertEqual(copy_state.call_count, 2)
+        self.assertEqual(original, {"nested": {"items": []}})
+        original["nested"]["items"].append("outside mutation")
+        result["nested"]["items"].append("returned snapshot mutation")
+        self.assertEqual(staged.load()["nested"]["items"], list(range(100)))
 
     def _pilot_packet(self) -> dict:
         return {

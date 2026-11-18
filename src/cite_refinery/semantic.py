@@ -138,16 +138,25 @@ def _validate_state(status: str) -> str:
 
 
 class _StagedStore:
-    """In-memory store used to fully apply and validate a packet before writing."""
+    """Own one isolated staging state; detach only at transaction boundaries.
+
+    This private store never persists data. Its internal graph may mutate its
+    owned state directly while validating a whole packet. Copying the entire
+    growing graph on every node/edge operation made full catalogs impractical.
+    The constructor isolates the input; snapshot isolates the completed result.
+    """
 
     def __init__(self, state: dict[str, Any]) -> None:
         self.state = deepcopy(state)
 
     def load(self) -> dict[str, Any]:
-        return deepcopy(self.state)
+        return self.state
 
     def save(self, state: dict[str, Any]) -> None:
-        self.state = deepcopy(state)
+        self.state = state
+
+    def snapshot(self) -> dict[str, Any]:
+        return deepcopy(self.state)
 
 
 class SemanticGraph:
@@ -396,7 +405,7 @@ class SemanticGraph:
         receipt = SemanticGraph(staged_store, _stage_for_preview=True)._ingest_packet_unchecked(
             project_id, packet, packet_ref=packet_ref
         )
-        return current, staged_store.load(), receipt
+        return current, staged_store.snapshot(), receipt
 
     def preview_packet(
         self,

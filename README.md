@@ -16,6 +16,14 @@ Cite-Refinery joins those records around the same semantic modules without prete
 
 The product is **one workspace, not one monolithic codebase**. Nocturnal, Cite and Refinery remain independently testable engines. Cite-Agent can remain a standalone research/writing workbench; Cite-Refinery only consumes the research capabilities and records needed for the map.
 
+## Independent repository layer
+
+Build the repository inventory before adding demand or problem mappings. The repository layer reconciles the current software discovery catalogue, earlier known inventories and separately reviewed evidence into stable GitHub identities, with technical mechanisms, inputs, outputs, requirements, limitations and source history.
+
+Captured sources, source-bound model or analyst interpretations, reviewed capabilities and scoped execution results have separate authority and coverage counts. Earlier role assignments remain visible proposals; shared formats do not establish compatibility. The native projection contains only Program records, while an immutable SQLite index supplies bounded pages for the private interface. Later demand analysis can link to this independently maintained layer.
+
+Use `cite-refinery-repository-layer` to build, validate, view or import a catalogue. See [Repository layer](docs/REPOSITORY_LAYER.md) for input contracts, current-catalog integration, evidence boundaries and commands. Private source exports and catalogue databases remain outside the public repository.
+
 ## Core product model
 
 ```text
