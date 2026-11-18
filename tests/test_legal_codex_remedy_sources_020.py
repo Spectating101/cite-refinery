@@ -51,6 +51,11 @@ class RealRemedy020Tests(unittest.TestCase):
         self.assertTrue(row["record_unavailable_reported"])
         self.assertFalse(row["intentional_deletion_inferred"])
         self.assertEqual(self.rows["finland_later_logs"]["fulfillment"], "confirmed_by_public_source")
+        delay = self.rows["finland_remittal_delay"]
+        self.assertEqual(delay["fulfillment"], "nonfulfillment_confirmed_by_public_source")
+        self.assertEqual(delay["historical_confirmation_ids"], [])
+        finding = next(e for e in self.report["events"] if e["id"] == "fi_delay_finding")
+        self.assertEqual(finding["fulfills_order_id"], "fi_remittal_report")
 
     def test_finnish_nonfinality_and_discrepancies_are_retained(self):
         source = next(s for s in self.report["sources"] if s["source_id"] == "finnish_tax_2026")

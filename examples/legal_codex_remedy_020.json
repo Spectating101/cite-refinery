@@ -449,7 +449,8 @@
       "kind": "nonfulfillment_confirmed",
       "occurred_on": "2026-10-23",
       "role": "regulator_finding",
-      "label": "The regulator finds the remitted request was not reprocessed before its office contacted the controller. This finding concerns the historical interval, not an inference from elapsed time."
+      "label": "The regulator finds the remitted request was not reprocessed before its office contacted the controller. This finding concerns the historical interval, not an inference from elapsed time.",
+      "fulfills_order_id": "fi_remittal_report"
     }
   ],
   "research_notes": {
