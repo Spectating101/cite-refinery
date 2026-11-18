@@ -6,6 +6,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 from urllib.parse import parse_qs, unquote, urlparse
 
+from .repository_layer_view import render_repository_layer
+from .repository_layer_workspace import load_repository_layer, render_repository_layer_index
 from .store import JsonStore
 from .workspace import ProductWorkspace
 
@@ -27,7 +29,7 @@ button,input{font:inherit}.shell{display:grid;grid-template-columns:270px 1fr;mi
 .brand{font-size:20px;font-weight:780;letter-spacing:-.035em}.brand small{display:block;color:#9fa596;font-size:10px;text-transform:uppercase;letter-spacing:.12em;margin-top:2px}.label{margin:26px 8px 8px;color:#8f9587;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
 .project{width:100%;border:0;background:transparent;color:#d9ddd4;padding:10px;border-radius:8px;text-align:left;cursor:pointer;margin:2px 0}.project:hover,.project.active{background:#343a32;color:white}.project strong,.project span{display:block}.project span{font-size:11px;color:#969d90;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .main{min-width:0}.head{padding:28px 34px 0}.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:750;color:#7b6448}.head h1{font-size:32px;letter-spacing:-.045em;margin:6px 0}.problem{max-width:950px;color:var(--muted)}
-.nav{display:flex;gap:2px;padding:20px 34px 0;border-bottom:1px solid var(--line)}.nav button{border:0;background:transparent;padding:11px 14px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;text-transform:capitalize}.nav button.active{color:var(--ink);font-weight:750;border-color:var(--accent)}
+.nav{display:flex;flex-wrap:wrap;gap:2px;padding:20px 34px 0;border-bottom:1px solid var(--line)}.nav button,.nav a{border:0;background:transparent;padding:11px 14px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;text-transform:capitalize;text-decoration:none}.nav button.active{color:var(--ink);font-weight:750;border-color:var(--accent)}.nav a:hover{color:var(--ink);text-decoration:underline}
 .content{padding:24px 34px 60px;max-width:1580px}.grid{display:grid;gap:14px}.metrics{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}.two{grid-template-columns:minmax(250px,.7fr) minmax(0,1.8fr)}.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .card,.metric{background:var(--paper);border:1px solid var(--line);border-radius:11px}.card{padding:16px}.metric{padding:14px}.metric b{display:block;font-size:25px;letter-spacing:-.04em}.metric span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
 h2{font-size:21px;margin:0 0 12px}h3{font-size:14px;margin:0 0 9px}.muted,.meta{color:var(--muted)}.meta{font-size:11px;margin-top:4px}.pill{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:2px 7px;font-size:10px;margin:2px 3px 2px 0}.empty{padding:22px;border:1px dashed var(--line);border-radius:9px;text-align:center;color:var(--muted)}
@@ -78,7 +80,7 @@ function renderProjects(){
 }
 function renderNav(){
   const nav=state.project?.navigation||['map','records','project'];
-  $('#nav').innerHTML=nav.map(v=>`<button class="${state.view===v?'active':''}" data-view="${esc(v)}">${esc(v)}</button>`).join('');
+  $('#nav').innerHTML=nav.map(v=>`<button class="${state.view===v?'active':''}" data-view="${esc(v)}">${esc(v)}</button>`).join('')+'<a href="/repositories">Repositories</a>';
   document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{state.view=b.dataset.view;state.nodeId=null;state.coverage=null;state.trace=null;renderNav();renderContent()});
 }
 function nodeButton(n){return `<button class="node ${state.nodeId===n.id?'active':''}" data-node="${esc(n.id)}"><strong>${esc(n.statement)}</strong><div class="meta">${pill(n.kind)}${(n.tags||[]).slice(0,3).map(pill).join('')}</div></button>`}
@@ -229,8 +231,8 @@ def _handler(workspace: str) -> type[BaseHTTPRequestHandler]:
             self.end_headers()
             self.wfile.write(body)
 
-        def _send_html(self) -> None:
-            body = APP_HTML.encode("utf-8")
+        def _send_html(self, html: str = APP_HTML) -> None:
+            body = html.encode("utf-8")
             self.send_response(HTTPStatus.OK)
             self.send_header("Content-Type", "text/html; charset=utf-8")
             self.send_header("Content-Length", str(len(body)))
@@ -253,8 +255,17 @@ def _handler(workspace: str) -> type[BaseHTTPRequestHandler]:
                     return
 
                 parts = [unquote(value) for value in path.strip("/").split("/") if value]
+                if parts == ["repositories"]:
+                    self._send_html(render_repository_layer_index(store))
+                    return
+                if len(parts) == 2 and parts[0] == "repositories":
+                    self._send_html(render_repository_layer(load_repository_layer(store, parts[1])))
+                    return
                 if len(parts) >= 3 and parts[:2] == ["api", "projects"]:
                     project_id = parts[2]
+                    if len(parts) == 4 and parts[3] == "repository-layer":
+                        self._send_json(load_repository_layer(store, project_id))
+                        return
                     if len(parts) == 3:
                         query = parse_qs(parsed.query)
                         include_graph = query.get("graph", ["0"])[0] in {"1", "true", "yes"}
