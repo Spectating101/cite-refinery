@@ -1,5 +1,7 @@
 # Cite-Refinery
 
+**New digital execution proof:** [Supply-driven PCB and enclosure substitution](docs/HARDWARE_SUBSTITUTION_PROOF_2026-11-18.md) runs KiCad, Freerouting and CadQuery through the project execution registry, checks real faulty handoffs, and derives material requirements from the resulting files. The example remains a digital fixture, with no physical or commercial release.
+
 **Map the problem across reality, research, and what can actually be built or deployed.**
 
 Cite-Refinery is a provenance-preserving research system whose conceptual center is a **clustered three-layer semantic map**.
