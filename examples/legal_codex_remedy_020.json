@@ -1,0 +1,466 @@
+{
+  "schema": "legal_codex.remedy_ledger_020.v1",
+  "description": "Curated source-bound remedy components. The input is an analytical coding of four published decisions, not original claimant records or independently adjudicated legal conclusions.",
+  "sources": {
+    "hospital_2024": {
+      "available_on": null,
+      "availability_basis": "first_verified_capture",
+      "publication_basis": "Derived from the authenticated receipt of these exact source bytes. Decision/publication dates are distinct; no historical version availability is inferred."
+    },
+    "hospital_2026": {
+      "available_on": null,
+      "availability_basis": "first_verified_capture",
+      "publication_basis": "Derived from the authenticated receipt of these exact source bytes. Decision/publication dates are distinct; no historical version availability is inferred."
+    },
+    "staff_identity_2025": {
+      "available_on": null,
+      "availability_basis": "first_verified_capture",
+      "publication_basis": "Derived from the authenticated receipt of these exact source bytes. Decision/publication dates are distinct; no historical version availability is inferred."
+    },
+    "finnish_tax_2026": {
+      "available_on": null,
+      "availability_basis": "first_verified_capture",
+      "publication_basis": "Derived from the authenticated receipt of these exact source bytes. Decision/publication dates are distinct; no historical version availability is inferred."
+    }
+  },
+  "obligations": [
+    {
+      "id": "h24_personal_data",
+      "case_id": "ECLI:NL:GHARL:2024:5384",
+      "label": "2024 hospital: remaining personal data",
+      "scope": "Operative order 6.2: personal data concerning the father and daughter in the treatment context, insofar not already supplied and subject to third-party rights.",
+      "deadline": {
+        "literal": "binnen een maand na deze beschikking",
+        "due_on": "2024-09-26",
+        "basis": {
+          "source_id": "hospital_2024",
+          "block_id": "p0139",
+          "block_sha256": "07fc41080a35f57abdd13487a42d68ebdf516c73f67c60dfee2a9559fabfb12a"
+        },
+        "review_note": "Analyst calendar-month review marker from the decision date. No assessment of service, stays, finality, enforceability or penalty conditions; elapsed time triggers evidence review only."
+      },
+      "data_quality_flags": []
+    },
+    {
+      "id": "h24_log_overviews",
+      "case_id": "ECLI:NL:GHARL:2024:5384",
+      "label": "2024 hospital: intelligible log overviews",
+      "scope": "Operative order 6.3: understandable log overviews for the daughter’s files, with third-party rights protected.",
+      "deadline": {
+        "literal": "binnen een maand na deze beschikking",
+        "due_on": "2024-09-26",
+        "basis": {
+          "source_id": "hospital_2024",
+          "block_id": "p0141",
+          "block_sha256": "423c5f5e389ccc9ee167b99ab349b918173ac5b3395dfdbb30f539d99aa45e75"
+        },
+        "review_note": "Analyst calendar-month review marker from the decision date. No assessment of service, stays, finality, enforceability or penalty conditions; elapsed time triggers evidence review only."
+      },
+      "data_quality_flags": []
+    },
+    {
+      "id": "h26_medical_copy",
+      "case_id": "ECLI:NL:RBMNE:2026:7063",
+      "label": "2026 hospital: medical-file copy",
+      "scope": "The medical-file copy acknowledged at the hearing; this is separate from log explanations and MiroView specification.",
+      "data_quality_flags": []
+    },
+    {
+      "id": "h26_log_explanation",
+      "case_id": "ECLI:NL:RBMNE:2026:7063",
+      "label": "2026 hospital: data and purpose explanation",
+      "scope": "Operative order 5.1: specify which personal data were consulted and the purposes in the previously supplied medical-file logs.",
+      "deadline": {
+        "literal": "binnen een maand na deze beschikking",
+        "due_on": "2026-10-30",
+        "basis": {
+          "source_id": "hospital_2026",
+          "block_id": "p0100",
+          "block_sha256": "93357597b68219972102982726510be0ca8089b2ba920a099761f1df4867d91f"
+        },
+        "review_note": "Analyst calendar-month review marker from the decision date. No assessment of service, stays, finality, enforceability or penalty conditions; elapsed time triggers evidence review only."
+      },
+      "data_quality_flags": []
+    },
+    {
+      "id": "h26_staff_specification",
+      "case_id": "ECLI:NL:RBMNE:2026:7063",
+      "label": "2026 hospital: qualified MiroView staff detail",
+      "scope": "Operative order 5.2: specify staff behind the logged MiroView activities insofar not already done, respecting staff and third-party rights. This is not blanket entitlement to names.",
+      "deadline": {
+        "literal": "binnen een maand na deze beschikking",
+        "due_on": "2026-10-30",
+        "basis": {
+          "source_id": "hospital_2026",
+          "block_id": "p0102",
+          "block_sha256": "fd01b60eb03239770b70e279329817bb81f85ec354f6abeac1be7257e792edc8"
+        },
+        "review_note": "Analyst calendar-month review marker from the decision date. No assessment of service, stays, finality, enforceability or penalty conditions; elapsed time triggers evidence review only."
+      },
+      "data_quality_flags": []
+    },
+    {
+      "id": "h26_other_personal_data",
+      "case_id": "ECLI:NL:RBMNE:2026:7063",
+      "label": "2026 hospital: other-personal-data overview",
+      "scope": "Overview of processed personal data outside the medical file considered in reasoning 4.14.",
+      "data_quality_flags": []
+    },
+    {
+      "id": "ministry_delivery",
+      "case_id": "ECLI:NL:RVS:2025:3260",
+      "label": "Ministry: new decision and actual delivery",
+      "scope": "Delivery under the 9 February 2024 access decision, excluding individual employee identities. A favorable decision is distinct from a receipt.",
+      "data_quality_flags": []
+    },
+    {
+      "id": "ministry_employee_names",
+      "case_id": "ECLI:NL:RVS:2025:3260",
+      "label": "Ministry: employee-name requirement",
+      "scope": "The limited identity issue in this appeal; other access components are not treated as denied.",
+      "data_quality_flags": []
+    },
+    {
+      "id": "finland_older_logs",
+      "case_id": "TSV/238/2022",
+      "label": "Finland: missing older logs",
+      "scope": "Requested log information for 1 January 2017–13 May 2019. Distinct from the later period the regulator regarded as fulfilled.",
+      "data_quality_flags": [
+        "Source counterfactual discrepancy: paragraph 65 ends on 13 April 2019, while the missing-period finding ends on 13 May 2019. The tracker retains both."
+      ]
+    },
+    {
+      "id": "finland_later_logs",
+      "case_id": "TSV/238/2022",
+      "label": "Finland: later log disclosures",
+      "scope": "The remaining log-access period 14 May 2019–21 June 2025 as treated in the regulator’s paragraph 54 finding. Differing interval accounts remain flagged.",
+      "data_quality_flags": [
+        "Source interval discrepancy: paragraph 30 uses 31 December 2021, while paragraphs 27 and 52 use 28 November 2021. Preserve both; no automatic repair or inferred extra gap."
+      ]
+    },
+    {
+      "id": "finland_employee_names",
+      "case_id": "TSV/238/2022",
+      "label": "Finland: employee identities",
+      "scope": "Requested employee identities; the regulator found no case-specific necessity requiring disclosure.",
+      "data_quality_flags": []
+    },
+    {
+      "id": "finland_remittal_delay",
+      "case_id": "TSV/238/2022",
+      "label": "Finland: historical remittal delay",
+      "scope": "Historical reconsideration of the 2018–2021 request after the 28 November 2023 remittal and before the regulator’s contact. Later receipt is tracked separately.",
+      "data_quality_flags": []
+    }
+  ],
+  "events": [
+    {
+      "id": "h24_personal_data_order",
+      "obligation_id": "h24_personal_data",
+      "source_id": "hospital_2024",
+      "block_id": "p0139",
+      "block_sha256": "07fc41080a35f57abdd13487a42d68ebdf516c73f67c60dfee2a9559fabfb12a",
+      "kind": "order_reported",
+      "occurred_on": "2024-08-26",
+      "role": "operative_order",
+      "label": "The court ordered this specific component within one month of its decision. Later performance is not established in this source."
+    },
+    {
+      "id": "h24_personal_data_penalty",
+      "obligation_id": "h24_personal_data",
+      "source_id": "hospital_2024",
+      "block_id": "p0143",
+      "block_sha256": "7f99b7ee3a16c5821b8c383fa85998eabfb20e0f3ad151e7612f4a62793d13be",
+      "kind": "penalty_ordered",
+      "occurred_on": "2024-08-26",
+      "role": "operative_order",
+      "label": "Conditional EUR 100 per day, capped at EUR 1,000 for this separate order. The order does not establish accrued or paid penalties."
+    },
+    {
+      "id": "h24_log_overviews_order",
+      "obligation_id": "h24_log_overviews",
+      "source_id": "hospital_2024",
+      "block_id": "p0141",
+      "block_sha256": "423c5f5e389ccc9ee167b99ab349b918173ac5b3395dfdbb30f539d99aa45e75",
+      "kind": "order_reported",
+      "occurred_on": "2024-08-26",
+      "role": "operative_order",
+      "label": "The court ordered this specific component within one month of its decision. Later performance is not established in this source."
+    },
+    {
+      "id": "h24_log_overviews_penalty",
+      "obligation_id": "h24_log_overviews",
+      "source_id": "hospital_2024",
+      "block_id": "p0143",
+      "block_sha256": "7f99b7ee3a16c5821b8c383fa85998eabfb20e0f3ad151e7612f4a62793d13be",
+      "kind": "penalty_ordered",
+      "occurred_on": "2024-08-26",
+      "role": "operative_order",
+      "label": "Conditional EUR 100 per day, capped at EUR 1,000 for this separate order. The order does not establish accrued or paid penalties."
+    },
+    {
+      "id": "h26_copy_receipt",
+      "obligation_id": "h26_medical_copy",
+      "source_id": "hospital_2026",
+      "block_id": "p0067",
+      "block_sha256": "78730e7119d054f72dd7f29c487a9ab5de80927372f15acbbb53e2565b3cfbd4",
+      "kind": "receipt_reported",
+      "occurred_on": "2026-09-07",
+      "role": "court_records_claimant_confirmation",
+      "label": "The judgment records the claimant acknowledging receipt of the medical-file copy on 7 September 2026."
+    },
+    {
+      "id": "h26_copy_fulfilled",
+      "obligation_id": "h26_medical_copy",
+      "source_id": "hospital_2026",
+      "block_id": "p0067",
+      "block_sha256": "78730e7119d054f72dd7f29c487a9ab5de80927372f15acbbb53e2565b3cfbd4",
+      "kind": "fulfillment_confirmed",
+      "occurred_on": "2026-09-30",
+      "role": "court_finding",
+      "label": "The court expressly treated the medical-file-copy component as fulfilled."
+    },
+    {
+      "id": "h26_prior_logs",
+      "obligation_id": "h26_log_explanation",
+      "source_id": "hospital_2026",
+      "block_id": "p0057",
+      "block_sha256": "55dbb5cc75352a982dda4d103cfad6ef36d6d265e5334e6256bd944db8c657d7",
+      "kind": "receipt_reported",
+      "occurred_on": "2026-09-07",
+      "role": "court_records_claimant_confirmation",
+      "label": "Prior log overviews were received; their receipt predates the later explanation order."
+    },
+    {
+      "id": "h26_logs_inadequate",
+      "obligation_id": "h26_log_explanation",
+      "source_id": "hospital_2026",
+      "block_id": "p0061",
+      "block_sha256": "e75821917213f8f50dce524ad53801e7ff44543edcf606859f50485c3a435629",
+      "kind": "inadequacy_found",
+      "occurred_on": "2026-09-30",
+      "role": "court_finding",
+      "label": "The existing generic screen categories did not sufficiently explain which personal data had been accessed and for what purpose."
+    },
+    {
+      "id": "h26_explanation_order",
+      "obligation_id": "h26_log_explanation",
+      "source_id": "hospital_2026",
+      "block_id": "p0100",
+      "block_sha256": "93357597b68219972102982726510be0ca8089b2ba920a099761f1df4867d91f",
+      "kind": "order_reported",
+      "occurred_on": "2026-09-30",
+      "role": "operative_order",
+      "label": "Provide the further data-and-purpose explanation within one month of this decision."
+    },
+    {
+      "id": "h26_staff_order",
+      "obligation_id": "h26_staff_specification",
+      "source_id": "hospital_2026",
+      "block_id": "p0102",
+      "block_sha256": "fd01b60eb03239770b70e279329817bb81f85ec354f6abeac1be7257e792edc8",
+      "kind": "order_reported",
+      "occurred_on": "2026-09-30",
+      "role": "operative_order",
+      "label": "The further MiroView staff specification is ordered with explicit scope and privacy qualifications."
+    },
+    {
+      "id": "h26_log_explanation_assurance",
+      "obligation_id": "h26_log_explanation",
+      "source_id": "hospital_2026",
+      "block_id": "p0091",
+      "block_sha256": "aacbe7f858568c362ba88328dc71087cece2aab19eb3be21f448c85f3c01aeb1",
+      "kind": "assurance_of_compliance",
+      "occurred_on": "2026-09-30",
+      "role": "court_records_controller_submission",
+      "label": "The hospital assured cooperation; this is not evidence of subsequent execution."
+    },
+    {
+      "id": "h26_log_explanation_no_penalty",
+      "obligation_id": "h26_log_explanation",
+      "source_id": "hospital_2026",
+      "block_id": "p0091",
+      "block_sha256": "aacbe7f858568c362ba88328dc71087cece2aab19eb3be21f448c85f3c01aeb1",
+      "kind": "penalty_declined",
+      "occurred_on": "2026-09-30",
+      "role": "court_finding",
+      "label": "The court declined the requested conditional penalty after considering the assurance."
+    },
+    {
+      "id": "h26_staff_specification_assurance",
+      "obligation_id": "h26_staff_specification",
+      "source_id": "hospital_2026",
+      "block_id": "p0091",
+      "block_sha256": "aacbe7f858568c362ba88328dc71087cece2aab19eb3be21f448c85f3c01aeb1",
+      "kind": "assurance_of_compliance",
+      "occurred_on": "2026-09-30",
+      "role": "court_records_controller_submission",
+      "label": "The hospital assured cooperation; this is not evidence of subsequent execution."
+    },
+    {
+      "id": "h26_staff_specification_no_penalty",
+      "obligation_id": "h26_staff_specification",
+      "source_id": "hospital_2026",
+      "block_id": "p0091",
+      "block_sha256": "aacbe7f858568c362ba88328dc71087cece2aab19eb3be21f448c85f3c01aeb1",
+      "kind": "penalty_declined",
+      "occurred_on": "2026-09-30",
+      "role": "court_finding",
+      "label": "The court declined the requested conditional penalty after considering the assurance."
+    },
+    {
+      "id": "h26_other_fulfilled",
+      "obligation_id": "h26_other_personal_data",
+      "source_id": "hospital_2026",
+      "block_id": "p0085",
+      "block_sha256": "80f9c4b9af865f7921fe33267c0ad357faff4b53050a77d4aee0e5a2aa9def15",
+      "kind": "fulfillment_confirmed",
+      "occurred_on": "2026-09-30",
+      "role": "court_finding",
+      "label": "The court accepted the overview and treated this request component as fulfilled; no omitted archive-search finding is inferred."
+    },
+    {
+      "id": "ministry_new_decision",
+      "obligation_id": "ministry_delivery",
+      "source_id": "staff_identity_2025",
+      "block_id": "p0043",
+      "block_sha256": "260bc9985b4cb68c5e911cc0c76dfa0cdcfbb67ecc336003a0c76eec13d230de",
+      "kind": "remedial_decision_reported",
+      "occurred_on": "2024-02-09",
+      "role": "court_finding",
+      "label": "The appeal judgment reports a new decision upholding the objection on access points except staff identities. This passage does not confirm delivery of all underlying records."
+    },
+    {
+      "id": "ministry_identity_reversed",
+      "obligation_id": "ministry_employee_names",
+      "source_id": "staff_identity_2025",
+      "block_id": "p0051",
+      "block_sha256": "52313da7b133cd4c8138ed23d29ffe4c0f513790f71a30fc6224e031b1bf5651",
+      "kind": "requirement_reversed",
+      "occurred_on": "2025-07-16",
+      "role": "operative_order",
+      "label": "The lower-court requirement to disclose individual employee identities was reversed in this case."
+    },
+    {
+      "id": "fi_older_not_fulfilled",
+      "obligation_id": "finland_older_logs",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0044",
+      "block_sha256": "37a36886fc5d573def29a85857a9d138217ce386857da159b45d407537696ad7",
+      "kind": "nonfulfillment_confirmed",
+      "occurred_on": "2026-10-23",
+      "role": "regulator_finding",
+      "label": "The regulator found the access request unfulfilled for the older interval."
+    },
+    {
+      "id": "fi_older_unavailable",
+      "obligation_id": "finland_older_logs",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0045",
+      "block_sha256": "c38c35472a33bcf0fc81b65340da2754dd7778be9a5c1dee357b39bb689d051e",
+      "kind": "record_unavailable_reported",
+      "occurred_on": null,
+      "role": "regulator_records_controller_submission",
+      "label": "The regulator records the controller’s explanation that logs older than 14 May 2019 no longer exist. This is not an independently inspected deletion log."
+    },
+    {
+      "id": "fi_older_no_order",
+      "obligation_id": "finland_older_logs",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0045",
+      "block_sha256": "c38c35472a33bcf0fc81b65340da2754dd7778be9a5c1dee357b39bb689d051e",
+      "kind": "further_order_not_issued",
+      "occurred_on": "2026-10-23",
+      "role": "regulator_finding",
+      "label": "No further disclosure order was issued for the missing records because they were reported no longer available; the finding of partial nonfulfillment remains."
+    },
+    {
+      "id": "fi_recipient_may",
+      "obligation_id": "finland_later_logs",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0027",
+      "block_sha256": "81d384fc7bcf3f5fee1643da46775ddd803f88bca0179f4535c15a69744fa0a2",
+      "kind": "partial_receipt_reported",
+      "occurred_on": "2025-05-24",
+      "role": "regulator_records_claimant_confirmation",
+      "label": "The representative reports receipt on 24 May 2025 covering 14 May 2019–28 November 2021."
+    },
+    {
+      "id": "fi_controller_may",
+      "obligation_id": "finland_later_logs",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0030",
+      "block_sha256": "cd8ad719cbdae0cf55d27b0c6e4cbc52017fe620f66715d71194ca625ebd9022",
+      "kind": "partial_receipt_reported",
+      "occurred_on": "2025-05-23",
+      "role": "regulator_records_controller_submission",
+      "label": "The controller reports a 23 May 2025 disclosure covering 14 May 2019–31 December 2021; date and extent are attributed to that speaker."
+    },
+    {
+      "id": "fi_controller_july",
+      "obligation_id": "finland_later_logs",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0030",
+      "block_sha256": "cd8ad719cbdae0cf55d27b0c6e4cbc52017fe620f66715d71194ca625ebd9022",
+      "kind": "partial_receipt_reported",
+      "occurred_on": "2025-07-07",
+      "role": "regulator_records_controller_submission",
+      "label": "The controller reports a 7 July 2025 disclosure covering 1 January 2022–21 June 2025."
+    },
+    {
+      "id": "fi_later_fulfilled",
+      "obligation_id": "finland_later_logs",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0054",
+      "block_sha256": "7a5092e25040d208f82bade6dbc7fd4e0865e76808847d27b85ee4e72ef6420b",
+      "kind": "fulfillment_confirmed",
+      "occurred_on": "2026-10-23",
+      "role": "regulator_finding",
+      "label": "The regulator treats access for 14 May 2019–21 June 2025 as fulfilled. This nonfinal public finding is preserved without resolving the source’s differing endpoints."
+    },
+    {
+      "id": "fi_names_no_order",
+      "obligation_id": "finland_employee_names",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0046",
+      "block_sha256": "645722f2ad9ef26b7d44dc8231482bbc94e597242958815db3fe6c4d80a923e0",
+      "kind": "further_order_not_issued",
+      "occurred_on": "2026-10-23",
+      "role": "regulator_finding",
+      "label": "No employee-identity disclosure order was issued in this case; this does not negate the separate right to consultation timing and purposes."
+    },
+    {
+      "id": "fi_remittal_report",
+      "obligation_id": "finland_remittal_delay",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0064",
+      "block_sha256": "fd8f9abcb84842b0c8bf77e3354b1ac9a9a07fd63b1d837ee9c68f4419acf1b2",
+      "kind": "order_reported",
+      "occurred_on": "2023-11-28",
+      "role": "regulator_finding",
+      "label": "The 2026 regulator decision reports that the Helsinki Administrative Court remitted the request on 28 November 2023. The original 2023 court document is not acquired here."
+    },
+    {
+      "id": "fi_delay_finding",
+      "obligation_id": "finland_remittal_delay",
+      "source_id": "finnish_tax_2026",
+      "block_id": "p0064",
+      "block_sha256": "fd8f9abcb84842b0c8bf77e3354b1ac9a9a07fd63b1d837ee9c68f4419acf1b2",
+      "kind": "nonfulfillment_confirmed",
+      "occurred_on": "2026-10-23",
+      "role": "regulator_finding",
+      "label": "The regulator finds the remitted request was not reprocessed before its office contacted the controller. This finding concerns the historical interval, not an inference from elapsed time.",
+      "fulfills_order_id": "fi_remittal_report"
+    }
+  ],
+  "research_notes": {
+    "checked_on": "2026-11-18",
+    "later_proceedings": "Bounded exact-identifier, case-number and official-domain searches found no later official compliance, appeal or finality record for these sources. This is not proof that none exists.",
+    "historical_source_versions": "Current captured bytes can include later revisions. Visibility uses their verified capture dates, not the earlier issue/publication dates.",
+    "finnish_discrepancies": [
+      "Paragraph30 ends the first delivered interval on31December2021; paragraphs27 and52 use28November2021. No automatic interval union or correction.",
+      "Paragraph65 uses13April2019 in its counterfactual; the missing-period finding uses13May2019. Both literal dates retained."
+    ],
+    "scope": "Purposefully chosen cases; no prevalence or legal-effectiveness estimate."
+  }
+}

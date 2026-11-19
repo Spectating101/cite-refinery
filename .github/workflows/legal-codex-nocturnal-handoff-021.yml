@@ -1,0 +1,179 @@
+name: legal-codex-nocturnal-handoff-021
+
+on:
+  push:
+    branches: ['feature/legal-codex-benchmark-001']
+    paths:
+      - 'scripts/legal_codex_capture_019.py'
+      - 'scripts/legal_codex_capture_020.py'
+      - 'src/cite_refinery/legal_codex_access_outcomes.py'
+      - 'src/cite_refinery/legal_codex_remedy*.py'
+      - 'src/cite_refinery/legal_codex_nocturnal_handoff.py'
+      - 'examples/legal_codex_remedy_020.json'
+      - 'tests/test_legal_codex_access_outcomes_019.py'
+      - 'tests/test_legal_codex_*020.py'
+      - 'tests/test_legal_codex_*021.py'
+      - '.github/workflows/legal-codex-nocturnal-handoff-021.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portable-candidate-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      PYTHONPATH: src
+      LEGAL_CODEX_020_DUTCH: ${{ github.workspace }}/evidence-021/dutch
+      LEGAL_CODEX_020_FINLEX: ${{ github.workspace }}/evidence-021/finlex
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Capture the three reviewed Dutch decisions
+        id: capture_dutch
+        run: python -m cite_refinery.legal_codex_remedy_sources --capture-dutch evidence-021/dutch
+
+      - name: Capture the Finnish decision through the documented public XML endpoint
+        id: capture_finlex
+        if: always()
+        run: python scripts/legal_codex_capture_020.py --output-dir evidence-021/finlex
+
+      - name: Run standalone 019 regressions and all 020 and 021 checks without skips
+        id: checks
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          import unittest
+
+          sys.path.insert(0, str(Path('tests').resolve()))
+          groups = [
+              ('019_standalone_literal_regression',
+               unittest.TestLoader().loadTestsFromName(
+                   'test_legal_codex_access_outcomes_019.LiteralCitation019Tests'),
+               'Only the four source-independent 019 literal/reference/admission checks. '
+               'The separate 019 institutional HTML and failed legacy lead are not reacquired here.'),
+              ('020_all_remedy_checks',
+               unittest.TestLoader().discover('tests', pattern='test_legal_codex_*020.py'),
+               'All 020 capture, remedy behavior, actual-source and candidate graph checks.'),
+              ('021_all_portable_export_checks',
+               unittest.TestLoader().discover('tests', pattern='test_legal_codex_*021.py'),
+               'All 021 portable custody, state projection, scope and tampering checks.'),
+          ]
+          records = []
+          for name, suite, scope in groups:
+              print('\nRunning ' + name, flush=True)
+              result = unittest.TextTestRunner(verbosity=2).run(suite)
+              records.append({
+                  'group': name, 'scope': scope, 'tests_run': result.testsRun,
+                  'failures': len(result.failures), 'errors': len(result.errors),
+                  'skipped': len(result.skipped),
+                  'passed_without_skips': result.wasSuccessful() and not result.skipped and result.testsRun > 0,
+              })
+          record = {
+              'schema': 'legal_codex.handoff_021_test_results.v1',
+              'groups': records,
+              'tests_run': sum(row['tests_run'] for row in records),
+              'failures': sum(row['failures'] for row in records),
+              'errors': sum(row['errors'] for row in records),
+              'skipped': sum(row['skipped'] for row in records),
+              'native_nocturnal_import_executed': False,
+              'model_review_executed': False,
+          }
+          Path('legal-codex-021-test-results.json').write_text(json.dumps(record, indent=2) + '\n')
+          if not all(row['passed_without_skips'] for row in records):
+              raise SystemExit('Every selected test group must pass with zero skips.')
+          PY
+
+      - name: Export then re-extract and rebuild the serialized candidate packet
+        id: export
+        run: |
+          python - <<'PY'
+          from datetime import datetime, timezone
+          import json
+          from pathlib import Path
+          from cite_refinery.legal_codex_nocturnal_handoff import build_handoff, read_packet, validate_handoff
+
+          as_of = datetime.now(timezone.utc).date().isoformat()
+          packet = build_handoff('evidence-021/dutch', 'evidence-021/finlex',
+                                 'examples/legal_codex_remedy_020.json', as_of)
+          path = Path('legal_codex_021_handoff.json')
+          path.write_text(json.dumps(packet, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          verified = validate_handoff(read_packet(path), expected_packet_sha256=packet['packet_sha256'])
+          assert verified == packet
+          record = {
+              'schema': 'legal_codex.handoff_021_verification.v1',
+              'as_of': as_of,
+              'packet_id': packet['packet_id'], 'packet_sha256': packet['packet_sha256'],
+              'packet_bytes': path.stat().st_size, 'counts': packet['counts'],
+              'sources': [
+                  {key: source[key] for key in (
+                      'source_id', 'identity', 'raw_sha256', 'raw_bytes', 'extracted_sha256',
+                      'captured_at', 'source_date', 'available_on', 'availability_basis', 'decision_finality')}
+                  for source in packet['sources']
+              ],
+              'raw_sources_reextracted': True,
+              'portable_report_recomputed': True,
+              'candidate_only': True,
+              'native_nocturnal_import_executed': False,
+              'model_review_executed': False,
+              'publication_authorized': False,
+          }
+          Path('legal-codex-021-verification.json').write_text(json.dumps(record, indent=2) + '\n')
+          print(json.dumps({'packet_id': packet['packet_id'], 'packet_sha256': packet['packet_sha256'],
+                            **packet['counts'], 'native_nocturnal_import_executed': False}))
+          PY
+
+      - name: Record acquisition and validation outcomes even after failure
+        if: always()
+        env:
+          DUTCH_OUTCOME: ${{ steps.capture_dutch.outcome }}
+          FINLEX_OUTCOME: ${{ steps.capture_finlex.outcome }}
+          TEST_OUTCOME: ${{ steps.checks.outcome }}
+          EXPORT_OUTCOME: ${{ steps.export.outcome }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path('legal-codex-021-verification.json')
+          record = json.loads(path.read_text()) if path.exists() else {
+              'schema': 'legal_codex.handoff_021_verification.v1',
+              'raw_sources_reextracted': False, 'portable_report_recomputed': False,
+              'candidate_only': True, 'native_nocturnal_import_executed': False,
+              'model_review_executed': False, 'publication_authorized': False,
+          }
+          outcomes = {key: os.environ.get(env, 'not_run') for key, env in (
+              ('dutch_acquisition', 'DUTCH_OUTCOME'), ('finlex_acquisition', 'FINLEX_OUTCOME'),
+              ('selected_tests', 'TEST_OUTCOME'), ('portable_export', 'EXPORT_OUTCOME'))}
+          record['step_outcomes'] = outcomes
+          record['status'] = 'passed' if all(value == 'success' for value in outcomes.values()) else 'incomplete_or_failed'
+          record['verification_scope'] = 'Cite source custody and portable candidate export only; native Nocturnal integration is a separate job.'
+          tests = Path('legal-codex-021-test-results.json')
+          if tests.exists():
+              record['tests'] = json.loads(tests.read_text())
+          record['capture_receipts'] = {}
+          for name in ('dutch', 'finlex'):
+              receipt = Path('evidence-021') / name / 'receipt.json'
+              if receipt.exists():
+                  record['capture_receipts'][name] = json.loads(receipt.read_text())
+          path.write_text(json.dumps(record, indent=2) + '\n')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: legal-codex-021-source-custody-and-portable-candidates
+          path: |
+            evidence-021
+            legal_codex_021_handoff.json
+            legal-codex-021-test-results.json
+            legal-codex-021-verification.json
+          if-no-files-found: error
+          retention-days: 30

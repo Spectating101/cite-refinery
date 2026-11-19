@@ -1,0 +1,75 @@
+name: legal-codex-access-outcomes-019
+on:
+  push:
+    branches: ['feature/legal-codex-benchmark-001']
+    paths:
+      - 'scripts/legal_codex_capture_019.py'
+      - 'src/cite_refinery/legal_codex_access_outcomes*.py'
+      - 'tests/test_legal_codex_access_outcomes_019.py'
+      - '.github/workflows/legal-codex-access-outcomes-019.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-acquisition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Capture five public-source targets, reporting failures honestly
+        run: python scripts/legal_codex_capture_019.py --output-dir evidence-019
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: legal-codex-019-PUBLIC-SOURCES-NOT-PRIVATE-LOGS
+          path: evidence-019
+          retention-days: 30
+          if-no-files-found: error
+  scoped-outcome-validation:
+    needs: source-acquisition
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          name: legal-codex-019-PUBLIC-SOURCES-NOT-PRIVATE-LOGS
+          path: evidence-019
+      - name: Validate the four captured core sources; do not promote failed leads
+        env:
+          PYTHONPATH: src
+          LEGAL_CODEX_019_EVIDENCE: ${{ github.workspace }}/evidence-019
+        run: |
+          python - <<'PY'
+          import unittest
+          from cite_refinery.app import CiteRefinery
+          from cite_refinery.semantic import SemanticGraph
+          suite=unittest.defaultTestLoader.discover('tests',pattern='test_legal_codex_access_outcomes_019.py')
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.wasSuccessful() and not result.skipped
+          PY
+      - name: Export source-bound outcomes and automatically discovered citation edges
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m cite_refinery.legal_codex_access_outcomes --evidence-dir evidence-019 --output access-outcomes-019.json --packet access-outcomes-019-graph.json
+          mkdir -p companion/src/cite_refinery companion/scripts
+          cp src/cite_refinery/legal_codex_access_outcomes.py companion/src/cite_refinery/
+          cp scripts/legal_codex_capture_019.py companion/scripts/
+          cp docs/LEGAL_CODEX_ACCESS_OUTCOMES_019.md companion/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-019-VALIDATED-CORE-NOT-COMPLETE-ACQUISITION
+          path: |
+            access-outcomes-019.json
+            access-outcomes-019-graph.json
+            companion
+          retention-days: 30
+          if-no-files-found: error

@@ -1,0 +1,201 @@
+{
+  "schema": "legal_codex.procurement_authority_matrix.v1",
+  "legal_sources": [
+    {
+      "id": "perpres_2018",
+      "url": "https://www.kemhan.go.id/itjen/wp-content/uploads/2022/08/Peraturan-Presiden-Nomor-16-Tahun-2018_1001_1.pdf",
+      "jurisdiction": "Indonesia",
+      "effective_from": "2018-03-22",
+      "effective_until": "2021-02-01",
+      "original_bytes_captured": false,
+      "title": "Perpres 16/2018 as originally enacted before the February 2021 amendment",
+      "source_kind": "official_government_pdf"
+    },
+    {
+      "id": "perpres_2021",
+      "url": "https://www.kemhan.go.id/itjen/wp-content/uploads/2022/07/Perpres-Nomor-12-Tahun-2021.pdf",
+      "jurisdiction": "Indonesia",
+      "effective_from": "2021-02-02",
+      "effective_until": "2025-04-29",
+      "original_bytes_captured": false,
+      "title": "Perpres 12/2021 amended procurement provisions for the 2021-2025 interval before Perpres 46/2025",
+      "source_kind": "official_government_pdf"
+    }
+  ],
+  "role_rules": [
+    {
+      "id": "r18_pa_ppk",
+      "source_id": "perpres_2018",
+      "role": "PA",
+      "article": "Pasal 9(1)(g)",
+      "authority": "appoint_ppk",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The Pengguna Anggaran appoints a Pejabat Pembuat Komitmen according to Article 9 as originally enacted in 2018.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r18_pa_plan",
+      "source_id": "perpres_2018",
+      "role": "PA",
+      "article": "Pasal 9(1)(c)",
+      "authority": "procurement_plan",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The Pengguna Anggaran establishes planning for government procurement according to the original 2018 presidential regulation.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r18_kpa_delegation",
+      "source_id": "perpres_2018",
+      "role": "KPA",
+      "article": "Pasal 10(1)",
+      "authority": "delegate_budget",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The Kuasa Pengguna Anggaran carries out the delegated authority of the Pengguna Anggaran, according to the specific delegation instrument.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r18_ppk_spec",
+      "source_id": "perpres_2018",
+      "role": "PPK",
+      "article": "Pasal 11(1)(b)",
+      "authority": "technical_specification",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The Pejabat Pembuat Komitmen sets technical specifications or terms of reference (KAK) under the original 2018 text.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r18_ppk_hps",
+      "source_id": "perpres_2018",
+      "role": "PPK",
+      "article": "Pasal 11(1)(d)",
+      "authority": "price_estimate",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The Pejabat Pembuat Komitmen sets the Harga Perkiraan Sendiri estimated price in the original 2018 wording.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r18_ppk_contract",
+      "source_id": "perpres_2018",
+      "role": "PPK",
+      "article": "Pasal 11(1)(c)",
+      "authority": "draft_contract",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The Pejabat Pembuat Komitmen sets the proposed contract terms as a separate statutory responsibility.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r18_ppk_control",
+      "source_id": "perpres_2018",
+      "role": "PPK",
+      "article": "Pasal 11(1)(k)",
+      "authority": "contract_oversight",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The Pejabat Pembuat Komitmen controls implementation of the contract under the original 2018 text.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r21_ppk_spec",
+      "source_id": "perpres_2021",
+      "role": "PPK",
+      "article": "Pasal 11(1)(c)",
+      "authority": "technical_specification",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The 2021 amendment rewrote Article 11 and assigns specification and KAK setting to the Pejabat Pembuat Komitmen.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r21_ppk_hps",
+      "source_id": "perpres_2021",
+      "role": "PPK",
+      "article": "Pasal 11(1)(e)",
+      "authority": "price_estimate",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The 2021 amended version of Article 11 lists PPK authority to set the estimated price (HPS).",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r21_ppk_contract",
+      "source_id": "perpres_2021",
+      "role": "PPK",
+      "article": "Pasal 11(1)(d)",
+      "authority": "draft_contract",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The 2021 amended version of Article 11 lists draft contract determination among PPK tasks.",
+      "state": "candidate_statuory_duty_unreviewed"
+    },
+    {
+      "id": "r21_ppk_control",
+      "source_id": "perpres_2021",
+      "role": "PPK",
+      "article": "Pasal 11(1)(i)",
+      "authority": "contract_oversight",
+      "scope": "government_procurement_APBN_or_APBD",
+      "text_basis": "The 2021 amended Article 11 includes control of contract implementation by PPK.",
+      "state": "candidate_statuory_duty_unreviewed"
+    }
+  ],
+  "decision_questions": [
+    {
+      "id": "q_2020_chrome_spec",
+      "authority": "technical_specification",
+      "event_date": "2020",
+      "event_date_precision": "year",
+      "funding_stream": "unknown",
+      "source_ref": "https://kejati-sulawesiselatan.kejaksaan.go.id/conference/news/9698/read",
+      "named_authority_holder": null,
+      "provenance_status": "source_reported_not_adjudicated"
+    },
+    {
+      "id": "q_2021_reused_study",
+      "authority": "technical_specification",
+      "event_date": "2021",
+      "event_date_precision": "year",
+      "funding_stream": "unknown",
+      "source_ref": "https://kejati-jawatengah.kejaksaan.go.id/conference/news/10385/read",
+      "named_authority_holder": null,
+      "provenance_status": "source_reported_not_adjudicated"
+    },
+    {
+      "id": "q_2021_hps",
+      "authority": "price_estimate",
+      "event_date": "2021-08-01",
+      "event_date_precision": "day",
+      "funding_stream": "unknown",
+      "source_ref": "https://kejati-sulawesiselatan.kejaksaan.go.id/conference/news/9698/read",
+      "named_authority_holder": null,
+      "provenance_status": "source_reported_not_adjudicated"
+    },
+    {
+      "id": "q_2022_contract",
+      "authority": "contract_oversight",
+      "event_date": "2022",
+      "event_date_precision": "year",
+      "funding_stream": "unknown",
+      "source_ref": "https://kejati-sulawesiselatan.kejaksaan.go.id/conference/news/9698/read",
+      "named_authority_holder": null,
+      "provenance_status": "source_reported_not_adjudicated"
+    },
+    {
+      "id": "q_2020_ppk_appointment",
+      "authority": "appoint_ppk",
+      "event_date": "2020",
+      "event_date_precision": "year",
+      "funding_stream": "unknown",
+      "source_ref": "https://kejati-sulawesiselatan.kejaksaan.go.id/conference/news/9698/read",
+      "named_authority_holder": null,
+      "provenance_status": "source_reported_not_adjudicated"
+    },
+    {
+      "id": "q_vendor_selection",
+      "authority": "select_supplier",
+      "event_date": "2021",
+      "event_date_precision": "year",
+      "funding_stream": "unknown",
+      "source_ref": "https://kejati-sulawesiselatan.kejaksaan.go.id/conference/news/9698/read",
+      "named_authority_holder": null,
+      "provenance_status": "source_reported_not_adjudicated"
+    }
+  ],
+  "person_assignments": [],
+  "interpretation_limit": "Role matrix is a date-specific source of possible administrative duties, not a determination of any person's role, case validity, fiscal loss or culpability. A second amendment, Perpres 46/2025, became effective 2025-04-30: this two-version matrix deliberately abstains for later decisions; pre-existing contracts may have transitional treatment."
+}

@@ -1,0 +1,62 @@
+name: legal-codex-remedy-tracker-020
+on:
+  push:
+    branches: ['feature/legal-codex-benchmark-001']
+    paths:
+      - 'scripts/legal_codex_capture_020.py'
+      - 'src/cite_refinery/legal_codex_remedy*.py'
+      - 'examples/legal_codex_remedy_020.json'
+      - 'tests/test_legal_codex_*020.py'
+      - '.github/workflows/legal-codex-remedy-tracker-020.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-bound-remedies:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONPATH: src
+      LEGAL_CODEX_020_DUTCH: ${{ github.workspace }}/evidence-020/dutch
+      LEGAL_CODEX_020_FINLEX: ${{ github.workspace }}/evidence-020/finlex
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Capture the three reviewed Dutch decisions
+        run: python -m cite_refinery.legal_codex_remedy_sources --capture-dutch evidence-020/dutch
+      - name: Capture Finnish decision through documented public XML endpoint
+        if: always()
+        run: python scripts/legal_codex_capture_020.py --output-dir evidence-020/finlex
+      - name: Validate all real sources and remedy behavior with zero skipped tests
+        run: |
+          python - <<'PY'
+          import json, unittest
+          from pathlib import Path
+          suite=unittest.defaultTestLoader.discover('tests',pattern='test_legal_codex_*020.py')
+          result=unittest.TextTestRunner(verbosity=2).run(suite)
+          record={'tests_run':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),'skipped':len(result.skipped)}
+          Path('remedy-020-verification.json').write_text(json.dumps(record,indent=2)+'\n')
+          assert result.wasSuccessful() and not result.skipped
+          PY
+      - name: Export reproducible current-source remedy states and native graph
+        run: |
+          python - <<'PY'
+          from datetime import datetime, timezone
+          from cite_refinery.legal_codex_remedy_sources import main
+          main(['--dutch-evidence-dir','evidence-020/dutch','--finlex-evidence-dir','evidence-020/finlex',
+                '--ledger','examples/legal_codex_remedy_020.json','--as-of',datetime.now(timezone.utc).date().isoformat(),
+                '--output','remedy-020-report.json','--packet','remedy-020-graph.json'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: legal-codex-020-public-source-remedies
+          path: |
+            evidence-020
+            remedy-020-verification.json
+            remedy-020-report.json
+            remedy-020-graph.json
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,45 @@
+name: legal-codex-control-replay-016
+on:
+  pull_request:
+    paths:
+      - 'src/cite_refinery/legal_codex_control_*.py'
+      - 'tests/test_legal_codex_control_replay_016.py'
+      - '.github/workflows/legal-codex-control-replay.yml'
+  push:
+    branches: ['feature/legal-codex-benchmark-001']
+    paths:
+      - 'src/cite_refinery/legal_codex_control_*.py'
+      - 'tests/test_legal_codex_control_replay_016.py'
+      - '.github/workflows/legal-codex-control-replay.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  event-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require native Cite graph and previous guardrail module
+        env:
+          PYTHONPATH: src
+        run: |
+          python -c "from cite_refinery.app import CiteRefinery; from cite_refinery.semantic import SemanticGraph; from cite_refinery.legal_codex_prevention_edges import simulate_precommit_gate"
+          python -m unittest discover -s tests -p 'test_legal_codex_control_replay_016.py' -v
+      - name: Replay synthetic catalogue and export inspectable traces
+        env:
+          PYTHONPATH: src
+        run: |
+          mkdir -p replay-016
+          python -m cite_refinery.legal_codex_control_scenarios --output replay-016/benchmark.json --examples-dir replay-016/scenarios
+          python -m cite_refinery.legal_codex_control_replay replay-016/scenarios/late_evidence_no_hindsight.json --output replay-016/late-evidence.json --packet replay-016/late-evidence-graph.json
+          python -m cite_refinery.legal_codex_control_replay replay-016/scenarios/agency_record_missing.json --output replay-016/protective-review.json --packet replay-016/protective-review-graph.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: legal-codex-control-replay-016-SYNTHETIC
+          path: replay-016
+          retention-days: 30
+          if-no-files-found: error

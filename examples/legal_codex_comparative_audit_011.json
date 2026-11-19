@@ -1,0 +1,349 @@
+{
+  "schema": "legal_codex.comparative_audit.v1",
+  "as_of": "2026-11-15",
+  "original_documents_archived": false,
+  "independent_editorial_review": false,
+  "cases": [
+    {
+      "id": "horizon",
+      "title": "Post Office Horizon: challenge to unreliable computer evidence in criminal prosecutions",
+      "jurisdiction": "England and Wales",
+      "failure_period_start": "1999-01-01",
+      "failure_period_end": "2015-12-31",
+      "failure_modes": [
+        "challenge_to_system_generated_output",
+        "institutional_scrutiny",
+        "effective_individual_remedy",
+        "disclosure_and_transparency"
+      ],
+      "institutions": [
+        {
+          "id": "uk_post_office",
+          "name": "Post Office Limited",
+          "role": "Institutional prosecutor and Horizon user discussed in CCRC case review"
+        },
+        {
+          "id": "uk_ccrc",
+          "name": "Criminal Cases Review Commission",
+          "role": "Independent criminal conviction review and referrals to appellate courts"
+        },
+        {
+          "id": "uk_parliament",
+          "name": "UK Parliament",
+          "role": "Legislature enacting specified statutory criminal conviction relief"
+        },
+        {
+          "id": "uk_horizon_inquiry",
+          "name": "Post Office Horizon IT Inquiry",
+          "role": "Independent statutory inquiry examining impact and redress"
+        }
+      ]
+    },
+    {
+      "id": "dutch_benefits",
+      "title": "Dutch childcare benefits: discrimination in nationality-based administrative risk processing",
+      "jurisdiction": "Netherlands",
+      "failure_period_start": "2013-01-01",
+      "failure_period_end": "2019-02-28",
+      "failure_modes": [
+        "challenge_to_system_generated_output",
+        "institutional_scrutiny",
+        "effective_individual_remedy",
+        "disclosure_and_transparency"
+      ],
+      "institutions": [
+        {
+          "id": "nl_tax_authority",
+          "name": "Dutch Tax Administration / Benefits Office",
+          "role": "Public administrator whose data-processing practices were investigated"
+        },
+        {
+          "id": "nl_parliament",
+          "name": "Tweede Kamer parliamentary inquiry committee",
+          "role": "Parliamentary examiner of childcare-benefit administration and rule-of-law failures"
+        },
+        {
+          "id": "nl_dpa",
+          "name": "Autoriteit Persoonsgegevens",
+          "role": "Independent Dutch personal-data supervisory and enforcement authority"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "s_uk_ccrc",
+      "case_id": "horizon",
+      "url": "https://ccrc.gov.uk/news/the-ccrc-and-post-office-horizon-cases/",
+      "published_on": "2024-01-03",
+      "kind": "independent_review_body",
+      "jurisdictions": [
+        "England and Wales"
+      ],
+      "custody": "public_locator_unarchived",
+      "original_bytes_verified": false
+    },
+    {
+      "id": "s_uk_act",
+      "case_id": "horizon",
+      "url": "https://www.legislation.gov.uk/ukpga/2024/14/enacted",
+      "published_on": "2024-05-24",
+      "kind": "statute",
+      "jurisdictions": [
+        "England and Wales",
+        "Northern Ireland"
+      ],
+      "custody": "public_locator_unarchived",
+      "original_bytes_verified": false
+    },
+    {
+      "id": "s_uk_inquiry",
+      "case_id": "horizon",
+      "url": "https://www.postofficehorizoninquiry.org.uk/inq00002037-volume-1-post-office-horizon-it-inquirys-final-report",
+      "published_on": "2025-07-08",
+      "kind": "statutory_inquiry",
+      "jurisdictions": [
+        "England and Wales"
+      ],
+      "custody": "public_locator_unarchived",
+      "original_bytes_verified": false
+    },
+    {
+      "id": "s_nl_parliament",
+      "case_id": "dutch_benefits",
+      "url": "https://www.tweedekamer.nl/kamerstukken/detail?did=2020D52975&id=2020Z25233",
+      "published_on": "2020-12-17",
+      "kind": "parliamentary_report",
+      "jurisdictions": [
+        "Netherlands"
+      ],
+      "custody": "public_locator_unarchived",
+      "original_bytes_verified": false
+    },
+    {
+      "id": "s_nl_dpa",
+      "case_id": "dutch_benefits",
+      "url": "https://autoriteitpersoonsgegevens.nl/en/current/tax-administration-fined-for-discriminatory-and-unlawful-data-processing",
+      "published_on": "2021-12-07",
+      "kind": "regulator_enforcement",
+      "jurisdictions": [
+        "Netherlands"
+      ],
+      "custody": "public_locator_unarchived",
+      "original_bytes_verified": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "f_uk_ccrc",
+      "case_id": "horizon",
+      "source_id": "s_uk_ccrc",
+      "institution_id": "uk_post_office",
+      "kind": "official_review",
+      "observed_on": "2024-01-03",
+      "statement": "The CCRC reported material risk that Horizon bugs created apparent accounting shortfalls and that the Post Office failed to disclose the full picture of system reliability.",
+      "attribution": "official_body_statement_not_our_finding",
+      "original_document_read": false,
+      "independent_causal_effect": null
+    },
+    {
+      "id": "f_uk_law",
+      "case_id": "horizon",
+      "source_id": "s_uk_act",
+      "institution_id": "uk_parliament",
+      "kind": "legislative_response",
+      "observed_on": "2024-05-24",
+      "statement": "The Horizon System Offences Act 2024 quashed only convictions meeting statutory requirements in England and Wales or Northern Ireland, excluding certain convictions already considered on appeal.",
+      "attribution": "official_body_statement_not_our_finding",
+      "original_document_read": false,
+      "independent_causal_effect": null
+    },
+    {
+      "id": "f_uk_inquiry",
+      "case_id": "horizon",
+      "source_id": "s_uk_inquiry",
+      "institution_id": "uk_horizon_inquiry",
+      "kind": "statutory_inquiry_finding",
+      "observed_on": "2025-07-08",
+      "statement": "The statutory Horizon Inquiry published Volume 1 of its final report on human impact and redress; publication is evidence of an inquiry finding and response, not independently proven prevention.",
+      "attribution": "official_body_statement_not_our_finding",
+      "original_document_read": false,
+      "independent_causal_effect": null
+    },
+    {
+      "id": "f_nl_parliament",
+      "case_id": "dutch_benefits",
+      "source_id": "s_nl_parliament",
+      "institution_id": "nl_parliament",
+      "kind": "institutional_critique",
+      "observed_on": "2020-12-17",
+      "statement": "The parliamentary inquiry concluded that fundamental rule-of-law principles had been violated and criticized the rigid all-or-nothing handling of childcare benefit cases across the public system.",
+      "attribution": "official_body_statement_not_our_finding",
+      "original_document_read": false,
+      "independent_causal_effect": null
+    },
+    {
+      "id": "f_nl_dpa",
+      "case_id": "dutch_benefits",
+      "source_id": "s_nl_dpa",
+      "institution_id": "nl_dpa",
+      "kind": "regulatory_determination",
+      "observed_on": "2021-12-07",
+      "statement": "The Dutch data authority imposed a 2.75 million euro fine for discriminatory and unlawful nationality data processing in childcare benefit administration, including use in automated risk designation.",
+      "attribution": "official_body_statement_not_our_finding",
+      "original_document_read": false,
+      "independent_causal_effect": null
+    }
+  ],
+  "interventions": [
+    {
+      "id": "a_uk_ccrc",
+      "case_id": "horizon",
+      "source_id": "s_uk_ccrc",
+      "source_finding_id": "f_uk_ccrc",
+      "mechanism": "independent_case_review",
+      "power": "review_referral",
+      "effective_on": "2024-01-03",
+      "jurisdictions": [
+        "England and Wales"
+      ],
+      "scope_note": "The CCRC description establishes an independent channel for reviewing convictions and referring eligible cases; this is an observation date, not the date the review body first existed.",
+      "individual_remedy_proven": false,
+      "measured_preventive_effect": null,
+      "claims_foreign_applicability": false
+    },
+    {
+      "id": "a_uk_act",
+      "case_id": "horizon",
+      "source_id": "s_uk_act",
+      "source_finding_id": "f_uk_law",
+      "mechanism": "statutory_quashing",
+      "power": "criminal_conviction_relief",
+      "effective_on": "2024-05-24",
+      "jurisdictions": [
+        "England and Wales",
+        "Northern Ireland"
+      ],
+      "scope_note": "Automatic relief applies only where the statutory conditions for relevant offences, time, prosecuting authority, work and Horizon use are met; this Act does not extend to Scotland.",
+      "individual_remedy_proven": false,
+      "measured_preventive_effect": null,
+      "claims_foreign_applicability": false
+    },
+    {
+      "id": "a_uk_inquiry",
+      "case_id": "horizon",
+      "source_id": "s_uk_inquiry",
+      "source_finding_id": "f_uk_inquiry",
+      "mechanism": "statutory_inquiry",
+      "power": "institutional_fact_finding",
+      "effective_on": "2025-07-08",
+      "jurisdictions": [
+        "England and Wales"
+      ],
+      "scope_note": "Volume 1 published a record and recommendations concerning human impact and redress, but this milestone did not examine the full original report or verify implementation results.",
+      "individual_remedy_proven": false,
+      "measured_preventive_effect": null,
+      "claims_foreign_applicability": false
+    },
+    {
+      "id": "a_nl_parliament",
+      "case_id": "dutch_benefits",
+      "source_id": "s_nl_parliament",
+      "source_finding_id": "f_nl_parliament",
+      "mechanism": "parliamentary_scrutiny",
+      "power": "institutional_fact_finding",
+      "effective_on": "2020-12-17",
+      "jurisdictions": [
+        "Netherlands"
+      ],
+      "scope_note": "A national parliamentary inquiry made institutional findings about rule-of-law and administrative failures; such findings do not alone establish a claimant's individualized restitution.",
+      "individual_remedy_proven": false,
+      "measured_preventive_effect": null,
+      "claims_foreign_applicability": false
+    },
+    {
+      "id": "a_nl_dpa",
+      "case_id": "dutch_benefits",
+      "source_id": "s_nl_dpa",
+      "source_finding_id": "f_nl_dpa",
+      "mechanism": "regulator_enforcement",
+      "power": "administrative_sanction",
+      "effective_on": "2021-12-07",
+      "jurisdictions": [
+        "Netherlands"
+      ],
+      "scope_note": "The privacy authority imposed a fine for unlawful and discriminatory data processing; an administrative fine is distinct from direct monetary compensation paid to affected families.",
+      "individual_remedy_proven": false,
+      "measured_preventive_effect": null,
+      "claims_foreign_applicability": false
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "cmp_01_contestability",
+      "left_case_id": "horizon",
+      "right_case_id": "dutch_benefits",
+      "left_intervention_id": "a_uk_ccrc",
+      "right_intervention_id": "a_nl_dpa",
+      "failure_mode": "challenge_to_system_generated_output",
+      "transfer_status": "analogy_only",
+      "analysis": "An independent criminal-conviction reviewer and a privacy supervisory authority provide different checks on machine-influenced decisions. Their powers, evidentiary standards and remedies are not interchangeable, but each exposes the need for accessible challenge and source transparency.",
+      "equivalence_proven": false,
+      "effect_size": null
+    },
+    {
+      "id": "cmp_02_redress",
+      "left_case_id": "horizon",
+      "right_case_id": "dutch_benefits",
+      "left_intervention_id": "a_uk_act",
+      "right_intervention_id": "a_nl_dpa",
+      "failure_mode": "effective_individual_remedy",
+      "transfer_status": "non_equivalent_remedies",
+      "analysis": "The UK statute alters qualifying conviction status, whereas the Dutch administrative fine sanctions public-sector data misconduct and does not itself reimburse individual claimants. Neither statutory eligibility counts nor compensation completion rates were independently reconciled.",
+      "equivalence_proven": false,
+      "effect_size": null
+    },
+    {
+      "id": "cmp_03_scrutiny",
+      "left_case_id": "horizon",
+      "right_case_id": "dutch_benefits",
+      "left_intervention_id": "a_uk_inquiry",
+      "right_intervention_id": "a_nl_parliament",
+      "failure_mode": "institutional_scrutiny",
+      "transfer_status": "analogy_only",
+      "analysis": "An independent statutory inquiry and a parliamentary investigative commission can both document institutional breakdown, but they differ in authority, procedures and institutional incentives. Their published findings do not by themselves demonstrate that later safeguards prevented recurrence.",
+      "equivalence_proven": false,
+      "effect_size": null
+    }
+  ],
+  "evidence_gaps": [
+    {
+      "id": "g_uk_case_linkage",
+      "case_id": "horizon",
+      "record_needed": "Official case-level conviction and quashing registers with procedural eligibility and dates",
+      "question": "Which individual convictions were covered by the 2024 Act as distinct from prior appellate review?",
+      "priority": "critical"
+    },
+    {
+      "id": "g_uk_redress",
+      "case_id": "horizon",
+      "record_needed": "Official redress and compensation disbursement reconciliation by cohort and status",
+      "question": "How completely and promptly did the remediation process reach affected people, beyond announcement and legal eligibility?",
+      "priority": "important"
+    },
+    {
+      "id": "g_nl_case_linkage",
+      "case_id": "dutch_benefits",
+      "record_needed": "Anonymised risk-classification, individual administrative decision and appeal records with lawful access controls",
+      "question": "How did nationality risk flags affect specific claimant decisions and the ability to contest them?",
+      "priority": "critical"
+    },
+    {
+      "id": "g_nl_recovery",
+      "case_id": "dutch_benefits",
+      "record_needed": "Official aggregate restitution decisions and subsequent judicial or administrative review of the DPA sanction",
+      "question": "What remedies actually reached affected families and what was the eventual procedural status of the regulatory fine?",
+      "priority": "important"
+    }
+  ]
+}

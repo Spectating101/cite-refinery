@@ -1,0 +1,400 @@
+{
+  "schema": "legal_codex.signature_chain.v1",
+  "sources": [
+    {
+      "id": "s_trial_hukumonline",
+      "url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "class": "reported_judicial_reasoning",
+      "published_at": "2026-04-30",
+      "original_legal_document_archived": false,
+      "date_basis": "article_publication_day",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42834469206,
+        "capture_id": "cap-1a52f9e464b7ab3beb20b56d",
+        "raw_sha256": "390107533446a8297c68bd4b54a0518870e013817409e977e3205df16b5f7bb9",
+        "extracted_sha256": "917deca6cf6997a0b54dbe4062eaa16f3321c88cb73905f4ccb593bf0b62755f",
+        "captured_at": "2026-11-10T14:29:36Z",
+        "source_truth_verified": false,
+        "original_2020_instrument_verified": false
+      }
+    },
+    {
+      "id": "s_witness_detik",
+      "url": "https://news.detik.com/berita/d-8339004/saksi-kasus-chromebook-ketakutan-lalu-mundur-dari-ppk-saya-sampai-sakit",
+      "class": "reported_witness_testimony",
+      "published_at": "2026-02-03",
+      "original_legal_document_archived": false,
+      "date_basis": "article_publication_day",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42834469206,
+        "capture_id": "cap-85aad45a0b8b79679baff16f",
+        "raw_sha256": "293a9fcbb6134206c9439f404dfe0d716386a3e702e519268dc369f9debbed19",
+        "extracted_sha256": "4294f64b0da7ca9e1a9b26d98f786a61d43c238cd3198950a83a3458a01d3c43",
+        "captured_at": "2026-11-10T14:29:34Z",
+        "source_truth_verified": false,
+        "original_2020_instrument_verified": false
+      }
+    },
+    {
+      "id": "s_prosecutor_july",
+      "url": "https://kejati-kepulauanbangkabelitung.kejaksaan.go.id/conference/news/6463/read",
+      "class": "prosecution_allegation",
+      "published_at": "2025-07-15",
+      "original_legal_document_archived": false,
+      "date_basis": "government_statement_day"
+    },
+    {
+      "id": "s_pati_response",
+      "url": "https://laporgub.jatengprov.go.id/detail/LGWP34314431.html",
+      "class": "official_administrative_response",
+      "published_at": "2021-03-06",
+      "original_legal_document_archived": false,
+      "date_basis": "government_response_day",
+      "capture_receipt": {
+        "class": "nocturnal_private_ci_web_capture",
+        "workflow_run": 42834469206,
+        "capture_id": "cap-90a8aaccf59bc957354ee019",
+        "raw_sha256": "22b58020ed4134fa8d01e1e8cd0948caf141a3e7b3c355214c4489e3f88ce4ee",
+        "extracted_sha256": "eee2b726471c0208dc3cf3a63d7f0a6a656208cc3ebf4ff6db0f861cf60f4070",
+        "captured_at": "2026-11-10T14:29:32Z",
+        "source_truth_verified": false,
+        "original_2020_instrument_verified": false
+      }
+    },
+    {
+      "id": "s_phbs_copy",
+      "url": "https://id.scribd.com/document/523226738/Pedoman-Pelaksanaan-Bantuan-Sarana-PHBS-2020",
+      "class": "third_party_government_document_copy",
+      "published_at": "2020-10-07",
+      "original_legal_document_archived": false,
+      "date_basis": "underlying_document_day_not_upload_date"
+    },
+    {
+      "id": "s_ibam_court_quotes",
+      "url": "https://www.hukum-hukum.com/2026/08/contoh-perkara-penyalahgunaan-kewenangan-administrasi-pemerintahan-yang-berdimensi-tindak-pidana-korupsi.html",
+      "class": "third_party_court_transcription",
+      "published_at": "2026-08",
+      "original_legal_document_archived": false,
+      "date_basis": "article_publication_month_only"
+    },
+    {
+      "id": "s_nadiem_trial_reupload",
+      "url": "https://id.scribd.com/document/1059397899/Putusan-tindak-pidana-korupsi-no-147-Pid-sus-tpk-2025-Pn-Jkt-pst-Nadiem-Makarim",
+      "class": "third_party_court_transcription",
+      "published_at": "2026-06-30",
+      "original_legal_document_archived": false,
+      "date_basis": "underlying_judgment_day_not_upload_date"
+    }
+  ],
+  "documents": [
+    {
+      "id": "d_kpa_appointment_no4",
+      "title": "2020 SD budget-office appointment instrument reported by Bambang as 'number 4'",
+      "document_kind": "kpa_appointment_decree",
+      "channel": "sd_2020_budget_office",
+      "event_date": null,
+      "reported_reference": "4",
+      "reference_status": "partial_reference_reported",
+      "locator_source_id": "s_witness_detik",
+      "required_next_record": "Full original KPA decree number/date/title/attachments underlying witness's quoted resignation",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_sd_appointment_15004",
+      "title": "Directorate SD financial-office appointment decree mentioned in contemporary PHBS guide",
+      "document_kind": "kpa_appointment_decree",
+      "channel": "sd_2020_budget_office",
+      "event_date": "2020-06-08",
+      "reported_reference": "15004/C3/KPA/VI/KP/2020",
+      "reference_status": "full_reference_reported",
+      "locator_source_id": "s_phbs_copy",
+      "required_next_record": "Authenticated signed June 8 appointment decision, role/term annex and all revisions after June 30",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_bambang_resignation",
+      "title": "Bambang Hadi Waluyo June 30 resignation letter as reported in court testimony",
+      "document_kind": "resignation_letter",
+      "channel": "sd_2020_budget_office",
+      "event_date": "2020-06-30",
+      "reported_reference": null,
+      "reference_status": "no_reference_found",
+      "locator_source_id": "s_witness_detik",
+      "required_next_record": "Authenticated signed original resignation letter, receipt timestamp and acknowledgment",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_wahyu_replacement",
+      "title": "Reported June 30 appointment of Wahyu Haryadi as replacement SD PPK",
+      "document_kind": "ppk_replacement_decree",
+      "channel": "sd_2020_budget_office",
+      "event_date": "2020-06-30",
+      "reported_reference": null,
+      "reference_status": "no_reference_found",
+      "locator_source_id": "s_trial_hukumonline",
+      "required_next_record": "Signed replacement decree, exact appointment number, effective time, certification and delegation scope",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_sd_tik_2020_kpa_guidance",
+      "title": "2020 elementary Chromebook school grant KPA implementation guideline cited by Pati government",
+      "document_kind": "kpa_procurement_guideline",
+      "channel": "sd_2020_school_siplah",
+      "event_date": null,
+      "reported_reference": "26721/C3/KPA/IX/TIK/2020",
+      "reference_status": "full_reference_reported",
+      "locator_source_id": "s_pati_response",
+      "required_next_record": "Signed 2020 guideline with annexes showing purchasing procedure, funding scope and delegated authorities",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_sd_tik_2021_kpa_guidance",
+      "title": "2021 SD KPA Chromebook procurement guideline referenced in Ibam judgment transcription",
+      "document_kind": "kpa_procurement_guideline",
+      "channel": "sd_2021_policy",
+      "event_date": null,
+      "reported_reference": "12002/C3/KPA/V/TIK/2021",
+      "reference_status": "full_reference_reported",
+      "locator_source_id": "s_ibam_court_quotes",
+      "required_next_record": "Signed and dated original 2021 KPA policy instrument and amendment history",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_smp_2020_addendum_one",
+      "title": "2020 SMP e-catalog purchase order first addendum inventory listed in Nadiem judgment copy",
+      "document_kind": "smp_purchase_addendum",
+      "channel": "smp_2020_directorate_ecatalog",
+      "event_date": "2020-11-04",
+      "reported_reference": "3535/C4/LK/2020",
+      "reference_status": "full_reference_reported",
+      "locator_source_id": "s_nadiem_trial_reupload",
+      "required_next_record": "Authenticated original 2020 SMP purchase order and first addendum with buyer, seller and signatories",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_smp_2020_addendum_two",
+      "title": "2020 SMP e-catalog purchase order second addendum inventory listed in Nadiem judgment copy",
+      "document_kind": "smp_purchase_addendum",
+      "channel": "smp_2020_directorate_ecatalog",
+      "event_date": "2020-11-26",
+      "reported_reference": "3945/C4/LK/2020",
+      "reference_status": "full_reference_reported",
+      "locator_source_id": "s_nadiem_trial_reupload",
+      "required_next_record": "Authenticated original SMP order plus both amendments, package ID and transaction signatures",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_sd_june30_purchase",
+      "title": "Alleged June 30 SD e-catalogue click involving PT Bhinneka",
+      "document_kind": "original_2020_purchase_order",
+      "channel": "sd_2020_directorate_ecatalog",
+      "event_date": "2020-06-30",
+      "reported_reference": null,
+      "reference_status": "no_reference_found",
+      "locator_source_id": "s_prosecutor_july",
+      "required_next_record": "Original e-catalog order ID, system event log, account operator, signed purchase order and supplier acceptance",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    },
+    {
+      "id": "d_sri_trial_149",
+      "title": "Sri Wahyuningsih trial judgment (April 30 2026), cited by judicial reporters and other case",
+      "document_kind": "court_judgment",
+      "channel": "judicial_2026",
+      "event_date": "2026-04-30",
+      "reported_reference": "149/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "reference_status": "full_reference_reported",
+      "locator_source_id": "s_ibam_court_quotes",
+      "required_next_record": "Original full signed 149 trial judgment with page-anchored reasoning and certified exhibit list",
+      "original_instrument_obtained": false,
+      "signed_document_verified": false,
+      "procurement_package_id_verified": false,
+      "actual_signatory": null,
+      "evidence_status": "reported_locator_unverified"
+    }
+  ],
+  "reports": [
+    {
+      "id": "r_witness_decree_number",
+      "source_id": "s_witness_detik",
+      "document_id": "d_kpa_appointment_no4",
+      "stance": "witness_reported",
+      "statement": "A journalist quoted Bambang reading his resignation letter, referring only to KPA appointment instrument number 4; no complete original decree number was printed.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_phbs_appointment_ref",
+      "source_id": "s_phbs_copy",
+      "document_id": "d_sd_appointment_15004",
+      "stance": "administrative_record_reference",
+      "statement": "A 2020 PHBS aid guideline reposted on Scribd cites decree 15004/C3/KPA/VI/KP/2020 dated June 8, appointing SD directorate financial officers. The annex is not the Chromebook PPK replacement.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_bambang_voluntary_resign",
+      "source_id": "s_witness_detik",
+      "document_id": "d_bambang_resignation",
+      "stance": "witness_reported",
+      "statement": "Bambang reported a June 30 2020 voluntary resignation due to health and psychological pressure; the signed source letter itself is absent.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_prosecution_removed_for_refusal",
+      "source_id": "s_prosecutor_july",
+      "document_id": "d_wahyu_replacement",
+      "stance": "prosecution_allegation",
+      "statement": "The July 2025 prosecution account attributed the June 30 PPK replacement to Bambang being unable to carry out a Chrome OS e-catalog instruction.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_court_resignation_context",
+      "source_id": "s_trial_hukumonline",
+      "document_id": "d_wahyu_replacement",
+      "stance": "court_reasoning_reported",
+      "statement": "A reporter quotes the 2026 Sri trial panel as finding a voluntary Bambang resignation and rejecting the simplistic refusal-to-use-ChromeOS explanation.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_court_handover_missing",
+      "source_id": "s_trial_hukumonline",
+      "document_id": "d_wahyu_replacement",
+      "stance": "court_reasoning_reported",
+      "statement": "The same report quotes the trial panel as criticizing the rushed afternoon June 30 replacement without a written job-handover memorandum, during pressure to meet the 23:59 e-catalog deadline.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_pati_2020_guideline",
+      "source_id": "s_pati_response",
+      "document_id": "d_sd_tik_2020_kpa_guidance",
+      "stance": "administrative_record_reference",
+      "statement": "A March 2021 official Pati education-office response cites the 2020 KPA guideline number and distinguishes government disbursement to schools from subsequent school SIPLah purchasing and payment.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_ibam_2021_guideline",
+      "source_id": "s_ibam_court_quotes",
+      "document_id": "d_sd_tik_2021_kpa_guidance",
+      "stance": "third_party_transcription",
+      "statement": "A legal commentary quoting Ibam's judgment reports the 2021 KPA guideline reference as 12002/C3/KPA/V/TIK/2021; original signed guidance not retrieved.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_nadiem_smp_order_one",
+      "source_id": "s_nadiem_trial_reupload",
+      "document_id": "d_smp_2020_addendum_one",
+      "stance": "third_party_transcription",
+      "statement": "A third-party text rendition of the 147 judgment inventories a legalized copy of an SMP purchase-order first addendum numbered 3535/C4/LK/2020 dated November 4.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_nadiem_smp_order_two",
+      "source_id": "s_nadiem_trial_reupload",
+      "document_id": "d_smp_2020_addendum_two",
+      "stance": "third_party_transcription",
+      "statement": "The same copied judgment inventory lists an SMP purchase-order second addendum numbered 3945/C4/LK/2020 dated November 26; original signed order not available.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_prosecution_sd_click",
+      "source_id": "s_prosecutor_july",
+      "document_id": "d_sd_june30_purchase",
+      "stance": "prosecution_allegation",
+      "statement": "The prosecutors alleged a late June 30 2020 e-catalogue click by the newly appointed SD PPK following contact with the supplier; no public original transaction number was shown.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    },
+    {
+      "id": "r_ibam_cross_docket",
+      "source_id": "s_ibam_court_quotes",
+      "document_id": "d_sri_trial_149",
+      "stance": "third_party_transcription",
+      "statement": "A secondary transcription of Ibam judicial reasoning identifies Sri Wahyuningsih's split trial case as 149/Pid.Sus-TPK/2025/PN Jkt.Pst.",
+      "status": "unreviewed_source_account",
+      "assertion_adjudicated": false,
+      "legal_guilt_established": false
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "c_replacement_reason",
+      "question": "Did Bambang voluntarily resign under pressure, or was his replacement principally a sanction for refusing a Chromebook instruction?",
+      "report_ids": [
+        "r_prosecution_removed_for_refusal",
+        "r_bambang_voluntary_resign",
+        "r_court_resignation_context"
+      ],
+      "resolution": "unresolved_pending_original_court_reasoning"
+    },
+    {
+      "id": "c_procedural_handover",
+      "question": "Can a voluntary resignation coexist with an administratively deficient, rushed PPK appointment and absence of job-handover paperwork?",
+      "report_ids": [
+        "r_bambang_voluntary_resign",
+        "r_court_handover_missing"
+      ],
+      "resolution": "unresolved_pending_original_court_reasoning"
+    }
+  ],
+  "signed_instruments_in_hand": [],
+  "verified_e_purchase_ids": [],
+  "verified_named_signatories": [],
+  "limits": "Named people in 2026 court testimony are linked to the June 2020 events as reported roles only. The original signed KPA appointment and e-catalog purchase log were not retrieved. The June 8 general 2020 SD appointment number, the KPA 2020 funding directive, the 2020 SMP purchase-order addendum numbers and the 2026 trial docket are separate artifacts; they must not be unified into one transaction."
+}

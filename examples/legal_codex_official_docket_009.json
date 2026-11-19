@@ -1,0 +1,67 @@
+{
+  "schema": "legal_codex.official_docket.v1",
+  "cases": [
+    {
+      "id": "case_nadiem_147",
+      "docket": "147/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "defendant_as_listed": "NADIEM ANWAR MAKARIM",
+      "judgment_date_reported": "2026-06-30",
+      "date_basis": "official_directory",
+      "registry_status": "official_listing_indexed",
+      "registry_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf175e3ca8864c4b506313430313034.html",
+      "pdf_attachment_listed": true,
+      "reporting_url": null,
+      "pdf_bytes_obtained": false,
+      "pdf_sha256": null,
+      "full_judgment_reviewed": false,
+      "signed_2020_ppk_instrument_verified": false,
+      "e_catalog_order_matched": false,
+      "criminal_liability_inferred_by_this_audit": false
+    },
+    {
+      "id": "case_ibam_148",
+      "docket": "148/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "defendant_as_listed": "IBRAHIM ARIEF alias IBAM",
+      "judgment_date_reported": "2026-05-12",
+      "date_basis": "official_directory",
+      "registry_status": "official_listing_indexed",
+      "registry_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "pdf_attachment_listed": true,
+      "reporting_url": null,
+      "pdf_bytes_obtained": false,
+      "pdf_sha256": null,
+      "full_judgment_reviewed": false,
+      "signed_2020_ppk_instrument_verified": false,
+      "e_catalog_order_matched": false,
+      "criminal_liability_inferred_by_this_audit": false
+    },
+    {
+      "id": "case_sri_149",
+      "docket": "149/Pid.Sus-TPK/2025/PN Jkt.Pst",
+      "defendant_as_listed": "SRI WAHYUNINGSIH (reported case identity)",
+      "judgment_date_reported": "2026-04-30",
+      "date_basis": "secondary_reporting",
+      "registry_status": "reported_docket_official_page_unlocated",
+      "registry_url": null,
+      "pdf_attachment_listed": false,
+      "reporting_url": "https://www.hukumonline.com/berita/a/melihat-unsur-penyalahgunaan-wewenang-dan-perintah-jabatan-di-putusan-terdakwa-korupsi-chromebook-lt69f34d794ab23/",
+      "pdf_bytes_obtained": false,
+      "pdf_sha256": null,
+      "full_judgment_reviewed": false,
+      "signed_2020_ppk_instrument_verified": false,
+      "e_catalog_order_matched": false,
+      "criminal_liability_inferred_by_this_audit": false
+    }
+  ],
+  "cross_case_references": [
+    {
+      "from": "case_ibam_148",
+      "to": "case_sri_149",
+      "kind": "exhibit_disposition_mentions_separate_case",
+      "source_url": "https://putusan3.mahkamahagung.go.id/direktori/putusan/zaf1526c54f13d84ac9f313034373436.html",
+      "common_purchase_order_proved": false,
+      "joint_criminal_liability_proved": false
+    }
+  ],
+  "limits": "Search-indexed official directory metadata for 147 and 148; official 149 page not located. No page HTML snapshot, judgment PDF file bytes, original 2020 appointment or original 2020 SD e-purchase order was captured in this milestone. Listed attachment links are not acquired documents."
+}

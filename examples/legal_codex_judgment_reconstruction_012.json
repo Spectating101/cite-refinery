@@ -1,0 +1,371 @@
+{
+  "schema": "legal_codex.judgment_reconstruction.v1",
+  "as_of": "2026-11-15",
+  "original_judgment_bytes_archived": false,
+  "independent_legal_review_completed": false,
+  "causal_policy_effect_measured": false,
+  "personal_culpability_established": false,
+  "publication_authorized": false,
+  "judgments": [
+    {
+      "id": "hamilton_2021",
+      "court": "Court of Appeal (Criminal Division), England and Wales",
+      "jurisdiction": "England and Wales",
+      "docket": "[2021] EWCA Crim 577",
+      "decided_on": "2021-04-23",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "source_format": "pdf",
+      "source_type": "official_court_judgment",
+      "text_review_state": "public_court_webview_read_no_byte_archive",
+      "source_bytes_archived": false,
+      "original_sha256": null,
+      "source_authenticity_certified": false,
+      "outcome": {
+        "status": "mixed_quashing_and_dismissal",
+        "appellants": 42,
+        "appeals_allowed": 39,
+        "appeals_dismissed": 3,
+        "individual_compensation_verified": false,
+        "automatic_restitution_awarded": false,
+        "new_decision_required": false,
+        "new_decision_deadline_weeks": null
+      }
+    },
+    {
+      "id": "dutch_3535",
+      "court": "Afdeling bestuursrechtspraak van de Raad van State",
+      "jurisdiction": "Netherlands",
+      "docket": "ECLI:NL:RVS:2019:3535",
+      "decided_on": "2019-10-23",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118143/201900753-1-a2/",
+      "source_format": "html",
+      "source_type": "official_court_judgment",
+      "text_review_state": "public_court_webview_read_no_byte_archive",
+      "source_bytes_archived": false,
+      "original_sha256": null,
+      "source_authenticity_certified": false,
+      "outcome": {
+        "status": "remittal_for_new_entitlement_decision",
+        "appellants": null,
+        "appeals_allowed": null,
+        "appeals_dismissed": null,
+        "individual_compensation_verified": false,
+        "automatic_restitution_awarded": false,
+        "new_decision_required": true,
+        "new_decision_deadline_weeks": 26
+      }
+    },
+    {
+      "id": "dutch_3536",
+      "court": "Afdeling bestuursrechtspraak van de Raad van State",
+      "jurisdiction": "Netherlands",
+      "docket": "ECLI:NL:RVS:2019:3536",
+      "decided_on": "2019-10-23",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118142/201802802-1-a2/",
+      "source_format": "html",
+      "source_type": "official_court_judgment",
+      "text_review_state": "public_court_webview_read_no_byte_archive",
+      "source_bytes_archived": false,
+      "original_sha256": null,
+      "source_authenticity_certified": false,
+      "outcome": {
+        "status": "remittal_for_new_recovery_decision",
+        "appellants": null,
+        "appeals_allowed": null,
+        "appeals_dismissed": null,
+        "individual_compensation_verified": false,
+        "automatic_restitution_awarded": false,
+        "new_decision_required": true,
+        "new_decision_deadline_weeks": 26
+      }
+    }
+  ],
+  "holdings": [
+    {
+      "id": "uk_horizon_reliability",
+      "judgment_id": "hamilton_2021",
+      "paragraph": "121",
+      "kind": "reliability_and_disclosure",
+      "summary": "Horizon-generated apparent shortfalls required reliable underlying data; for the affected prosecutions there was no independent loss evidence, and the prosecutor failed to investigate and disclose material reliability problems.",
+      "domestic_legal_bases": [
+        "horizon_evidentiary_reliability",
+        "criminal_prosecution_disclosure"
+      ],
+      "docket": "[2021] EWCA Crim 577",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "uk_no_motive_finding",
+      "judgment_id": "hamilton_2021",
+      "paragraph": "136",
+      "kind": "individual_motive_not_adjudicated",
+      "summary": "The court was not persuaded that Post Office prosecutions were pursued for an improper financial motivation and expressly declined to determine any individual's belief or allegedly suppressed doubts; the court instead focused on the corporate prosecutor's duties.",
+      "domestic_legal_bases": [
+        "abuse_of_process",
+        "criminal_prosecution_disclosure"
+      ],
+      "docket": "[2021] EWCA Crim 577",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "uk_prosecution_abuse",
+      "judgment_id": "hamilton_2021",
+      "paragraph": "137",
+      "kind": "prosecution_abuse",
+      "summary": "The court concluded that repeated material investigation and disclosure failures made prosecution of the relevant Horizon-dependent cases both unfair and an affront to the conscience of the court.",
+      "domestic_legal_bases": [
+        "abuse_of_process",
+        "criminal_prosecution_disclosure"
+      ],
+      "docket": "[2021] EWCA Crim 577",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "uk_specific_exception",
+      "judgment_id": "hamilton_2021",
+      "paragraph": "440",
+      "kind": "case_specific_exception",
+      "summary": "Neelam Hussain's appeal was not a Horizon-dependent prosecution because a separate compelling circumstantial case made software reliability nonessential; the court therefore rejected abuse of process for this particular case.",
+      "domestic_legal_bases": [
+        "horizon_evidentiary_reliability",
+        "abuse_of_process"
+      ],
+      "docket": "[2021] EWCA Crim 577",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "uk_appeals_mixed",
+      "judgment_id": "hamilton_2021",
+      "paragraph": "447",
+      "kind": "mixed_appeal_disposition",
+      "summary": "The court allowed 39 individual appeals and quashed all their respective convictions, while dismissing the appeals of Wendy Cousins, Stanley Fell, and Neelam Hussain; it did not quash all 42.",
+      "domestic_legal_bases": [
+        "abuse_of_process"
+      ],
+      "docket": "[2021] EWCA Crim 577",
+      "source_url": "https://www.judiciary.uk/wp-content/uploads/2022/07/Hamilton-Others-v-Post-Office-judgment-230421.pdf",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3535_entitlement",
+      "judgment_id": "dutch_3535",
+      "paragraph": "8.11",
+      "kind": "proportionate_entitlement",
+      "summary": "The court reconsidered prior all-or-nothing interpretation of childcare-benefit entitlement: Wko article 1.7 with 1.52 permits an award after partial payment, while Awb article 3:4 requires proportional consideration of interests.",
+      "domestic_legal_bases": [
+        "wko_1_7",
+        "wko_1_52",
+        "awb_3_4"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3535",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118143/201900753-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3535_disposition",
+      "judgment_id": "dutch_3535",
+      "paragraph": "9",
+      "kind": "entitlement_remittal",
+      "summary": "The administrative appeal was upheld and the agency's 7 November 2017 decision was annulled for breach of Awb articles 3:4 and 7:12, with a new decision required instead of a final benefit payment granted by the court.",
+      "domestic_legal_bases": [
+        "awb_3_4",
+        "awb_7_12"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3535",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118143/201900753-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3535_no_amount",
+      "judgment_id": "dutch_3535",
+      "paragraph": "10",
+      "kind": "entitlement_no_final_amount",
+      "summary": "The Raad van State declined final resolution and allowed the agency twenty-six weeks to decide the objection again under the new Wko interpretation, preserving an individual follow-up adjudication rather than automatic nationwide redress.",
+      "domestic_legal_bases": [
+        "wko_1_7",
+        "awb_3_4"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3535",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118143/201900753-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3536_2010_limit",
+      "judgment_id": "dutch_3536",
+      "paragraph": "5.6",
+      "kind": "third_party_liability_nonretroactive",
+      "summary": "The court concluded the Awir article 33(3) third-party joint-liability rule, introduced for 2014, cannot be applied retroactively to a 2010 benefit year; the liability analysis is separate from proportional recovery.",
+      "domestic_legal_bases": [
+        "awir_33_3"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3536",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118142/201802802-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3536_discretion",
+      "judgment_id": "dutch_3536",
+      "paragraph": "5.12",
+      "kind": "proportionate_recovery",
+      "summary": "The court changed its interpretation of Awir article 26: full recovery was not mandatory in every case, and Awb article 3:4 required balancing the specific applicant's interests, allowing reduction or nonrecovery in special circumstances.",
+      "domestic_legal_bases": [
+        "awir_26",
+        "awb_3_4"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3536",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118142/201802802-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3536_individual_facts",
+      "judgment_id": "dutch_3536",
+      "paragraph": "5.14",
+      "kind": "case_specific_disproportion",
+      "summary": "The court treated full repayment as disproportionate on the particular facts: benefits had gone to a childcare intermediary, the applicant was a victim of related crimes, and the state could not simply transfer uncollectible losses to her.",
+      "domestic_legal_bases": [
+        "awir_26",
+        "awb_3_4"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3536",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118142/201802802-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3536_disposition",
+      "judgment_id": "dutch_3536",
+      "paragraph": "6",
+      "kind": "recovery_remittal",
+      "summary": "The administrative appeal succeeded in relevant part; the agency's 24 March 2017 recovery decision was annulled to that extent and required a new case-specific decision under Awir article 26 and Awb proportionality, not a predecided reimbursement.",
+      "domestic_legal_bases": [
+        "awir_26",
+        "awb_3_4",
+        "awb_7_12"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3536",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118142/201802802-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    },
+    {
+      "id": "nl_3536_time",
+      "judgment_id": "dutch_3536",
+      "paragraph": "7",
+      "kind": "recovery_deadline",
+      "summary": "The court did not finally resolve the outstanding recovery amount; it directed the tax authority to determine its response to the altered case law and allowed a twenty-six-week period for a new decision.",
+      "domestic_legal_bases": [
+        "awir_26"
+      ],
+      "docket": "ECLI:NL:RVS:2019:3536",
+      "source_url": "https://www.raadvanstate.nl/uitspraken/@118142/201802802-1-a2/",
+      "court_statement_status": "researcher_paraphrase_to_verify",
+      "independent_text_entailment_checked": false,
+      "foreign_law_applied": false,
+      "causal_effect_size": null
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "cmp_documented_evidence",
+      "left_holding": "uk_horizon_reliability",
+      "right_holding": "nl_3535_entitlement",
+      "transfer_status": "analogy_only",
+      "analysis": "Both judicial systems insist that administrative or prosecutorial conclusions depend on reliable, contestable evidence and the legal consequences of errors. They concern different facts, burdens of proof, powers, and remedies; no direct transfer of the UK criminal disclosure doctrine to Dutch benefits law follows.",
+      "equivalence_established": false,
+      "measured_effect_difference": null,
+      "foreign_rule_applied": false
+    },
+    {
+      "id": "cmp_remedy_boundary",
+      "left_holding": "uk_appeals_mixed",
+      "right_holding": "nl_3536_disposition",
+      "transfer_status": "remedies_non_equivalent",
+      "analysis": "The criminal court actually quashed convictions in 39 appeals but dismissed three, whereas the Dutch administrative court annulled the administrative decision and required a reconsideration. Neither ruling alone establishes monetary compensation or a broader quantified reduction in institutional harm.",
+      "equivalence_established": false,
+      "measured_effect_difference": null,
+      "foreign_rule_applied": false
+    },
+    {
+      "id": "cmp_dutch_split",
+      "left_holding": "nl_3535_entitlement",
+      "right_holding": "nl_3536_discretion",
+      "transfer_status": "distinct_domestic_procedures",
+      "analysis": "Same-day Dutch judgments supply complementary but analytically distinct legal changes: 3535 allows proportionate determination of entitlement when costs are partially paid; 3536 concerns balancing interests and reducing or waiving recovery. They are not a single automatic administrative exemption.",
+      "equivalence_established": false,
+      "measured_effect_difference": null,
+      "foreign_rule_applied": false
+    }
+  ],
+  "open_record_questions": [
+    {
+      "id": "gap_uk_primary_archive",
+      "judgment_id": "hamilton_2021",
+      "question": "Acquire and hash the entire authoritative judgment PDF, verify paragraph 447 and each of the forty-two case-specific dispositions against the actual final order.",
+      "answered": false
+    },
+    {
+      "id": "gap_uk_case_followup",
+      "judgment_id": "hamilton_2021",
+      "question": "Which statutory and judicial processes subsequently changed the legal status of the three dismissed appeals, if any, without backdating those later events to 2021?",
+      "answered": false
+    },
+    {
+      "id": "gap_nl_3535_order",
+      "judgment_id": "dutch_3535",
+      "question": "Locate the agency's new decision issued after the 2019 remittal and determine the actual entitlement awarded for the particular claimant without presuming a final monetary remedy.",
+      "answered": false
+    },
+    {
+      "id": "gap_nl_3536_followup",
+      "judgment_id": "dutch_3536",
+      "question": "Locate the tax authority's new recovery decision and any later appeal for the individual 2010 childcare-benefit claimant, including whether actual funds were repaid.",
+      "answered": false
+    }
+  ],
+  "expressly_not_adjudicated": [
+    "dutch_nationality_profiling_adjudicated",
+    "dutch_dpa_fine_ordered_by_2019_judgments",
+    "uk_2024_act_used_in_2021_judgment",
+    "individual_compensation_amount_proven",
+    "foreign_case_law_directly_applied",
+    "indonesia_ppk_signature_established"
+  ]
+}
