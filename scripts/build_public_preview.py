@@ -1,7 +1,7 @@
 """Generate a public, AI-independent, read-only Cite-Refinery atlas preview.
 
-No live/private workspace is included. The snapshot is derived from the
-public, provenance-bearing three-layer semantic pilot in examples/.
+The snapshot is built from the checked-in public pilot plus its frozen,
+source-reviewed acceptance overlay. No live/private workspace is included.
 """
 from __future__ import annotations
 
@@ -12,31 +12,42 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "scripts"))
 
 from cite_refinery import CiteRefinery, ProductWorkspace, SemanticGraph
 from cite_refinery.web_shell import APP_HTML
+from acceptance_free_roaming_dogs import case_packet
 
 
 def build(output: Path) -> dict:
     packet_path = ROOT / "examples/free_roaming_dog_semantic_pilot.json"
-    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    source_review_path = ROOT / "examples/acceptance_free_roaming_dog_source_review_v1.json"
+    packet = case_packet(packet_path, source_review_path)
     if packet.get("schema") != "cite_refinery.semantic_graph.v1":
         raise ValueError("Unexpected semantic pilot schema")
 
     with tempfile.TemporaryDirectory(prefix="cite-refinery-public-demo-") as tmp:
         app = CiteRefinery(tmp)
         project = app.init_project(
-            "Free-roaming dog observability · Taiwan",
-            "Explore the public-source evidence, scholarly methods, and program capabilities attached to exact semantic modules.",
+            "Taiwan free-roaming dog research · source-reviewed map",
+            "Inspect source-backed observations, scholarly methods, documented programs, and unresolved evidence gaps.",
         )
         graph = SemanticGraph(app.store)
-        graph.ingest_packet(project.id, packet, packet_ref="examples/free_roaming_dog_semantic_pilot.json")
+        graph.ingest_packet(
+            project.id,
+            packet,
+            packet_ref=(
+                "examples/free_roaming_dog_semantic_pilot.json + "
+                "examples/acceptance_free_roaming_dog_source_review_v1.json"
+            ),
+        )
         ws = ProductWorkspace(app.store)
         view = ws.project_view(project.id)
         snapshot = {
             "schema": "cite_refinery.public_preview_snapshot.v1",
             "demo": True,
-            "data_origin": "examples/free_roaming_dog_semantic_pilot.json",
+            "data_origin": "Public pilot plus frozen source review, transformed by scripts/acceptance_free_roaming_dogs.py",
+            "evidence_scope": packet.get("conversion_metadata", {}),
             "projects": ws.list_projects(),
             "workspaces": {project.id: view},
             "coverage": {

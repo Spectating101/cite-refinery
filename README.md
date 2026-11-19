@@ -2,6 +2,18 @@
 
 **Map the problem across reality, research, and what can actually be built or deployed.**
 
+## See the system run
+
+The fastest way to inspect the code is the source-reviewed Taiwan research map. It connects official population observations, academic estimation methods, and documented survey programs while preserving uncertainty and unresolved implementation gaps.
+
+```bash
+python3 scripts/preview_public_demo.py
+```
+
+Open the local URL printed by the command. The demo builds an isolated snapshot from checked-in public sources, binds only to `127.0.0.1`, and needs no model provider or API key. The generated map contains 4 clusters, 15 nodes, and 16 explicitly reviewed relationships. The original pilot and frozen source review are checked before the snapshot is built.
+
+Follow the [five-minute reviewer walkthrough](docs/REVIEWER_WALKTHROUGH.md) for what to inspect, how the evidence statuses differ, and the limits of the demonstration. The source review does **not** claim a field-tested population estimator, measured policy effectiveness, or production deployment.
+
 Cite-Refinery is a provenance-preserving research system whose conceptual center is a **clustered three-layer semantic map**.
 
 Each exact semantic module is mapped across three independent authority families:
@@ -132,7 +144,7 @@ See [`docs/SEMANTIC_PROBLEM_GRAPH.md`](docs/SEMANTIC_PROBLEM_GRAPH.md).
 
 ## Web product shell
 
-v0.11 introduced a dependency-free read-only web surface over the real Cite-Refinery workspace.
+v0.11 introduced a dependency-free read-only web surface over a Cite-Refinery workspace. For the current source-reviewed public case, use the one-command preview above. To serve a separate local workspace, use:
 
 ```bash
 python -m pip install -e .

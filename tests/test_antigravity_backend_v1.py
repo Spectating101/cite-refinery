@@ -11,10 +11,22 @@ PROMPT="Review a claim against literal publisher evidence. Preserve original sco
 
 class AntigravityBackendTests(unittest.TestCase):
     def setUp(self):
-        # Test a mocked subprocess, never require an authenticated local CLI on CI.
-        patcher = patch.dict("os.environ", {"CITE_REFINERY_ANTIGRAVITY_BIN": "/opt/mock-agy"})
-        patcher.start()
-        self.addCleanup(patcher.stop)
+        # These are unit tests: every modeled successful invocation below
+        # stubs subprocess.run, and no real Antigravity installation is needed.
+        # Production continues to reject a missing agy CLI without this patch.
+        self._bin_env = patch.dict(
+            "os.environ", {"CITE_REFINERY_ANTIGRAVITY_BIN": "/mock/agy"})
+        self._bin_env.start()
+        self.addCleanup(self._bin_env.stop)
+
+    def test_missing_real_cli_still_fails_closed(self):
+        # Explicitly verify the non-mocked production gate separately.
+        import os
+        with patch.dict("os.environ", {"CITE_REFINERY_ANTIGRAVITY_BIN": ""}):
+            with patch("cite_refinery.external_llm_runtime.shutil.which",
+                       return_value=None):
+                with self.assertRaisesRegex(LLMUnavailable,"Antigravity CLI not found"):
+                    invoke_semantic_llm(PROMPT,provider="antigravity")
 
     def test_model_invocation_is_sandboxed_and_bounded(self):
         commands=[]
