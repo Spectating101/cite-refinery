@@ -27,6 +27,9 @@ _ARRAYS = ("repositories", "sources", "relationships", "proposed_relationships")
 _CAPTURE_FIELDS = ("excerpt", "revision", "sha256", "blob_sha", "content_sha256", "source_sha256", "content_path")
 _STATES = {"", "all", "metadata_only", "source_captured", "source_interpreted",
            "documented", "code_inspected", "executed", "unreviewed", "partially_reviewed"}
+_MAPPING_STATES = {"mapping_" + value: value for value in
+                   ("ready", "mapped", "needs_review", "insufficient_source", "source_unavailable")}
+_STATES.update(_MAPPING_STATES)
 
 
 def _json(value: Any) -> str:
@@ -45,6 +48,9 @@ def _search_text(repository: dict) -> str:
     values = [repository.get(key, "") for key in ("id", "full_name", "description")]
     for field in ("aliases", "languages", "topics", "domains"):
         values.extend(repository.get(field, []))
+    identity = repository.get("reviewed_identity") or {}
+    values.append(identity.get("canonical_repository_id", ""))
+    values.extend(identity.get("observed_repository_ids", []))
     for capability in repository.get("capabilities", []):
         values.extend(capability.get(key, "") for key in ("key", "name", "mechanism"))
         for field in ("inputs", "outputs", "requirements", "limitations"):
@@ -57,6 +63,10 @@ def _search_text(repository: dict) -> str:
         values.append(interpretation.get("purpose", ""))
         for field in ("inputs", "outputs", "human_work", "custom_glue", "limitations"):
             values.extend(interpretation.get(field, []))
+    for finding in repository.get("technical_findings", []):
+        if finding.get("status") == "approved":
+            values.extend(finding.get(key, "") for key in ("title", "kind", "direction", "format", "description"))
+            values.extend(finding.get("limitations", []))
     return " ".join(str(value) for value in values if value).casefold()
 
 
@@ -127,6 +137,9 @@ def build_repository_layer_index(catalog: dict, path: str | Path) -> dict:
                                      PRIMARY KEY(repository_id,domain));
                 CREATE INDEX domain_lookup ON domains(domain,repository_id);
                 CREATE INDEX repository_order ON repositories(sort_name,id);
+                CREATE TABLE source_mapping_states(repository_id TEXT NOT NULL, status TEXT NOT NULL,
+                    PRIMARY KEY(repository_id,status));
+                CREATE INDEX mapping_state_lookup ON source_mapping_states(status,repository_id);
                 CREATE TABLE sources(id TEXT PRIMARY KEY, ordinal INTEGER NOT NULL,
                                      repository_id TEXT NOT NULL, payload TEXT NOT NULL);
                 CREATE INDEX source_owner ON sources(repository_id);
@@ -154,6 +167,10 @@ def build_repository_layer_index(catalog: dict, path: str | Path) -> dict:
                 domains = set(repository["domains"])
                 domain_counts.update(domains)
                 db.executemany("INSERT INTO domains VALUES(?,?)", ((repository["id"], domain) for domain in domains))
+                states = {item["status"] for item in repository.get("source_mapping_states", [])
+                          if isinstance(item, dict) and isinstance(item.get("status"), str)}
+                db.executemany("INSERT INTO source_mapping_states VALUES(?,?)",
+                               ((repository["id"], status) for status in sorted(states)))
             for ordinal, source in enumerate(catalog["sources"]):
                 db.execute("INSERT INTO sources VALUES(?,?,?,?)", (source["id"], ordinal, source["repository_id"], _json(source)))
             for table in ("relationships", "proposed_relationships"):
@@ -162,6 +179,7 @@ def build_repository_layer_index(catalog: dict, path: str | Path) -> dict:
                                relation["source_repository_id"], relation["target_repository_id"], _json(relation)))
             metadata = {
                 "schema": SCHEMA, "catalog_digest": catalog["catalog_digest"], "coverage": catalog["coverage"],
+                "index_features": ["source_mapping_states", "reviewed_identity_search"],
                 "catalog_metadata": {key: value for key, value in catalog.items() if key not in _ARRAYS},
                 "domains": [{"id": key, "title": key.replace("_", " "), "count": count}
                             for key, count in sorted(domain_counts.items())],
@@ -213,6 +231,26 @@ def _by_ids(db: sqlite3.Connection, table: str, identities: set[str]) -> list[di
     return [record for _, record in sorted(found, key=lambda row: row[0])]
 
 
+def _page_refresh(refresh: dict, repository_ids: set[str]) -> dict:
+    """Keep complete accounting in the catalogue, not every paged response."""
+    if not refresh:
+        return {}
+    result = {key: value for key, value in refresh.items() if key != "snapshots"}
+    result["snapshots"] = []
+    for snapshot in refresh.get("snapshots", []):
+        summary = {key: value for key, value in snapshot.items() if key not in {"exclusions", "gallery_accounting"}}
+        if "exclusions" in snapshot:
+            exclusions = snapshot["exclusions"]
+            summary["exclusion_count"] = len(exclusions)
+            summary["page_exclusions"] = [value for value in exclusions if isinstance(value, dict)
+                                           and any(value.get(key) in repository_ids
+                                                   for key in ("repository_id", "catalog_id", "record_id"))]
+        if "gallery_accounting" in snapshot:
+            summary["gallery_accounting_count"] = len(snapshot["gallery_accounting"])
+        result["snapshots"].append(summary)
+    return result
+
+
 def query_repository_layer(path: str | Path, query: str = "", domain: str = "", review_state: str = "",
                            limit: int = 30, offset: int = 0) -> dict:
     """Return one page plus its explicit evidence and incident technical edges."""
@@ -235,15 +273,23 @@ def query_repository_layer(path: str | Path, query: str = "", domain: str = "", 
         clauses.append("EXISTS(SELECT 1 FROM domains d WHERE d.repository_id=r.id AND d.domain=?)")
         parameters.append(domain)
     filters = {
-        "metadata_only": "r.capability_count=0", "unreviewed": "r.capability_count=0",
+        "metadata_only": "r.has_source=0 AND r.interpretation_count=0 AND r.capability_count=0",
+        "unreviewed": "r.capability_count=0",
         "partially_reviewed": "r.capability_count>0", "source_captured": "r.has_source=1",
         "source_interpreted": "r.interpretation_count>0", "documented": "r.documented_count>0",
         "code_inspected": "r.code_inspected_count>0", "executed": "r.executed_count>0",
     }
     if review_state in filters:
         clauses.append(filters[review_state])
-    where = " WHERE " + " AND ".join(clauses) if clauses else ""
     with _open_index(path) as (db, metadata):
+        if review_state in _MAPPING_STATES:
+            if "source_mapping_states" in metadata.get("index_features", []):
+                clauses.append("EXISTS(SELECT 1 FROM source_mapping_states m WHERE m.repository_id=r.id AND m.status=?)")
+                parameters.append(_MAPPING_STATES[review_state])
+            else:
+                # Older immutable snapshots have no mapping-status observations.
+                clauses.append("0")
+        where = " WHERE " + " AND ".join(clauses) if clauses else ""
         total = db.execute("SELECT COUNT(*) FROM repositories r" + where, parameters).fetchone()[0]
         items = [json.loads(row[0]) for row in db.execute("SELECT r.payload FROM repositories r" + where +
                  " ORDER BY r.sort_name,r.id LIMIT ? OFFSET ?", [*parameters, limit, offset])]
@@ -262,8 +308,14 @@ def query_repository_layer(path: str | Path, query: str = "", domain: str = "", 
                 source_ids.update(_evidence_ids(relations[table]))
             source_ids.update(row[0] for row in db.execute(f"SELECT id FROM sources WHERE repository_id IN ({marks})", sorted(ids)))
         neighbor_records = [{key: item[key] for key in ("id", "full_name", "url")} for item in _by_ids(db, "repositories", neighbors - ids)]
+        catalog_metadata = metadata["catalog_metadata"]
+        resolution_ids = {value for item in items for value in
+                          item.get("reviewed_identity", {}).get("resolution_ids", [])}
+        identity_resolutions = [value for value in catalog_metadata.get("identity_resolutions", [])
+                                if value.get("id") in resolution_ids]
         return {"schema": PAGE_SCHEMA, "scope": "repository_only", "catalog_digest": metadata["catalog_digest"],
                 "total": total, "coverage": metadata["coverage"], "items": items,
+                "refresh": _page_refresh(catalog_metadata.get("refresh", {}), ids), "identity_resolutions": identity_resolutions,
                 "sources": _by_ids(db, "sources", source_ids), "neighbors": neighbor_records, **relations,
                 "domains": metadata["domains"], "query": query, "domain": domain, "review_state": review_state,
                 "limit": limit, "offset": offset}

@@ -8,7 +8,7 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from cite_refinery.repository_layer import EVIDENCE_SCHEMA, build_repository_layer
-from cite_refinery.repository_layer_index import build_repository_layer_index, query_repository_layer
+from cite_refinery.repository_layer_index import _page_refresh, _search_text, build_repository_layer_index, query_repository_layer
 
 
 class RepositoryLayerIndexTests(unittest.TestCase):
@@ -92,12 +92,78 @@ class RepositoryLayerIndexTests(unittest.TestCase):
 
     def test_filters_do_not_promote_metadata_or_source_interpretations(self):
         self.assertEqual(query_repository_layer(self.path, domain="data")["total"], 2)
-        expected = {"metadata_only": 74, "source_captured": 2, "source_interpreted": 1,
+        expected = {"metadata_only": 73, "unreviewed": 74, "source_captured": 2, "source_interpreted": 1,
                     "documented": 1, "code_inspected": 0, "executed": 0, "partially_reviewed": 1}
         for state, count in expected.items():
             with self.subTest(state=state):
                 self.assertEqual(query_repository_layer(self.path, review_state=state)["total"], count)
         self.assertEqual(query_repository_layer(self.path, domain="learning", review_state="source_captured")["total"], 0)
+
+    def test_reviewed_identity_and_approved_findings_are_searchable_without_rejected_claims(self):
+        repository = {"id": "github:archive/tool", "full_name": "archive/tool", "reviewed_identity": {
+            "canonical_repository_id": "github:current/canonical", "observed_repository_ids": ["github:former/tool"]},
+            "technical_findings": [{"title": "AcceptedNeedle", "status": "approved", "format": "STEP", "description": "Exact exchange"},
+                                   {"title": "RejectedNeedle", "status": "rejected", "description": "Wrongly attributed operation"}]}
+        text = _search_text(repository)
+        self.assertIn("github:current/canonical", text)
+        self.assertIn("github:former/tool", text)
+        self.assertIn("acceptedneedle", text)
+        self.assertNotIn("rejectedneedle", text)
+        self.assertNotIn("wrongly attributed operation", text)
+
+    def test_mapping_filter_on_older_index_does_not_invent_review_status(self):
+        with sqlite3.connect(self.path) as db:
+            db.execute("DELETE FROM metadata WHERE key='index_features'")
+            db.execute("DROP TABLE source_mapping_states")
+        self.assertEqual(query_repository_layer(self.path, review_state="mapping_ready")["total"], 0)
+        self.assertEqual(query_repository_layer(self.path)["total"], 75)
+
+    def test_page_refresh_omits_global_ledgers_but_keeps_relevant_exclusions(self):
+        refresh = {"snapshots": [{"accepted_mappings": 7589, "exclusions": [
+            {"catalog_id": "github:acme/beta", "reason": "Retained review limitation"},
+            {"catalog_id": "github:other/repository", "reason": "Unrelated source gap"}],
+            "gallery_accounting": [{"id": str(number)} for number in range(920)]}], "boundary": "Source review only"}
+        page = _page_refresh(refresh, {"github:acme/beta"})
+        summary = page["snapshots"][0]
+        self.assertEqual(summary["accepted_mappings"], 7589)
+        self.assertEqual(summary["exclusion_count"], 2)
+        self.assertEqual(summary["gallery_accounting_count"], 920)
+        self.assertEqual(summary["page_exclusions"], [refresh["snapshots"][0]["exclusions"][0]])
+        self.assertNotIn("gallery_accounting", summary)
+        self.assertNotIn("exclusions", summary)
+        self.assertEqual(len(refresh["snapshots"][0]["gallery_accounting"]), 920)
+
+    def test_refresh_metadata_and_mapping_filters_preserve_listing_and_evidence_authority(self):
+        snapshot = json.loads(self.snapshot.read_text())
+        beta, gamma = snapshot["repositories"][1:3]
+        beta["source_mapping_states"] = [{"cohort": "reviewed-cohort", "status": "mapped",
+            "source_status": "captured", "record_sha256": "a" * 64}]
+        gamma["source_mapping_states"] = [{"cohort": "stopped-cohort", "status": "needs_review",
+            "source_status": "unavailable", "reason": "Retained listing needs identity review", "record_sha256": "b" * 64}]
+        original = beta["source_interpretations"][0]
+        beta["technical_findings"] = [{"title": "DocumentedInterfaceNeedle", "kind": "input_output_interface",
+            "direction": "output", "format": "CSV", "description": "Normalizes documented record fields.",
+            "status": "approved", "authority": "source_reviewed_finding", "runtime_tested": False,
+            "evidence": original["evidence"], "evidence_ids": ["source:beta"], "limitations": ["Runtime not executed"]}]
+        snapshot["identity_resolutions"] = [{"canonical_repository_id": "github:current/canonical",
+            "observed_repository_ids": ["github:acme/beta", "github:acme/gamma"], "decision": "same_repository",
+            "authority": "reviewed_identity", "evidence": [{"path": "identity-review.json", "sha256": "c" * 64}],
+            "native_merge_performed": False, "reason": "Reviewed source redirect fixture."}]
+        snapshot["refresh"] = {"source": "bounded-test-fixture", "run_state": "stopped_at_user_request"}
+        self.snapshot.write_text(json.dumps(snapshot), encoding="utf-8")
+        catalog = build_repository_layer([self.snapshot], evidence_path=self.evidence)
+        path = self.root / "refreshed.sqlite3"
+        build_repository_layer_index(catalog, path)
+        aliases = query_repository_layer(path, query="github:current/canonical")
+        self.assertEqual({row["id"] for row in aliases["items"]}, {"github:acme/beta", "github:acme/gamma"})
+        self.assertEqual(aliases["identity_resolutions"], catalog["identity_resolutions"])
+        self.assertEqual(aliases["refresh"], catalog["refresh"])
+        self.assertEqual(query_repository_layer(path, review_state="mapping_mapped")["items"][0]["id"], "github:acme/beta")
+        self.assertEqual(query_repository_layer(path, review_state="mapping_needs_review")["items"][0]["id"], "github:acme/gamma")
+        self.assertEqual(query_repository_layer(path, query="DocumentedInterfaceNeedle")["total"], 1)
+        self.assertEqual(query_repository_layer(path)["total"], 75)
+        self.assertEqual(query_repository_layer(path, review_state="executed")["total"], 0)
+        self.assertEqual(catalog["coverage"]["reviewed_repository_count"], 1)
 
     def test_page_receipts_and_neighbors_follow_only_recorded_edges(self):
         alpha = query_repository_layer(self.path, query="github:acme/alpha", limit=1)

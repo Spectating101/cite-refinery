@@ -80,6 +80,18 @@ def fixture(count=70):
                           "excerpt_start": 10, "excerpt_end": 40, "byte_integrity_checked": True,
                           "semantic_support_verified": False, "runtime_tested": False}],
         }]
+    if count > 6:
+        records[4]["reviewed_identity"] = {"canonical_repository_id": "github:current/canonical",
+            "observed_repository_ids": [records[4]["id"], "github:current/canonical"],
+            "resolution_ids": ["identity-resolution-1"], "authority": "reviewed_identity"}
+        records[4]["source_mapping_states"] = [{"cohort": "completed-cohort", "status": "mapped", "source_status": "captured"}]
+        records[5]["technical_findings"] = [{"id": "finding-1", "title": "ApprovedInterfaceNeedle", "kind": "input_output_interface",
+            "direction": "output", "format": "STEP", "description": "Exports an exact body", "status": "approved",
+            "runtime_tested": False, "evidence_ids": ["source-1"], "limitations": ["Format contract remains unexecuted"],
+            "evidence": [{"source_id": "source-1", "excerpt": "<img onerror=window.__evil=1> STEP export documented."}]},
+            {"id": "finding-2", "title": "RejectedInterfaceNeedle", "status": "rejected", "description": "Wrong operation"}]
+        records[6]["source_mapping_states"] = [{"cohort": "stopped-cohort", "status": "ready", "source_status": "captured",
+            "reason": "Original source retained, review not started"}]
     return {
         "schema": "cite_refinery.repository_layer.v1", "scope": "repository_only",
         "repositories": records,
@@ -166,7 +178,7 @@ assert.equal($('selected-repo-title').textContent,'acme/repo000');assert.match($
 assert.match($('inspector').textContent,/Preserved connection proposals \(1\)/);assert.equal(d.querySelectorAll('.neighbor-button').length,1);
 assert.match($('inspector').textContent,/acme\/repo000 → acme\/repo002/);
 assert.match($('inspector').textContent,/Proposed handoff/);d.querySelector('.neighbor-button').click();assert.equal($('selected-repo-title').textContent,'acme/repo002');
-set('evidence-filter','metadata_only');assert.equal($('result-count').textContent,'67 / 70');d.querySelector('[data-repository-id="github:acme/repo003"]').click();
+set('evidence-filter','metadata_only');assert.equal($('result-count').textContent,'66 / 70');d.querySelector('[data-repository-id="github:acme/repo003"]').click();
 const proposals=[...d.querySelectorAll('details')].find(x=>x.querySelector('summary').textContent.includes('Preserved capability proposals'));proposals.open=true;proposals.dispatchEvent(new w.Event('toggle'));
 assert.match($('inspector').textContent,/Rejected assignment/);assert.match($('inspector').textContent,/Unreviewed assignment/);
 set('evidence-filter','executed');assert.equal($('result-count').textContent,'1 / 70');assert.equal($('selected-repo-title').textContent,'acme/repo002');
@@ -176,6 +188,18 @@ assert.match($('inspector').textContent,/Typed input stream/);assert.match($('in
 assert.equal(d.querySelectorAll('#inspector img').length,0);
 set('evidence-filter','all');set('search','onlyInterpretationNeedle','input');assert.equal($('result-count').textContent,'1 / 70');set('search','','input');
 set('evidence-filter','source_captured');assert.equal($('result-count').textContent,'1 / 70');assert.equal($('selected-repo-title').textContent,'acme/repo000');
+set('evidence-filter','all');set('search','github:current/canonical','input');assert.equal($('result-count').textContent,'1 / 70');
+assert.match($('inspector').textContent,/Reviewed canonical repository: github:current\/canonical/);
+assert.match($('inspector').textContent,/Historical listing IDs and their captured evidence remain separate/);
+assert.equal(d.querySelectorAll('.capability').length,0);
+set('search','ApprovedInterfaceNeedle','input');assert.equal($('result-count').textContent,'1 / 70');
+const findings=[...d.querySelectorAll('details')].find(x=>x.querySelector('summary').textContent.includes('Source-reviewed technical findings'));
+findings.open=true;findings.dispatchEvent(new w.Event('toggle'));assert.match($('inspector').textContent,/runtime behavior remains untested/);assert.equal(d.querySelectorAll('#inspector img').length,0);
+set('search','RejectedInterfaceNeedle','input');assert.equal($('result-count').textContent,'0 / 70');
+set('search','','input');set('evidence-filter','mapping_ready');assert.equal($('result-count').textContent,'1 / 70');assert.equal($('selected-repo-title').textContent,'acme/repo006');
+assert.match($('inspector').textContent,/Original source retained, review not started/);
+set('evidence-filter','mapping_mapped');assert.equal($('result-count').textContent,'1 / 70');assert.equal($('selected-repo-title').textContent,'acme/repo004');
+set('evidence-filter','unreviewed');assert.equal($('result-count').textContent,'67 / 70');
 set('evidence-filter','all');set('domain-filter','chemistry');assert.equal($('result-count').textContent,'1 / 70');
 set('search','unique-unknown-token','input');assert.equal(d.querySelectorAll('.repo-row').length,0);assert.match($('inspector').textContent,/adjusting the filters/);
 $('export-json').click();const saved=JSON.parse(exported);assert.equal(saved.repositories.length,70);assert.match(saved.repositories[0].description,/<\/script>/);
@@ -226,7 +250,7 @@ const {chromium}=require(process.argv[1]);
  await page.locator('.neighbor-button').click();
  assert.equal(await page.locator('#selected-repo-title').textContent(),'acme/repo002');
  await page.locator('#evidence-filter').selectOption('metadata_only');
- assert.equal(await page.locator('#result-count').textContent(),'67 / 70');
+ assert.equal(await page.locator('#result-count').textContent(),'66 / 70');
  await page.locator('[data-repository-id="github:acme/repo003"]').click();
  await page.locator('summary').filter({hasText:'Preserved capability proposals'}).click();
  assert.match(await page.locator('#inspector').textContent(),/Rejected assignment/);
