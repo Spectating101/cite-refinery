@@ -24,6 +24,7 @@ EVIDENCE_SCHEMA = "cite_refinery.repository_layer_evidence.v1"
 LEVELS = {"documented", "code_inspected", "executed"}
 RELATION_KINDS = {"declared_dependency", "proposed_handoff", "tested_handoff"}
 SOURCE_KINDS = {"metadata", "documentation", "code", "execution"}
+MAPPING_STATES = {"mapped", "ready", "needs_review", "insufficient_source", "source_unavailable"}
 FORBIDDEN_FIELDS = {
     "buyer_demand", "market_demand", "commercial_status", "commercial_fit",
     "commercial_underconversion", "demand_nodes", "problem_nodes", "problem_links",
@@ -243,6 +244,69 @@ def _check_source_interpretation(item: dict, rid: str, sources: dict[str, dict])
             raise ValueError("source interpretation must bind its own repository and checked source bytes")
 
 
+def _mapping_state(raw: dict) -> dict:
+    item = _clean(raw)
+    if (not isinstance(item, dict) or not _text(item.get("cohort"))
+            or item.get("status") not in MAPPING_STATES
+            or not re.fullmatch(r"[0-9a-f]{64}", str(item.get("record_sha256", "")))):
+        raise ValueError("mapping state requires its cohort, explicit status and record hash")
+    return item
+
+
+def _identity_resolution(raw: dict) -> dict:
+    """Describe a reviewed current identity without merging historical graph nodes."""
+    item = _clean(raw)
+    item.pop("id", None)
+    if (item.get("decision") != "same_repository" or item.get("authority") != "reviewed_identity"
+            or item.get("native_merge_performed") is not False or not _text(item.get("reason"))):
+        raise ValueError("identity resolution requires a bounded review without native merging")
+    item["canonical_repository_id"] = _repo_id(item.get("canonical_repository_id"))
+    item["observed_repository_ids"] = sorted({_repo_id(r) for r in item.get("observed_repository_ids", [])})
+    if not item["observed_repository_ids"]:
+        raise ValueError("identity review must preserve its observed repository IDs")
+    evidence = item.get("evidence", [])
+    if not evidence or any(not isinstance(e, dict) or not e.get("path")
+                           or not re.fullmatch(r"[0-9a-f]{64}", str(e.get("sha256", ""))) for e in evidence):
+        raise ValueError("identity resolution requires retained, hash-bound review evidence")
+    item["id"] = _stable("identity_resolution", item)
+    return item
+
+
+def _technical_finding(raw: dict, rid: str) -> dict:
+    """A recorded source review, distinct from curated capability/execution claims."""
+    item = _clean(raw)
+    item.pop("id", None)
+    item["repository_id"] = rid
+    if (item.get("authority") != "source_reviewed_finding" or item.get("runtime_tested") is not False
+            or item.get("status") not in {"approved", "rejected", "unresolved", "held"}
+            or item.get("direction") not in {"input", "output", "internal", "unknown"}
+            or not _text(item.get("title")) or not _text(item.get("description"))):
+        raise ValueError("technical finding requires its source-review status and operation scope")
+    proof = _source_interpretation({"authority": "source_bound_interpretation", "purpose": item["description"],
+                                   "semantic_support_verified": False, "runtime_tested": False,
+                                   "evidence": item.get("evidence", []),
+                                   "evidence_ids": item.get("evidence_ids", [])}, rid)
+    item["evidence"], item["evidence_ids"] = proof["evidence"], proof["evidence_ids"]
+    item["id"] = _stable("technical_finding", rid, item)
+    return item
+
+
+def _apply_identity_resolutions(registry: dict[str, dict], resolutions: list[dict]) -> None:
+    for resolution in resolutions:
+        for rid in resolution["observed_repository_ids"]:
+            if rid not in registry:
+                raise ValueError("identity resolution references an unrecorded listing")
+            repo = registry[rid]
+            identity = repo.setdefault("reviewed_identity", {
+                "canonical_repository_id": resolution["canonical_repository_id"],
+                "observed_repository_ids": [], "resolution_ids": [], "authority": "reviewed_identity"})
+            if identity["canonical_repository_id"] != resolution["canonical_repository_id"]:
+                raise ValueError("conflicting reviewed canonical identities")
+            identity["observed_repository_ids"] = sorted(set(identity["observed_repository_ids"]) |
+                                                          set(resolution["observed_repository_ids"]))
+            identity["resolution_ids"] = sorted(set(identity["resolution_ids"]) | {resolution["id"]})
+
+
 def _merge_row(registry: dict[str, dict], row: dict[str, Any], receipt: dict) -> bool:
     rid = _identity(row)
     if rid is None:
@@ -268,6 +332,27 @@ def _merge_row(registry: dict[str, dict], row: dict[str, Any], receipt: dict) ->
         if not isinstance(row["technical_context"], dict):
             raise ValueError("technical context must be an object")
         observation["technical_context"] = _clean(row["technical_context"])
+    if row.get("source_mapping_states"):
+        states = repo.setdefault("source_mapping_states", [])
+        for raw_state in row["source_mapping_states"]:
+            state = _mapping_state(raw_state)
+            old = next((s for s in states if s["cohort"] == state["cohort"]), None)
+            if old and old != state:
+                old_time, new_time = str(old.get("observed_at", "")), str(state.get("observed_at", ""))
+                if old_time == new_time:
+                    raise ValueError("conflicting mapping states at the same observation time")
+                if old_time > new_time:
+                    continue
+                states.remove(old)
+            if state not in states:
+                states.append(state)
+        states.sort(key=_json)
+    for raw_finding in row.get("technical_findings", []):
+        finding = _technical_finding(raw_finding, rid)
+        findings = repo.setdefault("technical_findings", [])
+        if finding not in findings:
+            findings.append(finding)
+        findings.sort(key=lambda f: f["id"])
     for key in ("stars", "forks", "archived", "last_push", "created_at", "sample_segments"):
         if key in row:
             observation[key] = deepcopy(row[key])
@@ -398,11 +483,29 @@ def _proposed_relationship(raw: dict) -> dict:
     source = _repo_id(item.get("source_repository_id", item.get("source")))
     target = _repo_id(item.get("target_repository_id", item.get("target")))
     kind = item.get("type", item.get("kind"))
-    if kind not in {"legacy_handoff", "legacy_comparison", "legacy_dependency", "legacy_association"}:
+    if kind not in {"legacy_handoff", "legacy_comparison", "legacy_dependency", "legacy_association", "technical_handoff_candidate"}:
         raise ValueError("unknown legacy relationship proposal type")
     item.update(source_repository_id=source, target_repository_id=target, type=kind, kind=kind,
                 status="rejected" if item.get("status") == "rejected" else "unreviewed")
     item["description"] = _text(item.get("description", item.get("rationale", "")))
+    if kind == "technical_handoff_candidate":
+        if (item.get("authority") != "source_bound_candidate" or item.get("runtime_tested") is not False
+                or not item["description"] or not item.get("producer_contract") or not item.get("consumer_contract")
+                or not item.get("validation_gaps") or not item.get("evidence_ids")):
+            raise ValueError("technical candidate requires both contracts, sources and unresolved checks")
+        for label, rid in (("producer_contract", source), ("consumer_contract", target)):
+            contract = item[label]
+            if not isinstance(contract, dict) or not all(_text(contract.get(k)) for k in ("name", "format", "description")):
+                raise ValueError("technical handoff contracts require a name, format and description")
+            proof = contract.get("evidence")
+            normalized = _source_interpretation({"authority": "source_bound_interpretation",
+                "purpose": contract["description"], "semantic_support_verified": False, "runtime_tested": False,
+                "evidence": [proof] if isinstance(proof, dict) else [],
+                "evidence_ids": contract.get("evidence_ids", [])}, rid)
+            contract["evidence"] = normalized["evidence"][0]
+            contract["evidence_ids"] = normalized["evidence_ids"]
+            if not set(contract["evidence_ids"]) <= set(item["evidence_ids"]):
+                raise ValueError("candidate top-level sources omit a contract's evidence")
     original_id = item["original_id"] if "original_id" in item else item.get("id")
     item["original_id"] = original_id
     item["id"] = _stable("proposed_relationship", source, target, kind, original_id, item.get("original_relation"))
@@ -416,7 +519,7 @@ def _coverage(catalog: dict) -> dict:
                     any(s.get(k) for k in ("excerpt", "revision", "sha256", "blob_sha", "content_sha256", "source_sha256", "content_path"))}
     levels = Counter(c["evidence_level"] for r in repos for c in r["capabilities"])
     reviewed = sum(bool(r["capabilities"]) for r in repos)
-    return {
+    coverage = {
         "repository_count": len(repos), "capability_count": sum(levels.values()),
         "reviewed_repository_count": reviewed, "unreviewed_repository_count": len(repos) - reviewed,
         "source_captured_repository_count": len(source_repos),
@@ -430,6 +533,18 @@ def _coverage(catalog: dict) -> dict:
         "rejected_relationship_proposal_count": sum(r["status"] == "rejected" for r in catalog.get("proposed_relationships", [])),
         "evidence_levels": {level: levels[level] for level in sorted(LEVELS)},
     }
+    if catalog.get("identity_resolutions"):
+        coverage.update(identity_resolution_count=len(catalog["identity_resolutions"]),
+                        identity_reviewed_record_count=sum(bool(r.get("reviewed_identity")) for r in repos),
+                        resolved_identity_group_count=len({r["canonical_repository_id"] for r in catalog["identity_resolutions"]}))
+    states = [s for r in repos for s in r.get("source_mapping_states", [])]
+    if states:
+        coverage["source_mapping_status_counts"] = dict(sorted(Counter(s["status"] for s in states).items()))
+    findings = [f for r in repos for f in r.get("technical_findings", [])]
+    if findings:
+        coverage["technical_finding_count"] = len(findings)
+        coverage["technical_finding_status_counts"] = dict(sorted(Counter(f["status"] for f in findings).items()))
+    return coverage
 
 
 def build_repository_layer(survey_paths: Iterable[str | Path], *,
@@ -441,6 +556,7 @@ def build_repository_layer(survey_paths: Iterable[str | Path], *,
     receipts: dict[str, dict] = {}
     relationships = []
     proposed_relationships = []
+    identity_resolutions, refreshes = {}, []
     for path in [*_paths(survey_paths), *_paths(supplemental_paths)]:
         data, receipt = _read(path)
         rows = data.get("repositories")
@@ -463,6 +579,11 @@ def build_repository_layer(survey_paths: Iterable[str | Path], *,
             registry.setdefault(source["repository_id"], _new_repo(source["repository_id"]))
         relationships.extend(data.get("relationships", []))
         proposed_relationships.extend(data.get("proposed_relationships", []))
+        for raw in data.get("identity_resolutions", []):
+            resolution = _identity_resolution(raw)
+            identity_resolutions[resolution["id"]] = resolution
+        if data.get("refresh"):
+            refreshes.append(_clean(data["refresh"]))
     if evidence_path is not None:
         evidence, receipt = _read(evidence_path)
         if evidence.get("schema") != EVIDENCE_SCHEMA:
@@ -500,6 +621,7 @@ def build_repository_layer(survey_paths: Iterable[str | Path], *,
         proposed_relationships.extend(evidence.get("proposed_relationships", []))
     if not registry:
         raise ValueError("no repository identities found")
+    _apply_identity_resolutions(registry, list(identity_resolutions.values()))
     for repo in registry.values():
         repo["aliases"] = _strings(repo["aliases"] or [repo["id"][7:]])
         repo["full_name"] = sorted(repo["aliases"], key=lambda v: (v.casefold(), v))[0]
@@ -514,6 +636,8 @@ def build_repository_layer(survey_paths: Iterable[str | Path], *,
         for interpretation in repo["source_interpretations"]:
             interpretation["provenance"]["observations"].sort(key=_json)
             _check_source_interpretation(interpretation, repo["id"], sources)
+        for finding in repo.get("technical_findings", []):
+            _check_source_interpretation(finding, repo["id"], sources)
         repo["proposed_capabilities"].sort(key=lambda p: p["id"])
         for proposal in repo["proposed_capabilities"]:
             proposal["observations"].sort(key=_json)
@@ -568,6 +692,11 @@ def build_repository_layer(survey_paths: Iterable[str | Path], *,
             "No technical relationship is inferred merely from a shared topic or file format.",
         ],
     }
+    if identity_resolutions:
+        catalog["identity_resolutions"] = sorted(identity_resolutions.values(), key=lambda r: r["id"])
+    if refreshes:
+        catalog["refresh"] = {"snapshots": sorted(refreshes, key=_json),
+                              "boundary": "Completed findings are reconciled without resuming the stopped mapping run; listing counts are not distinct software counts."}
     catalog["coverage"] = _coverage(catalog)
     catalog["catalog_digest"] = _digest(catalog)
     validate_repository_layer(catalog)
@@ -585,6 +714,11 @@ def validate_repository_layer(catalog: dict) -> dict:
     if len(ids) != len(set(ids)) or any(_repo_id(rid) != rid for rid in ids):
         raise ValueError("repository identities must be unique and canonical")
     by_repo = {r["id"]: r for r in repos}
+    identity_expected = {rid: {} for rid in ids}
+    resolutions = catalog.get("identity_resolutions", [])
+    if any(r != _identity_resolution(r) for r in resolutions) or len({r["id"] for r in resolutions}) != len(resolutions):
+        raise ValueError("duplicate or inconsistent identity resolution")
+    _apply_identity_resolutions(identity_expected, resolutions)
     sources = {s["id"]: s for s in catalog.get("sources", [])}
     if len(sources) != len(catalog.get("sources", [])):
         raise ValueError("duplicate source id")
@@ -600,6 +734,11 @@ def validate_repository_layer(catalog: dict) -> dict:
             raise ValueError("source identity collides with another record")
         all_ids.add(source_id)
     for repo in repos:
+        if repo.get("reviewed_identity") != identity_expected[repo["id"]].get("reviewed_identity"):
+            raise ValueError("repository identity annotation differs from its reviewed decisions")
+        states = repo.get("source_mapping_states", [])
+        if any(s != _mapping_state(s) for s in states) or len({s["cohort"] for s in states}) != len(states):
+            raise ValueError("duplicate or inconsistent mapping state")
         if _repo_id(repo["full_name"]) != repo["id"]:
             raise ValueError("repository display identity differs from its canonical id")
         if repo["review_state"] != ("partially_reviewed" if repo["capabilities"] else "unreviewed"):
@@ -613,6 +752,11 @@ def validate_repository_layer(catalog: dict) -> dict:
             if judgment.get("authority") != "metadata_only" or judgment.get("source_id") not in input_ids:
                 raise ValueError("domain judgment authority or provenance is invalid")
         keys = set()
+        for finding in repo.get("technical_findings", []):
+            if finding != _technical_finding(finding, repo["id"]) or finding["id"] in all_ids:
+                raise ValueError("duplicate or inconsistent technical finding")
+            _check_source_interpretation(finding, repo["id"], sources)
+            all_ids.add(finding["id"])
         for interpretation in repo.get("source_interpretations", []):
             if interpretation != _source_interpretation(interpretation, repo["id"]) or interpretation["id"] in all_ids:
                 raise ValueError("duplicate or inconsistent source interpretation")
@@ -657,6 +801,15 @@ def validate_repository_layer(catalog: dict) -> dict:
         if proposal != _proposed_relationship(proposal) or proposal["id"] in all_ids:
             raise ValueError("duplicate or inconsistent legacy relationship proposal")
         all_ids.add(proposal["id"])
+        if proposal.get("type") == "technical_handoff_candidate":
+            _refs(proposal["evidence_ids"], sources)
+            supported = {sources[sid]["repository_id"] for sid in proposal["evidence_ids"]}
+            if not {proposal["source_repository_id"], proposal["target_repository_id"]} <= supported:
+                raise ValueError("technical handoff candidate requires evidence for both endpoints")
+            for label, end in (("producer_contract", "source"), ("consumer_contract", "target")):
+                contract = proposal[label]
+                _check_source_interpretation({"evidence_ids": contract["evidence_ids"], "evidence": [contract["evidence"]]},
+                                             proposal[end + "_repository_id"], sources)
         if proposal["source_repository_id"] not in by_repo or proposal["target_repository_id"] not in by_repo:
             raise ValueError("legacy relationship proposal references an unknown repository")
     coverage = _coverage(catalog)
@@ -696,6 +849,8 @@ def repository_layer_packet(catalog: dict, project_id: str | None = None) -> dic
             "repository_id": repo["id"], "catalog_digest": catalog["catalog_digest"],
             "review_state": repo["review_state"], "domains": repo["domains"], "unknowns": repo["unknowns"],
             "domain_judgments": deepcopy(repo.get("domain_judgments", [])),
+            "reviewed_identity": deepcopy(repo.get("reviewed_identity")),
+            "source_mapping_states": deepcopy(repo.get("source_mapping_states", [])),
             "observation_sources": sorted({o["source_id"] for o in repo["observations"]}),
             "legacy_role_proposals": [{k: p[k] for k in ("id", "key", "name", "status")} for p in repo["proposed_capabilities"]],
         }, evidence)
@@ -707,6 +862,13 @@ def repository_layer_packet(catalog: dict, project_id: str | None = None) -> dic
             for source_id in interpretation["evidence_ids"]:
                 edge(interpretation["id"], source_id, "DERIVED_FROM", [source_id],
                      status="candidate", scope="literal source binding; semantic support remains unverified")
+        for finding in repo.get("technical_findings", []):
+            node(finding["id"], finding["description"], "technical_finding", deepcopy(finding), finding["evidence_ids"])
+            edge(repo["id"], finding["id"], "HAS_SOURCE_REVIEW", finding["evidence_ids"], status="candidate",
+                 review_status=finding["status"], runtime_tested=False)
+            for source_id in finding["evidence_ids"]:
+                edge(finding["id"], source_id, "DERIVED_FROM", [source_id], status="candidate",
+                     scope="recorded operation review, not an executed capability")
         for cap in repo["capabilities"]:
             node(cap["id"], cap["name"], "capability", deepcopy(cap), cap["evidence_ids"])
             edge(repo["id"], cap["id"], "DECLARES_CAPABILITY", cap["evidence_ids"], evidence_level=cap["evidence_level"], scope=cap.get("scope", {}))
@@ -738,6 +900,10 @@ def repository_layer_packet(catalog: dict, project_id: str | None = None) -> dic
             endpoints.append(_stable("capability", rid, key) if key else rid)
         edge(*endpoints, kinds[relation["kind"]], relation["evidence_ids"],
              status="candidate" if relation["kind"] == "proposed_handoff" else "qualified", technical_relationship=deepcopy(relation))
+    for relation in catalog.get("proposed_relationships", []):
+        if relation.get("type") == "technical_handoff_candidate" and relation.get("status") != "rejected":
+            edge(relation["source_repository_id"], relation["target_repository_id"], "PROPOSED_HANDOFF",
+                 relation["evidence_ids"], status="candidate", technical_relationship=deepcopy(relation))
     packet = {
         "schema": "cite_refinery.semantic_graph.v1", "source_system": "refinery",
         "clusters": [{"key": cluster, "title": "Repository capabilities and technical contracts", "tags": ["repository_only"]}],

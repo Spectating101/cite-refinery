@@ -64,6 +64,14 @@ def build(args: argparse.Namespace) -> dict:
         _write(destination, normalized)
         supplements.append(destination)
         summaries[f"current_catalogue_{number:02d}"] = normalized["import_summary"]
+    for number, path in enumerate(getattr(args, "refresh_export", None) or []):
+        from .repository_layer_refresh import refresh_snapshot
+
+        normalized = refresh_snapshot(path)
+        destination = inputs / f"source_refresh_snapshot_{number:02d}.json"
+        _write(destination, normalized)
+        supplements.append(destination)
+        summaries[f"source_refresh_{number:02d}"] = normalized["import_summary"]
     for number, path in enumerate(args.source_lock or []):
         normalized = source_lock_snapshot(path)
         destination = inputs / f"source_lock_{number:02d}.json"
@@ -164,6 +172,7 @@ def parser() -> argparse.ArgumentParser:
     create.add_argument("--mapping-audit")
     create.add_argument("--connected-observed-at", help="known observation date for the connected snapshot")
     create.add_argument("--current-catalog", action="append", help="frozen technical export of the current software catalogue")
+    create.add_argument("--refresh-export", action="append", help="retained source-mapping, identity and interface review export; repeatable")
     create.add_argument("--source-lock", action="append")
     create.add_argument("--legacy-root")
     create.add_argument("--portfolio")

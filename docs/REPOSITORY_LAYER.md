@@ -63,8 +63,10 @@ The output has schema `cite_refinery.repository_layer.v1` and scope
   paths, source kind and verification scope.
 - `relationships`: separately supported declared dependencies, proposed
   technical handoffs or scoped tested handoffs.
-- `proposed_relationships`: legacy rule-derived relationships, retained apart
-  from active technical relationships.
+- `proposed_relationships`: legacy rule-derived relationships and explicitly
+  source-bound technical handoff candidates, retained apart from active technical
+  relationships. Candidate contracts, connection work and unresolved receiving
+  checks do not establish an executed handoff.
 - `input_sources`, `coverage`, `boundaries` and a content `catalog_digest`.
 
 A reviewed capability has a stable `key`, `name`, `mechanism`, `evidence_level`
@@ -118,7 +120,11 @@ or malformed snapshot identity fail the import for review.
 
 Declared dependencies are directed from consumer to dependency. Their scope can
 distinguish a required package from an optional backend. Repository lineage is
-not a dependency. A shared JSON format, topic or language never creates an edge.
+not a dependency. A shared format, topic or language does not establish a working
+connection. Matches with separately checked producer and consumer passages may
+be retained as explicit technical candidates, with content compatibility still
+unresolved. Rejected candidates are retained in the catalogue but not projected
+as live candidate edges.
 
 A `tested_handoff` requires source and target revisions, a named case, a passing
 result and execution evidence. The recorded test scope remains attached to the
@@ -150,7 +156,7 @@ cite-refinery-repository-layer view \
   --output /private/repository-layer/repository_layer.html
 ```
 
-`--survey`, `--supplemental`, `--current-catalog` and `--source-lock` are
+`--survey`, `--supplemental`, `--current-catalog`, `--refresh-export` and `--source-lock` are
 repeatable. Build output includes normalized inputs, the catalogue, HTML view,
 Program-only graph packet, validation report and exact identity reconciliation.
 Private source exports stay outside the tracked repository.
@@ -161,6 +167,57 @@ query index. `query_repository_layer` returns bounded technical-only pages;
 `CITE_REFINERY_REPOSITORY_LAYER_DB` selects the index. This preserves ordinary
 service authentication and project access checks. Its search projection uses
 repository technical fields rather than the old workflow/customer search text.
+
+## Refreshing retained source findings
+
+`--refresh-export /private/source_refresh_export.json` admits a retained export
+through `repository_layer_refresh.refresh_snapshot`. It can be supplied alongside
+the earlier surveys and normalized snapshots, so later source readings add to the
+existing inventory rather than replacing historical observations. The adapter's
+reconciliation summary remains in the catalogue and build receipts. This operation
+does not start mapping workers or change the source queue.
+
+The dated read-only exporter can reproduce the frozen November 19 inputs:
+
+```bash
+python scripts/export_repository_refresh.py \
+  --discovery-root /private/atlas-discovery \
+  --output /private/repository-refresh-evidence
+```
+
+It checks retained original bytes, literal excerpts and supplied offsets; compares
+published technical content with queue content; preserves census decisions and
+explicit interface candidates; and records a disposition for every gallery row.
+Its output directory must be separate from the original mapping cohorts. The
+catalogue keeps the full reconciliation ledger while paged API responses expose
+summary counts and only the exclusions relevant to the displayed records.
+
+Small optional runtime checks are documented in
+`scripts/repository_layer_probes/README.md`. Their execution receipts are supplied
+as separate curated evidence. Importing source findings never executes those
+programs or grants their entire repositories an execution pass.
+
+Reviewed identity decisions are stored in `identity_resolutions`; affected rows
+carry `reviewed_identity` with their current canonical repository ID, observed
+listing IDs and review references. Search recognizes these reviewed names while
+retaining each original listing and its evidence ownership. It does not merge
+native graph nodes or imply a globally verified count of distinct implementations.
+
+`source_mapping_states` preserves the source cohort, mapping status, capture
+status, reason and original record hash. The immutable query index supports
+`mapping_ready`, `mapping_mapped`, `mapping_needs_review`,
+`mapping_insufficient_source` and `mapping_source_unavailable` filters. Counts
+describe mapping observations. An older index with no such observations returns
+no matches for these filters. `metadata_only` means no captured source, no source
+interpretation and no reviewed capability; `unreviewed` separately means no
+reviewed capability contract, even where source readings already exist.
+
+`technical_findings` preserves approved, rejected, unresolved and held source
+reviews with literal supporting passages. Approved operation descriptions can be
+searched; rejected descriptions do not become technical search assertions.
+The views display these findings separately from curated capability and execution
+claims. Proposed handoffs show producer and consumer contracts, required adapters
+and remaining validation checks, with their original candidate authority.
 
 ## Native graph projection and scale
 
@@ -200,9 +257,10 @@ an invalid late edge or stale review does not mutate persistent state.
 
 ## Initial reconciled snapshot, 2026-11-18
 
-The identified snapshots reconcile to **15,196 repositories**: 13,462 current
-repositories plus 2,031 older connected repositories, minus 312 shared
-identities, plus 15 other known identities. The current catalogue's one
+The identified snapshots reconcile to **15,196 retained repository IDs**: 13,462 current
+repository IDs plus 2,031 older connected repository IDs, minus 312 shared
+identities, plus 15 other known identities. Aliases and renamed repositories mean
+this is not a proven count of distinct software implementations. The current catalogue's one
 `product:readplace` record remains outside the repository layer. All repositories
 from both major inventories are present, with zero missing IDs.
 
