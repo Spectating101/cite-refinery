@@ -1,0 +1,74 @@
+name: legal-codex-decision-audit-022
+
+on:
+  push:
+    branches: ['feature/legal-codex-benchmark-001']
+    paths:
+      - 'src/cite_refinery/legal_codex_decision_audit_022.py'
+      - 'tests/test_legal_codex_decision_audit_022.py'
+      - 'docs/LEGAL_CODEX_DECISION_CHECKPOINT_AUDIT_022.md'
+      - '.github/workflows/legal-codex-decision-audit-022.yml'
+  pull_request:
+    paths:
+      - 'src/cite_refinery/legal_codex_decision_audit_022.py'
+      - 'tests/test_legal_codex_decision_audit_022.py'
+      - '.github/workflows/legal-codex-decision-audit-022.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  court-anchored-control-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Acquire all three real public Dutch judicial originals with bounded retries
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence-022
+          for n in 1 2 3; do
+            if python scripts/legal_codex_capture_017.py --output-dir "evidence-022/attempt-$n"; then
+              mv "evidence-022/attempt-$n" evidence-022/verified
+              break
+            fi
+          done
+          test -f evidence-022/verified/receipt.json
+          python - <<'PY'
+          import json
+          r=json.load(open('evidence-022/verified/receipt.json'))
+          assert r['successful']==3 and r['original_operational_logs_obtained']==0
+          PY
+      - name: Recheck primary originals, source chronology and audited decision chain
+        env:
+          PYTHONPATH: src
+          LEGAL_CODEX_017_EVIDENCE: ${{ github.workspace }}/evidence-022/verified
+          LEGAL_CODEX_022_EVIDENCE: ${{ github.workspace }}/evidence-022/verified
+        run: |
+          python - <<'PY'
+          import unittest
+          for pat, minimum in [('test_legal_codex_source_timeline_017.py', 26),
+                               ('test_legal_codex_decision_audit_022.py', 30)]:
+              suite=unittest.defaultTestLoader.discover('tests',pattern=pat)
+              result=unittest.TextTestRunner(verbosity=2).run(suite)
+              assert result.wasSuccessful() and not result.skipped and result.testsRun>=minimum
+          PY
+      - name: Publish only experimental trace and candidate graph as CI artifact
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m cite_refinery.legal_codex_decision_audit_022 \
+            --dutch-evidence-dir evidence-022/verified \
+            --indonesia-fixture examples/legal_codex_signature_chain_008.json \
+            --output evidence-022/audit.json \
+            --packet evidence-022/candidate-graph.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: legal-codex-022-COURT-CHRONOLOGY-PLUS-SYNTHETIC-POLICY
+          path: evidence-022/
+          if-no-files-found: error
+          retention-days: 30
