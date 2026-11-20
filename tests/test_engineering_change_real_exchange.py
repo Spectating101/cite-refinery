@@ -56,8 +56,8 @@ class RealExchangeTests(unittest.TestCase):
     def test_real_packet_hashes_name_every_fixture_file(self):
         packet = json.loads(self.packet())
         self.assertEqual({record["path"] for record in packet["files"].values()},
-                         {"r1-export.json", "r1-review/review.json", "proposal.json", "r2-export.json",
-                          "r2-review/review.json"})
+                         {"r1-export.json", "r1-review/review.json", "r1-review/replay.json", "proposal.json",
+                          "r2-export.json", "r2-review/review.json", "r2-review/replay.json"})
 
 
     def test_real_candidate_edition_reports_the_native_runtime_and_goes_stale(self):
