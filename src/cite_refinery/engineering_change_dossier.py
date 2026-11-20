@@ -212,6 +212,7 @@ def verify_change_evidence(packet_bytes: bytes, root: str | Path) -> dict[str, A
         raise ChangeEvidenceRejected("proposal does not bind the base review and revision")
     if proposal.get("resolved_requirements") != candidate_study["summary"].get("requirements"):
         raise ChangeEvidenceRejected("candidate revision does not carry the proposal's resolved requirements")
+    _verify_candidates(packet["proposal"].get("candidate_design_changes"), proposal, review, value["candidate_export"])
     failing = {row["id"] for row in _checks_from_export(value["candidate_export"]) if not row["passed"]}
     reported = {row.get("check") for row in packet["unresolved"] if row.get("kind") == "failing_check"
                 and row.get("revision") == candidate["revision"]}
@@ -221,6 +222,43 @@ def verify_change_evidence(packet_bytes: bytes, root: str | Path) -> dict[str, A
     if any(row.get("counts_for_candidate") is not False for row in packet["check_delta"]["stale"]):
         raise ChangeEvidenceRejected("a stale earlier check is counted for the candidate revision")
     return {"packet": packet, "packet_sha256": _sha(packet_bytes), "files": value}
+
+
+PHYSICAL_MEANS = "unknown / not tested"
+_CANDIDATE_COPY = ("input", "before", "after", "requirement_overrides", "model", "formula", "numbers", "assumptions", "basis")
+
+
+def _verify_candidates(rows: Any, proposal: Mapping[str, Any], review: Mapping[str, Any],
+                       candidate_export: Mapping[str, Any]) -> None:
+    """Rederive each applied modelled candidate and its native outcome from the covered bytes."""
+    applied = proposal.get("applied_candidates") or []
+    rows = [] if rows is None else rows  # packets from before candidates carry no such key
+    if not isinstance(rows, list) or [row.get("id") for row in rows] != [row.get("id") for row in applied]:
+        raise ChangeEvidenceRejected("packet candidate design changes differ from those the proposal applied")
+    stated = {row.get("id"): row for row in review.get("candidate_design_changes") or [] if isinstance(row, dict)}
+    targets = {row.get("id"): row for row in review.get("target_results") or [] if isinstance(row, dict)}
+    overrides = {}
+    metrics = candidate_export["study"]["summary"].get("metrics") or {}
+    for row, used in zip(rows, applied):
+        source = stated.get(used.get("id"))
+        if source != used or source.get("status") != "PROPOSED":
+            raise ChangeEvidenceRejected(f"candidate {used.get('id')!r} is not the proposed row of the Policy Lab review")
+        if any(row.get(key) != source.get(key) for key in _CANDIDATE_COPY) or row.get("physical_means") != PHYSICAL_MEANS:
+            raise ChangeEvidenceRejected(f"candidate {row.get('id')!r} differs from the review or names a physical means")
+        overrides.update(source["requirement_overrides"])
+        target = targets.get(source.get("target")) or {}
+        outcome = row.get("native_outcome") or {}
+        fact = str(target.get("fact", "")).split(".", 1)[-1]
+        value = metrics.get(fact)
+        met = None if value is None else (value >= target["value"] if target.get("operator") == ">="
+                                          else value <= target["value"] if target.get("operator") == "<="
+                                          else value == target.get("value"))
+        if (outcome.get("fact") != target.get("fact") or outcome.get("required") != target.get("value")
+                or outcome.get("operator") != target.get("operator") or outcome.get("native_value") != value
+                or outcome.get("met") is not met):
+            raise ChangeEvidenceRejected(f"candidate {row.get('id')!r} native outcome differs from the candidate export")
+    if overrides != (proposal.get("candidate_overrides") or {}):
+        raise ChangeEvidenceRejected("proposal candidate overrides differ from its applied candidates")
 
 
 def _identity(revision: Mapping[str, Any]) -> dict[str, Any]:
@@ -305,6 +343,7 @@ def build_dossier(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
                                                            "parent_revision": candidate["parent_revision"],
                                                            "change_request": candidate["change_request"]}},
         "proposal": deepcopy(packet["proposal"]),
+        "candidate_design_changes": deepcopy(packet["proposal"].get("candidate_design_changes") or []),
         "changed_dependencies": deepcopy(packet["check_delta"]["changed_dependencies"]),
         "checks": checks,
         "candidate_policy_review": None if candidate_review is None else {
@@ -321,6 +360,7 @@ def build_dossier(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
             "the Policy Lab review binds the exact base export bytes",
             "the HS proposal binds that review, and the candidate carries its resolved requirements",
             "every failing candidate check from the export is listed as unresolved",
+            "each applied modelled candidate matches its review row, and its native outcome matches the candidate export",
         ],
     }
     return dossier
@@ -348,6 +388,19 @@ def render_markdown(dossier: Mapping[str, Any], currency: Mapping[str, Any] | No
               for row in proposal["unmet_targets"]]
     lines += [f"- Proposed `{name}`: {change['before']} → {change['after']}"
               for name, change in sorted(proposal["requirement_changes"].items())]
+    for row in dossier.get("candidate_design_changes") or []:
+        outcome = row["native_outcome"]
+        verdict = ("not reported" if outcome["met"] is None
+                   else "meets the target" if outcome["met"] else "does NOT meet the target")
+        lines += ["", f"### Modelled candidate design change `{row['id']}`", "",
+                  f"- Input `{row['input']}`: {row['before']} → {row['after']} (model `{row['model']}`).",
+                  f"- Formula: `{row['formula']}`.",
+                  "- Numbers: " + ", ".join(f"{key} = {value}" for key, value in sorted(row["numbers"].items())) + ".",
+                  *[f"- Assumption: {item}" for item in row["assumptions"]],
+                  f"- Physical means of reaching this load: **{row['physical_means']}**.",
+                  f"- Native rerun (revision {rev['candidate']['revision']}): {outcome['fact']} = "
+                  f"**{outcome['native_value']} {outcome['unit']}**, required {outcome['operator']} "
+                  f"{outcome['required']} {outcome['unit']}: {verdict} (modeled, not measured)."]
     lines += ["", "## Checks", "",
               f"| Check | Revision {rev['candidate']['revision']} result | Revision {rev['base']['revision']} result | Earlier result status |",
               "|---|---|---|---|"]

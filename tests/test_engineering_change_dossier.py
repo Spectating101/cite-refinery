@@ -33,8 +33,8 @@ def _h(label: str) -> str:
     return _sha(label.encode())
 
 
-def _checks(runtime_limit: float, runtime_passed: bool) -> list[dict]:
-    return [{"id": "work_runtime", "passed": runtime_passed, "actual": 3.166, "limit": runtime_limit, "unit": "h"},
+def _checks(runtime_limit: float, runtime_passed: bool, actual: float = 3.166) -> list[dict]:
+    return [{"id": "work_runtime", "passed": runtime_passed, "actual": actual, "limit": runtime_limit, "unit": "h"},
             {"id": "supply_margin", "passed": True, "actual": 0.42, "limit": 0.3, "unit": "A"}]
 
 
@@ -57,14 +57,19 @@ def _identity(revision, run_id, parent, requirements, checks, tag):
 class Exchange:
     """Writes one consistent controlled exchange and the matching packet."""
 
-    def __init__(self, root: Path, *, candidate_review=True):
+    def __init__(self, root: Path, *, candidate_review=True, design_candidate=False):
         self.root = root
-        r1 = {"minimum_work_runtime_h": 2.5, "minimum_supply_margin_a": 0.3}
+        r1 = {"minimum_work_runtime_h": 2.5, "minimum_supply_margin_a": 0.3, "pi_work_current_a": 1.0}
         r2 = {**r1, "minimum_work_runtime_h": 4.0}
+        r2_checks = _checks(4.0, False)
+        if design_candidate:
+            r2["pi_work_current_a"] = 0.697
+            r2_checks = _checks(4.0, True, 4.002)
         self.base = _identity(1, RUN1, None, r1, _checks(2.5, True), "1")
-        self.candidate = _identity(2, RUN2, 1, r2, _checks(4.0, False), "2")
+        self.candidate = _identity(2, RUN2, 1, r2, r2_checks, "2")
         files = {"base_export": _export(1, RUN1, None, r1, _checks(2.5, True), self.base["package_sha256"]),
-                 "candidate_export": _export(2, RUN2, 1, r2, _checks(4.0, False), self.candidate["package_sha256"])}
+                 "candidate_export": _export(2, RUN2, 1, r2, r2_checks, self.candidate["package_sha256"])}
+        files["candidate_export"]["study"]["summary"]["metrics"] = {"work_runtime_lower_h": r2_checks[0]["actual"]}
         raw = {role: canonical_bytes(value) for role, value in files.items()}
         review = {"schema": "policylab.hardware_policy_review.v1", "physical_authority_granted": False,
                   "decision": "BLOCKED", "policy": {"id": "portable-runtime-4h", "version": "1.0.0"},
@@ -72,13 +77,26 @@ class Exchange:
                                      "revision": 1, "run_id": RUN1},
                   "unmet_constraints": [{"id": "work-runtime", "fact": "metric.work_runtime_lower_h", "operator": ">=",
                                          "value": 4, "unit": "h", "actual": 3.166}],
+                  "target_results": [{"id": "work-runtime", "fact": "metric.work_runtime_lower_h", "operator": ">=",
+                                      "value": 4, "unit": "h", "actual": 3.166, "passed": False}],
                   "revision_requirements": {"minimum_work_runtime_h": 4}}
+        row = {"id": "pi-work-load-budget", "kind": "modelled_candidate_design_change", "status": "PROPOSED",
+               "target": "work-runtime", "input": "pi_work_current_a", "before": 1.0, "after": 0.697,
+               "requirement_overrides": {"pi_work_current_a": 0.697}, "model": "runtime_inverse_to_work_power",
+               "formula": "P_required = E_min / T", "numbers": {"runtime_h": 3.166}, "assumptions": ["linear"],
+               "basis": "controlled fixture"}
+        if design_candidate:
+            review["candidate_design_changes"] = [row]
         files["base_review"], raw["base_review"] = review, canonical_bytes(review)
         proposal = {"schema": "hardware_splicer.policy_feedback_proposal.v1", "source_binding": review["source_binding"],
                     "policy_review_sha256": _sha(raw["base_review"]), "project_id": PROJECT, "base_revision": 1,
                     "revision_requirements": {"minimum_work_runtime_h": 4}, "resolved_requirements": r2,
                     "requirement_changes": {"minimum_work_runtime_h": {"before": 2.5, "after": 4.0}},
-                    "automatic_execution": False, "physical_authority_granted": False}
+                    "automatic_execution": False, "physical_authority_granted": False,
+                    "applied_candidates": [row] if design_candidate else [],
+                    "candidate_overrides": dict(row["requirement_overrides"]) if design_candidate else {}}
+        if design_candidate:
+            proposal["requirement_changes"]["pi_work_current_a"] = {"before": 1.0, "after": 0.697}
         files["proposal"], raw["proposal"] = proposal, canonical_bytes(proposal)
         if candidate_review:
             again = deepcopy(review)
@@ -103,7 +121,14 @@ class Exchange:
                          "requirement_changes": proposal["requirement_changes"],
                          "unmet_targets": [{"target": "work-runtime", "fact": "metric.work_runtime_lower_h",
                                             "actual": 3.166, "required": ">= 4 h"}],
-                         "applied_as_revision": 2},
+                         "applied_as_revision": 2,
+                         "candidate_design_changes": [] if not design_candidate else [{
+                             **{key: row[key] for key in ("id", "input", "before", "after", "requirement_overrides",
+                                                          "model", "formula", "numbers", "assumptions", "basis")},
+                             "label": "Modelled candidate design change", "physical_means": "unknown / not tested",
+                             "native_outcome": {"target": "work-runtime", "fact": "metric.work_runtime_lower_h",
+                                                "operator": ">=", "required": 4, "unit": "h",
+                                                "native_value": 4.002, "met": True}}]},
             "check_delta": {
                 "changed_dependencies": [{"dependency_id": "requirement:minimum_work_runtime_h",
                                           "before": 2.5, "after": 4.0}],
@@ -114,8 +139,9 @@ class Exchange:
                               "result": _checks(2.5, True)[1], "rerun": None, "reasons": [],
                               "counts_for_candidate": True}],
                 "blocked": [], "rerun": [], "stale_counted_as_passing": False},
-            "unresolved": [{"kind": "failing_check", "check": "work_runtime", "revision": 2, "run_id": RUN2,
-                            "actual": 3.166, "limit": 4.0, "unit": "h", "transition": "regressed"}],
+            "unresolved": [] if design_candidate else [
+                {"kind": "failing_check", "check": "work_runtime", "revision": 2, "run_id": RUN2,
+                 "actual": 3.166, "limit": 4.0, "unit": "h", "transition": "regressed"}],
             "not_tested": ["No physical build or measurement."], "not_linked": [],
             "head_at_export": {"revision": 2, "run_id": RUN2}, "files": self.records}
 
@@ -287,6 +313,53 @@ class EngineeringChangeDossierTests(unittest.TestCase):
                                       "--head", str(self.root / "head3.json"), "--out", str(self.root / "e3")]), 3)
             self.assertEqual(json.loads(buffer.getvalue())["status"], "refused_stale")
         self.assertFalse((self.root / "e3").exists())
+
+
+
+class CandidateDesignChangeTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.x = Exchange(self.root, candidate_review=False, design_candidate=True)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_dossier_shows_candidate_native_outcome_and_unknown_physical_means(self):
+        dossier, currency = issue_dossier(self.x.packet_bytes(), self.root, self.x.head())
+        [row] = dossier["candidate_design_changes"]
+        self.assertEqual(row["native_outcome"]["native_value"], 4.002)
+        text = render_markdown(dossier, currency)
+        self.assertIn("Physical means of reaching this load: **unknown / not tested**", text)
+        self.assertIn("work_runtime_lower_h = **4.002 h**, required >= 4 h: meets the target (modeled, not measured)", text)
+        lowered = text.lower() + json.dumps(dossier).lower()
+        for word in (r"\bfix(es|ed)?\b", r"\bready\b", r"\bapproved\b"):
+            self.assertNotRegex(lowered, word)
+
+    def test_candidate_outcome_or_physical_means_cannot_be_overstated(self):
+        for key, value in (("native_value", 4.5), ("met", False)):
+            packet = deepcopy(self.x.packet)
+            packet["proposal"]["candidate_design_changes"][0]["native_outcome"][key] = value
+            with self.subTest(key=key), self.assertRaisesRegex(ChangeEvidenceRejected, "native outcome"):
+                build_dossier(self.x.packet_bytes(packet), self.root)
+        packet = deepcopy(self.x.packet)
+        packet["proposal"]["candidate_design_changes"][0]["physical_means"] = "underclock to 1.2 GHz"
+        with self.assertRaisesRegex(ChangeEvidenceRejected, "physical means"):
+            build_dossier(self.x.packet_bytes(packet), self.root)
+        packet = deepcopy(self.x.packet)
+        packet["proposal"]["candidate_design_changes"] = []
+        with self.assertRaisesRegex(ChangeEvidenceRejected, "differ from those the proposal applied"):
+            build_dossier(self.x.packet_bytes(packet), self.root)
+
+    def test_candidate_not_in_the_review_is_refused(self):
+        review = json.loads((self.root / "base_review.json").read_bytes())
+        review["candidate_design_changes"][0]["after"] = 0.6
+        data = canonical_bytes(review)
+        (self.root / "base_review.json").write_bytes(data)
+        packet = deepcopy(self.x.packet)
+        packet["files"]["base_review"].update(sha256=_sha(data), bytes=len(data))
+        with self.assertRaises(ChangeEvidenceRejected):
+            build_dossier(self.x.packet_bytes(packet), self.root)
 
 
 if __name__ == "__main__":
