@@ -32,11 +32,17 @@ CURRENCY_SCHEMA = "cite_refinery.engineering_change_currency.v1"
 EXPORT_SCHEMA = "hardware_splicer.policy_evidence.v1"
 REVIEW_SCHEMA = "policylab.hardware_policy_review.v1"
 PROPOSAL_SCHEMA = "hardware_splicer.policy_feedback_proposal.v1"
+VERIFICATION_SCHEMA = "policylab.hardware_policy_verification.v1"
 FILE_SCHEMAS = {"base_export": EXPORT_SCHEMA, "base_review": REVIEW_SCHEMA, "proposal": PROPOSAL_SCHEMA,
-                "candidate_export": EXPORT_SCHEMA, "candidate_review": REVIEW_SCHEMA}
-REQUIRED_FILES = ("base_export", "base_review", "proposal", "candidate_export")
+                "candidate_export": EXPORT_SCHEMA, "candidate_review": REVIEW_SCHEMA,
+                "base_review_replay": VERIFICATION_SCHEMA, "candidate_review_replay": VERIFICATION_SCHEMA}
+REQUIRED_FILES = ("base_export", "base_review", "base_review_replay", "proposal", "candidate_export")
+OPERATORS = {">=": lambda a, b: a >= b, ">": lambda a, b: a > b, "<=": lambda a, b: a <= b,
+             "<": lambda a, b: a < b, "==": lambda a, b: a == b}
 ACCEPTED_AUTHORITY = ("modeled", "source_backed")
-IDENTITY_KEYS = ("revision", "run_id", "snapshot_sha256", "seal_sha256", "package_sha256")
+# Cite checks these against the covered exports. Snapshot and seal hashes are only declared by HS.
+VERIFIED_KEYS = ("revision", "run_id", "package_sha256")
+DECLARED_KEYS = ("snapshot_sha256", "seal_sha256")
 _PACKET_FIELDS = {"schema", "source_project", "project_id", "case_id", "authority_level", "evidence_kind",
                   "physical_authority_granted", "objective", "base", "candidate", "proposal", "check_delta",
                   "unresolved", "not_tested", "not_linked", "head_at_export", "files"}
@@ -47,6 +53,10 @@ _AUTHORITY_FLAGS = frozenset({
     "operational_authorized", "release_authorized", "fabrication_ready", "power_on_ready",
     "ready", "approved", "build_ready",
 })
+# Values that would read as readiness or approval under a status-like key, or as a bare list entry.
+_STATUS_KEYS = frozenset({"status", "decision", "state", "verdict", "readiness", "result", "standing"})
+_READY_VALUES = frozenset({"ready", "approved", "fabrication_ready", "power_on_ready", "build_ready", "release_ready",
+                           "ready_to_build", "ready_for_fabrication", "physically_validated", "authorized"})
 _MAX_BYTES = 16 * 1024 * 1024
 _HEX64 = frozenset("0123456789abcdef")
 
@@ -109,14 +119,22 @@ def read_json(raw: bytes, what: str) -> dict:
     return value
 
 
+def _ready_word(value: Any) -> bool:
+    return isinstance(value, str) and value.strip().lower().replace("-", "_").replace(" ", "_") in _READY_VALUES
+
+
 def _no_authority(value: Any, where: str) -> None:
     if isinstance(value, dict):
         for key, child in value.items():
             if key in _AUTHORITY_FLAGS and child is not False:
                 raise ChangeEvidenceRejected(f"{where}: digital evidence cannot assert {key}")
+            if key in _STATUS_KEYS and _ready_word(child):
+                raise ChangeEvidenceRejected(f"{where}: digital evidence cannot assert {key} = {child!r}")
             _no_authority(child, where)
     elif isinstance(value, list):
         for child in value:
+            if _ready_word(child):
+                raise ChangeEvidenceRejected(f"{where}: digital evidence cannot list {child!r}")
             _no_authority(child, where)
 
 
@@ -165,17 +183,53 @@ def _bind_export(role: str, export: Mapping[str, Any], project_id: str, identity
         raise ChangeEvidenceRejected(f"{role}: packet check results differ from the exported study")
     if export["study"]["summary"].get("requirements") != identity.get("requirements"):
         raise ChangeEvidenceRejected(f"{role}: packet requirements differ from the exported study")
+    if export["study"]["summary"].get("requirements_met") is not identity.get("requirements_met"):
+        raise ChangeEvidenceRejected(f"{role}: packet requirements_met differs from the exported study")
 
 
-def _bind_review(role: str, review: Mapping[str, Any], export_sha: str, export: Mapping[str, Any]) -> None:
+def _bind_review(role: str, review: Mapping[str, Any], export_sha: str, export: Mapping[str, Any],
+                 review_sha: str, receipt: Mapping[str, Any]) -> None:
     binding = review.get("source_binding") or {}
     if binding != {"evidence_sha256": export_sha, "project_id": export["project_id"],
                    "revision": export["revision"], "run_id": export["run_id"]}:
         raise ChangeEvidenceRejected(f"{role}: review does not bind the exact export bytes and revision")
+    if receipt.get("review_sha256") != review_sha:
+        raise ChangeEvidenceRejected(f"{role}: verify receipt does not bind the review")
+    if (receipt.get("verified") is not True or receipt.get("source_binding") != binding
+            or receipt.get("decision") != review.get("decision") or receipt.get("physical_authority_granted") is not False):
+        raise ChangeEvidenceRejected(f"{role}: verify receipt does not verify this review")
+
+
+def _unmet(row: Mapping[str, Any]) -> dict[str, Any]:
+    """The same normalization HS applies to a Policy Lab unmet row."""
+    if "operator" in row:
+        required, fact = f"{row['operator']} {row['value']} {row['unit']}", row["fact"]
+    else:
+        required, fact = f"HS limit {row.get('limit')} {row.get('unit')}", "HS engineering check"
+    return {"target": row["id"], "fact": fact, "actual": row.get("actual"), "required": required,
+            "reason": row.get("reason")}
+
+
+def _derive_proposal(review: Mapping[str, Any], proposal: Mapping[str, Any], candidate_revision: int) -> dict[str, Any]:
+    """Proposal fields Cite states, taken only from the covered review and proposal files."""
+    return {"policy_id": review["policy"]["id"], "policy_version": review["policy"]["version"],
+            "policy_decision": review["decision"], "policy_review_sha256": proposal["policy_review_sha256"],
+            "revision_requirements": proposal["revision_requirements"],
+            "requirement_changes": proposal["requirement_changes"],
+            "unmet_targets": [_unmet(row) for row in review["unmet_constraints"]],
+            "applied_as_revision": candidate_revision}
 
 
 def verify_change_evidence(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
     """Recheck every covered file and rederive what the dossier will state from those bytes."""
+    try:
+        return _verify_change_evidence(packet_bytes, root)
+    except (KeyError, TypeError, AttributeError, IndexError) as exc:
+        # A malformed packet or covered file is a rejection, never a crash.
+        raise ChangeEvidenceRejected(f"malformed change evidence: {type(exc).__name__}: {exc}") from exc
+
+
+def _verify_change_evidence(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
     packet = read_json(packet_bytes, "packet")
     if set(packet) != _PACKET_FIELDS or packet["schema"] != PACKET_SCHEMA:
         raise ChangeEvidenceRejected("unsupported change evidence schema or fields")
@@ -186,7 +240,10 @@ def verify_change_evidence(packet_bytes: bytes, root: str | Path) -> dict[str, A
     _no_authority(packet, "packet")
     base, candidate, files = packet["base"], packet["candidate"], packet["files"]
     if not isinstance(files, dict) or any(role not in files for role in REQUIRED_FILES) or set(files) - set(FILE_SCHEMAS):
-        raise ChangeEvidenceRejected("packet must cover the base export and review, the proposal and the candidate export")
+        raise ChangeEvidenceRejected("packet must cover the base export, review and its verify receipt, the proposal "
+                                     "and the candidate export")
+    if ("candidate_review" in files) != ("candidate_review_replay" in files):
+        raise ChangeEvidenceRejected("a candidate review must come with its Policy Lab verify receipt")
     if any(not _is_sha(identity.get(key)) for identity in (base, candidate)
            for key in ("snapshot_sha256", "seal_sha256", "package_sha256")):
         raise ChangeEvidenceRejected("revision identity hashes are missing or malformed")
@@ -200,19 +257,34 @@ def verify_change_evidence(packet_bytes: bytes, root: str | Path) -> dict[str, A
     candidate_study = value["candidate_export"]["study"]
     if candidate.get("parent_revision") != base["revision"] or candidate_study.get("parent_revision") != base["revision"]:
         raise ChangeEvidenceRejected("candidate revision does not descend from the base revision")
-    _bind_review("base_review", value["base_review"], files["base_export"]["sha256"], value["base_export"])
+    _bind_review("base_review", value["base_review"], files["base_export"]["sha256"], value["base_export"],
+                 files["base_review"]["sha256"], value["base_review_replay"])
     if "candidate_review" in value:
         _bind_review("candidate_review", value["candidate_review"], files["candidate_export"]["sha256"],
-                     value["candidate_export"])
+                     value["candidate_export"], files["candidate_review"]["sha256"], value["candidate_review_replay"])
+        if value["candidate_review"].get("policy", {}).get("id") != value["base_review"].get("policy", {}).get("id"):
+            raise ChangeEvidenceRejected("candidate review uses a different policy from the base review")
     proposal, review = value["proposal"], value["base_review"]
     if (proposal.get("source_binding") != review["source_binding"]
             or proposal.get("policy_review_sha256") != files["base_review"]["sha256"]
             or proposal.get("base_revision") != base["revision"] or proposal.get("automatic_execution") is not False
             or proposal.get("revision_requirements") != review.get("revision_requirements")):
         raise ChangeEvidenceRejected("proposal does not bind the base review and revision")
+    if proposal.get("policy_review_replay_sha256") != _sha(canonical_bytes(value["base_review_replay"])):
+        raise ChangeEvidenceRejected("proposal was not validated against the covered Policy Lab verify receipt")
     if proposal.get("resolved_requirements") != candidate_study["summary"].get("requirements"):
         raise ChangeEvidenceRejected("candidate revision does not carry the proposal's resolved requirements")
-    _verify_candidates(packet["proposal"].get("candidate_design_changes"), proposal, review, value["candidate_export"])
+    outcomes = _verify_candidates(packet["proposal"].get("candidate_design_changes"), proposal, review,
+                                  value["candidate_export"])
+    derived = _derive_proposal(review, proposal, candidate["revision"])
+    for key, expected in derived.items():
+        if packet["proposal"].get(key) != expected:
+            raise ChangeEvidenceRejected(f"packet proposal {key} differs from the covered review and proposal")
+    for row, outcome in outcomes:
+        if outcome["met"] is not True:
+            kind = "candidate_target_unknown" if outcome["met"] is None else "candidate_target_not_met"
+            if not any(item.get("kind") == kind and item.get("candidate") == row["id"] for item in packet["unresolved"]):
+                raise ChangeEvidenceRejected(f"candidate {row['id']} missed or could not report its target but is not unresolved")
     failing = {row["id"] for row in _checks_from_export(value["candidate_export"]) if not row["passed"]}
     reported = {row.get("check") for row in packet["unresolved"] if row.get("kind") == "failing_check"
                 and row.get("revision") == candidate["revision"]}
@@ -221,7 +293,7 @@ def verify_change_evidence(packet_bytes: bytes, root: str | Path) -> dict[str, A
                                      f"(exported {sorted(failing)}, reported {sorted(reported)})")
     if any(row.get("counts_for_candidate") is not False for row in packet["check_delta"]["stale"]):
         raise ChangeEvidenceRejected("a stale earlier check is counted for the candidate revision")
-    return {"packet": packet, "packet_sha256": _sha(packet_bytes), "files": value}
+    return {"packet": packet, "packet_sha256": _sha(packet_bytes), "files": value, "proposal": derived}
 
 
 PHYSICAL_MEANS = "unknown / not tested"
@@ -237,7 +309,7 @@ def _verify_candidates(rows: Any, proposal: Mapping[str, Any], review: Mapping[s
         raise ChangeEvidenceRejected("packet candidate design changes differ from those the proposal applied")
     stated = {row.get("id"): row for row in review.get("candidate_design_changes") or [] if isinstance(row, dict)}
     targets = {row.get("id"): row for row in review.get("target_results") or [] if isinstance(row, dict)}
-    overrides = {}
+    overrides, checked = {}, []
     metrics = candidate_export["study"]["summary"].get("metrics") or {}
     for row, used in zip(rows, applied):
         source = stated.get(used.get("id"))
@@ -248,21 +320,33 @@ def _verify_candidates(rows: Any, proposal: Mapping[str, Any], review: Mapping[s
         overrides.update(source["requirement_overrides"])
         target = targets.get(source.get("target")) or {}
         outcome = row.get("native_outcome") or {}
-        fact = str(target.get("fact", "")).split(".", 1)[-1]
-        value = metrics.get(fact)
-        met = None if value is None else (value >= target["value"] if target.get("operator") == ">="
-                                          else value <= target["value"] if target.get("operator") == "<="
-                                          else value == target.get("value"))
+        prefix, _, fact = str(target.get("fact", "")).partition(".")
+        summary = candidate_export["study"]["summary"]
+        if prefix == "requirement":
+            value = (summary.get("requirements") or {}).get(fact)
+        elif prefix == "metric":
+            value = metrics.get(fact, summary.get(fact) if fact in ("mass_g", "mass_margin_g") else None)
+        else:
+            raise ChangeEvidenceRejected(f"candidate {row.get('id')!r} target fact is not a metric.* or requirement.* fact")
+        if target.get("operator") not in OPERATORS:
+            raise ChangeEvidenceRejected(f"candidate {row.get('id')!r} target operator is not supported")
+        met = None if value is None else OPERATORS[target["operator"]](value, target["value"])
+        checked.append((row, outcome))
         if (outcome.get("fact") != target.get("fact") or outcome.get("required") != target.get("value")
                 or outcome.get("operator") != target.get("operator") or outcome.get("native_value") != value
                 or outcome.get("met") is not met):
             raise ChangeEvidenceRejected(f"candidate {row.get('id')!r} native outcome differs from the candidate export")
     if overrides != (proposal.get("candidate_overrides") or {}):
         raise ChangeEvidenceRejected("proposal candidate overrides differ from its applied candidates")
+    return checked
 
 
 def _identity(revision: Mapping[str, Any]) -> dict[str, Any]:
-    return {key: revision[key] for key in IDENTITY_KEYS}
+    return {key: revision[key] for key in VERIFIED_KEYS}
+
+
+def _declared(revision: Mapping[str, Any]) -> dict[str, Any]:
+    return {key: revision[key] for key in DECLARED_KEYS}
 
 
 def check_currency(dossier: Mapping[str, Any], head_bytes: bytes) -> dict[str, Any]:
@@ -274,15 +358,27 @@ def check_currency(dossier: Mapping[str, Any], head_bytes: bytes) -> dict[str, A
     _no_authority(head, "revision head")
     if head.get("project_id") != dossier["project_id"]:
         raise ChangeEvidenceRejected("revision head belongs to another project")
-    bound = dossier["edition"]["bound_to"]
+    try:
+        bound = dossier["edition"]["bound_to"]
+        declared = dossier["declared_by_hs"]["candidate"]
+        candidate = dossier["revisions"]["candidate"]
+    except (KeyError, TypeError) as exc:
+        raise ChangeEvidenceRejected("dossier lacks its edition identity") from exc
+    # A dossier file edited to look current fails here rather than passing the gate.
+    if (dossier["edition"].get("edition_id") != _sha(canonical_bytes(bound))
+            or any(bound.get(key) != candidate.get(key) for key in VERIFIED_KEYS)):
+        raise ChangeEvidenceRejected("dossier edition identity does not match its bound revision")
     current = head["head"]
     reasons = []
     if current.get("revision") != bound["revision"]:
         reasons.append(f"HS project is at revision {current.get('revision')}; this edition describes revision "
                        f"{bound['revision']}")
-    for key in IDENTITY_KEYS[1:]:
+    for key in VERIFIED_KEYS[1:]:
         if current.get(key) != bound[key]:
             reasons.append(f"{key} changed from {bound[key]} to {current.get(key)}")
+    for key in DECLARED_KEYS:
+        if current.get(key) != declared.get(key):
+            reasons.append(f"{key} (declared by HS) changed from {declared.get(key)} to {current.get(key)}")
     return {"schema": CURRENCY_SCHEMA, "edition_id": dossier["edition"]["edition_id"],
             "project_id": dossier["project_id"], "status": "stale" if reasons else "current",
             "bound_to": deepcopy(bound), "head": deepcopy(current), "reasons": reasons,
@@ -290,6 +386,8 @@ def check_currency(dossier: Mapping[str, Any], head_bytes: bytes) -> dict[str, A
 
 
 def _check_line(row: Mapping[str, Any]) -> str:
+    if row.get("actual") is None and row.get("limit") is None:
+        return "(no result in this revision)"
     return f"{row['actual']} {row['unit']} against limit {row['limit']} {row['unit']}"
 
 
@@ -301,6 +399,7 @@ def build_dossier(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
     retained = {row["check"]: row for row in packet["check_delta"]["retained"]}
     before = {row["id"]: row for row in _checks_from_export(files["base_export"])}
     checks = []
+    after_ids = {row["id"] for row in _checks_from_export(files["candidate_export"])}
     for row in _checks_from_export(files["candidate_export"]):
         earlier = before.get(row["id"])
         if row["id"] in stale:
@@ -319,7 +418,19 @@ def build_dossier(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
                         "result": "FAIL" if not earlier["passed"] else "pass (modeled)",
                         "actual": earlier["actual"], "limit": earlier["limit"], "unit": earlier["unit"]},
                        "earlier_status": earlier_status})
+    for check_id, earlier in before.items():
+        if check_id not in after_ids:
+            # A check the candidate dropped is shown, never silently removed.
+            checks.append({"check": check_id, "result": "NOT TESTED", "revision": candidate["revision"],
+                           "run_id": candidate["run_id"], "actual": None, "limit": None, "unit": None,
+                           "earlier_result": {"revision": base["revision"], "run_id": base["run_id"],
+                                              "result": "FAIL" if not earlier["passed"] else "pass (modeled)",
+                                              "actual": earlier["actual"], "limit": earlier["limit"],
+                                              "unit": earlier["unit"]},
+                           "earlier_status": f"absent from revision {candidate['revision']}; its earlier result does not count"})
     candidate_review = files.get("candidate_review")
+    proposal = {**verified["proposal"],
+                "candidate_design_changes": deepcopy(packet["proposal"].get("candidate_design_changes") or [])}
     bound = {**_identity(candidate), "packet_sha256": verified["packet_sha256"],
              "files": {role: record["sha256"] for role, record in sorted(packet["files"].items())}}
     dossier = {
@@ -332,17 +443,20 @@ def build_dossier(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
                     "status_at_issue": "current"},
         "decision": {
             "question": (f"Should revision {candidate['revision']} replace revision {base['revision']} "
-                         f"under policy {packet['proposal']['policy_id']} {packet['proposal']['policy_version']}?"),
+                         f"under policy {proposal['policy_id']} {proposal['policy_version']}?"),
             "standing": ("Not decided by this dossier. Revision "
-                         f"{candidate['revision']} has {sum(row['result'] == 'FAIL' for row in checks)} failing "
-                         "modeled check(s) and no physical evidence."),
+                         f"{candidate['revision']} has {sum(row['result'] == 'FAIL' for row in checks)} failing and "
+                         f"{sum(row['result'] == 'NOT TESTED' for row in checks)} untested modeled check(s) "
+                         "and no physical evidence."),
         },
         "objective": packet["objective"],
         "revisions": {"base": _identity(base) | {"requirements_met": base["requirements_met"]},
                       "candidate": _identity(candidate) | {"requirements_met": candidate["requirements_met"],
                                                            "parent_revision": candidate["parent_revision"],
                                                            "change_request": candidate["change_request"]}},
-        "proposal": deepcopy(packet["proposal"]),
+        "proposal": proposal,
+        "declared_by_hs": {"meaning": "Snapshot and seal hashes declared by HS; Cite has no covered file to verify them.",
+                           "base": _declared(base), "candidate": _declared(candidate)},
         "candidate_design_changes": deepcopy(packet["proposal"].get("candidate_design_changes") or []),
         "changed_dependencies": deepcopy(packet["check_delta"]["changed_dependencies"]),
         "checks": checks,
@@ -356,7 +470,10 @@ def build_dossier(packet_bytes: bytes, root: str | Path) -> dict[str, Any]:
         "sources": deepcopy(packet["files"]),
         "receiver_checks": [
             "every covered file's bytes match its recorded SHA-256",
-            "base and candidate exports match the packet's project, revision, run, package hash, requirements and checks",
+            "base and candidate exports match the packet's project, revision, run, package hash, requirements, "
+            "requirements_met and checks",
+            "each Policy Lab review has a verify receipt naming its exact bytes",
+            "the proposal shown (policy, decision, unmet targets, requirement changes) is read from the covered files",
             "the Policy Lab review binds the exact base export bytes",
             "the HS proposal binds that review, and the candidate carries its resolved requirements",
             "every failing candidate check from the export is listed as unresolved",
@@ -374,11 +491,14 @@ def render_markdown(dossier: Mapping[str, Any], currency: Mapping[str, Any] | No
     if currency is not None and currency["status"] != "current":
         lines += ["> **STALE EDITION.** " + " ".join(currency["reasons"]) + " Do not reuse this dossier.", ""]
     lines += ["## Decision under review", "", dossier["decision"]["question"], "", dossier["decision"]["standing"], "",
-              "## Revisions", "", "| | Revision | Run | Snapshot | Package | Requirements met |", "|---|---:|---|---|---|---|"]
+              "## Revisions", "", "| | Revision | Run | Package | Requirements met | Snapshot / seal (declared by HS, not verified by Cite) |",
+              "|---|---:|---|---|---|---|"]
     for name in ("base", "candidate"):
         row = rev[name]
-        lines.append(f"| {name} | {row['revision']} | `{row['run_id'][:12]}` | `{row['snapshot_sha256'][:12]}` | "
-                     f"`{row['package_sha256'][:12]}` | {'yes (modeled)' if row['requirements_met'] else 'no'} |")
+        declared = dossier["declared_by_hs"][name]
+        lines.append(f"| {name} | {row['revision']} | `{row['run_id'][:12]}` | `{row['package_sha256'][:12]}` | "
+                     f"{'yes (modeled)' if row['requirements_met'] else 'no'} | "
+                     f"`{declared['snapshot_sha256'][:12]}` / `{declared['seal_sha256'][:12]}` |")
     proposal = dossier["proposal"]
     lines += ["", f"Revision {rev['candidate']['revision']} change request: {rev['candidate']['change_request']}", "",
               "## Proposal", "",
@@ -476,9 +596,13 @@ def mark_stale_in_workspace(app, cite_project_id: str, currency: Mapping[str, An
     if currency["status"] != "stale":
         raise ValueError("only a stale currency result can mark an edition stale")
     state = app.store.load()
-    for claim in state["claims"].values():
-        if claim.get("project_id") == cite_project_id and claim.get("edition_id") == currency["edition_id"]:
-            claim["status"] = "stale"
+    matched = [claim for claim in state["claims"].values()
+               if claim.get("project_id") == cite_project_id and claim.get("edition_id") == currency["edition_id"]]
+    if not matched:
+        raise ValueError(f"no claims of edition {currency['edition_id'][:16]} in Cite project {cite_project_id}; "
+                         "pass the Cite project id that issue --workspace returned")
+    for claim in matched:
+        claim["status"] = "stale"
     app.store.save(state)
     app._event(cite_project_id, "engineering_change.edition_stale",
                {"edition_id": currency["edition_id"], "reasons": list(currency["reasons"])})

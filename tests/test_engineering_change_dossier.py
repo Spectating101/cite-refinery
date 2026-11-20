@@ -19,7 +19,7 @@ from cite_refinery.app import CiteRefinery
 from cite_refinery.engineering_change_cli import main as cli
 from cite_refinery.engineering_change_dossier import (
     ChangeEvidenceRejected, StaleEdition, build_dossier, canonical_bytes, check_currency, issue_dossier,
-    mark_stale_in_workspace, record_in_workspace, render_markdown, verify_change_evidence)
+    OPERATORS, mark_stale_in_workspace, record_in_workspace, render_markdown, verify_change_evidence)
 
 PROJECT = "digital-0123456789abcdef0123456789abcdef"
 RUN1, RUN2, RUN3 = "a" * 32, "b" * 32, "c" * 32
@@ -52,6 +52,12 @@ def _identity(revision, run_id, parent, requirements, checks, tag):
             "package_sha256": _h("pkg" + tag), "calculation": "analysis/calculations.json",
             "calculation_sha256": _h("calc" + tag), "requirements": requirements,
             "requirements_met": all(c["passed"] for c in checks), "checks": checks}
+
+
+def _receipt(review: dict, review_bytes: bytes) -> dict:
+    return {"schema": "policylab.hardware_policy_verification.v1", "verified": True,
+            "source_binding": review["source_binding"], "decision": review["decision"],
+            "physical_authority_granted": False, "review_sha256": _sha(review_bytes)}
 
 
 class Exchange:
@@ -88,11 +94,14 @@ class Exchange:
         if design_candidate:
             review["candidate_design_changes"] = [row]
         files["base_review"], raw["base_review"] = review, canonical_bytes(review)
+        files["base_review_replay"] = _receipt(review, raw["base_review"])
+        raw["base_review_replay"] = canonical_bytes(files["base_review_replay"])
         proposal = {"schema": "hardware_splicer.policy_feedback_proposal.v1", "source_binding": review["source_binding"],
                     "policy_review_sha256": _sha(raw["base_review"]), "project_id": PROJECT, "base_revision": 1,
                     "revision_requirements": {"minimum_work_runtime_h": 4}, "resolved_requirements": r2,
                     "requirement_changes": {"minimum_work_runtime_h": {"before": 2.5, "after": 4.0}},
                     "automatic_execution": False, "physical_authority_granted": False,
+                    "policy_review_replay_sha256": _sha(raw["base_review_replay"]),
                     "applied_candidates": [row] if design_candidate else [],
                     "candidate_overrides": dict(row["requirement_overrides"]) if design_candidate else {}}
         if design_candidate:
@@ -103,6 +112,8 @@ class Exchange:
             again["source_binding"] = {"evidence_sha256": _sha(raw["candidate_export"]), "project_id": PROJECT,
                                        "revision": 2, "run_id": RUN2}
             files["candidate_review"], raw["candidate_review"] = again, canonical_bytes(again)
+            files["candidate_review_replay"] = _receipt(again, raw["candidate_review"])
+            raw["candidate_review_replay"] = canonical_bytes(files["candidate_review_replay"])
         self.records = {}
         for role, data in raw.items():
             (root / f"{role}.json").write_bytes(data)
@@ -120,7 +131,7 @@ class Exchange:
                          "revision_requirements": {"minimum_work_runtime_h": 4},
                          "requirement_changes": proposal["requirement_changes"],
                          "unmet_targets": [{"target": "work-runtime", "fact": "metric.work_runtime_lower_h",
-                                            "actual": 3.166, "required": ">= 4 h"}],
+                                            "actual": 3.166, "required": ">= 4 h", "reason": None}],
                          "applied_as_revision": 2,
                          "candidate_design_changes": [] if not design_candidate else [{
                              **{key: row[key] for key in ("id", "input", "before", "after", "requirement_overrides",
@@ -360,6 +371,183 @@ class CandidateDesignChangeTests(unittest.TestCase):
         packet["files"]["base_review"].update(sha256=_sha(data), bytes=len(data))
         with self.assertRaises(ChangeEvidenceRejected):
             build_dossier(self.x.packet_bytes(packet), self.root)
+
+
+class ReviewFindingTests(unittest.TestCase):
+    """Refusals added after the 20 November review of the receiver."""
+
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.x = Exchange(self.root)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def rejected(self, packet, match):
+        with self.assertRaisesRegex(ChangeEvidenceRejected, match):
+            build_dossier(self.x.packet_bytes(packet), self.root)
+
+    def rewrite(self, role, mutate):
+        value = json.loads((self.root / f"{role}.json").read_bytes())
+        mutate(value)
+        data = canonical_bytes(value)
+        (self.root / f"{role}.json").write_bytes(data)
+        packet = deepcopy(self.x.packet)
+        packet["files"][role].update(sha256=_sha(data), bytes=len(data))
+        return packet
+
+    def test_requirements_met_comes_from_the_export(self):
+        packet = deepcopy(self.x.packet)
+        packet["candidate"]["requirements_met"] = True
+        self.rejected(packet, "requirements_met differs")
+
+    def test_proposal_fields_come_from_the_covered_files(self):
+        for key, value in (("policy_decision", "PASSED"), ("policy_id", "lenient"), ("policy_version", "9"),
+                           ("unmet_targets", []), ("requirement_changes", {}), ("revision_requirements", {})):
+            packet = deepcopy(self.x.packet)
+            packet["proposal"][key] = value
+            with self.subTest(key=key):
+                self.rejected(packet, f"packet proposal {key} differs")
+        text = render_markdown(build_dossier(self.x.packet_bytes(), self.root))
+        self.assertIn("returned **BLOCKED**", text)
+
+    def test_declared_hashes_are_not_part_of_the_verified_identity(self):
+        packet = deepcopy(self.x.packet)
+        packet["candidate"]["seal_sha256"] = "0" * 64
+        dossier = build_dossier(self.x.packet_bytes(packet), self.root)
+        self.assertNotIn("seal_sha256", dossier["edition"]["bound_to"])
+        self.assertEqual(dossier["declared_by_hs"]["candidate"]["seal_sha256"], "0" * 64)
+        self.assertIn("declared by HS, not verified by Cite", render_markdown(dossier))
+        # A declared hash that later differs from HS's head still makes the edition stale.
+        currency = check_currency(dossier, self.x.head())
+        self.assertEqual(currency["status"], "stale")
+        self.assertIn("seal_sha256 (declared by HS) changed", currency["reasons"][0])
+
+    def test_ready_or_approved_values_are_refused_but_prose_is_not(self):
+        packet = self.rewrite("base_review", lambda r: r.setdefault("assessment", {}).update(status="Approved"))
+        self.rejected(packet, "cannot assert status")
+        self.x = Exchange(self.root)
+        packet = deepcopy(self.x.packet)
+        packet["not_tested"] = ["ready"]
+        self.rejected(packet, "cannot list 'ready'")
+        packet = deepcopy(self.x.packet)
+        packet["not_tested"] = ["Not approved for any physical use; nothing is ready."]
+        build_dossier(self.x.packet_bytes(packet), self.root)
+
+    def test_reviews_need_receipts_that_bind_their_bytes(self):
+        packet = deepcopy(self.x.packet)
+        del packet["files"]["candidate_review_replay"]
+        self.rejected(packet, "verify receipt")
+        packet = self.rewrite("candidate_review_replay", lambda r: r.update(review_sha256="0" * 64))
+        self.rejected(packet, "does not bind the review")
+        self.x = Exchange(self.root)
+        packet = self.rewrite("base_review_replay", lambda r: r.pop("review_sha256"))
+        self.rejected(packet, "does not bind the review")
+
+    def test_candidate_review_under_another_policy_is_refused(self):
+        def other(review):
+            review["policy"]["id"] = "lenient-policy"
+        packet = self.rewrite("candidate_review", other)
+        receipt = json.loads((self.root / "candidate_review_replay.json").read_bytes())
+        receipt["review_sha256"] = packet["files"]["candidate_review"]["sha256"]
+        data = canonical_bytes(receipt)
+        (self.root / "candidate_review_replay.json").write_bytes(data)
+        packet["files"]["candidate_review_replay"].update(sha256=_sha(data), bytes=len(data))
+        self.rejected(packet, "different policy")
+
+    def test_a_check_dropped_from_the_candidate_is_shown_untested(self):
+        def drop(export):
+            export["study"]["summary"]["constraints"] = export["study"]["summary"]["constraints"][:1]
+        packet = self.rewrite("candidate_export", drop)
+        packet["candidate"]["checks"] = packet["candidate"]["checks"][:1]
+        # Rebind the candidate review and its receipt to the changed export bytes.
+        sha = packet["files"]["candidate_export"]["sha256"]
+        packet2 = self.rewrite("candidate_review", lambda r: r["source_binding"].update(evidence_sha256=sha))
+        packet["files"]["candidate_review"] = packet2["files"]["candidate_review"]
+        receipt_packet = self.rewrite("candidate_review_replay", lambda r: r.update(
+            review_sha256=packet["files"]["candidate_review"]["sha256"],
+            source_binding={**r["source_binding"], "evidence_sha256": sha}))
+        packet["files"]["candidate_review_replay"] = receipt_packet["files"]["candidate_review_replay"]
+        dossier = build_dossier(self.x.packet_bytes(packet), self.root)
+        dropped = [row for row in dossier["checks"] if row["result"] == "NOT TESTED"]
+        self.assertEqual([row["check"] for row in dropped], ["supply_margin"])
+        self.assertIn("1 untested", dossier["decision"]["standing"])
+
+    def test_strict_operators_and_unknown_operators(self):
+        with TemporaryDirectory() as other:
+            x = Exchange(Path(other), candidate_review=False, design_candidate=True)
+            def strict(review):
+                review["target_results"][0].update(operator=">", value=4.002)
+            review = json.loads((Path(other) / "base_review.json").read_bytes())
+            strict(review)
+            self.assertIs(OPERATORS[">"](4.002, 4.002), False)
+            packet = deepcopy(x.packet)
+            packet["proposal"]["candidate_design_changes"][0]["native_outcome"].update(operator=">", required=4.002)
+            with self.assertRaises(ChangeEvidenceRejected):
+                build_dossier(x.packet_bytes(packet), other)
+
+    def test_missed_candidate_target_must_be_unresolved(self):
+        with TemporaryDirectory() as other:
+            x = Exchange(Path(other), candidate_review=False, design_candidate=True)
+            export = json.loads((Path(other) / "candidate_export.json").read_bytes())
+            export["study"]["summary"]["metrics"]["work_runtime_lower_h"] = 3.9
+            data = canonical_bytes(export)
+            (Path(other) / "candidate_export.json").write_bytes(data)
+            packet = deepcopy(x.packet)
+            packet["files"]["candidate_export"].update(sha256=_sha(data), bytes=len(data))
+            packet["proposal"]["candidate_design_changes"][0]["native_outcome"].update(native_value=3.9, met=False)
+            with self.assertRaisesRegex(ChangeEvidenceRejected, "is not unresolved"):
+                build_dossier(x.packet_bytes(packet), other)
+            packet["unresolved"] = [{"kind": "candidate_target_not_met", "candidate": "pi-work-load-budget"}]
+            dossier = build_dossier(x.packet_bytes(packet), other)
+            self.assertIn("does NOT meet the target", render_markdown(dossier))
+
+    def test_edited_dossier_identity_cannot_pass_the_stale_gate(self):
+        dossier, _ = issue_dossier(self.x.packet_bytes(), self.root, self.x.head())
+        forged = deepcopy(dossier)
+        forged["edition"]["bound_to"]["revision"] = 3
+        forged["edition"]["bound_to"]["run_id"] = RUN3
+        with self.assertRaisesRegex(ChangeEvidenceRejected, "edition identity"):
+            check_currency(forged, self.x.head({**self.x.candidate, "revision": 3, "run_id": RUN3}))
+
+    def test_malformed_packet_is_a_rejection_not_a_crash(self):
+        packet = deepcopy(self.x.packet)
+        del packet["candidate"]["checks"]
+        packet["candidate"]["requirements"] = None
+        self.rejected(packet, "")
+        export_packet = self.rewrite("candidate_export", lambda e: e["study"].pop("summary"))
+        self.rejected(export_packet, "")
+
+    def test_cli_check_writes_a_new_directory_and_marks_the_workspace(self):
+        (self.root / "packet.json").write_bytes(self.x.packet_bytes())
+        (self.root / "head2.json").write_bytes(self.x.head())
+        (self.root / "head3.json").write_bytes(self.x.head({**self.x.candidate, "revision": 3, "run_id": RUN3}))
+        edition, workspace = self.root / "edition", self.root / "workspace"
+        out = io.StringIO()
+        with redirect_stdout(out):
+            self.assertEqual(cli(["issue", "--packet", str(self.root / "packet.json"), "--root", str(self.root),
+                                  "--head", str(self.root / "head2.json"), "--out", str(edition),
+                                  "--workspace", str(workspace)]), 0)
+        cite_project = json.loads(out.getvalue())["workspace_record"]["project_id"]
+        issued = (edition / "dossier.md").read_bytes()
+        check = ["check", "--dossier", str(edition / "dossier.json"), "--head", str(self.root / "head3.json"),
+                 "--out", str(edition)]
+        outputs = []
+        for _ in range(2):
+            buffer = io.StringIO()
+            with redirect_stdout(buffer):
+                self.assertEqual(cli(check), 3)
+            outputs.append(json.loads(buffer.getvalue())["out"])
+        self.assertNotEqual(outputs[0], outputs[1])
+        self.assertEqual((edition / "dossier.md").read_bytes(), issued)
+        self.assertIn("STALE EDITION", (Path(outputs[0]) / "dossier.md").read_text())
+        with redirect_stdout(io.StringIO()):
+            self.assertEqual(cli(check + ["--workspace", str(workspace)]), 1)
+            self.assertEqual(cli(check + ["--workspace", str(workspace), "--cite-project-id", PROJECT]), 1)
+            self.assertEqual(cli(check + ["--workspace", str(workspace), "--cite-project-id", cite_project]), 3)
+        state = CiteRefinery(workspace).store.load()
+        self.assertEqual({c["status"] for c in state["claims"].values() if c["project_id"] == cite_project}, {"stale"})
 
 
 if __name__ == "__main__":
