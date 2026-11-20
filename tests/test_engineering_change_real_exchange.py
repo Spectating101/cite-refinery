@@ -2,8 +2,8 @@
 
 The fixture directory is a verbatim copy of the exchange written by Hardware
 Splicer's scripts/demo_change_dossier.py (Fielddeck 5, modeled values only):
-two HS exports, two Policy Lab reviews, the HS proposal, the change packet and
-the HS revision heads before and after a further revision.
+three HS exports, four Policy Lab reviews and their verify receipts, two HS
+proposals, two change packets and the HS revision heads r2 to r4.
 """
 from __future__ import annotations
 
@@ -58,6 +58,22 @@ class RealExchangeTests(unittest.TestCase):
         self.assertEqual({record["path"] for record in packet["files"].values()},
                          {"r1-export.json", "r1-review/review.json", "proposal.json", "r2-export.json",
                           "r2-review/review.json"})
+
+
+    def test_real_candidate_edition_reports_the_native_runtime_and_goes_stale(self):
+        packet = (FIXTURE / "change-evidence-r3.json").read_bytes()
+        dossier, currency = issue_dossier(packet, FIXTURE, (FIXTURE / "head-r3.json").read_bytes())
+        [row] = dossier["candidate_design_changes"]
+        self.assertEqual((row["input"], row["before"], row["after"]), ("pi_work_current_a", 1, 0.697))
+        self.assertEqual(row["native_outcome"]["native_value"], 4.002)
+        self.assertIs(row["native_outcome"]["met"], True)
+        self.assertEqual(row["physical_means"], "unknown / not tested")
+        self.assertEqual([c["result"] for c in dossier["checks"]], ["pass (modeled)"] * 3)
+        self.assertIn("unknown / not tested", render_markdown(dossier, currency))
+        stale = check_currency(dossier, (FIXTURE / "head-r4.json").read_bytes())
+        self.assertEqual(stale["status"], "stale")
+        with self.assertRaises(StaleEdition):
+            issue_dossier(packet, FIXTURE, (FIXTURE / "head-r4.json").read_bytes())
 
 
 if __name__ == "__main__":
