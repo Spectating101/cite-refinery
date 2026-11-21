@@ -22,7 +22,7 @@ provenance = ["prov>=2,<3"]
 services = ["httpx>=0.27,<1"]
 semantic_discovery = ["numpy>=1.26", "scikit-learn>=1.4", "sentence-transformers>=3", "requests>=2.31", "beautifulsoup4>=4.12"]
 functional_probes = ["numpy>=1.24", "pandas>=2", "matplotlib>=3.7", "PyYAML>=6"]
-test = ["requests>=2.31,<3", "PyYAML>=6,<7"]
+test = ["requests>=2.31,<3", "PyYAML>=6,<7", "fastapi>=0.110,<1", "httpx>=0.27,<1"]
 
 [project.scripts]
 cite-refinery = "cite_refinery.layered_cli:main"
@@ -44,6 +44,7 @@ cite-refinery-adjudicate = "cite_refinery.investigation_adjudication_cli:main"
 cite-refinery-repair = "cite_refinery.evidence_repair_cli:main"
 cite-refinery-discriminate = "cite_refinery.discriminating_tests_cli:main"
 cite-refinery-field-audit = "cite_refinery.field_observation_cli:main"
+cite-refinery-change-dossier = "cite_refinery.engineering_change_cli:main"
 cite-refinery-field-repair = "cite_refinery.field_observation_repair:main"
 cite-refinery-cross-domain-probe = "cite_refinery.cross_domain_probe_cli:main"
 cite-refinery-corpus-map = "cite_refinery.open_corpus_cli:main"
